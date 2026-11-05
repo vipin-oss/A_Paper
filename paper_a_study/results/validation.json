@@ -1,0 +1,1013 @@
+{
+  "numerical_checks": 143,
+  "passed": 143,
+  "checks": [
+    {
+      "name": "MAC eta=0.0",
+      "value": 0.9998144715688416,
+      "relation": "ge",
+      "limit": 0.999,
+      "passed": true
+    },
+    {
+      "name": "growth eta=0.0",
+      "value": 4.4147707712299545e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "MAC eta=-0.05",
+      "value": 0.9998144709204438,
+      "relation": "ge",
+      "limit": 0.999,
+      "passed": true
+    },
+    {
+      "name": "growth eta=-0.05",
+      "value": 7.302187118158384e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "MAC eta=0.05",
+      "value": 0.9998144629495198,
+      "relation": "ge",
+      "limit": 0.999,
+      "passed": true
+    },
+    {
+      "name": "growth eta=0.05",
+      "value": 5.644551500949577e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "edge rank eta=0.0",
+      "value": 182.0,
+      "relation": "ge",
+      "limit": 182.0,
+      "passed": true
+    },
+    {
+      "name": "negative channel eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "edge residual eta=0.0",
+      "value": 3.2907824998596574e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "control volume power eta=0.0",
+      "value": 6.552033462476027e-13,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "edge power eta=0.0",
+      "value": 1.246416959709843e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "positive energy incident eta=0.0",
+      "value": 7.2486695029993005,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power incident eta=0.0",
+      "value": 2.562229519011864e-09,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum incident eta=0.0",
+      "value": 5.6057968466920206e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss incident eta=0.0",
+      "value": 5.3093384717413284e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier incident eta=0.0",
+      "value": 1.1452637697257585e-09,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction incident eta=0.0",
+      "value": 7.193962467717324e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction incident eta=0.0",
+      "value": 1.558480186117594e-14,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking incident eta=0.0",
+      "value": 5.353157786024417e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state incident eta=0.0",
+      "value": 4.4096953531584204e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "positive energy backward eta=0.0",
+      "value": 0.2277492165001084,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power backward eta=0.0",
+      "value": 4.0235931603912905e-09,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum backward eta=0.0",
+      "value": 3.836042566385166e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss backward eta=0.0",
+      "value": 4.561620801647433e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier backward eta=0.0",
+      "value": 1.4285569582751336e-09,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction backward eta=0.0",
+      "value": 5.010153505933218e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction backward eta=0.0",
+      "value": 9.893316107017158e-15,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking backward eta=0.0",
+      "value": 5.973113506405831e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state backward eta=0.0",
+      "value": 3.1064379334634e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "12 state frequency eta=0.0",
+      "value": 0.00092301784179777,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "temporal energy balance eta=0.0",
+      "value": 8.770352075638415e-07,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent edge weak force eta=0.0",
+      "value": 1.3422371125212875e-12,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "edge rank eta=-0.05",
+      "value": 182.0,
+      "relation": "ge",
+      "limit": 182.0,
+      "passed": true
+    },
+    {
+      "name": "negative channel eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "edge residual eta=-0.05",
+      "value": 2.5392408410135767e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "control volume power eta=-0.05",
+      "value": 2.1635637793252045e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "edge power eta=-0.05",
+      "value": 1.6669500087853648e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "positive energy incident eta=-0.05",
+      "value": 7.24005151718283,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power incident eta=-0.05",
+      "value": 2.3915281748121876e-09,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum incident eta=-0.05",
+      "value": 6.047399458517978e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss incident eta=-0.05",
+      "value": 5.632198803845525e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier incident eta=-0.05",
+      "value": 1.5232948916228334e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction incident eta=-0.05",
+      "value": 1.0996968191028123e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction incident eta=-0.05",
+      "value": 2.3754215301479216e-14,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking incident eta=-0.05",
+      "value": 7.726052141768463e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state incident eta=-0.05",
+      "value": 4.4421224344956316e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "positive energy backward eta=-0.05",
+      "value": 0.22803602023270453,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power backward eta=-0.05",
+      "value": 1.3796038270332245e-09,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum backward eta=-0.05",
+      "value": 4.633254709972818e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss backward eta=-0.05",
+      "value": 5.050567614620931e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier backward eta=-0.05",
+      "value": 1.59760120528845e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction backward eta=-0.05",
+      "value": 7.98661874197415e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction backward eta=-0.05",
+      "value": 1.604417310616138e-14,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking backward eta=-0.05",
+      "value": 6.516072011085067e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state backward eta=-0.05",
+      "value": 3.886254507492104e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "12 state frequency eta=-0.05",
+      "value": 0.0016780269570337788,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "temporal energy balance eta=-0.05",
+      "value": 3.596699771260795e-08,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent edge weak force eta=-0.05",
+      "value": 8.674395029957885e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "edge rank eta=0.05",
+      "value": 182.0,
+      "relation": "ge",
+      "limit": 182.0,
+      "passed": true
+    },
+    {
+      "name": "negative channel eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "edge residual eta=0.05",
+      "value": 2.882906561846541e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "control volume power eta=0.05",
+      "value": 2.2487677353675774e-13,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "edge power eta=0.05",
+      "value": 1.93945949744333e-15,
+      "relation": "le",
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "positive energy incident eta=0.05",
+      "value": 7.232761836991315,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power incident eta=0.05",
+      "value": 5.444792784305685e-10,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum incident eta=0.05",
+      "value": 5.4115955723275077e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss incident eta=0.05",
+      "value": 3.290770827093675e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier incident eta=0.05",
+      "value": 1.5197691185074048e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction incident eta=0.05",
+      "value": 8.731518350260839e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction incident eta=0.05",
+      "value": 2.083053805341788e-14,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking incident eta=0.05",
+      "value": 9.895463636143815e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state incident eta=0.05",
+      "value": 1.7734457255265148e-13,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "positive energy backward eta=0.05",
+      "value": 0.22824612259256782,
+      "relation": "ge",
+      "limit": 0.0,
+      "passed": true
+    },
+    {
+      "name": "modal power backward eta=0.05",
+      "value": 2.812191440192978e-10,
+      "relation": "le",
+      "limit": 2e-06,
+      "passed": true
+    },
+    {
+      "name": "momentum backward eta=0.05",
+      "value": 3.841157918244646e-11,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "gauss backward eta=0.05",
+      "value": 2.8907522241314386e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "carrier backward eta=0.05",
+      "value": 1.6460211827107624e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "traction backward eta=0.05",
+      "value": 5.959954258552171e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "double_traction backward eta=0.05",
+      "value": 1.445909010684524e-14,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "blocking backward eta=0.05",
+      "value": 1.1537994300514999e-10,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "12 state backward eta=0.05",
+      "value": 0.0,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "12 state frequency eta=0.05",
+      "value": 0.0007385375581674775,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "temporal energy balance eta=0.05",
+      "value": 1.025573622715468e-09,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent edge weak force eta=0.05",
+      "value": 1.112644971870207e-12,
+      "relation": "le",
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state ground K=0.3",
+      "value": 0.00041367139735614853,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state ground K=0.7",
+      "value": 0.00010324167565151668,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state ground K=1.0",
+      "value": 0.0004296255890089006,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state open K=0.3",
+      "value": 0.00040487905607597267,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state open K=0.7",
+      "value": 0.0002667339138829102,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "classical eight-state open K=1.0",
+      "value": 0.0010845018557959064,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "degree R convergence eta=0.0",
+      "value": 3.6788536592058385e-09,
+      "relation": "le",
+      "limit": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "independent mesh R eta=0.0",
+      "value": 2.3540689932689818e-06,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent mesh energy eta=0.0",
+      "value": 4.600206007010163e-09,
+      "relation": "le",
+      "limit": 2e-07,
+      "passed": true
+    },
+    {
+      "name": "degree R convergence eta=-0.05",
+      "value": 3.6365651150116474e-09,
+      "relation": "le",
+      "limit": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "independent mesh R eta=-0.05",
+      "value": 2.3219599939103275e-06,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent mesh energy eta=-0.05",
+      "value": 1.1825870201373776e-09,
+      "relation": "le",
+      "limit": 2e-07,
+      "passed": true
+    },
+    {
+      "name": "degree R convergence eta=0.05",
+      "value": 3.605403774142868e-09,
+      "relation": "le",
+      "limit": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "independent mesh R eta=0.05",
+      "value": 2.2986146941787744e-06,
+      "relation": "le",
+      "limit": 5e-06,
+      "passed": true
+    },
+    {
+      "name": "independent mesh energy eta=0.05",
+      "value": 3.386556388747207e-09,
+      "relation": "le",
+      "limit": 2e-07,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2300 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2300 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2300 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2775 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2775 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.2775 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3250 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3250 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3250 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3725 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3725 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.3725 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4200 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4200 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4200 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4675 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4675 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.4675 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5150 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5150 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5150 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5625 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5625 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.5625 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6100 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6100 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6100 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6575 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6575 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.6575 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7050 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7050 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7050 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7525 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7525 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.7525 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.8000 eta=0.0",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.8000 eta=-0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "frequency scan direction 0.8000 eta=0.05",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "all matched sweeps control-volume power",
+      "value": 3.5403664260090264e-12,
+      "relation": "le",
+      "limit": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "all H sweep negative directions",
+      "value": 1.0,
+      "relation": "ge",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "no gain backward self-flux in matched sweeps",
+      "value": 0.07007057977927096,
+      "relation": "le",
+      "limit": 1.0,
+      "passed": true
+    },
+    {
+      "name": "beam backward centroid quadrature convergence m",
+      "value": 5.048553534860861e-16,
+      "relation": "le",
+      "limit": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "beam backward centroid negative",
+      "value": 2.09442064012555e-05,
+      "relation": "ge",
+      "limit": 1e-05,
+      "passed": true
+    }
+  ],
+  "published_Wei_or_Fang_reproduction": "UNVERIFIED: full governing equations not accessible",
+  "Qu_exact_equivalence": "UNRESOLVED: coupling novelty provisional; no absence claim",
+  "material_calibration": "NOT ESTABLISHED: synthetic A/f/H and transferred bulk Hall transport",
+  "corner_pointwise_stress": "NOT CERTIFIED: use converged variational boundary functional",
+  "numerical_interpretation": "Backward edge conversion in specified static/local grounded Galerkin model",
+  "runtime_seconds": 42.31443762779236
+}

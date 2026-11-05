@@ -1,0 +1,741 @@
+{
+  "checks": [
+    {
+      "name": "Main numerical checks all passed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "12 base,72 nonzero H,16 ordinary probes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No extra carrier concentrations",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No empirical H range or Maxwell proof claimed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No negative reflection claim",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained PAPER_A_BLUEPRINT_V2_1.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0/dispersion.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0/materials.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0/constitutive_check.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0/run_checks.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0/test_a0.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0r/complex_dispersion.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0r/protocol.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0r/run_checks.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Retained a0r/test_a0r.py",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "a0 retained acceptance checks",
+      "passed": true,
+      "detail": 52
+    },
+    {
+      "name": "a0r retained acceptance checks",
+      "passed": true,
+      "detail": 65
+    },
+    {
+      "name": "Exactly primary and fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "primary actual transport gate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "primary independent and convergence validation exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "primary backward and forward exterior sheets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "primary independent forward spatial",
+      "passed": true,
+      "detail": 3.9934788579381614e-13
+    },
+    {
+      "name": "primary passive positive-energy forward port",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "primary independent forward power",
+      "passed": true,
+      "detail": 1.422648721856333e-13
+    },
+    {
+      "name": "primary independent forward mean_energy",
+      "passed": true,
+      "detail": 1.6961203027727177e-15
+    },
+    {
+      "name": "primary independent forward dissipation",
+      "passed": true,
+      "detail": 2.9020687268755054e-14
+    },
+    {
+      "name": "primary independent forward energy balance",
+      "passed": true,
+      "detail": 1.0753401949197298e-12
+    },
+    {
+      "name": "primary forward degree convergence",
+      "passed": true,
+      "detail": 6.881166066256035e-13
+    },
+    {
+      "name": "fallback actual transport gate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fallback independent and convergence validation exists",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fallback backward and forward exterior sheets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fallback independent forward spatial",
+      "passed": true,
+      "detail": 7.420781473917022e-13
+    },
+    {
+      "name": "fallback passive positive-energy forward port",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fallback independent forward power",
+      "passed": true,
+      "detail": 3.3201251419126775e-13
+    },
+    {
+      "name": "fallback independent forward mean_energy",
+      "passed": true,
+      "detail": 1.2438596517915683e-15
+    },
+    {
+      "name": "fallback independent forward dissipation",
+      "passed": true,
+      "detail": 1.293977623393068e-14
+    },
+    {
+      "name": "fallback independent forward energy balance",
+      "passed": true,
+      "detail": 2.7742096016685074e-13
+    },
+    {
+      "name": "fallback forward degree convergence",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0026864351521728664
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 2.1977439978378648e-12
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0011508136559040543
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 5.1510773384646e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.006252148464810167
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 8.233171772974125e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.003409326348064521
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_ha_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 2.803023031061129e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0015137188319936693
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.1391610989812505e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.005319772954331566
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 2.1618142733525625e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0013412791867597534
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 6.822920217313459e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0032541700807695428
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_ha_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 8.542517646216159e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0015418035834361072
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 6.175423664781667e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.00571348949869887
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.3055674448461058e-12
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0023440739203146595
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 9.464250019551359e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.003511306733872907
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hb_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 2.0832274253785498e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.005480069196746029
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.3390383660704627e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0009825043843194679
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 4.3298741600066675e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004497650424880678
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 4.0068531329751137e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004672626928534462
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hb_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 9.11746737027944e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0009824664429247674
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 4.500848447321973e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.002096917265552835
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 4.609651982781653e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0012820242283964505
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 2.5765939349932274e-12
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0031116817162628037
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_hc_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 3.649885781813231e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_-0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0036493709086140615
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_-0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.6961512398813289e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_+0.1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004838530377132347
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_+0.1: independent matched-drive root",
+      "passed": true,
+      "detail": 4.298800488268964e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_-0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.003232152499882096
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_-0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 3.2479478683157653e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_+0.5: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0017204186879840112
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_hc_+0.5: independent matched-drive root",
+      "passed": true,
+      "detail": 2.3324538008356815e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c33-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0033763310476060565
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c33-1: independent matched-drive root",
+      "passed": true,
+      "detail": 3.182638210893232e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c33+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004439658023725974
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c33+1: independent matched-drive root",
+      "passed": true,
+      "detail": 3.513329448381385e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c44-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.002884601375176194
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c44-1: independent matched-drive root",
+      "passed": true,
+      "detail": 6.025252052962322e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c44+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0023406497671716285
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_c44+1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.6397462564883975e-12
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_e33-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0035076683053829358
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_e33-1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.0614858996533657e-12
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_e33+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0028426458153934463
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_e33+1: independent matched-drive root",
+      "passed": true,
+      "detail": 7.251994120061571e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_MD_0.95: independent matched-K pole",
+      "passed": true,
+      "detail": 0.007077795031957515
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_MD_0.95: independent matched-drive root",
+      "passed": true,
+      "detail": 3.9430564850724406e-13
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_MD_1.05: independent matched-K pole",
+      "passed": true,
+      "detail": 0.00222447720035907
+    },
+    {
+      "name": "bulk_Hall_transfer_d0.2_synthetic_gradient_probe_MD_1.05: independent matched-drive root",
+      "passed": true,
+      "detail": 4.297739693975486e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c33-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.008837226750446264
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c33-1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.1365432770169254e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c33+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004521408907986253
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c33+1: independent matched-drive root",
+      "passed": true,
+      "detail": 3.7756850834444834e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c44-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0029576929939874735
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c44-1: independent matched-drive root",
+      "passed": true,
+      "detail": 2.680289721240042e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c44+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0013930369443721099
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_c44+1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.015524405798418e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_e33-1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004770797235646262
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_e33-1: independent matched-drive root",
+      "passed": true,
+      "detail": 5.525093297171653e-13
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_e33+1: independent matched-K pole",
+      "passed": true,
+      "detail": 0.002167920123526823
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_e33+1: independent matched-drive root",
+      "passed": true,
+      "detail": 1.6473076786361249e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_MD_0.95: independent matched-K pole",
+      "passed": true,
+      "detail": 0.0003778923103427758
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_MD_0.95: independent matched-drive root",
+      "passed": true,
+      "detail": 1.7079567216750248e-12
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_MD_1.05: independent matched-K pole",
+      "passed": true,
+      "detail": 0.004743802154690289
+    },
+    {
+      "name": "literature_model_d0.2_synthetic_gradient_probe_MD_1.05: independent matched-drive root",
+      "passed": true,
+      "detail": 9.14827691596285e-13
+    },
+    {
+      "name": "Explicit positive-energy guard changes no classification",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "All reconstructed positive-sheet stored energies positive",
+      "passed": true,
+      "detail": 27.621229532010435
+    },
+    {
+      "name": "Expected temporal/spatial grid sizes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H ha -0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H ha +0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H ha -0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H ha +0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hb -0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hb +0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hb -0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hb +0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hc -0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hc +0.1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hc -0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fixed physical H hc +0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "a0s final tests",
+      "passed": true,
+      "detail": 22
+    },
+    {
+      "name": "a0r final tests",
+      "passed": true,
+      "detail": 16
+    },
+    {
+      "name": "a0 final tests",
+      "passed": true,
+      "detail": 12
+    }
+  ],
+  "passed": 136,
+  "total": 136,
+  "matched_points": 40,
+  "selected_forward_validation": [
+    {
+      "case": "bulk_Hall_transfer_d0.2_synthetic_gradient",
+      "label": "primary",
+      "independent_K_delta": 3.9934788579381614e-13,
+      "relative_power_delta": 1.422648721856333e-13,
+      "relative_mean_energy_delta": 1.6961203027727177e-15,
+      "relative_dissipation_delta": 2.9020687268755054e-14,
+      "degree_K_max_delta": 6.881166066256035e-13
+    },
+    {
+      "case": "literature_model_d0.2_synthetic_gradient",
+      "label": "fallback",
+      "independent_K_delta": 7.420781473917022e-13,
+      "relative_power_delta": 3.3201251419126775e-13,
+      "relative_mean_energy_delta": 1.2438596517915683e-15,
+      "relative_dissipation_delta": 1.293977623393068e-14,
+      "degree_K_max_delta": 0.0
+    }
+  ],
+  "tests": {
+    "a0s": {
+      "count": 22,
+      "exit_code": 0
+    },
+    "a0r": {
+      "count": 16,
+      "exit_code": 0
+    },
+    "a0": {
+      "count": 12,
+      "exit_code": 0
+    }
+  },
+  "retained_checks": {
+    "a0": 52,
+    "a0r": 65
+  },
+  "minimum_reconstructed_stored_energy": 27.621229532010435,
+  "all_positive_sheet_maximum_strong_residual": 2.954288676790571e-10,
+  "all_positive_sheet_maximum_energy_balance": 1.892418894196343e-08,
+  "source_sha256": {
+    "a0s/protocol.json": "8db771e8925e21b91b39cc05838a95f048dfd51e8ccf1281ce8e48e2ea2aca52",
+    "a0s/dispersion_screen.py": "5ed9684166389c6265da6bd8ccb9218091000277bcc04dce1328a4b08e31b4c5",
+    "a0s/run_checks.py": "2a14c341f162d9f356000608de0509676ac6fe06555980c2c2d4322f54a821cf",
+    "a0s/test_a0s.py": "137f6c3ed8e909f151879993db0209cfe73ee1e441ff3fd0edd9da71cc4c4620",
+    "a0s/audit_outputs.py": "e73f8b458dce9c798174eab8287e43f6e83c27b6f4d0aef93ccad9e10bb1bd48"
+  },
+  "main_checks": {
+    "passed": 1254,
+    "total": 1254
+  },
+  "recommendation": "REVISE",
+  "stop_after": "A0-S"
+}

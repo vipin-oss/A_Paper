@@ -1,0 +1,15 @@
+# A0 is isolated from any production solver.
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+a0/cache/
+a0r/cache/
+a0s/cache/
+a0s/private_sources/
+# Do not commit publisher PDFs, large modal arrays, or downloaded datasets.
+a0/private_sources/
+a0r/private_sources/
+*.npz
+*.npy
+paper_a_study/cache/

@@ -1,0 +1,2606 @@
+{
+  "checkpoint": "A0-R",
+  "date_local": "2026-11-05",
+  "decision": "REVISE",
+  "novelty_status": "NOVELTY UNRESOLVED",
+  "research_gates": {
+    "actual_Qu_Appendix_C": false,
+    "physical_H_calibrated": false,
+    "nonzero_f_and_A_calibrated": false,
+    "negative_reflection_demonstrated": false
+  },
+  "environment": {
+    "python": "3.11.2",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1"
+  },
+  "scope": {
+    "checkpoint": "A0-R only; stop after decision",
+    "date_local": "2026-11-05",
+    "branch": "arena/5eac65f0-a-paper",
+    "retained_objective": "Negative Reflection of Guided Waves in a Flexoelectric Piezoelectric-Semiconductor Plate with Carrier\u2013Strain-Gradient Coupling",
+    "scope": "No edge solver, geometry change, manuscript, new material family, or additional coupling",
+    "physical_evidence_boundary": "Computed finite-carrier classical limit f=A=H=0; nonzero A/H tests synthetic at f=0. Full calibrated flexoelectric model still unavailable.",
+    "source_material_file": "a0/materials.json",
+    "source": {
+      "doi": "10.1007/s10483-025-3272-7",
+      "url": "https://www.amm.shu.edu.cn/article/2025/0253-4827/0253-4827-2025-07-1331.shtml",
+      "equations": "2\u20134; Table 1; Appendix A; reference 11 attributes constants to Yang (2020)",
+      "source_geometry_not_replicated": "Simply supported rectangular plate. Its D3=0 condition is not substituted for this checkpoint's exact vacuum exterior."
+    },
+    "scenarios_NOT_measured_samples": {
+      "total_thickness_m": [
+        5e-07,
+        1e-06,
+        3e-06
+      ],
+      "carrier_concentration_m_minus3": [
+        1e+17,
+        1e+18,
+        1e+19
+      ],
+      "reason_thickness": "Retain original 1 micrometre; add 0.5 micrometre and the source's 3 micrometre example as a bounded micron-scale bracket.",
+      "reason_concentration": "Retain source-used 1e19; two lower decades test weaker mobile-carrier loss without changing the material or fitting a successful result.",
+      "comparison": "Same dimensionless longitudinal-thickness family and original target Omega for each d, NOT the same physical frequency.",
+      "electrical_exterior": "Quasistatic vacuum, potential and normal D continuous; exterior q=K analytic sheet requires Re K>0.",
+      "carrier_faces": "Blocking particle flux only; no simultaneous N=0 prescription.",
+      "unspecified_losses": "Only drift\u2013diffusion dissipation is included. Mechanical, surface, defect and contact losses are not calibrated; predicted survival is conditional/optimistic."
+    },
+    "numerical_protocol": {
+      "time_space_convention": "exp(i*k*x-i*omega*t)",
+      "K": "k*d",
+      "Omega": "omega*d/sqrt(c44_ref/rho_ref)",
+      "family": "Original branch 5 (one-based), L1 thickness family, U1 even and U3/Phi/N odd",
+      "complex_K_method": "Analytic Fourier bilinear form B(-K)^T, not the old real-K Hermitian form; decaying exterior sheet checked separately.",
+      "independent_method": "Strong-equation eight-state thickness propagator, no Galerkin matrices reused",
+      "classical_method": "Original six-state propagator plus separate K=0 analytic open-circuit thickness cutoff",
+      "temporal_K_grid": "41 points, 0<=K<=0.08, each of nine design scenarios",
+      "spatial_real_frequency_grid": "41 points spanning the full frozen classical K\u21920-to-ZGV frequency interval, two continued roots, each of nine scenarios",
+      "temporal_degree": 22,
+      "spatial_degree": 22,
+      "synthetic_H_degree": 30,
+      "convergence_degrees": [
+        16,
+        20,
+        24,
+        28,
+        30
+      ],
+      "no_negative_reflection_inference": true
+    },
+    "synthetic_H_NOT_physical_calibration": {
+      "gradient_law": "A_jklmnp=ell^2 C_jkmn delta_lp",
+      "fixed_physical_ell_m": 5e-08,
+      "f_C_per_m": 0,
+      "independent_tensor_directions": [
+        "H333=ha",
+        "H113=H223=hb",
+        "H131=H311=H232=H322=hc"
+      ],
+      "eta_values": [
+        -0.8,
+        -0.5,
+        -0.1,
+        0,
+        0.1,
+        0.5,
+        0.8
+      ],
+      "normalization": "Each direction separately scaled so H:A^-1:H/a=eta^2; strict stability is NOT evidence of physical plausibility.",
+      "operating_K": [
+        0.009890015583941397,
+        2.0
+      ],
+      "material_probes": {
+        "c33_Pa": [
+          -500000000,
+          500000000
+        ],
+        "c44_Pa": [
+          -50000000,
+          50000000
+        ],
+        "e33_C_per_m2": [
+          -0.005,
+          0.005
+        ],
+        "interpretation": "Half the last printed increment, as rounding-scale sensitivity probes; NOT measured uncertainties or a probability model.",
+        "transport_joint_factor": [
+          0.95,
+          1.05
+        ],
+        "transport_note": "Illustrative \u00b15% common variation of M and D, preserving the tabulated Einstein ratio; not measured uncertainty."
+      },
+      "physical_H_range_J_m": null,
+      "measured_gradient_tensor": null,
+      "measured_flexoelectric_tensor": null
+    },
+    "Qu_access": {
+      "doi": "10.1016/j.ijengsci.2024.104165",
+      "title": "A thermodynamically consistent theory for flexoelectronics: Interaction between strain gradient and electric current in flexoelectric semiconductors",
+      "target": "Actual Appendix C chemo-mechanical constitutive equations",
+      "attempts": [
+        {
+          "route": "ScienceDirect full /science/article/pii/S0020722524001496 and abstract/PDF routes",
+          "result": "Publisher preview/organizational-access content only; Appendix C named, equations absent"
+        },
+        {
+          "route": "https://api.elsevier.com/content/article/pii/S0020722524001496?httpAccept=text%2Fxml",
+          "result": "Metadata response, not full text; no Appendix C equations"
+        },
+        {
+          "route": "Bounded exact-title/identifier/Appendix C PDF searches for Qu only",
+          "result": "No accessible primary equations found; citing-paper snippets not used as a substitute"
+        },
+        {
+          "route": "Connected Drive: nontrashed fullText contains 104165 or name contains flexoelectronics/Flexoelectronics/Qu 2025",
+          "result": "0 files; incomplete_search=false"
+        }
+      ],
+      "actual_equations_inspected": false,
+      "novelty_status": "NOVELTY UNRESOLVED",
+      "no_claim_of_absence_equivalence_or_special_case": true
+    }
+  },
+  "retained_hashes_match": true,
+  "symbolic": {
+    "symbolic_constitutive_derivatives": true,
+    "complete_potential_Hessian_reciprocity": true,
+    "symmetry_group": "6mm generated by 60-degree rotation and vertical mirror",
+    "independent_H_components": 3,
+    "components": {
+      "H333": "h_a",
+      "H113=H223": "h_b",
+      "H131=H311=H232=H322": "h_c"
+    },
+    "units_checked": true,
+    "carrier_elimination_identity": true,
+    "dynamic_elimination_frequency_dependent": true,
+    "dimensionless_schur_tests": [
+      {
+        "eta": 0.0,
+        "schur": 1.0,
+        "minimum_eigenvalue": 1.0
+      },
+      {
+        "eta": 0.25,
+        "schur": 0.9375,
+        "minimum_eigenvalue": 0.8986198584659149
+      },
+      {
+        "eta": 0.5,
+        "schur": 0.7500000000000001,
+        "minimum_eigenvalue": 0.6583330741050681
+      },
+      {
+        "eta": 0.8,
+        "schur": 0.3600000000000002,
+        "minimum_eigenvalue": 0.2819009059398815
+      },
+      {
+        "eta": 1.01,
+        "schur": -0.020099999999999563,
+        "minimum_eigenvalue": -0.014579708605890227
+      }
+    ],
+    "warning": "Algebra verified; literature novelty and measured H are NOT verified."
+  },
+  "classical_window": {
+    "K_zgv": 0.0216925941479896,
+    "Omega_zgv": 7.432504347989332,
+    "Omega_cutoff_K_to_0": 7.432638084263718,
+    "frequency_zgv_Hz": 3249017896.2464767,
+    "frequency_cutoff_Hz": 3249076357.234659,
+    "full_frozen_bandwidth_Hz": 58460.98818267564,
+    "checked_K_ge_0p005_bandwidth_Hz": 34622.25675968934,
+    "original_target_Omega": 7.432543949196749,
+    "original_target_Hz": 3249035207.3741374,
+    "original_target_fraction_of_full_window": 0.29611418142467144,
+    "classical_model": "f=A=H=0, frozen carriers; exact quasistatic vacuum"
+  },
+  "classical_independent": [
+    {
+      "K": 0.0001,
+      "galerkin": 7.432636854485769,
+      "independent": {
+        "omega": 7.4326368544838655,
+        "converged": true,
+        "relative_difference": 2.5608224788604366e-13,
+        "determinant": -5.2262660238616235e-11,
+        "relative_singular_value": 2.6326401001580223e-11
+      }
+    },
+    {
+      "K": 0.009890015583941397,
+      "galerkin": 7.432543949196655,
+      "independent": {
+        "omega": 7.432543949197586,
+        "converged": true,
+        "relative_difference": 1.2523450788963552e-13,
+        "determinant": -5.040121664980096e-13,
+        "relative_singular_value": 2.537135065106712e-13
+      }
+    },
+    {
+      "K": 0.0216925941479896,
+      "galerkin": 7.432504347976626,
+      "independent": {
+        "omega": 7.432504347987667,
+        "converged": true,
+        "relative_difference": 1.4854947159631286e-12,
+        "determinant": -6.584863938323911e-14,
+        "relative_singular_value": 3.309519688032554e-14
+      }
+    },
+    {
+      "K": 0.033490838768266314,
+      "galerkin": 7.432543949194775,
+      "independent": {
+        "omega": 7.432543949195891,
+        "converged": true,
+        "relative_difference": 1.5009021174563167e-13,
+        "determinant": 4.40773633067549e-14,
+        "relative_singular_value": 2.2167894513876e-14
+      }
+    },
+    {
+      "K": 0.08,
+      "galerkin": 7.43347307159148,
+      "independent": {
+        "omega": 7.433473071596518,
+        "converged": true,
+        "relative_difference": 6.778306891586084e-13,
+        "determinant": -6.716766474415472e-14,
+        "relative_singular_value": 3.367953992331219e-14
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "d_m": 5e-07,
+      "n0_m_minus3": 1e+17,
+      "drive_frequency_Hz": 6498070414.748275,
+      "full_frozen_bandwidth_Hz": 116921.97636535128,
+      "temporal": {
+        "Omega_real": 7.432540764145129,
+        "Omega_imag": -1.2666926170386978e-05,
+        "frequency_Hz": 6498067630.144532,
+        "gamma_s_minus1": 69582.18061896929,
+        "temporal_amplitude_1e_s": 1.4371495562577741e-05,
+        "temporal_energy_1e_s": 7.1857477812888705e-06,
+        "pole_HWHM_Hz": 11074.34799662204,
+        "pole_power_FWHM_Hz": 22148.69599324408,
+        "pole_quality_factor": 293383.75641286554
+      },
+      "temporal_residuals": {
+        "momentum": 3.352794411021176e-13,
+        "gauss": 2.8979369155797787e-10,
+        "carrier": 1.324982069803364e-09,
+        "traction": 2.393371171987089e-14,
+        "double_traction": 0.0,
+        "vacuum": 2.0456955671463473e-13,
+        "blocking": 1.9597469314444198e-10
+      },
+      "temporal_energy": {
+        "mean_energy": 27.62133110541961,
+        "dissipation": 0.0006997547263833364,
+        "temporal_balance_relative": 3.862795439458973e-09
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432540764145082,
+          "imag": -1.2666926219312895e-05
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 1.1259871261166271e-13
+      },
+      "derived": {
+        "d": 5e-07,
+        "n0": 1e+17,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-38,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-05,
+        "tau_dielectric": 5.523735530897774e-07,
+        "tau_diffusion": 9.615384615384616e-10,
+        "Q": 0.0417221703419696,
+        "alpha": 0.18932438017918496,
+        "frequency_scale_Hz": 874272719.9683139,
+        "phi_scale": 11021.294232242977,
+        "nu_scale": 1.0159968394140211e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": 0.00929385427350127,
+            "imag": -0.0017973746696305715
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.616926050132573e-14,
+          "evaluations": 28,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 4.4617140177301386e-14,
+            "gauss": 3.6385458246872165e-10,
+            "carrier": 4.208475981918334e-14,
+            "traction": 6.189539395755427e-15,
+            "double_traction": 0.0,
+            "vacuum": 2.0453783964382972e-13,
+            "blocking": 6.118710645135318e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.009293854268375997,
+              "imag": -0.001797374674024266
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 1.7973570454376202e-16
+          },
+          "transport": {
+            "power": -0.19467083070681915,
+            "mean_energy": 27.621373651349913,
+            "dissipation": 0.0006997928420552724,
+            "energy_velocity_m_s": -19.35764001358521,
+            "spatial_balance_relative": 2.8558685508785394e-09,
+            "vacuum_power": -0.34013423188555136,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3594.749339261143,
+            "amplitude_1e_length_m": 0.00027818351312515656,
+            "energy_1e_length_m": 0.00013909175656257828,
+            "phase_wavelength_m": 0.0003380290416804935,
+            "backward": true,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9306286189830467,
+            "power_fraction_100um": 0.48726367863565306,
+            "power_fraction_1mm": 0.0007544672563416385,
+            "power_fraction_one_phase_wavelength": 0.08801400332555566
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.03408548434631437,
+            "imag": 0.0017911521196269221
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 4.594717418212806e-15,
+          "evaluations": 23,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 5.98297955105909e-14,
+            "gauss": 6.448330053497477e-11,
+            "carrier": 4.030299098538191e-14,
+            "traction": 6.689668034713781e-15,
+            "double_traction": 0.0,
+            "vacuum": 8.64452001788271e-14,
+            "blocking": 6.652962321041171e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.03408548433459439,
+              "imag": 0.0017911521208253006
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 2.307143802156074e-14
+          },
+          "transport": {
+            "power": 0.1948225213857645,
+            "mean_energy": 27.621362022023582,
+            "dissipation": 0.000697913544068149,
+            "energy_velocity_m_s": 19.37273195809958,
+            "spatial_balance_relative": 2.7825487778144273e-10,
+            "vacuum_power": -0.33908487619937355,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3582.3042392538446,
+            "amplitude_1e_length_m": 0.0002791499362455851,
+            "energy_1e_length_m": 0.00013957496812279255,
+            "phase_wavelength_m": 9.21680508239423e-05,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9308602831373444,
+            "power_fraction_100um": 0.48847799828379346,
+            "power_fraction_1mm": 0.00077348175291975,
+            "power_fraction_one_phase_wavelength": 0.5166715023566711
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 39,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 1e-06,
+      "n0_m_minus3": 1e+17,
+      "drive_frequency_Hz": 3249035207.3741374,
+      "full_frozen_bandwidth_Hz": 58460.98818267564,
+      "temporal": {
+        "Omega_real": 7.432540613859722,
+        "Omega_imag": -2.6516055367772495e-05,
+        "frequency_Hz": 3249033749.3770504,
+        "gamma_s_minus1": 72829.2298022674,
+        "temporal_amplitude_1e_s": 1.3730750726253966e-05,
+        "temporal_energy_1e_s": 6.865375363126983e-06,
+        "pole_HWHM_Hz": 11591.131924606436,
+        "pole_power_FWHM_Hz": 23182.26384921287,
+        "pole_quality_factor": 140151.70263396722
+      },
+      "temporal_residuals": {
+        "momentum": 1.1654191944142926e-13,
+        "gauss": 1.639639916281934e-10,
+        "carrier": 7.204359795535573e-10,
+        "traction": 8.421424166371318e-15,
+        "double_traction": 0.0,
+        "vacuum": 2.1989056554073267e-13,
+        "blocking": 2.0132582215477795e-10
+      },
+      "temporal_energy": {
+        "mean_energy": 27.62132998868858,
+        "dissipation": 0.0014648174275428874,
+        "temporal_balance_relative": 2.102838831288097e-09
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432540613859687,
+          "imag": -2.6516055312013126e-05
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 4.1594336236682036e-14
+      },
+      "derived": {
+        "d": 1e-06,
+        "n0": 1e+17,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-38,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-05,
+        "tau_dielectric": 5.523735530897774e-07,
+        "tau_diffusion": 3.846153846153846e-09,
+        "Q": 0.0834443406839392,
+        "alpha": 0.09466219008959248,
+        "frequency_scale_Hz": 437136359.98415697,
+        "phi_scale": 22042.588464485954,
+        "nu_scale": 1.0159968394140211e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": 0.00887662083632807,
+            "imag": -0.0036401973959795365
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.266490739506186e-14,
+          "evaluations": 28,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 3.988472364758051e-14,
+            "gauss": 2.0171189645458939e-10,
+            "carrier": 3.964103176369442e-14,
+            "traction": 4.228423004469298e-15,
+            "double_traction": 0.0,
+            "vacuum": 1.9411951143604495e-13,
+            "blocking": 5.976811177301624e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.008876620837473082,
+              "imag": -0.0036401974054380204
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 2.1811402451710133e-14
+          },
+          "transport": {
+            "power": -0.20121966921139045,
+            "mean_energy": 27.62143526130383,
+            "dissipation": 0.001464958635442574,
+            "energy_velocity_m_s": -20.008797506800335,
+            "spatial_balance_relative": 2.5094493082983e-09,
+            "vacuum_power": -0.34014986993896335,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3640.1973959795364,
+            "amplitude_1e_length_m": 0.0002747103772736234,
+            "energy_1e_length_m": 0.0001373551886368117,
+            "phase_wavelength_m": 0.000707835270091215,
+            "backward": true,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9297830980689001,
+            "power_fraction_100um": 0.48285470943926573,
+            "power_fraction_1mm": 0.0006889135324753402,
+            "power_fraction_one_phase_wavelength": 0.00578018139289182
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.03450264929145464,
+            "imag": 0.003627207507158396
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 7.008290527284808e-15,
+          "evaluations": 18,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 7.324019506913674e-14,
+            "gauss": 6.069388639428746e-11,
+            "carrier": 4.0835370324483734e-14,
+            "traction": 6.7725574689560075e-15,
+            "double_traction": 0.0,
+            "vacuum": 7.831215475709035e-14,
+            "blocking": 6.4856422061783174e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.034502649322521894,
+              "imag": 0.003627207500995703
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 2.6288086091798565e-14
+          },
+          "transport": {
+            "power": 0.20138176806035624,
+            "mean_energy": 27.621384270631765,
+            "dissipation": 0.0014609069228947,
+            "energy_velocity_m_s": 20.024953191659897,
+            "spatial_balance_relative": 7.3104580710983e-10,
+            "vacuum_power": -0.33906518638964345,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3627.2075071583963,
+            "amplitude_1e_length_m": 0.00027569418017206677,
+            "energy_1e_length_m": 0.00013784709008603338,
+            "phase_wavelength_m": 0.00018210732903736057,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9300246850308529,
+            "power_fraction_100um": 0.4841107861609487,
+            "power_fraction_1mm": 0.0007070458700578492,
+            "power_fraction_one_phase_wavelength": 0.26684637999520755
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 39,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 3e-06,
+      "n0_m_minus3": 1e+17,
+      "drive_frequency_Hz": 1083011735.791379,
+      "full_frozen_bandwidth_Hz": 19486.996060891877,
+      "temporal": {
+        "Omega_real": 7.432540549197233,
+        "Omega_imag": -8.06634680842269e-05,
+        "frequency_Hz": 1083011240.3702416,
+        "gamma_s_minus1": 73850.32919708031,
+        "temporal_amplitude_1e_s": 1.3540901047730675e-05,
+        "temporal_energy_1e_s": 6.770450523865337e-06,
+        "pole_HWHM_Hz": 11753.644940679054,
+        "pole_power_FWHM_Hz": 23507.28988135811,
+        "pole_quality_factor": 46071.29302596032
+      },
+      "temporal_residuals": {
+        "momentum": 1.4020599977166297e-13,
+        "gauss": 5.734225976998124e-11,
+        "carrier": 1.8291471662687172e-10,
+        "traction": 9.02848296928715e-15,
+        "double_traction": 0.0,
+        "vacuum": 2.2289315398431403e-13,
+        "blocking": 3.982143873232591e-11
+      },
+      "temporal_energy": {
+        "mean_energy": 27.62132951098387,
+        "dissipation": 0.00445606446268285,
+        "temporal_balance_relative": 5.0150535060861715e-11
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432540549197225,
+          "imag": -8.066346808017967e-05
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 5.317500325064388e-15
+      },
+      "derived": {
+        "d": 3e-06,
+        "n0": 1e+17,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-38,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-05,
+        "tau_dielectric": 5.523735530897774e-07,
+        "tau_diffusion": 3.461538461538462e-08,
+        "Q": 0.2503330220518176,
+        "alpha": 0.031554063363197486,
+        "frequency_scale_Hz": 145712119.99471897,
+        "phi_scale": 66127.76539345787,
+        "nu_scale": 1.0159968394140211e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": 0.006321340696944226,
+            "imag": -0.00923577547547695
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.29324103151658e-14,
+          "evaluations": 26,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 6.109809443675516e-14,
+            "gauss": 5.961728798524972e-11,
+            "carrier": 2.196811738226529e-12,
+            "traction": 4.627085350484248e-15,
+            "double_traction": 0.0,
+            "vacuum": 2.0007593509254762e-13,
+            "blocking": 2.1867393656947764e-13
+          },
+          "independent": {
+            "K": {
+              "real": 0.006321340677127461,
+              "imag": -0.009235775470333529
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 6.535872499599824e-17
+          },
+          "transport": {
+            "power": -0.24132475210150717,
+            "mean_energy": 27.622050813097832,
+            "dissipation": 0.004457642457414222,
+            "energy_velocity_m_s": -23.99621524241428,
+            "spatial_balance_relative": 7.279439562958118e-10,
+            "vacuum_power": -0.3402465105209562,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3078.591825158983,
+            "amplitude_1e_length_m": 0.00032482383401000506,
+            "energy_1e_length_m": 0.00016241191700500253,
+            "phase_wavelength_m": 0.002981892105681117,
+            "backward": true,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9402853964983318,
+            "power_fraction_100um": 0.5402526572603822,
+            "power_fraction_1mm": 0.002118210500444889,
+            "power_fraction_one_phase_wavelength": 1.0624987271512016e-08
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.037057884055068456,
+            "imag": 0.009196294222926973
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 9.00067830639336e-15,
+          "evaluations": 18,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 5.130922209916839e-14,
+            "gauss": 2.913929378884814e-11,
+            "carrier": 6.7036422216974176e-12,
+            "traction": 7.18207418131338e-15,
+            "double_traction": 0.0,
+            "vacuum": 5.309130028668596e-14,
+            "blocking": 6.648738922114294e-13
+          },
+          "independent": {
+            "K": {
+              "real": 0.0370578840656758,
+              "imag": 0.009196294213825593
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 1.0520728975715608e-15
+          },
+          "transport": {
+            "power": 0.24155716508444752,
+            "mean_energy": 27.621536636948704,
+            "dissipation": 0.004442861522227254,
+            "energy_velocity_m_s": 24.019772433444356,
+            "spatial_balance_relative": 2.966983045917838e-10,
+            "vacuum_power": -0.33894539722543343,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 3065.4314076423243,
+            "amplitude_1e_length_m": 0.0003262183578816781,
+            "energy_1e_length_m": 0.00016310917894083905,
+            "phase_wavelength_m": 0.0005086517053571676,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.9405329200400889,
+            "power_fraction_100um": 0.5416765204085126,
+            "power_fraction_1mm": 0.0021747037833390655,
+            "power_fraction_one_phase_wavelength": 0.04422461138030929
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 36,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 5e-07,
+      "n0_m_minus3": 1e+18,
+      "drive_frequency_Hz": 6498070414.748275,
+      "full_frozen_bandwidth_Hz": 116921.97636535128,
+      "temporal": {
+        "Omega_real": 7.432512056553614,
+        "Omega_imag": -0.00012664718751703656,
+        "frequency_Hz": 6498042531.880415,
+        "gamma_s_minus1": 695700.5478800932,
+        "temporal_amplitude_1e_s": 1.4374000466826628e-06,
+        "temporal_energy_1e_s": 7.187000233413314e-07,
+        "pole_HWHM_Hz": 110724.18110685665,
+        "pole_power_FWHM_Hz": 221448.3622137133,
+        "pole_quality_factor": 29343.3758864712
+      },
+      "temporal_residuals": {
+        "momentum": 1.8304934593706628e-13,
+        "gauss": 3.482103569741694e-11,
+        "carrier": 1.4141907817670373e-10,
+        "traction": 3.967888770409277e-14,
+        "double_traction": 0.0,
+        "vacuum": 2.474228797659118e-13,
+        "blocking": 2.8510505526280932e-11
+      },
+      "temporal_energy": {
+        "mean_energy": 27.621117743427046,
+        "dissipation": 0.006996273751460105,
+        "temporal_balance_relative": 7.295021474052584e-10
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432512056553569,
+          "imag": -0.00012664718742465712
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 4.972602893583128e-14
+      },
+      "derived": {
+        "d": 5e-07,
+        "n0": 1e+18,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-39,
+        "cschur": 154383685800.60425,
+        "lambda_D": 3.789684997507605e-06,
+        "tau_dielectric": 5.523735530897775e-08,
+        "tau_diffusion": 9.615384615384616e-10,
+        "Q": 0.13193708720615022,
+        "alpha": 0.18932438017918496,
+        "frequency_scale_Hz": 874272719.9683139,
+        "phi_scale": 11021.294232242977,
+        "nu_scale": 3.2128641080806393e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": 0.0021607984489324284,
+            "imag": -0.011420461569534662
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.6590082469853488e-14,
+          "evaluations": 33,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 4.991085830772153e-14,
+            "gauss": 3.452576556936226e-11,
+            "carrier": 4.142672991551608e-14,
+            "traction": 6.139527265795414e-15,
+            "double_traction": 0.0,
+            "vacuum": 1.517590981090116e-13,
+            "blocking": 6.5667911846994686e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.0021607984411532596,
+              "imag": -0.011420461564729612
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 1.630427948580542e-15
+          },
+          "transport": {
+            "power": -0.3065262463734007,
+            "mean_energy": 27.62423839639346,
+            "dissipation": 0.007001342433356863,
+            "energy_velocity_m_s": -30.477136043600602,
+            "spatial_balance_relative": 2.3625376769642355e-11,
+            "vacuum_power": -0.340331316916495,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 22840.923139069324,
+            "amplitude_1e_length_m": 4.378106760008764e-05,
+            "energy_1e_length_m": 2.189053380004382e-05,
+            "phase_wavelength_m": 0.0014539036045411542,
+            "backward": true,
+            "passive_direction": true,
+            "power_fraction_10um": 0.6332952962946772,
+            "power_fraction_100um": 0.010376780347645565,
+            "power_fraction_1mm": 1.4475255504493182e-20,
+            "power_fraction_one_phase_wavelength": 1.4304180310344466e-29
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.0412048359562426,
+            "imag": 0.011358266127846729
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.0402351792541216e-14,
+          "evaluations": 27,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 6.715219497862717e-14,
+            "gauss": 2.239841092225142e-11,
+            "carrier": 4.1209438314041395e-14,
+            "traction": 4.022435310844583e-15,
+            "double_traction": 0.0,
+            "vacuum": 8.103053567651782e-14,
+            "blocking": 6.3536889104295856e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.04120483594307896,
+              "imag": 0.011358266135138195
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 7.622398164253333e-15
+          },
+          "transport": {
+            "power": 0.3069128840961672,
+            "mean_energy": 27.62161616974811,
+            "dissipation": 0.006971996431012816,
+            "energy_velocity_m_s": 30.518475424514374,
+            "spatial_balance_relative": 3.5237148472782945e-11,
+            "vacuum_power": -0.3386790507008873,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 22716.53225569346,
+            "amplitude_1e_length_m": 4.402080338425639e-05,
+            "energy_1e_length_m": 2.2010401692128193e-05,
+            "phase_wavelength_m": 7.624329961963692e-05,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.63487278095504,
+            "power_fraction_100um": 0.010638173736163754,
+            "power_fraction_1mm": 1.8563966958134985e-20,
+            "power_fraction_one_phase_wavelength": 0.031305334952923244
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 22,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 1e-06,
+      "n0_m_minus3": 1e+18,
+      "drive_frequency_Hz": 3249035207.3741374,
+      "full_frozen_bandwidth_Hz": 58460.98818267564,
+      "temporal": {
+        "Omega_real": 7.432510403078822,
+        "Omega_imag": -0.0002651122466402589,
+        "frequency_Hz": 3249020543.1462555,
+        "gamma_s_minus1": 728159.617490676,
+        "temporal_amplitude_1e_s": 1.3733252654769815e-06,
+        "temporal_energy_1e_s": 6.866626327384908e-07,
+        "pole_HWHM_Hz": 115890.20248354482,
+        "pole_power_FWHM_Hz": 231780.40496708965,
+        "pole_quality_factor": 14017.667039660153
+      },
+      "temporal_residuals": {
+        "momentum": 1.7887998703438308e-13,
+        "gauss": 1.7355805722977766e-11,
+        "carrier": 2.661033823359063e-10,
+        "traction": 1.5031054576259177e-14,
+        "double_traction": 0.0,
+        "vacuum": 2.419696101621325e-13,
+        "blocking": 4.801195887339767e-11
+      },
+      "temporal_energy": {
+        "mean_energy": 27.621105481079784,
+        "dissipation": 0.014645386661252624,
+        "temporal_balance_relative": 2.5259572060849536e-10
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432510403078833,
+          "imag": -0.000265112246707231
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 3.98232608693691e-14
+      },
+      "derived": {
+        "d": 1e-06,
+        "n0": 1e+18,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-39,
+        "cschur": 154383685800.60425,
+        "lambda_D": 3.789684997507605e-06,
+        "tau_dielectric": 5.523735530897775e-08,
+        "tau_diffusion": 3.846153846153846e-09,
+        "Q": 0.26387417441230043,
+        "alpha": 0.09466219008959248,
+        "frequency_scale_Hz": 437136359.98415697,
+        "phi_scale": 22042.588464485954,
+        "nu_scale": 3.2128641080806393e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": -0.003051783171109625,
+            "imag": -0.0188823429335811
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 2.0425630433242045e-14,
+          "evaluations": 18,
+          "exterior_decays": false,
+          "residuals": {
+            "momentum": 4.749285549362864e-14,
+            "gauss": 1.830327210448559e-11,
+            "carrier": 4.0353628076793504e-14,
+            "traction": 5.5195008901749115e-15,
+            "double_traction": 0.0,
+            "vacuum": 7.19437662393892e-14,
+            "blocking": 6.0708029345123035e-15
+          },
+          "independent": {
+            "K": {
+              "real": -0.003051783174485635,
+              "imag": -0.018882342932768147
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 1.1411721816784913e-16
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.046416521108193214,
+            "imag": 0.01875250907722311
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 6.082067559229517e-14,
+          "evaluations": 21,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 7.518591447211078e-14,
+            "gauss": 1.4159527088878138e-11,
+            "carrier": 4.1430003599594866e-14,
+            "traction": 3.597849441326941e-15,
+            "double_traction": 0.0,
+            "vacuum": 4.54221656030617e-14,
+            "blocking": 6.1196193119787865e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.04641652111933395,
+              "imag": 0.018752509068670316
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 2.2738561846089113e-15
+          },
+          "transport": {
+            "power": 0.38889491672400467,
+            "mean_energy": 27.62202365226298,
+            "dissipation": 0.014585510911861202,
+            "energy_velocity_m_s": 38.66994671420936,
+            "spatial_balance_relative": 3.0471072095516e-12,
+            "vacuum_power": -0.3384178187740218,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 18752.509077223112,
+            "amplitude_1e_length_m": 5.3326197357483475e-05,
+            "energy_1e_length_m": 2.6663098678741738e-05,
+            "phase_wavelength_m": 0.00013536527850792568,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.6872547904188172,
+            "power_fraction_100um": 0.023505947248525172,
+            "power_fraction_1mm": 5.1496483276587404e-17,
+            "power_fraction_one_phase_wavelength": 0.006239362733102333
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 0,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 3e-06,
+      "n0_m_minus3": 1e+18,
+      "drive_frequency_Hz": 1083011735.791379,
+      "full_frozen_bandwidth_Hz": 19486.996060891877,
+      "temporal": {
+        "Omega_real": 7.432508143404067,
+        "Omega_imag": -0.0008064816277633774,
+        "frequency_Hz": 1083006518.4534192,
+        "gamma_s_minus1": 738363.166328685,
+        "temporal_amplitude_1e_s": 1.354347082306712e-06,
+        "temporal_energy_1e_s": 6.77173541153356e-07,
+        "pole_HWHM_Hz": 117514.14771819352,
+        "pole_power_FWHM_Hz": 235028.29543638704,
+        "pole_quality_factor": 4607.983547013158
+      },
+      "temporal_residuals": {
+        "momentum": 1.7224333511785846e-13,
+        "gauss": 6.140342713470199e-12,
+        "carrier": 5.304637167404171e-11,
+        "traction": 1.5844322031065825e-14,
+        "double_traction": 0.0,
+        "vacuum": 2.39029948911016e-13,
+        "blocking": 1.0049363072557827e-11
+      },
+      "temporal_energy": {
+        "mean_energy": 27.621088976090203,
+        "dissipation": 0.04455180159603758,
+        "temporal_balance_relative": 6.965090619597522e-13
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432508143404054,
+          "imag": -0.0008064816277628451
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 1.05372690569214e-15
+      },
+      "derived": {
+        "d": 3e-06,
+        "n0": 1e+18,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-39,
+        "cschur": 154383685800.60425,
+        "lambda_D": 3.789684997507605e-06,
+        "tau_dielectric": 5.523735530897775e-08,
+        "tau_diffusion": 3.461538461538462e-08,
+        "Q": 0.7916225232369013,
+        "alpha": 0.031554063363197486,
+        "frequency_scale_Hz": 145712119.99471897,
+        "phi_scale": 66127.76539345787,
+        "nu_scale": 3.2128641080806393e+24
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": -0.017786738686226,
+            "imag": -0.03607078163512775
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.2389214388266465e-14,
+          "evaluations": 21,
+          "exterior_decays": false,
+          "residuals": {
+            "momentum": 4.562354705228167e-14,
+            "gauss": 4.776008684294875e-12,
+            "carrier": 8.487485762031472e-12,
+            "traction": 2.1764166774119964e-15,
+            "double_traction": 0.0,
+            "vacuum": 2.474751838997934e-14,
+            "blocking": 8.373909034170121e-13
+          },
+          "independent": {
+            "K": {
+              "real": -0.01778673868613409,
+              "imag": -0.03607078163768771
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 2.1571376525333853e-16
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.0611487598145694,
+            "imag": 0.03567618147602176
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 1.3431799014102383e-14,
+          "evaluations": 12,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 1.316719325075089e-13,
+            "gauss": 1.1775244334967286e-11,
+            "carrier": 1.1092199574624768e-11,
+            "traction": 1.1389104677161279e-14,
+            "double_traction": 0.0,
+            "vacuum": 8.542557724541328e-14,
+            "blocking": 1.0981454917802565e-12
+          },
+          "independent": {
+            "K": {
+              "real": 0.06114875982327086,
+              "imag": 0.03567618146629311
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 8.654054014323508e-16
+          },
+          "transport": {
+            "power": 0.6206774152172199,
+            "mean_energy": 27.62347676753069,
+            "dissipation": 0.04428680020450767,
+            "energy_velocity_m_s": 61.714100530143924,
+            "spatial_balance_relative": 4.9848328692105255e-11,
+            "vacuum_power": -0.33763854559542456,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 11892.060492007253,
+            "amplitude_1e_length_m": 8.408971688902086e-05,
+            "energy_1e_length_m": 4.204485844451043e-05,
+            "phase_wavelength_m": 0.00030825737069237554,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.7883278598626087,
+            "power_fraction_100um": 0.09269765546207205,
+            "power_fraction_1mm": 4.684761648394055e-11,
+            "power_fraction_one_phase_wavelength": 0.0006545054807095075
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 0,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 5e-07,
+      "n0_m_minus3": 1e+19,
+      "drive_frequency_Hz": 6498070414.748275,
+      "full_frozen_bandwidth_Hz": 116921.97636535128,
+      "temporal": {
+        "Omega_real": 7.432220822785358,
+        "Omega_imag": -0.0012642505603210556,
+        "frequency_Hz": 6497787914.141695,
+        "gamma_s_minus1": 6944803.313178649,
+        "temporal_amplitude_1e_s": 1.439925588824629e-07,
+        "temporal_energy_1e_s": 7.199627944123145e-08,
+        "pole_HWHM_Hz": 1105299.7760933542,
+        "pole_power_FWHM_Hz": 2210599.5521867084,
+        "pole_quality_factor": 2939.378101164515
+      },
+      "temporal_residuals": {
+        "momentum": 1.3125030369084836e-13,
+        "gauss": 3.427344597298578e-12,
+        "carrier": 2.987406061090415e-11,
+        "traction": 6.49016910779683e-15,
+        "double_traction": 0.0,
+        "vacuum": 1.8423828465398166e-13,
+        "blocking": 2.077978383323151e-12
+      },
+      "temporal_energy": {
+        "mean_energy": 27.618953978486935,
+        "dissipation": 0.06983455608522088,
+        "temporal_balance_relative": 4.9579598901529665e-12
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432220822785365,
+          "imag": -0.001264250560314423
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 2.5891828846488014e-15
+      },
+      "derived": {
+        "d": 5e-07,
+        "n0": 1e+19,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-40,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-06,
+        "tau_dielectric": 5.5237355308977754e-09,
+        "tau_diffusion": 9.615384615384616e-10,
+        "Q": 0.41722170341969606,
+        "alpha": 0.18932438017918496,
+        "frequency_scale_Hz": 874272719.9683139,
+        "phi_scale": 11021.294232242977,
+        "nu_scale": 1.015996839414021e+25
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": -0.03271842827669351,
+            "imag": -0.04110342492243869
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 5.880621534514142e-15,
+          "evaluations": 21,
+          "exterior_decays": false,
+          "residuals": {
+            "momentum": 6.683415890145524e-14,
+            "gauss": 3.282990575343272e-12,
+            "carrier": 4.206109826560327e-14,
+            "traction": 6.8266040264462575e-15,
+            "double_traction": 0.0,
+            "vacuum": 2.5200446807911203e-14,
+            "blocking": 5.909723465780151e-15
+          },
+          "independent": {
+            "K": {
+              "real": -0.032718428274269906,
+              "imag": -0.041103424923108534
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 5.02350063419078e-15
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.07594110616995525,
+            "imag": 0.04048453593726087
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 3.8360204001624903e-14,
+          "evaluations": 20,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 1.3990613195577908e-13,
+            "gauss": 3.2270680337978308e-12,
+            "carrier": 4.133238651079695e-14,
+            "traction": 8.36819284724263e-15,
+            "double_traction": 0.0,
+            "vacuum": 3.0902210085643315e-14,
+            "blocking": 6.21299604872509e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.07594110615982809,
+              "imag": 0.04048453594208922
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 7.600932523338115e-17
+          },
+          "transport": {
+            "power": 0.8554706227381741,
+            "mean_energy": 27.623851319044814,
+            "dissipation": 0.06926666233418823,
+            "energy_velocity_m_s": 85.05849073360753,
+            "spatial_balance_relative": 6.988735501003521e-11,
+            "vacuum_power": -0.3361150633354783,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 80969.07187452175,
+            "amplitude_1e_length_m": 1.235039474763532e-05,
+            "energy_1e_length_m": 6.17519737381766e-06,
+            "phase_wavelength_m": 4.136880290575367e-05,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.19802114966732534,
+            "power_fraction_100um": 9.270769344312539e-08,
+            "power_fraction_1mm": 4.689837124172668e-71,
+            "power_fraction_one_phase_wavelength": 0.0012319128541040953
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 0,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 1e-06,
+      "n0_m_minus3": 1e+19,
+      "drive_frequency_Hz": 3249035207.3741374,
+      "full_frozen_bandwidth_Hz": 58460.98818267564,
+      "temporal": {
+        "Omega_real": 7.4321892698130325,
+        "Omega_imag": -0.0026461466568838384,
+        "frequency_Hz": 3248880164.1193786,
+        "gamma_s_minus1": 7267929.5729228975,
+        "temporal_amplitude_1e_s": 1.375907663890359e-07,
+        "temporal_energy_1e_s": 6.879538319451795e-08,
+        "pole_HWHM_Hz": 1156726.9175744469,
+        "pole_power_FWHM_Hz": 2313453.8351488938,
+        "pole_quality_factor": 1404.341904194635
+      },
+      "temporal_residuals": {
+        "momentum": 1.9211140329181372e-13,
+        "gauss": 1.7571431136349632e-12,
+        "carrier": 2.8273874659741498e-11,
+        "traction": 1.4350081318616854e-14,
+        "double_traction": 0.0,
+        "vacuum": 1.3438560642682347e-13,
+        "blocking": 7.174739633352474e-12
+      },
+      "temporal_energy": {
+        "mean_energy": 27.618722172208116,
+        "dissipation": 0.14616637868627863,
+        "temporal_balance_relative": 3.4580920186925853e-12
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.432189269813039,
+          "imag": -0.0026461466568746686
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 4.181410299849748e-15
+      },
+      "derived": {
+        "d": 1e-06,
+        "n0": 1e+19,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-40,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-06,
+        "tau_dielectric": 5.5237355308977754e-09,
+        "tau_diffusion": 3.846153846153846e-09,
+        "Q": 0.8344434068393921,
+        "alpha": 0.09466219008959248,
+        "frequency_scale_Hz": 437136359.98415697,
+        "phi_scale": 22042.588464485954,
+        "nu_scale": 1.015996839414021e+25
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": -0.052005783118000644,
+            "imag": -0.06366086783321001
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 4.253645941198511e-14,
+          "evaluations": 15,
+          "exterior_decays": false,
+          "residuals": {
+            "momentum": 8.127817070681115e-14,
+            "gauss": 1.479259242837619e-12,
+            "carrier": 4.119897786387117e-14,
+            "traction": 5.101408803215395e-15,
+            "double_traction": 0.0,
+            "vacuum": 2.4966892891239025e-14,
+            "blocking": 6.354836155395655e-15
+          },
+          "independent": {
+            "K": {
+              "real": -0.052005783116364106,
+              "imag": -0.06366086783038946
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 6.23871998160512e-16
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.09519846497844102,
+            "imag": 0.06236961102804752
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 7.483017055291539e-14,
+          "evaluations": 24,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 1.39687810264268e-13,
+            "gauss": 1.9061788238711137e-12,
+            "carrier": 4.1936320052827524e-14,
+            "traction": 1.2592472058841414e-14,
+            "double_traction": 0.0,
+            "vacuum": 3.471356320331905e-14,
+            "blocking": 6.214719537151958e-15
+          },
+          "independent": {
+            "K": {
+              "real": 0.09519846498429328,
+              "imag": 0.0623696110243209
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 3.298239299301253e-16
+          },
+          "transport": {
+            "power": 1.158964617812777,
+            "mean_energy": 27.626832137442257,
+            "dissipation": 0.14456834481964984,
+            "energy_velocity_m_s": 115.22212714640608,
+            "spatial_balance_relative": 2.1751043993373867e-11,
+            "vacuum_power": -0.33484477279690206,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 62369.611028047526,
+            "amplitude_1e_length_m": 1.6033449359661735e-05,
+            "energy_1e_length_m": 8.016724679830867e-06,
+            "phase_wavelength_m": 6.60009098739407e-05,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.28725291321589175,
+            "power_fraction_100um": 3.825114312124833e-06,
+            "power_fraction_1mm": 6.705700989703497e-55,
+            "power_fraction_one_phase_wavelength": 0.0002657639224949261
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 0,
+      "sampled_frequency_count": 41
+    },
+    {
+      "d_m": 3e-06,
+      "n0_m_minus3": 1e+19,
+      "drive_frequency_Hz": 1083011735.791379,
+      "full_frozen_bandwidth_Hz": 19486.996060891877,
+      "temporal": {
+        "Omega_real": 7.432005931404519,
+        "Omega_imag": -0.008045277620751957,
+        "frequency_Hz": 1082933340.0782783,
+        "gamma_s_minus1": 7365743.314607318,
+        "temporal_amplitude_1e_s": 1.357636232064804e-07,
+        "temporal_energy_1e_s": 6.78818116032402e-08,
+        "pole_HWHM_Hz": 1172294.4580658362,
+        "pole_power_FWHM_Hz": 2344588.9161316724,
+        "pole_quality_factor": 461.8862320073601
+      },
+      "temporal_residuals": {
+        "momentum": 1.1659852028488296e-13,
+        "gauss": 2.6071825328377807e-12,
+        "carrier": 3.4817660396357435e-11,
+        "traction": 7.721186717788874e-15,
+        "double_traction": 0.0,
+        "vacuum": 2.5655186885356703e-13,
+        "blocking": 6.718039309039554e-12
+      },
+      "temporal_energy": {
+        "mean_energy": 27.61738844546187,
+        "dissipation": 0.44437911440940686,
+        "temporal_balance_relative": 3.669729374855923e-12
+      },
+      "temporal_independent": {
+        "omega": {
+          "real": 7.4320059314044835,
+          "imag": -0.008045277620781267
+        },
+        "converged": true,
+        "scipy_success": true,
+        "singular_relative": 1.2004938059396004e-16
+      },
+      "derived": {
+        "d": 3e-06,
+        "n0": 1e+19,
+        "c0": 43000000000.0,
+        "cs": 2746.608754286421,
+        "theta": 4.165659248399999e-21,
+        "T": 301.71747116030207,
+        "a": 4.165659248399999e-40,
+        "cschur": 154383685800.60425,
+        "lambda_D": 1.198403620669356e-06,
+        "tau_dielectric": 5.5237355308977754e-09,
+        "tau_diffusion": 3.461538461538462e-08,
+        "Q": 2.5033302205181767,
+        "alpha": 0.031554063363197486,
+        "frequency_scale_Hz": 145712119.99471897,
+        "phi_scale": 66127.76539345787,
+        "nu_scale": 1.015996839414021e+25
+      },
+      "spatial": [
+        {
+          "label": "continued_backward",
+          "K": {
+            "real": -0.10279840564240345,
+            "imag": -0.11527423759177631
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 5.3291150166389086e-14,
+          "evaluations": 22,
+          "exterior_decays": false,
+          "residuals": {
+            "momentum": 1.2677669714951418e-13,
+            "gauss": 3.34680197248339e-11,
+            "carrier": 3.99512269097187e-11,
+            "traction": 5.1524137960660025e-15,
+            "double_traction": 0.0,
+            "vacuum": 9.533209396220032e-13,
+            "blocking": 3.944236287873492e-12
+          },
+          "independent": {
+            "K": {
+              "real": -0.10279840564516038,
+              "imag": -0.11527423759079952
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 3.6194857656709354e-17
+          }
+        },
+        {
+          "label": "continued_forward",
+          "K": {
+            "real": 0.14574041712087607,
+            "imag": 0.11136569474673727
+          },
+          "converged": true,
+          "scipy_success": true,
+          "scalar_residual": 2.5292728499604667e-14,
+          "evaluations": 12,
+          "exterior_decays": true,
+          "residuals": {
+            "momentum": 1.9205253278306375e-13,
+            "gauss": 1.4676268792811848e-11,
+            "carrier": 1.8266464616800914e-11,
+            "traction": 1.858485925798998e-14,
+            "double_traction": 0.0,
+            "vacuum": 3.669897731676175e-13,
+            "blocking": 1.8077129169943647e-12
+          },
+          "independent": {
+            "K": {
+              "real": 0.14574041712264857,
+              "imag": 0.1113656947440548
+            },
+            "converged": true,
+            "scipy_success": true,
+            "singular_relative": 1.2153338353649298e-16
+          },
+          "transport": {
+            "power": 1.9559477705029777,
+            "mean_energy": 27.637070630502894,
+            "dissipation": 0.43565096469737485,
+            "energy_velocity_m_s": 194.38468502016966,
+            "spatial_balance_relative": 7.843536918516773e-12,
+            "vacuum_power": -0.3308223943274216,
+            "face_hyperstress_power": -0.0,
+            "alpha_amplitude_m_minus1": 37121.898248912425,
+            "amplitude_1e_length_m": 2.6938277598163974e-05,
+            "energy_1e_length_m": 1.3469138799081987e-05,
+            "phase_wavelength_m": 0.00012933650317403079,
+            "backward": false,
+            "passive_direction": true,
+            "power_fraction_10um": 0.47595214525739865,
+            "power_fraction_100um": 0.000596530819949212,
+            "power_fraction_1mm": 5.705961873704415e-33,
+            "power_fraction_one_phase_wavelength": 6.756415132685177e-05
+          }
+        }
+      ],
+      "sampled_admissible_backward_frequencies": 0,
+      "sampled_frequency_count": 41
+    }
+  ],
+  "convergence": [
+    {
+      "case": "classical_finite_carrier",
+      "degree": 16,
+      "temporal_Omega_real": 7.432005931404494,
+      "temporal_Omega_imag": -0.008045277620788462,
+      "spatial_K_real": 0.14574041712674762,
+      "spatial_K_imag": 0.11136569474175868,
+      "spatial_momentum": 2.746701803455114e-10,
+      "spatial_gauss": 1.592859785556373e-07,
+      "spatial_carrier": 1.9753801045579496e-07,
+      "spatial_traction": 2.3783693709342834e-11,
+      "spatial_double_traction": 0.0,
+      "spatial_vacuum": 5.417790068411849e-09,
+      "spatial_blocking": 2.663246632814793e-08
+    },
+    {
+      "case": "synthetic_H_ha",
+      "degree": 16,
+      "temporal_Omega_real": 8.828866921631645,
+      "temporal_Omega_imag": -0.002914060639286398,
+      "temporal_momentum": 0.005341324047629757,
+      "temporal_gauss": 2.9477705430087628e-05,
+      "temporal_carrier": 0.00027988662309079025,
+      "temporal_traction": 0.0017435492091774393,
+      "temporal_double_traction": 7.258538289861658e-06,
+      "temporal_vacuum": 2.1322551934040325e-06,
+      "temporal_blocking": 0.00012729860343806953
+    },
+    {
+      "case": "synthetic_H_hb",
+      "degree": 16,
+      "temporal_Omega_real": 8.828481429409598,
+      "temporal_Omega_imag": -0.004745648409308085,
+      "temporal_momentum": 0.001068494220263385,
+      "temporal_gauss": 2.6486914113917783e-05,
+      "temporal_carrier": 3.921809306407416e-05,
+      "temporal_traction": 0.00034589970318637235,
+      "temporal_double_traction": 1.4439402474868547e-06,
+      "temporal_vacuum": 1.952544875874848e-06,
+      "temporal_blocking": 1.374797032170939e-05
+    },
+    {
+      "case": "synthetic_H_hc",
+      "degree": 16,
+      "temporal_Omega_real": 8.83101837347021,
+      "temporal_Omega_imag": -0.001167372692426372,
+      "temporal_momentum": 0.0010737989761090388,
+      "temporal_gauss": 2.6559930315783517e-05,
+      "temporal_carrier": 6.280785349676157e-05,
+      "temporal_traction": 0.000347184142579743,
+      "temporal_double_traction": 1.449432533907686e-06,
+      "temporal_vacuum": 1.9320534526053073e-06,
+      "temporal_blocking": 1.5841300919187002e-05
+    },
+    {
+      "case": "classical_finite_carrier",
+      "degree": 20,
+      "temporal_Omega_real": 7.432005931404461,
+      "temporal_Omega_imag": -0.008045277620793235,
+      "spatial_K_real": 0.14574041712316987,
+      "spatial_K_imag": 0.11136569474207673,
+      "spatial_momentum": 1.49673922741687e-13,
+      "spatial_gauss": 3.963038006105297e-10,
+      "spatial_carrier": 5.000184838626771e-10,
+      "spatial_traction": 2.088731339217113e-14,
+      "spatial_double_traction": 0.0,
+      "spatial_vacuum": 1.0852627062625467e-11,
+      "spatial_blocking": 5.424991366572015e-11
+    },
+    {
+      "case": "synthetic_H_ha",
+      "degree": 20,
+      "temporal_Omega_real": 8.828866918761243,
+      "temporal_Omega_imag": -0.0029140585199236217,
+      "temporal_momentum": 0.00017368361790272288,
+      "temporal_gauss": 3.733741949125562e-07,
+      "temporal_carrier": 4.5373670966990165e-06,
+      "temporal_traction": 4.510984279451913e-05,
+      "temporal_double_traction": 1.1863365759733355e-07,
+      "temporal_vacuum": 2.1734498372224305e-08,
+      "temporal_blocking": 1.660767030132588e-06
+    },
+    {
+      "case": "synthetic_H_hb",
+      "degree": 20,
+      "temporal_Omega_real": 8.82848142931701,
+      "temporal_Omega_imag": -0.004745648409027982,
+      "temporal_momentum": 1.4870515687815993e-05,
+      "temporal_gauss": 1.8086923715019248e-07,
+      "temporal_carrier": 2.67299431107724e-07,
+      "temporal_traction": 3.845683255755172e-06,
+      "temporal_double_traction": 1.0129504554847699e-08,
+      "temporal_vacuum": 1.0729880483306876e-08,
+      "temporal_blocking": 7.539898814238418e-08
+    },
+    {
+      "case": "synthetic_H_hc",
+      "degree": 20,
+      "temporal_Omega_real": 8.83101837337594,
+      "temporal_Omega_imag": -0.0011673726923168031,
+      "temporal_momentum": 1.4987884383876134e-05,
+      "temporal_gauss": 1.8513129013682548e-07,
+      "temporal_carrier": 4.36698278451525e-07,
+      "temporal_traction": 3.871775354945708e-06,
+      "temporal_double_traction": 1.019895771205721e-08,
+      "temporal_vacuum": 1.0837588015736349e-08,
+      "temporal_blocking": 8.86361186331152e-08
+    },
+    {
+      "case": "classical_finite_carrier",
+      "degree": 24,
+      "temporal_Omega_real": 7.432005931404468,
+      "temporal_Omega_imag": -0.008045277620784639,
+      "spatial_K_real": 0.14574041712790775,
+      "spatial_K_imag": 0.11136569474096285,
+      "spatial_momentum": 2.524566539801967e-13,
+      "spatial_gauss": 3.7605568235166624e-13,
+      "spatial_carrier": 5.692133445994747e-13,
+      "spatial_traction": 2.270922772460587e-14,
+      "spatial_double_traction": 0.0,
+      "spatial_vacuum": 8.01692635275797e-15,
+      "spatial_blocking": 5.43739684578447e-14
+    },
+    {
+      "case": "synthetic_H_ha",
+      "degree": 24,
+      "temporal_Omega_real": 8.828866918760735,
+      "temporal_Omega_imag": -0.002914058519623657,
+      "temporal_momentum": 2.52579903945447e-06,
+      "temporal_gauss": 3.1020951337552154e-09,
+      "temporal_carrier": 3.747284870714619e-08,
+      "temporal_traction": 5.445726489359686e-07,
+      "temporal_double_traction": 9.86124956323041e-10,
+      "temporal_vacuum": 1.510808809537282e-10,
+      "temporal_blocking": 1.1470270394752061e-08
+    },
+    {
+      "case": "synthetic_H_hb",
+      "degree": 24,
+      "temporal_Omega_real": 8.828481429316808,
+      "temporal_Omega_imag": -0.004745648409301808,
+      "temporal_momentum": 8.7576296919177e-08,
+      "temporal_gauss": 5.845603732831914e-10,
+      "temporal_carrier": 9.03507412670286e-10,
+      "temporal_traction": 1.88420478488306e-08,
+      "temporal_double_traction": 3.415060253498097e-11,
+      "temporal_vacuum": 2.9017160372129948e-11,
+      "temporal_blocking": 2.1995818934222278e-10
+    },
+    {
+      "case": "synthetic_H_hc",
+      "degree": 24,
+      "temporal_Omega_real": 8.831018373375864,
+      "temporal_Omega_imag": -0.001167372692353485,
+      "temporal_momentum": 8.86180127284686e-08,
+      "temporal_gauss": 6.121684627143391e-10,
+      "temporal_carrier": 1.2789735527394415e-09,
+      "temporal_traction": 1.9048215483565477e-08,
+      "temporal_double_traction": 3.45277410532634e-11,
+      "temporal_vacuum": 2.9986421132989866e-11,
+      "temporal_blocking": 1.8031841293339145e-10
+    },
+    {
+      "case": "classical_finite_carrier",
+      "degree": 28,
+      "temporal_Omega_real": 7.43200593140447,
+      "temporal_Omega_imag": -0.00804527762080806,
+      "spatial_K_real": 0.14574041712087607,
+      "spatial_K_imag": 0.11136569474673727,
+      "spatial_momentum": 2.959344774473734e-13,
+      "spatial_gauss": 8.183885288408486e-13,
+      "spatial_carrier": 6.328590755756045e-14,
+      "spatial_traction": 1.7678872540346693e-14,
+      "spatial_double_traction": 0.0,
+      "spatial_vacuum": 2.262449061637689e-14,
+      "spatial_blocking": 8.359958712558485e-15
+    },
+    {
+      "case": "synthetic_H_ha",
+      "degree": 28,
+      "temporal_Omega_real": 8.828866918760951,
+      "temporal_Omega_imag": -0.0029140585192942575,
+      "temporal_momentum": 1.862014376037131e-08,
+      "temporal_gauss": 1.458155959121925e-11,
+      "temporal_carrier": 1.9962694330275587e-10,
+      "temporal_traction": 3.431732238369421e-09,
+      "temporal_double_traction": 4.539176284331195e-12,
+      "temporal_vacuum": 6.105910542654669e-13,
+      "temporal_blocking": 2.5076165325438446e-11
+    },
+    {
+      "case": "synthetic_H_hb",
+      "degree": 28,
+      "temporal_Omega_real": 8.828481429316989,
+      "temporal_Omega_imag": -0.004745648409086258,
+      "temporal_momentum": 2.1505438085802627e-10,
+      "temporal_gauss": 1.1746427165182718e-12,
+      "temporal_carrier": 1.227122480333684e-10,
+      "temporal_traction": 3.960546452398725e-11,
+      "temporal_double_traction": 5.257255934933771e-14,
+      "temporal_vacuum": 5.543386591531172e-14,
+      "temporal_blocking": 2.4179244261003828e-11
+    },
+    {
+      "case": "synthetic_H_hc",
+      "degree": 28,
+      "temporal_Omega_real": 8.831018373376887,
+      "temporal_Omega_imag": -0.0011673726921624017,
+      "temporal_momentum": 2.759916646552212e-10,
+      "temporal_gauss": 1.195956391952322e-12,
+      "temporal_carrier": 2.9996650645701314e-10,
+      "temporal_traction": 5.112708078323766e-11,
+      "temporal_double_traction": 6.932119241516452e-14,
+      "temporal_vacuum": 5.5389776904664765e-14,
+      "temporal_blocking": 8.064722158767931e-11
+    },
+    {
+      "case": "classical_finite_carrier",
+      "degree": 30,
+      "temporal_Omega_real": 7.432005931404449,
+      "temporal_Omega_imag": -0.008045277620886013,
+      "spatial_K_real": 0.1457404171268675,
+      "spatial_K_imag": 0.11136569474007393,
+      "spatial_momentum": 3.447424238377658e-13,
+      "spatial_gauss": 3.726103367971269e-12,
+      "spatial_carrier": 5.823012835664723e-14,
+      "spatial_traction": 7.48100967785989e-15,
+      "spatial_double_traction": 0.0,
+      "spatial_vacuum": 1.266784082209529e-13,
+      "spatial_blocking": 5.298192997851928e-15
+    },
+    {
+      "case": "synthetic_H_ha",
+      "degree": 30,
+      "temporal_Omega_real": 8.828866918760655,
+      "temporal_Omega_imag": -0.0029140585189553233,
+      "temporal_momentum": 1.3345524791628717e-09,
+      "temporal_gauss": 1.1076535903479074e-12,
+      "temporal_carrier": 3.90422865968916e-10,
+      "temporal_traction": 2.300154456899719e-10,
+      "temporal_double_traction": 2.654121526950106e-13,
+      "temporal_vacuum": 6.868883854298498e-14,
+      "temporal_blocking": 8.298500415897151e-11
+    },
+    {
+      "case": "synthetic_H_hb",
+      "degree": 30,
+      "temporal_Omega_real": 8.828481429317536,
+      "temporal_Omega_imag": -0.004745648408209887,
+      "temporal_momentum": 6.20098431952904e-11,
+      "temporal_gauss": 1.042641816236693e-12,
+      "temporal_carrier": 1.6098119603125255e-10,
+      "temporal_traction": 1.1823422170618471e-11,
+      "temporal_double_traction": 1.73961871594961e-14,
+      "temporal_vacuum": 7.553897599317765e-14,
+      "temporal_blocking": 5.037322788872329e-11
+    },
+    {
+      "case": "synthetic_H_hc",
+      "degree": 30,
+      "temporal_Omega_real": 8.83101837337569,
+      "temporal_Omega_imag": -0.0011673726922666935,
+      "temporal_momentum": 8.955372524387677e-11,
+      "temporal_gauss": 1.0810388669509902e-12,
+      "temporal_carrier": 3.232315278884247e-10,
+      "temporal_traction": 1.609916818017707e-11,
+      "temporal_double_traction": 2.111789113303399e-14,
+      "temporal_vacuum": 7.632372858134527e-14,
+      "temporal_blocking": 9.072040204350364e-11
+    }
+  ],
+  "carrier_free_fixed_physical_H": [
+    {
+      "n0": 1e+19,
+      "physical_H333_J_m": 3.207765149900764e-22,
+      "schur_fraction": 0.6400000000000003,
+      "coupling_delta_Omega": 0.0035777568925579864
+    },
+    {
+      "n0": 1e+17,
+      "physical_H333_J_m": 3.207765149900764e-22,
+      "schur_fraction": 0.006400000000000004,
+      "coupling_delta_Omega": 3.341006190546646e-05
+    },
+    {
+      "n0": 1000000000000000.0,
+      "physical_H333_J_m": 3.207765149900764e-22,
+      "schur_fraction": 6.400000000000002e-05,
+      "coupling_delta_Omega": 3.3387742798347837e-07
+    }
+  ],
+  "synthetic_numerical_frequency_floor_Hz": 1.0,
+  "independent_max_delta_Omega": 1.0288726489438393e-13,
+  "independent_max_delta_K": 3.167259046872414e-11,
+  "minimum_temporal_tracking_MAC": 0.9999990457775945,
+  "all_temporal_residual_maxima": {
+    "momentum": 9.56827069327317e-13,
+    "gauss": 4.019028607660198e-10,
+    "carrier": 2.3102599792903565e-09,
+    "traction": 1.096163516551614e-13,
+    "double_traction": 0.0,
+    "vacuum": 3.280278503118811e-11,
+    "blocking": 4.1035729611194577e-10
+  },
+  "all_spatial_residual_maxima": {
+    "momentum": 2.887277878792123e-13,
+    "gauss": 4.482322945133979e-10,
+    "carrier": 3.9976284401155605e-11,
+    "traction": 3.053694284927189e-14,
+    "double_traction": 0.0,
+    "vacuum": 2.654220826957212e-12,
+    "blocking": 3.946398026405815e-12
+  },
+  "all_synthetic_H_residual_maxima": {
+    "momentum": 2.3368364901779624e-09,
+    "gauss": 1.0127065118579937e-11,
+    "carrier": 1.3496580143747698e-09,
+    "traction": 3.07941342565591e-10,
+    "double_traction": 3.5386755073614044e-13,
+    "vacuum": 2.2017607957414595e-12,
+    "blocking": 5.089411820892427e-10
+  },
+  "temporal_balance_max": 3.701535774755402e-08,
+  "spatial_balance_max": 1.658765707067834e-08,
+  "synthetic_H_balance_max": 3.978899693863689e-09,
+  "synthetic_H_spatial": [
+    {
+      "component": "zero",
+      "eta": 0.0,
+      "Omega_drive": 8.831190547217531,
+      "K": {
+        "real": 2.0000000159488582,
+        "imag": 0.0001602250341012283
+      },
+      "converged": true,
+      "scipy_success": true,
+      "scalar_residual": 4.17283702704655e-12,
+      "evaluations": 22,
+      "exterior_decays": true,
+      "residuals": {
+        "momentum": 4.210458217031991e-09,
+        "gauss": 3.210977422439366e-12,
+        "carrier": 5.839964993753671e-13,
+        "traction": 9.559936149651567e-10,
+        "double_traction": 8.494636018615846e-13,
+        "vacuum": 1.6542438323335456e-13,
+        "blocking": 9.456993626551852e-14
+      },
+      "transport": {
+        "power": 47.108205001716506,
+        "mean_energy": 38.9949632952207,
+        "dissipation": 0.015095827536701238,
+        "energy_velocity_m_s": 3318.0646248304574,
+        "spatial_balance_relative": 2.053936865018087e-09,
+        "vacuum_power": -0.041129106640362026,
+        "face_hyperstress_power": -0.0023650634042646206,
+        "alpha_amplitude_m_minus1": 160.22503410122832,
+        "amplitude_1e_length_m": 0.00624122195142247,
+        "energy_1e_length_m": 0.003120610975711235,
+        "phase_wavelength_m": 3.1415926285373853e-06,
+        "backward": false,
+        "passive_direction": true,
+        "power_fraction_10um": 0.9968006282502676,
+        "power_fraction_100um": 0.9684629936584467,
+        "power_fraction_1mm": 0.7258222940157054,
+        "power_fraction_one_phase_wavelength": 0.9989937830040878
+      }
+    },
+    {
+      "component": "ha",
+      "eta": 0.8,
+      "Omega_drive": 8.828866918760655,
+      "K": {
+        "real": 1.9999968652492137,
+        "imag": 0.002417479219755014
+      },
+      "converged": true,
+      "scipy_success": true,
+      "scalar_residual": 2.1614956979180324e-12,
+      "evaluations": 18,
+      "exterior_decays": true,
+      "residuals": {
+        "momentum": 1.1467515688241216e-09,
+        "gauss": 2.0283303676369292e-12,
+        "carrier": 1.024646646372839e-11,
+        "traction": 2.0588804706397334e-10,
+        "double_traction": 3.347501959533128e-13,
+        "vacuum": 1.1312538084490442e-13,
+        "blocking": 2.4652074914075583e-12
+      },
+      "transport": {
+        "power": 46.97309226877634,
+        "mean_energy": 38.97444555928107,
+        "dissipation": 0.2271129483099974,
+        "energy_velocity_m_s": 3310.289719069573,
+        "spatial_balance_relative": 2.5749567055761095e-09,
+        "vacuum_power": -0.04107675211773877,
+        "face_hyperstress_power": -0.1580721644832819,
+        "alpha_amplitude_m_minus1": 2417.479219755014,
+        "amplitude_1e_length_m": 0.0004136540210266376,
+        "energy_1e_length_m": 0.0002068270105133188,
+        "phase_wavelength_m": 3.1415975776525314e-06,
+        "backward": false,
+        "passive_direction": true,
+        "power_fraction_10um": 0.9528006446131958,
+        "power_fraction_100um": 0.6166239982794618,
+        "power_fraction_1mm": 0.00794701860008705,
+        "power_fraction_one_phase_wavelength": 0.9849252847609384
+      }
+    },
+    {
+      "component": "hb",
+      "eta": -0.8,
+      "Omega_drive": 8.825557656906344,
+      "K": {
+        "real": 1.9999560950756374,
+        "imag": 0.005526544704544878
+      },
+      "converged": true,
+      "scipy_success": true,
+      "scalar_residual": 2.4141730502883252e-11,
+      "evaluations": 13,
+      "exterior_decays": true,
+      "residuals": {
+        "momentum": 2.5671973851136213e-09,
+        "gauss": 1.5284817905355297e-12,
+        "carrier": 6.298570526812277e-13,
+        "traction": 2.8116251080058397e-10,
+        "double_traction": 2.665970483782619e-13,
+        "vacuum": 9.666308402261033e-14,
+        "blocking": 1.6022677664640635e-13
+      },
+      "transport": {
+        "power": 46.73750107480992,
+        "mean_energy": 38.945055836606294,
+        "dissipation": 0.5165937786878259,
+        "energy_velocity_m_s": 3296.1726937590697,
+        "spatial_balance_relative": 1.065679294506927e-09,
+        "vacuum_power": -0.04118608364137898,
+        "face_hyperstress_power": 0.17279168254692862,
+        "alpha_amplitude_m_minus1": 5526.544704544878,
+        "amplitude_1e_length_m": 0.0001809448857217472,
+        "energy_1e_length_m": 9.04724428608736e-05,
+        "phase_wavelength_m": 3.14166162079771e-06,
+        "backward": false,
+        "passive_direction": true,
+        "power_fraction_10um": 0.8953586684701067,
+        "power_fraction_100um": 0.33110857345545697,
+        "power_fraction_1mm": 1.5838143066666945e-05,
+        "power_fraction_one_phase_wavelength": 0.9658709297539592
+      }
+    },
+    {
+      "component": "hc",
+      "eta": 0.8,
+      "Omega_drive": 8.83101837337569,
+      "K": {
+        "real": 2.000000095274455,
+        "imag": 0.0009663906751329511
+      },
+      "converged": true,
+      "scipy_success": true,
+      "scalar_residual": 9.359969157322185e-12,
+      "evaluations": 10,
+      "exterior_decays": true,
+      "residuals": {
+        "momentum": 1.0426306986384894e-09,
+        "gauss": 1.471038357859505e-12,
+        "carrier": 9.246213007767742e-13,
+        "traction": 2.0764044486952064e-10,
+        "double_traction": 3.6868836742877363e-14,
+        "vacuum": 9.431104298658363e-14,
+        "blocking": 1.1637833034663754e-13
+      },
+      "transport": {
+        "power": 47.1039480518802,
+        "mean_energy": 38.99344346858467,
+        "dissipation": 0.09104163231603767,
+        "energy_velocity_m_s": 3317.89410147836,
+        "spatial_balance_relative": 2.779242416564235e-11,
+        "vacuum_power": -0.04123824977421676,
+        "face_hyperstress_power": -0.002587478202577934,
+        "alpha_amplitude_m_minus1": 966.3906751329512,
+        "amplitude_1e_length_m": 0.0010347781965739944,
+        "energy_1e_length_m": 0.0005173890982869972,
+        "phase_wavelength_m": 3.141592503933036e-06,
+        "backward": false,
+        "passive_direction": true,
+        "power_fraction_10um": 0.9808577711131696,
+        "power_fraction_100um": 0.8242526887109403,
+        "power_fraction_1mm": 0.1447450514096791,
+        "power_fraction_one_phase_wavelength": 0.9939463860042408
+      }
+    },
+    {
+      "component": "mixed",
+      "eta": 0.5,
+      "Omega_drive": 8.83087483104193,
+      "K": {
+        "real": 2.0000015483606544,
+        "imag": 0.0013350371907969222
+      },
+      "converged": true,
+      "scipy_success": true,
+      "scalar_residual": 2.9384576621022916e-12,
+      "evaluations": 9,
+      "exterior_decays": true,
+      "residuals": {
+        "momentum": 4.999368421177108e-09,
+        "gauss": 6.330767987839352e-13,
+        "carrier": 3.3812740857189712e-12,
+        "traction": 1.0233081817666301e-09,
+        "double_traction": 1.2268733273935569e-12,
+        "vacuum": 3.536863623903745e-14,
+        "blocking": 4.4926592664654434e-13
+      },
+      "transport": {
+        "power": 47.118256111220774,
+        "mean_energy": 38.99218353983411,
+        "dissipation": 0.1258092487093502,
+        "energy_velocity_m_s": 3319.0091698655156,
+        "spatial_balance_relative": 1.2829106944467125e-09,
+        "vacuum_power": -0.0410817130206781,
+        "face_hyperstress_power": -0.008754650606624852,
+        "alpha_amplitude_m_minus1": 1335.0371907969222,
+        "amplitude_1e_length_m": 0.0007490428033716957,
+        "energy_1e_length_m": 0.00037452140168584783,
+        "phase_wavelength_m": 3.1415902214324473e-06,
+        "backward": false,
+        "passive_direction": true,
+        "power_fraction_10um": 0.9736525694838614,
+        "power_fraction_100um": 0.7656673762882128,
+        "power_fraction_1mm": 0.06924707441001862,
+        "power_fraction_one_phase_wavelength": 0.9916468038842061
+      }
+    }
+  ],
+  "synthetic_H_spatial_max_degree_delta_K": 8.010523617018474e-11,
+  "checks": [
+    {
+      "name": "Retained blueprint and five A0 source hashes unchanged",
+      "value": 0.0,
+      "bound": 0.0,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "K=0 parity Galerkin matches independent analytic thickness cutoff",
+      "value": 1.2612133559741778e-13,
+      "bound": 2e-11,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Original checked classical bandwidth independently recovered [Hz]",
+      "value": 0.0014373203084687702,
+      "bound": 0.02,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Full K->0 bandwidth strictly exceeds old checked bandwidth [Hz]",
+      "value": 23838.731422986297,
+      "bound": 20000.0,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "Independent classical six-state frequency agreement, max relative",
+      "value": 1.4854947159631286e-12,
+      "bound": 1e-10,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Classical six-state roots all converged",
+      "value": 0.0,
+      "bound": 0.0,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Analytic assembly matches old real-K matrices in selected parity",
+      "value": 1.7334650249425745e-17,
+      "bound": 1e-12,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Finite-rate analytic parity recovers old A0 H333 temporal root",
+      "value": 1.8953843650940303e-13,
+      "bound": 2e-09,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All three H components satisfy real-K reciprocal Fnu=F^H",
+      "value": 0.0,
+      "bound": 1e-12,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Complex-K Cauchy-Riemann continuation check",
+      "value": 2.1663581988157322e-08,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All bounded spatial solves have verified small scalar residual",
+      "value": 0.0,
+      "bound": 0.0,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Two continued roots remain distinct (minimum |delta K|)",
+      "value": 0.013545891497959676,
+      "bound": 0.0001,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "Independent eight-state temporal frequency agreement, max |delta Omega|",
+      "value": 1.0288726489438393e-13,
+      "bound": 2e-10,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Independent eight-state spatial agreement, max |delta K|",
+      "value": 3.167259046872414e-11,
+      "bound": 2e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Temporal branch tracking minimum mass MAC",
+      "value": 0.9999990457775945,
+      "bound": 0.999,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "No resolved positive temporal growth in evaluated parity operators",
+      "value": 1.7099161782973494e-12,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: momentum",
+      "value": 9.56827069327317e-13,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: momentum",
+      "value": 2.887277878792123e-13,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: gauss",
+      "value": 4.019028607660198e-10,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: gauss",
+      "value": 4.482322945133979e-10,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: carrier",
+      "value": 2.3102599792903565e-09,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: carrier",
+      "value": 3.9976284401155605e-11,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: traction",
+      "value": 1.096163516551614e-13,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: traction",
+      "value": 3.053694284927189e-14,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: double_traction",
+      "value": 0.0,
+      "bound": 1e-12,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: double_traction",
+      "value": 0.0,
+      "bound": 1e-12,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: vacuum",
+      "value": 3.280278503118811e-11,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: vacuum",
+      "value": 2.654220826957212e-12,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier temporal strong/face residuals: blocking",
+      "value": 4.1035729611194577e-10,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All classical finite-carrier complex-K strong/face residuals: blocking",
+      "value": 3.946398026405815e-12,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All temporal mean-energy dissipation identities",
+      "value": 3.701535774755402e-08,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All admissible spatial roots: 2 Im(K) P = D",
+      "value": 1.658765707067834e-08,
+      "bound": 2e-05,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Independent eight-state temporal determinants are singular at every nominal root",
+      "value": 1.1259871261166271e-13,
+      "bound": 1e-09,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Independent eight-state spatial determinants are singular at every nominal root",
+      "value": 2.6288086091798565e-14,
+      "bound": 1e-09,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Admissible classical spatial roots all have positive mean energy",
+      "value": 27.621362022023582,
+      "bound": 1.0,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "Admissible classical spatial roots all dissipate in their energy direction",
+      "value": 0.0,
+      "bound": 0.0,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All evaluated temporal thickness poles have decay, not growth",
+      "value": 68893.68132620298,
+      "bound": 0.0,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "Full-3D Schur fraction of all synthetic H cases below one",
+      "value": 0.6400000000000003,
+      "bound": 0.6400000001,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Frozen-carrier frequencies independent of all allowed H components",
+      "value": 0.0,
+      "bound": 1e-12,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic H branch mass MAC relative to H=0",
+      "value": 0.999977158205672,
+      "bound": 0.999,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "No resolved growth in synthetic H operators",
+      "value": 1.168763363534506e-12,
+      "bound": 2e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: momentum",
+      "value": 2.3368364901779624e-09,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: gauss",
+      "value": 1.0127065118579937e-11,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: carrier",
+      "value": 1.3496580143747698e-09,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: traction",
+      "value": 3.07941342565591e-10,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: double_traction",
+      "value": 3.5386755073614044e-13,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: vacuum",
+      "value": 2.2017607957414595e-12,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H strong/face residuals: blocking",
+      "value": 5.089411820892427e-10,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "All synthetic H mean-energy dissipation identities",
+      "value": 3.978899693863689e-09,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K roots all converged",
+      "value": 0.0,
+      "bound": 0.0,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K convergence p28->p30, max delta K",
+      "value": 8.010523617018474e-11,
+      "bound": 2e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: momentum",
+      "value": 4.999368421177108e-09,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: gauss",
+      "value": 3.210977422439366e-12,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: carrier",
+      "value": 1.024646646372839e-11,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: traction",
+      "value": 1.0233081817666301e-09,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: double_traction",
+      "value": 1.2268733273935569e-12,
+      "bound": 1e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: vacuum",
+      "value": 1.6542438323335456e-13,
+      "bound": 1e-07,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K strong/face residuals: blocking",
+      "value": 2.4652074914075583e-12,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K power identity including chemical/vacuum/face flux",
+      "value": 2.5749567055761095e-09,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic A/H complex-K roots all have positive stored energy",
+      "value": 38.945055836606294,
+      "bound": 1.0,
+      "sense": "ge",
+      "passed": true
+    },
+    {
+      "name": "Last-degree temporal complex frequency convergence, max equivalent Hz",
+      "value": 0.0005253497216321587,
+      "bound": 0.1,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Last-degree classical spatial root convergence",
+      "value": 8.96087508652681e-12,
+      "bound": 2e-08,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Carrier-free fixed-physical-H limit: contrast decreases at least 1000 fold",
+      "value": 9.332032276367617e-05,
+      "bound": 0.001,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Frozen-mobility recovery with H fixed: |Omega_dynamic-Omega_frozen|",
+      "value": 1.4475786395231242e-08,
+      "bound": 1e-06,
+      "sense": "le",
+      "passed": true
+    },
+    {
+      "name": "Synthetic ha eta=.1 frequency effect exceeds conservative numerical floor by 1000",
+      "value": 45684.286286274306,
+      "bound": 1000.0,
+      "sense": "ge",
+      "passed": true
+    }
+  ],
+  "check_count": 65,
+  "all_executed_checks_passed": true,
+  "no_edge_solver": true,
+  "no_negative_reflection_claim": true,
+  "stop_after_checkpoint": true
+}
