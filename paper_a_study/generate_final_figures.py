@@ -283,7 +283,7 @@ def fig02():
                    marker="^", markersize=4.3, markerfacecolor="white", markevery=2)
     d.set_xlabel(r"normalised wavenumber  $k_x d$")
     d.set_ylabel(r"linewidth FWHM (MHz)")
-    d.set_ylim(7e-4, 1.4)
+    d.set_ylim(7e-4, 2.2e-2)
     logify(d, "y")
     S.style_axes(d)
     fam_legend(d, mu, cmu, r"mobility $\mu$ ($10^{-3}$ m$^2$V$^{-1}$s$^{-1}$)",
@@ -437,51 +437,51 @@ def fig05():
     fig, axs = panel_axes(hspace=0.46)
     a, b, c, d = axs
     ticks = [f"{v:+.3f}" if v else "0" for v in S.H_LEVELS]
-    CH = [("backward\n(far field)", "backward_propagating_fraction", "#202A44", "D"),
-          ("dissipated", "dissipated_fraction", "#B4552A", "s"),
-          ("reactive\n(near field)", "evanescent_reactive_fraction", "#2F6BA0", "o")]
+    CH = [("backward", "backward_channel_fraction", "#202A44", "D", 1.0),
+          ("other prop.", "other_propagating_fraction", "#B4552A", "s", 1.0),
+          ("dissipated", "dissipated_fraction", "#2F6BA0", "o", 1.0),
+          ("interference", "cross_interference_fraction", "#6C3F8D", "^", -1.0)]
 
-    # (a) where the incident energy goes at H = 0
-    for i, (lab, key, colour, mk) in enumerate(CH):
-        a.plot([rows[2][key]], [i], marker=mk, markersize=8.5, color=colour,
+    # (a) complete modal budget at H = 0 (reference plane, incident = 1)
+    for i, (lab, key, colour, mk, sgn) in enumerate(CH):
+        a.plot([sgn * rows[2][key]], [i], marker=mk, markersize=8.5, color=colour,
                markerfacecolor="white", markeredgewidth=1.5, linestyle="None",
                zorder=5)
     a.set_xscale("log")
-    a.set_xlim(5e-7, 2e-1)
+    a.set_xlim(5e-7, 2e0)
     a.set_yticks(range(len(CH)))
-    a.set_yticklabels([c0[0] for c0 in CH], fontsize=8.4)
-    a.set_ylim(-0.55, 3.15)
+    a.set_yticklabels([c0[0] for c0 in CH], fontsize=8.2)
+    a.set_ylim(-0.55, 3.35)
     a.set_xlabel("fraction of incident power")
     S.style_axes(a, grid=False)
     a.grid(True, axis="x", alpha=0.28, linewidth=0.6)
-    note(a, "at $H=0$; the forward-propagating channel is\n"
-            "exactly zero (no propagating forward mode)",
-         loc=(0.035, 0.955), fontsize=7.0)
 
-    # (b) how each channel responds to H
-    for lab, key, colour, mk in CH:
-        b.semilogy(eta, [r[key] for r in rows], color=colour, linewidth=2.0,
+    # (b) the same fractions for the five H levels
+    for lab, key, colour, mk, sgn in CH:
+        b.semilogy(eta, [abs(r[key]) for r in rows], color=colour, linewidth=2.0,
                    marker=mk, markersize=5.6, markerfacecolor="white",
-                   markeredgewidth=1.2, linestyle={"D": "-", "s": "--", "o": "-."}[mk])
+                   markeredgewidth=1.2, linestyle={"D": "-", "s": "--", "o": "-.",
+                                                   "^": ":"}[mk])
     b.set_xlabel(r"$H/H^{*}$")
     b.set_ylabel("fraction of incident power")
     b.set_xticks(S.H_LEVELS)
     b.set_xticklabels(ticks, fontsize=8)
-    b.set_ylim(2e-6, 3.0)
+    b.set_ylim(8e-7, 30.0)
     logify(b, "y")
     S.style_axes(b)
     b.legend(handles=[Line2D([], [], color=c0[2], linewidth=2.0, marker=c0[3],
                              markersize=5.0, markerfacecolor="white",
-                             label=c0[0].split("\n")[0]) for c0 in CH],
-             loc="upper center", ncol=3, fontsize=6.8, handlelength=1.6,
-             columnspacing=0.9, borderpad=0.3, handletextpad=0.4)
+                             label=c0[0]) for c0 in CH],
+             loc="upper center", ncol=2, fontsize=6.6, handlelength=1.5,
+             columnspacing=0.9, borderpad=0.3, handletextpad=0.4,
+             labelspacing=0.25)
 
     # (c) solver power balance
     c.semilogy(eta, [r["power_balance_error"] for r in rows], color="#202A44",
                linewidth=2.0, marker="o", markersize=5.6, markerfacecolor="white",
                markeredgewidth=1.2)
     c.axhline(1e-6, color="#C83E58", linewidth=1.0, linestyle=(0, (5, 3)))
-    c.text(eta[0], 1e-6 * 1.15, "acceptance threshold $10^{-6}$", fontsize=6.8,
+    c.text(eta[0], 1.6e-6, "acceptance threshold $10^{-6}$", fontsize=6.8,
            color="#C83E58")
     c.set_xlabel(r"$H/H^{*}$")
     c.set_ylabel("relative power balance error")

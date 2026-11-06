@@ -1,0 +1,152 @@
+[
+  {
+    "file": "fig01_dispersion.pdf",
+    "bytes": 31272,
+    "sha256": "b6a825946615fc7e40471ec32fa051e94b0258733a3f4b2b3b058abef3aaf8ae"
+  },
+  {
+    "file": "fig01_dispersion.png",
+    "bytes": 589118,
+    "sha256": "a6692d3bfedcca865f090fe163119e550f0e8dfee988c14a5dbb67917865eeef"
+  },
+  {
+    "file": "fig01_dispersion.svg",
+    "bytes": 80633,
+    "sha256": "c6be0cc6b0ba376e969ae6e5366a97cc112366660a07959a47d48812d844e925"
+  },
+  {
+    "file": "fig02_material.pdf",
+    "bytes": 26396,
+    "sha256": "574bce8614853b33c599c9e7f5d51e82385eccf4cea75f9e86ac4454e1ff66cf"
+  },
+  {
+    "file": "fig02_material.png",
+    "bytes": 494363,
+    "sha256": "bc9a58308f578fb6f51b31309f5f31984b819f726bd62c7897d39a9b9d86d3ee"
+  },
+  {
+    "file": "fig02_material.svg",
+    "bytes": 53746,
+    "sha256": "f715566d1c2c64386b06187ff36599c09ae57a91895d0c3e16016bd3e384c9a4"
+  },
+  {
+    "file": "fig03_geometry.pdf",
+    "bytes": 32436,
+    "sha256": "3470f1e38779b6452b5f82d37dd350888c0a38f2eb459e47231f23440f878185"
+  },
+  {
+    "file": "fig03_geometry.png",
+    "bytes": 400915,
+    "sha256": "476dc141a9a6c30011a7e93ba758380eba9ffa8c2cbc7a9ff90c3dad8adaf3b4"
+  },
+  {
+    "file": "fig03_geometry.svg",
+    "bytes": 67936,
+    "sha256": "4b45115d4d397ced1f922905b9f239f827037797ca11d2e34b765d3fd3e223c9"
+  },
+  {
+    "file": "fig04_frequency.pdf",
+    "bytes": 30381,
+    "sha256": "a3932ec91c793835a25eeaef7bf6c532fcb79439867e9f96bb4120273fcc608c"
+  },
+  {
+    "file": "fig04_frequency.png",
+    "bytes": 655007,
+    "sha256": "5136258d1444cbfdcf3cf026e540b127e837a0ae2ebbeaaf059ed9c4ba59b7bf"
+  },
+  {
+    "file": "fig04_frequency.svg",
+    "bytes": 63212,
+    "sha256": "0341997d36d0bca2572907f8afa7b0851414ff7647d4e59accfdb14c1a790c19"
+  },
+  {
+    "file": "fig05_channel.pdf",
+    "bytes": 25952,
+    "sha256": "79c4301d1a563e9997ab654cd419d1d548470b35203c6df0f2eae435637ef2fe"
+  },
+  {
+    "file": "fig05_channel.png",
+    "bytes": 343647,
+    "sha256": "663def53855e486b08db158f43750b5df6d3324cf0037d046351715eb0151b85"
+  },
+  {
+    "file": "fig05_channel.svg",
+    "bytes": 35271,
+    "sha256": "410db55d650e64004bc3f4a9abd84762215c0eb3055d216d33612645cfe13344"
+  },
+  {
+    "file": "fig06_attenuation.pdf",
+    "bytes": 24149,
+    "sha256": "289ad06e1af68ce4b723f5d8a8be76eb67427d11da04ce3b2b708f11d9d71fe0"
+  },
+  {
+    "file": "fig06_attenuation.png",
+    "bytes": 678775,
+    "sha256": "4df489c7fd164238f6c9ef12d866a37e1790bdb2d7c54e03d5d2db3d0de9ad55"
+  },
+  {
+    "file": "fig06_attenuation.svg",
+    "bytes": 68896,
+    "sha256": "eae723cb422a9f33c856d6c5bb5ea56e2a9929d447e34d1fd71b3a85bd80cc50"
+  },
+  {
+    "file": "fig07_coupling.pdf",
+    "bytes": 32701,
+    "sha256": "0a46fc6dd5c25e7a6b97e1111a621fe701757f0a2bde13f1a72da2350929068f"
+  },
+  {
+    "file": "fig07_coupling.png",
+    "bytes": 798483,
+    "sha256": "bbdc2e8ec3f0fb00193ebea6a5c9eb1a918b8a4c212227a6e551b08c2f708391"
+  },
+  {
+    "file": "fig07_coupling.svg",
+    "bytes": 80356,
+    "sha256": "9083a8b00c4aa6d5b1d389f8c2c51a3f87d5a3bc6d46fc6aa1c0422449061bc6"
+  },
+  {
+    "file": "fig08_boundary.pdf",
+    "bytes": 23558,
+    "sha256": "1ec68a183a0c389c4c2a445773ea9843476fb20005a8787e3d2653937930f8e8"
+  },
+  {
+    "file": "fig08_boundary.png",
+    "bytes": 388423,
+    "sha256": "f01e880c43bbd2254768e71330d0e5c0a68219b40394cf9837e70a42e5f65a5d"
+  },
+  {
+    "file": "fig08_boundary.svg",
+    "bytes": 45005,
+    "sha256": "b83d6176bd35a5a4e705bda1185bd10b473d4ff92c67d2c3b548c3c2a4b74b42"
+  },
+  {
+    "file": "fig09_validation.pdf",
+    "bytes": 25361,
+    "sha256": "94f3ce9930c1ce773c9332982ea0f91c4d8ba65962050146192dd1a184da7094"
+  },
+  {
+    "file": "fig09_validation.png",
+    "bytes": 581818,
+    "sha256": "7a64afd739b11150ff791c70bc7e1639c2db501c12ba7a91d01b2c7bf5252879"
+  },
+  {
+    "file": "fig09_validation.svg",
+    "bytes": 62047,
+    "sha256": "528fa2b855da2f39fd98e0aaefc73ec78dded715eac89d8df9135b2dbbb83009"
+  },
+  {
+    "file": "fig10_field.pdf",
+    "bytes": 3543300,
+    "sha256": "37587c85239f5deacc106be37171e7108bbfb7f87b4931ff800ea7e28129c548"
+  },
+  {
+    "file": "fig10_field.png",
+    "bytes": 630181,
+    "sha256": "893d02e2424eebcbd40f39e1b6648c191786282eb2485d9ec7cac034ee14b8db"
+  },
+  {
+    "file": "fig10_field.svg",
+    "bytes": 29583134,
+    "sha256": "3fb7a35a67f3fd7cdabe319546fafb82ec2003902c071f84b8ba335303e4b8bb"
+  }
+]

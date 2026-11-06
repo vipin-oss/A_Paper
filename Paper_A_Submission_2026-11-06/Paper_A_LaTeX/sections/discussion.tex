@@ -1,0 +1,184 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the reported numbers are, and what they are not}
+\label{sec:disc_meaning}
+
+The central quantity of this paper is $R_B$, and the most important thing to say
+about it is what it does not mean.  $R_B$ is the share of the incident power
+that ends up in one particular outgoing mode, measured at a plane ten
+thicknesses from the edge.  It is a partition of the scattered field, not a
+reflectance.  At the operating point the backward mode takes
+\SI{2.31}{\percent} while the remaining propagating outgoing modes take
+\SI{97.67}{\percent}; near $k_xd=0.55$ the backward mode takes
+\SI{57.9}{\percent} while the rest take \SI{41.9}{\percent}.  In both cases the
+total outgoing propagating power is within $10^{-3}$ of the incident power, so
+the plate is an almost perfect scatterer of the guided mode and the interesting
+question is not how much is reflected but into which branch it goes.
+
+This distinction has a practical consequence.  A measurement of total
+reflectance from an edge would see essentially unity everywhere on the branch
+and would conclude that nothing of interest happens.  A measurement that resolves
+the modal content --- by, for instance, a wavenumber filter or a time-of-flight
+separation of the branches --- would see the partition move from almost nothing
+in the backward channel to more than half of the incident power.  The negative
+reflection discussed here is therefore an observable that requires modal
+resolution; it is not visible in a single total-power measurement.
+
+A second clarification concerns the word ``backward''.  In this paper it is
+defined operationally by the sign of the $x$ component of the thickness-integrated
+Poynting flux, and it is confirmed by the classification \eqref{eq:classification}
+that the same mode is outgoing at the edge.  The dispersion branch has a region
+where $v_g$ and $v_E$ are negative (\cref{fig:fig01}b), which is necessary for a
+backward mode to exist, but the existence of that region is not by itself
+evidence of negative reflection: it is a property of the infinite plate.  What
+creates the conversion is the edge, and what controls its strength is where the
+operating point sits on the branch.
+
+\subsection{The mechanism}
+\label{sec:disc_mechanism}
+
+The sweep along the branch (\cref{fig:fig04}c) locates the maximum of the
+conversion at the point where the group velocity passes through zero.  This is a
+slow-mode effect and it has a simple reading: when the branch is slow, the
+incident wave spends a long time in the neighbourhood of the edge per unit
+length, the evanescent spectrum at the edge has more time to redistribute the
+energy, and a larger share ends up in the backward branch.  The same mechanism
+explains why the conversion falls steeply on both flanks: on the fast side the
+interaction is short, and on the far side of the zero the branch itself has
+changed character.
+
+The coupling $H$ enters this picture as a perturbation, and a consistent one.
+It shifts the dispersion by less than $4\times10^{-6}$ in relative terms
+(\cref{fig:fig01}a), it shifts the backward channel by at most
+\SI{2.1}{\percent} (\cref{fig:fig05}d), and it shifts the loss by up to a factor
+of sixty-two (\cref{fig:fig06}c,d).  The ordering --- dispersion unaffected,
+partition weakly affected, loss strongly affected --- is what one expects from a
+term that couples the carrier density to the strain gradient: the mechanical
+branch is stiff and barely notices a carrier-level coupling, while the
+conduction loss is a carrier process and notices it directly.
+
+The transverse wavenumber is the organising parameter, not the coupling.
+\Cref{fig:fig07} shows that $k_y$ changes the backward channel by a factor of
+$1.35$ across the solved box while $H$ moves it by less than \SI{2.4}{\percent}.
+Any statement about the added coupling must therefore be made at fixed $k_y$,
+and any experimental attempt to see the coupling must control the transverse
+wavenumber much better than it controls the doping or the mobility --- which is
+consistent with the observation of \cref{fig:fig02} that changing the density by
+a factor of three leaves the partition unchanged.
+
+\subsection{Relation to the literature}
+\label{sec:disc_literature}
+
+The formulation belongs to the flexoelectric-semiconductor continuum developed
+by Qu and co-workers \cite{qu2020mobile,qu2022thermal}, in which the strain
+gradient polarises the medium, the polarisation is screened by the mobile
+carriers, and the carrier redistribution feeds back on the field.  The wave
+theory that we use is that of Yang et al.\ \cite{yang2018lamb,yang2020rayleigh}
+for flexoelectric plates and half-spaces with strain-gradient elasticity, and the
+carrier-physics conclusions of Wang et al.\ \cite{wang2025rayleigh} and Zhang et
+al.\ \cite{zhang2025pscplate} --- that the semiconductor coupling is active only
+within a window of carrier concentration and thickness --- are consistent with
+our finding that $Q=d/L_D=0.075$ places the plate inside that window.
+
+What is different here is the object of study.  The references above compute
+dispersion relations and attenuation of modes in an unbounded or layered
+medium.  This paper computes the \emph{scattering} of a guided mode at a free
+edge, resolves the outgoing spectrum into its branches, and reports the
+partition.  That is a different calculation with a different output: a
+dispersion curve is an eigenvalue problem, whereas an edge partition requires
+the matching of a continuum of outgoing modes and a classification of each of
+them.
+
+Whether the specific enthalpy term $H_{jkl}\Delta n\,\varepsilon_{jk,l}$ has
+already appeared in the flexoelectric-semiconductor literature is a question we
+could not settle.  The published abstracts and the accessible parts of the
+primary works state that carrier redistribution is driven by the mechanical
+field and by the temperature gradient, which is the physics of the
+$\widetilde\mu$ used here, but they do not, in the material we could access,
+state a constitutive coupling between the carrier density and the strain
+gradient of the form \eqref{eq:added_coupling}.  We were not able to obtain the
+full primary equations, and we therefore record the relation to Qu et al.\ and
+to the closely related work of Fang and Wei as \textsc{unresolved}.  No claim of
+priority, equivalence or superiority is made.  What the paper does claim, and
+can demonstrate from its own numbers, is that the edge-scattering problem with
+this coupling is well posed, that its energy budget closes exactly, and that
+the coupling moves the backward channel by a bounded and reproducible amount.
+
+\subsection{Material provenance}
+\label{sec:disc_material}
+
+The provenance of the parameters is mixed and is stated explicitly in
+\cref{tab:provenance}.  The classical constants are literature values; the
+transport parameters are representative values for n-type ZnO at room
+temperature linked by the Einstein relation; the strain-gradient length, the
+flexoelectric coefficient and the coupling scale are \emph{synthetic}.  In
+particular, no measured value of $H_{jkl}$ exists, and the numbers used here
+($|H|\le\SI{2.0e-23}{\joule\metre}$) were chosen so that the enthalpy remains
+strictly convex with a margin of a factor of twenty
+(\cref{eq:schur}), not because they correspond to a particular specimen.
+
+\begin{table}[t]
+\centering
+\caption{Provenance of every parameter, with the file in which it is recorded.}
+\label{tab:provenance}
+\small
+\begin{tabular}{@{}p{0.2\textwidth}p{0.42\textwidth}p{0.3\textwidth}@{}}
+\toprule
+Parameter & Value and status & Source \\
+\midrule
+$c_{ij}$, $e_{ij}$, $\kappa_{ij}$, $\rho$ &
+$c_{11}=210$, $c_{33}=221$, $c_{44}=43\,\si{\giga\pascal}$;
+$e_{33}=1.32$, $e_{31}=-0.57$, $e_{15}=-0.48\,\si{\coulomb\per\square\metre}$;
+$\kappa_{33}=8.85\times10^{-11}\,\si{\farad\per\metre}$; literature values &
+\cite{zhang2025pscplate}, Table~1;
+\texttt{a0/materials.json} \\
+$\mu_e$, $D$ & $0.0175\,\si{\square\metre\per\volt\per\second}$,
+$D=\mu_e k_BT/q=4.55\times10^{-4}\,\si{\square\metre\per\second}$; representative &
+Einstein relation, $T=\SI{300}{\kelvin}$ \\
+$n_0$ & $1\text{--}3\times10^{18}\,\si{\per\cubic\metre}$; modelling scenario &
+\texttt{fig02} sweep \\
+$d$ & \SI{200}{\nano\metre} reference, \SI{120}{}--\SI{320}{\nano\metre} sweep;
+modelling scenario & \texttt{fig03} sweep \\
+$\ell$ & \SI{50}{\nano\metre}; \textbf{synthetic} & this work \\
+$f_{33}$ & \SI{1}{\nano\coulomb\per\metre}; \textbf{synthetic} & this work \\
+$H_{jkl}$ & $H_{333}$ only, $|H|\le2.0\times10^{-23}\,\si{\joule\metre}$;
+\textbf{synthetic}, bounded by \cref{eq:schur} & this work \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Limitations}
+\label{sec:disc_limitations}
+
+Five limitations bound the conclusions.
+
+The model is a Fourier-reduced three-dimensional formulation of a plate that is
+infinite in $y$ and semi-infinite in $x$.  It is not a finite plate, it does not
+include a second edge, and it does not resolve the three-dimensional corner at
+the intersection of the edge and the free surfaces.  The corner reconstruction
+in the verification suite shows that the line force at the corner is a weak
+singularity of the discretisation; we deliberately do not claim a resolved
+pointwise corner traction.
+
+The carrier physics is linearised about a uniform doping and a zero bias.  The
+nonlinear drift--diffusion regime, in which the carrier perturbation is not
+small compared with $n_0$, is outside the scope of this model; the
+finite-element treatment of that regime by other authors shows that the
+nonlinearity matters when the perturbation is large, and nothing in this paper
+addresses that.
+
+The classical constants are those of a bulk crystal and the transport
+parameters are representative.  No attempt is made to model a specific sample,
+and the flexoelectric, strain-gradient and $H$ parameters are synthetic.  The
+reported percentages should therefore be read as the response of this model, not
+as predictions for a particular ZnO film.
+
+The open-circuit electrical condition required a gauge to remove the null space
+of the electrostatic operator.  That gauge does not alter any physical field,
+but it also means that the open-circuit results are not an independent
+validation of anything; they are a solvable version of the same physics.
+
+Finally, the relation of the added coupling to the published
+flexoelectric-semiconductor constitutive relations remains unresolved, as
+discussed in \cref{sec:disc_literature}.

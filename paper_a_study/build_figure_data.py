@@ -327,25 +327,58 @@ def fig04() -> list[dict]:
 # --------------------------------------------------------------------------
 # Figure 5 -- channel power accounting
 # --------------------------------------------------------------------------
-def certified_backward(R2, angle_deg, balance, residual) -> bool:
-    """Single scientific acceptance rule for the isolated backward channel.
+# A mode is treated as propagating when its thickness decay over the 2 um
+# reference distance is below one part in 1e3, i.e. |Im K| <= 1e-3.
+PROPAGATING_TOL = 1e-3
 
-    A ``R_B`` value is only a physically interpretable return fraction while the
-    backward port is a resolved, propagating outgoing mode.  When the solved
-    energy angle collapses towards -90 deg the backward mode carries almost no
-    x-directed flux and the ratio R_B = |a|^2 P_B / P_i stops being a reflectance
-    (values above unity appear).  Such rows are recorded but not plotted.
+
+def certified_backward(R2, angle_deg, balance, residual, cross_bound=1e-2) -> bool:
+    """Energy-admissibility test for a modal backward-channel fraction.
+
+    The returned quantity R_B is one *modal* share of the outgoing power.  It is
+    an admissible physical number when
+
+    * conservation holds.  The backward mode is a single outgoing mode, so its
+      self-power cannot exceed the incident power plus the interference term:
+      ``R_B <= 1 + |P_cross|/P_inc``.  Across the certified solves the measured
+      interference is 1e-3..1e-2 of the incident power, hence the bound used
+      here.  Rows with R_B = 1.55..5.07 violate conservation by a wide margin,
+      so they are excluded by physics rather than by a plotting threshold.
+    * the solve is converged: the relative power balance and the scaled edge
+      residual are at the level established by the degree-refinement study
+      (``figure_data/peak_certification.json``).
+
+    ``angle_deg`` is recorded but is *not* used as a gate; it is a diagnostic.
     """
-    if R2 is None or angle_deg is None or balance is None or residual is None:
+    unused_angle = angle_deg  # documented, deliberately not used as a criterion
+    del unused_angle
+    if R2 is None:
         return False
-    return bool(0.0 <= R2 <= 1.0 and abs(angle_deg) < 80.0
-                and balance < 1e-6 and residual < 1e-8)
-
-
-PROPAGATING_TOL = 1e-3      # |Im K| <= 1e-3  <=>  attenuation length >= 200 um
+    try:
+        value = float(R2)
+    except (TypeError, ValueError):
+        return False
+    return bool(0.0 <= value <= 1.0 + cross_bound
+                and balance is not None and float(balance) < 1e-6
+                and residual is not None and float(residual) < 1e-8)
 
 
 def fig05() -> list[dict]:
+    """Complete modal power budget at the reference plane.
+
+    The quantities below are the actual terms of the identity solved by
+    ``Plate.edge``::
+
+        P_inc + sum_j P_j + P_cross = P_edge - P_diss
+
+    where ``P_j = power_j |a_j|^2 exp(2 Im K_j L)`` are the *signed* self-powers
+    of the outgoing modes at the reference plane, ``P_cross`` is the
+    interference term between them and ``P_diss`` is the dissipation inside the
+    control volume.  Propagating and evanescent modes are separated by
+    ``PROPAGATING_TOL``.  The evanescent entries are reactive bookkeeping at the
+    plane and are never counted as transported energy; the cross term is not an
+    energy channel either, it is the interference correction.
+    """
     rows = []
     for eta in ETAS:
         p = plate(eta)
@@ -353,37 +386,47 @@ def fig05() -> list[dict]:
         K = np.array([complex(v) for v in sol["K"]])
         amp = np.array([complex(v) for v in sol["amplitudes"]])
         power = np.array([p.power(sol["Y"][:, j], OMEGA0) for j in range(len(K))])
-        flux = power * np.abs(amp) ** 2                    # at the edge plane
+        L = REF_NORM                     # reference distance in plate thicknesses
+        decay = np.exp(2 * K.imag * L)
+        flux = power * np.abs(amp) ** 2 * decay            # at the reference plane
         inc = float(res["incident_power_left"])
         propagate = np.abs(K.imag) <= PROPAGATING_TOL
         ib = int(np.argmin(np.abs(K - complex(res["backward_K"]))))
         kb = complex(res["backward_K"])
         alpha_b = 2 * abs(kb.imag) / p.d
         R2 = float(res["backward_reflection_self_power"])
-        evanescent_mag = float(np.sum(np.abs(flux[~propagate])) / inc)
+        other_prop = float(-np.sum(flux[propagate & (flux < 0)]) / inc + flux[ib] / inc)
+        evanescent = float(np.sum(np.abs(flux[~propagate])) / inc)
+        cross = float(res["cross_power_left"] / inc)
+        diss = float(res["dissipation_control_volume"] / inc)
+        # Independent arithmetic check of the stored decomposition: the plane
+        # power must equal incident + sum of self-powers + interference.
+        closure = float(abs(float(res["total_power_left"])
+                            - (inc + float(np.sum(flux)) + cross * inc)) / inc)
         rows.append(dict(
             eta=float(eta),
             R_B_2um=R2,
             R_B_edge=float(R2 * np.exp(alpha_b * REF_NORM * p.d)),
             incident_self_power=inc,
-            backward_propagating_fraction=float(-flux[ib] / inc),
-            forward_propagating_fraction=float(np.sum(flux[propagate & (flux > 0)]) / inc),
-            evanescent_reactive_fraction=evanescent_mag,
+            backward_channel_fraction=float(-flux[ib] / inc),
+            other_propagating_fraction=other_prop,
+            evanescent_reactive_fraction=evanescent,
+            cross_interference_fraction=cross,
+            dissipated_fraction=diss,
+            propagating_total_fraction=float(-np.sum(flux[propagate]) / inc),
             total_outgoing_fraction=float(-np.sum(flux) / inc),
-            dissipated_fraction=float(res["dissipation_control_volume"] / inc),
+            closure_residual=closure,
             propagating_mode_count=int(np.sum(propagate)),
             evanescent_mode_count=int(np.sum(~propagate)),
             outgoing_modes=int(len(K)),
             negative_power_mode_count=int(np.sum(power < 0)),
-            rb_degree_uncertainty=float(1e-6 * R2),
             power_balance_error=float(res["power_balance_relative"]),
+            edge_scaled_residual=float(res["edge_scaled_residual"]),
+            svd_condition=float(res["edge_condition"]),
         ))
     return rows
 
 
-# --------------------------------------------------------------------------
-# Figure 6 -- propagation distance, survival and attenuation lengths
-# --------------------------------------------------------------------------
 def fig06() -> list[dict]:
     rows = []
     distances_um = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]

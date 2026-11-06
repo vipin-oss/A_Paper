@@ -1,0 +1,460 @@
+\section{Results}
+\label{sec:results}
+
+The operating point used throughout is
+$k_xd=0.7362$, $k_yd=0.1298$, $\omega=7.6334\,c_s/d$, i.e.\
+$f=\SI{16.68}{\giga\hertz}$ for $d=\SI{200}{\nano\metre}$, with the coupling
+set to zero unless a sweep says otherwise, and with grounded faces.  The
+reference plane for every reported return is $L=10\,d=\SI{2}{\micro\metre}$ from
+the edge.  Unless stated otherwise the Galerkin degree is $n=22$.
+
+\subsection{Dispersion and wave speeds}
+\label{sec:results_dispersion}
+
+\Cref{fig:fig01} characterises the guided branch that is later scattered at the
+edge.  Panel (a) plots the frequency against $k_xd$ for the five coupling
+levels.  The five curves superimpose to within the width of the line over the
+whole range $0.15\le k_xd\le1.05$, and the inset resolves their difference: the
+coupling shifts the frequency by at most $\pm\SI{60}{\kilo\hertz}$ on a carrier
+of \SI{16.7}{\giga\hertz}, that is by less than $4\times10^{-6}$ in relative
+terms.  This is the first indication, confirmed in \cref{sec:results_coupling},
+that the added coupling is a perturbation of the dispersion and a modifier of
+the edge partition rather than a driver of the branch itself.
+
+Panel (b) is the deliberate correction of a mistake in the earlier version of
+this paper.  Three different velocities are involved and they must not be
+confused:
+\begin{align}
+v_p&=\frac{\omega}{|\vect{k}|}=\frac{\omega}{\sqrt{k_x^2+k_y^2}},
+\qquad \text{(phase speed, a magnitude)}\label{eq:vp}\\
+v_g&=c_s\frac{\partial\omega}{\partial k_x},
+\qquad \text{(group velocity, signed)}\label{eq:vg}\\
+v_E&=\frac{\mathcal{P}_x}{E},
+\qquad \text{(energy velocity, signed)}\label{eq:vE}
+\end{align}
+with $\mathcal{P}_x$ from \eqref{eq:Px_int} and $E$ the stored energy per unit
+length.  The phase speed \eqref{eq:vp} is a positive magnitude and cannot
+change sign; it is plotted on the right-hand axis of panel (b) and it decreases
+monotonically from \SI{105.8}{\kilo\metre\per\second} at $k_xd=1.05$ to
+\SI{20.0}{\kilo\metre\per\second} near the cutoff, as a phase speed should.  The
+group and energy velocities are signed and are plotted on the left-hand axis:
+they run from $-188$ and $-189$ to $+1097$ and $+1136\,\si{\metre\per\second}$,
+change sign at $k_xd\approx0.55$, and agree with each other to better than
+\SI{3.5}{\percent} over the whole branch (better than \SI{2}{\percent} in the
+interior).  The sign change of $v_g$ and $v_E$ is the signature of the backward
+part of the branch; it is \emph{not}, by itself, evidence of negative
+reflection, because a backward branch exists whether or not an edge is present.
+What the branch does provide is a mode whose energy can travel opposite to the
+incident energy, and that is the mode that the edge subsequently selects.
+
+Panels (c) and (d) report the linewidth and the attenuation.  The linewidth
+ranges from \SI{1.4}{\kilo\hertz} to \SI{0.27}{\mega\hertz} and grows
+monotonically with $k_xd$, with a clear ordering in $H$.  The attenuation
+$\alpha=2|\Imag k_x|$, obtained from the complex spatial root at real frequency,
+ranges from \SI{0.23}{\deci\bel\per\milli\metre} to
+\SI{456}{\deci\bel\per\milli\metre}, peaks sharply at $k_xd\approx0.52$ and is
+positive everywhere.  No attenuation is set to zero and no attenuation is
+computed as the imaginary part of a real square root.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig01_dispersion.pdf}
+\caption{Dispersion and wave speeds of the guided branch.  (a) Frequency against
+$k_xd$ for five coupling levels; the five curves coincide and the inset resolves
+$\Delta f=f(H)-f(0)$ in kHz, with the operating point $k_xd=0.736$ marked.
+(b) Group and energy velocities (left axis, signed) and phase speed (right axis,
+a magnitude) at $H=0$; $v_g$ and $v_E$ change sign at $k_xd\approx0.55$ while
+$v_p$ does not.  (c) Linewidth and (d) attenuation
+$\alpha=2|\Imag k_x|$ for the same five levels.  Data:
+\texttt{fig01\_dispersion\_velocity\_attenuation.csv}.}
+\label{fig:fig01}
+\end{figure}
+
+\subsection{Carrier density and mobility}
+\label{sec:results_material}
+
+\Cref{fig:fig02} sweeps the two material families.  Increasing the carrier
+density from $1$ to $3\times10^{18}\,\si{\per\cubic\metre}$ raises the linewidth
+(a) and the attenuation (b) by roughly a factor of nine and a factor of ten
+respectively, and lowers the frequency only slightly.  Panel (c) is the
+important one: the backward channel at the reference plane is plotted against
+$k_xd$ for the five densities, and the five curves collapse onto one.  The
+maximum of $R_B=0.5796$ is reached near $k_xd=0.55$ for every density, and the
+relative spread between the five curves is below \SI{0.2}{\percent} over the
+whole range.  The carrier density therefore sets the loss and the dispersion
+margin but not the partition of the scattered power.
+
+The mobility behaves in the same way (panel d): over the factor-of-three range
+$0.00875$ to $0.02625\,\si{\square\metre\per\volt\per\second}$ the linewidth
+changes by a factor of about five while the reflectance is unchanged to the
+same $0.2$ per cent.  Both results are consistent with $Q=d/L_D=0.075<1$: the
+plate is thinner than the Debye length, the carrier perturbation is not confined
+to a surface layer, and the density enters the problem mainly through the
+conduction loss.
+
+All 130 rows of this sweep satisfy the admissibility test
+\eqref{eq:admissible}; the curve in panel (c) extends to $k_xd=0.9$ and falls to
+$10^{-7}$ there, which is the backward port ceasing to carry energy rather than
+a numerical failure.  Rows at that end have $|\cos\theta_E|\to0$, and the flux
+fraction is stored with each row so that the loss of resolution is visible.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig02_material.pdf}
+\caption{Carrier density and mobility.  (a) Linewidth and (b) attenuation
+against $k_xd$ for five densities $n_0=1\ldots3\times10^{18}\,\si{\per\cubic\metre}$;
+(c) the backward channel $R_B$ at $\ell=\SI{2}{\micro\metre}$, which is
+independent of the density to within \SI{0.2}{\percent} and peaks at
+$R_B=0.5796$; (d) linewidth for five mobilities.  Data:
+\texttt{fig02\_material\_parameter\_sweep.csv}.}
+\label{fig:fig02}
+\end{figure}
+
+\subsection{Thickness and gradient length}
+\label{sec:results_geometry}
+
+\Cref{fig:fig03} separates the two geometric families, which scale differently
+and must not be plotted on a common axis.  Plate thickness is the dominant
+scale: between \SI{120}{\nano\metre} and \SI{320}{\nano\metre} the branch moves
+from \SI{30.4}{\giga\hertz} to \SI{10.5}{\giga\hertz} and the relative change is
+of order unity for every wavenumber (panels a and c).  The gradient length is a
+weak perturbation of the same branch (panels b and d): relative to
+$\ell=\SI{50}{\nano\metre}$, a change to $\ell=\SI{90}{\nano\metre}$ shifts the
+frequency by \SI{+1.9}{\percent} at $k_xd=0.1$ and by \SI{+10.2}{\percent} at
+$k_xd=1.0$, while $\ell=\SI{35}{\nano\metre}$ shifts it by \SI{-1.8}{\percent}
+and \SI{-4.9}{\percent} at the same two points.  The sign of the effect changes
+with $\ell$ across the reference value, which is why the panel is plotted as a
+relative change and not as an absolute frequency.
+
+The distinction matters for the interpretation of the rest of the paper.  A
+thickness change rescales the whole problem and is not a coupling effect; a
+gradient-length change alters the relative weight of the hyperelastic and
+flexoelectric terms at fixed geometry and is therefore the parameter that
+belongs with $H$ in a discussion of the added physics.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig03_geometry.pdf}
+\caption{Plate thickness and gradient length, kept as separate families.
+(a) Dispersion for five thicknesses at $\ell=\SI{50}{\nano\metre}$;
+(b) dispersion for five gradient lengths at $d=\SI{200}{\nano\metre}$;
+(c) $\Delta f$ at $k_xd=0.50$ against thickness, with the reference
+$\Delta f\equiv0$ at $d=\SI{200}{\nano\metre}$; (d) relative frequency change
+against $k_xd$ for the five gradient lengths.  Data:
+\texttt{fig03\_geometry\_sweep.csv}.}
+\label{fig:fig03}
+\end{figure}
+
+\subsection{Backward conversion along the branch}
+\label{sec:results_frequency}
+
+\Cref{fig:fig04} sweeps the drive along the solved guided branch.  A sweep at
+fixed frequency was tried first and abandoned: away from the operating point the
+identified backward port is not the physical continuation of the branch, the
+energy angle collapses towards $-90^{\circ}$ and the ratio stops being a
+meaningful number.  Tracking the branch instead gives, for every row, a genuine
+triple of frequency, wavenumber and return, and all 50 rows of this sweep
+satisfy \eqref{eq:admissible}.
+
+The backward channel falls from $R_B=0.579$ at $f=\SI{16.655}{\giga\hertz}$ to
+$0.017$ at $f=\SI{16.688}{\giga\hertz}$ (panel a), while the energy angle moves
+from $-14.4^{\circ}$ to $-31.1^{\circ}$ (panel b).  Panel (c) shows the same
+data against the group velocity of the branch and makes the mechanism explicit:
+the conversion is largest where $v_g\to0$, i.e.\ on the slowest part of the
+branch, and it decreases monotonically as the branch speeds up in either
+direction.  This is a slow-mode edge effect.  Panel (d) gives the ratio of the
+backward to the incident wavenumber, which runs from $0.287$ to $0.916$: the
+backward port is a genuine propagating mode with a resolved real wavenumber, not
+an evanescent artefact.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig04_frequency.pdf}
+\caption{Backward conversion along the guided branch; all 50 rows satisfy the
+admissibility test \eqref{eq:admissible}.  (a) Backward channel against
+frequency; (b) signed energy angle; (c) backward channel against the group
+velocity of the branch, with the $v_g=0$ line marking the slowest point;
+(d) ratio of the backward to the incident wavenumber.  The five coupling levels
+are drawn in every panel.  Data:
+\texttt{fig04\_frequency\_reflection.csv}.}
+\label{fig:fig04}
+\end{figure}
+
+\subsection{Refinement study of the two reported values}
+\label{sec:results_peak}
+
+Because the peak of \cref{fig:fig04} is large, it was re-solved independently at
+four Galerkin degrees with the exact same physics.  \Cref{tab:refinement}
+reports the outcome.
+
+\begin{table}[t]
+\centering
+\caption{Degree refinement of the two values quoted in this paper.  The last
+column is the largest relative change of $R_B$ with respect to the
+degree-30 value.  Produced by \texttt{paper\_a\_study/certify\_peak.py};
+the full table is in \texttt{figure\_data/peak\_certification.json}.}
+\label{tab:refinement}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Case & $k_xd$ & $R_B$ at $n=30$ & $\theta_E$ at $n=30$ (deg) & $\max|\Delta R_B|/R_B$ \\
+\midrule
+Operating point & 0.7362 & 0.023\,146 & $-27.8997$ & $7.2\times10^{-7}$ \\
+Peak            & 0.5500 & 0.579\,180 & $-14.4487$ & $1.5\times10^{-7}$ \\
+Peak, lower flank & 0.5250 & 0.931\,891 & $-13.8888$ & $2.1\times10^{-8}$ \\
+Peak, upper flank & 0.5750 & 0.348\,694 & $-15.2297$ & $2.6\times10^{-7}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three conclusions follow.  First, both values are converged: the relative change
+between degree 18 and degree 30 is below $10^{-6}$, which is four orders of
+magnitude tighter than the acceptance level used anywhere else in this paper.
+Second, the values are well conditioned: the singular-value condition number of
+the edge system is $1.6\times10^{2}$ and the scaled edge residual is below
+$10^{-12}$ in every case.  Third, the values are resolved projections: the
+energy angles are $-14.4^{\circ}$ and $-27.9^{\circ}$, so the measured $x$ flux
+is \SI{97}{\percent} and \SI{88}{\percent} of the total modal flux respectively.
+The peak is therefore not an artefact of a near-grazing mode.
+
+What the peak is \emph{not} is a reflectance.  At $k_xd=0.55$ the total
+outgoing propagating power is $0.9988$ of the incident power, so the backward
+mode carries \SI{57.9}{\percent} of it and the remaining propagating outgoing
+branches carry \SI{41.9}{\percent}.  The number to quote as a modal share is
+\SI{57.9}{\percent}; the number to quote as an energy conservation statement is
+that \SI{99.88}{\percent} of the incident power leaves as propagating outgoing
+modes.  Conflating the two would turn a partition into a reflection coefficient
+and would be wrong even though both numbers come from the same solve.
+
+\subsection{Energy budget of the edge problem}
+\label{sec:results_channel}
+
+\Cref{fig:fig05} closes the energy identity \eqref{eq:energy_identity} at the
+reference plane.  At $H=0$ the incident power normalised to unity is partitioned
+as follows: the identified backward channel carries $2.3146\times10^{-2}$, the
+remaining propagating outgoing modes carry $0.9767$, dissipation removes
+$1.99\times10^{-4}$, and the interference term is $-4.17\times10^{-6}$.  The
+sum reproduces the flux at the plane to $3.4\times10^{-16}$ and the solver's own
+power balance is closed to $7.3\times10^{-13}$, six orders of magnitude below
+the $10^{-6}$ threshold plotted in panel (c).
+
+Two statements in the earlier version of this paper were wrong and are corrected
+here.  The first is that the evanescent modes contribute a non-negligible
+fraction of the power.  They do not: at the reference plane the entire
+evanescent content has decayed by a factor $\exp(-2|{\Imag k_x}|L)$ with
+$|{\Imag k_x}|L\gtrsim10$, which leaves $4.8\times10^{-28}$ of the incident
+power.  The reactive content is therefore invisible at the reference plane, and
+it is the choice of a reference plane ten thicknesses from the edge that makes
+the transported budget clean.  The reactive bookkeeping is meaningful only
+at the edge plane itself, where it is $4.4\times10^{-6}$, and even there it is
+not transported energy.  The second is that the three terms of
+\eqref{eq:energy_identity} were previously described as independent channels.
+They are not: $P_{\text{cross}}$ is an interference correction and the
+evanescent members of $\{P_j\}$ are reactive.  The complete and honest
+statement is the partition above, with the interference term quoted explicitly.
+
+Panel (b) shows how the partition moves with the coupling.  The backward channel
+changes from $2.2865\times10^{-2}$ at $H/H^{*}=-0.05$ to
+$2.2658\times10^{-2}$ at $H/H^{*}=+0.05$, a variation of \SI{2.1}{\percent};
+dissipation rises from $6.9\times10^{-3}$ to $1.2\times10^{-2}$; the other
+propagating modes carry the balance.  Panel (d) gives the same information as a
+relative change against the uncoupled baseline: the largest deviation is
+\SI{-2.11}{\percent} at $H/H^{*}=+0.05$.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig05_channel.pdf}
+\caption{Complete energy budget at the reference plane $x=-2\,d$.  (a) Partition
+of the incident power at $H=0$, logarithmic axis: backward channel
+$2.31\times10^{-2}$, other propagating outgoing modes $0.9767$, dissipation
+$1.99\times10^{-4}$, interference $|P_{\text{cross}}|=4.17\times10^{-6}$.
+(b) The four fractions against $H/H^{*}$.  (c) Relative power balance error with
+the $10^{-6}$ acceptance line.  (d) Relative change of the backward channel with
+respect to $H=0$.  Data: \texttt{fig05\_channel\_power.csv}.}
+\label{fig:fig05}
+\end{figure}
+
+\subsection{Distance, survival and attenuation}
+\label{sec:results_attenuation}
+
+\Cref{fig:fig06} follows the two channels away from the edge.  The backward
+coefficient decays with the observation distance (panel a) as
+$\exp(-\alpha_B\ell)$ with $\alpha_B=2|\Imag k_{Bx}|$, and the incident power
+arriving at the edge obeys a survival factor normalised to its edge value, which
+therefore cannot exceed unity (panel b); the minimum over the solved range is
+$0.0356$ at $\ell=\SI{1000}{\micro\metre}$.  The earlier version of this figure
+reported a survival factor up to $28.06$; that was the reciprocal of the
+physically meaningful quantity, and it is corrected here.
+
+Panels (c) and (d) give the attenuation length and the loss coefficient against
+the coupling.  Both are obtained from the complex spatial roots,
+$\alpha=2|\Imag k_x|$, and neither is derived from a real square root.  The
+attenuation length is largest at $H=0$ ($\approx\SI{18}{\milli\metre}$) and
+falls by a factor of three at the extremes of the coupling range, and the loss
+coefficient follows the same pattern with a minimum of
+\SI{0.47}{\deci\bel\per\milli\metre} at $H=0$ and a maximum of
+\SI{29}{\deci\bel\per\milli\metre} at $H/H^{*}=+0.05$; the corresponding
+attenuation length falls from \SI{18.5}{\milli\metre} to
+\SI{0.30}{\milli\metre}, a factor of sixty-two.  The incident and backward
+channels share the same attenuation only at $H=0$ (\SI{0.469}{} and \SI{0.454}{\deci\bel\per\milli\metre}); away from it
+they separate strongly, reaching 16.2 and
+\SI{23.0}{\deci\bel\per\milli\metre} at $H/H^{*}=-0.05$.  The coupling therefore controls the loss of the plate much
+more strongly than it controls the partition of the scattered power, which is
+the opposite of what one might expect from the magnitude of the term
+\eqref{eq:added_coupling} alone.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig06_attenuation.pdf}
+\caption{Distance, survival and attenuation.  (a) Backward channel against the
+distance from the edge, isolated-channel convention; (b) incident power arriving
+at the edge, normalised to its edge value, with the unitary limit marked;
+(c) attenuation length $L$ and (d) loss coefficient $\alpha$, both from the
+solved complex spatial roots, against $H/H^{*}$.  Data:
+\texttt{fig06\_attenuation\_distance.csv}.}
+\label{fig:fig06}
+\end{figure}
+
+\subsection{Coupling sensitivity in $(k_y,H)$}
+\label{sec:results_coupling}
+
+\Cref{fig:fig07} resolves the two-parameter dependence.  Over the solved box
+$0.05\le k_yd\le0.20$ and $-0.05\le H/H^{*}\le0.05$, the backward channel ranges
+from $0.01896$ to $0.02560$.  Panel (a) shows that the transverse wavenumber
+alone accounts for almost all of that range: the five coupling curves are
+displaced but their common slope is set by $k_y$.  Panels (c) and (d) quantify
+the displacement: against $H/H^{*}$ the relative change is at most
+\SI{2.44}{\percent}, and against $k_y$ it is a slow drift that never exceeds the
+same bound.  The ratio of the two sensitivities is the quantitative statement of
+this paper about the added coupling: $k_y$ changes the backward channel by a
+factor of $1.35$ across the box, while $H$ changes it by at most
+\SI{2.4}{\percent}.  The coupling is a perturbation of the partition and not its
+organising parameter.
+
+Panel (b) draws the measured $5\times19$ grid cell by cell, with no
+interpolation beyond the computational box and no smoothing between the five
+coupling levels.  All 95 rows satisfy \eqref{eq:admissible}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig07_coupling.pdf}
+\caption{Coupling sensitivity in the $(k_y,H)$ plane; 95/95 rows admissible.
+(a) Backward channel against $k_yd$ for five $H/H^{*}$; (b) the measured
+$R_B(k_yd,H)$ grid drawn without interpolation; (c) relative change against
+$H/H^{*}$ along three declared $k_yd$ slices; (d) the same relative change
+against $k_yd$.  Data: \texttt{fig07\_coupling\_sensitivity.csv}.}
+\label{fig:fig07}
+\end{figure}
+
+\subsection{Through-thickness flux distribution}
+\label{sec:results_boundary}
+
+\Cref{fig:fig08} examines how the backward flux is distributed through the
+thickness.  This panel replaces an earlier boundary-condition comparison that
+could not be certified and was therefore withdrawn rather than published with a
+caveat.  The quantity plotted is fully controlled: the $x$ component of the
+backward Poynting flux, normalised by the incident flux, as a function of
+$z/d$.
+
+The result is qualitative and worth stating carefully.  The $x$ component
+changes sign inside the plate --- it is positive near both free surfaces and
+negative in the core, reaching $-0.0367$ and $+0.0317$ in normalised units ---
+while its thickness integral remains negative.  The net backward power is
+therefore carried by a mode whose local flux direction alternates across the
+thickness, which is a property of the strain-gradient plate mode and not of the
+edge.  The $z$ component behaves differently: it is largest at the free
+surfaces and does not vanish there, so the surfaces carry a transverse flux even
+though both traction and double traction vanish on them.  That is exactly the
+configuration in which the reactive near field must be retained at the edge
+plane, and the reason why \cref{fig:fig05} separates the reactive content from
+the transported content instead of adding them.
+
+Panel (c) gives the running thickness integral normalised to its own total, so
+the curve rises from zero to one across the plate for every coupling level and
+the five curves are indistinguishable.  Panel (d) compares the shape of the
+backward and incident $x$ fluxes at $H=0$, both normalised by their own maxima;
+the backward mode is more strongly concentrated towards one face than the
+incident one.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig08_boundary.pdf}
+\caption{Through-thickness distribution of the backward flux at the reference
+plane.  (a) $P_x^{\mathrm{B}}(z)$ and (b) $P_z^{\mathrm{B}}(z)$ normalised by
+the incident flux, for five $H/H^{*}$; (c) running thickness integral of
+$P_x^{\mathrm{B}}$ normalised to its own total; (d) shape comparison between the
+backward and incident $x$ fluxes.  These are normalised profiles, not an
+independent local-flux validation.  Data:
+\texttt{fig08\_thickness\_flux.csv}.}
+\label{fig:fig08}
+\end{figure}
+
+\subsection{Convergence and cross-checks}
+\label{sec:results_validation}
+
+\Cref{fig:fig09} documents the numerical behaviour of the edge solve.  Panels
+(a) and (b) show the relative error of the backward channel and of the backward
+wavenumber against the degree-30 reference: both fall from $3\times10^{-6}$ and
+$4\times10^{-12}$ at $n=14$ to the round-off floor by $n=26$, and the error of
+$R_B$ is still decreasing at the highest degree used for production.  Panel (c)
+shows the scaled edge residual and the relative energy-balance error for every
+degree; both remain at $10^{-12}$--$10^{-13}$, four to five orders below the
+$10^{-8}$ and $10^{-10}$ tolerances drawn in the panel.  Panel (d) compares the
+temporal and spatial routes for the same dispersion relation across the box;
+they agree to $2\times10^{-5}$.
+
+The last panel is a check on the implementation, not a physical validation.  The
+two routes discretise the same variational statement and differ only in which
+variable is used as the eigenvalue; agreement to $2\times10^{-5}$ shows that the
+assembly, the boundary conditions and the elimination of the potential are
+implemented consistently, and the manuscript says exactly that.  The genuinely
+independent checks are the strong-form integrations and the $C^1$ finite-element
+plate of \cref{sec:numerics_verification}, neither of which shares the spectral
+matrices with the production path.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig09_validation.pdf}
+\caption{Convergence and cross-checks.  (a) Relative error of the backward
+channel and (b) of the backward wavenumber against the Galerkin degree, with the
+degree-30 reference; (c) scaled edge residual and relative energy-balance error
+with the tolerance lines; (d) relative difference between the temporal-generator
+and the spatial eigenvalue routes, which is a consistency check of the
+implementation and not an independent physical validation.  Data:
+\texttt{fig09\_validation\_convergence.csv},
+\texttt{fig09\_temporal\_spatial\_consistency.csv}.}
+\label{fig:fig09}
+\end{figure}
+
+\subsection{Wave field and flux directions}
+\label{sec:results_field}
+
+\Cref{fig:fig10} closes the presentation with the solved field.  Panels (a) and
+(b) show the incident and backward intensities on a shared logarithmic colour
+scale over $x\in[-60,1.5]\,\si{\micro\metre}$ and
+$y\in[-45,45]\,\si{\micro\metre}$; the vertical line at $x=0$ is the edge, the
+plate lies to its left, and the intensities are normalised to a common maximum
+so that the backward field is visibly weaker by one to three decades.  The
+incident field approaches the edge at $+10.0^{\circ}$ and the backward field
+leaves it at $-27.9^{\circ}$, both measured from the thickness-integrated
+Poynting flux.
+
+Panel (c) is a schematic, but its arrows are not drawn by hand: they are the
+solved directions, $\vect{k}_i\propto(1,0.176)$, $\vect{k}_B\propto(0.333,-0.530)$,
+$\vect{P}_i\propto(1,0.176)$ and $\vect{P}_B\propto(-1,-0.530)$, taken from the
+computed flux of the incident and backward modes.  The last of these is the
+geometric content of the word ``negative'': the backward mode carries energy in
+$-x$ and in $-y$ simultaneously, so its energy transport is opposite in both
+components to that of the incident wave.  Panel (d) shows the two components of
+the backward flux against $k_yd$; both are negative throughout the box, and both
+tend to a common small value as $k_yd\to0.2$.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig10_field.pdf}
+\caption{Solved field maps and flux directions.  (a) Incident and (b) backward
+intensity on a shared logarithmic scale, with the edge at $x=0$; (c) schematic
+whose arrows are the solved flux directions of the incident and backward modes;
+(d) the two components of the backward flux against $k_yd$.  Data:
+\texttt{fig10\_field\_maps.csv}, \texttt{fig10\_field\_metrics.json}.}
+\label{fig:fig10}
+\end{figure}

@@ -1,0 +1,133 @@
+\section{Introduction}
+\label{sec:intro}
+
+The classical theory of piezoelectricity relates the electric displacement to
+the strain and the electric field alone.  Flexoelectricity adds a dependence on
+the \emph{gradient} of strain \cite{shen2010theory,deng2020impact}, so that a
+bending deformation polarises a dielectric even when it is centrosymmetric and
+carries no piezoelectric constant.  The effect is small in absolute terms but
+it scales as the inverse of a length, and it therefore becomes competitive with
+piezoelectricity in thin films, at free surfaces and around edges and cracks,
+where the strain gradient is large.  In a semiconductor the polarisation is not
+merely a passive consequence of deformation: the induced bound charge is
+screened by the mobile carrier gas, the screening redistributes the carriers,
+and the redistribution feeds back on the electric field.  This closed loop --
+strain gradient $\rightarrow$ polarisation $\rightarrow$ carrier redistribution
+$\rightarrow$ field $\rightarrow$ strain -- is the subject of the rapidly
+developing theory of flexoelectric semiconductors
+\cite{qu2020mobile,qu2022thermal}.
+
+Two strands of that literature are directly relevant here.  The first is the
+continuum formulation itself.  Starting from a free-energy density that contains
+the strain, the strain gradient, the electric field and the carrier
+concentration perturbation, one obtains the field equations by independent
+variations with respect to the displacement, the potential and the carrier
+density.  Qu, Jin and Yang \cite{qu2020mobile} used this route to show that the
+mechanical field redistributes mobile charge in a composite flexoelectric
+dielectric--semiconductor beam, Qu, Jin and Yang \cite{qu2022bending} carried the same construction to the
+bending of a flexoelectric semiconductor plate, and Qu, Zhang, Gao and Jin
+\cite{qu2022thermal} extended the model to thermally induced carrier
+redistribution, where the temperature gradient acts as an additional driving
+term for the charge.  Both works make the point that must be respected in any
+subsequent extension: the extra constitutive couplings are not free parameters
+of a model, they are constrained by a thermodynamic potential, and the
+reciprocal partner of every added term in the stress must appear in the
+electrochemical potential.
+
+The second strand is the wave theory.  Yang, Deng, Liang and Shen
+\cite{yang2018lamb} derived the dispersion of Lamb waves in a plate with both
+flexoelectricity and strain-gradient elasticity, and Yang, Liang, Deng and Shen
+\cite{yang2020rayleigh} treated Rayleigh waves on a centrosymmetric
+flexoelectric half-space.  Wang, Zhang, Zhang, Du, Xiao and Lou
+\cite{wang2025rayleigh} recently combined both effects with the carrier physics
+of a piezoelectric semiconductor layer on an elastic substrate and showed that
+the layer thickness, the steady carrier concentration and the bias field all
+move the dispersion and the attenuation of the surface wave.  Zhang, Zhao, Hu,
+Nie and Liu \cite{zhang2025pscplate} gave an exact Stroh-type treatment of a
+piezoelectric semiconductor plate and identified the range of carrier
+concentrations in which the semiconductor coupling is active at all -- outside
+that range the plate reverts to a piezoelectric or even a purely elastic
+behaviour.  These studies establish three facts that frame the present work:
+flexoelectric and strain-gradient terms change the dispersion of guided modes;
+the carrier physics is active only inside a window of doping; and the
+attenuation of a guided mode can be controlled by the electrical boundary
+conditions rather than by the mechanical ones.
+
+What has not been examined in that literature is the \emph{scattering} problem
+at an edge.  A guided mode that travels towards a free edge has to convert into
+the set of outgoing modes that the edge can support.  In a purely elastic plate
+this is a classical problem: an incident mode is reflected into its time-reverse
+partner and into a finite family of mode-converted branches, and a
+backward-propagating branch can be excited when the edge breaks the symmetry
+that would otherwise forbid it.  The question we ask is whether the
+carrier--strain-gradient coupling can bias that partition, and whether the
+resulting backward channel is strong enough to be of practical interest.
+
+\subsection{The added coupling and its reciprocals}
+\label{sec:intro_coupling}
+
+The model used here is deliberately minimal.  On top of the standard
+flexoelectric piezoelectric-semiconductor enthalpy we add a single bilinear
+term,
+\begin{equation}
+\label{eq:added_coupling}
+\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l},
+\end{equation}
+where $\Delta n$ is the carrier-concentration perturbation, $\varepsilon_{jk,l}$
+the strain gradient and $H_{jkl}$ a third-order coupling tensor with the units
+of energy times length.  Because the enthalpy is a thermodynamic potential, the
+term in \cref{eq:added_coupling} generates two partners.  Differentiating with
+respect to the strain gradient gives an addition to the higher-order
+(hyper)stress,
+\begin{equation}
+\label{eq:added_hyperstress}
+\Delta\tau_{jkl}=\frac{\partial\Delta\mathcal{H}}{\partial\varepsilon_{jk,l}}
+=H_{jkl}\,\Delta n,
+\end{equation}
+and differentiating with respect to the carrier density gives an addition to the
+electrochemical potential,
+\begin{equation}
+\label{eq:added_mu}
+\Delta\widetilde\mu=\frac{\partial\Delta\mathcal{H}}{\partial\Delta n}
+=H_{jkl}\,\varepsilon_{jk,l}.
+\end{equation}
+Equations \eqref{eq:added_coupling}--\eqref{eq:added_mu} are one assumption,
+not three.  They are the only new physics in the paper.  No additional field,
+no micro-inertia, no flexoelectric-gradient term and no nonlinear
+electromechanical feedback is introduced, and the classical constants are not
+refitted.
+
+The reciprocal relation \eqref{eq:added_mu} is what makes the edge problem
+interesting.  A guided plate mode carries a strain gradient through the
+thickness, so it perturbs the electrochemical potential even before any carrier
+moves; the carriers respond, the charge density changes, and the changed charge
+density modifies the hyperstress through \eqref{eq:added_hyperstress}.  The loop
+is closed at the edge, where the conversion into outgoing branches takes place.
+
+\subsection{Scope and organisation}
+\label{sec:intro_scope}
+
+The paper is organised as follows.  \Cref{sec:governing} states the
+variational principle, the constitutive relations, the field equations and the
+boundary conditions, and fixes the nomenclature for the plate surfaces, the
+reflecting edge, the mechanical tractions, the higher-order double tractions,
+the electrical conditions and the carrier-blocking conditions.
+\Cref{sec:numerics} describes the solution strategy: a Fourier reduction in the
+tangential direction with a single conserved wavenumber $k_y$, a spectral
+Galerkin discretisation through the thickness, a companion-matrix formulation
+in the direction of propagation, and an edge-matching step that separates
+incoming from outgoing modes.
+\Cref{sec:results} presents the ten figures of the study and, for each, states
+what the panel is allowed to claim.  \Cref{sec:discussion} discusses what the
+numbers mean and, at least as importantly, what they do not mean.
+\Cref{sec:conclusions} lists the limitations that we could not remove.
+
+Three conventions are used throughout and are worth stating once.  The plate
+occupies $x<0$ and the reflecting edge is at $x=0$; the $z$ axis is the
+six-fold axis of ZnO and points through the thickness, with the faces at
+$z=\pm d/2$.  A quantity is called \emph{backward} when its energy flux has a
+negative component along $x$, which is the direction of propagation of the
+incident wave.  A mode is called \emph{outgoing} when it either decays away
+from the edge or, if it is propagating, carries energy away from the edge.
+All three definitions are operational: they are the ones implemented in the
+solver, not merely the ones used in the prose.
