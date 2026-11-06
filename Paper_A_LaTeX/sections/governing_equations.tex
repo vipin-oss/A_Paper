@@ -1,0 +1,37 @@
+\section{Governing equations and boundary conditions}
+\label{sec:governing}
+Let $x<0$ be the plate interior and $x=0$ be the free edge; $y$ is the propagation-plane coordinate with $k_y$ fixed. The phase ansatz is
+\begin{equation}
+\label{eq:ansatz}
+\boldsymbol{u}(x,y,t)=\boldsymbol{U}(x)\exp\left[i(k_xx+k_yy-\omega t)\right],
+\end{equation}
+where $\boldsymbol{U}$ contains the three displacement components and the eliminated electrostatic/carrier fields. The momentum balance is
+\begin{equation}
+\label{eq:momentum}
+\rho\,\omega^{2}u_j+\frac{\partial}{\partial x_l}\sigma_{jl}
++\frac{\partial}{\partial x_l}\left(\ell^2\frac{\partial}{\partial x_m}\sigma_{jlm}\right)
+=0,
+\end{equation}
+where $\sigma_{jlm}=\Delta n\,H_{jlm}\partial_m\varepsilon_{jl}$ in the minimal coupling. The electrostatic potential satisfies
+\begin{equation}
+\label{eq:electrostatic}
+\kappa_{ij}\frac{\partial^2\phi}{\partial x_i\partial x_j}
++\frac{e}{\epsilon_0}\frac{\partial N}{\partial x_i}\frac{\partial\phi}{\partial x_i}
+=0,
+\end{equation}
+and the carrier field obeys
+\begin{equation}
+\label{eq:carrier}
+-i\omega N + \frac{\partial}{\partial x_i}\left(D_{ij}\frac{\partial N}{\partial x_j}+\mu N E_i\right)
+=0.
+\end{equation}
+The boundary conditions are
+\begin{subequations}
+\label{eq:bcs}
+\begin{align}
+\sigma_{xx}(0,y)&=0,\\
+\sigma_{xy}(0,y)&=0,\\
+D_x(0,y)&=0 & \text{(grounded)}\quad\text{or}\quad \phi(0,y)=0 & \text{(open)}.
+\end{align}
+\end{subequations}
+These equations are the fixed equations already implemented in \texttt{paper\_a\_study/model.py}. No new physical field, coupling mechanism or constitutive theory is introduced.

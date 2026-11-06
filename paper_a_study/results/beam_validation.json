@@ -1,0 +1,18 @@
+[
+  {
+    "nodes": 17,
+    "x_m": -4.0105263157894737e-05,
+    "incident_centroid_y_m": -7.264483662712813e-06,
+    "backward_centroid_y_m": -2.0944206401760356e-05,
+    "minimum_sampled_R": 0.017883468311882714,
+    "maximum_sampled_R": 0.025759509533236347
+  },
+  {
+    "nodes": 25,
+    "x_m": -4.0105263157894737e-05,
+    "incident_centroid_y_m": -7.264483661650145e-06,
+    "backward_centroid_y_m": -2.09442064012555e-05,
+    "minimum_sampled_R": 0.015086861562318827,
+    "maximum_sampled_R": 0.02601403334856479
+  }
+]

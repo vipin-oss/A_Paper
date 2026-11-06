@@ -1,0 +1,22 @@
+[
+  {
+    "plane": "x=-2 um",
+    "x_um": -2.0,
+    "incident_centroid_y_um": -4.368331655080814e-07,
+    "backward_centroid_y_um": -7.867235290317973e-07,
+    "incident_sum": 16.245520725882308,
+    "backward_sum": 0.7664295223166506,
+    "forward_ray_fraction": 1.0001085082815606,
+    "backward_ray_fraction": 0.9998876542792129
+  },
+  {
+    "plane": "x=-40 um",
+    "x_um": -40.0,
+    "incident_centroid_y_um": -7.068397233794938e-06,
+    "backward_centroid_y_um": -2.0891013992214295e-05,
+    "incident_sum": 16.314305908281426,
+    "backward_sum": 0.7666155464563625,
+    "forward_ray_fraction": 1.002172404736557,
+    "backward_ray_fraction": 0.9977555819060205
+  }
+]

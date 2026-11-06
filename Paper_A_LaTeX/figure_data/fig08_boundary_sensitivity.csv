@@ -1,0 +1,7 @@
+electric,eta,frequency_GHz,R_B_2um,angle_deg,edge_scaled_residual,power_balance_error,error
+ground,-0.05,16.68863836315286,0.01704027591893343,-31.281755374806785,2.748846600573899e-15,0.004531901823895782,
+ground,0.0,16.688691557073977,0.032609764630047576,-31.281755374627338,2.75770302932407e-15,9.518613967928271e-05,
+ground,0.05,16.688601304808365,0.03250070484573386,-31.281755373851144,2.8985589980800483e-15,0.00804330722795691,
+open,-0.05,,,,,,A singular matrix detected: slice(s) [0] are singular.
+open,0.0,,,,,,A singular matrix detected: slice(s) [0] are singular.
+open,0.05,,,,,,A singular matrix detected: slice(s) [0] are singular.
