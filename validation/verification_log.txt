@@ -1,10 +1,10 @@
-Paper A verification run 2026-11-06T13:44:16+00:00
+Paper A verification run 2026-11-06T14:32:28+00:00
 ============================================================
 
-PASS  unit and scientific tests              9.3s exit=0
+PASS  unit and scientific tests              10.0s exit=0
 PASS  dimensional and constitutive audit     0.5s exit=0
 PASS  quasistatic justification              0.4s exit=0
-PASS  flexoelectric control                  5.2s exit=0
+PASS  flexoelectric control                  5.7s exit=0
 PASS  admissibility re-derivation            0.0s exit=0
 PASS  figure data and figure files           
 PASS  LaTeX static validation                0.0s exit=0

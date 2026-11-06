@@ -1,0 +1,104 @@
+{
+  "cases": {
+    "operating_point": [
+      {
+        "degree": 18,
+        "raw_backward_Px": -0.017892253333615923,
+        "raw_mode_power": -0.017892253333612704,
+        "amplitude_abs": 1.1374909585196669,
+        "physical_backward_power": -0.023148108689825024,
+        "incident_power_at_plane": 1.0001080602082226,
+        "R_B": 0.023145607570647334,
+        "ok": true
+      },
+      {
+        "degree": 22,
+        "raw_backward_Px": -0.015424813083039373,
+        "raw_mode_power": -0.015424813083040589,
+        "amplitude_abs": 1.2250974237739258,
+        "physical_backward_power": -0.0231481203051603,
+        "incident_power_at_plane": 1.0001080602120087,
+        "R_B": 0.023145619184645957,
+        "ok": true
+      },
+      {
+        "degree": 26,
+        "raw_backward_Px": -0.013245459308029691,
+        "raw_mode_power": -0.01324545930802873,
+        "amplitude_abs": 1.322047638444796,
+        "physical_backward_power": -0.023148123985118434,
+        "incident_power_at_plane": 1.0001080602124106,
+        "R_B": 0.023145622864193673,
+        "ok": true
+      },
+      {
+        "degree": 30,
+        "raw_backward_Px": -0.011377729282162746,
+        "raw_mode_power": -0.011377729282161625,
+        "amplitude_abs": 1.426437774149958,
+        "physical_backward_power": -0.023148125372224892,
+        "incident_power_at_plane": 1.0001080601975696,
+        "R_B": 0.023145624251493125,
+        "ok": true
+      }
+    ],
+    "peak": [
+      {
+        "degree": 18,
+        "raw_backward_Px": -0.0012567635066306091,
+        "raw_mode_power": -0.0012567635066297466,
+        "amplitude_abs": 21.487087056506436,
+        "physical_backward_power": -0.5797168507522713,
+        "incident_power_at_plane": 1.00092696040215,
+        "R_B": 0.5791799738503958,
+        "ok": true
+      },
+      {
+        "degree": 22,
+        "raw_backward_Px": -0.0009293933840983076,
+        "raw_mode_power": -0.0009293933840961049,
+        "amplitude_abs": 24.986450052579556,
+        "physical_backward_power": -0.5797169104600303,
+        "incident_power_at_plane": 1.0009269605041065,
+        "R_B": 0.5791800334428877,
+        "ok": true
+      },
+      {
+        "degree": 26,
+        "raw_backward_Px": -0.0007092920114796252,
+        "raw_mode_power": -0.0007092920114792939,
+        "amplitude_abs": 28.601698144205738,
+        "physical_backward_power": -0.5797169283484002,
+        "incident_power_at_plane": 1.0009269604849227,
+        "R_B": 0.5791800513268939,
+        "ok": true
+      },
+      {
+        "degree": 30,
+        "raw_backward_Px": -0.0005563739124222564,
+        "raw_mode_power": -0.0005563739124219646,
+        "amplitude_abs": 32.293935735564524,
+        "physical_backward_power": -0.5797169355774306,
+        "incident_power_at_plane": 1.0009269604700781,
+        "R_B": 0.579180058557786,
+        "ok": true
+      }
+    ]
+  },
+  "spreads": {
+    "operating_point": {
+      "raw": -0.3640974632979126,
+      "physical": -7.206803833703646e-07,
+      "R_B": 7.206916361468529e-07
+    },
+    "peak": {
+      "raw": -0.5572962538402325,
+      "physical": -1.46321685878803e-07,
+      "R_B": 1.462540040186866e-07
+    }
+  },
+  "rescaling_test": {
+    "R_B_before": 0.023145619184645957,
+    "R_B_after": 0.023145619184645923
+  }
+}

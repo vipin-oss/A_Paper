@@ -13,3 +13,6 @@ a0r/private_sources/
 *.npz
 *.npy
 paper_a_study/cache/
+
+# staging area of make_download_archive.py
+build/

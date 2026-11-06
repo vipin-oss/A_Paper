@@ -1,0 +1,59 @@
+{
+  "inputs": {
+    "K0": 0.7361990195318475,
+    "KY0": 0.12981175031447484,
+    "OMEGA0": 7.633372404423294,
+    "d_m": 2e-07,
+    "c_s_m_per_s": 2746.608754286421,
+    "kappa33_F_per_m": 8.85e-11,
+    "kappa_r": 9.99527023947797
+  },
+  "derived": {
+    "k_x_rad_per_m": 3680995.0976592377,
+    "k_y_rad_per_m": 649058.7515723743,
+    "k_rad_per_m": 3737780.380384063,
+    "omega_rad_per_s": 104829437353.58704,
+    "frequency_Hz": 16684123136.365553,
+    "mechanical_wavelength_m": 1.6809937095699505e-06,
+    "phase_speed_m_per_s": 28045.906041920967,
+    "v_p_over_c": 9.355107272885754e-05,
+    "k_em_rad_per_m": 1105.5027370593943,
+    "lambda_em_m": 0.005683554727229965,
+    "v_em_m_per_s": 94825126.92137727,
+    "k_em_d": 0.00022110054741187885,
+    "d_over_lambda_em": 3.518924504092449e-05,
+    "k_em_d_squared": 4.888545206583249e-08,
+    "v_p_over_c_squared": 8.751803208719992e-09,
+    "frequency_from_omega_GHz": 16.684123136365553,
+    "wavelength_from_v_over_f_m": 0.005683554727229965
+  },
+  "figure_data_at_operating_point": {
+    "K": 0.75,
+    "phase_speed_m_s": 27551.9904348,
+    "frequency_GHz": 16.6883742031,
+    "v_p_from_own_frequency": 27551.990434866282,
+    "v_p_at_K0_exact": 28045.906041920967,
+    "v_p_at_K0_interpolated": 27551.9904348
+  },
+  "figure_extremes": {
+    "min_K": 0.15,
+    "v_p_at_min_K": 105770.761916,
+    "max_K": 1.05,
+    "v_p_at_max_K": 20037.6261685
+  },
+  "manuscript_values": {
+    "v_p_governing_eq": 28000.0,
+    "v_p_results_min": 20000.0,
+    "v_p_results_max": 105800.0,
+    "frequency_GHz": 16.68,
+    "lambda_em_mm": 5.68,
+    "inverse_k_em_mm": 0.905,
+    "k_em_times_d": 0.00022,
+    "d_over_lambda_em": 3.52e-05
+  },
+  "historical_pre_fix": {
+    "v_p_governing_eq": 2800.0,
+    "lambda_em_mm": 0.905,
+    "d_over_lambda_em": 0.00022
+  }
+}

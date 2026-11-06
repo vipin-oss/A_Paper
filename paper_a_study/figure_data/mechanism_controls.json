@@ -1,0 +1,372 @@
+{
+  "operating_point": {
+    "full": {
+      "status": "solved",
+      "frequency_GHz": 16.683984497417235,
+      "R_B": 0.022866411823686483,
+      "angle_deg": -27.86918916989515,
+      "backward_K": [
+        0.24549068875739735,
+        -0.0004345430508356358
+      ],
+      "incident_K": [
+        0.7361992271591437,
+        0.0003341497471236535
+      ],
+      "total_outgoing_propagating": -0.9875228901493698,
+      "cross": -0.00020620359870000528,
+      "dissipation": 0.012270906253032437,
+      "backward_energy": 0.2274458825298542,
+      "backward_vEx": -186.14052027165565,
+      "incident_vEx": 378.7647351761148,
+      "power_balance_relative": 1.100789638349909e-12,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_flexo": {
+      "status": "solved",
+      "frequency_GHz": 16.683975305244743,
+      "R_B": 0.02286916500851856,
+      "angle_deg": -27.867506771401562,
+      "backward_K": [
+        0.24550813352953443,
+        -0.0004345420379161515
+      ],
+      "incident_K": [
+        0.7361992271870885,
+        0.0003341649215254914
+      ],
+      "total_outgoing_propagating": -0.9875223777793771,
+      "cross": -0.00020621346329008304,
+      "dissipation": 0.012271408758186752,
+      "backward_energy": 0.22743179941938002,
+      "backward_vEx": -186.14763636633066,
+      "incident_vEx": 378.7563165146459,
+      "power_balance_relative": 8.54350367378133e-13,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_coupling": {
+      "status": "solved",
+      "frequency_GHz": 16.684123136378275,
+      "R_B": 0.023145619184645957,
+      "angle_deg": -27.89971398936889,
+      "backward_K": [
+        0.24517469208547762,
+        -5.230595100797003e-06
+      ],
+      "incident_K": [
+        0.7361990195742107,
+        5.402718696232732e-06
+      ],
+      "total_outgoing_propagating": -0.9997973116867145,
+      "cross": -4.169199489127135e-06,
+      "dissipation": 0.0001985191129741807,
+      "backward_energy": 0.22774921657374028,
+      "backward_vEx": -186.02007631227346,
+      "incident_vEx": 378.9121236393837,
+      "power_balance_relative": 8.260359038401398e-13,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_flexo_H": {
+      "status": "solved",
+      "frequency_GHz": 16.68411394765974,
+      "R_B": 0.023148416145443943,
+      "angle_deg": -27.89802709897994,
+      "backward_K": [
+        0.2451921482627607,
+        -5.229262795481509e-06
+      ],
+      "incident_K": [
+        0.7361990195726497,
+        5.401542119098431e-06
+      ],
+      "total_outgoing_propagating": -0.9997973558138477,
+      "cross": -4.1703061961671126e-06,
+      "dissipation": 0.00019847387795043906,
+      "backward_energy": 0.22773511484771586,
+      "backward_vEx": -186.02721784892876,
+      "incident_vEx": 378.90370809975974,
+      "power_balance_relative": 2.0065068683397226e-12,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "classical": {
+      "status": "solved",
+      "frequency_GHz": 16.20765384516728,
+      "R_B": 0.07729571362757741,
+      "angle_deg": 9.999999999849576,
+      "backward_K": [
+        -0.7361990195426307,
+        -1.7726324296585785e-06
+      ],
+      "incident_K": [
+        0.7361990195426305,
+        1.7726323973043433e-06
+      ],
+      "total_outgoing_propagating": -0.999934022987733,
+      "cross": -1.2726222690682119e-06,
+      "dissipation": 6.470438992758902e-05,
+      "backward_energy": 0.3766493999881312,
+      "backward_vEx": -1606.4299044791367,
+      "incident_vEx": 1606.4299044791262,
+      "power_balance_relative": 6.967070613631497e-14,
+      "outgoing_modes": 113,
+      "negative_direction": false,
+      "backward_is_specular": true,
+      "port": "no_backward_port"
+    }
+  },
+  "peak": {
+    "full": {
+      "status": "solved",
+      "frequency_GHz": 16.654859438711178,
+      "R_B": 0.5221071209223973,
+      "angle_deg": -14.4451399539233,
+      "backward_K": [
+        0.5037788525032804,
+        -0.003142261026558579
+      ],
+      "incident_K": [
+        0.5502121887331931,
+        0.0031299338113873003
+      ],
+      "total_outgoing_propagating": -0.9287637398410454,
+      "cross": -0.06015662022841219,
+      "dissipation": 0.011079639931064244,
+      "backward_energy": 0.07991390513609009,
+      "backward_vEx": -32.09710552416928,
+      "incident_vEx": 33.73379944443559,
+      "power_balance_relative": 5.201272409869948e-13,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_flexo": {
+      "status": "solved",
+      "frequency_GHz": 16.654851422197414,
+      "R_B": 0.5221528931724018,
+      "angle_deg": -14.444857129356336,
+      "backward_K": [
+        0.50378904194133,
+        -0.0031429937533545204
+      ],
+      "incident_K": [
+        0.5502123351039625,
+        0.0031306691125773814
+      ],
+      "total_outgoing_propagating": -0.9287518227556977,
+      "cross": -0.0601697465630808,
+      "dissipation": 0.011078430681432432,
+      "backward_energy": 0.0799113047985564,
+      "backward_vEx": -32.090699806442245,
+      "incident_vEx": 33.726683165913514,
+      "power_balance_relative": 2.1020553746867283e-13,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_coupling": {
+      "status": "solved",
+      "frequency_GHz": 16.654976049283885,
+      "R_B": 0.5791800334428877,
+      "angle_deg": -14.448727906487978,
+      "backward_K": [
+        0.5038041871178814,
+        -4.521401393249136e-05
+      ],
+      "incident_K": [
+        0.550000045195648,
+        4.6326557076629594e-05
+      ],
+      "total_outgoing_propagating": -0.9988091900990764,
+      "cross": -0.0010187449354015939,
+      "dissipation": 0.0001720649646965984,
+      "backward_energy": 0.07991907698510863,
+      "backward_vEx": -31.940809394181773,
+      "incident_vEx": 33.54089012198805,
+      "power_balance_relative": 8.28508919020165e-13,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "no_flexo_H": {
+      "status": "solved",
+      "frequency_GHz": 16.654968035732388,
+      "R_B": 0.5792453172400415,
+      "angle_deg": -14.44844396448971,
+      "backward_K": [
+        0.5038145204611509,
+        -4.521389184224943e-05
+      ],
+      "incident_K": [
+        0.5500000452492495,
+        4.632618128169201e-05
+      ],
+      "total_outgoing_propagating": -0.998809206840656,
+      "cross": -0.0010187910428017014,
+      "dissipation": 0.00017200211776291594,
+      "backward_energy": 0.07991643410994524,
+      "backward_vEx": -31.934206174265984,
+      "incident_vEx": 33.53355895962332,
+      "power_balance_relative": 1.2197991819773386e-12,
+      "outgoing_modes": 182,
+      "negative_direction": true,
+      "backward_is_specular": false,
+      "port": "backward"
+    },
+    "classical": {
+      "status": "solved",
+      "frequency_GHz": 15.994250986652927,
+      "R_B": 0.12506110669323114,
+      "angle_deg": 13.279995795531033,
+      "backward_K": [
+        -0.5500000000338272,
+        -3.502637156928383e-06
+      ],
+      "incident_K": [
+        0.5500000000338379,
+        3.502637136409066e-06
+      ],
+      "total_outgoing_propagating": -0.9998897702831562,
+      "cross": 4.3730135990737785e-06,
+      "dissipation": 0.00011460273066295364,
+      "backward_energy": 0.4006446999411063,
+      "backward_vEx": -1266.2513676394062,
+      "incident_vEx": 1266.2513676393621,
+      "power_balance_relative": 2.1974729017301229e-13,
+      "outgoing_modes": 113,
+      "negative_direction": false,
+      "backward_is_specular": true,
+      "port": "no_backward_port"
+    }
+  },
+  "branch_consistent_H_sweep": {
+    "operating_point": [
+      {
+        "eta": 0.05,
+        "frequency_GHz": 16.683984497417235,
+        "R_B": 0.022866411823686483,
+        "angle_deg": -27.86918916989515,
+        "backward_K_real": 0.24549068875739735,
+        "backward_K_imag": -0.0004345430508356358,
+        "R_B_edge": 0.023066006700163056,
+        "dissipation": 0.012270906253032437,
+        "power_balance_relative": 1.100789638349909e-12
+      },
+      {
+        "eta": 0.025,
+        "frequency_GHz": 16.68408017212615,
+        "R_B": 0.0230619940328676,
+        "angle_deg": -27.889762016442372,
+        "backward_K_real": 0.24527768764302119,
+        "backward_K_imag": -0.0001337455398906718,
+        "R_B_edge": 0.02312376538932749,
+        "dissipation": 0.003907931242604734,
+        "power_balance_relative": 2.660624987696763e-12
+      },
+      {
+        "eta": 0.0,
+        "frequency_GHz": 16.684123136378275,
+        "R_B": 0.023145619184645957,
+        "angle_deg": -27.89971398936889,
+        "backward_K_real": 0.24517469208547762,
+        "backward_K_imag": -5.230595100797003e-06,
+        "R_B_edge": 0.023148040618545394,
+        "dissipation": 0.0001985191129741807,
+        "power_balance_relative": 8.260359038401398e-13
+      },
+      {
+        "eta": -0.025,
+        "frequency_GHz": 16.68411339956536,
+        "R_B": 0.02311617867923806,
+        "angle_deg": -27.899025292569704,
+        "backward_K_real": 0.2451818163298758,
+        "backward_K_imag": -4.903791875735789e-05,
+        "R_B_edge": 0.023138861186290334,
+        "dissipation": 0.001191429358852275,
+        "power_balance_relative": 3.136550524654799e-13
+      },
+      {
+        "eta": -0.05,
+        "frequency_GHz": 16.68405096015665,
+        "R_B": 0.022974073775150258,
+        "angle_deg": -27.88769366839757,
+        "backward_K_real": 0.24529905583298034,
+        "backward_K_imag": -0.000265169955737818,
+        "R_B_edge": 0.023096238114463076,
+        "dissipation": 0.006873393666257336,
+        "power_balance_relative": 6.669345601040679e-13
+      }
+    ],
+    "peak": [
+      {
+        "eta": 0.05,
+        "frequency_GHz": 16.654859438711178,
+        "R_B": 0.5221071209223973,
+        "angle_deg": -14.4451399539233,
+        "backward_K_real": 0.5037788525032804,
+        "backward_K_imag": -0.003142261026558579,
+        "R_B_edge": 0.5559720370195976,
+        "dissipation": 0.011079639931064244,
+        "power_balance_relative": 5.201272409869948e-13
+      },
+      {
+        "eta": 0.025,
+        "frequency_GHz": 16.65494022207746,
+        "R_B": 0.5617825376914919,
+        "angle_deg": -14.44720939634374,
+        "backward_K_real": 0.5038439366477887,
+        "backward_K_imag": -0.0009896406670329184,
+        "R_B_edge": 0.573012564897902,
+        "dissipation": 0.0035353022139748944,
+        "power_balance_relative": 5.535669911185437e-13
+      },
+      {
+        "eta": 0.0,
+        "frequency_GHz": 16.654976049283885,
+        "R_B": 0.5791800334428877,
+        "angle_deg": -14.448727906487978,
+        "backward_K_real": 0.5038041871178814,
+        "backward_K_imag": -4.521401393249136e-05,
+        "R_B_edge": 0.579704011400679,
+        "dissipation": 0.0001720649646965984,
+        "power_balance_relative": 8.28508919020165e-13
+      },
+      {
+        "eta": -0.025,
+        "frequency_GHz": 16.654966928298837,
+        "R_B": 0.5739936836852089,
+        "angle_deg": -14.448626597257523,
+        "backward_K_real": 0.5038062224111683,
+        "backward_K_imag": -0.00032575056804609023,
+        "R_B_edge": 0.5777454672412828,
+        "dissipation": 0.001132624068364811,
+        "power_balance_relative": 7.129038599279212e-14
+      },
+      {
+        "eta": -0.05,
+        "frequency_GHz": 16.654912857581195,
+        "R_B": 0.5462676700417816,
+        "angle_deg": -14.44720772657808,
+        "backward_K_real": 0.5038065641033301,
+        "backward_K_imag": -0.0018283457697004654,
+        "R_B_edge": 0.5666127043268192,
+        "dissipation": 0.0063522990328735845,
+        "power_balance_relative": 4.692404472013668e-13
+      }
+    ]
+  }
+}

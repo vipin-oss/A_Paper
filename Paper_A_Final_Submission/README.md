@@ -1,7 +1,7 @@
 # Paper A — authoritative submission directory
 
-**Negative reflection of guided waves in a flexoelectric piezoelectric–semiconductor
-plate with carrier–strain-gradient coupling**
+**Negative reflection of guided waves at a free edge in a flexoelectric
+piezoelectric–semiconductor plate: the strain-gradient backward branch**
 
 This is the single authoritative manuscript tree for Paper A.  There is no
 other `main.tex` in the repository; the earlier project is archived, explicitly
@@ -13,7 +13,7 @@ labelled as superseded, under `../archive/legacy_manuscript_2026-11-06/`.
 
 ```
 main.tex                       article source (abstract, eight sections, appendix)
-references.bib                 nine entries, every one resolved against the text
+references.bib                 eleven entries, every one resolved against the text
 sections/                      introduction, governing_equations, numerical_methods,
                                results, discussion, conclusions, appendix_reproducibility
 figures/                       ten vector PDFs used by main.tex
@@ -43,7 +43,7 @@ v2 and v3).
 **Compilation status of this copy: not compiled.**  No TeX engine exists in the
 authoring environment; the source was validated statically (balance, references,
 citations, figure files, macros).  See
-`../PAPER_A_FINAL_INDEPENDENT_CORRECTION_RESPONSE.md`, issue J.
+`../PAPER_A_FINAL_SCIENTIFIC_AUDIT.md`, section 11.
 
 ## 3. Reproduce the numbers and the figures
 
@@ -64,6 +64,10 @@ python paper_a_study/quasistatic_check.py         # electromagnetic + carrier ra
 python paper_a_study/flexo_control.py             # measured flexoelectric contribution
 python paper_a_study/certify_peak.py              # degree refinement of the two values
 python paper_a_study/reclassify_csv.py            # admissibility flags (no re-solving)
+python paper_a_study/modal_flux_audit.py          # rescaling + degree proof of R_B
+python paper_a_study/mechanism_controls.py        # matched controls (Table: controls)
+python paper_a_study/corner_assessment.py         # corner-band energy diagnostic
+python paper_a_study/phase_speed_audit.py         # phase-speed / e.m. reconciliation
 python Paper_A_Final_Submission/scripts/static_check.py
 ```
 
@@ -79,7 +83,12 @@ python Paper_A_Final_Submission/scripts/static_check.py
 | peak refinement, degree 18 → 30 | `1.5e-7` relative |
 | edge-system condition number | `1.86e2` |
 | flexoelectric contribution to `R_B` | `-0.01 %` |
-| retardation `d/λ_EM` | `2.2e-4` |
+| `k_EM d` (retardation parameter) | `2.211e-4` |
+| `d/λ_EM` | `3.519e-5` |
+| phase speed `v_p` at the operating point | `28.046 km/s` |
+| `R_B` with `H = 0` at the peak (branch-consistent baseline) | `0.579180` |
+| `R_B` at `H/H* = +0.05`, peak | `0.522107` (−9.85 %) |
+| backward port with `ℓ = 0` | none (specular fallback) |
 | carrier relaxation `ω τ_d` | `1.65e3` |
 
 ## 5. Notes

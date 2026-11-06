@@ -48,19 +48,37 @@ explains why the conversion falls steeply on both flanks: on the fast side the
 interaction is short, and on the far side of the zero the branch itself has
 changed character.
 
-The coupling $H$ enters this picture as a perturbation, and a consistent one.
-It shifts the dispersion by less than $4\times10^{-6}$ in relative terms
-(\cref{fig:fig01}a), it shifts the backward channel by at most
-\SI{2.1}{\percent} (\cref{fig:fig05}d), and it shifts the loss by up to a factor
-of sixty-two (\cref{fig:fig06}c,d).  The ordering --- dispersion unaffected,
-partition weakly affected, loss strongly affected --- is what one expects from a
-term that couples the carrier density to the strain gradient: the mechanical
-branch is stiff and barely notices a carrier-level coupling, while the
-conduction loss is a carrier process and notices it directly.
+The reflection itself is present before the coupling is switched on.  The
+controls of \cref{sec:results_mechanism} establish this directly: with $H=0$ the
+same branch converts \SI{57.92}{\percent} of the incident power at the
+zero-group-velocity point and \SI{2.31}{\percent} at the operating point, and
+when the strain-gradient sector is removed the backward branch does not exist at
+all.  The strong negative reflection is therefore a property of the
+higher-order guided branch and of the edge, not a resonance of the added
+coupling.  This is the single most important correction to the earlier version
+of this paper, whose abstract attributed the effect to the carrier--strain-gradient
+enthalpy.
 
-The transverse wavenumber is the organising parameter, not the coupling.
-\Cref{fig:fig07} shows that $k_y$ changes the backward channel by a factor of
-$1.35$ across the solved box while $H$ moves it by less than \SI{2.4}{\percent}.
+The coupling $H$ enters the corrected picture as a perturbation, and the
+controls put a number on each channel.  It shifts the dispersion by less than
+$4\times10^{-6}$ in relative terms (\cref{fig:fig01}a), it shifts the partition
+by \SI{-1.21}{\percent} at the operating point and by \SI{-9.85}{\percent} at
+the peak in the branch-consistent comparison (\cref{tab:controls}), and it
+shifts the loss by up to a factor of sixty-two (\cref{fig:fig06}c,d).  The
+ordering --- dispersion unaffected, partition weakly affected, loss strongly
+affected --- is what one expects from a term that couples the carrier density to
+the strain gradient: the mechanical branch is stiff and barely notices a
+carrier-level coupling, while the conduction loss is a carrier process and
+notices it directly.  The nine per cent at the peak is mostly the loss acting on
+the backward mode between the edge and the reference plane: referred to the edge
+plane the same comparison gives \SI{4.1}{\percent}.
+
+The transverse wavenumber is the organising parameter at the operating point,
+not the coupling.  \Cref{fig:fig07} shows that $k_y$ changes the backward
+channel by a factor of $1.35$ across the solved box while $H$ moves it by
+\SI{1.21}{\percent} branch-consistently (\SI{2.4}{\percent} at fixed frequency);
+at the zero-group-velocity point the two become comparable, the coupling effect
+rising to \SI{9.85}{\percent}.
 Any statement about the added coupling must therefore be made at fixed $k_y$,
 and any experimental attempt to see the coupling must control the transverse
 wavenumber much better than it controls the doping or the mobility --- which is
@@ -90,20 +108,118 @@ dispersion curve is an eigenvalue problem, whereas an edge partition requires
 the matching of a continuum of outgoing modes and a classification of each of
 them.
 
-Whether the specific enthalpy term $H_{jkl}\Delta n\,\varepsilon_{jk,l}$ has
-already appeared in the flexoelectric-semiconductor literature is a question we
-could not settle.  The published abstracts and the accessible parts of the
-primary works state that carrier redistribution is driven by the mechanical
-field and by the temperature gradient, which is the physics of the
-$\widetilde\mu$ used here, but they do not, in the material we could access,
-state a constitutive coupling between the carrier density and the strain
-gradient of the form \eqref{eq:added_coupling}.  We were not able to obtain the
-full primary equations, and we therefore record the relation to Qu et al.\ and
-to the closely related work of Fang and Wei as \textsc{unresolved}.  No claim of
-priority, equivalence or superiority is made.  What the paper does claim, and
-can demonstrate from its own numbers, is that the edge-scattering problem with
-this coupling is well posed, that its energy budget closes exactly, and that
-the coupling moves the backward channel by a bounded and reproducible amount.
+The closest primary work is the thermodynamically consistent theory of Qu, Pan,
+Zhu and Deng \cite{qu2025thermodynamic}, who derive the constitutive equations
+for a flexoelectric semiconductor from the free-energy imbalance with the
+Coleman--Noll procedure, and who obtain the drift--diffusion current, the
+flexoelectric and piezoelectric couplings and the higher-order stress in one
+framework.  The article itself is not open access.  Its free-energy
+decomposition is, however, reproduced explicitly, with attribution, in the
+open-access computational paper of Hu et al.\ \cite{hu2025computational}
+(Eqs.~(4a)--(4e) there), and that reproduction is what we compare against.  In
+that formulation the electric Gibbs free energy is additive,
+\begin{equation}
+\Psi_{\text{Gib}}=\Psi_{\text{Mech}}(\varepsilon,g)
++\Psi_{\text{Elec}}(e)+\Psi_{\text{Diele}}(\varepsilon,g,e)
++\Psi_{\text{Carrier}}(n,p),
+\label{eq:qu_decomposition}
+\end{equation}
+with
+$\Psi_{\text{Mech}}=\tfrac12C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}
++\tfrac12A_{ijklmn}g_{ijk}g_{lmn}$,
+$\Psi_{\text{Diele}}=-\eta_{ijk}e_i\varepsilon_{jk}
+-\mu_{lijk}e_l g_{ijk}$ and
+$\Psi_{\text{Carrier}}(n,p)$ a function of the two carrier densities alone.
+Three consequences follow for the present paper.
+
+First, the carrier energy in \eqref{eq:qu_decomposition} carries no strain
+gradient.  Since the thermodynamic restriction fixes
+$\partial\Psi_{\text{Gib}}/\partial n=\mu_n+q\psi$, the electrochemical potential
+of that framework contains no strain-gradient contribution, and the strain
+gradient reaches the carriers only \emph{indirectly}, through the flexoelectric
+polarisation that enters Gauss's law.  The direct bilinear term
+$\Delta n\,H_{jkl}\varepsilon_{jk,l}$ of \eqref{eq:added_coupling} is absent from
+the postulate \eqref{eq:qu_decomposition}.  Within the equations we inspected it
+is therefore an \emph{independent} addition, not a change of variables and not a
+special case of a more general tensor; we do not claim that it is absent from
+the full article, which we could not obtain, and we make no priority claim.
+
+Second, the symbol $H$ is overloaded in the literature and we flag the collision
+explicitly to avoid a misreading: in \cite{qu2025thermodynamic} and
+\cite{hu2025computational}, $H_{ijklmn}$ is the sixth-order strain-gradient
+elasticity tensor, which in this paper is written $A_{ijklmn}$ (\cref{eq:enthalpy}, \cref{eq:tau});
+our $H_{jkl}$ is a third-order carrier--strain-gradient
+coefficient with different units (J\,m).  The two are unrelated, and the
+admissibility bounds derived in \cref{sec:governing} apply only to the latter.
+
+Third, the comparison also locates the contribution of this paper.  If the
+part played by the coupling were the headline, the contribution would be a
+constitutive hypothesis of the kind \cite{qu2025thermodynamic} already
+systematises.  It is not the headline: \cref{sec:results_mechanism} shows that
+the negative reflection exists with $H=0$.  What this paper contributes is the
+\emph{scattering} problem --- the partition of a guided mode into the outgoing
+branches of a free edge, with a backward branch on which energy and phase travel
+in opposite directions --- together with the demonstration that the
+carrier--strain-gradient enthalpy can be added to a strain-gradient
+piezoelectric semiconductor without violating the energy bounds, and that its
+incremental effect on the partition is bounded and quantified.  The relation of
+the added term to the primary literature is summarised in
+\cref{tab:novelty}.
+
+\begin{table}[t]
+\centering
+\caption{Equation-level comparison of the added enthalpy
+\eqref{eq:added_coupling} with the primary continuum formulations.  ``Absent in
+the inspected equations'' means that the published decomposition we could read
+contains no term with a carrier density multiplying a strain gradient; it is not
+a statement about the full article.  Statuses follow the evidence actually
+obtained.}
+\label{tab:novelty}
+\small
+\begin{tabular}{@{}p{0.19\textwidth}p{0.17\textwidth}p{0.17\textwidth}p{0.15\textwidth}p{0.16\textwidth}@{}}
+\toprule
+Reference & Carrier energy & Flexoelectric term & $\Delta n\,H_{jkl}
+\varepsilon_{jk,l}$ & Status \\
+\midrule
+Qu et al.\ \cite{qu2025thermodynamic} (IJES 208, 104165) &
+$\Psi_{\text{Carrier}}(n,p)$ only, via \cite{hu2025computational}
+Eqs.~(4a)--(4e) &
+$-\eta_{ijk}e_i\varepsilon_{jk}-\mu_{lijk}e_lg_{ijk}$ &
+absent in the inspected equations &
+\textsc{unresolved} (full article not accessible) \\
+Qu et al.\ \cite{qu2020mobile,qu2022thermal} &
+linearised $\Delta n$ coupling to $\varepsilon$, $\nabla T$ &
+$-\mu_{lijk}e_lg_{ijk}$ &
+absent &
+\textsc{unresolved} \\
+Yang et al.\ \cite{yang2018lamb,yang2020rayleigh} &
+no carriers &
+$-\mu_{lijk}e_lg_{ijk}$ &
+not applicable (dielectric) &
+\textsc{absent by scope} \\
+Wang et al.\ \cite{wang2025rayleigh};
+Zhang et al.\ \cite{zhang2025pscplate} &
+PS carrier model, no strain gradient &
+--- (piezoelectric) &
+absent &
+\textsc{absent} \\
+This work & $\Psi_{\text{Carrier}}(n,p)$ &
+$-\mu_{lijk}e_lg_{ijk}$ &
+$\Delta n\,H_{jkl}\varepsilon_{jk,l}$
++\ reciprocal terms &
+added, bounded, and measured \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No claim of priority, equivalence or superiority is made, and the title of the
+paper no longer suggests that the added coupling produces the strong reflection.
+What the paper claims, and can demonstrate from its own numbers, is that the
+edge-scattering problem is well posed, that its energy budget closes to
+$10^{-12}$, that $\ell=0$ removes the backward branch and therefore the effect,
+and that the added coupling moves the partition by a bounded and reproducible
+amount (\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at the
+zero-group-velocity peak, both at $|H|=0.05H^{*}$).
 
 \subsection{Material provenance}
 \label{sec:disc_material}
@@ -157,10 +273,25 @@ Five limitations bound the conclusions.
 The model is a Fourier-reduced three-dimensional formulation of a plate that is
 infinite in $y$ and semi-infinite in $x$.  It is not a finite plate, it does not
 include a second edge, and it does not resolve the three-dimensional corner at
-the intersection of the edge and the free surfaces.  The corner reconstruction
-in the verification suite shows that the line force at the corner is a weak
-singularity of the discretisation; we deliberately do not claim a resolved
-pointwise corner traction.
+the intersection of the edge and the free surfaces.  Corner effects were
+assessed rather than assumed, in the only way the formulation allows: the
+strain-gradient energy density on the edge plane was computed from the coherent
+sum of all outgoing modes plus the incident mode, and its concentration in the
+outer band $|z|>0.4\,d/2$ was followed through the degree refinement
+(\texttt{paper\_a\_study/corner\_assessment.py},
+\texttt{figure\_data/corner\_assessment.json}).  At the operating point that
+band carries $2.00$--$2.13$~\% of the strain-gradient energy and at the peak
+$1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is $0.12$--$0.21$
+(i.e.\ below the mean, not above it), and the share \emph{decreases} by
+\SI{6.3}{}--\SI{6.6}{}~\% between degree 18 and degree 30 instead of growing.
+A corner singularity would show the opposite trend.  We therefore treat the
+corner as harmless for the global partition --- whose own degree spread is
+$1.5\times10^{-7}$ --- while recording explicitly that a pointwise corner field
+is not certified: no corner-eigenvalue analysis of the higher-order edge
+problem was performed, the polynomial basis cannot describe a singular trace at
+the corner itself, and the corner band still holds about one fiftieth of the
+gradient energy.  This is an unresolved limitation of the model, not a
+demonstrated error.
 
 The carrier physics is linearised about a uniform doping and a zero bias.  The
 nonlinear drift--diffusion regime, in which the carrier perturbation is not

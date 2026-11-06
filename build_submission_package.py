@@ -37,6 +37,10 @@ STUDY_FILES = [
     "verify_dimensions.py",
     "quasistatic_check.py",
     "flexo_control.py",
+    "phase_speed_audit.py",
+    "modal_flux_audit.py",
+    "mechanism_controls.py",
+    "corner_assessment.py",
 ]
 
 FIGURE_STEMS = [

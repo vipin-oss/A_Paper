@@ -41,6 +41,15 @@ audit, including the strain-gradient contraction test \\
 \cref{sec:governing_electric} \\
 \texttt{paper\_a\_study/flexo\_control.py} & the measured flexoelectric
 contribution of \cref{sec:results_scope} \\
+\texttt{paper\_a\_study/phase\_speed\_audit.py} & phase-speed and wavenumber
+reconciliation of \cref{sec:governing_electric}; exits non-zero by design,
+because its job is to flag a mismatch between the manuscript and the solver \\
+\texttt{paper\_a\_study/modal\_flux\_audit.py} & eigenvector-rescaling and
+degree-refinement proof of $R_B$ (\cref{sec:results_peak}) \\
+\texttt{paper\_a\_study/mechanism\_controls.py} & the matched controls of
+\cref{tab:controls} and the branch-consistent $H$ sweep \\
+\texttt{paper\_a\_study/corner\_assessment.py} & corner-band energy share behind
+\cref{sec:disc_limitations} \\
 \texttt{paper\_a\_study/run\_all\_checks.py} & the whole battery, one log \\
 \texttt{paper\_a\_study/figure\_data/*.csv} & the twelve data files behind the
 figures \\
@@ -72,6 +81,12 @@ python paper_a_study/reclassify_csv.py              # admissibility flags, ~1 s
 python paper_a_study/certify_peak.py                # refinement, ~4 min
 python paper_a_study/generate_final_figures.py      # ten PDFs, ~20 s
 python paper_a_study/make_atlas.py                  # optional contact sheet
+python paper_a_study/modal_flux_audit.py            # rescaling/degree proof, ~20 s
+python paper_a_study/mechanism_controls.py          # matched controls, ~1 min
+python paper_a_study/corner_assessment.py           # corner diagnostic, ~20 s
+python paper_a_study/phase_speed_audit.py           # exits 1 if the text and
+                                                    # the solver disagree
+
 \end{verbatim}
 
 The order matters only in that \texttt{generate\_final\_figures.py} needs the

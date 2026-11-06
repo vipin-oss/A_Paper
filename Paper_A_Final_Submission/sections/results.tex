@@ -333,13 +333,21 @@ They are not: $P_{\text{cross}}$ is an interference correction and the
 evanescent members of $\{P_j\}$ are reactive.  The complete and honest
 statement is the partition above, with the interference term quoted explicitly.
 
-Panel (b) shows how the partition moves with the coupling.  The backward channel
-changes from $2.2865\times10^{-2}$ at $H/H^{*}=-0.05$ to
-$2.2658\times10^{-2}$ at $H/H^{*}=+0.05$, a variation of \SI{2.1}{\percent};
-dissipation rises from $6.9\times10^{-3}$ to $1.2\times10^{-2}$; the other
-propagating modes carry the balance.  Panel (d) gives the same information as a
-relative change against the uncoupled baseline: the largest deviation is
-\SI{-2.11}{\percent} at $H/H^{*}=+0.05$.
+Panels (b) and (d) sweep the coupling at \emph{fixed} operating frequency
+$\omega=\omega_0$, which means that the incident wavenumber drifts with $H$
+along the branch instead of the frequency doing so.  This forced-frequency
+response is a legitimate and reproducible statement, but it is not the
+branch-consistent one, and it must be read next to \cref{tab:controls}.  At
+fixed frequency the backward channel changes from $2.2865\times10^{-2}$ at
+$H/H^{*}=-0.05$ to $2.2658\times10^{-2}$ at $H/H^{*}=+0.05$, a variation of
+\SI{2.1}{\percent}; dissipation rises from $6.9\times10^{-3}$ to
+$1.2\times10^{-2}$; the other propagating modes carry the balance.  Panel (d)
+gives the same information as a relative change against the uncoupled baseline:
+the largest deviation is \SI{-2.11}{\percent} at $H/H^{*}=+0.05$.  When instead
+$k_x$ is held fixed and the frequency follows the branch --- the comparison that
+\cref{tab:controls} performs --- the deviation at the same admissible extreme is
+\SI{-1.21}{\percent}: part of the fixed-frequency variation is the dispersion
+shift of $H$, which is even in $H$ and reaches $6.3\times10^{-5}$ in $\omega$.
 
 \begin{figure}[htbp]
 \centering
@@ -348,11 +356,101 @@ relative change against the uncoupled baseline: the largest deviation is
 of the incident power at $H=0$, logarithmic axis: backward channel
 $2.31\times10^{-2}$, other propagating outgoing modes $0.9767$, dissipation
 $1.99\times10^{-4}$, interference $|P_{\text{cross}}|=4.17\times10^{-6}$.
-(b) The four fractions against $H/H^{*}$.  (c) Relative power balance error with
-the $10^{-6}$ acceptance line.  (d) Relative change of the backward channel with
-respect to $H=0$.  Data: \texttt{fig05\_channel\_power.csv}.}
+(b) The four fractions against $H/H^{*}$ at fixed operating frequency, so that
+the incident wavenumber drifts with $H$; \cref{tab:controls} gives the
+branch-consistent sweep.  (c) Relative power balance error with the $10^{-6}$
+acceptance line.  (d) Relative change of the backward channel with respect to
+$H=0$ at fixed frequency.  Data: \texttt{fig05\_channel\_power.csv}.}
 \label{fig:fig05}
 \end{figure}
+
+\subsection{What creates the backward channel}
+\label{sec:results_mechanism}
+
+The partition quoted above was computed at $H=0$, i.e.\ with the
+carrier--strain-gradient coupling switched off.  The question a reader will ask
+is therefore what, if anything, the added coupling contributes.  It was answered
+with matched controls: every ingredient except the named one is held fixed
+(same $k_x$, same $k_y$, same $n_0$, same $\ell$, same reference plane, same
+unit incident self-power), and the frequency is allowed to follow the branch,
+because switching an ingredient off changes the dispersion and comparing
+solutions taken at different frequencies of a different branch would not be a
+control.  \Cref{tab:controls} lists the outcome; the raw record is
+\texttt{figure\_data/mechanism\_controls.json}.
+
+\begin{table}[t]
+\centering
+\caption{Matched controls at the two reported points.  $R_B$ is the isolated
+backward modal share at the reference plane $L=10d$; $K_B$ is the axial
+wavenumber of the mode the solver identifies as the backward port.  The last row
+removes the strain-gradient sector altogether ($\ell=0$, $f=0$, $H=0$); no
+outgoing mode with $\Real K>0$ and negative axial power exists there, and the
+only negative-power outgoing mode is the specular reflection with
+$K_B=-k_{x,\text{inc}}$ (superscript ``sp''), so the entry in its $R_B$
+column is that mode's self-power and \emph{not} a backward conversion.}
+\label{tab:controls}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Configuration & \multicolumn{2}{c}{Operating point ($k_xd=0.736$)}
+              & \multicolumn{2}{c}{Peak ($k_xd=0.550$)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+ & $f$ (GHz) & $R_B$ & $f$ (GHz) & $R_B$ \\
+\midrule
+full ($f_0$, $H/H^{*}=+0.05$)     & 16.6840 & 0.022\,866 & 16.6549 & 0.522\,107 \\
+$f=f_0$, $H=0$                     & 16.6841 & 0.023\,146 & 16.6550 & 0.579\,180 \\
+$f=0$, $H/H^{*}=+0.05$             & 16.6840 & 0.022\,869 & 16.6549 & 0.522\,153 \\
+$f=0$, $H=0$                       & 16.6841 & 0.023\,148 & 16.6550 & 0.579\,245 \\
+$\ell=0$, $f=0$, $H=0$             & 16.2077 & 0.077\,296$^{\mathrm{sp}}$ & 15.9943 & 0.125\,061$^{\mathrm{sp}}$ \\
+\midrule
+backward port exists? & \multicolumn{2}{c}{yes for the first four rows} & \multicolumn{2}{c}{no for the last row} \\
+$\Real K_B$ (peak, first/last row) & \multicolumn{2}{c}{$+0.5038$} & \multicolumn{2}{c}{$-0.5500=-k_{x,\text{inc}}$} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three statements follow, and they replace the sentence of the earlier version of
+this paper that attributed the strong reflection to the coupling.
+
+First, the coupling is not the origin of the effect.  With $H=0$ the same branch
+returns \SI{2.31}{\percent} at the operating point and \SI{57.92}{\percent} at
+the zero-group-velocity point.  The whole of the reported partition is already
+present in the strain-gradient piezoelectric-semiconductor model, and the
+coupling can only modify it.
+
+Second, the modification is small and it is quantified.  Turning $H$ on at the
+tabulated extreme $|H|=0.05H^{*}$ \emph{reduces} the partition, by
+\SI{1.21}{\percent} at the operating point and \SI{9.85}{\percent} at the peak;
+turning the flexoelectric coefficient on at $f_0=\SI{1}{\nano\coulomb\per
+\metre}$ changes it by \SI{-0.011}{\percent} at both points.  The mechanism of
+the reduction is visible in \cref{tab:controls}'s source data: $H$ increases the
+attenuation of the backward mode, whose axial decay rate rises from
+$4.5\times10^{-5}$ to $3.1\times10^{-3}$ per unit thickness at the peak, so a
+larger part of the conversion is lost between the edge and the reference plane.
+Referred to the edge plane the reduction is \SI{4.1}{\percent} rather than
+\SI{9.9}{\percent}; the remaining \SI{5.8}{} points are propagation loss.  The
+branch-consistent sweep is monotone in $|H|$ and is collected in
+\texttt{figure\_data/mechanism\_controls.json} (\texttt{branch\_consistent\_H\_
+sweep}): at the peak $R_B=0.579\,18$, $0.561\,78$, $0.522\,11$ for
+$H/H^{*}=0$, $+0.025$, $+0.05$ and $0.573\,99$, $0.546\,27$ for
+$-0.025$, $-0.05$.
+
+Third, the strain-gradient sector is necessary.  When $\ell=0$ the higher-order
+branch is gone: the sagittal spectrum of the classical piezoelectric-semiconductor
+plate has no outgoing mode with positive axial wavenumber and negative axial
+power, the solver's target heuristic falls back on the specular reflection whose
+wavenumber is exactly $-k_{x,\text{inc}}$, and the negative-reflection question
+ceases to be well posed.  This is why the last row of \cref{tab:controls} is
+printed with the superscript ``sp'' rather than quoted as a conversion.
+
+The reading of the whole set is therefore the following.  The negative
+reflection is a property of the higher-order guided branch: strain-gradient
+elasticity provides a branch on which the energy flux can travel opposite to the
+phase, the free edge converts into it, and the conversion is largest where the
+branch group velocity vanishes.  The carrier dynamics determine the attenuation
+of both branches and therefore the observed value at a finite reference plane.
+The added carrier--strain-gradient coupling perturbs this picture; it does not
+create it.
 
 \subsection{Distance, survival and attenuation}
 \label{sec:results_attenuation}
@@ -403,13 +501,19 @@ $0.05\le k_yd\le0.20$ and $-0.05\le H/H^{*}\le0.05$, the backward channel ranges
 from $0.01896$ to $0.02560$.  Panel (a) shows that the transverse wavenumber
 alone accounts for almost all of that range: the five coupling curves are
 displaced but their common slope is set by $k_y$.  Panels (c) and (d) quantify
-the displacement: against $H/H^{*}$ the relative change is at most
-\SI{2.44}{\percent}, and against $k_y$ it is a slow drift that never exceeds the
-same bound.  The ratio of the two sensitivities is the quantitative statement of
-this paper about the added coupling: $k_y$ changes the backward channel by a
-factor of $1.35$ across the box, while $H$ changes it by at most
-\SI{2.4}{\percent}.  The coupling is a perturbation of the partition and not its
-organising parameter.
+the displacement: against $H/H^{*}$ at fixed operating frequency the relative
+change is at most \SI{2.44}{\percent}, and against $k_y$ it is a slow drift that
+never exceeds the same bound.  The ratio of the two sensitivities is the
+quantitative statement of this paper about the added coupling: $k_y$ changes the
+backward channel by a factor of $1.35$ across the box, while $H$ changes it by
+at most \SI{2.4}{\percent} at fixed frequency and by \SI{1.21}{\percent} in the
+branch-consistent comparison of \cref{tab:controls}.  The coupling is a
+perturbation of the partition and not its organising parameter.  The comparison
+must be made at fixed $k_x$, because it is the branch and not the coupling that
+organises the partition; the two sensitivities do meet, however, at the
+zero-group-velocity point, where the branch-consistent coupling effect grows to
+\SI{9.85}{\percent} (\cref{tab:controls}) while the $k_y$ factor stays at
+$1.35$.
 
 Panel (b) draws the measured $5\times19$ grid cell by cell, with no
 interpolation beyond the computational box and no smoothing between the five

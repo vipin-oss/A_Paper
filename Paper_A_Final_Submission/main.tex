@@ -1,6 +1,7 @@
 % ===========================================================================
-%  Paper A -- Negative reflection of guided waves in a flexoelectric
-%  piezoelectric-semiconductor plate with carrier-strain-gradient coupling
+%  Paper A -- Negative reflection of guided waves at a free edge in a
+%  flexoelectric piezoelectric-semiconductor plate: the strain-gradient
+%  backward branch
 %
 %  Build:  pdflatex main && bibtex main && pdflatex main && pdflatex main
 %
@@ -8,8 +9,8 @@
 %  correction had no TeX installation available, so the source below was
 %  validated statically (balanced environments, every \cite key resolved
 %  against references.bib, every \ref matched to a \label, every figure file
-%  present, no undefined macros) but was NOT compiled.  See
-%  PAPER_A_FINAL_SCIENTIFIC_CORRECTION_AND_Q1_AUDIT.md, item J.
+%  present, no undefined macros) but was NOT compiled.  See the round-4
+%  report PAPER_A_FINAL_SCIENTIFIC_AUDIT.md, section 11.
 % ===========================================================================
 \documentclass[10pt,a4paper]{article}
 
@@ -42,8 +43,9 @@
 \DeclareMathOperator{\Real}{Re}
 \DeclareMathOperator{\Imag}{Im}
 
-\title{\bfseries Negative reflection of guided waves in a flexoelectric
-piezoelectric--semiconductor plate with carrier--strain-gradient coupling}
+\title{\bfseries Negative reflection of guided waves at a free edge in a
+flexoelectric piezoelectric--semiconductor plate: the strain-gradient backward
+branch}
 
 \author{Vipin Kumar\textsuperscript{*}\\[2pt]
 \small Department of Applied Mechanics, Indian Institute of Technology Delhi,
@@ -75,9 +77,10 @@ matching of outgoing modes.
 
 Two features of the executed model are stated at the outset because they bound
 every number below.  First, the electrostatic reduction is justified at the
-operating point rather than assumed: the plate is $d/\lambda_{\mathrm{EM}}=2.2
-\times10^{-4}$ electromagnetic wavelengths thick and the wave travels at
-$v_p/c=9.4\times10^{-5}$, so retardation is negligible, whereas
+operating point rather than assumed: the plate is $d/\lambda_{\mathrm{EM}}=3.52
+\times10^{-5}$ electromagnetic wavelengths thick ($k_{\mathrm{EM}}d=2.2\times
+10^{-4}$) and the wave travels at $v_p/c=9.4\times10^{-5}$, so retardation is
+negligible, whereas
 $\omega\tau_d=1.65\times10^{3}$ shows that the carriers are strongly retarded
 and the full drift--diffusion dynamics is retained.  Second, the flexoelectric
 coefficient is held at a subdominant synthetic value
@@ -99,11 +102,20 @@ $|\cos\theta_E|=0.97$).  Both numbers are \emph{modal partitions} of the
 outgoing flux and not total reflectances: at the operating point the total
 outgoing propagating power is $0.99985$ of the incident power, so the remaining
 propagating outgoing branches carry the difference; near the peak that total is
-$0.9988$.  The carrier--strain-gradient
-coupling $H$ shifts the backward channel by at most \SI{2.4}{\percent}, whereas
-the transverse wavenumber $k_y$ changes it by a factor of 1.35 over the solved
-box; the effect reported here is therefore a slow-mode edge effect that the
-coupling modulates, not a resonance of the coupling term alone.  The energy
+$0.9988$.  The carrier--strain-gradient coupling $H$ is not what produces this
+conversion: with $H=0$ the same branch already returns \SI{2.31}{\percent} and
+\SI{57.9}{\percent}, and switching the coupling on at its tabulated extreme
+($|H|=0.05H^{*}=\SI{2.0e-23}{\joule\metre}$) changes the two values by
+\SI{-1.2}{\percent} and \SI{-9.9}{\percent}, while the flexoelectric coefficient
+changes them by \SI{-0.01}{\percent}.  When the strain-gradient sector itself is
+removed the backward branch disappears: no outgoing mode with positive axial
+wavenumber and negative axial power survives, and the only negative-power
+outgoing mode is the specular reflection at $K=-k_{x,\text{inc}}$.  The
+conversion is therefore a property of the higher-order guided branch, largest
+where its group velocity vanishes, and the added coupling is a perturbation of
+it.  The transverse wavenumber $k_y$ changes the partition by a factor of 1.35
+over the solved box, so the partition is organised by the branch and the
+geometry rather than by the coupling constant.  The energy
 budget is closed on the exact identity
 $P_{\text{inc}}+\sum_jP_j+P_{\text{cross}}=P_{\text{edge}}-P_{\text{diss}}$
 with a residual of $7\times10^{-13}$, and the reactive content of the

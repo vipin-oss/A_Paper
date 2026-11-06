@@ -1,8 +1,36 @@
-# Paper A Complete Research Package
+# Paper A — round-4 review package
 
-**Fixed topic:** Negative reflection of guided waves in a flexoelectric piezoelectric-semiconductor plate with carrier–strain-gradient coupling.
+**Fixed topic:** negative reflection of guided waves at a free edge in a
+flexoelectric piezoelectric–semiconductor plate: the strain-gradient backward
+branch.
 
-This package is a static review bundle of the existing repository results. It contains no new model, no manuscript, no retraining and no rerun. `paper_a_study/` is the focused current result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their retained evidence.
+**Read first:** `PAPER_A_FINAL_SCIENTIFIC_AUDIT.md` (round-4 audit of issues
+A–F and sections 9–11, with the six required evidence fields per issue).
+
+**Manuscript:** `Paper_A_Final_Submission/main.tex` — one authoritative tree,
+seven section files, eleven verified bibliography entries, ten vector PDF
+figures, `MANIFEST.json`, `static_validation.txt`.  It is statically validated
+and **not compiled**: no TeX engine is available in the authoring environment.
+Build with `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
+
+**Round-4 changes in one paragraph.** The phase speed in the governing-equations
+section is corrected from 2.8 to 28.0 km/s; the electromagnetic wavelength is
+corrected from 0.905 mm (which is `1/k_EM`) to 5.68 mm, with `d/λ_EM = 3.52e−5`
+and `k_EM d = 2.2e−4` now distinguished; the attribution of the strong negative
+reflection is corrected — matched controls show the whole 57.9 % exists with
+`H = 0`, that removing the strain-gradient sector removes the backward branch,
+and that the added carrier–strain-gradient coupling changes the partition by
+−1.21 % at the operating point and −9.85 % at the zero-group-velocity peak;
+the novelty comparison against Qu et al. (IJES 208 (2025) 104165) is made
+equation by equation against the free-energy decomposition that could be
+inspected, and remains `unresolved` for priority; a corner-sensitive diagnostic
+is added and recorded as an unresolved limitation; the undefined `H*`
+normalisation is defined and separated from `H_ref`.
+
+This package is a static review bundle of the existing repository results. It
+contains no new model and no retraining. `paper_a_study/` is the focused current
+result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their
+retained evidence.
 
 ## Read in this order
 

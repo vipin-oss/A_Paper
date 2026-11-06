@@ -1,0 +1,116 @@
+{
+  "band": 0.4,
+  "note": "x=0 plane, coherent modal sum, lam^2|grad eps|_C^2",
+  "cases": {
+    "operating_point": {
+      "rows": [
+        {
+          "degree": 18,
+          "R_B": 0.5443974821039637,
+          "frequency_Hz": 16684123136.368275,
+          "total": 1.0093417551475028,
+          "corner_band": 0.02151229949889286,
+          "corner_share": 0.02131319683267151,
+          "corner_peak_over_mean": 0.2055874861492847,
+          "inner_share": 0.9786868031673285
+        },
+        {
+          "degree": 22,
+          "R_B": 0.5443974264088953,
+          "frequency_Hz": 16684123136.368984,
+          "total": 1.0093417239189049,
+          "corner_band": 0.021513889234018112,
+          "corner_share": 0.021314772513799932,
+          "corner_peak_over_mean": 0.2061006420654121,
+          "inner_share": 0.9786852274862
+        },
+        {
+          "degree": 26,
+          "R_B": 0.5443974090250963,
+          "frequency_Hz": 16684123136.36805,
+          "total": 1.0093417118020915,
+          "corner_band": 0.02152018597870868,
+          "corner_share": 0.021321011236408994,
+          "corner_peak_over_mean": 0.2060004686933492,
+          "inner_share": 0.978678988763591
+        },
+        {
+          "degree": 30,
+          "R_B": 0.5443974025053306,
+          "frequency_Hz": 16684123136.364054,
+          "total": 1.009341706915773,
+          "corner_band": 0.02014903841795428,
+          "corner_share": 0.019962554088370457,
+          "corner_peak_over_mean": 0.19976986792845497,
+          "inner_share": 0.9800374459116296
+        }
+      ],
+      "R_B_spread_rel": 1.4621419689035861e-07,
+      "corner_share_range": [
+        0.019962554088370457,
+        0.021321011236408994
+      ],
+      "corner_share_drift_rel": -0.06337119461265525,
+      "corner_peak_over_mean_range": [
+        0.19976986792845497,
+        0.2061006420654121
+      ],
+      "corner_peak_drift_rel": -0.028297530797206944
+    },
+    "peak": {
+      "rows": [
+        {
+          "degree": 18,
+          "R_B": 0.5791799738503958,
+          "frequency_Hz": 16654976049.28496,
+          "total": 2.3669059062707545,
+          "corner_band": 0.029915194962023214,
+          "corner_share": 0.012638945588317426,
+          "corner_peak_over_mean": 0.12614150518304817,
+          "inner_share": 0.9873610544116825
+        },
+        {
+          "degree": 22,
+          "R_B": 0.5791800334428877,
+          "frequency_Hz": 16654976049.283886,
+          "total": 2.3669047916551893,
+          "corner_band": 0.029915374024587806,
+          "corner_share": 0.012639027192837706,
+          "corner_peak_over_mean": 0.12645502685064702,
+          "inner_share": 0.9873609728071623
+        },
+        {
+          "degree": 26,
+          "R_B": 0.5791800513268939,
+          "frequency_Hz": 16654976049.285847,
+          "total": 2.366904445530573,
+          "corner_band": 0.029925713793787882,
+          "corner_share": 0.012643397518770402,
+          "corner_peak_over_mean": 0.12640676061092262,
+          "inner_share": 0.9873566024812296
+        },
+        {
+          "degree": 30,
+          "R_B": 0.579180058557786,
+          "frequency_Hz": 16654976049.285744,
+          "total": 2.3669043136007026,
+          "corner_band": 0.0279346007266589,
+          "corner_share": 0.011802167314555613,
+          "corner_peak_over_mean": 0.12204518966960322,
+          "inner_share": 0.9881978326854444
+        }
+      ],
+      "R_B_spread_rel": 1.4625399000109053e-07,
+      "corner_share_range": [
+        0.011802167314555613,
+        0.012643397518770402
+      ],
+      "corner_share_drift_rel": -0.06620633564047256,
+      "corner_peak_over_mean_range": [
+        0.12204518966960322,
+        0.12645502685064702
+      ],
+      "corner_peak_drift_rel": -0.03247397046278031
+    }
+  }
+}

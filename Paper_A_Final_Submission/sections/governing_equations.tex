@@ -249,15 +249,18 @@ by a generic statement about small devices.
 
 \emph{Retardation.}  At $f=\SI{16.68}{\giga\hertz}$ ($\omega=\SI{1.048e11}{%
 \per\second}$) and with the relative permittivity $\kappa_{33}/\varepsilon_0=10$
-of ZnO, the electromagnetic wavelength in the medium is
-$\lambda_{\mathrm{EM}}=c/(\omega\sqrt{\kappa_r})=\SI{0.905}{\milli\metre}$.
-The plate is $d=\SI{200}{\nano\metre}$ thick, so
-$d/\lambda_{\mathrm{EM}}=2.2\times10^{-4}$ and the neglected retardation
-correction is of order $(d/\lambda_{\mathrm{EM}})^2=4.9\times10^{-8}$.  The same
-conclusion follows from the wave itself: its phase speed is
-$v_p=(\omega/|\vect{k}|)=\SI{2.8}{\kilo\metre\per\second}$, i.e.\
+of ZnO, the electromagnetic wavenumber in the medium is
+$k_{\mathrm{EM}}=\omega\sqrt{\kappa_r}/c=\SI{1.106e3}{\per\metre}$, so that
+$\lambda_{\mathrm{EM}}=2\pi/k_{\mathrm{EM}}=v_{\mathrm{EM}}/f=\SI{5.68}{%
+\milli\metre}$ while $1/k_{\mathrm{EM}}=\SI{0.905}{\milli\metre}$.  The plate is
+$d=\SI{200}{\nano\metre}$ thick, hence $d/\lambda_{\mathrm{EM}}=3.52\times10^{-5}$
+and $k_{\mathrm{EM}}d=2.2\times10^{-4}$; the retardation correction is
+controlled by $k_{\mathrm{EM}}d$ and not by $d/\lambda_{\mathrm{EM}}$, and it is
+of order $(k_{\mathrm{EM}}d)^2=4.9\times10^{-8}$.  The same conclusion follows
+from the wave itself: its phase speed is
+$v_p=(\omega/|\vect{k}|)=\SI{28.0}{\kilo\metre\per\second}$, i.e.\
 $v_p/c=9.4\times10^{-5}$, so the magnetic energy is smaller than the electric
-energy by $(v_p/c)^2\approx9\times10^{-9}$.  The quasistatic reduction is
+energy by $(v_p/c)^2\approx8.8\times10^{-9}$.  The quasistatic reduction is
 therefore not a limitation of this work at the reported operating points.
 
 \emph{Carrier relaxation.}  The opposite conclusion holds for the carriers, and
@@ -446,3 +449,17 @@ to run outside it.  All reported solutions have
 $|H|\le\SI{2.0e-23}{\joule\metre}=0.022\,H_{\text{bound}}$, i.e.\ $s\le
 5\times10^{-4}$: the enthalpy is strictly convex with a margin of more than two
 thousand, and no reported result sits near a constitutive instability.
+
+The figures normalise the coupling by
+$H^{*}=H_{\text{bound}}/\sqrt5=\SI{4.01e-22}{\joule\metre}$, which is the value
+at which $s=0.2$; the normalisation is a plotting convention with no physical
+content beyond fixing the swept interval $|H/H^{*}|\le0.05$, that is
+$|H|\le2.0\times10^{-23}\,\si{\joule\metre}$, the tabulated extreme.  The
+separate symbol $H_{\mathrm{ref}}=d\sqrt{a\,c_{44}}=\SI{1.89e-21}{%
+\joule\metre}$ used in \cref{tab:configurations} is the thickness-based
+reference of \eqref{eq:enthalpy}; it is not the plotting normalisation, and the
+two should not be interchanged.  No strain-gradient elasticity measurement for
+ZnO fixes any of $\ell$, $f$ or $H$, so the reported intervals are modelling
+choices and carry no experimental uncertainty; the numerical uncertainty of a
+reported $R_B$ is its refinement spread, below $10^{-6}$ in relative terms
+(\cref{tab:refinement}).

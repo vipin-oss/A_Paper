@@ -48,7 +48,11 @@ def main() -> int:
 
     sigma_e = q * mu * n0              # conductivity, S/m
     tau_dielectric = kap33 / sigma_e   # charge relaxation time, s
-    lambda_em = c0 / (omega * np.sqrt(kap_r))
+    # lambda_EM = 2 pi c/(omega sqrt(kappa_r)) = v_EM/f.  The prefactor 2 pi
+    # matters: without it the expression is 1/k_EM, not the wavelength.  Both
+    # quantities are recorded because retardation is controlled by k_EM d.
+    k_em = omega * np.sqrt(kap_r) / c0
+    lambda_em = 2 * np.pi / k_em
     v_p = omega / k
 
     out = {
@@ -62,11 +66,15 @@ def main() -> int:
         "implied_temperature_K": float(T),
         # retardation
         "em_wavelength_m": float(lambda_em),
+        "em_wavenumber_per_m": float(k_em),
+        "inverse_em_wavenumber_m": float(1.0 / k_em),
         "d_over_lambda_em": float(d / lambda_em),
+        "k_em_times_d": float(k_em * d),
         "kd_over_c_omega": float(k / (omega / c0) if False else k * c0 / omega),
         "phase_speed_m_per_s": float(v_p),
         "phase_speed_over_c": float(v_p / c0),
-        "retardation_error_order": float((d / lambda_em) ** 2),
+        "retardation_error_order": float((k_em * d) ** 2),
+        "d_over_lambda_em_squared": float((d / lambda_em) ** 2),
         # carrier relaxation (NOT assumed instantaneous)
         "dielectric_relaxation_time_s": float(tau_dielectric),
         "omega_tau_dielectric": float(omega * tau_dielectric),
@@ -81,10 +89,12 @@ def main() -> int:
     print(f"  frequency                          {freq/1e9:.3f} GHz")
     print(f"  conductivity                       {sigma_e:.3f} S/m")
     print(f"  relative permittivity              {kap_r:.2f}")
-    print(f"  EM wavelength in the medium        {lambda_em*1e3:.3f} mm")
+    print(f"  EM wavelength in the medium        {lambda_em*1e3:.4f} mm")
+    print(f"  EM wavenumber k_EM                 {k_em:.4e} 1/m  (1/k_EM = {1e3/k_em:.4f} mm)")
     print(f"  d / lambda_EM                      {d/lambda_em:.3e}")
+    print(f"  k_EM * d                           {k_em*d:.3e}")
     print(f"  phase speed / c                    {v_p/c0:.3e}")
-    print(f"  (d/lambda_EM)^2                    {(d/lambda_em)**2:.3e}")
+    print(f"  (k_EM d)^2  retardation order      {(k_em*d)**2:.3e}")
     print(f"  omega * tau_dielectric             {omega*tau_dielectric:.3f}"
           "   (carrier response is NOT instantaneous)")
     print(f"  tau_dielectric / period            {tau_dielectric/period:.3f}")
@@ -94,7 +104,7 @@ def main() -> int:
     (DATA / "quasistatic_audit.json").write_text(json.dumps(out, indent=2))
     print("wrote", DATA / "quasistatic_audit.json")
 
-    ok = (d / lambda_em) < 1e-3 and (v_p / c0) ** 2 < 1e-6
+    ok = (k_em * d) < 1e-3 and (v_p / c0) ** 2 < 1e-6
     print("RESULT:", "PASS" if ok else "FAIL")
     return 0 if ok else 1
 
