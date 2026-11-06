@@ -54,7 +54,7 @@ Status: **PASS** (4/4)
 |---|---|---|
 | H values present | PASS | [-0.05, -0.025, 0.0, 0.025, 0.05] |
 | R_B positive | PASS | [0.022864467939464526, 0.023101260643054032, 0.023145619204273885, 0.02299642239541999, 0.0226575044141918] |
-| pdf text present | PASS | 342 chars |
+| pdf text present | PASS | 384 chars |
 | all panels labeled | PASS | a,b,c,d present |
 
 Evidence: R_B range 0.022658-0.023146; modal-power columns present.
@@ -67,7 +67,7 @@ Status: **PASS** (5/5)
 | incident attenuation length positive | PASS | min=2.999e-01 max=1.851e+01 |
 | backward attenuation length positive | PASS | min=2.301e-01 max=1.912e+01 |
 | incident survival finite | PASS | max=28.060 |
-| pdf text present | PASS | 430 chars |
+| pdf text present | PASS | 488 chars |
 | all panels labeled | PASS | a,b,c,d present |
 
 Evidence: incident attenuation length 2.999e-01-1.851e+01 mm; backward attenuation length 2.301e-01-1.912e+01 mm.
@@ -78,7 +78,7 @@ Status: **PASS** (3/3)
 | Check | Result | Evidence |
 |---|---|---|
 | R_B positive | PASS | min=1.303e-02 max=1.926e-02 |
-| pdf text present | PASS | 464 chars |
+| pdf text present | PASS | 479 chars |
 | all panels labeled | PASS | a,b,c,d present |
 
 Evidence: R_B edge range 1.303e-02-1.926e-02; coupling grid rows 95.
@@ -113,7 +113,7 @@ Status: **PASS** (4/4)
 |---|---|---|
 | two planes | PASS | 2 planes |
 | centroids finite | PASS | [-7.867235290621322e-07, -2.0891013992957306e-05] |
-| pdf text present | PASS | 834 chars |
+| pdf text present | PASS | 844 chars |
 | all panels labeled | PASS | a,b,c,d present |
 
 Evidence: two field planes; backward centroid y [-7.867235290621322e-07, -2.0891013992957306e-05].

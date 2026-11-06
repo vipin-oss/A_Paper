@@ -86,7 +86,7 @@ def temporal_sweep(plates, etas):
                 FWHM_MHz=-2 * np.imag(omega) * p.fscale / 1e6,
                 omega_real=float(omega.real), omega_imag=float(omega.imag),
                 phase_speed_m_s=phase, group_speed_m_s=group, energy_speed_m_s=energy_mag,
-                attenuation_dB_m=-2 * abs(np.imag(kk)) * SCALE / np.pi,
+                attenuation_dB_m=-2 * np.imag(omega) * SCALE / np.pi,
                 mass_MAC=float(mode["MAC"]),
                 maximum_growth=float(mode["maximum_growth"])))
     return rows
@@ -108,7 +108,7 @@ def material_sweep():
             rows.append(dict(parameter="n0", value_SI=float(n0), K=float(K),
                              frequency_GHz=mode["omega"].real * p.fscale / 1e9,
                              R_B=float(r["backward_reflection_self_power"]),
-                             attenuation_dB_m=float(-2 * np.imag(np.sqrt(complex(K)**2 + KY0**2)) * SCALE / np.pi),
+                             attenuation_dB_m=float(-2 * mode["omega"].imag * SCALE / np.pi),
                              status="sourced bulk Hall sector plus sensitivity sweep"))
     for M in mobilities:
         Dn = D0n * M / 0.0175
@@ -121,7 +121,7 @@ def material_sweep():
             rows.append(dict(parameter="M", value_SI=float(M), K=float(K),
                              frequency_GHz=mode["omega"].real * p.fscale / 1e9,
                              R_B=float(r["backward_reflection_self_power"]),
-                             attenuation_dB_m=float(-2 * np.imag(np.sqrt(complex(K)**2 + KY0**2)) * SCALE / np.pi),
+                             attenuation_dB_m=float(-2 * mode["omega"].imag * SCALE / np.pi),
                              status="sourced bulk Hall sector plus sensitivity sweep"))
     return rows
 
@@ -187,13 +187,13 @@ def channel_power_sweep(plates, etas):
         neg = with_power & (powers < 0)
         forward = float(np.sum((amplitudes[pos]**2).real * powers[pos] * np.exp(2 * K[pos].imag * distances[pos])))
         backward = float(np.sum(np.abs(amplitudes[neg])**2 * np.abs(powers[neg]) *
-                               np.exp(2 * np.abs(K[neg].imag) * distances[neg])))
+                               np.exp(-2 * np.abs(K[neg].imag) * distances[neg])))
         rows.append(dict(
             eta=float(eta), R_B_2um=float(r["backward_reflection_self_power"]),
             incident_self_power=float(r["incident_power_left"]),
             forward_outgoing_fraction=forward / max(r["incident_power_left"], 1e-30),
             backward_outgoing_fraction=backward / max(r["incident_power_left"], 1e-30),
-            total_outgoing_fraction=float(-r["total_outgoing_self_power"] / r["incident_power_left"]),
+            total_outgoing_fraction=float(abs(r["total_outgoing_self_power"]) / r["incident_power_left"]),
             negative_power_mode_count=int(np.sum(powers < 0)),
             outgoing_modes=int(r["outgoing_modes"]),
             power_balance_error=float(r["power_balance_relative"])))
@@ -209,6 +209,8 @@ def attenuation_sweep(plates, etas):
         R0 = float(r["backward_reflection_self_power"])
         ki=complex(r["incident_K"]);kb=complex(r["backward_K"])
         i_att=ki.imag;b_att=kb.imag
+        inc_len_mm = p.d / (2 * max(abs(i_att), 1e-30)) * 1e3
+        back_len_mm = p.d / (2 * max(abs(b_att), 1e-30)) * 1e3
         for L in distances:
             decay_b = np.exp(2 * b_att * float(L) / p.d)
             decay_i = np.exp(2 * i_att * float(L) / p.d)
@@ -217,6 +219,8 @@ def attenuation_sweep(plates, etas):
                 R_B_isolated=R0 * decay_b, incident_survival=decay_i,
                 attenuation_backward_dB_m=-2 * abs(b_att) * SCALE / np.pi,
                 attenuation_incident_dB_m=-2 * abs(i_att) * SCALE / np.pi,
+                attenuation_length_incident_mm=inc_len_mm,
+                attenuation_length_backward_mm=back_len_mm,
                 power_balance_error=float(r["power_balance_relative"])))
     return rows
 
@@ -467,12 +471,14 @@ def main():
     etas5 = [-0.05, 0.0, 0.05]
     for eta in etas5:
         sel = [r for r in rows if float(r["eta"]) == eta]
-        ax[0].plot([float(r["eta"]) for r in sel], [float(r["R_B_2um"]) * 100 for r in sel], **h_style(eta))
-        ax[1].plot([float(r["eta"]) for r in sel], [float(r["negative_power_mode_count"]) for r in sel], **h_style(eta))
-        ax[2].plot([float(r["eta"]) for r in sel], [float(r["backward_outgoing_fraction"]) * 100 for r in sel], **h_style(eta))
-        ax[3].plot([float(r["eta"]) for r in sel], [float(r["total_outgoing_fraction"]) * 100 for r in sel], **h_style(eta))
+        ax[0].plot([float(r["eta"]) for r in sel], [float(r["R_B_2um"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
+        ax[1].plot([float(r["eta"]) for r in sel], [float(r["negative_power_mode_count"]) for r in sel], marker="o", markersize=5, **h_style(eta))
+        ax[2].plot([float(r["eta"]) for r in sel], [float(r["backward_outgoing_fraction"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
+        ax[3].plot([float(r["eta"]) for r in sel], [float(r["total_outgoing_fraction"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
+    handles5 = [plt.Line2D([], [], color=H_COLORS[e], linestyle=H_LINES[e], marker="o", markersize=5, label=H_LABELS[e]) for e in etas5]
+    ax[0].legend(handles=handles5, loc="lower left")
     for a, title, ylabel in zip(ax, ["(a)", "(b)", "(c)", "(d)"],
-                                ["$R_B$", "Backward modes", "Negative-power fraction (%)", "Total outgoing fraction (%)"]):
+                                ["$R_B$ (%)", "Backward modes", "Negative-power fraction (%)", "Total outgoing fraction (%)"]):
         a.set_xlabel("$H/H^*$"); a.set_ylabel(ylabel); label_panel(a, title); a.grid(True, alpha=0.75)
     fig.suptitle("Reflection-channel conversion and modal energy", fontweight="bold")
     save_figure(fig, "fig05_channel", FIGURE_DIR)
@@ -507,16 +513,17 @@ def main():
     ax3=fig.add_subplot(2,2,1,projection="3d")
     eta_mesh,ky_mesh=np.meshgrid(np.array(etas7),np.array(kys),indexing='ij')
     surf=ax3.plot_surface(eta_mesh,ky_mesh,R_edge*100,cmap="viridis",linewidth=0,antialiased=True)
-    ax3.set_xlabel("$H/H^*$");ax3.set_ylabel("$k_y d$");ax3.set_zlabel("$R_B$ edge (%)");ax3.view_init(elev=22,azim=-55)
+    ax3.set_xlabel("$H/H^*$");ax3.set_ylabel("$k_y d$");ax3.set_zlabel("$R_B$ edge (%)");ax3.view_init(elev=22,azim=-55);ax3.set_title("(a) 3D surface",fontsize=10)
+    label_panel(ax3,"(a)")
     fig.colorbar(surf,ax=ax3,shrink=.55,label="$R_B$ edge (%)")
     ax2=fig.add_subplot(2,2,2);c=ax2.contourf(ky_mesh,eta_mesh,R_edge*100,cmap="plasma")
-    ax2.set_xlabel("$k_y d$");ax2.set_ylabel("$H/H^*$");fig.colorbar(c,ax=ax2,label="$R_B$ edge (%)")
+    ax2.set_xlabel("$k_y d$");ax2.set_ylabel("$H/H^*$");ax2.set_title("(b) Contour",fontsize=10);fig.colorbar(c,ax=ax2,label="$R_B$ edge (%)");label_panel(ax2,"(b)")
     ax4=fig.add_subplot(2,2,3)
     for eta in etas7:ax4.plot(kys,R_edge[etas7.index(eta)]*100,**h_style(eta))
-    ax4.set_xlabel("$k_y d$");ax4.set_ylabel("$R_B$ edge (%)");ax4.set_title("(c) H slices",fontsize=10);ax4.grid(True,alpha=.75)
+    ax4.set_xlabel("$k_y d$");ax4.set_ylabel("$R_B$ edge (%)");ax4.set_title("(c) H slices",fontsize=10);ax4.grid(True,alpha=.75);label_panel(ax4,"(c)")
     ax1=fig.add_subplot(2,2,4)
     for ky in kys:ax1.plot(etas7,R_edge[:,kys.index(ky)]*100,marker="o",markersize=5,linewidth=2.0)
-    ax1.set_xlabel("$H/H^*$");ax1.set_ylabel("$R_B$ edge (%)");ax1.set_title("(d) $k_y$ slices",fontsize=10);ax1.grid(True,alpha=.75)
+    ax1.set_xlabel("$H/H^*$");ax1.set_ylabel("$R_B$ edge (%)");ax1.set_title("(d) $k_y$ slices",fontsize=10);ax1.grid(True,alpha=.75);label_panel(ax1,"(d)")
     fig.suptitle("Carrier-strain-gradient coupling sensitivity",fontweight="bold")
     save_figure(fig,"fig07_coupling",FIGURE_DIR)
     plt.close(fig)

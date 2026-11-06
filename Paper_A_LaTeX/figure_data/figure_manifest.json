@@ -2,7 +2,7 @@
   {
     "file": "fig01_dispersion.pdf",
     "bytes": 32521,
-    "sha256": "e34b6dbda8f4c6ddfbc3623697e4ae4ec68d18bd1c68a209747d45715759ce2b"
+    "sha256": "09c525cccc88b6d478b887efada50b0099d91390390f7d6e8f0e9982c53221fe"
   },
   {
     "file": "fig01_dispersion.png",
@@ -12,12 +12,12 @@
   {
     "file": "fig01_dispersion.svg",
     "bytes": 80598,
-    "sha256": "f2360f69c85b58dc8f77825f091c857ccece525814f22cf81506167e05c40bfe"
+    "sha256": "6d9439180a165f53336d73f7a8c8c0d1cafb3eceda1f0bd79b7a57f2e7787112"
   },
   {
     "file": "fig02_material.pdf",
     "bytes": 27403,
-    "sha256": "9161a6b59c07ea3f545823f57623924016279228bb58f3e92bc337fefa22e000"
+    "sha256": "36857121cdc719615349fd346bde4b32ffa7c7817f9c62381b468ceecffb5566"
   },
   {
     "file": "fig02_material.png",
@@ -27,12 +27,12 @@
   {
     "file": "fig02_material.svg",
     "bytes": 55175,
-    "sha256": "3a600d44bb6af9fbd31d2a20de0917d16428505719485c5d475c7aec4b3ca02c"
+    "sha256": "30d113f378c7aa7d1b76e9c7175127c26d21bb0634c9d4ec2502a58ac569889b"
   },
   {
     "file": "fig03_geometry.pdf",
     "bytes": 32437,
-    "sha256": "35f6958649b4760ff3fccbc4136f648fa8f7ae718eef2db575c3ebf5f06d5cff"
+    "sha256": "c05b9db622e44e3b7b3abbd67cae4b26acbee7acec65b4aecf309d444c661de3"
   },
   {
     "file": "fig03_geometry.png",
@@ -42,12 +42,12 @@
   {
     "file": "fig03_geometry.svg",
     "bytes": 67936,
-    "sha256": "676e03416f5c8491ae66783148d22279ed6e51a3dc8267979a4e4faaec892488"
+    "sha256": "1d47467772bc37b579c5dc4c4c60991abf4e5108c90a2f1e04c678c38e04d168"
   },
   {
     "file": "fig04_frequency.pdf",
     "bytes": 30383,
-    "sha256": "2be9b5d275de8aab3737c9f7a156fadc031b6a6cc5a24a1fe83b38d87708c817"
+    "sha256": "3f41c60a9262412f41a845f405a4afbc1efd30600674353c026e736909a74254"
   },
   {
     "file": "fig04_frequency.png",
@@ -57,57 +57,57 @@
   {
     "file": "fig04_frequency.svg",
     "bytes": 63211,
-    "sha256": "66842e3cfee05177b18b666ef731ceb59682ac831e555c8c1a0a0947738ddfa3"
+    "sha256": "88c81f7b2fe259f8fc2db3205112c0500b44d54fa8b3e470c55e60ab793d3f64"
   },
   {
     "file": "fig05_channel.pdf",
-    "bytes": 26098,
-    "sha256": "db2580e5aeaa2e8fbf0154e78e11bbdfb4a20723c1b50258ec0718bef0f2246b"
+    "bytes": 29029,
+    "sha256": "4f96930562897675671a5ae4498c446a586eb3a1f3d1772845caf485a5d8bff9"
   },
   {
     "file": "fig05_channel.png",
-    "bytes": 355443,
-    "sha256": "087471b298823aeeb5fbefa7b45f7f4c56ec909184d76bbfcfe1394033ec53b6"
+    "bytes": 336156,
+    "sha256": "2afe1cc5b1f534813ce4d5e3421694ce755cd6759e9602bed117bd4018dc58fe"
   },
   {
     "file": "fig05_channel.svg",
-    "bytes": 38307,
-    "sha256": "2e7fac03e73175e10d17b44585b3eed0ea5e78d62768d15eac92e56abde18407"
+    "bytes": 45458,
+    "sha256": "b428727a5cb2b1a749bd932249aa8897334deae8a923ae49d05f997b6b51a37d"
   },
   {
     "file": "fig06_attenuation.pdf",
-    "bytes": 24021,
-    "sha256": "ece250681989162616f23705c5ecf732a7b7f9bbede20b84c66abe9b0fb8fe50"
+    "bytes": 24148,
+    "sha256": "c994848abedd637af8865b01e3b97dd9348f39ffb1ad46fceedebe4dea90f21d"
   },
   {
     "file": "fig06_attenuation.png",
-    "bytes": 585407,
-    "sha256": "c694d96ad2b29141ea488f69abb24dd27f7d5fa50ec9dcd13c2117a2cb88a787"
+    "bytes": 678847,
+    "sha256": "6715a8f969ce5ac3c8aa8f657f745c16c2b3a9238b96a1a070ae4849fd0005d6"
   },
   {
     "file": "fig06_attenuation.svg",
-    "bytes": 71083,
-    "sha256": "b1334fa9f5202a741c0466eb608c6d0f3835280b2efa6f2e36048804422e092f"
+    "bytes": 68896,
+    "sha256": "1c1749d6d6e4d9690792c9a3d2c581f50b5d3280b29888621887e337bfd5b00e"
   },
   {
     "file": "fig07_coupling.pdf",
-    "bytes": 32942,
-    "sha256": "6193dd9b5fcd3420f3c2811522ff5726fc0f1a3de6b3a1e601f48701c370cc97"
+    "bytes": 34263,
+    "sha256": "1446685383c83b5943d9eb82f6fb54bbb499102b0c1b7e826ddf05570240acf6"
   },
   {
     "file": "fig07_coupling.png",
-    "bytes": 834663,
-    "sha256": "1128863386528a21e6e8089a04e3ba2d5330efeaa7b44adc3af2f3ad679692d3"
+    "bytes": 843024,
+    "sha256": "15f13852a50d57ee571fe4dd23e3e90bec4a590dc1b38f442d228f58f970c34c"
   },
   {
     "file": "fig07_coupling.svg",
-    "bytes": 82978,
-    "sha256": "2c3ae6010671b4bac8e5e7b51bd100d6be771d4fdcc06d5e5c85f520f9f060af"
+    "bytes": 81815,
+    "sha256": "58f12af7730631920c4941667e06dcf5724f83ba91b4c82723536ac1b0d7411b"
   },
   {
     "file": "fig08_boundary.pdf",
     "bytes": 23545,
-    "sha256": "ff97ad56b873351e0234446cef3acbc50d96fe025a3bc98a8f6626d9f352582f"
+    "sha256": "49c403fefcd363798632d5730638975cdefe2e5aef13f11beb42e8337ec51db8"
   },
   {
     "file": "fig08_boundary.png",
@@ -117,12 +117,12 @@
   {
     "file": "fig08_boundary.svg",
     "bytes": 46209,
-    "sha256": "9555d5b9aa6590351b3980f80f5c6c2694e5c2c1fa4c380139dce0578e809814"
+    "sha256": "6ae609acb97c649a72a03b6836b7082500fe617fb6eee34587d75b4a29a6c095"
   },
   {
     "file": "fig09_validation.pdf",
     "bytes": 24852,
-    "sha256": "f9ce35e58ee18b824beaad3732a13c1483935d6b39b0a680808a6ab1aa7ba9a8"
+    "sha256": "c2a620c4d117d55a3aa4ad3877d46b98f915592c04d21d4c9c375d38bc597f83"
   },
   {
     "file": "fig09_validation.png",
@@ -132,21 +132,21 @@
   {
     "file": "fig09_validation.svg",
     "bytes": 53018,
-    "sha256": "42879a421f191bf689c9c2998cbb349b545d7c1d2bbed65fefb4cb819287a6db"
+    "sha256": "382919ea882aa1183eb12d610663d9b46a5ffabc4e2f61b8bad75626d963cfca"
   },
   {
     "file": "fig10_field.pdf",
-    "bytes": 3543302,
-    "sha256": "69dd6c72e17c9a5f86dfa73222106fe33a4c04ae783323fbba21505cc8c43eea"
+    "bytes": 3554999,
+    "sha256": "b6238610a776f1470e3b672d3882b30d054315f84ea64fbebc223d2ad9dba895"
   },
   {
     "file": "fig10_field.png",
-    "bytes": 630181,
-    "sha256": "893d02e2424eebcbd40f39e1b6648c191786282eb2485d9ec7cac034ee14b8db"
+    "bytes": 627807,
+    "sha256": "5603b44bcf9ce04fd9d3a404be5bd370de3cbda0a165a4e6b03b80d31b0f424b"
   },
   {
     "file": "fig10_field.svg",
-    "bytes": 29583134,
-    "sha256": "73e9fb9a6e91d3b2e187cd1fa340fd4da52ccaf91561e853113262a6e39852d3"
+    "bytes": 29519187,
+    "sha256": "2d32eb3eaa195e5d49adeb714ec4309b1a008ce8c0946fde886a25f2272e36e5"
   }
 ]

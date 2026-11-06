@@ -90,8 +90,12 @@ def h_style(eta: float) -> dict:
 
 def label_panel(axis, label: str) -> None:
     """Place a uniform, non-overlapping subfigure label."""
-    axis.text(-0.035, 1.035, label, transform=axis.transAxes,
-              fontsize=11, fontweight="bold", va="bottom", ha="right")
+    if hasattr(axis, "get_zlim"):
+        axis.text(0.0, 1.02, 0.0, label, transform=axis.transAxes,
+                  fontsize=11, fontweight="bold", va="bottom", ha="left")
+    else:
+        axis.text(-0.035, 1.035, label, transform=axis.transAxes,
+                  fontsize=11, fontweight="bold", va="bottom", ha="right")
 
 
 def save_figure(figure, stem: str, directory, *, dpi: int = 600, rasterize: bool = False) -> None:
