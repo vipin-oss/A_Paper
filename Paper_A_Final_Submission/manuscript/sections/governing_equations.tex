@@ -1,0 +1,101 @@
+\section{Governing equations}\label{sec:governing}
+
+Let \(x_i\) be Cartesian coordinates and let \(u_i(x_1,x_2,x_3,t)\),
+\(\phi(x_1,x_2,x_3,t)\), and \(n(x_1,x_2,x_3,t)\) be the displacement, electric
+potential, and mobile-carrier perturbation. The base concentration is \(n_0\) and
+the perturbation is \(\Delta n=n-n_0\). The small strain is
+\[
+\varepsilon_{ij}=\tfrac12(u_{i,j}+u_{j,i}),
+\qquad
+\varepsilon_{ij,l}=\partial_l\varepsilon_{ij}.
+\]
+
+For a \textit{6mm} crystal with the polar \(c\)-axis along \(x_3\), the ordinary
+elastic, piezoelectric, and dielectric sectors have the standard Voigt forms
+\[
+C=\begin{pmatrix}
+C_{11}&C_{12}&C_{13}&0&0&0\\
+C_{12}&C_{11}&C_{13}&0&0&0\\
+C_{13}&C_{13}&C_{33}&0&0&0\\
+0&0&0&C_{44}&0&0\\
+0&0&0&0&C_{44}&0\\
+0&0&0&0&0&(C_{11}-C_{12})/2
+\end{pmatrix},\quad
+e=\begin{pmatrix}
+0&0&0&0&e_{15}&0\\
+0&0&0&e_{15}&0&0\\
+e_{31}&e_{31}&e_{33}&0&0&0
+\end{pmatrix},\quad
+\kappa=\operatorname{diag}(\kappa_{11},\kappa_{11},\kappa_{33}).
+\]
+The strain-gradient tensor is
+\[
+A_{ijklmn}=\ell^2C_{ijkl}\delta_{mn},
+\]
+with \(\ell>0\). The electrochemical potential auxiliary is eliminated rather than
+treated as an independent physical field.
+
+The retained internal energy density is
+\[
+\begin{aligned}
+w=&\tfrac12C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}
++\tfrac12A_{ijklmn}\varepsilon_{ij,l}\varepsilon_{kl,m}
++e_{kij}\varepsilon_{ij}\phi_{,k}
+-\tfrac12\kappa_{kl}\phi_{,k}\phi_{,l}\\
+&+\Delta n\,H_{jkl}\varepsilon_{jk,l}.
+\end{aligned}
+\]
+The last term is the only additional interaction. Its variation gives the reciprocal
+stress and carrier terms
+\[
+\Delta\tau_{jkl}=H_{jkl}\Delta n,
+\qquad
+\Delta\widetilde{\mu}=H_{jkl}\varepsilon_{jk,l},
+\]
+so that
+\[
+\sigma_{ij}=C_{ijkl}\varepsilon_{kl}
+-\partial_l\tau_{ijkl}
++e_{kij}\phi_{,k},
+\qquad
+\tau_{ijkl}=A_{ijklmn}\varepsilon_{mn,l}+\Delta\tau_{ijkl}.
+\]
+The electric displacement is
+\[
+D_i=e_{ijk}\varepsilon_{jk}-\kappa_{ij}\phi_{,j}.
+\]
+
+The quasistatic field equations are
+\[
+\sigma_{ij,j}-\rho u_i^{,tt}=0,
+\qquad
+D_{i,i}+q\Delta n=0,
+\]
+and the carrier field obeys the drift--diffusion balance
+\[
+\frac{\partial\Delta n}{\partial t}
++\frac1q\nabla\!\cdot\!\mathbf J
+=0,
+\qquad
+\mathbf J=M n\left(-\nabla\widetilde{\mu}\right),
+\qquad
+\widetilde{\mu}=\frac{q\phi}{k_BT}+\frac{\Delta n}{n_0}+\Delta\widetilde{\mu}.
+\]
+For harmonic fields \(u_i=\Re\{\hat u_i\exp[i(k_xx+k_yy-\omega t)]\}\), the
+tangential wavenumber \(k_y\) is conserved at the edge. The present three-displacement
+reduction is a 2.5D Fourier-reduced geometry with a propagation-plane tangential
+component, not strict sagittal plane strain.
+
+Dimensional consistency requires \(C_{ijkl}\) in N/m\(^2\), \(A_{ijklmn}\) in
+N/m\(^2\) (equivalently J/m\(^3\) for the strain-gradient energy), \(e_{ijk}\) in
+C/m\(^2\), \(\kappa_{ij}\) in F/m, \(M\) in m\(^2\)/(V\,s), \(D\) in m\(^2\)/s,
+\(n_0\) in m\(^{-3}\), and \(H_{jkl}\) in J/m. These are the units used by the
+numerical implementation and by \cref{tab:parameters}.
+
+For the synthetic tests below, \(A=\ell^2C\otimes I\), \(\ell=50\,\)nm, and only
+\(H_{333}\) is retained. The \(H\) magnitude is normalized by a strict full-3D
+Schur-stability bound rather than by a measured ZnO tensor. The flexoelectric
+coefficient \(f\) is set to zero in the computed cases; this is an explicitly
+labelled classical-limit control, not a measured vanishing flexoelectric response.
+The retained physical constants and their provenance are listed in
+\cref{tab:parameters}.

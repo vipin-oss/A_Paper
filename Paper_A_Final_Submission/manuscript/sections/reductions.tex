@@ -1,0 +1,78 @@
+\section{Reductions and boundary conditions}\label{sec:reductions}
+
+Three exact reductions are useful for interpreting the full calculation.
+
+\subsection{Classical piezoelectric-semiconductor limit}
+For \(\ell=H=0\), the strain-gradient and carrier--gradient sectors vanish and the
+model reduces to the usual piezoelectric-semiconductor equations with mobile-carrier
+attenuation \cite{hutson1962}. This limit is used as a numerical control; it is not
+a claim that the flexoelectric coefficient is physically zero.
+
+\subsection{Quasi-static electrostatic limit}
+For \(\omega d/c_s\ll1\), where \(c_s=\sqrt{C_{44}/\rho}\), the electric potential
+is eliminated algebraically at each Fourier mode. The model then retains
+mechanical, strain-gradient, and carrier fields without adding an electromagnetic
+radiation mode. The present calculation is in this quasistatic regime.
+
+\subsection{Carrier-drift reduction}
+For \(M=0\), the drift--diffusion operator becomes a diffusion operator and no
+carrier current is generated. This is a control limit, not a physically calibrated
+mobility choice.
+
+\subsection{Variational boundary conditions}
+On the plate faces \(x_3=\pm d/2\), the mechanical faces are traction-free,
+\[
+\sigma_{i3}=0,
+\]
+including the natural corner-line force associated with the strain-gradient term.
+The electrical faces are ideally grounded in the primary case,
+\[
+\phi=0\quad(x_3=\pm d/2),
+\]
+and the corresponding open-circuit comparison uses
+\[
+D_3=0\quad(x_3=\pm d/2).
+\]
+The carrier faces are blocking in the primary case,
+\[
+J_3=0\quad(x_3=\pm d/2),
+\]
+which is imposed on the flux \(\mathbf J\), not by additionally prescribing
+\(\Delta n=0\).
+
+At the edge \(x=0\), the incident and outgoing angular-spectrum fields must satisfy
+the same tangential \(k_y\), the mechanical traction/corner-force balance, the
+electrical potential condition, and the carrier-flux condition. The edge solution
+is obtained by matching all outgoing half-space modes, not by selecting a single
+root. Backward classification requires three independent pieces of evidence: the
+solved outgoing coefficient, negative thickness-integrated energy components, and
+negative power along the physical backward direction. A mode is not classified as
+backward solely from the sign of \(\Re K_x\).
+
+\cref{tab:parameters} summarizes the primary parameters. The carrier pair
+\(n_0=2\times10^{18}\,\)m\(^{-3}\) and \(M=0.0175\,\)m\(^2\)/(V\,s) is taken from a
+primary bulk hydrothermal ZnO Hall measurement with stated transfer assumptions
+\cite{suscavage1999}; the diffusivity is derived from the Einstein relation, not
+measured. The elastic, piezoelectric, dielectric, and base carrier constants are
+the retained literature-model values from Zhang and co-workers \cite{zhang2025}.
+The gradient length and \(H\)-normalized values are synthetic, and the
+flexoelectric coefficient is set to zero in the computed control.
+
+\begin{table}[htbp]
+\centering
+\caption{Retained physical constants and provenance. The literature-model values
+are not a joint same-specimen uncertainty analysis.}
+\label{tab:parameters}
+\begin{tabular}{ll}
+\toprule
+Constant & Value / provenance \\
+\midrule
+\(C_{11},C_{12},C_{13},C_{33},C_{44},C_{66}\) & 210, 121, 105, 221, 43, 44.5 GPa \\
+\(e_{15},e_{31},e_{33}\) & \(-0.48\), \(-0.57\), \(1.32\) C/m\(^2\) \\
+\(\kappa_{11},\kappa_{33}\) & \(7.61\times10^{-11}\), \(8.85\times10^{-11}\) F/m \\
+\(\rho\) & \SI{5700}{\kilogram\per\cubic\metre} \\
+Base \(n_0\), \(M\), \(D\) & \SI{2e18}{\per\cubic\metre}, \SI{0.0175}{\per\volt\per\second}, \SI{4.55e-4}{\square\metre\per\second} \\
+\(\ell\), \(A\), \(H\) & synthetic; \(f=0\) control \\
+\bottomrule
+\end{tabular}
+\end{table}

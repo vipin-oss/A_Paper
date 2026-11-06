@@ -1,0 +1,89 @@
+\section{Numerical method}\label{sec:numerical}
+
+The numerical implementation is a modular Python package. The production model,
+data-generation script, figure-rendering script, and figure-data files are all
+committed in this repository. Figure data are written before rendering, so a plot
+cannot report a number that was not computed and stored.
+
+\subsection{Dimensionless reduction}
+Lengths are scaled by \(d\), time by \(d/c_s\), and frequency by
+\(f_s=c_s/(2\pi d)\). The longitudinal wavenumber is \(K=k_xd\) and the
+conserved tangential wavenumber is \(k_yd\). Physical frequency is obtained from
+the dimensionless frequency by
+\[
+f=\omega f_s,
+\qquad
+\omega=f_s^{-1}\omega_{\mathrm{dimless}}.
+\]
+The primary case uses \(d=\SI{200}{\nano\metre}\), \(n_0=\SI{2e18}{\per\cubic\metre}\),
+\(M=\SI{0.0175}{\per\volt\per\second}\), and the retained \(D\) from the Einstein
+relation.
+
+\subsection{Legendre spectral thickness solver}
+The fields are expanded in Legendre polynomials of order up to \(p=22\), with
+\(23\) nodes for the temporal eigenproblem. Grounded faces are imposed by a
+pinning basis; open electrical faces use the full polynomial basis. The temporal
+problem gives \(\omega(K,k_y)\), the modal mass overlap, and the stability growth
+rate. The spatial problem constructs the canonical \(x\)-state
+\[
+\mathbf Y=\begin{pmatrix}
+u_1,&u_2,&u_3,&\phi,&\Delta n,&
+\sigma_{x1},&\sigma_{x2},&\sigma_{x3},&
+D_x,&J_x
+\end{pmatrix}^{T}.
+\]
+For strain-gradient theory, the first derivatives of \(u_i\) are retained as
+state components so that the fourth-order operator becomes a first-order system.
+
+\subsection{Edge matching}
+At fixed \(k_y\) and \(\omega\), all outgoing modes with
+\(\Im K<0\) are retained. For real \(K\), the power sign determines whether the
+mode carries energy away from the edge. The edge linear system is
+\[
+\mathbf B\mathbf a=-\mathbf b_i,
+\]
+where \(\mathbf B\) contains the outgoing boundary vectors and \(\mathbf b_i\) is
+the incident boundary vector. The system is balanced, solved by singular value
+decomposition, and a rank deficiency is reported as a failed run rather than a
+successful comparison. The edge residual is the scaled norm of the unmatched
+boundary vector.
+
+\subsection{Backward-channel classification}
+A solved outgoing mode is classified as backward only if all of the following hold:
+the solved outgoing coefficient is nonzero; its thickness-integrated energy
+component is negative; its power along the physical backward direction is negative;
+and the mode is not an incident mode. The sign of \(\Re K_x\) is not sufficient.
+\cref{fig:fig05} reports the modal self-flux accounting used for this classification.
+
+\subsection{Energy accounting}
+The thickness-integrated energy is
+\[
+W=\int_{-d/2}^{d/2}\left[
+\tfrac12C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}
++\tfrac12A_{ijklmn}\varepsilon_{ij,l}\varepsilon_{kl,m}
++\tfrac12\kappa_{ij}\phi_{,i}\phi_{,j}
++n_0k_BT\frac{(\Delta n)^2}{n_0^2}
++\Delta n\,H_{jkl}\varepsilon_{jk,l}
+\right]dx_3.
+\]
+The thickness-integrated power flux in direction \(i\) is \(P_i\), with sign
+defined by the physical direction of energy transport. The energy velocity is
+\[
+v_E=\frac{P_x}{W}.
+\]
+In the lossless single-mode limit \(v_E=v_g\). With carrier loss, \(v_E\) is still
+computed from the stored \(P_x\) and \(W\), not from \(|\omega|/|k|\). The primary
+edge power balance is
+\[
+P_{\mathrm{left}}-P_{\mathrm{edge}}-D_{\mathrm{CV}}=0,
+\]
+where \(D_{\mathrm{CV}}\) is the drift--diffusion dissipation in the control
+volume.
+
+\subsection{Convergence and validation}
+Convergence is checked over Legendre degrees \(14,18,22,26\) and spectral
+resolutions \(17,25,33,41,49\). Independent validation includes tensor symmetry,
+the strict Schur-stability bound for the retained \(H\) direction, momentum and
+Gauss residuals, modal power balance, edge residual, control-volume power balance,
+and the classical \(\ell=H=0\) control. The primary-edge results are compared in
+\cref{tab:primary}.

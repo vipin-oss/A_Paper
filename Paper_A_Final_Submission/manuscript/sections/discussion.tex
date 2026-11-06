@@ -1,0 +1,54 @@
+\section{Discussion and limitations}\label{sec:discussion}
+
+\subsection{Interpretation}
+The primary result is a solved backward channel at a free plate edge in a
+piezoelectric-semiconductor plate with the retained carrier--strain-gradient
+coupling. The edge residual and control-volume power balance are at the level of
+machine roundoff, so the edge matching and power accounting are numerically
+consistent. The isolated backward self-power at \SI{2}{\micro\metre} is
+\SI{2.315}{\percent} of the incident self-power for \(H=0\). This is a local
+self-flux ratio at one reference plane, not total reflectance and not a
+broad-angle experimental result.
+
+The \(H\)-normalized cases show a small, monotonic change in the isolated
+backward self-power: \SI{2.286}{\percent} at \(H/H^*=-0.05\), \SI{2.315}{\percent}
+at \(H/H^*=0\), and \SI{2.266}{\percent} at \(H/H^*=+0.05\). The sign of the
+change follows the stored backward self-flux data. No physical calibration of
+\(H\) is claimed.
+
+\subsection{What is validated}
+The retained tensor sectors have the expected \textit{6mm} minor and major
+symmetries. The \(A\) sector is constructed from \(C\otimes I\) and has the
+required major symmetry. The retained \(H\) direction satisfies the strict full-3D
+Schur-stability bound used in the production script. The classical
+\(\ell=H=0\) control reproduces the independent eight-state classical solver within
+the stored tolerance. The edge matching uses SVD and reports rank deficiency as a
+failure.
+
+\subsection{What is not validated}
+The open-boundary electrical runs are singular in all tested cases. They are
+reported as failures, not as successful comparisons. The Qu equivalence and novelty
+question remains unresolved because the primary Appendix C equations were not
+accessible. No first-ever claim is made.
+
+The synthetic \(A\), \(f\), and \(H\) values are not calibrated ZnO constants. The
+retained carrier pair is a primary bulk Hall transfer with stated Hall-to-drift
+and thinning assumptions; the diffusivity is derived from the Einstein relation.
+The base elastic, piezoelectric, dielectric, and carrier constants are literature-model
+values, not a joint same-specimen uncertainty analysis.
+
+\subsection{Mathematical and numerical limitations}
+The three-displacement calculation is a 2.5D Fourier-reduced geometry with a
+propagation-plane tangential component. It is not a strict sagittal plane-strain
+calculation. No full arbitrary 3D edge solution is claimed. Finite-distance H-return
+changes are reported as isolated self-flux transfer and incident self-flux factors;
+edge conversion and propagation attenuation are not generally separable at finite
+distance. The energy velocity is computed from stored \(P_x/W\) values; the earlier
+\(|\omega|/|k|\) representation was corrected.
+
+\subsection{Remaining research gaps}
+A complete negative-reflection study would require a measured or independently
+derived \(H\) tensor, a full calibrated flexoelectric tensor, an open-boundary
+solver that avoids the singular edge system, a broad-angle and multi-frequency
+experimental comparison, and a primary-source comparison with Qu and co-workers.
+These are future work, not established here.

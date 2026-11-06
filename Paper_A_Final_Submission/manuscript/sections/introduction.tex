@@ -1,0 +1,44 @@
+\section{Introduction}
+Guided waves in piezoelectric semiconductors couple mechanical deformation, electric
+potential, and mobile charge. Hutson and White established the basic
+piezoelectric-semiconductor wave model and its carrier-induced attenuation
+\cite{hutson1962}. Mindlin's strain-gradient theory and Toupin's higher-order
+elastic framework provide the mechanical-gradient language used below
+\cite{mindlin1964,toupin1962}, while Yudin and Tagantsev summarize the
+polarization-gradient constitutive view of flexoelectricity \cite{yudin2013}.
+Recent flexoelectric-semiconductor formulations extend this setting to
+strain-gradient/carrier coupling and to wave--particle drag \cite{qu2025,qu2023}.
+
+A free plate edge is a useful, experimentally accessible interface for guided-wave
+mode conversion. Veres and co-workers demonstrated broad-angle negative reflection
+and focusing from a plate edge in an ordinary elastic plate \cite{veres2016}.
+For a piezoelectric semiconductor, the equivalent question is whether the
+electro-mechanical and carrier fields can produce a backward channel whose energy
+flux opposes the phase direction while satisfying the edge conditions.
+
+This manuscript reports a focused mathematical and numerical study of that
+question in an n-type ZnO plate with \textit{6mm} symmetry. The model is a 2.5D
+Fourier-reduced calculation with a propagation-plane tangential component; it is
+not a strict plane-strain sagittal model and it is not a full arbitrary 3D edge
+solution. The retained physical sectors are the classical elastic, piezoelectric,
+dielectric, strain-gradient, electrostatic, and drift--diffusion sectors, together
+with the single additional interaction
+\[
+\Delta H=\Delta n\,H_{jkl}\varepsilon_{jk,l}.
+\]
+The reciprocal terms in the double stress and electrochemical potential are part
+of the same coupling, not additional physics.
+
+The main result is not a claim that the effect is unprecedented. The relation of
+this specific reduction to the primary flexoelectronic equations of Qu and
+co-workers remains unresolved because the primary Appendix C equations were not
+accessible \cite{qu2025}. The manuscript therefore presents the model, the
+numerical evidence, the corrected energy accounting, and the remaining limitations.
+
+The remainder is organized as follows. Section~\ref{sec:governing} derives the
+governing equations and constitutive restrictions. Section~\ref{sec:reductions}
+gives valid reductions and boundary conditions. Section~\ref{sec:numerical}
+describes the spectral method and edge solver. Section~\ref{sec:results} reports
+dispersion, reflection, transfer, and field results. Section~\ref{sec:discussion}
+discusses interpretation, limitations, and validation, and
+Section~\ref{sec:conclusions} concludes.
