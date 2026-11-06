@@ -1,0 +1,49 @@
+{
+  "material": "n-type ZnO, 6mm, c-axis x3",
+  "source": {
+    "doi": "10.1007/s10483-025-3272-7",
+    "location": "Table 1; generalized constitutive law Eqs. (2)-(3)",
+    "url": "https://www.amm.shu.edu.cn/article/2025/0253-4827/0253-4827-2025-07-1331.shtml",
+    "accessed_utc": "2026-11-05",
+    "fang_cross_check": "UNRESOLVED: full parameter table unavailable; not assumed to agree"
+  },
+  "SI": {
+    "c11": 210000000000.0,
+    "c12": 121000000000.0,
+    "c13": 105000000000.0,
+    "c33": 221000000000.0,
+    "c44": 43000000000.0,
+    "c66": 44500000000.0,
+    "e15": -0.48,
+    "e31": -0.57,
+    "e33": 1.32,
+    "kappa11": 7.61e-11,
+    "kappa33": 8.85e-11,
+    "electron_mobility": 0.01,
+    "electron_diffusivity": 0.00026,
+    "rho": 5700.0
+  },
+  "SI_definitions": {
+    "q": 1.602176634e-19,
+    "kB": 1.380649e-23,
+    "epsilon0": 8.8541878188e-12,
+    "epsilon0_note": "CODATA 2022 central value, F/m; used only for explicitly specified vacuum exterior"
+  },
+  "NOT_SOURCED": {
+    "flexoelectric_tensor_C_per_m": null,
+    "strain_gradient_tensor_Pa_m2": null,
+    "H_tensor_J_m": null,
+    "sample_doping_m_minus3": null,
+    "sample_thickness_m": null,
+    "sample_surface_properties": null
+  },
+  "reference_and_synthetic_choices_NOT_measured_material_constants": {
+    "reference_thickness_m": 1e-6,
+    "reference_n0_m_minus3": 1e19,
+    "n0_note": "a modeling scenario also used in Zhang Fig. 2 and Fig. 7; not a measured sample doping",
+    "synthetic_ell_over_d": 0.05,
+    "synthetic_eta_values": [-0.8, -0.5, 0.0, 0.5, 0.8],
+    "synthetic_tensor": "A_(jk l)(mn r) = ell^2 C_jkmn delta_lr; H333 only, set by strict full-3D Schur bound",
+    "flexoelectric_note": "No nonzero flexoelectric coefficient is assigned. f=0 is used ONLY as an explicitly labeled classical-limit diagnostic, not as the finalized fixed model."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "PAPER_A_BLUEPRINT_V2_1.md": "0939739b44d86c7584d3ef869965c70b33fae98df7f0dcda49686b9625dcac75",
+  "a0/dispersion.py": "b7911f36aaca55cab8f83eaeba42ed3039017a63eb6ff555e2f0c983d3d30569",
+  "a0/materials.json": "9fc526afd85b054101e59bbce49eabc32eb9c81bbce756ab04ddd07f223df59e",
+  "a0/constitutive_check.py": "3bd02f04d7e3eed3342e96e845becc747c9a5d37a4fa944eb2354ff7f7f1219e",
+  "a0/run_checks.py": "d220e79900870b0be15bc95e725bde7aa79209e64d18cbf2815570c55ebb03ff",
+  "a0/test_a0.py": "96b05ed924dbf0972f1548ead3512d789b812f1bffee70ec0173fe0fee0081f8"
+}
