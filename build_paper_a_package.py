@@ -34,7 +34,7 @@ ROOT_REPORTS = [
     "PAPER_A_A0_MATERIALS.md",
     "PAPER_A_A0_PRIOR_ART.md",
 ]
-DIRECTORIES = ["a0", "a0r", "a0s", "paper_a_study", "Paper_A_Final_Submission/manuscript"]
+DIRECTORIES = ["a0", "a0r", "a0s", "paper_a_study"]
 PYTHON_ROOT_FILES = ["a0/requirements.txt", "build_paper_a_package.py"]
 
 EXCLUDED = sorted(
@@ -76,9 +76,7 @@ def select_files() -> list[str]:
                 parts = path.relative_to(ROOT).parts
                 if any(part.startswith("__pycache__") or part == "cache" for part in parts):
                     continue
-                if rel.endswith((".pyc", ".pyo", ".npz")):
-                    continue
-                if rel.startswith("Paper_A_Final_Submission/manuscript/figure_data/") and rel.endswith(".npy"):
+                if rel.endswith((".pyc", ".pyo", ".npz", ".npy")):
                     continue
                 files.add(rel)
     return sorted(files)
@@ -95,7 +93,7 @@ def main() -> None:
     lines.append("")
     lines.append("**Fixed topic:** Negative reflection of guided waves in a flexoelectric piezoelectric-semiconductor plate with carrier–strain-gradient coupling.")
     lines.append("")
-    lines.append("This package is a static review bundle of the existing repository results and the prepared modular LaTeX manuscript. It contains no new model, no retraining and no rerun. `paper_a_study/` is the focused current result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their retained evidence.")
+    lines.append("This package is a static review bundle of the existing repository results. It contains no new model, no manuscript, no retraining and no rerun. `paper_a_study/` is the focused current result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their retained evidence.")
     lines.append("")
     lines.append("## Read in this order")
     lines.append("")
@@ -216,8 +214,9 @@ def main() -> None:
     lines.append("| `a0*/__pycache__/` and `*.pyc` | Python bytecode caches, regenerable from source. |")
     lines.append("| `.venv/` | Environment-specific virtual environment, regenerable from `a0/requirements.txt`. |")
     lines.append("| `a0s/private_sources/` and `a0*/private_sources/` | Not present in this repository; no private publisher material was retained. |")
-    lines.append("| `*.npz` / `*.npy` | No large modal arrays are committed; the CSV/JSON datasets and reproducible scripts contain the same reported results. The manuscript `figure_data/` copy retains the two figure intensity arrays used by `fig10_field.pdf`. |")
+    lines.append("| `*.npz` / `*.npy` | No large modal arrays were committed; the CSV/JSON datasets and reproducible scripts contain the same reported results. |")
     lines.append("| Any production solver or production-solver modification | None was used or supplied. The historical packages are isolated research scripts. |")
+    lines.append("| Final manuscript | The task explicitly requires no manuscript. |")
     lines.append("")
     lines.append("## Integrity checks")
     lines.append("")

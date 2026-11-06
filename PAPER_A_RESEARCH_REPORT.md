@@ -114,9 +114,9 @@ The tracked H = 0 family has its sampled/refined minimum near K = **0.54293**. I
 
 The fixed numerical drive is **16.684123136 GHz**, Ω = 7.6333724044, at the midpoint of this projected interval, not an optimized conversion point. Kᵧ = **0.1298117503** gives an H = 0 incident energy angle of 10°. Across H, ω and kᵧ remain fixed; the incident angle is not artificially retuned. The selected frequency lies in the common dispersion interval of the three tracked H cases.
 
-![Matched dispersion, H-dependent frequency shift and temporal damping](paper_a_study/results/dispersion_and_H.svg)
+![Matched dispersion, H-dependent frequency shift, temporal damping, and carrier attenuation](paper_a_study/results/fig01_dispersion.svg)
 
-*Figure 1. Same tracked family and same real K in all three cases. The nearly overlapping frequency curves are resolved by the shift panel. Power FWHM is −2 Im ω/(2π), not the amplitude HWHM. Frequency shifts are numerical synthetic-coefficient effects, not physical precision estimates.*
+*Figure 1. Same tracked family and same real K in all three cases. The nearly overlapping frequency curves are resolved by the shift panel. Power FWHM is −2 Im ω/(2π), not the amplitude HWHM. Carrier attenuation is reported as −2 Im ω SCALE/π dB/m; this is the temporal-dissipation rate, not the spatial attenuation length. Frequency shifts are numerical synthetic-coefficient effects, not physical precision estimates.*
 
 ### 5. Solved negative reflection and the effect of H
 
@@ -154,19 +154,27 @@ The following table keeps the same real frequency, real kᵧ, degree-22 edge sol
 
 **Interpretation:** both endpoint H signs increase carrier damping relative to H = 0 in this boundary specialization. The table separates the edge conversion, which is the ratio at the edge, from the finite-distance return, which additionally contains source-to-reference propagation attenuation. At 2 μm the H = −0.05 H* return is 0.013 percentage points below its attenuation-only attained-range prediction, while the endpoint discrepancies show that conversion and attenuation are not algebraically separable across finite distances. This is not a general claim that H must improve negative reflection. The very long H = 0 lengths include **carrier loss only** and cannot be read as experimental propagation lengths.
 
-![Solved edge channel power and signed energy angle](paper_a_study/results/edge_conversion.svg)
+![Solved edge channel power and signed energy angle](paper_a_study/results/fig02_material.svg)
 
-*Figure 2. Every frequency point solves the edge problem for all three H values at identical real ω and kᵧ. The two return panels use different physical reference distances, not different reflection solutions. Panel (c) is a signed thickness-integrated energy-angle, not the ray angle implied by the complex phase wavenumber. The displayed interval is inside the admissible backward branch, not a claim about its complete endpoints.*
+*Figure 2. Every frequency point solves the edge problem for all three H values at identical real ω and kᵧ. The two return panels use different physical reference distances, not different reflection solutions. Panel (b) shows the solved isolated backward-channel self-flux ratio from the edge solve, with the signed local outgoing-modal-power contribution used for channel identification; it is not total reflectance. Panel (c) is a signed thickness-integrated energy-angle, not the ray angle implied by the complex phase wavenumber. The displayed interval is inside the admissible backward branch, not a claim about its complete endpoints.*
 
 ![Matched H parameter sensitivity](paper_a_study/results/H_parameter_effect.svg)
 
 *Figure 3. Twenty-one synthetic H values with fixed material, geometry, real drive and real kᵧ. Temporal linewidth in panel (c) is evaluated at a common real K; it is explicitly distinct from the spatial rates in panel (b).*
+
+![Reflection-channel conversion and modal energy](paper_a_study/results/fig05_channel.svg)
+
+*Figure 5. Solved backward-mode count, negative-power fraction, and total outgoing fraction for five H values. The finite outgoing fraction is normalized by the finite solved incident and total outgoing powers; it is not total reflectance.*
 
 A Gaussian angular spectrum is also assembled from **solved** edge coefficients, not from an assumed reflection law. For H = 0, σ(Kᵧ) = 0.013, and 25 Gauss-Hermite nodes, the incident and backward branch kinetic intensities are shown below. At x = −40.105 μm, their transverse centroids are **−7.264 μm** and **−20.944 μm**, respectively. The reflected branch travels **away from the edge, left and down**; the incident branch travels right and up. Seventeen-to-25-node centroid change is below 10⁻⁹ μm. This is an angular-spectrum channel demonstration, not a transient/full-field simulation.
 
 ![Computed incident and backward-channel beam intensities](paper_a_study/results/computed_channel_beam.svg)
 
 *Figure 4. Through-thickness integrated kinetic intensities computed from the modal fields and their mass Gram matrix. Each panel has its **own normalization**; the backward panel does not imply 100% conversion. Arrows indicate the independently calculated energy direction. Other reflected channels and their interference are not shown in this branch-filtered image; they are retained in the edge solve and complete power budget.*
+
+![Spatial energy flux and computed wave field](paper_a_study/results/fig10_field.svg)
+
+*Figure 10. Solved incident and backward intensities at two planes, exact energy-flux directions, coordinate convention, and edge-flux diagnostics. One coordinate convention is used for angles, propagation vectors and flux arrows. The backward branch has energy opposite to its phase wavevector.*
 
 ### 6. Energy, attenuation and validation
 
@@ -197,6 +205,10 @@ Carrier dissipation is 𝒟 = (b/2)∫|∇μ|²dz ≥ 0. The calculations check 
 
 Rᴮ is an **isolated modal self-flux ratio**, not total reflectance in a dissipative, interfering multimode field. The complete control volume instead uses the full superposition:
 
+![Attenuation, distance and survival](paper_a_study/results/fig06_attenuation.svg)
+
+*Figure 6. Distance dependence of the isolated backward coefficient and incident survival, with finite spatial attenuation lengths derived from the solved complex wavenumbers. The finite-distance return is not reduced to a single propagation attenuation; edge conversion and attenuation are not generally separable at finite distance.*
+
 \[
  \boxed{P_x(-L)-P_x(0)=\int_{-L}^{0}\mathcal D(x)\,dx.}
 \]
@@ -217,6 +229,10 @@ All incident/outgoing and outgoing/outgoing cross terms are retained analyticall
 | Independent edge boundary reconstruction | Physical traction plus corner functional reconstructed by separate quadrature; normalized weak residual below **1.4 × 10⁻¹²** |
 | Symmetry/admissibility | Fourier-transpose reciprocity, canonical Hamiltonian identity at ±kᵧ, positive stored energy, passive poles, full-3D Schur bound and outgoing-mode count checked |
 | Beam quadrature | 17 versus 25 nodes; centroids agree; branch phases aligned through the actual incident displacement |
+
+![Carrier-strain-gradient coupling sensitivity](paper_a_study/results/fig07_coupling.svg)
+
+*Figure 7. Solved H/kᵧ surface with finite contour and slice panels. Values outside the solved range are not interpolated.*
 | Numerical reporting floor | **1 Hz per frequency pole, 2 Hz per power FWHM**; these are numerical reporting floors, not physical uncertainty |
 
 **Executed checks:** **143/143** focused numerical checks and **18/18** new standalone tests passed. The retained A0/A0-R/A0-S suites were rerun: **12 + 16 + 22 = 50** further tests passed. All ten retained source/blueprint fingerprints match.

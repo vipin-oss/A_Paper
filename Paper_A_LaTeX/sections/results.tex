@@ -18,7 +18,7 @@ Figure~\ref{fig:fig02} reports the ordinary sourced carrier concentration and mo
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig02_material.pdf}
-\caption{Carrier concentration and mobility effects. Data: \texttt{fig02\_material\_parameter\_sweep.csv}.}
+\caption{Carrier concentration and mobility effects. Panel (b) reports the isolated backward-channel self-flux ratio from the edge solve; it is not total reflectance. Data: \texttt{fig02\_material\_parameter\_sweep.csv}.}
 \label{fig:fig02}
 \end{figure}
 
@@ -51,18 +51,18 @@ Figure~\ref{fig:fig05} shows the backward-mode count, negative-power fraction an
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/fig05_channel.pdf}
-\caption{Reflection-channel conversion and modal energy. Data: \texttt{fig05\_channel\_power.csv}.}
+\caption{Reflection-channel conversion and modal energy. Panel (d) is normalized by finite solved incident and total outgoing powers. Data: \texttt{fig05\_channel\_power.csv}.}
 \label{fig:fig05}
 \end{figure}
 
 \subsection{Attenuation and survival}
 \label{sec:results_attenuation}
-Figure~\ref{fig:fig06} reports the distance dependence of the isolated backward coefficient and incident survival. The finite-distance return is not reduced to a single propagation attenuation; edge conversion and attenuation are not generally separable at finite distance.
+Figure~\ref{fig:fig06} reports the distance dependence of the isolated backward coefficient, incident survival, and the finite incident/backward spatial attenuation lengths derived from the solved complex wavenumbers. The finite-distance return is not reduced to a single propagation attenuation; edge conversion and attenuation are not generally separable at finite distance.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig06_attenuation.pdf}
-\caption{Attenuation, distance and survival. Data: \texttt{fig06\_attenuation\_distance.csv}.}
+\caption{Attenuation, distance and survival. Panels (c) and (d) plot finite spatial attenuation lengths derived from the solved complex wavenumbers. Data: \texttt{fig06\_attenuation\_distance.csv}.}
 \label{fig:fig06}
 \end{figure}
 
@@ -106,6 +106,6 @@ Figure~\ref{fig:fig10} shows the solved incident and backward intensities and th
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig10_field.pdf}
-\caption{Spatial energy flux and computed wave field. Data: \texttt{fig10\_field\_metrics.json} and the NPY arrays in \texttt{figure\_data/}.}
+\caption{Spatial energy flux and computed wave field. Panels (a) and (b) show two-plane incident and backward intensities, (c) fixes the coordinate convention, and (d) reports edge-flux diagnostics. Data: \texttt{fig10\_field\_metrics.json} and the NPY arrays in \texttt{figure\_data/}.}
 \label{fig:fig10}
 \end{figure}

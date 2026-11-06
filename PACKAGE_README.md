@@ -2,7 +2,7 @@
 
 **Fixed topic:** Negative reflection of guided waves in a flexoelectric piezoelectric-semiconductor plate with carrier–strain-gradient coupling.
 
-This package is a static review bundle of the existing repository results and the prepared modular LaTeX manuscript. It contains no new model, no retraining and no rerun. `paper_a_study/` is the focused current result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their retained evidence.
+This package is a static review bundle of the existing repository results. It contains no new model, no manuscript, no retraining and no rerun. `paper_a_study/` is the focused current result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their retained evidence.
 
 ## Read in this order
 
@@ -123,8 +123,9 @@ The plate occupies `x < 0`, `-d/2 < z < d/2`, and is infinite in `y`. The faces 
 | `a0*/__pycache__/` and `*.pyc` | Python bytecode caches, regenerable from source. |
 | `.venv/` | Environment-specific virtual environment, regenerable from `a0/requirements.txt`. |
 | `a0s/private_sources/` and `a0*/private_sources/` | Not present in this repository; no private publisher material was retained. |
-| `*.npz` / `*.npy` | No large modal arrays are committed; the CSV/JSON datasets and reproducible scripts contain the same reported results. The manuscript `figure_data/` copy retains the two figure intensity arrays used by `fig10_field.pdf`. |
+| `*.npz` / `*.npy` | No large modal arrays were committed; the CSV/JSON datasets and reproducible scripts contain the same reported results. |
 | Any production solver or production-solver modification | None was used or supplied. The historical packages are isolated research scripts. |
+| Final manuscript | The task explicitly requires no manuscript. |
 
 ## Integrity checks
 

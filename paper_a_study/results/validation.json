@@ -1009,5 +1009,5 @@
   "material_calibration": "NOT ESTABLISHED: synthetic A/f/H and transferred bulk Hall transport",
   "corner_pointwise_stress": "NOT CERTIFIED: use converged variational boundary functional",
   "numerical_interpretation": "Backward edge conversion in specified static/local grounded Galerkin model",
-  "runtime_seconds": 42.31443762779236
+  "runtime_seconds": 56.97966122627258
 }

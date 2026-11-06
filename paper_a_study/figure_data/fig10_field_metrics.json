@@ -2,21 +2,21 @@
   {
     "plane": "x=-2 um",
     "x_um": -2.0,
-    "incident_centroid_y_um": -4.997717017076557e-07,
-    "backward_centroid_y_um": -4.997717017076551e-07,
-    "incident_sum": 1576.9775771272882,
-    "backward_sum": 85.40769720491662,
-    "forward_ray_fraction": 1.0001125375492366,
-    "backward_ray_fraction": 0.9998080164687938
+    "incident_centroid_y_um": -4.368331654853869e-07,
+    "backward_centroid_y_um": -7.867235290621322e-07,
+    "incident_sum": 16.24552072585514,
+    "backward_sum": 0.7664295223166222,
+    "forward_ray_fraction": 1.0001085082811942,
+    "backward_ray_fraction": 0.9998876542795123
   },
   {
     "plane": "x=-40 um",
     "x_um": -40.0,
-    "incident_centroid_y_um": -4.997717017076593e-07,
-    "backward_centroid_y_um": -4.99771701707654e-07,
-    "incident_sum": 1580.3529091521661,
-    "backward_sum": 85.09669436092223,
-    "forward_ray_fraction": 1.0022531589032972,
-    "backward_ray_fraction": 0.9961673242742225
+    "incident_centroid_y_um": -7.0683972333291676e-06,
+    "backward_centroid_y_um": -2.0891013992957306e-05,
+    "incident_sum": 16.314305907806308,
+    "backward_sum": 0.7666155464742797,
+    "forward_ray_fraction": 1.0021724047292095,
+    "backward_ray_fraction": 0.9977555819119986
   }
 ]
