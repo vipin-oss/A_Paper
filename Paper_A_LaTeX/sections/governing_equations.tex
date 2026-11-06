@@ -118,11 +118,11 @@ $\varepsilon_{yz}$ are all non-zero.  We therefore refer to
 avoid the plane-strain label, which would misdescribe the solver and would
 wrongly suppress the $u_y$ branch that the edge matching uses.
 
-For a complex $\omega$ and real $k_y$ the fields in \eqref{eq:ansatz} decay or
-grow in time, and the boundary-value problem in $x$ is an eigenvalue problem in
-$k_x$ of polynomial structure.  It is convenient to keep both descriptions:
-the \emph{temporal} problem (real $k_x$, complex $\omega$) is used to build the
-dispersion curve and the group velocity, and the \emph{spatial} problem (real
+The ansatz \eqref{eq:ansatz} leaves a boundary-value problem in $x$ whose
+character depends on which of $\omega$ and $k_x$ is taken as the eigenvalue.
+Two descriptions are therefore used, and they are kept separate throughout.
+The \emph{temporal} problem (real $k_x$, complex $\omega$) is used to build the
+dispersion curve and the group velocity; the \emph{spatial} problem (real
 $\omega$, complex $k_x$) is used to classify the outgoing branches at the edge
 and to compute the spatial attenuation $\alpha=2|\Imag k_x|$.  The two are
 evaluated independently, which is what makes the comparison in
