@@ -33,7 +33,7 @@ from build_figure_data import (HCRIT, KB0, KY0, operating_mode,  # noqa: E402
 from model import Plate  # noqa: E402
 
 DATA = HERE / "figure_data"
-CASES = {"operating_point": 0.7361990195318475, "peak": 0.55}
+CASES = {"operating_point": 0.7361990195318475, "branch_maximum": 0.525, "peak": 0.55}
 ETA_COUPLING = 0.05
 
 CONFIGS = {

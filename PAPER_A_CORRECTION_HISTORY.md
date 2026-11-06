@@ -1,0 +1,121 @@
+# Paper A — correction history, round 7
+
+Every correction below was made only after the defect was confirmed in Stage 1
+(`PAPER_A_STAGE1_COMPLETE_Q1_AUDIT.md`). Nothing in the governing equations,
+the material constants, the discretisation or the solver physics was changed.
+
+Baseline: `405ed2acbf453a1f9df08cf88001d725077762e8` (round 6).
+
+---
+
+## A. Scientific corrections
+
+### C-1 — Branch maximum of the backward channel (CRITICAL)
+
+| | |
+|---|---|
+| File | `sections/results.tex` (§backward conversion, §refinement, tables 1 and 2), `main.tex` (abstract), `sections/discussion.tex`, `sections/conclusions.tex`, `figure_data/fig04_frequency_reflection.csv`, `figures/fig04_frequency.pdf` |
+| Old | "the maximum along the branch is 57.92 % at k_xd = 0.55, where the group velocity passes through zero"; the sweep sampled k_xd on a 0.05 grid |
+| New | maximum **93.19 % (R_B = 0.931891)** at **k_xd = 0.5250, f = 16.6547 GHz, v_g = −3 m/s**; 57.92 % retained as the certified value at k_xd = 0.550 |
+| Reason | A 0.05 grid samples the region where the branch turns over at three points; the paper's own `tab:refinement` already printed 0.9319 at 0.5250, contradicting the headline |
+| Source of the new value | `build_figure_data.fig04` on a refined grid (110 rows, 22 k_x × 5 coupling levels) and `convergence_audit.py` at degrees 14–30 |
+| Recomputation | yes — 110 edge solves plus 10 convergence solves |
+| Verification | degree stability 2.1e-8 (18→30), quadrature stability 6.9e-9, condition ≤1.9e2, residual ≤3e-15, power balance 1e-14 |
+| Figures affected | `fig04_frequency.pdf` regenerated from the refined data (y-range raised from 66 % to 100 % so the new maximum is not clipped) |
+
+### C-2 — Size and mechanism of the coupling effect (CRITICAL)
+
+| | |
+|---|---|
+| File | `sections/results.tex` (§what creates the backward channel, table of controls), `sections/discussion.tex` (§mechanism, §literature), `main.tex`, `sections/conclusions.tex` |
+| Old | "the modification is small … −1.21 % at the operating point and −9.85 % at the peak"; "the added coupling is a bounded perturbation" |
+| New | −1.21 % at the operating point, −9.85 % at k_xd = 0.55, **−33.1 % at the branch maximum**; of the latter, −21.6 % survives when referred to the edge plane, so 11.5 points are propagation loss; the coupling acts through the added attenuation of the backward mode (decay rate 4.7e-4 → 8.4e-3 per unit thickness) |
+| Reason | The controls had never been run at the true maximum; at the operating point the statement is correct, at the maximum it is not |
+| Source | `mechanism_controls.py` with the added `branch_maximum` case and the branch-consistent sweep |
+| Recomputation | yes — 5 configurations × 3 points plus 15 sweep solves |
+| Verification | the ordering "dispersion unaffected / partition configuration-dependent / loss strongly affected" is now stated per configuration |
+
+### C-3 — Total outgoing power in the abstract (MAJOR)
+
+| | |
+|---|---|
+| Old | "0.99985 of the incident power" |
+| New | "0.99980 at the operating point and 0.99000 at the branch maximum" |
+| Reason | 0.99985 contradicts both the stored value (0.999797) and `tab:configurations` |
+| Verification | registry claim `total_outgoing_operating_point`, tolerance 1e-4, `claim_audit` PASS |
+
+### C-4 — Zero-group-velocity location (MINOR)
+
+| | |
+|---|---|
+| Old | "v_g and v_E change sign at k_xd ≈ 0.55" |
+| New | "just below k_xd = 0.53" (v_g = −10.0 m/s at 0.52, +4.1 m/s at 0.53) |
+| Verification | `fig04` CSV, `convergence_audit.json` |
+
+### C-5 — Flexoelectric contribution at the branch maximum (MINOR)
+
+| | |
+|---|---|
+| Old | "changes it by −0.011 % at both points" |
+| New | "−0.011 % at the operating point and less than 1e-4 % at the branch maximum" |
+| Verification | `mechanism_controls.json`, full vs no-flexo rows |
+
+### C-6 — Rounded energy partition (MINOR)
+
+| | |
+|---|---|
+| Old | "the sum reproduces the flux at the plane to 3.4e-16" beside four-digit values |
+| New | rounded closure 1.4e-6 stated explicitly, exact closure 3.4e-16, other propagating modes printed as 0.976651 |
+| Verification | arithmetic recomputation from `peak_certification.json` |
+
+## B. Editorial corrections
+
+| # | File | Old | New | Reason |
+|---|---|---|---|---|
+| E-1 | `main.tex` | 18-word title with a subtitle | "Backward-branch negative reflection of guided waves at a free edge in a flexoelectric piezoelectric–semiconductor plate" (15 words) | 10–16-word preference; keeps system, phenomenon and mechanism |
+| E-2 | `main.tex` | three-paragraph, ≈600-word abstract with round-off residuals and defensive phrasing | one paragraph, 220 words, four registered numbers, limitations in one clause | journal norm 180–220 words |
+| E-3 | `main.tex` | 8 keywords | 6 | indexing norm |
+| E-4 | `sections/conclusions.tex` | 8 paragraphs, ≈700 words, narrating what was "reversed and corrected" | 5 numbered results, ≈250 words, no history | style; no development history in the article |
+| E-5 | 11 figure captions + 1 table caption | "Data: `fig01_….csv`", script names inside captions | removed; the appendix table already lists every file | typeset article text must not carry internal paths |
+| E-6 | `results.tex`, `numerical_methods.tex`, `governing_equations.tex`, `conclusions.tex` | "the earlier version of this paper", "were previously described", "the honest reading", "genuinely independent", "which is exactly what happened" | rewritten to state the physics | §20 of the directive |
+| E-7 | `main.tex` | no declarations | Data availability (true statement), competing interests, funding, CRediT, acknowledgements, ethics, generative-tool disclosure — author-controlled items marked **AUTHOR INPUT REQUIRED** | required back matter; nothing invented |
+| E-8 | `governing_equations.tex`, `discussion.tex` | "Fourier-reduced three-dimensional formulation" | "two-and-a-half-dimensional (2.5D) Fourier-reduced formulation", with what is and is not discretised | prevents the model being read as a full 3D simulation |
+| E-9 | `numerical_methods.tex`, `governing_equations.tex` | script and JSON paths in the running text | removed; content kept | reproducibility lives in the appendix |
+| E-10 | `sections/introduction.tex` | gap statement "what has not been examined … is the scattering problem at an edge" | narrowed: plane-wave reflection coefficients already exist (Mondal et al. 2022); what is missing is the modal partition of a *guided* plate branch with carriers | the original wording overclaimed |
+| E-11 | `appendix_reproducibility.tex` | "20 tests", 25-page-era file table | "22 tests", four new scripts and two new data files listed | consistency with the suite |
+
+## C. Bibliographic corrections
+
+| # | Entry | Action | Evidence |
+|---|---|---|---|
+| B-1 | `biswas2025rayleigh` | added — Biswas & Sahu, *Math. Mech. Solids* **30**(12) 2822–2842 (2025) | DOI 10.1177/10812865251315937 verified via OpenAlex |
+| B-2 | `mondal2022scattering` | added — Mondal, Sahu & Nirwal, *Math. Methods Appl. Sci.* **45**(12) 7700–7714 (2022) | DOI 10.1002/mma.8272 verified via OpenAlex |
+| B-3 | `shen2010theory`, `yang2020rayleigh`, `qu2022thermal`, `qu2022bending` | DOI added after title-match search | 10.1016/j.jmps.2010.03.001, 10.1016/j.ultras.2020.106105, 10.1016/j.mechmat.2022.104328, 10.1007/s10338-021-00296-y |
+| B-4 | all other entries | title/journal/year/volume/pages re-checked | OpenAlex work records |
+
+No citation was added to raise a count, and none was removed.
+
+## D. Code and gate corrections
+
+| # | File | Change | Reason |
+|---|---|---|---|
+| G-1 | `model.py` | optional `nquad` override (default unchanged) | quadrature sufficiency could not be tested at all before |
+| G-2 | `build_figure_data.py` | refined k_x grid for Fig. 4 (0.01 over 0.46–0.60, 0.05 elsewhere) | C-1 |
+| G-3 | `mechanism_controls.py` | `branch_maximum` case added | C-2 |
+| G-4 | `generate_final_figures.py` | panel (c) of Fig. 4 re-ranged 0–100 % | otherwise the new maximum was clipped |
+| G-5 | `test_model.py` | two regression tests added (frozen derived constants; literature bands on material constants) | a unit error previously passed the whole suite |
+| G-6 | `convergence_audit.py`, `quadrature_audit.py` | new | turns two claims into executable evidence |
+| G-7 | `claim_audit.py`, `claims.json` | new | manuscript ↔ registry consistency and stale-value guard |
+| G-8 | `mutation_tests.py` | new | proves that the gates fire |
+| G-9 | `run_all_checks.py` | four checks added; fig04 row count 50 → 110 | one entry point |
+
+## E. Not corrected, deliberately
+
+* **Governing equations, signs, tensor contractions, Schur bound** — re-derived
+  and found correct.
+* **Material constants** — unchanged; only pinned.
+* **Corner argument** — already correct and already refuses to claim what the
+  diagnostic cannot show.
+* **Novelty statement** — cannot be closed; left explicitly unresolved rather
+  than sharpened into a claim the evidence does not support.
+* **ℓ, f, H values** — synthetic and labelled as such; no calibration invented.

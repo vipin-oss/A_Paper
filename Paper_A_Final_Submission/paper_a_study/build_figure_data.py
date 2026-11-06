@@ -280,7 +280,12 @@ def fig04() -> list[dict]:
     return, angle, group velocity) tuple.
     """
     rows = []
-    Ks = np.linspace(0.30, 0.75, 10)
+    # Grid refined where the branch turns over: the previous spacing of 0.05
+    # sampled the neighbourhood of the zero-group-velocity point at three points
+    # only, and the apparent maximum fell between two samples.
+    Ks = np.array([0.30, 0.35, 0.40, 0.45]
+                  + list(np.round(np.arange(0.46, 0.6001, 0.01), 4))
+                  + [0.65, 0.70, 0.75])
     for eta in ETAS:
         p = plate(eta)
         modes = track(p, Ks, operating_mode(p))

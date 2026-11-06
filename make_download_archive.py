@@ -20,10 +20,16 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round4_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round6.zip"
+STAGE = Path("/tmp/paper_a_round7_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round7.zip"
 
 ROOT_REPORTS = [
+    "PAPER_A_STAGE1_COMPLETE_Q1_AUDIT.md",
+    "PAPER_A_ROUND7_NOVELTY_AND_MECHANISM_REPORT.md",
+    "PAPER_A_EXTENDED_NUMERICAL_VALIDATION.md",
+    "PAPER_A_CORRECTION_HISTORY.md",
+    "PAPER_A_CLAIM_PROVENANCE_MATRIX.md",
+    "PAPER_A_FINAL_SUBMISSION_READINESS.md",
     "PAPER_A_FINAL_SCIENTIFIC_AUDIT.md",
     "PAPER_A_ROUND4_INDEPENDENT_AUDIT.md",
     "PAPER_A_ROUND6_FINAL_VERIFICATION.md",
@@ -96,20 +102,28 @@ def main() -> int:
             copied += 1
 
     (STAGE / "START_HERE.txt").write_text(
-        "Paper A -- round-4 scientific audit deliverable\n"
-        "==============================================\n\n"
-        "Start with PAPER_A_FINAL_SCIENTIFIC_AUDIT.md (issues A-F, sections 9-11).\n"
+        "Paper A -- round-7 audit and correction deliverable\n"
+        "==================================================\n\n"
+        "Read in this order:\n"
+        "  PAPER_A_FINAL_SUBMISSION_READINESS.md   ten-category verdict, open items\n"
+        "  PAPER_A_STAGE1_COMPLETE_Q1_AUDIT.md     43 findings, each with its evidence\n"
+        "  PAPER_A_CORRECTION_HISTORY.md           what was changed, and why\n"
+        "  PAPER_A_EXTENDED_NUMERICAL_VALIDATION.md  every executed check\n"
+        "  PAPER_A_CLAIM_PROVENANCE_MATRIX.md      each result number -> its dataset\n"
+        "  PAPER_A_ROUND7_NOVELTY_AND_MECHANISM_REPORT.md  novelty UNRESOLVED, mechanism\n\n"
         "The manuscript is Paper_A_Final_Submission/main.tex; the ten vector\n"
         "figures are in Paper_A_Final_Submission/figures/.\n\n"
-        "Build (a TeX engine is required and is NOT included):\n"
+        "BUILD STATUS: UNVERIFIED -- no TeX engine was available, so no PDF is\n"
+        "included and none is claimed. Build with:\n"
         "  cd Paper_A_Final_Submission\n"
         "  pdflatex main && bibtex main && pdflatex main && pdflatex main\n\n"
-        "Reproduce the numbers:\n"
-        "  python paper_a_study/run_all_checks.py\n"
-        "  python paper_a_study/mechanism_controls.py\n"
-        "  python paper_a_study/modal_flux_audit.py\n"
-        "  python paper_a_study/corner_assessment.py\n"
-        "  python paper_a_study/phase_speed_audit.py\n")
+        "Reproduce every number and figure (Python 3.11, numpy, scipy, matplotlib):\n"
+        "  python paper_a_study/run_all_checks.py     # fifteen checks + 22 unit tests\n"
+        "  python paper_a_study/build_figure_data.py  # the CSV/JSON datasets\n"
+        "  python paper_a_study/generate_final_figures.py\n\n"
+        "Headline result: R_B = 0.9319 (93.19 %) at k_x d = 0.525, where the group\n"
+        "velocity is -3 m/s. Novelty against the primary 2025 source is UNRESOLVED\n"
+        "(closed access); no priority claim is made.\n")
     copied += 1
     # Fixed timestamp so that repeated builds are byte-identical.
     os.utime(STAGE / "START_HERE.txt", (FIXED_EPOCH, FIXED_EPOCH))

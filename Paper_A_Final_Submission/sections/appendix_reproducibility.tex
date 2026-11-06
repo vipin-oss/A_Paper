@@ -27,7 +27,7 @@ entry can run past the right margin.}
 \path{paper_a_study/generate_final_figures.py} & reads the CSVs and renders the ten vector PDFs \\
 \path{paper_a_study/figure_style.py} & shared typography and colour map \\
 \path{paper_a_study/make_atlas.py} & two-page contact sheet of the ten figures \\
-\path{paper_a_study/test_model.py} & the 20 automated checks of \cref{sec:numerics_verification} \\
+\path{paper_a_study/test_model.py} & the 22 automated checks of \cref{sec:numerics_verification} \\
 \path{paper_a_study/verify_dimensions.py} & dimensional and constitutive audit, including the strain-gradient contraction test \\
 \path{paper_a_study/quasistatic_check.py} & the ratios of \cref{sec:governing_electric} \\
 \path{paper_a_study/flexo_control.py} & the measured flexoelectric contribution of \cref{sec:results_scope} \\
@@ -35,6 +35,12 @@ entry can run past the right margin.}
 \path{paper_a_study/modal_flux_audit.py} & eigenvector-rescaling and degree-refinement proof of $R_B$ (\cref{sec:results_peak}) \\
 \path{paper_a_study/mechanism_controls.py} & the matched controls of \cref{tab:controls} and the branch-consistent $H$ sweep \\
 \path{paper_a_study/corner_assessment.py} & corner-band energy share and incident-wavenumber regression behind \cref{sec:disc_limitations} \\
+\path{paper_a_study/convergence_audit.py} & successive changes of $R_B$ between Galerkin degrees 14 and 30 at the two reported points \\
+\path{paper_a_study/quadrature_audit.py} & the same two configurations under Gauss--Legendre rules of 64 to 256 nodes at a fixed basis \\
+\path{paper_a_study/claim_audit.py} & registry check, stale-value guard and figure-order check over the manuscript \\
+\path{paper_a_study/claims.json} & the registry itself: every quoted number, the string that carries it, and its source \\
+\path{paper_a_study/mutation_tests.py} & five deliberate defects, each expected to be caught by the gate that is supposed to catch it \\
+\path{paper_a_study/reference_constants.json} & frozen reference values and the literature bands used by the material regression test \\
 \path{paper_a_study/run_all_checks.py} & the whole battery, one log \\
 \path{paper_a_study/figure_data/*.csv} & the twelve data files behind the figures \\
 \path{paper_a_study/figure_data/*.json} & panel-source map, figure manifest, field metrics, refinement study, controls and corner assessment \\
@@ -59,7 +65,11 @@ containing \texttt{numpy}, \texttt{scipy} and \texttt{matplotlib}:
 \begin{verbatim}
 # exit status 0 = every check passed
 python paper_a_study/run_all_checks.py            # battery, ~25 s
-python -m unittest paper_a_study.test_model -v    # 20 tests, ~9 s
+python -m unittest paper_a_study.test_model -v    # 22 tests, ~9 s
+python paper_a_study/convergence_audit.py         # degree sequence, ~10 s
+python paper_a_study/quadrature_audit.py          # node sequence, ~10 s
+python paper_a_study/claim_audit.py               # manuscript vs registry, ~1 s
+python paper_a_study/mutation_tests.py            # the gates must fail, ~1 s
 python paper_a_study/build_figure_data.py         # CSV/JSON, ~6 min
 python paper_a_study/reclassify_csv.py            # flags, ~1 s
 python paper_a_study/certify_peak.py              # refinement, ~4 min

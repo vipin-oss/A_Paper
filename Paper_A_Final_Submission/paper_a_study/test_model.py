@@ -204,4 +204,40 @@ class TestCornerAssessmentCaseSelection(unittest.TestCase):
         self.assertEqual(corner['certification_cross_check'], 'PASS')
 
 
+
+class TestFrozenReferenceConstants(unittest.TestCase):
+    """Guards against a silent change of a material constant or a derived value.
+
+    Every other test compares quantities computed by the same code with each
+    other, so a constant entered in the wrong unit would pass all of them.  These
+    two tests pin the derived values to a stored reference and the material
+    constants to their literature bands.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        from pathlib import Path
+        cls.ref = json.loads((Path(__file__).resolve().parent
+                              / 'reference_constants.json').read_text())
+
+    def test_reference_values_are_frozen(self):
+        from paper_a_study import build_figure_data as B
+        d = self.ref['derived']
+        self.assertAlmostEqual(B.K0 / d['K0'], 1.0, places=10)
+        self.assertAlmostEqual(B.KB0 / d['KB0'], 1.0, places=10)
+        self.assertAlmostEqual(B.KY0 / d['KY0'], 1.0, places=10)
+        self.assertAlmostEqual(B.OMEGA0 / d['OMEGA0'], 1.0, places=10)
+        self.assertAlmostEqual(B.HCRIT / d['HCRIT'], 1.0, places=10)
+
+    def test_material_constants_are_physical(self):
+        for key, (lo, hi) in self.ref['bands'].items():
+            value = SI[key]
+            self.assertTrue(lo <= value <= hi,
+                            f'{key} = {value!r} is outside the literature band '
+                            f'[{lo}, {hi}] - a unit error would land here')
+        for key, value in self.ref['material'].items():
+            self.assertAlmostEqual(SI[key] / value, 1.0, places=12)
+
+
 if __name__=='__main__':unittest.main(verbosity=2)

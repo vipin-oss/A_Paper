@@ -30,7 +30,8 @@ def tensor_matrix(v):
 
 class Plate:
     def __init__(self,degree=18,d=200e-9,n0=2e18,mobility=.0175,
-                 diffusivity=.000455,ell=50e-9,flexo=1e-9,H=0.,electric='ground'):
+                 diffusivity=.000455,ell=50e-9,flexo=1e-9,H=0.,electric='ground',
+                 nquad=0):
         self.degree=degree;self.n=degree+1;self.d=d;self.n0=n0
         self.cs=np.sqrt(SI['c44']/SI['rho']);self.fscale=self.cs/(2*np.pi*d)
         self.a=CONST['q']*diffusivity/(mobility*n0)
@@ -62,7 +63,12 @@ class Plate:
         self.nu=3*self.n;self.nw=self.nu+self.np+self.n
         self.iu=slice(0,self.nu);self.ip=slice(self.nu,self.nu+self.np)
         self.im=slice(self.nu+self.np,self.nw)
-        self.z,self.weights=leggauss(max(64,2*degree+10));self.z/=2;self.weights/=2
+        # Gauss-Legendre on [-1/2, 1/2]: at least 64 nodes and at least
+        # 2*degree+10.  `nquad` overrides the rule and exists only so that
+        # quadrature sufficiency can be tested independently of the basis
+        # (quadrature_audit.py); production runs use the default.
+        self.nquad=int(nquad) or max(64,2*degree+10)
+        self.z,self.weights=leggauss(self.nquad);self.z/=2;self.weights/=2
         self.b,self.pb=self.basis(self.z,4)
         self.eb,self.epb=self.basis(np.array([-.5,.5]),4)
         self.M=np.kron(np.eye(3),self.b[0].T@(self.weights[:,None]*self.b[0]))

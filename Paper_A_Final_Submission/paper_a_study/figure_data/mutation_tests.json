@@ -1,0 +1,53 @@
+{
+  "mutations": [
+    {
+      "id": "M1",
+      "defect": "\\path inserted in a caption without \\protect",
+      "gate": "static_check",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "  - sections/results.tex: line 358: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
+      ]
+    },
+    {
+      "id": "M2",
+      "defect": "registered value 0.9319 edited to 0.9391",
+      "gate": "claim_audit registry",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": []
+    },
+    {
+      "id": "M3",
+      "defect": "deprecated total outgoing power 0.99985 re-inserted",
+      "gate": "claim_audit stale guard",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "  - deprecated value '0.99985' reappeared in sections/results.tex: mislabelled total outgoing power at the operating point; the value is 0.99980"
+      ]
+    },
+    {
+      "id": "M4",
+      "defect": "undefined citation key \\cite{nosuchkey2024}",
+      "gate": "static_check",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "  - citation key not in references.bib: nosuchkey2024"
+      ]
+    },
+    {
+      "id": "M5",
+      "defect": "c44 entered in Pa instead of GPa",
+      "gate": "TestFrozenReferenceConstants",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: False is not true : c44 = 4.3e+19 is outside the literature band [30000000000.0, 60000000000.0] - a unit error would land here"
+      ]
+    }
+  ],
+  "verdict": "PASS"
+}

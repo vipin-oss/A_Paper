@@ -19,7 +19,11 @@ The battery is:
 8. modal-flux rescaling proof     (modal_flux_audit)
 9. mechanism matched controls     (mechanism_controls)
 10. corner assessment + regression (corner_assessment)
-11. LaTeX static validation       (Paper_A_Final_Submission/scripts/static_check.py)
+11. spectral convergence           (convergence_audit, degrees 14..30)
+12. quadrature sufficiency         (quadrature_audit, 64..256 nodes)
+13. claim registry and stale guard (claim_audit)
+14. gate mutation tests            (mutation_tests, five deliberate defects)
+15. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
 
 TeX/BibTeX compilation is attempted only if an engine is present; otherwise the
 log records explicitly that no engine was found.
@@ -63,7 +67,7 @@ def figure_data_chk() -> bool:
     expected = {
         "fig01_dispersion_velocity_attenuation.csv": 155,
         "fig02_material_parameter_sweep.csv": 130,
-        "fig04_frequency_reflection.csv": 50,
+        "fig04_frequency_reflection.csv": 110,   # 22 k_x points x 5 coupling levels
         "fig07_coupling_sensitivity.csv": 95,
         "fig09_validation_convergence.csv": None,
     }
@@ -115,6 +119,10 @@ def main() -> int:
         [PY, "-m", "paper_a_study.mechanism_controls"], ROOT, 1800)
     run("corner assessment and regression",
         [PY, "-m", "paper_a_study.corner_assessment"], ROOT, 1200)
+    run("spectral convergence", [PY, "paper_a_study/convergence_audit.py"], ROOT, 1200)
+    run("quadrature sufficiency", [PY, "paper_a_study/quadrature_audit.py"], ROOT, 900)
+    run("claim registry and stale guard", [PY, "paper_a_study/claim_audit.py"], ROOT, 300)
+    run("gate mutation tests", [PY, "paper_a_study/mutation_tests.py"], ROOT, 900)
     run("LaTeX static validation",
         [sys.executable, "scripts/static_check.py"], SUB, 300)
 
