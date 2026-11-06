@@ -11,58 +11,41 @@ by hand, and no plotted quantity is computed inside the plotting script.
 \begin{table}[h]
 \centering
 \caption{Files required to reproduce the paper.  Paths are relative to the
-archive root.}
+archive root and are broken across lines by \texttt{url} conventions, so no
+entry can run past the right margin.}
 \label{tab:package}
 \small
-\begin{tabular}{@{}ll@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\ttfamily\footnotesize}p{0.34\textwidth}>{\raggedright\arraybackslash}X@{}}
 \toprule
-Path & Role \\
+\normalfont\itshape Path & \normalfont\itshape Role \\
 \midrule
-\texttt{a0/materials.json} & material constants and their provenance; the model
-cannot start without it \\
-\texttt{paper\_a\_study/model.py} & spectral plate solver, spatial/temporal
-routes, edge matching, power and dissipation \\
-\texttt{paper\_a\_study/build\_figure\_data.py} & solves the physics and writes
-every CSV/JSON used by the figures \\
-\texttt{paper\_a\_study/certify\_peak.py} & degree-refinement study of the two
-reported values (\cref{tab:refinement}) \\
-\texttt{paper\_a\_study/reclassify\_csv.py} & re-derives the admissibility flags
-of the figure CSVs without re-solving \\
-\texttt{paper\_a\_study/generate\_final\_figures.py} & reads the CSVs and renders
-the ten vector PDFs \\
-\texttt{paper\_a\_study/figure\_style.py} & shared typography and colour map \\
-\texttt{paper\_a\_study/make\_atlas.py} & two-page contact sheet of the ten
-figures \\
-\texttt{paper\_a\_study/test\_model.py} & the 18 automated checks of
-\cref{sec:numerics_verification} \\
-\texttt{paper\_a\_study/verify\_dimensions.py} & dimensional and constitutive
-audit, including the strain-gradient contraction test \\
-\texttt{paper\_a\_study/quasistatic\_check.py} & the ratios of
-\cref{sec:governing_electric} \\
-\texttt{paper\_a\_study/flexo\_control.py} & the measured flexoelectric
-contribution of \cref{sec:results_scope} \\
-\texttt{paper\_a\_study/phase\_speed\_audit.py} & phase-speed and wavenumber
-reconciliation of \cref{sec:governing_electric}; exits non-zero by design,
-because its job is to flag a mismatch between the manuscript and the solver \\
-\texttt{paper\_a\_study/modal\_flux\_audit.py} & eigenvector-rescaling and
-degree-refinement proof of $R_B$ (\cref{sec:results_peak}) \\
-\texttt{paper\_a\_study/mechanism\_controls.py} & the matched controls of
-\cref{tab:controls} and the branch-consistent $H$ sweep \\
-\texttt{paper\_a\_study/corner\_assessment.py} & corner-band energy share behind
-\cref{sec:disc_limitations} \\
-\texttt{paper\_a\_study/run\_all\_checks.py} & the whole battery, one log \\
-\texttt{paper\_a\_study/figure\_data/*.csv} & the twelve data files behind the
-figures \\
-\texttt{paper\_a\_study/figure\_data/*.json} & panel-source map, figure manifest,
-field metrics and the refinement study \\
-\texttt{main.tex}, \texttt{sections/}, \texttt{figures/} & this manuscript and the ten PDFs \\
+\path{a0/materials.json} & material constants and their provenance; the model cannot start without it \\
+\path{paper_a_study/model.py} & spectral plate solver, spatial and temporal routes, edge matching, power and dissipation \\
+\path{paper_a_study/build_figure_data.py} & solves the physics and writes every CSV/JSON used by the figures \\
+\path{paper_a_study/certify_peak.py} & degree-refinement study of the two reported values (\cref{tab:refinement}) \\
+\path{paper_a_study/reclassify_csv.py} & re-derives the admissibility flags of the figure CSVs without re-solving \\
+\path{paper_a_study/generate_final_figures.py} & reads the CSVs and renders the ten vector PDFs \\
+\path{paper_a_study/figure_style.py} & shared typography and colour map \\
+\path{paper_a_study/make_atlas.py} & two-page contact sheet of the ten figures \\
+\path{paper_a_study/test_model.py} & the 20 automated checks of \cref{sec:numerics_verification} \\
+\path{paper_a_study/verify_dimensions.py} & dimensional and constitutive audit, including the strain-gradient contraction test \\
+\path{paper_a_study/quasistatic_check.py} & the ratios of \cref{sec:governing_electric} \\
+\path{paper_a_study/flexo_control.py} & the measured flexoelectric contribution of \cref{sec:results_scope} \\
+\path{paper_a_study/phase_speed_audit.py} & phase-speed and wavenumber reconciliation of \cref{sec:governing_electric}; exits 0 when the text agrees with the solver and non-zero when it does not \\
+\path{paper_a_study/modal_flux_audit.py} & eigenvector-rescaling and degree-refinement proof of $R_B$ (\cref{sec:results_peak}) \\
+\path{paper_a_study/mechanism_controls.py} & the matched controls of \cref{tab:controls} and the branch-consistent $H$ sweep \\
+\path{paper_a_study/corner_assessment.py} & corner-band energy share and incident-wavenumber regression behind \cref{sec:disc_limitations} \\
+\path{paper_a_study/run_all_checks.py} & the whole battery, one log \\
+\path{paper_a_study/figure_data/*.csv} & the twelve data files behind the figures \\
+\path{paper_a_study/figure_data/*.json} & panel-source map, figure manifest, field metrics, refinement study, controls and corner assessment \\
+\path{main.tex, sections/, figures/} & this manuscript and the ten vector PDFs \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The archive deliberately does not contain \texttt{.npy} or \texttt{.npz} files.
 Two legacy scripts that are superseded by
-\texttt{build\_figure\_data.py}/\texttt{generate\_final\_figures.py} used such
+\texttt{build\_figure\_data.py}/\path{generate_final_figures.py} used such
 caches; they are not part of the reproduction path and are not shipped.  Every
 indispensable input is a JSON, a CSV or a Python source file, so a clean
 extraction reproduces the results without any binary intermediate.
@@ -74,27 +57,38 @@ From a clean extraction of the archive, with a Python 3.11 environment
 containing \texttt{numpy}, \texttt{scipy} and \texttt{matplotlib}:
 
 \begin{verbatim}
-python paper_a_study/run_all_checks.py              # everything, ~25 s
-python -m unittest paper_a_study.test_model -v      # 18 checks, ~9 s
-python paper_a_study/build_figure_data.py           # CSV/JSON, ~6 min
-python paper_a_study/reclassify_csv.py              # admissibility flags, ~1 s
-python paper_a_study/certify_peak.py                # refinement, ~4 min
-python paper_a_study/generate_final_figures.py      # ten PDFs, ~20 s
-python paper_a_study/make_atlas.py                  # optional contact sheet
-python paper_a_study/modal_flux_audit.py            # rescaling/degree proof, ~20 s
-python paper_a_study/mechanism_controls.py          # matched controls, ~1 min
-python paper_a_study/corner_assessment.py           # corner diagnostic, ~20 s
-python paper_a_study/phase_speed_audit.py           # exits 1 if the text and
-                                                    # the solver disagree
-
+# exit status 0 = every check passed
+python paper_a_study/run_all_checks.py            # battery, ~25 s
+python -m unittest paper_a_study.test_model -v    # 20 tests, ~9 s
+python paper_a_study/build_figure_data.py         # CSV/JSON, ~6 min
+python paper_a_study/reclassify_csv.py            # flags, ~1 s
+python paper_a_study/certify_peak.py              # refinement, ~4 min
+python paper_a_study/generate_final_figures.py    # ten PDFs, ~20 s
+python paper_a_study/make_atlas.py                # contact sheet
+python paper_a_study/modal_flux_audit.py          # rescaling proof
+python paper_a_study/mechanism_controls.py        # controls, ~1 min
+python paper_a_study/corner_assessment.py         # corner check, ~20 s
+python paper_a_study/phase_speed_audit.py         # 0 = text agrees
 \end{verbatim}
 
-The order matters only in that \texttt{generate\_final\_figures.py} needs the
-CSV files.  \texttt{certify\_peak.py} and \texttt{reclassify\_csv.py} are
+The order matters only in that \path{generate_final_figures.py} needs the
+CSV files.  \path{certify_peak.py} and \path{reclassify_csv.py} are
 independent of each other and of the plotting step.  The scripts resolve every
-path relative to their own location
-(\texttt{Path(\_\_file\_\_).resolve().parent}) and to the repository root, so
-they can be run from any working directory.
+path relative to their own location (the value of \path{__file__}) and to the
+repository root, so they can be run from any working directory.
+
+Exit statuses are part of the interface and are stated here because they are
+easy to mis-state.  \path{run_all_checks.py}, \path{reclassify_csv.py},
+\path{certify_peak.py}, \path{generate_final_figures.py},
+\path{modal_flux_audit.py}, \path{mechanism_controls.py} and
+\path{corner_assessment.py} return 0 when their own checks pass and non-zero
+when one fails.  \path{phase_speed_audit.py} returns 0 when every quantity
+quoted in \cref{sec:governing_electric} agrees with the recomputation from the
+material file, and non-zero when one does not; it is a consistency check
+between the manuscript and the solver, so a non-zero status there is a defect
+report, not a normal outcome.  None of the scripts is expected to fail on the
+shipped tree: the last full run is recorded in
+\path{validation/verification_log.txt}.
 
 \subsection{Environment used for the reported runs}
 \label{app:repro_env}
@@ -120,9 +114,9 @@ thickness and the surface properties.  These are the quantities for which no
 defensible literature value was found; they are marked as such rather than
 filled with a plausible number.
 
-\texttt{figure\_data/figure\_manifest.json} maps each of the ten figures to its
+\path{figure_data/figure_manifest.json} maps each of the ten figures to its
 data file and to the script that produced it, and
-\texttt{figure\_data/figure\_panel\_sources.json} maps each individual panel to
+\path{figure_data/figure_panel_sources.json} maps each individual panel to
 the columns of the corresponding CSV.  Together they allow any single panel to
 be traced back to the solve that produced it.
 

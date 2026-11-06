@@ -58,7 +58,7 @@ python paper_a_study/generate_final_figures.py    # ten PDFs, ~20 s
 Individual checks:
 
 ```bash
-python -m unittest paper_a_study.test_model       # 18 scientific tests
+python -m unittest paper_a_study.test_model       # 20 scientific tests
 python paper_a_study/verify_dimensions.py         # dimensional / constitutive audit
 python paper_a_study/quasistatic_check.py         # electromagnetic + carrier ratios
 python paper_a_study/flexo_control.py             # measured flexoelectric contribution
@@ -87,6 +87,8 @@ python Paper_A_Final_Submission/scripts/static_check.py
 | `d/λ_EM` | `3.519e-5` |
 | phase speed `v_p` at the operating point | `28.046 km/s` |
 | `R_B` with `H = 0` at the peak (branch-consistent baseline) | `0.579180` |
+| corner-band gradient-energy share, operating point | `0.928 – 0.996 %` |
+| corner-band gradient-energy share, peak | `1.180 – 1.264 %` |
 | `R_B` at `H/H* = +0.05`, peak | `0.522107` (−9.85 %) |
 | backward port with `ℓ = 0` | none (specular fallback) |
 | carrier relaxation `ω τ_d` | `1.65e3` |

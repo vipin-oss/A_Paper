@@ -81,6 +81,8 @@ textsuperscript subscript
 today
 underbrace overbrace underbrace
 gtrsim lesssim Sigma iint siemens oiiint
+path url urlstyle arraybackslash raggedright normalfont tabularx X
+emergencystretch hsize textwidth linewidth
 ldots dots
 """.split()
 

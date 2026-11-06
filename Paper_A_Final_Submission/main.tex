@@ -23,6 +23,7 @@
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption}
 \usepackage[hidelinks]{hyperref}
@@ -32,6 +33,10 @@
 % \siunitxsetup, which exists only in v3 and aborted the build on v2.
 \sisetup{detect-all=true,per-mode=symbol,exponent-product=\times,
          group-separator={,},group-minimum-digits=4}
+
+% Line-breaking slack for the prose.  This absorbs the residual overfull lines
+% of long inline paths and wide math without touching the font size anywhere.
+\setlength{\emergencystretch}{2em}
 
 % amsmath already defines \boldsymbol; the previous source redefined it with
 % \newcommand, which is a hard "already defined" error.  The definition below

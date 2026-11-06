@@ -13,6 +13,26 @@ figures, `MANIFEST.json`, `static_validation.txt`.  It is statically validated
 and **not compiled**: no TeX engine is available in the authoring environment.
 Build with `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 
+**Round-5 changes in one paragraph.** The independent audit found that the
+corner study had used the *backward* wavenumber `KB0 = 0.2452` as its
+*operating-point incident* wavenumber, so that case was a different scattering
+experiment (R_B = 0.5444 instead of 0.0231). It now uses the authoritative
+`K0 = 0.736199`, takes the peak from the certification suite, asserts the
+incident wavenumber returned by the solver, and cross-checks every
+operating-point row against `peak_certification.json`; two regression tests
+guard the case selection and the stored values (test count 18 → 20). Corrected
+corner-band shares are 0.93–1.00 % at the operating point and 1.18–1.26 % at the
+peak. The manuscript now separates "the partitions are corner-insensitive" from
+"the corner line force is negligible" and claims only the first. The appendix
+file table was rebuilt as a `tabularx` with breakable `\path` entries, the two
+wide round-4 tables were converted to `tabularx`, fifty long inline paths were
+made breakable, and `\emergencystretch` was set — the reported 372.96 pt, 102.17
+pt and 4.14 pt overfull boxes are addressed at source (no font size was
+changed). The appendix no longer says `phase_speed_audit.py` exits non-zero by
+design: it exits 0 when the text agrees with the solver and non-zero when it
+does not. Compilation remains unverified in the authoring sandbox, which still
+has no TeX engine; the auditor's 29-page build is the reference compilation.
+
 **Round-4 changes in one paragraph.** The phase speed in the governing-equations
 section is corrected from 2.8 to 28.0 km/s; the electromagnetic wavelength is
 corrected from 0.905 mm (which is `1/k_EM`) to 5.68 mm, with `d/λ_EM = 3.52e−5`
@@ -109,7 +129,7 @@ The plate occupies `x < 0`, `-d/2 < z < d/2`, and is infinite in `y`. The faces 
 ## Validation artifacts
 
 - `paper_a_study/results/validation.json` — 143/143 focused numerical checks, including explicit unresolved non-numerical requirements.
-- `paper_a_study/test_model.py` — 18/18 focused tests, including temporal energy balance, independent strong roots, classical recovery, edge convergence and weak boundary reconstruction.
+- `paper_a_study/test_model.py` — 20/20 focused tests, including temporal energy balance, independent strong roots, classical recovery, edge convergence and weak boundary reconstruction.
 - `paper_a_study/results/sha256.json` — 22-file fingerprint manifest for the focused source, material and result artifacts.
 - `paper_a_study/results/independent_roots.csv`, `classical_validation.csv`, `convergence.csv`, `edge_weak_residuals.csv`, `temporal_energy_balance.csv` — independent numerical-validation datasets.
 - `a0/results/validation.json`, `a0r/results/validation.json`, `a0s/results/validation.json`, `a0s/results/final_audit.json` — historical check ledgers and audit output.
@@ -159,7 +179,7 @@ The plate occupies `x < 0`, `-d/2 < z < d/2`, and is infinite in `y`. The faces 
 
 `build_paper_a_package.py` verifies that every selected file exists, that no selected file is outside the repository root, that the ZIP opens, and that the retained SHA-256 manifests match. It also writes `PACKAGE_SHA256.txt`, one `sha256` line per file in package path order.
 
-The focused report reports 143/143 numerical checks, 18/18 focused tests, and 50/50 retained historical regression tests. These counts apply to the current focused model and results, not to the inaccessible published baselines.
+The focused report reports 143/143 numerical checks, 20/20 focused tests, and 50/50 retained historical regression tests. These counts apply to the current focused model and results, not to the inaccessible published baselines.
 
 ## Result scope
 

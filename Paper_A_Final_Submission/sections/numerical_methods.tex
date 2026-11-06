@@ -167,7 +167,7 @@ quoted in this paper have $|\cos\theta_E|=0.88$ and $0.97$ respectively.
 \label{sec:numerics_verification}
 
 The implementation is verified in five independent ways.  All of the following
-run as an automated suite (\texttt{paper\_a\_study/test\_model.py}, 18 tests,
+run as an automated suite (\path{paper_a_study/test_model.py}, 20 tests,
 all passing in \SI{8.7}{\second}).
 
 \begin{enumerate}
@@ -199,12 +199,22 @@ verifies the symmetry of the discretised bilinear form including the $H$ term;
 and a deliberately singular edge system is rejected with an explicit error
 rather than being regularised into a plausible-looking number.
 
+Two data-provenance tests were added after an external audit found that the
+corner study of \cref{sec:disc_limitations} had been run with the backward
+wavenumber $K_B$ as its \emph{incident} wavenumber.  They assert that the
+corner study identifies its cases by the incident wavenumber ($K_0=0.7362$ at
+the operating point, not $K_B=0.2452$), and that its stored operating-point
+$R_B$ agrees row by row with the independent refinement study in
+\path{peak_certification.json} to $10^{-9}$.  Neither is a physics check: both
+are guards against a mislabelled case silently returning a plausible number,
+which is exactly what happened and what the physics tests could not see.
+
 \subsection{Reproducibility}
 \label{sec:numerics_repro}
 
 Every plotted number is produced by two scripts and no value is transcribed by
 hand.  \texttt{build\_figure\_data.py} solves the physics and writes the
-CSV/JSON files; \texttt{generate\_final\_figures.py} reads those files and only
+CSV/JSON files; \path{generate_final_figures.py} reads those files and only
 plots.  The refinement study of \cref{sec:results_peak} is produced by a third
 script, \texttt{certify\_peak.py}.  The classical constants live in
 \texttt{a0/materials.json}, which is included in the distributed package

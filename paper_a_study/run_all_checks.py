@@ -15,7 +15,11 @@ The battery is:
 4. flexoelectric control          (flexo_control)
 5. admissibility re-derivation    (reclassify_csv, no re-solving)
 6. figure-data integrity          (this file, inline)
-7. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
+7. phase-speed / e.m. reconciliation (phase_speed_audit, 0 = text agrees)
+8. modal-flux rescaling proof     (modal_flux_audit)
+9. mechanism matched controls     (mechanism_controls)
+10. corner assessment + regression (corner_assessment)
+11. LaTeX static validation       (Paper_A_Final_Submission/scripts/static_check.py)
 
 TeX/BibTeX compilation is attempted only if an engine is present; otherwise the
 log records explicitly that no engine was found.
@@ -103,6 +107,14 @@ def main() -> int:
     run("admissibility re-derivation",
         [PY, "paper_a_study/reclassify_csv.py"], ROOT, 600)
     figure_data_chk()
+    run("phase-speed and e.m. reconciliation",
+        [PY, "-m", "paper_a_study.phase_speed_audit"], ROOT, 600)
+    run("modal-flux rescaling proof",
+        [PY, "-m", "paper_a_study.modal_flux_audit"], ROOT, 900)
+    run("mechanism matched controls",
+        [PY, "-m", "paper_a_study.mechanism_controls"], ROOT, 1800)
+    run("corner assessment and regression",
+        [PY, "-m", "paper_a_study.corner_assessment"], ROOT, 1200)
     run("LaTeX static validation",
         [sys.executable, "scripts/static_check.py"], SUB, 300)
 

@@ -14,16 +14,18 @@ bytecode caches, virtual environments, and the large derived figure exports
 from __future__ import annotations
 
 import hashlib
+import os
 import shutil
 import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = ROOT / "build" / "paper_a_round4"
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round4.zip"
+STAGE = Path("/tmp/paper_a_round4_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round5.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_FINAL_SCIENTIFIC_AUDIT.md",
+    "PAPER_A_ROUND4_INDEPENDENT_AUDIT.md",
     "PAPER_A_FINAL_INDEPENDENT_CORRECTION_RESPONSE.md",
     "PAPER_A_FINAL_SCIENTIFIC_CORRECTION_AND_Q1_AUDIT.md",
     "PAPER_A_FINAL_SCIENTIFIC_CHECK.md",
@@ -49,6 +51,7 @@ ROOT_SCRIPTS = ["build_submission_package.py", "build_paper_a_package.py",
 SKIP_DIRS = {"__pycache__", "figures_final", "results", "cache", "private_sources"}
 SKIP_SUFFIX = {".pyc", ".pyo", ".npy", ".npz", ".png", ".svg"}
 SKIP_NAMES: set[str] = set()   # the two contact-sheet PDFs are small and useful
+FIXED_EPOCH = 1767225600            # 2026-01-01T00:00:00Z, for reproducible zips
 
 
 def keep(path: Path) -> bool:
@@ -107,6 +110,8 @@ def main() -> int:
         "  python paper_a_study/corner_assessment.py\n"
         "  python paper_a_study/phase_speed_audit.py\n")
     copied += 1
+    # Fixed timestamp so that repeated builds are byte-identical.
+    os.utime(STAGE / "START_HERE.txt", (FIXED_EPOCH, FIXED_EPOCH))
 
     shutil.copy2(ROOT / "PACKAGE_README.md", STAGE / "PACKAGE_README.md")
     copied += 1

@@ -176,7 +176,7 @@ a statement about the full article.  Statuses follow the evidence actually
 obtained.}
 \label{tab:novelty}
 \small
-\begin{tabular}{@{}p{0.19\textwidth}p{0.17\textwidth}p{0.17\textwidth}p{0.15\textwidth}p{0.16\textwidth}@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}X@{}}
 \toprule
 Reference & Carrier energy & Flexoelectric term & $\Delta n\,H_{jkl}
 \varepsilon_{jk,l}$ & Status \\
@@ -209,7 +209,7 @@ $\Delta n\,H_{jkl}\varepsilon_{jk,l}$
 +\ reciprocal terms &
 added, bounded, and measured \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 No claim of priority, equivalence or superiority is made, and the title of the
@@ -278,20 +278,34 @@ assessed rather than assumed, in the only way the formulation allows: the
 strain-gradient energy density on the edge plane was computed from the coherent
 sum of all outgoing modes plus the incident mode, and its concentration in the
 outer band $|z|>0.4\,d/2$ was followed through the degree refinement
-(\texttt{paper\_a\_study/corner\_assessment.py},
-\texttt{figure\_data/corner\_assessment.json}).  At the operating point that
-band carries $2.00$--$2.13$~\% of the strain-gradient energy and at the peak
-$1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is $0.12$--$0.21$
-(i.e.\ below the mean, not above it), and the share \emph{decreases} by
-\SI{6.3}{}--\SI{6.6}{}~\% between degree 18 and degree 30 instead of growing.
-A corner singularity would show the opposite trend.  We therefore treat the
-corner as harmless for the global partition --- whose own degree spread is
-$1.5\times10^{-7}$ --- while recording explicitly that a pointwise corner field
-is not certified: no corner-eigenvalue analysis of the higher-order edge
-problem was performed, the polynomial basis cannot describe a singular trace at
-the corner itself, and the corner band still holds about one fiftieth of the
-gradient energy.  This is an unresolved limitation of the model, not a
-demonstrated error.
+(\path{paper_a_study/corner_assessment.py},
+\path{figure_data/corner_assessment.json}).  Both cases are incident
+configurations identified by their incident axial wavenumber --- $k_xd=0.7362$
+at the operating point and $k_xd=0.5500$ at the peak --- and every row records
+the incident and backward wavenumbers returned by the solver, with the
+operating-point rows cross-checked against the independent refinement study of
+\cref{tab:refinement} (they agree to the last stored digit).  At the operating
+point the band carries $0.93$--$1.00$~\% of the strain-gradient energy and at
+the peak $1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is
+$0.098$--$0.102$ and $0.122$--$0.126$ respectively (below the mean, not above
+it), and the share \emph{decreases} by \SI{6.8}{}~\% and \SI{6.6}{}~\% between
+degree 18 and degree 30 instead of growing.  A corner singularity would show
+the opposite trend.  This is evidence that the outer band does not accumulate
+gradient energy as the discretisation is refined, and that the reported
+partitions (degree spread $7.2\times10^{-7}$ and $1.5\times10^{-7}$) are not
+supported by a corner energy reservoir.
+
+It is \emph{not} a proof that a corner line force is dynamically negligible.  A
+small band fraction bounds the energy that sits near the corner in the computed
+field; it does not bound the work that a singular corner traction could do on
+the admissible variations, because the polynomial basis cannot represent that
+singularity in the first place.  Establishing the second statement would need a
+corner-eigenvalue analysis of the higher-order edge problem, or a formulation
+with corner-enriched functions, and neither is attempted here.  We therefore
+record two separate facts: the global partitions are insensitive to the corner
+at the level shown above, and the pointwise corner field, together with the
+line force associated with it, remains uncertified.  This is an unresolved
+limitation of the model, not a demonstrated error.
 
 The carrier physics is linearised about a uniform doping and a zero bias.  The
 nonlinear drift--diffusion regime, in which the carrier perturbation is not

@@ -66,7 +66,7 @@ $\Delta f=f(H)-f(0)$ in kHz, with the operating point $k_xd=0.736$ marked.
 a magnitude) at $H=0$; $v_g$ and $v_E$ change sign at $k_xd\approx0.55$ while
 $v_p$ does not.  (c) Linewidth and (d) attenuation
 $\alpha=2|\Imag k_x|$ for the same five levels.  Data:
-\texttt{fig01\_dispersion\_velocity\_attenuation.csv}.}
+\path{fig01_dispersion_velocity_attenuation.csv}.}
 \label{fig:fig01}
 \end{figure}
 
@@ -90,8 +90,8 @@ admissible range of \eqref{eq:schur}.
 
 The contribution of the flexoelectric term was measured rather than assumed, by
 repeating the two solved configurations with $f$ set to zero and to ten times
-the retained value (\texttt{paper\_a\_study/flexo\_control.py}, data in
-\texttt{figure\_data/flexo\_control.json}).  At the operating point the backward
+the retained value (\path{paper_a_study/flexo_control.py}, data in
+\path{figure_data/flexo_control.json}).  At the operating point the backward
 channel is $0.0231456$ with the retained $f$ and $0.0231484$ with $f=0$, a
 change of \SI{-0.012}{\percent}; at the peak it is $0.579180$ and $0.579245$, a
 change of \SI{-0.011}{\percent}.  At ten times the retained value the changes
@@ -146,7 +146,7 @@ against $k_xd$ for five densities $n_0=1\ldots3\times10^{18}\,\si{\per\cubic\met
 (c) the backward channel $R_B$ at $\ell=\SI{2}{\micro\metre}$, which is
 independent of the density to within \SI{0.2}{\percent} and peaks at
 $R_B=0.5796$; (d) linewidth for five mobilities.  Data:
-\texttt{fig02\_material\_parameter\_sweep.csv}.}
+\path{fig02_material_parameter_sweep.csv}.}
 \label{fig:fig02}
 \end{figure}
 
@@ -181,7 +181,7 @@ belongs with $H$ in a discussion of the added physics.
 (c) $\Delta f$ at $k_xd=0.50$ against thickness, with the reference
 $\Delta f\equiv0$ at $d=\SI{200}{\nano\metre}$; (d) relative frequency change
 against $k_xd$ for the five gradient lengths.  Data:
-\texttt{fig03\_geometry\_sweep.csv}.}
+\path{fig03_geometry_sweep.csv}.}
 \label{fig:fig03}
 \end{figure}
 
@@ -216,7 +216,7 @@ frequency; (b) signed energy angle; (c) backward channel against the group
 velocity of the branch, with the $v_g=0$ line marking the slowest point;
 (d) ratio of the backward to the incident wavenumber.  The five coupling levels
 are drawn in every panel.  Data:
-\texttt{fig04\_frequency\_reflection.csv}.}
+\path{fig04_frequency_reflection.csv}.}
 \label{fig:fig04}
 \end{figure}
 
@@ -231,8 +231,8 @@ reports the outcome.
 \centering
 \caption{Degree refinement of the two values quoted in this paper.  The last
 column is the largest relative change of $R_B$ with respect to the
-degree-30 value.  Produced by \texttt{paper\_a\_study/certify\_peak.py};
-the full table is in \texttt{figure\_data/peak\_certification.json}.}
+degree-30 value.  Produced by \path{paper_a_study/certify_peak.py};
+the full table is in \path{figure_data/peak_certification.json}.}
 \label{tab:refinement}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -267,7 +267,7 @@ and would be wrong even though both numbers come from the same solve.
 
 The two configurations are compared term by term in
 \cref{tab:configurations}.  Every entry is taken from
-\texttt{figure\_data/peak\_certification.json} at degree 30, except the
+\path{figure_data/peak_certification.json} at degree 30, except the
 attenuation, which is $2|\Imag k_x|/d$ from the same spatial roots.
 
 \begin{table}[t]
@@ -360,7 +360,7 @@ $1.99\times10^{-4}$, interference $|P_{\text{cross}}|=4.17\times10^{-6}$.
 the incident wavenumber drifts with $H$; \cref{tab:controls} gives the
 branch-consistent sweep.  (c) Relative power balance error with the $10^{-6}$
 acceptance line.  (d) Relative change of the backward channel with respect to
-$H=0$ at fixed frequency.  Data: \texttt{fig05\_channel\_power.csv}.}
+$H=0$ at fixed frequency.  Data: \path{fig05_channel_power.csv}.}
 \label{fig:fig05}
 \end{figure}
 
@@ -376,7 +376,7 @@ unit incident self-power), and the frequency is allowed to follow the branch,
 because switching an ingredient off changes the dispersion and comparing
 solutions taken at different frequencies of a different branch would not be a
 control.  \Cref{tab:controls} lists the outcome; the raw record is
-\texttt{figure\_data/mechanism\_controls.json}.
+\path{figure_data/mechanism_controls.json}.
 
 \begin{table}[t]
 \centering
@@ -390,7 +390,7 @@ $K_B=-k_{x,\text{inc}}$ (superscript ``sp''), so the entry in its $R_B$
 column is that mode's self-power and \emph{not} a backward conversion.}
 \label{tab:controls}
 \small
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xcccc@{}}
 \toprule
 Configuration & \multicolumn{2}{c}{Operating point ($k_xd=0.736$)}
               & \multicolumn{2}{c}{Peak ($k_xd=0.550$)} \\
@@ -406,7 +406,7 @@ $\ell=0$, $f=0$, $H=0$             & 16.2077 & 0.077\,296$^{\mathrm{sp}}$ & 15.9
 backward port exists? & \multicolumn{2}{c}{yes for the first four rows} & \multicolumn{2}{c}{no for the last row} \\
 $\Real K_B$ (peak, first/last row) & \multicolumn{2}{c}{$+0.5038$} & \multicolumn{2}{c}{$-0.5500=-k_{x,\text{inc}}$} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Three statements follow, and they replace the sentence of the earlier version of
@@ -430,8 +430,7 @@ larger part of the conversion is lost between the edge and the reference plane.
 Referred to the edge plane the reduction is \SI{4.1}{\percent} rather than
 \SI{9.9}{\percent}; the remaining \SI{5.8}{} points are propagation loss.  The
 branch-consistent sweep is monotone in $|H|$ and is collected in
-\texttt{figure\_data/mechanism\_controls.json} (\texttt{branch\_consistent\_H\_
-sweep}): at the peak $R_B=0.579\,18$, $0.561\,78$, $0.522\,11$ for
+\path{figure_data/mechanism_controls.json} (\path{branch_consistent_H_sweep}): at the peak $R_B=0.579\,18$, $0.561\,78$, $0.522\,11$ for
 $H/H^{*}=0$, $+0.025$, $+0.05$ and $0.573\,99$, $0.546\,27$ for
 $-0.025$, $-0.05$.
 
@@ -489,7 +488,7 @@ distance from the edge, isolated-channel convention; (b) incident power arriving
 at the edge, normalised to its edge value, with the unitary limit marked;
 (c) attenuation length $L$ and (d) loss coefficient $\alpha$, both from the
 solved complex spatial roots, against $H/H^{*}$.  Data:
-\texttt{fig06\_attenuation\_distance.csv}.}
+\path{fig06_attenuation_distance.csv}.}
 \label{fig:fig06}
 \end{figure}
 
@@ -526,7 +525,7 @@ coupling levels.  All 95 rows satisfy \eqref{eq:admissible}.
 (a) Backward channel against $k_yd$ for five $H/H^{*}$; (b) the measured
 $R_B(k_yd,H)$ grid drawn without interpolation; (c) relative change against
 $H/H^{*}$ along three declared $k_yd$ slices; (d) the same relative change
-against $k_yd$.  Data: \texttt{fig07\_coupling\_sensitivity.csv}.}
+against $k_yd$.  Data: \path{fig07_coupling_sensitivity.csv}.}
 \label{fig:fig07}
 \end{figure}
 
@@ -569,7 +568,7 @@ the incident flux, for five $H/H^{*}$; (c) running thickness integral of
 $P_x^{\mathrm{B}}$ normalised to its own total; (d) shape comparison between the
 backward and incident $x$ fluxes.  These are normalised profiles, not an
 independent local-flux validation.  Data:
-\texttt{fig08\_thickness\_flux.csv}.}
+\path{fig08_thickness_flux.csv}.}
 \label{fig:fig08}
 \end{figure}
 
@@ -605,8 +604,8 @@ degree-30 reference; (c) scaled edge residual and relative energy-balance error
 with the tolerance lines; (d) relative difference between the temporal-generator
 and the spatial eigenvalue routes, which is a consistency check of the
 implementation and not an independent physical validation.  Data:
-\texttt{fig09\_validation\_convergence.csv},
-\texttt{fig09\_temporal\_spatial\_consistency.csv}.}
+\path{fig09_validation_convergence.csv},
+\path{fig09_temporal_spatial_consistency.csv}.}
 \label{fig:fig09}
 \end{figure}
 
@@ -640,6 +639,6 @@ tend to a common small value as $k_yd\to0.2$.
 intensity on a shared logarithmic scale, with the edge at $x=0$; (c) schematic
 whose arrows are the solved flux directions of the incident and backward modes;
 (d) the two components of the backward flux against $k_yd$.  Data:
-\texttt{fig10\_field\_maps.csv}, \texttt{fig10\_field\_metrics.json}.}
+\path{fig10_field_maps.csv}, \path{fig10_field_metrics.json}.}
 \label{fig:fig10}
 \end{figure}

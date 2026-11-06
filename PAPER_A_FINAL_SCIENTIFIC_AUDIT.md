@@ -30,7 +30,7 @@ the machine-readable records are in `paper_a_study/figure_data/`.
 | F | Corner effects | **UNRESOLVED—LIMITATION** | Corner-sensitive diagnostic run: the outer band holds 1.2–2.1 % of the gradient energy and its share *falls* with degree. Global partitions are corner-insensitive; pointwise corner fields are not certified. |
 | §9 | Admissibility | **ALREADY CORRECT**, one gap **FIXED** | `H*` was used 20+ times and never defined, and two different normalisations (`H*`, `H_ref`) coexist. Defined, separated, and the numerical-vs-experimental uncertainty distinction stated. |
 | §10 | Figures / manuscript | **CONFIRMED—FIXED** | Ten PDFs retained unchanged; captions of Figs. 5 and 7 now state that their `H` sweeps are at fixed frequency. Title no longer implies that the added coupling produces the reflection. |
-| §11 | Build & reproducibility | **PASS with a stated limitation** | Full suite PASS (18 tests + 6 audits), LaTeX static check PASS, 11/11 citations resolved. **No TeX engine**: PDF remains compilation-unverified. |
+| §11 | Build & reproducibility | **PASS with a stated limitation** | Full suite PASS (20 tests + 10 audits, round 5), LaTeX static check PASS, 11/11 citations resolved. **No TeX engine in the authoring sandbox**: the round-4 PDF was compiled by the independent auditor (29 pages), not here. |
 
 ---
 
@@ -390,28 +390,68 @@ all outgoing modes plus the incident mode (interference retained), and its
 distribution was split into an inner region and an outer corner band
 `|z| > 0.4 d/2` (faces at `±0.5`).
 
-| case | corner-band share of gradient energy | peak/mean inside the band | drift, degree 18→30 | spread of `R_B` |
-|---|---|---|---|---|
-| operating point | 2.00 – 2.13 % | 0.200 – 0.206 | −6.34 % | 1.46e−7 |
-| peak | 1.18 – 1.26 % | 0.122 – 0.126 | −6.62 % | 1.46e−7 |
+**Round-4 configuration error (found by the independent audit, fixed in round 5).**
+The round-4 script set `CASES = {'operating_point': KB0, ...}` and used that
+value both for branch tracking and as the `incident_guess` of `Plate.edge`.
+`KB0 = 0.2451746921716515` is the **backward-mode** wavenumber; the operating-point
+incident wavenumber is `K0 = 0.7361990195318475`. The script therefore solved a
+different scattering experiment and labelled it `operating_point`:
 
-**Reading.** The band carries about one fiftieth of the gradient energy, its
-density is *below* the plate mean (peak/mean < 1), and its share **decreases**
+| diagnostic (degree 22) | with `K0` (correct) | with `KB0` (round 4) |
+|---|---|---|
+| `R_B` | 0.02314561918 | 0.54439742640 |
+| corner-band share | 0.9958 % | 2.1315 % |
+| band peak/mean | 0.10211 | 0.20610 |
+
+The stored `corner_assessment.json` reported 0.5444 as the operating-point `R_B`
+while every other file reported 0.0231456 — a self-inconsistency that the 18
+physics tests could not see, because each file was internally consistent.
+
+**Correction.** The script now imports `K0` as well as `KB0`, sets
+`CASES = {'operating_point': K0, 'peak': peak_candidate}`, where the peak value is
+taken from `certify_peak.CASES` rather than restated; it asserts that the
+wavenumber returned by the solver for the incident port equals the requested
+incident wavenumber (`|Re ΔK| < 10⁻⁶`); it cross-checks every operating-point row
+against `peak_certification.json` at the same degree; and it writes
+`certification_cross_check` into the JSON. Two regression tests were added to
+`test_model.py` (now 20 tests): one asserts that `CASES['operating_point'] == K0`
+and `!= KB0`, the other that the stored `R_B` agrees with the certification file
+row by row to `1e-9`.
+
+**Corrected results** (`figure_data/corner_assessment.json`):
+
+| case | incident `K` | corner-band share | peak/mean in the band | drift, degree 18→30 | spread of `R_B` |
+|---|---|---|---|---|---|
+| operating point | 0.736199 | 0.928 – 0.996 % | 0.098 – 0.102 | −6.83 % | 7.2e−7 |
+| peak | 0.550000 | 1.180 – 1.264 % | 0.122 – 0.126 | −6.62 % | 1.5e−7 |
+
+Certification cross-check: **PASS** (operating-point `R_B` equals the
+`peak_certification.json` value at every degree, difference 0.0 in the stored
+digits).
+
+**Reading.** The band carries about one per cent of the gradient energy, its
+density is *below* the plate mean (peak/mean < 0.13), and its share **decreases**
 with refinement instead of growing; a corner singularity would produce the
-opposite trend (a share that grows and a peak/mean that grows without bound).
-The global partition is therefore insensitive to the corner at the 1e−7 level,
-consistent with the 1e−12 energy-balance closure that includes the corner
-region.
+opposite trend. The global partition is therefore insensitive to the corner at
+the 1e−7 level.
 
-**Classification.** `UNRESOLVED—LIMITATION`. What is certified: the reported
-*global* partitions, the weak-form consistency and the energy identity. What is
-not certified: the pointwise field at the corner itself (the polynomial basis
-cannot represent a singular trace, and no corner-eigenvalue analysis of the
-higher-order edge problem was performed).
+**What this does *not* show.** A small outer-band fraction bounds the energy that
+sits near the corner in the computed field; it does not bound the work a singular
+corner traction could do on admissible variations, because the polynomial basis
+cannot represent that singularity. The manuscript now states the two facts
+separately and drops any implication that the corner has been "shown harmless".
+A statement about corner forces would need a corner-eigenvalue analysis or
+corner-enriched functions.
 
-**Correction.** The limitations section now reports the diagnostic, its numbers,
-and the limitation, instead of asserting that the corner is a "weak singularity
-of the discretisation" without evidence.
+**Classification.** `UNRESOLVED—LIMITATION`. Certified: the reported *global*
+partitions, the weak-form consistency, the energy identity, and the case
+selection (by regression test). Not certified: the pointwise corner field, the
+associated line force, and its dynamical effect.
+
+**Correction to the manuscript.** The limitations paragraph was rewritten with
+the corrected percentages, the incident-wavenumber identification of each case,
+the cross-check against `tab:refinement`, and an explicit paragraph separating
+"the partitions are corner-insensitive" from "the corner force is negligible".
 
 **Remaining uncertainty.** As stated: a dedicated corner-eigenvalue analysis (or
 a 3-D model) would be required to certify pointwise corner tractions. Per the
@@ -483,7 +523,7 @@ Environment: Python 3.11.2, NumPy 2.4.6, SciPy 1.17.1, Matplotlib 3.11.2.
 
 ```
 run_all_checks.py  ................................................ OVERALL: PASS
-  test_model (18 checks) .......................................... PASS
+  test_model (20 checks) .......................................... PASS
   verify_dimensions (25 identities, contraction residual 2.2e-13) .. PASS
   quasistatic check (6 ratios) .................................... PASS
   flexoelectric control ........................................... PASS
@@ -535,3 +575,132 @@ None of the above is a reason to call the paper Q1-ready. The round-4 defects
 A–F are resolved to the evidence standard demanded; the paper's central claim is
 now correctly attributed, and the remaining limitations are stated where a
 referee will look for them.
+
+
+---
+
+# Round 5 addendum (2026-11-06)
+
+The independent round-4 audit (`PAPER_A_ROUND4_INDEPENDENT_AUDIT.md`) confirmed
+the package integrity, compiled the manuscript to 29 pages, re-ran the tests, and
+found three defects. All three are corrected here; nothing else was rewritten.
+
+## R5-1. Corner-study case selection — CONFIRMED—FIXED
+
+Detailed in section F above. Summary of the change:
+
+* `CASES` now maps `operating_point → K0 = 0.7361990195318475` and
+  `peak → certify_peak.CASES['peak_candidate']`; `KB0 = 0.2451746921716515` is
+  retained only as the `target_guess` that selects the backward port.
+* The script asserts `|Re K_incident,returned − K_requested| < 1e-6` for every
+  row, so a case can no longer be mislabelled silently.
+* It cross-checks the operating-point rows against `peak_certification.json` and
+  writes `certification_cross_check: PASS` into the JSON.
+* Two regression tests were added (`test_model.py`, now 20 tests).
+* Regenerated numbers: operating point 0.928–0.996 % corner-band share,
+  peak/mean 0.098–0.102; peak 1.180–1.264 %, peak/mean 0.122–0.126.
+* Manuscript limitations paragraph rewritten; the claim is now split into
+  "the partitions are corner-insensitive" (supported) and "the corner line
+  force is negligible" (**not** claimed).
+
+**Unaffected, as required.** The corrected corner study changes nothing in the
+reflection or energy-conservation results: its operating-point `R_B` now equals
+the independently certified value at every degree (difference 0.0 in the stored
+digits), and the peak rows were already correct (`R_B` 0.579179974 → 0.579180059
+across degrees, matching `peak_certification.json`). The ten figures were not
+touched.
+
+## R5-2. LaTeX layout — CONFIRMED—FIXED (source level), compilation unverified here
+
+The auditor reported overfull boxes of 102.17 pt, 4.14 pt and 372.96 pt, the
+last being the appendix file/role table. Diagnosed by inspection of the source:
+
+* **372.96 pt — appendix table.** `tab:package` was a two-column `tabular` with
+  unbreakable `\texttt{}` paths (~45 characters) and prose in a plain `l`
+  column, so the table had no defined width at all. Replaced by a
+  `tabularx{\textwidth}` with a 0.34-`\textwidth` path column in
+  `\ttfamily\footnotesize` and an `X` role column, both `\raggedright`, and the
+  paths are now typeset with `\path{}` so they may break at `/`, `.` and `_`.
+* **Long inline paths.** Fifty inline `\texttt{}` occurrences of paths ≥ 23
+  characters (in results, discussion, numerical methods and governing equations)
+  were converted to `\path{}` so that they can break inside a paragraph. These
+  are the likely source of the 102.17 pt and 4.14 pt lines.
+* **The two wide tables added in round 4** (`tab:controls`, `tab:novelty`) were
+  also converted to `tabularx{\textwidth}`, so their width is the text width by
+  construction and cannot overflow.
+* `\usepackage{tabularx}` added; `\setlength{\emergencystretch}{2em}` added to
+  absorb residual line-breaking slack **without changing any font size**.
+* The appendix command block was shortened to ≤ 50 characters per line so that
+  `verbatim` cannot overflow.
+
+**Compilation status: unverified in this sandbox** — there is still no TeX
+engine (no `pdflatex`/`latexmk`/`tectonic`/`xelatex`/`lualatex`, no package
+manager access, and the network path for a static binary is blocked). The
+structural argument above is why the previously overflowing constructs can no
+longer overflow, but it is not a compiled check. The auditor's own 29-page build
+establishes that the rest of the document compiles.
+
+## R5-3. Appendix exit-status documentation — CONFIRMED—FIXED
+
+`phase_speed_audit.py` returns **0 when the manuscript agrees with the
+recomputation** and non-zero when it does not; it has done so since the round-4
+values were corrected. The appendix previously said "exits non-zero by design",
+which described the pre-correction state. Both the file table and the command
+block now state the actual contract, and a new paragraph lists the exit status of
+every script. Every command in the block was re-run on the shipped tree:
+
+| command | exit | note |
+|---|---|---|
+| `run_all_checks.py` | 0 | OVERALL: PASS |
+| `-m unittest paper_a_study.test_model -v` | 0 | 20 tests, 8.6 s |
+| `reclassify_csv.py` | 0 | 275 rows re-derived, 0 flips |
+| `phase_speed_audit.py` | 0 | all manuscript values agree |
+| `modal_flux_audit.py` | 0 | rescaling 1.5e−15, degree 1.5e−7 |
+| `mechanism_controls.py` | 0 | controls + branch sweep rewritten |
+| `corner_assessment.py` | 0 | cross-check PASS |
+| `scripts/static_check.py` | 0 | PASS, 11/11 citations |
+| `build_figure_data.py`, `certify_peak.py`, `generate_final_figures.py`, `make_atlas.py` | not re-run | their outputs are unchanged and shipped; re-running them rewrites the same CSVs |
+
+`build_figure_data.py` and `certify_peak.py` were **not** re-run in round 5 on
+purpose: their outputs are the validated datasets and no defect in them was
+demonstrated. `corner_assessment.py` was re-run and its JSON rewritten.
+
+## R5-4. Preserved results
+
+Untouched and re-verified in round 5: `v_p = 28.046 km/s`; `λ_EM = 5.6836 mm`,
+`1/k_EM = 0.9046 mm`, `k_EM d = 2.211e−4`, `d/λ_EM = 3.519e−5`; the flux-normalised
+`R_B` definition and its rescaling invariance; the `H = 0` mechanism controls
+(57.92 % at the peak, no backward port at `ℓ = 0`); the 57.92 % peak
+configuration; the strain-gradient and electrochemical-potential formulation; and
+the ten vector PDF figures, byte-identical.
+
+## R5-5. Final verification for this delivery
+
+```
+OVERALL: PASS
+  test_model (20 checks) ................................. PASS
+  verify_dimensions (25 identities) ...................... PASS
+  quasistatic check ...................................... PASS
+  flexoelectric control .................................. PASS
+  admissibility re-derivation (275 rows, 0 flips) ........ PASS
+  figure data + figure files ............................. PASS
+  phase-speed and e.m. reconciliation .................... PASS
+  modal-flux rescaling proof ............................. PASS
+  mechanism matched controls ............................. PASS
+  corner assessment + regression ......................... PASS
+  LaTeX static validation ................................ PASS
+  LaTeX build ............................................ SKIP (no engine here)
+```
+
+## R5-6. Still open
+
+1. No compiled PDF produced **in this sandbox**; the layout fixes are argued
+   structurally, not observed. The auditor's build is the reference compilation.
+2. The corner line force is not certified (section F).
+3. Novelty against Qu et al. (IJES 208 (2025) 104165) remains **UNRESOLVED**;
+   no priority claim is made.
+4. `ℓ`, `f` and `H` remain synthetic; no device-level ZnO prediction.
+5. The `ℓ = 0` control is a single-point statement about this plate, frequency
+   and `k_y`, not a general theorem; and its configurations follow a shifted
+   branch frequency rather than being identical-frequency experiments, which
+   the manuscript states.

@@ -278,8 +278,8 @@ electromagnetic retardation, not charge dynamics.
 =\SI{2.68}{\micro\metre}$, so $d/L_D=0.075$: the plate is much thinner than the
 Debye length and the carrier perturbation is not confined to a surface layer.
 All three ratios are computed from the material file by
-\texttt{paper\_a\_study/quasistatic\_check.py} and stored in
-\texttt{figure\_data/quasistatic\_audit.json}.
+\path{paper_a_study/quasistatic_check.py} and stored in
+\path{figure_data/quasistatic_audit.json}.
 
 \subsection{Boundary conditions}
 \label{sec:governing_bc}
@@ -352,7 +352,7 @@ where $\Gamma_x$ is the $x$ component of the carrier flux; the four terms are
 the elastic, hyperelastic, dielectric and chemical contributions, each with the
 dimensions of a power per unit area ($\mathrm{W\,m^{-2}}$); that the four are
 mutually consistent is checked in
-\texttt{paper\_a\_study/verify\_dimensions.py}.  It is this
+\path{paper_a_study/verify_dimensions.py}.  It is this
 quantity, and not the magnitude of the wavevector, that decides whether a mode
 is backward: a mode is backward when $\mathcal{P}_x<0$ while it is outgoing at
 the edge.

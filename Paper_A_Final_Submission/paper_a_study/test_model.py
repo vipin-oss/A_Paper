@@ -163,4 +163,45 @@ class TestStudy(unittest.TestCase):
             self.assertRaisesRegex(RuntimeError,'rank deficiency',self.p.edge,KY,OMEGA,.736,.245)
 
 
+class TestCornerAssessmentCaseSelection(unittest.TestCase):
+    """Regression for the round-5 defect.
+
+    Round 4 passed ``KB0`` -- the *backward-mode* wavenumber -- as the
+    *incident* wavenumber of the corner study, which silently solved a
+    different scattering experiment (R_B = 0.5444 instead of 0.0231) while
+    labelling it ``operating_point``.  The corner study must identify its
+    cases by the incident wavenumber.
+    """
+
+    def test_cases_are_incident_wavenumbers(self):
+        from paper_a_study import corner_assessment as ca
+        from paper_a_study.build_figure_data import K0, KB0
+        self.assertAlmostEqual(ca.CASES['operating_point'], K0, places=12)
+        self.assertNotAlmostEqual(ca.CASES['operating_point'], KB0, places=6)
+        # the peak case must come from the certification suite, not be invented
+        from paper_a_study.certify_peak import CASES as CERTIFIED
+        self.assertAlmostEqual(ca.CASES['peak'], float(dict(CERTIFIED)['peak_candidate']), places=12)
+
+    def test_stored_operating_point_matches_certification(self):
+        """The stored JSON must agree with the independent refinement study."""
+        import json
+        from pathlib import Path
+        from paper_a_study.build_figure_data import K0
+        data = Path(__file__).resolve().parent / 'figure_data'
+        corner = json.loads((data / 'corner_assessment.json').read_text())
+        cert = json.loads((data / 'peak_certification.json').read_text())
+        ref = {int(r['degree']): float(r['R_B']) for r in cert['rows']
+               if abs(float(r.get('K', -1.0)) - float(K0)) < 1e-12 and r.get('status') == 'solved'}
+        self.assertTrue(ref, 'no operating-point rows in peak_certification.json')
+        op = corner['cases']['operating_point']
+        self.assertAlmostEqual(op['incident_K'], float(K0), places=12)
+        self.assertLess(abs(op['R_B_spread_rel']), 1e-5)
+        for row in op['rows']:
+            deg = int(row['degree'])
+            self.assertIn(deg, ref)
+            self.assertLess(abs(row['R_B'] - ref[deg]), 1e-9 * max(1.0, abs(ref[deg])),
+                            f'degree {deg}: corner R_B disagrees with certification')
+        self.assertEqual(corner['certification_cross_check'], 'PASS')
+
+
 if __name__=='__main__':unittest.main(verbosity=2)
