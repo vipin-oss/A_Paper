@@ -704,3 +704,51 @@ OVERALL: PASS
    and `k_y`, not a general theorem; and its configurations follow a shifted
    branch frequency rather than being identical-frequency experiments, which
    the manuscript states.
+
+
+---
+
+# Round 6 addendum (2026-11-06)
+
+One confirmed **compilation** defect, introduced by the round-5 layout repair,
+is fixed here. No numerical, mathematical or figure content changed.
+
+## R6-1. Fragile `\path` in captions — CONFIRMED—FIXED
+
+**Evidence.** The independent reviewer's build aborted with
+`! Undefined control sequence. \Url Error -> \url used in a moving argument.`
+at `results.tex` line 69. **Cause:** round 5 converted 50 long inline paths from
+`\texttt{}` to `\path{}` to remove the 372.96 pt / 102.17 pt overfull boxes;
+fourteen of those conversions are inside `\caption` arguments, which are
+written to the `.lof` by `\protected@write` and therefore require `\protect`.
+**Fix:** `\protect\path{...}` at all fourteen sites (lines 69, 149, 184, 219,
+234, 235, 363, 491, 528, 571, 607, 608, 642 of `sections/results.tex`).
+`\DeclareRobustCommand` wrapping was rejected because `\path` sets catcodes on
+its argument and a pre-tokenised argument does not carry them.
+**Guard:** `scripts/static_check.py` now checks every `\caption`, `\section`,
+`\subsection`, `\subsubsection` and `\paragraph` argument for unprotected
+`\path`, `\url`, `\href`, `\nolinkurl`, and `run_all_checks.py` fails on a
+hit. The guard was mutation-tested: deleting one `\protect` reproduces a FAIL
+naming `sections/results.tex: line 69`, restoring it returns PASS.
+**Verification:** static check PASS; the reviewer's build of this source is a
+30-page PDF with no overfull boxes. **Not compiled here** — no TeX engine.
+
+## R6-2. Environment recovery (process note, no source change)
+
+The session started from a fresh checkout at the base commit without a Python
+interpreter environment. The branch was restored with
+`git fetch origin arena/ea7ca4dd-a-paper` + `git reset --hard` to `48029aa`
+(working tree clean, zero difference from the audited tree), and the
+environment was rebuilt at the versions the appendix declares. This is recorded
+because it affects reproducibility provenance, not content.
+
+## R6-3. Re-verification on the restored tree
+
+`run_all_checks.py` → **OVERALL: PASS** (20 tests, 9 script-level checks);
+corner cross-check PASS; the preserved values read back from JSON are
+0.023145624 (2.3146 %), 0.579180059 (57.9180 %), corner shares
+0.9278–0.9961 % and 1.1802–1.2643 %.
+
+Unchanged open items: no PDF built in this sandbox, corner line force
+uncertified, novelty vs Qu et al. **UNRESOLVED**, `ℓ`/`f`/`H` synthetic,
+`ℓ = 0` control a single-point statement.

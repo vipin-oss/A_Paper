@@ -21,11 +21,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 STAGE = Path("/tmp/paper_a_round4_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round5.zip"
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round6.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_FINAL_SCIENTIFIC_AUDIT.md",
     "PAPER_A_ROUND4_INDEPENDENT_AUDIT.md",
+    "PAPER_A_ROUND6_FINAL_VERIFICATION.md",
     "PAPER_A_FINAL_INDEPENDENT_CORRECTION_RESPONSE.md",
     "PAPER_A_FINAL_SCIENTIFIC_CORRECTION_AND_Q1_AUDIT.md",
     "PAPER_A_FINAL_SCIENTIFIC_CHECK.md",
@@ -115,6 +116,11 @@ def main() -> int:
 
     shutil.copy2(ROOT / "PACKAGE_README.md", STAGE / "PACKAGE_README.md")
     copied += 1
+
+    # Normalise every staged mtime so that the archive depends only on content.
+    for path in STAGE.rglob("*"):
+        if path.is_file():
+            os.utime(path, (FIXED_EPOCH, FIXED_EPOCH))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     if OUT.exists():

@@ -13,6 +13,15 @@ figures, `MANIFEST.json`, `static_validation.txt`.  It is statically validated
 and **not compiled**: no TeX engine is available in the authoring environment.
 Build with `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 
+**Round-6 change.** The round-5 layout repair converted long inline paths to
+`\path{}`; fourteen of them sat inside figure and table captions, where the
+fragile command aborts the build (`\Url Error -> \url used in a moving
+argument`). All fourteen now read `\protect\path{...}`, and
+`scripts/static_check.py` gained a moving-argument check that fails the battery
+if a fragile command reappears in a caption or section title (mutation-tested).
+Full detail in `PAPER_A_ROUND6_FINAL_VERIFICATION.md`. Nothing numerical,
+mathematical or graphical changed.
+
 **Round-5 changes in one paragraph.** The independent audit found that the
 corner study had used the *backward* wavenumber `KB0 = 0.2452` as its
 *operating-point incident* wavenumber, so that case was a different scattering

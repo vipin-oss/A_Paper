@@ -57,16 +57,16 @@
     "scripts/figure_style.py": "2718a477647dbc8a66f725fd02e4b559ae5249f2170c96c9708e6cd4cf265ff2",
     "scripts/generate_final_figures.py": "e3d4348b1f4b5d5c9c8baf09d69263d00abadd67565d559973d3c325b933293a",
     "scripts/model.py": "c72ce871d1e79e5013db188bdbb0f27fe0ba31b41ddc2f3450c0145aea1eb832",
-    "scripts/static_check.py": "cb43c9cdf33ed2d3ed1e4f570826f3bdf30da5067e74ab5e7a8f52fcb9c5e2b2",
+    "scripts/static_check.py": "b6b004e28878c5989b1e5f41295f22e7724b4beb117ad060e1b706af137903f3",
     "sections/appendix_reproducibility.tex": "af770ef4f3fc4b20cddef8842df6e8bfabb836bce3c1deeee81f4fa0f8686700",
     "sections/conclusions.tex": "3fe91dde0ddfb218d671c8ca5e2875f5dd4d24c0667cf72ebc420db8401ffce4",
     "sections/discussion.tex": "845855ce272ef0a1c023845d69c1b18bde7104ca3b34333c990efe76d2c60f35",
     "sections/governing_equations.tex": "50c408a9549db6b410610bf4f9311b2077472c877968070984867e821afbe131",
     "sections/introduction.tex": "7de48028bfbc7121f7de739b8f90d551d630e9a9f7e545fce4214c04733756c5",
     "sections/numerical_methods.tex": "537a93175ec92031fd6aa213803e647c43503b261494b8e6b189d32dbae452b0",
-    "sections/results.tex": "3b3adc46bcd0c94e22642b8173c787553d91bc5abfdc9a7e9352d676c8ca5157",
+    "sections/results.tex": "d01add1d265c67f3eadde7e71d80903e2932701e40f53d644526f885f51dd469",
     "static_validation.txt": "b4e2fd4ef87a9374cc59ccc2689941cf52d2de7b1c8311fd015f879b90063c46",
-    "validation/verification_log.txt": "87b554162061708b9125680f953c7f2b8f810a8b1e0acbdddc62634a13d59327"
+    "validation/verification_log.txt": "8e5bbd830563a5f07c4df0a10eb8feb1a6ce34414e9e99776ad09415920e2d9b"
   },
   "count": 67
 }

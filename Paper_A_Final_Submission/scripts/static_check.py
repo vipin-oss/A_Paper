@@ -81,7 +81,7 @@ textsuperscript subscript
 today
 underbrace overbrace underbrace
 gtrsim lesssim Sigma iint siemens oiiint
-path url urlstyle arraybackslash raggedright normalfont tabularx X
+path url urlstyle arraybackslash raggedright normalfont tabularx X protect
 emergencystretch hsize textwidth linewidth
 ldots dots
 """.split()
@@ -102,6 +102,46 @@ def strip_comments(text: str) -> str:
             i += 1
         out.append(line[:cut])
     return "\n".join(out)
+
+
+FRAGILE = ("path", "url", "href", "nolinkurl")
+
+
+def _brace_argument(text: str, open_index: int) -> str:
+    """Return the balanced {...} argument that starts at ``open_index``."""
+    depth = 0
+    i = open_index
+    while i < len(text):
+        c = text[i]
+        if c == "\\":
+            i += 2
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return text[open_index + 1 : i]
+        i += 1
+    return text[open_index + 1 :]
+
+
+def check_moving_arguments(text: str, label: str = "text") -> list[str]:
+    import re as _re
+
+    found: list[str] = []
+    pattern = _re.compile(
+        r"\\(caption|section|subsection|subsubsection|paragraph)\s*(\[[^\]]*\])?\s*\{")
+    for m in pattern.finditer(text):
+        arg = _brace_argument(text, m.end() - 1)
+        base = text.count("\n", 0, m.end() - 1) + 1
+        for cmd in FRAGILE:
+            for hit in _re.finditer(r"(?<!\\protect)\\" + cmd + r"\{", arg):
+                line = base + arg[: hit.start()].count("\n")
+                found.append(
+                    f"{label}: line {line}: fragile \\{cmd} in a moving "
+                    f"argument (\\{m.group(1)}) - use \\protect\\{cmd}")
+    return found
 
 
 def main() -> int:
@@ -154,6 +194,18 @@ def main() -> int:
                     stack.pop()
         for name in stack:
             problems.append(f"{rel}: unclosed environment {name}")
+
+        # fragile commands inside moving arguments (per file, so the line
+        # number reported is the line of the offending source file)
+        problems.extend(check_moving_arguments(text, str(rel)))
+
+    # ---- fragile commands inside moving arguments
+    # \caption and \section arguments are written to the .lof/.toc files with
+    # \protected@write, which expands everything that is not \protect-ed.  A
+    # \path or \url there aborts the build with
+    #   "\Url Error -> \url used in a moving argument".
+    # Round 5 shipped exactly that in fourteen captions; the per-file check
+    # above is the regression guard for it.
 
     # ---- bibliography
     bib = BIB.read_text(encoding="utf-8")
