@@ -28,12 +28,13 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from build_figure_data import (HCRIT, KB0, KY0, operating_mode,  # noqa: E402
-                               plate, track)
+from build_figure_data import (HCRIT, KB0, KY0, edge_plane_fraction,  # noqa: E402
+                               operating_mode, plate, track)
 from model import Plate  # noqa: E402
 
 DATA = HERE / "figure_data"
-CASES = {"operating_point": 0.7361990195318475, "branch_maximum": 0.525, "peak": 0.55}
+CASES = {"operating_point": 0.7361990195318475, "refined_peak": 0.5275,
+         "round7_sample": 0.525, "k055_sample": 0.55}
 ETA_COUPLING = 0.05
 
 CONFIGS = {
@@ -74,6 +75,11 @@ def run(case_K: float, cfg: dict, degree: int = 22) -> dict:
         "total_outgoing_propagating": float(-res["total_outgoing_self_power"]
                                             / res["incident_power_left"]),
         "cross": float(res["cross_power_left"] / res["incident_power_left"]),
+        # edge-plane share on the same convention as the tabulated
+        # configurations: both modes rescaled from the reference plane to x=0.
+        "R_B_edge": edge_plane_fraction(float(res["backward_reflection_self_power"]),
+                                        complex(res["incident_K"]),
+                                        complex(res["backward_K"]), 1.0),
         "dissipation": float(res["dissipation_control_volume"]
                              / res["incident_power_left"]),
         "backward_energy": float(res["backward"]["energy"]),
@@ -111,12 +117,52 @@ def tracked_sweep(case_K: float, etas=(0.05, 0.025, 0.0, -0.025, -0.05)) -> list
                          angle_deg=float(res["reflected_angle_deg"]),
                          backward_K_real=float(complex(res["backward_K"]).real),
                          backward_K_imag=float(complex(res["backward_K"]).imag),
-                         R_B_edge=float(res["backward_reflection_self_power"]
-                                        * np.exp(2 * abs(complex(res["backward_K"]).imag) * 10.0)),
+                         R_B_edge=edge_plane_fraction(
+                             float(res["backward_reflection_self_power"]),
+                             complex(res["incident_K"]), complex(res["backward_K"]), 1.0),
                          dissipation=float(res["dissipation_control_volume"]
                                            / res["incident_power_left"]),
                          power_balance_relative=float(res["power_balance_relative"])))
     return rows
+
+
+def reoptimised(eta: float, lo: float = 0.518, hi: float = 0.538,
+                step: float = 1e-3, degree: int = 22) -> dict:
+    """Largest admissible backward fraction at this H, searched afresh.
+
+    Comparison (C) of the coupling analysis: the extremum is allowed to move
+    with H, so this answers "how much backward power can this coupling level
+    deliver at best" rather than "what happens to the H = 0 extremum".
+    """
+    grid = list(np.round(np.arange(lo, hi + 0.5 * step, step), 6))
+    p = Plate(degree=degree, flexo=1e-9, H=eta * HCRIT, ell=50e-9)
+    modes = track(p, grid, operating_mode(p))
+    best = None
+    for K, m in zip(grid, modes):
+        try:
+            res, _ = p.edge(KY0, float(m["omega"].real), float(K), KB0)
+        except Exception:                              # noqa: BLE001
+            continue
+        r = dict(K=float(K), R_B=float(res["backward_reflection_self_power"]),
+                 frequency_GHz=float(res["frequency_Hz"]) / 1e9,
+                 R_B_edge=edge_plane_fraction(
+                     float(res["backward_reflection_self_power"]),
+                     complex(res["incident_K"]), complex(res["backward_K"]), 1.0),
+                 power_balance_relative=float(res["power_balance_relative"]))
+        if best is None or r["R_B"] > best["R_B"]:
+            best = dict(r, neighbour_points=len(grid))
+    fine = list(np.round(np.arange(best["K"] - 1.5e-3, best["K"] + 1.5e-3 + 5e-5, 1e-4), 6))
+    p = Plate(degree=degree, flexo=1e-9, H=eta * HCRIT, ell=50e-9)
+    modes = track(p, fine, operating_mode(p))
+    rb = []
+    for K, m in zip(fine, modes):
+        res, _ = p.edge(KY0, float(m["omega"].real), float(K), KB0)
+        rb.append(dict(K=float(K), R_B=float(res["backward_reflection_self_power"]),
+                       frequency_GHz=float(res["frequency_Hz"]) / 1e9))
+    ref = max(rb, key=lambda r: r["R_B"])
+    return dict(eta=float(eta), coarse_best=best, refined_best=ref,
+                coarse_step=step, refine_step=1e-4, domain=[lo, hi],
+                refined_rows=rb)
 
 
 def main() -> int:
@@ -162,6 +208,17 @@ def main() -> int:
                   f"R_B_edge={r['R_B_edge']:.6f}  "
                   f"ImK_B={r['backward_K_imag']:+.3e}")
     out["branch_consistent_H_sweep"] = sweeps
+
+    print("\nre-optimised peak per coupling level (search restarted for each H)")
+    reopt = {}
+    for eta in (0.05, 0.025, 0.0, -0.025, -0.05):
+        r = reoptimised(eta)
+        reopt[f"{eta:+.3f}"] = r
+        print(f"  H/H*={eta:+.3f}  coarse K={r['coarse_best']['K']:.4f}  "
+              f"refined K={r['refined_best']['K']:.4f}  "
+              f"R_B={r['refined_best']['R_B']:.9f}  "
+              f"f={r['refined_best']['frequency_GHz']:.4f} GHz")
+    out["reoptimised_peak"] = reopt
 
     DATA.mkdir(parents=True, exist_ok=True)
 

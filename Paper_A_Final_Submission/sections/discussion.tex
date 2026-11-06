@@ -10,11 +10,11 @@ that ends up in one particular outgoing mode, measured at a plane ten
 thicknesses from the edge.  It is a partition of the scattered field, not a
 reflectance.  At the operating point the backward mode takes
 \SI{2.31}{\percent} while the remaining propagating outgoing modes take
-\SI{97.67}{\percent}; at the branch maximum the backward mode takes
-\SI{93.19}{\percent} while the rest take \SI{5.81}{\percent}.  At the operating
+\SI{97.67}{\percent}; at the certified maximum the backward mode takes
+\SI{94.68}{\percent} while the rest take \SI{5.09}{\percent}.  At the operating
 point the total outgoing propagating power is $0.99980$ of the incident power
-and at the branch maximum $0.99000$, so the plate is an almost perfect scatterer
-of the guided mode in both cases and the interesting question is not how much is
+and at the maximum $0.99769$, so the plate is an almost perfect scatterer of the
+guided mode in both cases and the interesting question is not how much is
 reflected but into which branch it goes.
 
 This distinction has a practical consequence.  A measurement of total
@@ -39,25 +39,36 @@ operating point sits on the branch.
 \subsection{The mechanism}
 \label{sec:disc_mechanism}
 
-The sweep along the branch (\cref{fig:fig04}c) places the maximum of the
-conversion at $k_xd=0.525$, where the group velocity passes through zero
-($v_g=-3\,\si{\metre\per\second}$ against $-180$ and
-$+355\,\si{\metre\per\second}$ at the ends of the solved window).  This is a
-slow-mode effect and it has a simple reading: when the branch is slow, the
-incident wave spends a long time in the neighbourhood of the edge per unit
-length, the evanescent spectrum at the edge has more time to redistribute the
-energy, and a larger share ends up in the backward branch.  The same mechanism
-explains why the conversion falls steeply on both flanks: on the fast side the
-interaction is short, and on the far side of the zero the branch itself has
-changed character.  A grid of $\Delta k_xd=0.05$ is too coarse to resolve this
-maximum, because the branch turns over inside one interval; the refined sweep of
-\cref{fig:fig04} and the certified value of \cref{tab:refinement} are what
-locate it.
+The sweep along the branch (\cref{fig:fig04}) places the maximum of the
+conversion at $k_xd=0.5275$, where the group velocity vanishes
+($+0.45\,\si{\metre\per\second}$ against $-180$ and $+355\,\si{\metre\per\second}$
+at the ends of the solved window) and where the backward wavenumber approaches
+the incident one to within \SI{0.4}{\percent}.  This is a slow-mode effect and
+it has a simple reading: at a zero-group-velocity fold the incident and backward
+wavenumbers are nearly equal, so the two modes are nearly parallel and the edge
+condition can be met with only a small admixture of the other outgoing modes;
+the projection onto the backward mode then carries almost the whole partition.
+Panel (c) of \cref{fig:fig04} makes this explicit: all coupling levels collapse
+onto one curve in $k_{Bx}/k_{ix}$, with the conversion maximal as the ratio
+approaches unity.  The same mechanism explains why the conversion falls steeply
+on both flanks: on the fast side the wavenumbers separate, and on the far side of
+the fold the branch has changed character.  A grid of $\Delta k_xd=0.05$ is too
+coarse to resolve this maximum, because the whole top of the response is
+$10^{-3}$ wide; the two rasters of \cref{fig:fig04} and the search of
+\cref{sec:results_certification} are what locate it.
+
+The reading has a second half, and it is not optional.  At the fold the incident
+mode itself is nearly cut off: its group velocity vanishes, so the flux it
+carries per unit normalisation falls by a factor $128$ with respect to the
+operating point.  The partition is maximal exactly where the transported power
+is minimal.  A statement that ninety-five per cent of the energy is turned around
+would therefore be true as a ratio and false as an energy budget, and the paper
+makes only the first.
 
 The reflection itself is present before the coupling is switched on.  The
 controls of \cref{sec:results_mechanism} establish this directly: with $H=0$ the
-same branch converts \SI{93.19}{\percent} of the incident power at the branch
-maximum and \SI{2.31}{\percent} at the operating point, and when the
+same branch converts \SI{94.68}{\percent} of the incident power at the
+certified maximum and \SI{2.31}{\percent} at the operating point, and when the
 strain-gradient sector is removed the backward branch does not exist at all.
 The strong negative reflection is therefore a property of the higher-order
 guided branch and of the edge, not a resonance of the added coupling.
@@ -67,22 +78,27 @@ shifts the dispersion by less than $4\times10^{-6}$ in relative terms
 (\cref{fig:fig01}a), it shifts the loss by up to a factor of sixty-two
 (\cref{fig:fig06}c,d), and the partition follows with a weight that depends on
 where the branch is sampled: \SI{-1.21}{\percent} at the operating point,
-\SI{-9.85}{\percent} at $k_xd=0.55$ and \SI{-33.1}{\percent} at the branch
+\SI{-9.85}{\percent} at $k_xd=0.55$ and \SI{-34.2}{\percent} at the certified
 maximum (\cref{tab:controls}).  The ordering --- dispersion unaffected,
 partition affected only where the branch is slow, loss strongly affected
 everywhere --- is what a carrier-level coupling acting through conduction loss
-should produce.  The third of the partition lost at the branch maximum is mostly
+should produce.  The third of the partition lost at the certified maximum is mostly
 loss acting on the backward mode between the edge and the reference plane:
-referred to the edge plane the same comparison gives \SI{21.6}{\percent} rather
-than \SI{33.1}{\percent}, so \SI{11.5}{} points are propagation loss and the
-rest is a genuine reduction of the conversion.
+referred to the edge plane, where both effects act at the same place, the same
+comparison gives \SI{11.1}{\percent} rather than \SI{34.2}{\percent}, so
+\SI{23.1}{} points are propagation loss and the rest is a genuine reduction of
+the conversion.  Re-searching the extremum at each coupling level separates the
+two effects further: the location moves from $0.5275$ to $0.5218$ and $0.5309$
+at the two extremes of $H$, and the largest attainable share falls from $0.9468$
+to $0.6244$ and $0.7013$, so the coupling both lowers the ceiling and displaces
+it, asymmetrically in the sign of $H$.
 
 The transverse wavenumber is the organising parameter at the operating point,
 not the coupling.  \Cref{fig:fig07} shows that $k_y$ changes the backward
 channel by a factor of $1.35$ across the solved box while $H$ moves it by
 \SI{1.21}{\percent} branch-consistently (\SI{2.4}{\percent} at fixed frequency).
-At the branch maximum, however, the coupling becomes the larger of the two
-effects, moving the partition by \SI{33.1}{\percent} while the $k_y$ factor
+At the certified maximum, however, the coupling becomes the larger of the two
+effects, moving the partition by \SI{34.2}{\percent} while the $k_y$ factor
 stays at $1.35$.  The ordering is not a property of the coupling alone; it is a
 property of the coupling and the operating point together.
 Any statement about the added coupling must therefore be made at fixed $k_y$,
@@ -230,7 +246,7 @@ problem is well posed, that its energy budget closes to $10^{-12}$, that
 $\ell=0$ removes the backward branch and therefore the effect, and that the
 added coupling moves the partition by a quantified and reproducible amount
 (\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at
-$k_xd=0.55$, \SI{33.1}{\percent} at the branch maximum, all at
+$k_xd=0.55$, \SI{34.2}{\percent} at the certified maximum, all at
 $|H|=0.05H^{*}$).
 
 \subsection{Material provenance}
@@ -292,14 +308,16 @@ strain-gradient energy density on the edge plane was computed from the coherent
 sum of all outgoing modes plus the incident mode, and its concentration in the
 outer band $|z|>0.4\,d/2$ was followed through the degree refinement.  Both cases
 are incident configurations identified by their incident axial wavenumber ---
-$k_xd=0.7362$ at the operating point and $k_xd=0.5500$ --- and every row records
-the incident and backward wavenumbers returned by the solver, with the
-operating-point rows cross-checked against the independent refinement study of
+$k_xd=0.7362$ at the operating point, $0.5275$ at the certified maximum and
+$0.5500$ on the descending flank --- and every row records the incident and
+backward wavenumbers returned by the solver, with the operating-point rows
+cross-checked against the independent refinement study of
 \cref{tab:refinement} (they agree to the last stored digit).  At the operating
-point the band carries $0.93$--$1.00$~\% of the strain-gradient energy and at
-$k_xd=0.55$ $1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is
-$0.098$--$0.102$ and $0.122$--$0.126$ respectively (below the mean, not above
-it), and the share \emph{decreases} by \SI{6.8}{}~\% and \SI{6.6}{}~\% between
+point the band carries $0.93$--$1.00$~\% of the strain-gradient energy, at the
+certified maximum $1.22$--$1.30$~\% and at $k_xd=0.55$ $1.18$--$1.26$~\%, its
+peak-to-mean ratio inside the band is $0.098$--$0.102$, $0.126$--$0.130$ and
+$0.122$--$0.126$ respectively (below the mean, not above it), and the share
+\emph{decreases} by \SI{6.8}{}~\%, \SI{6.6}{}~\% and \SI{6.6}{}~\% between
 degree 18 and degree 30 instead of growing.  A corner singularity would show
 the opposite trend.  This is evidence that the outer band does not accumulate
 gradient energy as the discretisation is refined, and that the reported

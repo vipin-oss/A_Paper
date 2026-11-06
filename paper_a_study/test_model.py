@@ -180,7 +180,9 @@ class TestCornerAssessmentCaseSelection(unittest.TestCase):
         self.assertNotAlmostEqual(ca.CASES['operating_point'], KB0, places=6)
         # the peak case must come from the certification suite, not be invented
         from paper_a_study.certify_peak import CASES as CERTIFIED
-        self.assertAlmostEqual(ca.CASES['peak'], float(dict(CERTIFIED)['peak_candidate']), places=12)
+        self.assertAlmostEqual(
+            ca.CASES['refined_peak'], float(dict(CERTIFIED)['refined_peak']),
+            places=12)
 
     def test_stored_operating_point_matches_certification(self):
         """The stored JSON must agree with the independent refinement study."""
@@ -238,6 +240,102 @@ class TestFrozenReferenceConstants(unittest.TestCase):
                             f'[{lo}, {hi}] - a unit error would land here')
         for key, value in self.ref['material'].items():
             self.assertAlmostEqual(SI[key] / value, 1.0, places=12)
+
+
+class TestCertifiedPeak(unittest.TestCase):
+    """The four ways the round-7 maximum claim could be (and twice was) wrong.
+
+    These tests are deliberately built on *solver evaluations*, not on stored
+    expected values: each one fails if the physics changes, and each one would
+    have failed on the previous revision.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import sys
+        from pathlib import Path
+        here = Path(__file__).resolve().parent
+        if str(here) not in sys.path:
+            sys.path.insert(0, str(here))
+        from build_figure_data import (KY0, KB0, operating_mode, plate, track)
+        cls.KY0, cls.KB0 = KY0, KB0
+        cls.mode_of = staticmethod(operating_mode)
+        cls.plate, cls.track = staticmethod(plate), staticmethod(track)
+        cls.cache = {}
+
+    def _solve(self, K, degree=22, L=10.0):
+        key = (round(K, 9), degree, L)
+        if key not in self.cache:
+            p = self.plate(0.0, degree=degree)
+            m = self.track(p, [K], self.mode_of(p))[0]
+            res, _ = p.edge(self.KY0, m['omega'].real, float(K), self.KB0, L=L)
+            self.cache[key] = res
+        return self.cache[key]
+
+    def test_a_coarse_raster_cannot_be_certified(self):
+        """No sample of the 0.01 raster may reach the refined maximum.
+
+        The previous revision read the maximum off a coarse sweep and quoted
+        57.92 % (0.55) and later 93.19 % (0.525); both are below the value the
+        same solver returns at 0.5275.  A regression that reintroduces a
+        coarse-grid maximum fails here.
+        """
+        coarse = [self._solve(K)['backward_reflection_self_power']
+                  for K in (0.52, 0.525, 0.53)]
+        refined = self._solve(0.5275)['backward_reflection_self_power']
+        self.assertGreater(refined, max(coarse) + 5e-4,
+                           'a coarse sample is within 5e-4 of the refined maximum')
+        self.assertGreater(refined, 0.94)
+        self.assertLess(refined, 1.0)
+
+    def test_incident_mode_is_not_the_backward_target(self):
+        """The case label must be an incident wavenumber, not KB0.
+
+        Passing the backward target (0.245) as the incident guess is the blunder
+        that produced R_B = 0.5444 in round 4.  It is caught by requiring the
+        returned incident root to sit near the requested wavenumber and far from
+        the backward target.
+        """
+        res = self._solve(0.5275)
+        ki = complex(res['incident_K'])
+        kb = complex(res['backward_K'])
+        self.assertLess(abs(ki.real - 0.5275), 2e-3)      # flat-branch offset
+        self.assertGreater(abs(ki.real - self.KB0), 0.2)
+        self.assertGreater(kb.real, 0.0)                  # positive Re K
+        self.assertLess(res['backward']['Px'], 0.0)       # negative x-power
+        self.assertTrue(res['negative_direction'])
+
+    def test_partition_is_independent_of_the_reference_plane(self):
+        """Both partner modes attenuate; the net exponent must rescale exactly.
+
+        Using the backward decay alone (the previous formula) leaves a 2 %
+        discrepancy at the maximum.  This test measures the net exponent from
+        the solver instead of assuming it.
+        """
+        a = self._solve(0.5275, L=10.0)
+        b = self._solve(0.5275, L=15.0)
+        ki_a, kb_a = complex(a['incident_K']), complex(a['backward_K'])
+        ki_b, kb_b = complex(b['incident_K']), complex(b['backward_K'])
+        net = 2.0 * (abs(ki_a.imag) + abs(kb_a.imag)) * 5.0
+        ratio = (a['backward_reflection_self_power'] /
+                 b['backward_reflection_self_power'])
+        self.assertAlmostEqual(ratio / np.exp(net), 1.0, places=9)
+        self.assertGreater(abs(kb_b.imag), 0.0)
+
+    def test_reported_peak_matches_the_search_record(self):
+        """The manuscript's headline must equal the recorded solver value."""
+        import json
+        from pathlib import Path
+        rec = json.loads((Path(__file__).resolve().parent / 'figure_data'
+                          / 'peak_search.json').read_text())
+        reported = rec['classification']['R_B_reported']
+        self.assertEqual(rec['classification']['classification'],
+                         'certified_local_maximum')
+        self.assertAlmostEqual(
+            self._solve(0.5275)['backward_reflection_self_power'] / reported,
+            1.0, places=9)
+        self.assertGreater(rec['classification']['R_B_at_max'], reported)
+        self.assertLess(abs(rec['classification']['R_B_at_max'] - reported), 1e-5)
 
 
 if __name__=='__main__':unittest.main(verbosity=2)

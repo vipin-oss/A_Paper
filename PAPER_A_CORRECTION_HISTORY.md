@@ -119,3 +119,28 @@ No citation was added to raise a count, and none was removed.
 * **Novelty statement** — cannot be closed; left explicitly unresolved rather
   than sharpened into a claim the evidence does not support.
 * **ℓ, f, H values** — synthetic and labelled as such; no calibration invented.
+
+---
+
+# Round 8 addendum — supersedes the headline of C-1
+
+Round 8 re-executed every quoted number instead of trusting the round-7 verdicts, and found that C-1
+itself was a coarse-grid artefact: 0.9319 at k_xd = 0.5250 was the largest sample of a 0.01 raster, not a
+maximum. The corrections below therefore **supersede C-1 and the peak column of C-2**. The full account is
+in `PAPER_A_ROUND8_STAGE1_AUDIT.md` and `PAPER_A_ROUND8_MANUSCRIPT_CHANGES.md`.
+
+| # | Item | Round 7 | Round 8 | Reason |
+|---|---|---|---|---|
+| R8-1 | location and value of the maximum | 0.931891 at k_xd = 0.5250 | **0.9467952 at k_xd = 0.5275** (argmax 0.52752, 0.9467954) | the 0.01 raster does not resolve the top; three-stage search 2e-3 → 1e-4 → 1e-5 with a flatness test and a stored classification |
+| R8-2 | status of the maximum | "the maximum" | **certified local maximum** in the declared window, flat to 0.01 pp on [0.5266, 0.5277], never global | a sampled value must not be called a maximum |
+| R8-3 | reference-plane rescaling in the artefact audit | backward attenuation only → 2 % plane dependence, rationalised in a note | net exponent 2(|Im k_ix| + |Im k_Bx|) → 2.4e-16 | both partner modes attenuate, in opposite directions |
+| R8-4 | incident modal power in the audit | 1.0 (renormalised before the field was filled) | 3.967e-5 at the peak vs 5.075e-3 at the operating point, i.e. a factor **128** | the ratio is a ratio of two small fluxes; now stated in the abstract |
+| R8-5 | coupling effect at the peak | −33.1 % (reference plane; edge comparison quoted as 21.6 %/11.5 points) | **−34.2 % reference plane, −11.1 % edge plane, 23.1 points of propagation loss**; re-searched, the ceiling falls to 0.6244 / 0.7013 | the old pair mixed a reference-plane figure with an edge-plane figure |
+| R8-6 | corner-assessment guard | 1e-6 relative on the incident root | 2e-2 relative, documented as a *labelling* guard | 1e-6 silently excluded the certified peak (offset 7.4e-4) |
+| R8-7 | `certify_peak.py` | case named `peak_candidate`, described as the peak | four fixed wavenumbers; docstring states it certifies and **never searches** | a refinement study at the wrong abscissa certifies nothing |
+| R8-8 | Fig. 4 | 2 panels, 110 coarse rows, caption asserted a maximum | 2 × 2 panels, 139 rows with a fine raster, inset over the top, no row count in the text | the figure could not support its caption |
+| R8-9 | gates | 22 tests, 5 mutants, fig04 = 110 rows, no search/identity step in the battery | **26 tests, 8 mutants, 139 rows, three new battery steps, source-agreement gate** | the suite could not detect a nearby higher admissible value |
+
+**Not superseded:** the governing equations, the constitutive law, the 2.5D formulation, the material
+constants, the operating-point value (0.0231456) and the k_xd = 0.55 value (0.5791801) were all re-executed
+and confirmed to 4e-11 and 5e-8 respectively.

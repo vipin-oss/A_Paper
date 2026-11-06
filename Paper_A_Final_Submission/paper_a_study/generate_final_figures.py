@@ -383,45 +383,71 @@ def fig04():
             if r.get("certified") in (True, "true") and r["R_B_2um"] is not None]
     fig, axs = panel_axes()
     a, b, c, d = axs
+    peak = [r for r in rows if r["eta"] == 0.0]
+    top = max(peak, key=lambda r: r["R_B_2um"])
 
+    # ---- (a) the response against the branch parameter ---------------------
     for eta in S.H_LEVELS:
-        sub = sorted(series(rows, eta=eta), key=lambda r: r["frequency_GHz"])
-        S.h_plot(a, col(sub, "frequency_GHz"), 100 * col(sub, "R_B_2um"), eta,
-                 markevery=2, markersize=4.4)
-    a.set_xlabel(r"frequency  $f$ (GHz)")
+        sub = sorted(series(rows, eta=eta), key=lambda r: r["K"])
+        S.h_plot(a, col(sub, "K"), 100 * col(sub, "R_B_2um"), eta,
+                 markevery=2, markersize=4.2)
+    a.plot([top["K"]], [100 * top["R_B_2um"]], marker="*", markersize=10,
+           color="#B4552A", markeredgecolor="white", markeredgewidth=0.6,
+           linestyle="None", zorder=6)
+    a.set_xlabel(r"wavenumber  $k_x d$")
     a.set_ylabel(r"$R_B$ at $\ell=2\,\mu$m (%)")
     a.set_ylim(bottom=0)
     S.style_axes(a)
+    # The top of the response is 1e-3 wide in k_x d: unreadable on the main
+    # axis, so it is resolved in an inset that uses the same data, uncut.
+    ins = a.inset_axes([0.588, 0.525, 0.390, 0.415])
+    zoom = sorted([r for r in peak if 0.5180 <= r["K"] <= 0.5380], key=lambda r: r["K"])
+    ins.plot(col(zoom, "K"), 100 * col(zoom, "R_B_2um"), color="#202A44",
+             linewidth=1.2, marker="o", markersize=2.4, markerfacecolor="white",
+             markeredgewidth=0.6)
+    ins.plot([top["K"]], [100 * top["R_B_2um"]], marker="*", markersize=7.0,
+             color="#B4552A", linestyle="None", markeredgecolor="white",
+             markeredgewidth=0.4)
+    ins.set_xlabel(r"$k_x d$", fontsize=6.8, labelpad=0.8)
+    ins.set_yticks([80, 90])
+    ins.tick_params(labelsize=6.0, length=1.8, width=0.55, pad=1.4)
+    ins.set_ylim(78, 97)
+    ins.set_xlim(0.518, 0.538)
+    ins.grid(True, alpha=0.22, linewidth=0.5)
+    for spine in ins.spines.values():
+        spine.set_linewidth(0.7)
 
+    # ---- (b) energy angle --------------------------------------------------
     for eta in S.H_LEVELS:
-        sub = sorted(series(rows, eta=eta), key=lambda r: r["frequency_GHz"])
-        S.h_plot(b, col(sub, "frequency_GHz"), col(sub, "angle_deg"), eta,
-                 markevery=2, markersize=4.4)
+        sub = sorted(series(rows, eta=eta), key=lambda r: r["K"])
+        S.h_plot(b, col(sub, "K"), col(sub, "angle_deg"), eta,
+                 markevery=2, markersize=4.2)
     b.axhline(0, color="#202A44", linewidth=1.0)
-    b.set_xlabel(r"frequency  $f$ (GHz)")
+    b.axvline(top["K"], color="#B4552A", linewidth=0.9, linestyle=(0, (4, 3)))
+    b.set_xlabel(r"wavenumber  $k_x d$")
     b.set_ylabel(r"energy angle  $\theta_E$ (deg)")
     S.style_axes(b)
 
-    # (c) reflectance against the group velocity of the guided branch
-    vmax = 0.0
+    # ---- (c) collapse onto the wavenumber ratio ----------------------------
     for eta in S.H_LEVELS:
-        sub = sorted(series(rows, eta=eta), key=lambda r: r["group_speed_m_s"])
-        S.h_plot(c, col(sub, "group_speed_m_s"), 100 * col(sub, "R_B_2um"), eta,
-                 markevery=2, markersize=4.4)
-        vmax = max(vmax, max(100 * x for x in col(sub, "R_B_2um")))
-    c.axvline(0, color="#202A44", linewidth=1.0, linestyle=(0, (4, 3)))
-    c.set_xlabel(r"group velocity  $v_g$ (m s$^{-1}$)")
+        sub = sorted(series(rows, eta=eta), key=lambda r: r["K_ratio"])
+        S.h_plot(c, col(sub, "K_ratio"), 100 * col(sub, "R_B_2um"), eta,
+                 markevery=2, markersize=4.2)
+    c.set_xlabel(r"$k_{Bx}/k_{ix}$")
     c.set_ylabel(r"$R_B$ at $\ell=2\,\mu$m (%)")
     c.set_ylim(0, 100)
     S.style_axes(c)
-    note(c, r"slowest branch, largest $R_B$", loc=(0.045, 0.955), fontsize=7.2)
+    note(c, r"$k_{Bx}/k_{ix}\to1$: maximal conversion", loc=(0.058, 0.955), fontsize=7.2)
 
+    # ---- (d) group velocity, with the certified maximum --------------------
     for eta in S.H_LEVELS:
-        sub = sorted(series(rows, eta=eta), key=lambda r: r["frequency_GHz"])
-        S.h_plot(d, col(sub, "frequency_GHz"), col(sub, "K_ratio"), eta,
-                 markevery=2, markersize=4.4)
-    d.set_xlabel(r"frequency  $f$ (GHz)")
-    d.set_ylabel(r"wavenumber ratio  $k_{Bx}/k_{ix}$")
+        sub = sorted(series(rows, eta=eta), key=lambda r: r["K"])
+        S.h_plot(d, col(sub, "K"), col(sub, "group_speed_m_s"), eta,
+                 markevery=2, markersize=4.2)
+    d.axhline(0, color="#202A44", linewidth=1.0)
+    d.axvline(top["K"], color="#B4552A", linewidth=0.9, linestyle=(0, (4, 3)))
+    d.set_xlabel(r"wavenumber  $k_x d$")
+    d.set_ylabel(r"$v_g$ (m s$^{-1}$)")
     S.style_axes(d)
 
     h_legend(fig, axs, y=0.998)

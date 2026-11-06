@@ -41,6 +41,11 @@ STUDY_FILES = [
     "modal_flux_audit.py",
     "mechanism_controls.py",
     "corner_assessment.py",
+    "peak_search.py",
+    "peak_identity_audit.py",
+    "claim_audit.py",
+    "mutation_tests.py",
+    "run_all_checks.py",
 ]
 
 FIGURE_STEMS = [

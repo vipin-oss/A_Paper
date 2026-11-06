@@ -14,7 +14,8 @@ The two cases are *incident* configurations and are identified by their
 incident axial wavenumber:
 
     operating point   K0   = 0.7361990195318475  (build_figure_data.K0)
-    peak              peak_candidate of certify_peak.CASES (k_x d = 0.55)
+    refined peak      refined_peak of certify_peak.CASES (k_x d = 0.5275)
+    fixed sample      k055_sample of certify_peak.CASES (k_x d = 0.55)
 
 The backward-mode wavenumber KB0 = 0.2451746921716515 is *not* an incident
 configuration; it is only the target guess handed to ``Plate.edge`` so that the
@@ -52,8 +53,9 @@ DEGREES = (18, 22, 26, 30)
 
 # Incident configurations.  K0 is the authoritative operating-point constant;
 # the peak is taken from the certification suite so that no number is invented.
-PEAK_K = float(dict(CERTIFIED_CASES)["peak_candidate"])
-CASES = {"operating_point": float(K0), "peak": PEAK_K}
+PEAK_K = float(dict(CERTIFIED_CASES)["refined_peak"])
+SAMPLE_K = float(dict(CERTIFIED_CASES)["k055_sample"])
+CASES = {"operating_point": float(K0), "refined_peak": PEAK_K, "k055_sample": SAMPLE_K}
 
 
 def gradient_energy(plate_, ky, res, scr):
@@ -115,15 +117,25 @@ def main():
             # Regression guard: the solver must have selected the intended
             # incident branch.  If this fails the whole case is mislabelled.
             got = complex(res["incident_K"])
-            # The incident root is propagating but weakly attenuating, so only
-            # its real part can be compared with the real input wavenumber.
-            if abs(got.real - K) > 1e-6 * max(1.0, abs(K)):
+            # The spatial root is evaluated at Re(omega).  On a flat branch
+            # (v_g ~ 0) that map is ill-conditioned, so the incident root need
+            # not sit exactly on the branch parameter; the offset is recorded
+            # and bounded instead of being hidden.  The bound (2 % , i.e.
+            # |offset| <= 2e-2 K) admits the peak neighbourhood, where the
+            # measured offset is 7.4e-4 (0.14 %), and still rejects passing the
+            # backward target KB0 as the incident wave, which is 0.245 against
+            # 0.53--0.74, i.e. 54--67 % away.  The previous 1e-6 bound was a
+            # *guard* on case labelling, not a physical matching tolerance: it
+            # silently forbade the certified peak from being assessed at all.
+            offset = float(got.real - K)
+            if abs(offset) > 2e-2 * max(1.0, abs(K)):
                 raise RuntimeError(
-                    f"{name}: incident Re K {got.real:.9f} != requested {K:.9f} "
-                    f"(an incident case must be an incident wavenumber, not the "
-                    f"backward target {KB0:.9f})")
+                    f"{name}: incident Re K {got.real:.9f} is {offset:+.2e} away "
+                    f"from the requested {K:.9f}; the case is mislabelled")
             g = gradient_energy(p, KY0, res, scr)
             row = dict(degree=deg, incident_K=float(got.real),
+                       incident_K_offset=offset,
+                       incident_K_imag=float(got.imag),
                        backward_K_real=float(complex(res["backward_K"]).real),
                        backward_K_imag=float(complex(res["backward_K"]).imag),
                        R_B=float(res["backward_reflection_self_power"]),

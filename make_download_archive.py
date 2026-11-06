@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the round-4 downloadable project archive.
+"""Build the round-8 downloadable project archive.
 
 Deterministic and read-only with respect to the sources: it copies from the
 working tree into a staging directory, writes START_HERE.txt, PACKAGE_README.md
@@ -20,10 +20,17 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round7_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round7.zip"
+STAGE = Path("/tmp/paper_a_round8_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round8.zip"
 
 ROOT_REPORTS = [
+    "PAPER_A_ROUND8_STAGE1_AUDIT.md",
+    "PAPER_A_ROUND8_PEAK_CERTIFICATION.md",
+    "PAPER_A_ROUND8_ARTEFACT_AUDIT.md",
+    "PAPER_A_ROUND8_CONVERGENCE_AND_CONTROLS.md",
+    "PAPER_A_ROUND8_MANUSCRIPT_CHANGES.md",
+    "PAPER_A_ROUND8_CLAIMS_AND_TESTS.md",
+    "PAPER_A_ROUND8_DELIVERY_AND_STATUS.md",
     "PAPER_A_STAGE1_COMPLETE_Q1_AUDIT.md",
     "PAPER_A_ROUND7_NOVELTY_AND_MECHANISM_REPORT.md",
     "PAPER_A_EXTENDED_NUMERICAL_VALIDATION.md",
@@ -102,15 +109,19 @@ def main() -> int:
             copied += 1
 
     (STAGE / "START_HERE.txt").write_text(
-        "Paper A -- round-7 audit and correction deliverable\n"
+        "Paper A -- round-8 audit and correction deliverable\n"
         "==================================================\n\n"
         "Read in this order:\n"
-        "  PAPER_A_FINAL_SUBMISSION_READINESS.md   ten-category verdict, open items\n"
-        "  PAPER_A_STAGE1_COMPLETE_Q1_AUDIT.md     43 findings, each with its evidence\n"
-        "  PAPER_A_CORRECTION_HISTORY.md           what was changed, and why\n"
-        "  PAPER_A_EXTENDED_NUMERICAL_VALIDATION.md  every executed check\n"
-        "  PAPER_A_CLAIM_PROVENANCE_MATRIX.md      each result number -> its dataset\n"
-        "  PAPER_A_ROUND7_NOVELTY_AND_MECHANISM_REPORT.md  novelty UNRESOLVED, mechanism\n\n"
+        "  PAPER_A_ROUND8_STAGE1_AUDIT.md            the nine defects, proven, before any edit\n"
+        "  PAPER_A_ROUND8_PEAK_CERTIFICATION.md      the certified maximum and its evidence\n"
+        "  PAPER_A_ROUND8_ARTEFACT_AUDIT.md          why the high share is not an artefact\n"
+        "  PAPER_A_ROUND8_CONVERGENCE_AND_CONTROLS.md  convergence, controls, bounds\n"
+        "  PAPER_A_ROUND8_MANUSCRIPT_CHANGES.md      every edit, old -> new, and why\n"
+        "  PAPER_A_ROUND8_CLAIMS_AND_TESTS.md        19 claims, 26 tests, 8 mutants\n"
+        "  PAPER_A_ROUND8_DELIVERY_AND_STATUS.md     battery, archive, open items\n"
+        "  PAPER_A_CORRECTION_HISTORY.md             cumulative history (round-8 addendum at the end)\n"
+        "  PAPER_A_FINAL_SUBMISSION_READINESS.md     ten-category verdict, older round\n"
+        "  PAPER_A_ROUND7_NOVELTY_AND_MECHANISM_REPORT.md  novelty UNRESOLVED\n\n"
         "The manuscript is Paper_A_Final_Submission/main.tex; the ten vector\n"
         "figures are in Paper_A_Final_Submission/figures/.\n\n"
         "BUILD STATUS: UNVERIFIED -- no TeX engine was available, so no PDF is\n"
@@ -118,12 +129,16 @@ def main() -> int:
         "  cd Paper_A_Final_Submission\n"
         "  pdflatex main && bibtex main && pdflatex main && pdflatex main\n\n"
         "Reproduce every number and figure (Python 3.11, numpy, scipy, matplotlib):\n"
-        "  python paper_a_study/run_all_checks.py     # fifteen checks + 22 unit tests\n"
+        "  python paper_a_study/run_all_checks.py     # 18 checks + 26 unit tests, ~11 min\n"
         "  python paper_a_study/build_figure_data.py  # the CSV/JSON datasets\n"
         "  python paper_a_study/generate_final_figures.py\n\n"
-        "Headline result: R_B = 0.9319 (93.19 %) at k_x d = 0.525, where the group\n"
-        "velocity is -3 m/s. Novelty against the primary 2025 source is UNRESOLVED\n"
-        "(closed access); no priority claim is made.\n")
+        "Headline result: R_B = 0.9467952 (94.68 %) at k_x d = 0.5275, a certified\n"
+        "LOCAL maximum of the backward-modal share, flat to 0.01 pp over\n"
+        "0.5266 <= k_x d <= 0.5277; the incident flux there is 128 times smaller than\n"
+        "at the operating point, so the share is not a statement about energy turned\n"
+        "around. The earlier 93.19 % at 0.525 was a coarse-grid sample and is\n"
+        "withdrawn. Novelty against the primary 2025 source is UNRESOLVED (closed\n"
+        "access); no priority claim is made.\n")
     copied += 1
     # Fixed timestamp so that repeated builds are byte-identical.
     os.utime(STAGE / "START_HERE.txt", (FIXED_EPOCH, FIXED_EPOCH))
@@ -147,8 +162,12 @@ def main() -> int:
     digest = sha256(OUT)
     n = len(zipfile.ZipFile(OUT).namelist())
     size = OUT.stat().st_size
-    (STAGE / "PACKAGE_SHA256.txt").write_text(
-        f"{digest}  {OUT.name}\n{size} bytes, {n} files\n")
+    checksum = f"{digest}  {OUT.name}\n{size} bytes, {n} files\n"
+    # The checksum file cannot live inside the archive it describes, so it is
+    # written twice: into the staging tree (for inspection) and beside the ZIP
+    # (where a downloader can actually read it).
+    (STAGE / "PACKAGE_SHA256.txt").write_text(checksum)
+    (OUT.parent / "PACKAGE_SHA256.txt").write_text(checksum)
     print(f"archive : {OUT}")
     print(f"files   : {n}   staged copies: {copied}")
     print(f"size    : {size:,} bytes ({size/1e6:.2f} MB)")

@@ -12,6 +12,9 @@ applied in process and reverted.
     M3  a deprecated value re-inserted                  -> claim_audit stale guard
     M4  an invalid citation key                         -> static_check
     M5  a material constant in the wrong units          -> TestFrozenReferenceConstants
+    M6  the superseded coarse-grid headline re-inserted  -> claim_audit stale guard
+    M7  the peak case relabelled with the backward root  -> TestCornerAssessmentCaseSelection
+    M8  the incident wavenumber set to KB0 in the registry -> claim_audit source agreement
 
 Writes figure_data/mutation_tests.json.
 """
@@ -64,11 +67,11 @@ def main() -> int:
                             evidence=[l for l in out.splitlines() if "fragile" in l][:1]))
 
         copy = make_copy(tmpdir / "m2")
-        mutate(copy / "sections" / "conclusions.tex", "93.19", "93.91")
+        mutate(copy / "sections" / "conclusions.tex", "94.68", "94.86")
         rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy)], REPO)
-        results.append(dict(id="M2", defect="registered value 0.9319 edited to 0.9391",
+        results.append(dict(id="M2", defect="registered headline 0.9468 edited to 0.9486",
                             gate="claim_audit registry", expected="FAIL", caught=rc != 0,
-                            evidence=[l for l in out.splitlines() if "93.91" in l][:1]))
+                            evidence=[l for l in out.splitlines() if "94.86" in l][:1]))
 
         copy = make_copy(tmpdir / "m3")
         mutate(copy / "sections" / "results.tex", "0.99980", "0.99985")
@@ -84,6 +87,32 @@ def main() -> int:
         results.append(dict(id="M4", defect="undefined citation key \\cite{nosuchkey2024}",
                             gate="static_check", expected="FAIL", caught=rc != 0,
                             evidence=[l for l in out.splitlines() if "nosuchkey" in l][:1]))
+
+        copy = make_copy(tmpdir / "m6")
+        mutate(copy / "main.tex", "94.68", "93.19")
+        rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy)], REPO)
+        results.append(dict(id="M6",
+                            defect="superseded coarse-grid maximum (93.19 at 0.525) reinstated",
+                            gate="claim_audit stale guard", expected="FAIL", caught=rc != 0,
+                            evidence=[l for l in out.splitlines() if "93.19" in l][:1]))
+
+        copy = make_copy(tmpdir / "m8")
+        registry = json.loads((HERE / "claims.json").read_text())
+        for claim in registry["claims"]:
+            if claim["id"] == "incident_wavenumber_peak":
+                claim["value"] = 0.2451746921716515          # KB0, the backward root
+                for tok in claim["tokens"]:
+                    tok["value"] = 0.2451746921716515
+        path = tmpdir / "registry_m8.json"
+        path.write_text(json.dumps(registry))
+        rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy),
+                       "--registry", str(path)], REPO)
+        results.append(dict(id="M8",
+                            defect="incident wavenumber replaced by the backward target KB0",
+                            gate="claim_audit source agreement", expected="FAIL",
+                            caught=rc != 0,
+                            evidence=[l for l in out.splitlines()
+                                      if "KB0" in l or "incident root" in l][:1]))
 
     sys.path.insert(0, str(REPO))
     from paper_a_study import model  # noqa: E402
@@ -101,6 +130,22 @@ def main() -> int:
         model.SI["c44"] = original
     results.append(dict(id="M5", defect="c44 entered in Pa instead of GPa",
                         gate="TestFrozenReferenceConstants", expected="FAIL",
+                        caught=caught, evidence=evidence))
+
+    from paper_a_study import corner_assessment as _ca  # noqa: E402
+
+    keep = _ca.CASES["refined_peak"]
+    _ca.CASES["refined_peak"] = 0.2451746921716515        # KB0, not the incident root
+    try:
+        suite = unittest.TestLoader().loadTestsFromTestCase(
+            test_model.TestCornerAssessmentCaseSelection)
+        res = unittest.TextTestRunner(verbosity=0).run(suite)
+        caught = not res.wasSuccessful()
+        evidence = [str(res.failures[0][1]).strip().splitlines()[-1]] if res.failures else []
+    finally:
+        _ca.CASES["refined_peak"] = keep
+    results.append(dict(id="M7", defect="peak case labelled with KB0 instead of its incident root",
+                        gate="TestCornerAssessmentCaseSelection", expected="FAIL",
                         caught=caught, evidence=evidence))
 
     ok = True

@@ -3,7 +3,8 @@
   "note": "x=0 plane, coherent modal sum, lam^2|grad eps|_C^2",
   "incident_configurations": {
     "operating_point": 0.7361990195318475,
-    "peak": 0.55
+    "refined_peak": 0.5275,
+    "k055_sample": 0.55
   },
   "backward_target_guess": 0.2451746921716515,
   "relation": "operating_point uses K0 (incident); KB0 is only the backward target guess and must never be used as an incident case",
@@ -14,6 +15,8 @@
         {
           "degree": 18,
           "incident_K": 0.7361990195729766,
+          "incident_K_offset": 4.1129100125658624e-11,
+          "incident_K_imag": 5.402718506941832e-06,
           "backward_K_real": 0.24517469208798384,
           "backward_K_imag": -5.230594890969936e-06,
           "R_B": 0.023145607570647334,
@@ -30,6 +33,8 @@
         {
           "degree": 22,
           "incident_K": 0.7361990195742107,
+          "incident_K_offset": 4.236322403983195e-11,
+          "incident_K_imag": 5.402718696232732e-06,
           "backward_K_real": 0.24517469208547762,
           "backward_K_imag": -5.230595100797003e-06,
           "R_B": 0.023145619184645957,
@@ -46,6 +51,8 @@
         {
           "degree": 26,
           "incident_K": 0.7361990195730995,
+          "incident_K_offset": 4.125200181448463e-11,
+          "incident_K_imag": 5.402718716323807e-06,
           "backward_K_real": 0.24517469208750872,
           "backward_K_imag": -5.230595099698359e-06,
           "R_B": 0.023145622864193673,
@@ -62,6 +69,8 @@
         {
           "degree": 30,
           "incident_K": 0.7361990195704659,
+          "incident_K_offset": 3.861833075546883e-11,
+          "incident_K_imag": 5.402717974355769e-06,
           "backward_K_real": 0.24517469209292875,
           "backward_K_imag": -5.230594324097038e-06,
           "R_B": 0.023145624251493125,
@@ -88,12 +97,94 @@
       ],
       "corner_peak_drift_rel": -0.03523396060973402
     },
-    "peak": {
+    "refined_peak": {
+      "incident_K": 0.5275,
+      "rows": [
+        {
+          "degree": 18,
+          "incident_K": 0.52823599223248,
+          "incident_K_offset": 0.0007359922324799983,
+          "incident_K_imag": 0.0010040473702712098,
+          "backward_K_real": 0.5261318007408993,
+          "backward_K_imag": -0.0010029298779127191,
+          "R_B": 0.9467952315950204,
+          "frequency_Hz": 16654675058.294323,
+          "edge_scaled_residual": 2.0052826201631404e-15,
+          "total": 0.33943483602254343,
+          "corner_band": 0.004421025294664216,
+          "corner_share": 0.01302466578406995,
+          "corner_peak_over_mean": 0.12964437623579342,
+          "inner_share": 0.9869753342159301
+        },
+        {
+          "degree": 22,
+          "incident_K": 0.5282359922928204,
+          "incident_K_offset": 0.0007359922928203977,
+          "incident_K_imag": 0.001004047405124342,
+          "backward_K_real": 0.526131800680448,
+          "backward_K_imag": -0.0010029299127248033,
+          "R_B": 0.9467952305821763,
+          "frequency_Hz": 16654675058.29447,
+          "edge_scaled_residual": 2.3917102318001135e-15,
+          "total": 0.3394346583661456,
+          "corner_band": 0.004421074632895034,
+          "corner_share": 0.01302481795517196,
+          "corner_peak_over_mean": 0.12996643961246,
+          "inner_share": 0.986975182044828
+        },
+        {
+          "degree": 26,
+          "incident_K": 0.5282359933822087,
+          "incident_K_offset": 0.000735993382208755,
+          "incident_K_imag": 0.0010040464558055716,
+          "backward_K_real": 0.5261317995869117,
+          "backward_K_imag": -0.0010029289633773,
+          "R_B": 0.9467952286254169,
+          "frequency_Hz": 16654675058.296581,
+          "edge_scaled_residual": 2.348504881214638e-15,
+          "total": 0.33943429600228947,
+          "corner_band": 0.004422578905264709,
+          "corner_share": 0.013029263563970796,
+          "corner_peak_over_mean": 0.12991584893742258,
+          "inner_share": 0.9869707364360292
+        },
+        {
+          "degree": 30,
+          "incident_K": 0.5282359927202193,
+          "incident_K_offset": 0.0007359927202192917,
+          "incident_K_imag": 0.00100404701825698,
+          "backward_K_real": 0.5261318002519072,
+          "backward_K_imag": -0.0010029295257634443,
+          "R_B": 0.9467952302481825,
+          "frequency_Hz": 16654675058.295084,
+          "edge_scaled_residual": 2.1700397851205696e-15,
+          "total": 0.3394344530148845,
+          "corner_band": 0.004129312466305619,
+          "corner_share": 0.012165272056589214,
+          "corner_peak_over_mean": 0.12547474690540297,
+          "inner_share": 0.9878347279434108
+        }
+      ],
+      "R_B_spread_rel": 3.1364792176110277e-09,
+      "corner_share_range": [
+        0.012165272056589214,
+        0.013029263563970796
+      ],
+      "corner_share_drift_rel": -0.0659820176370156,
+      "corner_peak_over_mean_range": [
+        0.12547474690540297,
+        0.12996643961246
+      ],
+      "corner_peak_drift_rel": -0.03216205323713267
+    },
+    "k055_sample": {
       "incident_K": 0.55,
       "rows": [
         {
           "degree": 18,
           "incident_K": 0.5500000452412885,
+          "incident_K_offset": 4.524128849325848e-08,
+          "incident_K_imag": 4.6326551983533964e-05,
           "backward_K_real": 0.5038041870700916,
           "backward_K_imag": -4.5214008824174245e-05,
           "R_B": 0.5791799738503958,
@@ -108,6 +199,8 @@
         {
           "degree": 22,
           "incident_K": 0.550000045195648,
+          "incident_K_offset": 4.519564800187226e-08,
+          "incident_K_imag": 4.6326557076629594e-05,
           "backward_K_real": 0.5038041871178814,
           "backward_K_imag": -4.521401393249136e-05,
           "R_B": 0.5791800334428877,
@@ -122,6 +215,8 @@
         {
           "degree": 26,
           "incident_K": 0.5500000452745284,
+          "incident_K_offset": 4.527452834857115e-08,
+          "incident_K_imag": 4.6326556118332845e-05,
           "backward_K_real": 0.5038041870351316,
           "backward_K_imag": -4.521401297090229e-05,
           "R_B": 0.5791800513268939,
@@ -136,6 +231,8 @@
         {
           "degree": 30,
           "incident_K": 0.5500000452681908,
+          "incident_K_offset": 4.526819075145738e-08,
+          "incident_K_imag": 4.632655537679589e-05,
           "backward_K_real": 0.5038041870417017,
           "backward_K_imag": -4.5214012379975366e-05,
           "R_B": 0.579180058557786,

@@ -167,8 +167,8 @@ quoted in this paper have $|\cos\theta_E|=0.88$ and $0.97$ respectively.
 \label{sec:numerics_verification}
 
 The implementation is verified in five independent ways.  All of the following
-run as an automated suite of 22 tests, which includes the two regression tests
-that pin the material and reference constants.
+run as an automated suite of 26 tests, which includes the regression tests that
+pin the material and reference constants.
 
 \begin{enumerate}
 \item \emph{Exact classical limit.}  With $\ell=f=H=0$ the plate supports
@@ -207,6 +207,20 @@ with the independent refinement study of \cref{tab:refinement} to $10^{-9}$.
 Neither is a physics check.  Both are guards against a mislabelled
 configuration returning a plausible number, which the physics tests cannot
 detect.
+
+Four further tests guard the maximum of \cref{sec:results_certification}, and
+all four are written as solver evaluations rather than as stored expectations,
+so that they fail if the physics moves.  The first requires the refined
+wavenumber to beat every sample of the coarse raster by a margin; a maximum read
+off a grid fails it.  The second requires the incident root returned at that
+wavenumber to lie within $2\times10^{-3}$ of the requested value and more than
+$0.2$ away from the backward target $K_B$, which is the blunder that once
+produced a plausible $0.5444$ from a mislabelled case.  The third measures the
+net attenuation exponent of the two partner modes between two reference planes
+and requires the partition to rescale by exactly that factor, which fails if
+only the backward decay is used.  The fourth requires the stored classification
+of the search to remain \texttt{certified\_local\_maximum} and the stored
+headline to equal a fresh solve to nine places.
 
 \subsection{Reproducibility}
 \label{sec:numerics_repro}

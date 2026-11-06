@@ -147,6 +147,22 @@ def power_profile(p: Plate, kx: float, ky: float, omega: float, q):
     return out
 
 
+def edge_plane_fraction(R2um: float, ki: complex, kb: complex, d: float,
+                        L: float = REF_NORM) -> float:
+    """The same modal share referred to the edge plane.
+
+    Both modes attenuate, in opposite directions: between the reference plane
+    and the edge the incident loses exp(-2|Im k_i| L) and the backward mode
+    gains exp(+2|Im k_B| L).  The net exponent is therefore
+    2(|Im k_i| + |Im k_B|) L, not the backward decay alone; the two differ by
+    2 % at the certified maximum and by 0.005 % at the operating point, and the
+    figure-data audit ``peak_identity_audit.json`` measures the net exponent
+    directly by moving the reference plane.
+    """
+    net = 2.0 * (abs(ki.imag) + abs(kb.imag)) / d
+    return float(R2um * np.exp(net * L * d))
+
+
 def isolated_transfer(R2um: float, kb: complex, d: float, distance_m: float) -> float:
     """R_B(l) from the 2 um reference value using the solved backward decay."""
     alpha_b = 2.0 * abs(kb.imag) / d
@@ -266,6 +282,12 @@ def fig03() -> list[dict]:
 # --------------------------------------------------------------------------
 # Figure 4 -- backward reflection versus frequency
 # --------------------------------------------------------------------------
+FIG04_COARSE = np.array([0.30, 0.35, 0.40, 0.45]
+                        + list(np.round(np.arange(0.46, 0.6001, 0.01), 4))
+                        + [0.65, 0.70, 0.75])
+FIG04_FINE = np.round(np.arange(0.5200, 0.53501, 0.0005), 6)
+
+
 def fig04() -> list[dict]:
     """Backward-channel conversion along the guided branch.
 
@@ -280,13 +302,14 @@ def fig04() -> list[dict]:
     return, angle, group velocity) tuple.
     """
     rows = []
-    # Grid refined where the branch turns over: the previous spacing of 0.05
-    # sampled the neighbourhood of the zero-group-velocity point at three points
-    # only, and the apparent maximum fell between two samples.
-    Ks = np.array([0.30, 0.35, 0.40, 0.45]
-                  + list(np.round(np.arange(0.46, 0.6001, 0.01), 4))
-                  + [0.65, 0.70, 0.75])
+    # Two rasters.  The coarse one covers the whole admissible window; the fine
+    # one (H = 0 only) resolves the flat top of the response, whose width is
+    # ~1e-3 in k_x d -- three orders below the spacing that produced the earlier
+    # "57.92 % maximum".
     for eta in ETAS:
+        Ks = FIG04_COARSE
+        if eta == 0.0:
+            Ks = np.array(sorted(set(np.round(np.r_[FIG04_COARSE, FIG04_FINE], 6))))
         p = plate(eta)
         modes = track(p, Ks, operating_mode(p))
         omega = np.array([m["omega"].real for m in modes])
@@ -305,10 +328,12 @@ def fig04() -> list[dict]:
                 angle = float(res["reflected_angle_deg"])
                 row.update(
                     R_B_2um=R2,
-                    R_B_edge=float(R2 * np.exp(alpha_b * REF_NORM * p.d)),
+                    R_B_edge=edge_plane_fraction(R2, ki, kb, p.d),
                     R_B_100um=float(R2 * np.exp(-alpha_b * (100e-6 - REF_NORM * p.d))),
                     angle_deg=angle,
-                    K_incident_real=float(ki.real), K_backward_real=float(kb.real),
+                    K_incident_real=float(ki.real), K_incident_imag=float(ki.imag),
+                    incident_K_offset=float(ki.real - K),
+                    K_backward_real=float(kb.real),
                     K_ratio=float(kb.real / ki.real),
                     ImK_backward=float(kb.imag),
                     attenuation_backward_dB_per_mm=float(8.686 * alpha_b / 1000),

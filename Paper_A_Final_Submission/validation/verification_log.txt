@@ -1,18 +1,21 @@
-Paper A verification run 2026-11-06T16:06:32+00:00
+Paper A verification run 2026-11-06T18:33:12+00:00
 ============================================================
 
-PASS  unit and scientific tests              9.6s exit=0
+PASS  unit and scientific tests              14.7s exit=0
 PASS  dimensional and constitutive audit     0.5s exit=0
 PASS  quasistatic justification              0.4s exit=0
-PASS  flexoelectric control                  5.2s exit=0
+PASS  flexoelectric control                  5.4s exit=0
 PASS  admissibility re-derivation            0.0s exit=0
 PASS  figure data and figure files           
 PASS  phase-speed and e.m. reconciliation    0.4s exit=0
-PASS  modal-flux rescaling proof             10.2s exit=0
-PASS  mechanism matched controls             25.6s exit=0
-PASS  corner assessment and regression       8.6s exit=0
-PASS  spectral convergence                   10.0s exit=0
-PASS  quadrature sufficiency                 8.7s exit=0
+PASS  modal-flux rescaling proof             10.6s exit=0
+PASS  mechanism matched controls             217.6s exit=0
+PASS  corner assessment and regression       13.1s exit=0
+PASS  certified peak (four fixed wavenumbers) 15.6s exit=0
+PASS  peak search and classification         330.6s exit=0
+PASS  peak identity and artefact audit       22.3s exit=0
+PASS  spectral convergence                   9.1s exit=0
+PASS  quadrature sufficiency                 9.7s exit=0
 PASS  claim registry and stale guard         0.0s exit=0
 PASS  gate mutation tests                    0.7s exit=0
 PASS  LaTeX static validation                0.0s exit=0

@@ -1,12 +1,19 @@
-"""Certification of the two backward-reflection values quoted in the manuscript.
+"""Degree refinement of the backward-reflection values quoted in the manuscript.
 
-The manuscript quotes (i) the operating-point return R_B = 2.3 % at
-k_x d = 0.736 and (ii) a much larger peak of about 58 % at k_x d = 0.55.
-Both numbers are re-solved here with an explicit convergence test: the same
-physical problem is discretised at four Galerkin degrees and the reported
-quantities must be stable under refinement.  The test also records the modal
-decomposition (self-powers, cross-interference, dissipation) so that the
-energy identity can be checked independently of the plotting code.
+Four configurations are re-solved at four Galerkin degrees with the same
+physics:
+
+  * ``operating_point``  k_x d = 0.7362, R_B = 2.31 %  -- the worked example;
+  * ``refined_peak``     k_x d = 0.5275, R_B = 94.68 % -- the value at the
+    certified local maximum (``peak_search.py`` locates it and classifies it);
+  * ``round7_sample``    k_x d = 0.5250, R_B = 93.19 % -- the earlier reported
+    value, kept as a fixed sample because the branch table still prints it;
+  * ``k055_sample``      k_x d = 0.5500, R_B = 57.92 % -- a fixed sample on the
+    descending side, used by the attenuation and corner discussions.
+
+This script certifies *values at given wavenumbers*.  It does not search for an
+extremum and never labels the largest entry of an array as a maximum; that
+decision belongs to ``peak_search.py``.
 
 Run:  python certify_peak.py     (writes figure_data/peak_certification.json)
 """
@@ -14,16 +21,21 @@ Run:  python certify_peak.py     (writes figure_data/peak_certification.json)
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
 
-from build_figure_data import (KB0, KY0, dump_json, operating_mode, plate,
+HERE = Path(__file__).resolve().parent
+if str(HERE) not in sys.path:          # both `python certify_peak.py` and `-m` work
+    sys.path.insert(0, str(HERE))
+
+from build_figure_data import (KB0, KY0, dump_json, operating_mode, plate,  # noqa: E402
                                track)
 
 HERE = Path(__file__).resolve().parent
-CASES = [("operating_point", 0.7361990195318475), ("peak_candidate", 0.55),
-         ("peak_lower", 0.525), ("peak_upper", 0.575)]
+CASES = [("operating_point", 0.7361990195318475), ("refined_peak", 0.5275),
+         ("round7_sample", 0.525), ("k055_sample", 0.55)]
 DEGREES = [18, 22, 26, 30]
 
 

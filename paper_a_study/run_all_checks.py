@@ -67,7 +67,9 @@ def figure_data_chk() -> bool:
     expected = {
         "fig01_dispersion_velocity_attenuation.csv": 155,
         "fig02_material_parameter_sweep.csv": 130,
-        "fig04_frequency_reflection.csv": 110,   # 22 k_x points x 5 coupling levels
+        # coarse raster plus the fine raster (5e-4, H=0 only); the count is a
+        # property of the data, never quoted in the manuscript
+        "fig04_frequency_reflection.csv": 139,
         "fig07_coupling_sensitivity.csv": 95,
         "fig09_validation_convergence.csv": None,
     }
@@ -119,6 +121,12 @@ def main() -> int:
         [PY, "-m", "paper_a_study.mechanism_controls"], ROOT, 1800)
     run("corner assessment and regression",
         [PY, "-m", "paper_a_study.corner_assessment"], ROOT, 1200)
+    run("certified peak (four fixed wavenumbers)",
+        [PY, "-m", "paper_a_study.certify_peak"], ROOT, 1800)
+    run("peak search and classification",
+        [PY, "-m", "paper_a_study.peak_search"], ROOT, 1800)
+    run("peak identity and artefact audit",
+        [PY, "-m", "paper_a_study.peak_identity_audit"], ROOT, 1800)
     run("spectral convergence", [PY, "paper_a_study/convergence_audit.py"], ROOT, 1200)
     run("quadrature sufficiency", [PY, "paper_a_study/quadrature_audit.py"], ROOT, 900)
     run("claim registry and stale guard", [PY, "paper_a_study/claim_audit.py"], ROOT, 300)

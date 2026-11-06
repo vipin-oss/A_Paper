@@ -7,12 +7,12 @@
       "expected": "FAIL",
       "caught": true,
       "evidence": [
-        "  - sections/results.tex: line 358: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
+        "  - sections/results.tex: line 472: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
       ]
     },
     {
       "id": "M2",
-      "defect": "registered value 0.9319 edited to 0.9391",
+      "defect": "registered headline 0.9468 edited to 0.9486",
       "gate": "claim_audit registry",
       "expected": "FAIL",
       "caught": true,
@@ -25,7 +25,7 @@
       "expected": "FAIL",
       "caught": true,
       "evidence": [
-        "  - deprecated value '0.99985' reappeared in sections/results.tex: mislabelled total outgoing power at the operating point; the value is 0.99980"
+        "  - deprecated value '0.99985' reappeared in sections/results.tex: mislabelled total outgoing power"
       ]
     },
     {
@@ -39,6 +39,26 @@
       ]
     },
     {
+      "id": "M6",
+      "defect": "superseded coarse-grid maximum (93.19 at 0.525) reinstated",
+      "gate": "claim_audit stale guard",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "  - deprecated value '93.19' reappeared in main.tex: superseded headline: the 0.525 sample is not the maximum"
+      ]
+    },
+    {
+      "id": "M8",
+      "defect": "incident wavenumber replaced by the backward target KB0",
+      "gate": "claim_audit source agreement",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "  - incident_wavenumber_peak: registry says 0.2451746921716515 but the stored identity-audit incident root is 0.5282359922928204 (1.2e+00 > 1.0e-04)"
+      ]
+    },
+    {
       "id": "M5",
       "defect": "c44 entered in Pa instead of GPa",
       "gate": "TestFrozenReferenceConstants",
@@ -46,6 +66,16 @@
       "caught": true,
       "evidence": [
         "AssertionError: False is not true : c44 = 4.3e+19 is outside the literature band [30000000000.0, 60000000000.0] - a unit error would land here"
+      ]
+    },
+    {
+      "id": "M7",
+      "defect": "peak case labelled with KB0 instead of its incident root",
+      "gate": "TestCornerAssessmentCaseSelection",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 0.2451746921716515 != 0.5275 within 12 places (0.28232530782834847 difference)"
       ]
     }
   ],

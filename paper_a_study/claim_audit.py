@@ -10,6 +10,14 @@ Three gates, all driven by ``paper_a_study/claims.json``:
    without editing the registry fails here.
 2. Stale-value guard.  Deprecated values, whose reappearance would mean an
    outdated scientific statement, must not occur anywhere in the manuscript.
+2b. Source agreement.  Three of the registered numbers are checked against the
+   stored solver records as well as against the text: the headline against
+   ``peak_search.json`` (which must be classified as a local maximum, and which
+   must beat every sample of its own coarse raster), the incident wavenumber
+   against the identity audit (which must be the *incident* root, neither the
+   branch parameter nor the backward target), and the degree spread against the
+   recorded gradings.  A registry that agrees with the manuscript but not with
+   the data fails here.
 3. Ordering and coverage.  Figures must be cited in numerical order on first
    citation, and every claim flagged ``in_abstract`` must appear in the abstract.
 
@@ -39,10 +47,12 @@ def read(root: Path, rel: str) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(HERE.parent / "Paper_A_Final_Submission"))
+    ap.add_argument("--registry", default=str(REGISTRY),
+                    help="registry to audit; the mutation suite points this at a copy")
     args = ap.parse_args()
     root = Path(args.root).resolve()
 
-    reg = json.loads(REGISTRY.read_text())
+    reg = json.loads(Path(args.registry).read_text())
     problems: list[str] = []
     rows: list[dict] = []
 
@@ -79,6 +89,57 @@ def main() -> int:
             if not hit:
                 problems.append(f"{claim['id']}: flagged in_abstract but absent from the abstract")
 
+    # --- source agreement (gate 2b) -------------------------------------
+    by_id = {c["id"]: c for c in reg["claims"]}
+    rec = json.loads((DATA / "peak_search.json").read_text())
+    ident = json.loads((DATA / "peak_identity_audit.json").read_text())
+    refs = json.loads((HERE / "reference_constants.json").read_text())
+    KB0 = float(refs["derived"]["KB0"])
+    cls = rec["classification"]
+    source_rows: list[dict] = []
+
+    def agree(claim_id, data_value, tol, what):
+        claim = by_id.get(claim_id)
+        if claim is None:
+            problems.append(f"{claim_id}: missing from the registry ({what})")
+            return
+        rel = abs(float(data_value) - claim["value"]) / abs(claim["value"])
+        source_rows.append(dict(claim=claim_id, data=data_value, what=what,
+                                relative_difference=rel, tolerance=tol, pass_=rel <= tol))
+        if rel > tol:
+            problems.append(f"{claim_id}: registry says {claim['value']} but the stored "
+                            f"{what} is {data_value} ({rel:.1e} > {tol:.1e})")
+
+    if cls["classification"] != "certified_local_maximum":
+        problems.append(f"peak_search.json: classification is {cls['classification']!r}, "
+                        "not 'certified_local_maximum'")
+    agree("R_B_certified_maximum", cls["R_B_reported"], 1e-4, "search-record headline")
+    coarse_max = max(r["R_B"] for r in rec["coarse"])
+    source_rows.append(dict(claim="coarse raster cannot reach the maximum",
+                            data=coarse_max, what="max over rec.coarse",
+                            relative_difference=(cls["R_B_reported"] - coarse_max)
+                            / cls["R_B_reported"], tolerance=1e-3, pass_=True))
+    if coarse_max >= cls["R_B_reported"]:
+        problems.append("peak_search.json: a coarse sample reaches the reported maximum - "
+                        "the maximum was read off a grid, not certified")
+    if not (rec["domain"][0] < cls["K_at_max"] < rec["domain"][1]):
+        problems.append("peak_search.json: the located maximum lies outside the scanned domain")
+
+    peak_case = ident["cases"]["peak"]
+    k_inc = float(peak_case["K_incident"][0])
+    agree("incident_wavenumber_peak", k_inc, 1e-4, "identity-audit incident root")
+    if abs(k_inc - KB0) < 0.2:
+        problems.append(f"incident_wavenumber_peak: {k_inc} is within 0.2 of KB0 = {KB0}; "
+                        "the case would have been labelled with the backward target")
+    if abs(k_inc - cls["K_reported"]) < 1e-4:
+        problems.append("incident_wavenumber_peak: the incident root equals the branch "
+                        "parameter; the two are distinct quantities and are reported apart")
+    # both are quoted to two significant figures in the text, hence the tolerance
+    agree("degree_stability_peak", rec["verdict"]["degree_spread"]["0.52752"], 1e-2,
+          "search-record degree spread at the reported wavenumber")
+    agree("quadrature_stability_peak", rec["verdict"]["quadrature_spread"], 1e-2,
+          "search-record quadrature spread")
+
     text = read(root, "sections/results.tex")
     order = [int(m.group(1)) for m in re.finditer(r"\\[cC]ref\{fig:fig(\d\d)\}", text)]
     firsts: list[int] = []
@@ -91,12 +152,14 @@ def main() -> int:
     print(f"claims registered: {len(reg['claims'])}   tokens checked: {len(rows)}")
     print(f"deprecated values guarded: {len(reg['deprecated'])}")
     print(f"figure first-citation order: {firsts}")
+    print(f"source-agreement rows: {len(source_rows)} "
+          f"({sum(1 for r in source_rows if r['pass_'])} passing)")
     print("PASS" if not problems else "FAIL")
     for p in problems:
         print("  -", p)
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "claim_audit.json").write_text(json.dumps(
-        dict(rows=rows, figure_order=firsts, problems=problems,
+        dict(rows=rows, source_rows=source_rows, figure_order=firsts, problems=problems,
              verdict="PASS" if not problems else "FAIL"), indent=2))
     return 0 if not problems else 1
 

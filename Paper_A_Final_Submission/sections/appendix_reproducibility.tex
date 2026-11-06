@@ -22,12 +22,14 @@ entry can run past the right margin.}
 \path{a0/materials.json} & material constants and their provenance; the model cannot start without it \\
 \path{paper_a_study/model.py} & spectral plate solver, spatial and temporal routes, edge matching, power and dissipation \\
 \path{paper_a_study/build_figure_data.py} & solves the physics and writes every CSV/JSON used by the figures \\
-\path{paper_a_study/certify_peak.py} & degree-refinement study of the two reported values (\cref{tab:refinement}) \\
+\path{paper_a_study/certify_peak.py} & degree-refinement study of four fixed wavenumbers (\cref{tab:refinement}); it certifies values and never searches \\
 \path{paper_a_study/reclassify_csv.py} & re-derives the admissibility flags of the figure CSVs without re-solving \\
 \path{paper_a_study/generate_final_figures.py} & reads the CSVs and renders the ten vector PDFs \\
 \path{paper_a_study/figure_style.py} & shared typography and colour map \\
 \path{paper_a_study/make_atlas.py} & two-page contact sheet of the ten figures \\
-\path{paper_a_study/test_model.py} & the 22 automated checks of \cref{sec:numerics_verification} \\
+\path{paper_a_study/peak_search.py} & the staged search that locates and classifies the maximum of \cref{sec:results_certification} \\
+\path{paper_a_study/peak_identity_audit.py} & the five artefact probes of \cref{sec:results_artefact}: reference-plane rescaling, incident-mode identity, mode separation, conditioning and flux scale \\
+\path{paper_a_study/test_model.py} & the 26 automated checks of \cref{sec:numerics_verification} \\
 \path{paper_a_study/verify_dimensions.py} & dimensional and constitutive audit, including the strain-gradient contraction test \\
 \path{paper_a_study/quasistatic_check.py} & the ratios of \cref{sec:governing_electric} \\
 \path{paper_a_study/flexo_control.py} & the measured flexoelectric contribution of \cref{sec:results_scope} \\
@@ -64,15 +66,17 @@ containing \texttt{numpy}, \texttt{scipy} and \texttt{matplotlib}:
 
 \begin{verbatim}
 # exit status 0 = every check passed
-python paper_a_study/run_all_checks.py            # battery, ~25 s
-python -m unittest paper_a_study.test_model -v    # 22 tests, ~9 s
+python paper_a_study/run_all_checks.py            # battery, ~15 min
+python -m unittest paper_a_study.test_model -v    # 26 tests, ~14 s
 python paper_a_study/convergence_audit.py         # degree sequence, ~10 s
 python paper_a_study/quadrature_audit.py          # node sequence, ~10 s
 python paper_a_study/claim_audit.py               # manuscript vs registry, ~1 s
 python paper_a_study/mutation_tests.py            # the gates must fail, ~1 s
 python paper_a_study/build_figure_data.py         # CSV/JSON, ~6 min
 python paper_a_study/reclassify_csv.py            # flags, ~1 s
-python paper_a_study/certify_peak.py              # refinement, ~4 min
+python paper_a_study/certify_peak.py              # refinement, ~30 s
+python paper_a_study/peak_search.py               # staged search, ~6 min
+python paper_a_study/peak_identity_audit.py       # artefact probes, ~2 min
 python paper_a_study/generate_final_figures.py    # ten PDFs, ~20 s
 python paper_a_study/make_atlas.py                # contact sheet
 python paper_a_study/modal_flux_audit.py          # rescaling proof
@@ -82,7 +86,8 @@ python paper_a_study/phase_speed_audit.py         # 0 = text agrees
 \end{verbatim}
 
 The order matters only in that \path{generate_final_figures.py} needs the
-CSV files.  \path{certify_peak.py} and \path{reclassify_csv.py} are
+CSV files, and that \path{peak_identity_audit.py} and \path{claim_audit.py}
+read the records written by \path{peak_search.py} and \path{certify_peak.py}.  \path{certify_peak.py} and \path{reclassify_csv.py} are
 independent of each other and of the plotting step.  The scripts resolve every
 path relative to their own location (the value of \path{__file__}) and to the
 repository root, so they can be run from any working directory.
