@@ -1,0 +1,26 @@
+{
+  "operating_point": {
+    "K0": 0.7361990195318475,
+    "KY0": 0.12981175031447484,
+    "omega_over_cs_over_d": 7.633372404423294
+  },
+  "d_m": 2e-07,
+  "frequency_Hz": 16684123136.365553,
+  "period_s": 5.993722246153589e-11,
+  "conductivity_S_per_m": 0.005607618219,
+  "permittivity_F_per_m": 8.85e-11,
+  "relative_permittivity": 9.99527023947797,
+  "implied_temperature_K": 301.71747116030207,
+  "em_wavelength_m": 0.0009045658291719578,
+  "d_over_lambda_em": 0.00022110054741187888,
+  "kd_over_c_omega": 10689.34829746246,
+  "phase_speed_m_per_s": 28045.906041920967,
+  "phase_speed_over_c": 9.355107272885754e-05,
+  "retardation_error_order": 4.88854520658325e-08,
+  "dielectric_relaxation_time_s": 1.5782101516850784e-08,
+  "omega_tau_dielectric": 1654.4288222686603,
+  "tau_over_period": 263.31052505776,
+  "debye_length_m": 2.6797119602985517e-06,
+  "d_over_debye": 0.07463488724277575,
+  "diffusion_length_over_d": 0.3294079491917343
+}
