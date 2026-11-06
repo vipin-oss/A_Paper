@@ -54,7 +54,7 @@ Status: **PASS** (4/4)
 |---|---|---|
 | H values present | PASS | [-0.05, -0.025, 0.0, 0.025, 0.05] |
 | R_B positive | PASS | [0.022864467939464526, 0.023101260643054032, 0.023145619204273885, 0.02299642239541999, 0.0226575044141918] |
-| pdf text present | PASS | 384 chars |
+| pdf text present | PASS | 640 chars |
 | all panels labeled | PASS | a,b,c,d present |
 
 Evidence: R_B range 0.022658-0.023146; modal-power columns present.

@@ -188,14 +188,40 @@ def channel_power_sweep(plates, etas):
         forward = float(np.sum((amplitudes[pos]**2).real * powers[pos] * np.exp(2 * K[pos].imag * distances[pos])))
         backward = float(np.sum(np.abs(amplitudes[neg])**2 * np.abs(powers[neg]) *
                                np.exp(-2 * np.abs(K[neg].imag) * distances[neg])))
+        # Separate finite-distance transported self-power into propagating and
+        # evanescent outgoing components. Evanescent self-powers are local
+        # modal energies, not far-field transported power.
+        tol = 1e-10
+        propagating = np.abs(K.imag) <= tol
+        evanescent = np.abs(K.imag) > tol
+        selfout = powers * np.abs(amplitudes)**2 * np.exp(2 * K.imag * distances)
+        propagating_outgoing = float(np.sum(np.abs(selfout[propagating])))
+        evanescent_outgoing = float(np.sum(np.abs(selfout[evanescent])))
+        total_outgoing = float(np.sum(np.abs(selfout)))
+        incident = max(float(r["incident_power_left"]), 1e-30)
+        # Degree-refinement uncertainty on the isolated backward self-power.
+        # The edge solve is the same finite-thickness spectral model; the spread
+        # across the retained polynomial degrees bounds the reported effect.
+        rb_values = []
+        for degree in [DEGREE - 8, DEGREE - 4, DEGREE]:
+            try:
+                q = Plate(degree=int(degree), H=float(eta) * HCRIT)
+                rr, _ = q.edge(KY0, OMEGA0, K0, KB0)
+                rb_values.append(float(rr["backward_reflection_self_power"]))
+            except Exception:
+                continue
+        rb_uncertainty = float(max(rb_values) - min(rb_values)) if len(rb_values) > 1 else float("nan")
         rows.append(dict(
             eta=float(eta), R_B_2um=float(r["backward_reflection_self_power"]),
             incident_self_power=float(r["incident_power_left"]),
-            forward_outgoing_fraction=forward / max(r["incident_power_left"], 1e-30),
-            backward_outgoing_fraction=backward / max(r["incident_power_left"], 1e-30),
-            total_outgoing_fraction=float(abs(r["total_outgoing_self_power"]) / r["incident_power_left"]),
+            forward_outgoing_fraction=forward / incident,
+            backward_outgoing_fraction=backward / incident,
+            total_outgoing_fraction=total_outgoing / incident,
+            propagating_outgoing_fraction=propagating_outgoing / incident,
+            evanescent_outgoing_fraction=evanescent_outgoing / incident,
             negative_power_mode_count=int(np.sum(powers < 0)),
             outgoing_modes=int(r["outgoing_modes"]),
+            rb_degree_uncertainty=rb_uncertainty,
             power_balance_error=float(r["power_balance_relative"])))
     return rows
 
@@ -465,21 +491,64 @@ def main():
     save_figure(fig, "fig04_frequency", FIGURE_DIR)
     plt.close(fig)
 
-    # Fig 5: modal power distribution.
+    # Fig 5: isolated backward-channel return and modal energy accounting.
     rows = [r for r in csv.DictReader((DATA_DIR / "fig05_channel_power.csv").open())]
-    fig, ax = plt.subplots(1, 4, figsize=(9.6, 3.0), layout="constrained")
-    etas5 = [-0.05, 0.0, 0.05]
+    etas5 = sorted({float(r["eta"]) for r in rows})
+    base_row = next(r for r in rows if float(r["eta"]) == 0.0)
+    base_rb = float(base_row["R_B_2um"])
+    fig, ax = plt.subplots(1, 4, figsize=(10.8, 3.4), layout="constrained")
+    # (a) Absolute isolated backward-channel return at the 2 um reference plane.
     for eta in etas5:
         sel = [r for r in rows if float(r["eta"]) == eta]
-        ax[0].plot([float(r["eta"]) for r in sel], [float(r["R_B_2um"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
-        ax[1].plot([float(r["eta"]) for r in sel], [float(r["negative_power_mode_count"]) for r in sel], marker="o", markersize=5, **h_style(eta))
-        ax[2].plot([float(r["eta"]) for r in sel], [float(r["backward_outgoing_fraction"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
-        ax[3].plot([float(r["eta"]) for r in sel], [float(r["total_outgoing_fraction"]) * 100 for r in sel], marker="o", markersize=5, **h_style(eta))
-    handles5 = [plt.Line2D([], [], color=H_COLORS[e], linestyle=H_LINES[e], marker="o", markersize=5, label=H_LABELS[e]) for e in etas5]
-    ax[0].legend(handles=handles5, loc="lower left")
-    for a, title, ylabel in zip(ax, ["(a)", "(b)", "(c)", "(d)"],
-                                ["$R_B$ (%)", "Backward modes", "Negative-power fraction (%)", "Total outgoing fraction (%)"]):
-        a.set_xlabel("$H/H^*$"); a.set_ylabel(ylabel); label_panel(a, title); a.grid(True, alpha=0.75)
+        ax[0].plot([float(r["eta"]) for r in sel], [float(r["R_B_2um"]) * 100 for r in sel],
+                   marker="o", markersize=6, linewidth=1.8, **h_style(eta))
+        if float(eta) == 0.0:
+            for r in sel:
+                ax[0].errorbar([float(r["eta"])], [float(r["R_B_2um"]) * 100],
+                               yerr=[[float(r["rb_degree_uncertainty"]) * 100]],
+                               fmt="none", ecolor="#4b5563", capsize=4, linewidth=1.0)
+    ax[0].set_ylim(2.24, 2.34)
+    ax[0].set_xlabel("$H/H^*$"); ax[0].set_ylabel("$R_B$ isolated (%)")
+    label_panel(ax[0], "(a)"); ax[0].grid(True, alpha=0.75)
+    ax[0].legend(handles=[plt.Line2D([], [], color=H_COLORS[e], linestyle=H_LINES[e],
+                                      marker="o", markersize=5, label=H_LABELS[e]) for e in etas5],
+                 loc="upper left", fontsize=8)
+    # (b) Relative change with respect to the uncoupled H=0 case.
+    for eta in etas5:
+        sel = [r for r in rows if float(r["eta"]) == eta]
+        ax[1].plot([float(r["eta"]) for r in sel],
+                   [100.0 * (float(r["R_B_2um"]) - base_rb) / base_rb for r in sel],
+                   marker="o", markersize=6, linewidth=1.8, **h_style(eta))
+    ax[1].axhline(0.0, color="#6b7280", linewidth=1.0)
+    ax[1].set_xlabel("$H/H^*$"); ax[1].set_ylabel("Relative change (%)")
+    label_panel(ax[1], "(b)"); ax[1].grid(True, alpha=0.75)
+    ax[1].legend(handles=[plt.Line2D([], [], color=H_COLORS[e], linestyle=H_LINES[e],
+                                      marker="o", markersize=5, label=H_LABELS[e]) for e in etas5],
+                 loc="lower right", fontsize=8)
+    # (c) Total outgoing self-power fraction from the full outgoing field.
+    for eta in etas5:
+        sel = [r for r in rows if float(r["eta"]) == eta]
+        ax[2].plot([float(r["eta"]) for r in sel], [float(r["total_outgoing_fraction"]) * 100 for r in sel],
+                   marker="o", markersize=6, linewidth=1.8, **h_style(eta))
+    ax[2].set_xlabel("$H/H^*$"); ax[2].set_ylabel("Total outgoing fraction (%)")
+    label_panel(ax[2], "(c)"); ax[2].grid(True, alpha=0.75)
+    ax[2].legend(handles=[plt.Line2D([], [], color=H_COLORS[e], linestyle=H_LINES[e],
+                                      marker="o", markersize=5, label=H_LABELS[e]) for e in etas5],
+                 loc="lower right", fontsize=8)
+    # (d) Properly normalized propagating and evanescent outgoing self-powers.
+    for eta in etas5:
+        sel = [r for r in rows if float(r["eta"]) == eta]
+        xs = [float(r["eta"]) for r in sel]
+        ax[3].plot(xs, [float(r["propagating_outgoing_fraction"]) * 100 for r in sel],
+                   marker="o", markersize=6, linewidth=1.8, **h_style(eta))
+        ax[3].plot(xs, [float(r["evanescent_outgoing_fraction"]) * 100 for r in sel],
+                   marker="s", markersize=5, linewidth=1.4, linestyle=":", color=H_COLORS[eta], alpha=0.75)
+    ax[3].set_xlabel("$H/H^*$"); ax[3].set_ylabel("Outgoing self-power fraction (%)")
+    label_panel(ax[3], "(d)"); ax[3].grid(True, alpha=0.75)
+    ax[3].legend(handles=[
+        plt.Line2D([], [], color="#1f2937", marker="o", markersize=5, label="Propagating"),
+        plt.Line2D([], [], color="#1f2937", marker="s", markersize=4, linestyle=":", label="Evanescent"),
+    ], loc="lower right", fontsize=8)
     fig.suptitle("Reflection-channel conversion and modal energy", fontweight="bold")
     save_figure(fig, "fig05_channel", FIGURE_DIR)
     plt.close(fig)

@@ -12,7 +12,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig01_dispersion.pdf",
         "bytes": 32521,
-        "sha256": "09c525cccc88b6d478b887efada50b0099d91390390f7d6e8f0e9982c53221fe"
+        "sha256": "6ae13d434cc2ead1e8aabdaf0efb006c7ccbfa905236c93cecfb9ddaa276673b"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig01_dispersion.png",
@@ -22,7 +22,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig01_dispersion.svg",
         "bytes": 80598,
-        "sha256": "6d9439180a165f53336d73f7a8c8c0d1cafb3eceda1f0bd79b7a57f2e7787112"
+        "sha256": "69326bc4f2c6ca2f92618a5fc1cf5c37e3366638a52414fe4e906c2252939316"
       }
     },
     {
@@ -37,7 +37,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig02_material.pdf",
         "bytes": 27403,
-        "sha256": "36857121cdc719615349fd346bde4b32ffa7c7817f9c62381b468ceecffb5566"
+        "sha256": "50e034a7445db2cfb61f2e331ac3d116ec8bad0436157b5ff08918467d6afc36"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig02_material.png",
@@ -47,7 +47,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig02_material.svg",
         "bytes": 55175,
-        "sha256": "30d113f378c7aa7d1b76e9c7175127c26d21bb0634c9d4ec2502a58ac569889b"
+        "sha256": "90be6831350468d44e9304224f2592c5b3ffd88674e60fcf2dce2e72c1401770"
       }
     },
     {
@@ -62,7 +62,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig03_geometry.pdf",
         "bytes": 32437,
-        "sha256": "c05b9db622e44e3b7b3abbd67cae4b26acbee7acec65b4aecf309d444c661de3"
+        "sha256": "ee8b9cf1d9fb120643ac17c55adafe412e681255cf88aebc783ee7bf90dbf478"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig03_geometry.png",
@@ -72,7 +72,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig03_geometry.svg",
         "bytes": 67936,
-        "sha256": "1d47467772bc37b579c5dc4c4c60991abf4e5108c90a2f1e04c678c38e04d168"
+        "sha256": "0a8f41ba10ef1b54de701251fe9262fcbbb69d45ef11bf0a86816857c2a7368f"
       }
     },
     {
@@ -87,7 +87,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig04_frequency.pdf",
         "bytes": 30383,
-        "sha256": "3f41c60a9262412f41a845f405a4afbc1efd30600674353c026e736909a74254"
+        "sha256": "889cd0eaf8bff53525767e267074c8623e2fb4e48ed60a9819c41f8adb66df8d"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig04_frequency.png",
@@ -97,7 +97,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig04_frequency.svg",
         "bytes": 63211,
-        "sha256": "88c81f7b2fe259f8fc2db3205112c0500b44d54fa8b3e470c55e60ab793d3f64"
+        "sha256": "4a289910756380771b0b8bae5276584392b112398ccd0ad05a3114112537d88c"
       }
     },
     {
@@ -111,18 +111,18 @@
       ],
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig05_channel.pdf",
-        "bytes": 29029,
-        "sha256": "4f96930562897675671a5ae4498c446a586eb3a1f3d1772845caf485a5d8bff9"
+        "bytes": 35921,
+        "sha256": "77618ae7152fe8de197d63b910c47d281e3d86d32a9fbb0e28f690e1d948b01d"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig05_channel.png",
-        "bytes": 336156,
-        "sha256": "2afe1cc5b1f534813ce4d5e3421694ce755cd6759e9602bed117bd4018dc58fe"
+        "bytes": 593320,
+        "sha256": "2c451b0c7a10b2ddaaa34bda408cd36e431cbb04a917976c98fdc6004121669f"
       },
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig05_channel.svg",
-        "bytes": 45458,
-        "sha256": "b428727a5cb2b1a749bd932249aa8897334deae8a923ae49d05f997b6b51a37d"
+        "bytes": 84708,
+        "sha256": "04dd82f981e108e79afe975d18df3dc0a7ed21df8448e531fb5441a764455574"
       }
     },
     {
@@ -137,7 +137,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig06_attenuation.pdf",
         "bytes": 24148,
-        "sha256": "c994848abedd637af8865b01e3b97dd9348f39ffb1ad46fceedebe4dea90f21d"
+        "sha256": "2a7226f4b94bf97fc2fe30e2884af859791945ac870329a04cdffb04a5a88f6f"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig06_attenuation.png",
@@ -147,7 +147,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig06_attenuation.svg",
         "bytes": 68896,
-        "sha256": "1c1749d6d6e4d9690792c9a3d2c581f50b5d3280b29888621887e337bfd5b00e"
+        "sha256": "2ef9dd1a13225c7888dba46ba3399ef5e3d20aed3884f3f3f9e5ba2d139c5415"
       }
     },
     {
@@ -162,7 +162,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig07_coupling.pdf",
         "bytes": 34263,
-        "sha256": "1446685383c83b5943d9eb82f6fb54bbb499102b0c1b7e826ddf05570240acf6"
+        "sha256": "f9f592586556f6cec950e855c34e1fb2285b5582a6853d45fa014b9ab1a8f268"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig07_coupling.png",
@@ -172,7 +172,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig07_coupling.svg",
         "bytes": 81815,
-        "sha256": "58f12af7730631920c4941667e06dcf5724f83ba91b4c82723536ac1b0d7411b"
+        "sha256": "cb4a0ab7fe60deb7861928e30c5b3efe1b906677314f256bb0fe9584f2ba324f"
       }
     },
     {
@@ -187,7 +187,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig08_boundary.pdf",
         "bytes": 23545,
-        "sha256": "49c403fefcd363798632d5730638975cdefe2e5aef13f11beb42e8337ec51db8"
+        "sha256": "9da91662e77cdd33a810eceadd4b5d895fa1b689e0bd64b2d8975fa6dcfc613a"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig08_boundary.png",
@@ -197,7 +197,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig08_boundary.svg",
         "bytes": 46209,
-        "sha256": "6ae609acb97c649a72a03b6836b7082500fe617fb6eee34587d75b4a29a6c095"
+        "sha256": "3037f91c5c7ebfce909e20c99f4f95c4b9f936d106670121f9eb85d1e13403db"
       }
     },
     {
@@ -212,7 +212,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig09_validation.pdf",
         "bytes": 24852,
-        "sha256": "c2a620c4d117d55a3aa4ad3877d46b98f915592c04d21d4c9c375d38bc597f83"
+        "sha256": "98a7e956027fbb1456f3b2998b9326c723f5cf18a7a270bf9acb05de82a775bb"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig09_validation.png",
@@ -222,7 +222,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig09_validation.svg",
         "bytes": 53018,
-        "sha256": "382919ea882aa1183eb12d610663d9b46a5ffabc4e2f61b8bad75626d963cfca"
+        "sha256": "759eab0c3db8be9fbd1463e6ec64a87cace3241ea60934a47a678b82b06d1de6"
       }
     },
     {
@@ -237,7 +237,7 @@
       "pdf": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig10_field.pdf",
         "bytes": 3554999,
-        "sha256": "b6238610a776f1470e3b672d3882b30d054315f84ea64fbebc223d2ad9dba895"
+        "sha256": "cbc1f4dfbb6df5e0c1f10dc6ea611d231535ce9c708f6558bf47d1df2ad04fc3"
       },
       "png": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig10_field.png",
@@ -247,7 +247,7 @@
       "svg": {
         "file": "/home/user/A_Paper/paper_a_study/figures_final/fig10_field.svg",
         "bytes": 29519187,
-        "sha256": "2d32eb3eaa195e5d49adeb714ec4309b1a008ce8c0946fde886a25f2272e36e5"
+        "sha256": "da6dbb01db1207be137f6f10f12a64adebc03fe537507aa6e1efdd2e5521d794"
       }
     }
   ]

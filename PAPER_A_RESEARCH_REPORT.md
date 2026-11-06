@@ -164,7 +164,7 @@ The following table keeps the same real frequency, real kᵧ, degree-22 edge sol
 
 ![Reflection-channel conversion and modal energy](paper_a_study/results/fig05_channel.svg)
 
-*Figure 5. Solved backward-mode count, negative-power fraction, and total outgoing fraction for five H values. The finite outgoing fraction is normalized by the finite solved incident and total outgoing powers; it is not total reflectance.*
+*Figure 5. Solved isolated backward-channel self-power ratio and modal energy accounting for five matched H values at the fixed 2 μm reference plane. Panel (a) preserves the absolute scale and a degree-refinement uncertainty marker at H=0; panel (b) shows the finite relative change with respect to the uncoupled H=0 case; panel (c) reports the full outgoing self-power fraction; panel (d) separates the finite-distance transported propagating component from the evanescent self-power fraction. The isolated-channel ratio is not total reflectance.*
 
 A Gaussian angular spectrum is also assembled from **solved** edge coefficients, not from an assumed reflection law. For H = 0, σ(Kᵧ) = 0.013, and 25 Gauss-Hermite nodes, the incident and backward branch kinetic intensities are shown below. At x = −40.105 μm, their transverse centroids are **−7.264 μm** and **−20.944 μm**, respectively. The reflected branch travels **away from the edge, left and down**; the incident branch travels right and up. Seventeen-to-25-node centroid change is below 10⁻⁹ μm. This is an angular-spectrum channel demonstration, not a transient/full-field simulation.
 
