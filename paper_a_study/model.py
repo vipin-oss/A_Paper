@@ -54,7 +54,11 @@ class Plate:
         if (ell==0 and H) or self.schur>=1:raise ValueError('H violates full 3D strict Schur bound')
         if ell==0 and flexo:raise ValueError('Classical validation uses f=A=H=0')
         if electric not in ('ground','open'):raise ValueError(electric)
-        self.np=self.n-2 if electric=='ground' else self.n
+        # 'ground' enforces phi=0 on both faces (two constraints).  For the
+        # open-circuit problem phi is defined only up to an additive constant;
+        # that constant is a genuine null vector of the electrostatic operator and
+        # removing it (zero-mean gauge) is required for a non-singular system.
+        self.np=self.n-2 if electric=='ground' else self.n-1
         self.nu=3*self.n;self.nw=self.nu+self.np+self.n
         self.iu=slice(0,self.nu);self.ip=slice(self.nu,self.nu+self.np)
         self.im=slice(self.nu+self.np,self.nw)
@@ -70,6 +74,10 @@ class Plate:
         if self.electric=='ground':
             ratio=np.sqrt((2*np.arange(self.np)+1)/(2*np.arange(self.np)+5))
             pb=[v[:,:self.np]-v[:,2:]*ratio[None,:] for v in b]
+        elif self.electric=='open':
+            # Drop the constant Legendre mode: phi has zero thickness mean, which
+            # fixes the electrostatic gauge without changing any field gradient.
+            pb=[v[:,1:] for v in b]
         else:pb=[v.copy() for v in b]
         return b,pb
 
@@ -86,12 +94,19 @@ class Plate:
         B[:,5,:n]=1j*ky*b[r];B[:,5,n:2*n]=1j*kx*b[r]
         return B
 
-    def temporal(self,K,reference=None):
-        """Independent time generator in u,du/dt,N, with phi eliminated."""
-        B=self.strains(K,0);Bz=self.strains(K,0,r=1)
-        G=np.stack([1j*K*self.pb[0],np.zeros_like(self.pb[0]),self.pb[1]],axis=1)
+    def temporal(self,K,reference=None,ky=0.):
+        """Independent time generator in u,du/dt,N, with phi eliminated.
+
+        ``ky`` is the conserved edge-tangential wavenumber.  It defaults to 0 so
+        every existing call keeps its exact previous behaviour; passing the
+        operating value evaluates the *same* weak form at the actual propagation
+        geometry instead of the sagittal ky=0 plane.
+        """
+        B=self.strains(K,ky);Bz=self.strains(K,ky,r=1)
+        G=np.stack([1j*K*self.pb[0],1j*ky*self.pb[0],self.pb[1]],axis=1)
         Bt=B.conj();Bzt=Bz.conj();Gt=G.conj();w=self.weights
-        kuu=(1+self.lam**2*K*K)*self.form(Bt,self.C,B,w)+self.lam**2*self.form(Bzt,self.C,Bz,w)
+        kk=K*K+ky*ky
+        kuu=(1+self.lam**2*kk)*self.form(Bt,self.C,B,w)+self.lam**2*self.form(Bzt,self.C,Bz,w)
         cpu=self.form(Gt,self.e,B,w)
         cpu+=self.f*(self.pb[1].T@(w[:,None]*self.b[2]))@np.eye(self.nu)[2*self.n:]
         pp=self.form(Gt,self.kap,G,w)
@@ -101,7 +116,7 @@ class Plate:
         F[:,2*self.n:]=self.h*self.b[0].T@(w[:,None]*self.b[2])
         Kf=kuu+cpu.conj().T@pu;R=F.conj().T-cpu.conj().T@pn
         An=self.W+self.Q*wp.T@pn;Ru=F-self.Q*wp.T@pu
-        lap=self.b[1].T@(w[:,None]*self.b[1])+K*K*self.W
+        lap=self.b[1].T@(w[:,None]*self.b[1])+kk*self.W
         L=self.alpha*solve(self.W,lap)@solve(self.W,np.eye(self.n))
         u=self.nu;nn=self.n;Z=np.zeros((u,u),complex)
         T=np.block([[Z,np.eye(u),np.zeros((u,nn))],

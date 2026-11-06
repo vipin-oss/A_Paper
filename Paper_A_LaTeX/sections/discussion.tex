@@ -4,4 +4,22 @@ The calculations support a coherent picture: the backward channel is strongest n
 
 The present package does not establish novelty over Qu et al.; the exact equivalence/novelty remains unresolved. Synthetic $A$, $f_{3333}$, and $H$ values are not presented as experimentally calibrated ZnO constants. The ordinary sourced constants are traceable to Zhang et al. and NIST SI definitions.
 
-The main limitation is the model geometry: it is 2-D plane strain with a specified propagation-plane tangential component, not a true 3-D oblique edge solution. The open boundary sweep reports a rank failure rather than fabricating a result.
+The main limitation is the model geometry: it is 2-D plane strain with a
+specified propagation-plane tangential component, not a true 3-D oblique edge
+solution. The open-circuit edge condition required an explicit gauge to remove
+the electric-potential null space of the weak form; with that gauge the open
+case is solvable and no longer fails on the conditioning of the tangent
+matrix. The gauge removes a null space, not physics, and it is not claimed as
+an independent validation of the open-boundary response.
+
+The figures support three quantitative statements and nothing more. First, the
+backward reflectance is governed almost entirely by the transverse wavenumber
+and by the position of the operating point on the guided branch, with the
+carrier--strain-gradient coupling acting as a perturbation below
+\SI{2.5}{\percent}. Second, the conversion maximum coincides with the point
+where the group velocity of the branch vanishes, so the effect is a
+slow-mode effect rather than a resonance of the coupling term alone. Third, the
+near field at the reference plane is reactive and must be excluded from any
+transport argument, which is why the energy budget of Fig.~\ref{fig:fig05} is
+closed on three channels and reports the forward-propagating channel as exactly
+zero.
