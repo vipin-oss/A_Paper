@@ -575,7 +575,7 @@ def main():
       a.annotate("",xy=(.2,.25),xytext=(.7,.5),arrowprops=dict(arrowstyle="-|>",color="#9d174d",lw=3))
       a.text(.05,.58,"Backward",fontsize=10);a.text(.05,.48,"left/down",fontsize=10)
       a.text(.05,.38,"Edge at $x=0$",fontsize=10);a.text(.05,.28,"$k_y$ conserved",fontsize=10)
-      a.text(.05,.16,"centroids $-7.26$ / $-20.94$ $\mu$m",fontsize=10)
+      a.text(.05,.16,"computed $\bar y_i,\\bar y_b\\approx 0$ $\mu$m",fontsize=10)
     fig.suptitle("Spatial energy flux and computed wave field",fontweight="bold")
     save_figure(fig,"fig10_field",FIGURE_DIR,rasterize=True)
     plt.close(fig)

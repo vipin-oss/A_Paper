@@ -10,10 +10,16 @@ Font status: Times New Roman unavailable; DejaVu Serif metric fallback.
 """
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import csv
 import hashlib
 import json
-from pathlib import Path
 import numpy as np
 from scipy.optimize import brentq
 import matplotlib
@@ -28,7 +34,7 @@ from paper_a_study.figure_style import (save_figure, h_style, label_panel, H_COL
                                         H_LINES, H_LABELS, FONT_STATUS, STYLE_SOURCE)
 
 HERE = Path(__file__).resolve().parent
-RESULTS = HERE / "results"
+RESULTS = ROOT / "paper_a_study" / "results"
 FIGURE_DIR = HERE / "figures_final"
 DATA_DIR = HERE / "figure_data"
 
@@ -575,7 +581,7 @@ def main():
       a.annotate("",xy=(.2,.25),xytext=(.7,.5),arrowprops=dict(arrowstyle="-|>",color="#9d174d",lw=3))
       a.text(.05,.58,"Backward",fontsize=10);a.text(.05,.48,"left/down",fontsize=10)
       a.text(.05,.38,"Edge at $x=0$",fontsize=10);a.text(.05,.28,"$k_y$ conserved",fontsize=10)
-      a.text(.05,.16,"centroids $-7.26$ / $-20.94$ $\mu$m",fontsize=10)
+      a.text(.05,.16,"computed $\bar y_i,\\bar y_b\\approx 0$ $\mu$m",fontsize=10)
     fig.suptitle("Spatial energy flux and computed wave field",fontweight="bold")
     save_figure(fig,"fig10_field",FIGURE_DIR,rasterize=True)
     plt.close(fig)
