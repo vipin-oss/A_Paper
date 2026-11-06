@@ -1,0 +1,13 @@
+\section{Numerical methods}
+\label{sec:numerical_methods}
+The transverse dependence is represented by Legendre polynomials of degree \ensuremath{p=22} (degree 22 in the implementation). The temporal eigenproblem and the edge-matching problem are solved in the same spectral Galerkin framework used by the production study. The H=0 cutoff, convergence and classical-limit comparisons are retained from the accepted protocol. Independent convergence checks are reported in \cref{fig:fig09}.
+
+All figure data are saved under \texttt{figure\_data/} as CSV, JSON and NPY arrays. The reproducible command is
+\begin{verbatim}
+OPENBLAS_NUM_THREADS=1 python -m paper_a_study.generate_final_figures
+\end{verbatim}
+The historical production study remains available through
+\begin{verbatim}
+OPENBLAS_NUM_THREADS=1 python -m paper_a_study.run_study
+\end{verbatim}
+Each figure in \cref{sec:results} is traceable to the dataset listed in \texttt{figure\_data/figure\_panel\_sources.json}.

@@ -1,0 +1,111 @@
+\section{Supported results}
+\label{sec:results}
+\subsection{Dispersion and wave speeds}
+\label{sec:results_dispersion}
+Figure~\ref{fig:fig01} shows the temporal dispersion and derived speeds for five H values. The H curves are fixed line styles; the panel labels are fixed positions. The primary accepted value remains the isolated backward-channel self-flux at \SI{2}{\micro\metre} in the explicitly specified grounded 2-D plane-strain model.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig01_dispersion.pdf}
+\caption{Guided-wave dispersion and wave speeds. All data are from \texttt{fig01\_dispersion\_velocity\_attenuation.csv}.}
+\label{fig:fig01}
+\end{figure}
+
+\subsection{Carrier parameters}
+\label{sec:results_material}
+Figure~\ref{fig:fig02} reports the ordinary sourced carrier concentration and mobility sensitivity. The $n_0=2\times10^{18}\,\mathrm{m^{-3}}$ and $\mu=0.0175\,\mathrm{m^2/(V\,s)}$ curves are highlighted because they match the primary calculation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig02_material.pdf}
+\caption{Carrier concentration and mobility effects. Data: \texttt{fig02\_material\_parameter\_sweep.csv}.}
+\label{fig:fig02}
+\end{figure}
+
+\subsection{Thickness and gradient length}
+\label{sec:results_geometry}
+Figure~\ref{fig:fig03} maps the frequency and gradient-length dependence. The synthetic gradient-length sweep is explicitly marked as synthetic in the dataset.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig03_geometry.pdf}
+\caption{Plate thickness and gradient-length effects. Data: \texttt{fig03\_geometry\_sweep.csv}.}
+\label{fig:fig03}
+\end{figure}
+
+\subsection{Frequency reflection}
+\label{sec:results_frequency}
+Figure~\ref{fig:fig04} separates the edge reflection, the \SI{2}{\micro\metre} return and the \SI{100}{\micro\metre} return. These are distinct diagnostics; the \SI{2}{\micro\metre} value is not total reflectance.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig04_frequency.pdf}
+\caption{Backward reflection versus frequency. Data: \texttt{fig04\_frequency\_reflection.csv}.}
+\label{fig:fig04}
+\end{figure}
+
+\subsection{Modal conversion and energy}
+\label{sec:results_channel}
+Figure~\ref{fig:fig05} shows the backward-mode count, negative-power fraction and total outgoing fraction. Backward-mode conversion is distinguished from ordinary reflection, retroreflection and spatial attenuation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig05_channel.pdf}
+\caption{Reflection-channel conversion and modal energy. Data: \texttt{fig05\_channel\_power.csv}.}
+\label{fig:fig05}
+\end{figure}
+
+\subsection{Attenuation and survival}
+\label{sec:results_attenuation}
+Figure~\ref{fig:fig06} reports the distance dependence of the isolated backward coefficient and incident survival. The finite-distance return is not reduced to a single propagation attenuation; edge conversion and attenuation are not generally separable at finite distance.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig06_attenuation.pdf}
+\caption{Attenuation, distance and survival. Data: \texttt{fig06\_attenuation\_distance.csv}.}
+\label{fig:fig06}
+\end{figure}
+
+\subsection{H and $k_y$ coupling sensitivity}
+\label{sec:results_coupling}
+Figure~\ref{fig:fig07} presents the solved H/$k_y$ surface. Values outside the solved range are not interpolated.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig07_coupling.pdf}
+\caption{Carrier-strain-gradient coupling sensitivity. Data: \texttt{fig07\_coupling\_sensitivity.csv}.}
+\label{fig:fig07}
+\end{figure}
+
+\subsection{Boundary sensitivity}
+\label{sec:results_boundary}
+Figure~\ref{fig:fig08} compares grounded and open edge conditions. The open-boundary calculation is reported with its error; it is not silently omitted.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig08_boundary.pdf}
+\caption{Boundary-condition sensitivity. Data: \texttt{fig08\_boundary\_sensitivity.csv}.}
+\label{fig:fig08}
+\end{figure}
+
+\subsection{Convergence and independent validation}
+\label{sec:results_validation}
+Figure~\ref{fig:fig09} reports two independent convergence families and residuals. No unsupported PASS claim is made beyond the computed values.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig09_validation.pdf}
+\caption{Numerical convergence and residuals. Data: \texttt{fig09\_validation\_convergence.csv}.}
+\label{fig:fig09}
+\end{figure}
+
+\subsection{Wave field and energy flux}
+\label{sec:results_field}
+Figure~\ref{fig:fig10} shows the solved incident and backward intensities and the exact energy-flux directions. One coordinate convention is used for angles, propagation vectors and flux arrows. The backward branch has energy opposite to its phase wavevector.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig10_field.pdf}
+\caption{Spatial energy flux and computed wave field. Data: \texttt{fig10\_field\_metrics.json} and the NPY arrays in \texttt{figure\_data/}.}
+\label{fig:fig10}
+\end{figure}
