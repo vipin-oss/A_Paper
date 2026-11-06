@@ -7,7 +7,12 @@
 Consider a transversely isotropic ($6mm$) n-type ZnO plate of thickness $d$
 whose faces are the planes $z=\pm d/2$, occupying the half-space $x<0$ and
 terminating at a traction-free edge at $x=0$.  The plate is unbounded in $y$, so
-a single tangential wavenumber $k_y$ is conserved.  The independent fields are
+a single tangential wavenumber $k_y$ is conserved, and every field has the form
+$f(x,z)\,e^{ik_yy-i\omega t}$ with three displacement components retained.  The
+formulation is therefore two-and-a-half-dimensional (2.5D): a discrete
+cross-section in $(x,z)$ carrying full three-component kinematics, a single
+conserved tangential wavenumber, and no discretisation of $y$.  It is not a full
+three-dimensional simulation, and nothing below is reported as one.  The independent fields are
 the displacement $u_i(\vect{x},t)$, the electrostatic potential
 $\varphi(\vect{x},t)$ and the electron-number perturbation
 $\Delta n(\vect{x},t)$ measured from the uniform doping $n_0$.  The polar $c$
@@ -65,8 +70,7 @@ Correspondingly the hyperstress conjugate to $\eta$ has the units of a force per
 unit length ($\mathrm{N/m}$), and its double divergence has the units of a force
 density, as the balance law requires.  Writing $A$ in pascals, or the
 hyperstress in pascals, is dimensionally wrong for a strain-gradient energy of
-the form \eqref{eq:gradient_energy}, and the earlier version of this manuscript
-made exactly that statement.
+the form \eqref{eq:gradient_energy}.
 
 \begin{table}[t]
 \centering
@@ -277,9 +281,8 @@ electromagnetic retardation, not charge dynamics.
 \emph{Screening.}  The screening length is $L_D=\sqrt{\kappa_{33}k_BT/(q^2n_0)}
 =\SI{2.68}{\micro\metre}$, so $d/L_D=0.075$: the plate is much thinner than the
 Debye length and the carrier perturbation is not confined to a surface layer.
-All three ratios are computed from the material file by
-\path{paper_a_study/quasistatic_check.py} and stored in
-\path{figure_data/quasistatic_audit.json}.
+All three ratios are computed from the material file and stored as part of the
+verification record.
 
 \subsection{Boundary conditions}
 \label{sec:governing_bc}
@@ -351,8 +354,7 @@ thickness, is
 where $\Gamma_x$ is the $x$ component of the carrier flux; the four terms are
 the elastic, hyperelastic, dielectric and chemical contributions, each with the
 dimensions of a power per unit area ($\mathrm{W\,m^{-2}}$); that the four are
-mutually consistent is checked in
-\path{paper_a_study/verify_dimensions.py}.  It is this
+mutually consistent is verified by an independent dimensional audit.  It is this
 quantity, and not the magnitude of the wavevector, that decides whether a mode
 is backward: a mode is backward when $\mathcal{P}_x<0$ while it is outgoing at
 the edge.

@@ -1,78 +1,37 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-We have added a single bilinear term, $\Delta\mathcal{H}=\Delta n\,H_{jkl}
-\varepsilon_{jk,l}$, with its two thermodynamic reciprocals, to the
-flexoelectric piezoelectric-semiconductor continuum of a $6mm$ ZnO plate, and we
-have computed how a guided mode is scattered at a free edge under that coupling.
-The conclusions are the following.
+An edge-scattering problem has been posed and solved for a guided mode in a
+$6mm$ n-type ZnO plate described by strain-gradient elasticity,
+piezoelectricity, flexoelectricity and linearised electron drift--diffusion,
+with one added carrier--strain-gradient enthalpy and its reciprocal partners.
+Five results follow.
 
-The scattering problem is well posed and its energy budget closes.  At the
-reference plane the incident power is reproduced by the sum of the outgoing
-self-powers, the interference term and the conduction loss to
-$3.4\times10^{-16}$, and the solver's own power balance to
-$7.3\times10^{-13}$.  This closes the energy identity that the earlier version
-of this work left open, where a wrongly propagated evanescent remainder of order
-$10^{-5}$ had been read as a physical reactive contribution.
+\begin{enumerate}
+\item The energy identity closes at the reference plane to
+$3.4\times10^{-16}$ relative, with the interference term quoted separately and
+no evanescent member counted as transported power.
+\item At $k_xd=0.736$ (\SI{16.68}{\giga\hertz}) the backward branch carries
+\SI{2.31}{\percent} of the incident power; along the same branch the share
+reaches \SI{93.19}{\percent} at $k_xd=0.525$, where the group velocity passes
+through zero.  Both are converged to $7.2\times10^{-7}$ and
+$2.1\times10^{-8}$ between Galerkin degrees 18 and 30.
+\item These are modal shares and not reflectances: \SI{99.98}{\percent} of the
+incident power leaves as propagating modes at the operating point and
+\SI{99.0}{\percent} at the branch maximum.
+\item The conversion is not produced by the added coupling.  With $H=0$ both
+shares are unchanged, and removing the strain-gradient sector removes the
+backward branch, leaving the specular reflection as the only negative-power
+outgoing mode.
+\item The coupling acts through conduction loss, reducing the partition by
+\SI{1.21}{\percent} at the operating point and \SI{33.1}{\percent} at the branch
+maximum, of which \SI{11.5}{} points are added propagation loss.
+\end{enumerate}
 
-The edge converts a measurable share of the incident guided mode into a
-backward-propagating branch.  At the operating point
-($k_xd=0.7362$, $k_yd=0.1298$, \SI{16.68}{\giga\hertz},
-$d=\SI{200}{\nano\metre}$) the backward channel carries \SI{2.31}{\percent} of
-the incident power, leaving the reference plane at
-$-27.9^{\circ}$; the maximum along the branch is
-\SI{57.9}{\percent} at $k_xd=0.55$, where the branch is slowest and
-$v_g\to0$.  Both values are converged to better than $10^{-6}$ in relative terms
-between Galerkin degree 18 and degree 30, and both are resolved projections with
-$|\cos\theta_E|$ of \SI{88}{\percent} and \SI{97}{\percent}.
-
-These numbers are shares of the scattered power and not reflectances.  The
-total outgoing propagating power is \SI{99.99}{\percent} of the incident power
-at the operating point and \SI{99.88}{\percent} at the peak, so the plate is an
-almost perfect scatterer of the guided mode at both.  Negative reflection here
-means that one specific outgoing branch carries energy in $-x$; it does not
-mean that the edge returns most of the power.
-
-The origin of the effect was identified by matched controls, and it is not the
-added coupling.  With $H=0$ the same branch already returns \SI{57.9}{\percent}
-at the slow point and \SI{2.31}{\percent} at the operating point; with the
-strain-gradient sector removed the backward branch does not exist, the outgoing
-spectrum contains no mode with positive axial wavenumber and negative axial
-power, and the only negative-power mode is the specular reflection at
-$K=-k_{x,\text{inc}}$.  The negative reflection is a property of the
-higher-order guided branch and of the edge, largest where the group velocity of
-the branch vanishes.
-
-The added coupling is a small perturbation of that partition and a strong
-modifier of the loss.  Along the branch at fixed $k_x$, turning $H$ on at
-$|H|=0.05H^{*}=2.0\times10^{-23}\,\si{\joule\metre}$ reduces the backward
-channel by \SI{1.21}{\percent} at the operating point and by \SI{9.85}{\percent}
-at the peak, of which \SI{5.8}{} points at the peak are the increased
-propagation loss of the backward branch between the edge and the reference
-plane; the dispersion moves by less than $4\times10^{-6}$ in relative terms,
-while the attenuation length changes by a factor of sixty-two.  The transverse
-wavenumber changes the backward channel by a factor of $1.35$ across the solved
-box.  The ordering $H\ll k_y$ in the control of the partition, which becomes
-$H\sim k_y$ only at the slow point, is the quantitative content of the statement
-that this coupling is not the organising parameter of the effect.
-
-The formulation is a Fourier-reduced three-dimensional one: three displacement
-components, a single conserved $k_y$, and full strain-gradient kinematics.  The
-electrical boundary conditions are $\varphi=0$ for the grounded case and
-$D_z=0$ for the open-circuit case, with blocking carrier conditions on all free
-surfaces and no free charge on the reflecting edge; the labels in the earlier
-version of this manuscript were reversed and are corrected here.
-
-The conclusions are bounded by the limitations of \cref{sec:disc_limitations}.
-The strain-gradient length, the flexoelectric coefficient and the coupling
-tensor are synthetic, and the measured contribution of the flexoelectric sector
-to the reported returns is \SI{-0.01}{\percent}, the carrier physics is linearised about a uniform doping,
-the plate is semi-infinite with a single edge, no pointwise corner field is
-certified, and the relation of the added coupling to the published
-flexoelectric-semiconductor constitutive relations is resolved only against the
-free-energy decomposition that could be inspected, the full primary article
-being inaccessible.  Within those limits, the results show that the
-carrier--strain-gradient coupling is a controlled and reproducible modifier of
-an edge-scattering partition, and that the partition itself --- a slow-mode
-effect with a peak exceeding half of the incident power, present without the
-added coupling --- is the phenomenon worth measuring.
+The gradient length, the flexoelectric coefficient and the coupling tensor are
+synthetic, the carriers are linearised about a uniform doping, the plate has a
+single edge, corner line forces are not certified, and the relation to the
+primary flexoelectric-semiconductor theory is established only against the
+free-energy decomposition that could be inspected.  The observable that follows
+is the modal partition of a slow guided branch near its zero-group-velocity
+point.

@@ -48,9 +48,8 @@
 \DeclareMathOperator{\Real}{Re}
 \DeclareMathOperator{\Imag}{Im}
 
-\title{\bfseries Negative reflection of guided waves at a free edge in a
-flexoelectric piezoelectric--semiconductor plate: the strain-gradient backward
-branch}
+\title{\bfseries Backward-branch negative reflection of guided waves at a free
+edge in a flexoelectric piezoelectric--semiconductor plate}
 
 \author{Vipin Kumar\textsuperscript{*}\\[2pt]
 \small Department of Applied Mechanics, Indian Institute of Technology Delhi,
@@ -63,74 +62,32 @@ New Delhi 110016, India}
 
 \begin{abstract}
 \noindent
-Flexoelectricity converts a strain gradient into an electric polarisation and,
-in a piezoelectric semiconductor, the resulting charge redistribution modifies
-the carrier density that screens it.  We examine what happens when this
-two-way exchange is allowed to act on a guided elastic plate mode that
-propagates towards a free edge.  The model is a transversely isotropic
-($6mm$) n-type ZnO plate of thickness $d$, described by strain-gradient
-elasticity, piezoelectricity, flexoelectricity and linearised drift--diffusion
-of the electron gas, and the sole constitutive addition is the bilinear
-carrier--strain-gradient enthalpy $\Delta\mathcal{H}=\Delta n\,H_{jkl}
-\varepsilon_{jk,l}$ together with its reciprocal partners
-$\Delta\tau_{jkl}=H_{jkl}\Delta n$ and $\Delta\widetilde\mu=H_{jkl}
-\varepsilon_{jk,l}$.  The plate occupies the half-space $x<0$ and terminates
-at a traction-free edge at $x=0$; the fields carry a single conserved
-tangential wavenumber $k_y$ and are discretised through the thickness with a
-spectral Galerkin expansion, which turns the edge problem into a linear
-matching of outgoing modes.
-
-Two features of the executed model are stated at the outset because they bound
-every number below.  First, the electrostatic reduction is justified at the
-operating point rather than assumed: the plate is $d/\lambda_{\mathrm{EM}}=3.52
-\times10^{-5}$ electromagnetic wavelengths thick ($k_{\mathrm{EM}}d=2.2\times
-10^{-4}$) and the wave travels at $v_p/c=9.4\times10^{-5}$, so retardation is
-negligible, whereas
-$\omega\tau_d=1.65\times10^{3}$ shows that the carriers are strongly retarded
-and the full drift--diffusion dynamics is retained.  Second, the flexoelectric
-coefficient is held at a subdominant synthetic value
-($f_{3zz}=\SI{1}{\nano\coulomb\per\metre}$) and its influence on the reported
-returns is measured to be \SI{-0.01}{\percent}: the numbers are those of the
-strain-gradient piezoelectric-semiconductor specialization with the added
-carrier coupling, evaluated inside the flexoelectric framework, and the paper
-does not claim a calibrated flexoelectric mechanism.
-Two results are established with an explicit refinement study rather than by
-assertion.  First, at the operating point ($k_xd=0.736$, $k_yd=0.130$,
-\SI{16.68}{\giga\hertz}) the backward-propagating channel carries \SI{2.31}{\percent} of the incident
-power, and this value is stable to $7\times10^{-7}$ under refinement of the
-Galerkin degree from 18 to 30.
-Second, along the same guided branch the backward channel captures up to
-\SI{57.92}{\percent} of the incident power near $k_xd=0.55$, where the group velocity of
-the branch passes through zero; this maximum is stable to
-$1.5\times10^{-7}$ and is well resolved (energy angle $-14.4^{\circ}$,
-$|\cos\theta_E|=0.97$).  Both numbers are \emph{modal partitions} of the
-outgoing flux and not total reflectances: at the operating point the total
-outgoing propagating power is $0.99985$ of the incident power, so the remaining
-propagating outgoing branches carry the difference; near the peak that total is
-$0.9988$.  The carrier--strain-gradient coupling $H$ is not what produces this
-conversion: with $H=0$ the same branch already returns \SI{2.31}{\percent} and
-\SI{57.9}{\percent}, and switching the coupling on at its tabulated extreme
-($|H|=0.05H^{*}=\SI{2.0e-23}{\joule\metre}$) changes the two values by
-\SI{-1.2}{\percent} and \SI{-9.9}{\percent}, while the flexoelectric coefficient
-changes them by \SI{-0.01}{\percent}.  When the strain-gradient sector itself is
-removed the backward branch disappears: no outgoing mode with positive axial
-wavenumber and negative axial power survives, and the only negative-power
-outgoing mode is the specular reflection at $K=-k_{x,\text{inc}}$.  The
-conversion is therefore a property of the higher-order guided branch, largest
-where its group velocity vanishes, and the added coupling is a perturbation of
-it.  The transverse wavenumber $k_y$ changes the partition by a factor of 1.35
-over the solved box, so the partition is organised by the branch and the
-geometry rather than by the coupling constant.  The energy
-budget is closed on the exact identity
-$P_{\text{inc}}+\sum_jP_j+P_{\text{cross}}=P_{\text{edge}}-P_{\text{diss}}$
-with a residual of $7\times10^{-13}$, and the reactive content of the
-evanescent spectrum is shown to decay below $10^{-25}$ at the reference plane,
-so no reactive term is counted as transported energy.
+Strain gradients polarise a dielectric, and in a piezoelectric semiconductor the
+resulting polarisation is screened by mobile carriers; whether that coupling
+alters the way a guided plate mode is scattered at a free edge has not been
+settled.  A transversely isotropic ($6mm$) n-type ZnO plate of thickness $d$ is
+modelled with strain-gradient elasticity, piezoelectricity, flexoelectricity and
+linearised electron drift--diffusion, the only constitutive addition being a
+bilinear carrier--strain-gradient enthalpy, and the free-edge problem is solved
+as a Fourier-reduced spectral Galerkin matching of outgoing modes.  At
+$k_xd=0.736$ (\SI{16.68}{\giga\hertz}) the backward-propagating branch carries
+\SI{2.31}{\percent} of the incident power; along the same branch the share
+reaches \SI{93.19}{\percent} at $k_xd=0.525$, where the group velocity passes
+through zero.  Both are modal partitions rather than reflectances:
+\SI{99.98}{\percent} of the incident power leaves as propagating modes at the
+operating point and \SI{99.0}{\percent} at the branch maximum.  Switching the
+coupling off leaves both shares unchanged, whereas removing the strain-gradient
+sector removes the backward branch altogether, so the conversion belongs to the
+higher-order guided branch and to the edge; at its tabulated extreme the
+coupling reduces the partition by \SI{1.21}{\percent} at the operating point and
+by \SI{33.1}{\percent} at the branch maximum, chiefly by attenuating the backward
+mode.  The gradient length, flexoelectric coefficient and coupling are synthetic;
+corner line forces are not certified.
 
 \medskip
 \noindent\textbf{Keywords:} flexoelectricity; piezoelectric semiconductor;
-strain-gradient elasticity; guided waves; negative reflection; drift--diffusion;
-spectral Galerkin method; edge scattering.
+strain-gradient elasticity; guided waves; negative reflection; spectral Galerkin
+method.
 \end{abstract}
 
 \input{sections/introduction}
@@ -139,6 +96,39 @@ spectral Galerkin method; edge scattering.
 \input{sections/results}
 \input{sections/discussion}
 \input{sections/conclusions}
+
+
+\section*{Declarations}
+
+\paragraph{Data availability.}
+The complete computational package that generates every figure, every table and
+every number quoted in this article --- solver, datasets, verification suite and
+run logs --- is provided as supplementary material and is archived at the public
+repository \url{https://github.com/vipin-oss/A_Paper}.  No dataset was withheld.
+
+\paragraph{Competing interests.}
+\textit{AUTHOR INPUT REQUIRED}: the corresponding author must confirm that there
+is no competing interest before submission.
+
+\paragraph{Funding.}
+\textit{AUTHOR INPUT REQUIRED}: funding agency, sanction number and date, or an
+explicit statement that the work received no external funding.
+
+\paragraph{Author contributions.}
+\textit{AUTHOR INPUT REQUIRED}: CRediT roles for the sole author, to be confirmed
+by the author.
+
+\paragraph{Acknowledgements.}
+\textit{AUTHOR INPUT REQUIRED}.
+
+\paragraph{Ethics.}
+Not applicable: the study involves neither human participants nor animal
+subjects.
+
+\paragraph{Use of generative tools.}
+\textit{AUTHOR INPUT REQUIRED}: the target journal's policy on disclosure of
+generative-tool assistance must be applied, and the statement must describe the
+tooling actually used.
 
 \appendix
 \input{sections/appendix_reproducibility}

@@ -412,7 +412,7 @@ def fig04():
     c.axvline(0, color="#202A44", linewidth=1.0, linestyle=(0, (4, 3)))
     c.set_xlabel(r"group velocity  $v_g$ (m s$^{-1}$)")
     c.set_ylabel(r"$R_B$ at $\ell=2\,\mu$m (%)")
-    c.set_ylim(0, 66)
+    c.set_ylim(0, 100)
     S.style_axes(c)
     note(c, r"slowest branch, largest $R_B$", loc=(0.045, 0.955), fontsize=7.2)
 
