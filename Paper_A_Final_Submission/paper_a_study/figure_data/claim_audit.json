@@ -334,8 +334,8 @@
       "claim": "incident_wavenumber_peak",
       "file": "sections/results.tex",
       "text": "0.5282",
-      "registered": 0.2451746921716515,
-      "denoted": 0.2451746921716515,
+      "registered": 0.5282,
+      "denoted": 0.5282,
       "relative_difference": 0.0,
       "tolerance": 0.002,
       "occurrences": 2,
@@ -344,9 +344,9 @@
     {
       "claim": "degree_stability_peak",
       "file": "sections/results.tex",
-      "text": "5.6\\times10^{-9}",
-      "registered": 5.6e-09,
-      "denoted": 5.6e-09,
+      "text": "5.0\\times10^{-9}",
+      "registered": 5e-09,
+      "denoted": 5e-09,
       "relative_difference": 0.0,
       "tolerance": 0.2,
       "occurrences": 2,
@@ -355,9 +355,9 @@
     {
       "claim": "degree_stability_peak",
       "file": "sections/conclusions.tex",
-      "text": "5.6\\times10^{-9}",
-      "registered": 5.6e-09,
-      "denoted": 5.6e-09,
+      "text": "5.0\\times10^{-9}",
+      "registered": 5e-09,
+      "denoted": 5e-09,
       "relative_difference": 0.0,
       "tolerance": 0.2,
       "occurrences": 1,
@@ -366,9 +366,9 @@
     {
       "claim": "quadrature_stability_peak",
       "file": "sections/results.tex",
-      "text": "9.4\\times10^{-10}",
-      "registered": 9.4e-10,
-      "denoted": 9.4e-10,
+      "text": "5.6\\times10^{-9}",
+      "registered": 5.6e-09,
+      "denoted": 5.6e-09,
       "relative_difference": 0.0,
       "tolerance": 0.2,
       "occurrences": 2,
@@ -432,10 +432,10 @@
     {
       "claim": "coupling_change_k055_edge_plane",
       "file": "sections/results.tex",
-      "text": "\\SI{2.0}{\\percent}",
-      "registered": 2.0,
+      "text": "\\SI{2.01}{\\percent}",
+      "registered": 2.007,
       "denoted": 2.0,
-      "relative_difference": 0.0,
+      "relative_difference": 0.003487792725460945,
       "tolerance": 0.05,
       "occurrences": 1,
       "pass_": true
@@ -443,7 +443,7 @@
     {
       "claim": "coupling_change_k055_reference_plane",
       "file": "sections/results.tex",
-      "text": "\\SI{-9.9}{\\percent}",
+      "text": "\\SI{-9.85}{\\percent}",
       "registered": -9.85,
       "denoted": -9.9,
       "relative_difference": 0.005076142131979768,
@@ -461,47 +461,112 @@
       "tolerance": 0.02,
       "occurrences": 1,
       "pass_": true
+    },
+    {
+      "claim": "R_B_edge_certified_maximum",
+      "file": "sections/results.tex",
+      "text": "0.9856",
+      "registered": 0.9856,
+      "denoted": 0.9856,
+      "relative_difference": 0.0,
+      "tolerance": 0.005,
+      "occurrences": 1,
+      "pass_": true
+    },
+    {
+      "claim": "R_B_edge_operating_point",
+      "file": "sections/results.tex",
+      "text": "0.0232",
+      "registered": 0.0232,
+      "denoted": 0.0232,
+      "relative_difference": 0.0,
+      "tolerance": 0.005,
+      "occurrences": 1,
+      "pass_": true
+    },
+    {
+      "claim": "R_B_edge_k055",
+      "file": "sections/results.tex",
+      "text": "0.5802",
+      "registered": 0.5802,
+      "denoted": 0.5802,
+      "relative_difference": 0.0,
+      "tolerance": 0.005,
+      "occurrences": 1,
+      "pass_": true
     }
   ],
   "source_rows": [
     {
       "claim": "R_B_certified_maximum",
-      "data": 0.9467952305821763,
+      "data": 0.9467952306769204,
       "what": "search-record headline",
-      "relative_difference": 3.230073023910848e-08,
+      "relative_difference": 3.24007984496921e-08,
       "tolerance": 0.0001,
       "pass_": true
     },
     {
       "claim": "coarse raster cannot reach the maximum",
-      "data": 0.9467870061383709,
+      "data": 0.9467870060974054,
       "what": "max over rec.coarse",
-      "relative_difference": 8.686613049772994e-06,
+      "relative_difference": 8.686756384601164e-06,
       "tolerance": 0.001,
       "pass_": true
     },
     {
       "claim": "incident_wavenumber_peak",
-      "data": 0.5282359922928204,
+      "data": 0.528235992448085,
       "what": "identity-audit incident root",
-      "relative_difference": 1.154529032396999,
+      "relative_difference": 6.814170406085333e-05,
       "tolerance": 0.0001,
-      "pass_": false
+      "pass_": true
     },
     {
       "claim": "degree_stability_peak",
-      "data": 5.6134094739540506e-09,
+      "data": 4.973131407567745e-09,
       "what": "search-record degree spread at the reported wavenumber",
-      "relative_difference": 0.0023945489203662314,
+      "relative_difference": 0.00537371848645095,
       "tolerance": 0.01,
       "pass_": true
     },
     {
       "claim": "quadrature_stability_peak",
-      "data": 9.382201049219094e-10,
+      "data": 5.591238075549933e-09,
       "what": "search-record quadrature spread",
-      "relative_difference": 0.001893505402224066,
+      "relative_difference": 0.0015646293660832886,
       "tolerance": 0.01,
+      "pass_": true
+    },
+    {
+      "claim": "R_B_edge_certified_maximum",
+      "data": 0.9855721942926737,
+      "what": "search-record edge-plane share",
+      "relative_difference": 2.8211959543730213e-05,
+      "tolerance": 0.0001,
+      "pass_": true
+    },
+    {
+      "claim": "cross-script edge fraction",
+      "data": 0.9855721942926737,
+      "what": "mechanism_controls vs peak_search",
+      "relative_difference": 0.0,
+      "tolerance": 1e-06,
+      "pass_": true
+    },
+    {
+      "claim": "R_B_edge_operating_point",
+      "data": 0.023150542000836445,
+      "what": "mechanism_controls edge share (operating_point, H = 0)",
+      "relative_difference": 0.0021318103087738472,
+      "tolerance": 0.005,
+      "pass_": true
+    },
+    {
+      "claim": "R_B_edge_k055",
+      "data": 0.5802413734918933,
+      "what": "mechanism_controls edge share (k055_sample, H = 0)",
+      "relative_difference": 7.130901739617297e-05,
+      "tolerance": 0.005,
       "pass_": true
     }
   ],
@@ -517,8 +582,6 @@
     9,
     10
   ],
-  "problems": [
-    "incident_wavenumber_peak: registry says 0.2451746921716515 but the stored identity-audit incident root is 0.5282359922928204 (1.2e+00 > 1.0e-04)"
-  ],
-  "verdict": "FAIL"
+  "problems": [],
+  "verdict": "PASS"
 }

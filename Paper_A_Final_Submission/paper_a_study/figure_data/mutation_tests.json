@@ -7,7 +7,7 @@
       "expected": "FAIL",
       "caught": true,
       "evidence": [
-        "  - sections/results.tex: line 472: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
+        "  - sections/results.tex: line 477: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
       ]
     },
     {
@@ -55,7 +55,7 @@
       "expected": "FAIL",
       "caught": true,
       "evidence": [
-        "  - incident_wavenumber_peak: registry says 0.2451746921716515 but the stored identity-audit incident root is 0.5282359922928204 (1.2e+00 > 1.0e-04)"
+        "  - incident_wavenumber_peak: registry says 0.2451746921716515 but the stored identity-audit incident root is 0.528235992448085 (1.2e+00 > 1.0e-04)"
       ]
     },
     {
@@ -76,6 +76,56 @@
       "caught": true,
       "evidence": [
         "AssertionError: 0.2451746921716515 != 0.5275 within 12 places (0.28232530782834847 difference)"
+      ]
+    },
+    {
+      "id": "M9",
+      "defect": "edge-plane transform reduced to the backward decay only (omits the incident attenuation)",
+      "gate": "TestCrossScriptEdgeFraction",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 0.00010806105196503601 not less than 1e-06 : fig05 CSV vs shared transform: 1.08e-04"
+      ]
+    },
+    {
+      "id": "M10",
+      "defect": "sign of the plane-transform exponent flipped (wrong direction of propagation)",
+      "gate": "TestCrossScriptEdgeFraction",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 0.0004254238560787993 not less than 1e-06 : fig05 CSV vs shared transform: 4.25e-04"
+      ]
+    },
+    {
+      "id": "M11",
+      "defect": "reference plane moved from 10 to 8 thicknesses (wrong reference distance)",
+      "gate": "TestCrossScriptEdgeFraction",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 4.2535000152943425e-05 not less than 1e-06 : fig05 CSV vs shared transform: 4.25e-05"
+      ]
+    },
+    {
+      "id": "M12",
+      "defect": "thickness d replaced by the gradient length l (L and l confused)",
+      "gate": "TestCrossScriptEdgeFraction",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 1.0 not less than 1e-06 : fig05 CSV vs shared transform: 1.00e+00"
+      ]
+    },
+    {
+      "id": "M10b",
+      "defect": "flipped exponent, checked by an invariance test that uses no stored values",
+      "gate": "TestPlaneInvariance",
+      "expected": "FAIL",
+      "caught": true,
+      "evidence": [
+        "AssertionError: 0.07714124116701881 not less than 1e-09 : reconstructed edge value depends on the plane (L=10.0): 7.71e-02 relative; the round-9 defect was 2e-2"
       ]
     }
   ],

@@ -37,7 +37,8 @@ from scipy.linalg import svd
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from build_figure_data import (KB0, KY0, operating_mode, plate, track)  # noqa: E402
+from build_figure_data import (KB0, KY0, edge_plane_fraction,  # noqa: E402
+                               operating_mode, plate, track)
 
 OUT = HERE / "figure_data" / "peak_identity_audit.json"
 CASES = [("operating_point", 0.7361990195318475), ("peak", 0.5275),
@@ -82,7 +83,7 @@ def main() -> int:
     p = plate(0.0)
     mode = track(p, [0.5275], operating_mode(p))[0]
     omega = float(mode["omega"].real)
-    for L in (5.0, 10.0, 15.0, 20.0):
+    for L in (0.0, 5.0, 10.0, 15.0, 20.0):   # L = 0 is the edge plane itself
         res, _ = p.edge(KY0, omega, 0.5275, KB0, L=L)
         kb = complex(res["backward_K"])
         ki = complex(res["incident_K"])
@@ -94,7 +95,11 @@ def main() -> int:
         net = 2.0 * (abs(ki.imag) + abs(kb.imag))
         planes.append(dict(L=L, reference_distance_m=L * p.d, R_B=R,
                            net_exponent=float(net),
-                           R_B_scaled=float(R * np.exp(net * (L - 10.0)))))
+                           # the shared transform, not a second implementation:
+                           # R(10 d) -> R(edge) -> R(L d)
+                           R_B_scaled=float(edge_plane_fraction(
+                               edge_plane_fraction(R, ki, kb, p.d, L_to=0.0, L_from=L),
+                               ki, kb, p.d, L_to=10.0, L_from=0.0))))
     scaled = np.array([q["R_B_scaled"] for q in planes])
     out["reference_plane"] = dict(
         rows=planes, net_exponent=float(planes[1]["net_exponent"]),

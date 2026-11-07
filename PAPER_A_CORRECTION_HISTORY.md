@@ -144,3 +144,30 @@ in `PAPER_A_ROUND8_STAGE1_AUDIT.md` and `PAPER_A_ROUND8_MANUSCRIPT_CHANGES.md`.
 **Not superseded:** the governing equations, the constitutive law, the 2.5D formulation, the material
 constants, the operating-point value (0.0231456) and the k_xd = 0.55 value (0.5791801) were all re-executed
 and confirmed to 4e-11 and 5e-8 respectively.
+
+# Round 9 addendum — the plane transform of a modal-power *ratio*
+
+Round 9 audited one quantity and nothing else: how the backward modal-power fraction `R_B = P_B/P_i` is
+moved between planes parallel to the edge. The audit is in
+`PAPER_A_ROUND9_STAGE1_NORMALIZATION_AUDIT.md` (written before any edit), the corrections in
+`PAPER_A_ROUND9_CORRECTION_HISTORY.md`, and their verification in
+`PAPER_A_ROUND9_PLANE_INVARIANCE_VALIDATION.md`, `PAPER_A_ROUND9_MUTATION_REPORT.md`,
+`PAPER_A_ROUND9_CLAIMS_AND_MANUSCRIPT_AUDIT.md` and `PAPER_A_ROUND9_TEST_RESULTS.md`.
+
+| # | Item | Round 8 | Round 9 | Reason |
+|---|---|---|---|---|
+| R9-1 | `peak_search.py` edge-plane share | `R_B·exp(2|Im K_B|·10)` — the backward decay alone: **0.965978** | shared transform: **0.985572** | a ratio of two modal powers needs both attenuations; the difference is 1.96 pp |
+| R9-2 | fig02 / fig05 / fig07 `R_B_edge` columns | single-mode absolute decay | `edge_plane_fraction(R2, ki, kb, p.d)` | same defect, 130 / 5 / 95 rows; the density-sweep edge maximum moves 0.579855 → 0.580359 |
+| R9-3 | `edge_plane_fraction` API | one argument `L` with two meanings (`L=0` returns the input, `L=REF_NORM` returns the edge value) | explicit `L_to`/`L_from`, exponent `2(Im K_i − Im K_B)(L_from − L_to)`, identities documented | the signature invited the mistake it then produced |
+| R9-4 | cross-script check | none — two scripts disagreed about the same number and no gate noticed | `claim_audit.py` compares the search record with the matched controls to 1e-6, plus per-case edge rows | the defect survived round 8 for want of this gate |
+| R9-5 | claim registry | no claim for any edge-plane share | `R_B_edge_certified_maximum`, `R_B_edge_operating_point`, `R_B_edge_k055` | an unregistered number is an unchecked number |
+| R9-6 | tests and mutants | 26 tests, 8 mutants | **39 tests, 13 mutants**; three new classes cover the transform, plane invariance and cross-script agreement | the suite could not have caught R9-1 |
+| R9-7 | printed spreads of the maximum | 5.6e-9 over degrees, 9.4e-10 over quadrature | **5.0e-9 / 7.3e-9 over degrees, 5.6e-9 over quadrature**; Table 5 edge row 0.0231 → 0.0232 | re-read from the regenerated records, not tuned; the conclusion (converged to < 1e-8) is unchanged |
+| R9-8 | packaging | `MANIFEST.json` hashed before the static validator rewrote `static_validation.txt` | validator runs first | the archive failed its own manifest check on exactly that entry |
+
+**Not superseded by round 9, deliberately:** the reference-plane headline `R_B = 0.9467952` at
+`k_x d = 0.5275` (never produced by the defective transform), the `certified_local_maximum`
+classification, the reference-plane definition of `R_B` (the transform was corrected towards the edge,
+not the definition), `isolated_transfer` and the fig06 absolute quantities, the `R_B_100um` legacy column,
+and the legacy runners whose exponent was already algebraically correct. The 94.68 % figure was not
+adjusted to compensate for any of this.

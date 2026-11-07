@@ -1,196 +1,115 @@
-# Paper A — round-4 review package
+# Paper A — review package (round 9)
 
-**Fixed topic:** negative reflection of guided waves at a free edge in a
-flexoelectric piezoelectric–semiconductor plate: the strain-gradient backward
-branch.
+**Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
+piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
+the size of the carrier-coupling contribution.
 
-**Read first:** `PAPER_A_FINAL_SCIENTIFIC_AUDIT.md` (round-4 audit of issues
-A–F and sections 9–11, with the six required evidence fields per issue).
+**Authoritative manuscript.** `Paper_A_Final_Submission/main.tex` — one tree, seven section files,
+ten vector figures, `references.bib`, `MANIFEST.json` (SHA-256 of every file in the package),
+`static_validation.txt`. It is **statically validated and not compiled**: no TeX engine exists in the
+authoring environment. Build with
+`cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
+An earlier compiled PDF is not included and would not certify this source.
 
-**Manuscript:** `Paper_A_Final_Submission/main.tex` — one authoritative tree,
-seven section files, eleven verified bibliography entries, ten vector PDF
-figures, `MANIFEST.json`, `static_validation.txt`.  It is statically validated
-and **not compiled**: no TeX engine is available in the authoring environment.
-Build with `pdflatex main && bibtex main && pdflatex main && pdflatex main`.
+**Read first.** `START_HERE.txt` gives the reading order of the seven round-9 reports. The Stage-1
+audit (`PAPER_A_ROUND9_STAGE1_NORMALIZATION_AUDIT.md`) is the one to read before anything else: it
+documents, before any edit, the normalisation defect that round 9 repaired and why the headline is not
+affected by it.
 
-**Round-6 change.** The round-5 layout repair converted long inline paths to
-`\path{}`; fourteen of them sat inside figure and table captions, where the
-fragile command aborts the build (`\Url Error -> \url used in a moving
-argument`). All fourteen now read `\protect\path{...}`, and
-`scripts/static_check.py` gained a moving-argument check that fails the battery
-if a fragile command reappears in a caption or section title (mutation-tested).
-Full detail in `PAPER_A_ROUND6_FINAL_VERIFICATION.md`. Nothing numerical,
-mathematical or graphical changed.
+---
 
-**Round-5 changes in one paragraph.** The independent audit found that the
-corner study had used the *backward* wavenumber `KB0 = 0.2452` as its
-*operating-point incident* wavenumber, so that case was a different scattering
-experiment (R_B = 0.5444 instead of 0.0231). It now uses the authoritative
-`K0 = 0.736199`, takes the peak from the certification suite, asserts the
-incident wavenumber returned by the solver, and cross-checks every
-operating-point row against `peak_certification.json`; two regression tests
-guard the case selection and the stored values (test count 18 → 20). Corrected
-corner-band shares are 0.93–1.00 % at the operating point and 1.18–1.26 % at the
-peak. The manuscript now separates "the partitions are corner-insensitive" from
-"the corner line force is negligible" and claims only the first. The appendix
-file table was rebuilt as a `tabularx` with breakable `\path` entries, the two
-wide round-4 tables were converted to `tabularx`, fifty long inline paths were
-made breakable, and `\emergencystretch` was set — the reported 372.96 pt, 102.17
-pt and 4.14 pt overfull boxes are addressed at source (no font size was
-changed). The appendix no longer says `phase_speed_audit.py` exits non-zero by
-design: it exits 0 when the text agrees with the solver and non-zero when it
-does not. Compilation remains unverified in the authoring sandbox, which still
-has no TeX engine; the auditor's 29-page build is the reference compilation.
+## 1. Headline result
 
-**Round-4 changes in one paragraph.** The phase speed in the governing-equations
-section is corrected from 2.8 to 28.0 km/s; the electromagnetic wavelength is
-corrected from 0.905 mm (which is `1/k_EM`) to 5.68 mm, with `d/λ_EM = 3.52e−5`
-and `k_EM d = 2.2e−4` now distinguished; the attribution of the strong negative
-reflection is corrected — matched controls show the whole 57.9 % exists with
-`H = 0`, that removing the strain-gradient sector removes the backward branch,
-and that the added carrier–strain-gradient coupling changes the partition by
-−1.21 % at the operating point and −9.85 % at the zero-group-velocity peak;
-the novelty comparison against Qu et al. (IJES 208 (2025) 104165) is made
-equation by equation against the free-energy decomposition that could be
-inspected, and remains `unresolved` for priority; a corner-sensitive diagnostic
-is added and recorded as an unresolved limitation; the undefined `H*`
-normalisation is defined and separated from `H_ref`.
+`R_B = 0.9467952` (94.68 %) at `k_x d = 0.5275`, a **numerically certified local maximum** of the
+backward-modal power share inside the declared search interval `0.465 < k_x d < 0.625`. The top is flat:
+every sampled `k_x d` in `[0.5266, 0.5277]` lies within 0.01 percentage point of the maximum. This is
+**not** a global maximum and **not** a statement that energy is turned around — the incident flux at the
+maximum is 128 times smaller than at the operating point.
 
-This package is a static review bundle of the existing repository results. It
-contains no new model and no retraining. `paper_a_study/` is the focused current
-result; `a0/`, `a0r/` and `a0s/` are the completed historical controls and their
-retained evidence.
+`R_B` is defined at a reference plane ten plate thicknesses from the edge. At the edge plane itself the
+same solve gives 0.9855722; the two numbers are the same quantity at different planes and the manuscript
+labels them by plane wherever they appear.
 
-## Read in this order
+---
 
-1. `PAPER_A_RESEARCH_REPORT.md` — governing equations, boundary conditions, model specialization, numerical results, validation and limitations.
-2. `PAPER_A_FINAL_SCIENTIFIC_CHECK.md` — the five-point backward-reflection, geometry, H comparison, novelty and figure/validation audit.
-3. `PAPER_A_BLUEPRINT_V2_1.md` — the preserved research blueprint and decision history.
-4. `a0/`, `a0r/`, `a0s/` — historical source/material, complex dispersion and operating-regime records, including their protocol files and numerical evidence.
-5. `a0/materials.json`, `a0/requirements.txt`, `a0s/SOURCES.md`, and `a0s/STRONG_VALIDATION.md` — sourced material parameters, definitions, provenance and historical validation.
+## 2. Reproduce everything
 
-## Exact reproduction commands
-
-From the repository root containing this package (after extracting it, restore the top-level directory structure exactly as shown):
+Python 3.11 with numpy, scipy and matplotlib (the authoring environment used numpy 2.4.6, scipy 1.17.1,
+matplotlib 3.11.2).
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r a0/requirements.txt
+python -m venv .venv && .venv/bin/pip install numpy scipy matplotlib
 
-# Current focused model, figures and all reported numerical results
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m paper_a_study.run_study
+# 18 verification gates, one line each, ~5 min on two cores
+OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/run_all_checks.py
 
-# Current focused unit tests
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m unittest paper_a_study.test_model -v
+# the datasets and the ten vector figures
+OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/build_figure_data.py
+OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/generate_final_figures.py
 
-# Historical regression tests, retained as review evidence
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m unittest discover -s a0 -p 'test_*.py' -v
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m unittest discover -s a0r -p 'test_*.py' -v
-OPENBLAS_NUM_THREADS=1 .venv/bin/python -m unittest discover -s a0s -p 'test_*.py' -v
+# tests, registry, mutants, individually
+.venv/bin/python -m unittest paper_a_study.test_model -v      # 39 tests, ~9 s
+.venv/bin/python paper_a_study/claim_audit.py                 # 22 claims, 45 tokens
+.venv/bin/python paper_a_study/mutation_tests.py              # 13 mutants, all caught
 ```
 
-The focused run is deterministic in this environment and takes approximately 45 seconds. It regenerates all four SVG figures, all CSV/JSON result files and the 22-entry `paper_a_study/results/sha256.json` manifest.
+Run one solver script at a time. On two cores, two concurrent solver runs make each about ten times
+slower and the peak search then exceeds its own timeout.
 
-## Current-result figures and their source data
+The gate results of this delivery are recorded in `validation/verification_log.txt`, the mutant record
+in `paper_a_study/figure_data/mutation_tests.json`, and the registry audit in
+`paper_a_study/figure_data/claim_audit.json`.
 
-| Figure | Exact file | Generated from |
-|---|---|---|
-| Matched dispersion, H shift and temporal damping | `paper_a_study/results/dispersion_and_H.svg` | `paper_a_study/results/dispersion.csv`, `paper_a_study/results/H_sensitivity.csv` |
-| Solved edge channel power and signed energy angle | `paper_a_study/results/edge_conversion.svg` | `paper_a_study/results/frequency_scan.csv` |
-| Matched H parameter effect | `paper_a_study/results/H_parameter_effect.svg` | `paper_a_study/results/H_sensitivity.csv` |
-| Computed incident and backward channel beam | `paper_a_study/results/computed_channel_beam.svg` | `paper_a_study/results/beam_validation.json` and the 17/25-node Hermite angular-spectrum solve in `paper_a_study/run_study.py` |
+---
 
-The original-resolution PNG previews generated by the same runner are retained at `paper_a_study/cache/*.png`. The canonical report figures are the four SVG files above.
+## 3. What is in the package
 
-## Material parameters and literature references
-
-### Sourced classical ZnO constants
-
-`a0/materials.json` contains the classical six-constant elastic tensor, piezoelectric coefficients, absolute permittivities, density, SI charge and Boltzmann definitions, and an explicit `NOT_SOURCED` block. The classical constants originate from Zhang et al., Applied Mathematics and Mechanics 46(7), 1331–1346 (2025), DOI `10.1007/s10483-025-3272-7`. That source attributes them to Yang's book; this package does not add a sample-specific measurement audit.
-
-### Carrier inputs
-
-Room-temperature bulk Hall concentration `n0 = 2e18 m^-3` and mobility `M = 0.0175 m^2/(V s)` come from the light-green high-resistivity sector of Suscavage et al., *High Quality Hydrothermal ZnO Crystals*, 4, 287–292 (1999), DOI `10.1557/S109257830000260X`. The retained diffusivity `Dn = 0.000455 m^2/s` is derived from `Dn/M = 0.026 V`, equivalent to about 301.7 K, and is not a measured diffusivity of that Hall sample. The bulk-to-released-film, Hall-to-drift and DC-to-GHz transfers remain assumptions.
-
-### Synthetic inputs
-
-The strain-gradient length `ell = 50 nm`, strain-gradient tensor `A = ell^2 C (x) I`, static flexoelectric coefficient `f_3333 = 1 nC/m`, and all H values are explicitly synthetic. They are not measured ZnO constants. `H* = 4.0097064373759543e-22 J m` is defined at fixed reference `nref = 1e19 m^-3`.
-
-### Literature and access limitations
-
-| Work | Role / status |
+| path | contents |
 |---|---|
-| Wei et al., *Dynamic flexoelectric effect in semiconductors: A study on wave propagation*, Applied Mathematical Modelling 150A, 116353 (2026), [DOI: 10.1016/j.apm.2025.116353](https://doi.org/10.1016/j.apm.2025.116353) | Structural reference only. Complete governing equations were not accessible; its numerical material is Nb-doped SrTiO3, not ZnO. |
-| Fang et al., *Flexoelectricity and size effects on SH surface waves in a nanoscale piezoelectric semiconductor layered medium*, Applied Mathematical Modelling 141, 115928 (2025), [DOI: 10.1016/j.apm.2025.115928](https://doi.org/10.1016/j.apm.2025.115928) | Preview only. It is a ZnO/diamond Love-type SH layer problem, not a complete plate baseline for this model. |
-| Qu et al., International Journal of Engineering Science 208, 104165 (2025), [DOI: 10.1016/j.ijengsci.2024.104165](https://doi.org/10.1016/j.ijengsci.2024.104165) | Metadata/preview only. The relevant appendix was inaccessible, so novelty over its published constitutive equations remains **provisional**; no equivalence or absence claim is made. |
-| Zhang et al., DOI `10.1007/s10483-025-3272-7` | Accessible equations, Table 1 and Appendix A; source of classical ZnO constants. |
-| Suscavage et al., DOI `10.1557/S109257830000260X` | Bulk Hall concentration/mobility evidence; not released-film GHz transport. |
-| NIST CODATA SI definitions: [e](https://physics.nist.gov/cgi-bin/cuu/Value?e), [k](https://physics.nist.gov/cgi-bin/cuu/Value?k), [epsilon0](https://physics.nist.gov/cgi-bin/cuu/Value?ep0) | Exact SI definitions used in `a0/materials.json`. |
+| `Paper_A_Final_Submission/` | the manuscript, its sections, figures, bibliography, `MANIFEST.json`, static validation output, and a copy of the solver and data it reads |
+| `paper_a_study/` | the solver (`model.py`), the figure-data builder, the audit and verification scripts, the unit suite, the claim registry and the mutation harness |
+| `paper_a_study/figure_data/` | every CSV and JSON the manuscript and figures are built from, including the search, certification, identity and matched-control records |
+| `validation/` | the verification log of this delivery |
+| `a0/`, `a0r/`, `a0s/` | completed historical studies, retained as review evidence; they are not part of the current result |
+| `PAPER_A_ROUND9_*.md` | the seven reports of this round |
+| `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8 and round-9 addenda at the end |
 
-No publisher-copyrighted full text is included. The URLs above are the external review access points; the complete governing model could not be reproduced from them.
+---
 
-## Governing equations and boundary conditions
+## 4. Material parameters and provenance
 
-The complete equations, definitions, H-derived changes, face boundary-term changes, corner functional, assumptions and limitations are in Sections 1–4 of `PAPER_A_RESEARCH_REPORT.md`. The focused model is an explicitly specified static/local electric-enthalpy ZnO specialization. Its sole additional coupling is `Delta H = nu H : g`, where `nu = Delta n` and `g = grad eps`. It is **not** a claimed transcription of Wei or Fang.
+Classical ZnO constants are the sourced elastic, piezoelectric and dielectric values used throughout;
+the carrier model uses a density-dependent conductivity with `n_ref = 1e19 m^-3` at the operating
+point. The following are **explicitly synthetic** and labelled as such in the manuscript: the
+strain-gradient length `ℓ = 50 nm`, the strain-gradient tensor `A = ℓ² C ⊗ I`, the static flexoelectric
+coefficient `f₃₃₃₃ = 1 nC/m`, and every value of the flexoelectric coupling `H`.
+`H* = 4.0097064373759543e-22 J m` is defined at the fixed reference density. None of these is a
+measured ZnO constant and no calibration is claimed.
 
-The plate occupies `x < 0`, `-d/2 < z < d/2`, and is infinite in `y`. The faces and the edge are mechanically free, electrically grounded at `phi = 0`, and carrier-blocking. The edge calculation uses the weak free-edge traction/double-traction, grounding and blocking conditions, including the natural corner line-force functional. Complex `k_x` is selected by decay into `x < 0`; propagating roots are selected by physical power direction. All 182 outgoing modes are included at degree 22.
+The plate thickness is `d = 200 nm`; the reference plane is `L = 10` thicknesses.
 
-## Validation artifacts
+---
 
-- `paper_a_study/results/validation.json` — 143/143 focused numerical checks, including explicit unresolved non-numerical requirements.
-- `paper_a_study/test_model.py` — 20/20 focused tests, including temporal energy balance, independent strong roots, classical recovery, edge convergence and weak boundary reconstruction.
-- `paper_a_study/results/sha256.json` — 22-file fingerprint manifest for the focused source, material and result artifacts.
-- `paper_a_study/results/independent_roots.csv`, `classical_validation.csv`, `convergence.csv`, `edge_weak_residuals.csv`, `temporal_energy_balance.csv` — independent numerical-validation datasets.
-- `a0/results/validation.json`, `a0r/results/validation.json`, `a0s/results/validation.json`, `a0s/results/final_audit.json` — historical check ledgers and audit output.
-- `a0r/results/retained_a0_sha256.json` and `a0s/results/retained_sha256.json` — retained historical source/result fingerprints.
-- `a0s/audit_outputs.py`, `a0r/run_checks.py` and `a0/run_checks.py` — retained validation/audit scripts.
+## 5. Scope, and what this package does not claim
 
-## File inventory
+* **Not an experiment.** No measurement is claimed; numerical residuals of 1e-13–1e-17 are described as
+  round-off, never as accuracy.
+* **Not a global maximum.** The certified maximum is local, inside a declared interval, with a flat top.
+* **Not a novelty claim.** The comparison with the primary 2025 source is **UNRESOLVED** (closed
+  access). Absence from a search is not evidence of novelty, and no priority claim is made.
+* **Not a submission-ready SCI Q1 manuscript.** The physics, the numbers and the internal consistency
+  are verified as far as this environment allows; the novelty question and the corner-line boundary
+  condition remain open, and the LaTeX build is unverified.
+* **Corner line not certified.** The corner band carries 0.9–1.3 % of the strain-gradient energy and its
+  share drifts 6.6–6.8 % between degrees 18 and 30; no quoted number depends on it beyond the third
+  digit.
+* **Author input required.** Funding, competing interests, CRediT and acknowledgements are not invented
+  here and must be supplied by the authors.
 
-| Directory / file | Contents and purpose |
-|---|---|
-| `PAPER_A_RESEARCH_REPORT.md` | Complete focused mathematical report. |
-| `PAPER_A_FINAL_SCIENTIFIC_CHECK.md` | Final five-point scientific check and terminology correction. |
-| `PAPER_A_BLUEPRINT_V2_1.md` | Preserved V2.1 blueprint and decision record. |
-| `PAPER_A_A0_*.md` | A0 source, constitutive, dispersion and feasibility reports. |
-| `PAPER_A_A0R_*.md` | A0-R decision, backward-wave feasibility and novelty-comparison records. |
-| `PAPER_A_A0S_*.md` | A0-S model, operating-regime and synthetic-H reports. |
-| `a0/materials.json` | Sourced ZnO constants, SI definitions, synthetic-input declarations and provenance. |
-| `a0/requirements.txt` | Pinned Python dependencies used by all retained scripts. |
-| `a0/constitutive_check.py`, `a0/dispersion.py`, `a0/run_checks.py`, `a0/test_a0.py` | A0 constitutive checks, dispersion calculation, runner and tests. |
-| `a0/results/` | A0 dispersion CSV/SVG, convergence, synthetic-H sensitivity and validation. |
-| `a0r/complex_dispersion.py`, `a0r/run_checks.py`, `a0r/test_a0r.py`, `a0r/protocol.json` | A0-R complex temporal/spatial dispersion code and protocol. |
-| `a0r/results/` | A0-R temporal/spatial CSV/SVG, scenario summaries, material probes, convergence and validation. |
-| `a0s/dispersion_screen.py`, `a0s/run_checks.py`, `a0s/audit_outputs.py`, `a0s/test_a0s.py`, `a0s/protocol.json` | A0-S operating-regime screen, runner, independent audit and tests. |
-| `a0s/results/` | A0-S screening, validation, matched controls, independent propagator, audit and summary datasets. |
-| `a0s/SOURCES.md`, `a0s/STRONG_VALIDATION.md` | Historical source and strong-validation records. |
-| `paper_a_study/model.py` | Focused 2D plane-strain plate/edge model, temporal/spatial generators, independent propagators, energy balance and weak edge reconstruction. |
-| `paper_a_study/run_study.py` | Deterministic focused runner that generates all four figures and focused CSV/JSON evidence. |
-| `paper_a_study/test_model.py` | Focused unit-test suite. |
-| `paper_a_study/__init__.py` | Package marker. |
-| `paper_a_study/results/` | Four canonical SVG figures, all figure/result datasets, protocol and fingerprints. |
-| `build_paper_a_package.py` | Packaging and integrity-check script. It performs no research calculation. |
+---
 
-## Explicit missing or omitted files
+## 6. Integrity
 
-| Omitted item | Reason |
-|---|---|
-| Publisher full text of Wei, Fang or Qu | Access was not available; no full-text copy was retained. The package states this explicitly rather than reproducing inaccessible equations. |
-| `a0/cache/`, `a0r/cache/`, `a0s/cache/` | Generated PNG/log scratch and historical QA previews; the corresponding CSV/SVG source data are retained. Focused PNG previews are included under `paper_a_study/cache/` because they are the original-resolution figure renderings. |
-| `a0*/__pycache__/` and `*.pyc` | Python bytecode caches, regenerable from source. |
-| `.venv/` | Environment-specific virtual environment, regenerable from `a0/requirements.txt`. |
-| `a0s/private_sources/` and `a0*/private_sources/` | Not present in this repository; no private publisher material was retained. |
-| `*.npz` / `*.npy` | No large modal arrays were committed; the CSV/JSON datasets and reproducible scripts contain the same reported results. |
-| Any production solver or production-solver modification | None was used or supplied. The historical packages are isolated research scripts. |
-| Final manuscript | The task explicitly requires no manuscript. |
-
-## Integrity checks
-
-`build_paper_a_package.py` verifies that every selected file exists, that no selected file is outside the repository root, that the ZIP opens, and that the retained SHA-256 manifests match. It also writes `PACKAGE_SHA256.txt`, one `sha256` line per file in package path order.
-
-The focused report reports 143/143 numerical checks, 20/20 focused tests, and 50/50 retained historical regression tests. These counts apply to the current focused model and results, not to the inaccessible published baselines.
-
-## Result scope
-
-The reported 2.315% backward-channel return is an isolated-channel self-power at 2 μm from the edge in an explicitly specified 2D plane-strain grounded model. It is a model-level negative edge conversion, not ordinary reflection or retroreflection. It is not a verified Wei/Fang reproduction, a calibrated ZnO prediction, a resolved pointwise corner stress, or an experimental device result. The H coupling remains provisional with respect to Qu et al.
-
+`MANIFEST.json` (inside the manuscript directory) lists the SHA-256 of every file in the package.
+`PACKAGE_SHA256.txt`, delivered beside the archive rather than inside it, gives the digest and size of
+the archive itself; a checksum cannot be embedded in the file it describes.

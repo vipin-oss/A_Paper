@@ -18,6 +18,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -109,6 +110,14 @@ def main() -> int:
         dst = OUT / "validation" / src.name
         shutil.copy2(src, dst)
         copied.append(dst)
+
+    # Run the static validator *before* hashing: it rewrites
+    # ``static_validation.txt``, and a manifest computed before that run would
+    # describe a file that no longer exists on disk.
+    checker = OUT / "scripts" / "static_check.py"
+    if checker.exists():
+        subprocess.run([sys.executable, str(checker)], cwd=OUT,
+                       capture_output=True, text=True, check=False)
 
     manifest = {}
     for path in sorted(OUT.rglob("*")):

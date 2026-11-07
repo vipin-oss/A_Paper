@@ -3,96 +3,96 @@
     {
       "nodes": 64,
       "degree": 22,
-      "frequency_GHz": 16.684123136378275,
-      "R_B": 0.023145619184645957,
-      "backward_K_real": 0.24517469208547762,
-      "angle_deg": -27.89971398936889,
-      "edge_residual": 2.8280569895076177e-15,
-      "power_balance": 8.260359038401398e-13,
-      "condition": 160.4801154048026
+      "frequency_GHz": 16.684123136378155,
+      "R_B": 0.023145619184801968,
+      "backward_K_real": 0.24517469208597725,
+      "angle_deg": -27.899713989338405,
+      "edge_residual": 3.159131431494568e-15,
+      "power_balance": 2.4865384510551285e-13,
+      "condition": 160.48011540611859
     },
     {
       "nodes": 128,
       "degree": 22,
-      "frequency_GHz": 16.68412313637675,
-      "R_B": 0.023145619186775775,
-      "backward_K_real": 0.24517469209467724,
-      "angle_deg": -27.899713988467358,
-      "edge_residual": 3.095757430651058e-15,
-      "power_balance": 1.5873044758066922e-12,
-      "condition": 160.4801154052949
+      "frequency_GHz": 16.684123136379203,
+      "R_B": 0.023145619183003393,
+      "backward_K_real": 0.24517469207809336,
+      "angle_deg": -27.899713990087424,
+      "edge_residual": 3.096463445689971e-15,
+      "power_balance": 1.6236626007156923e-13,
+      "condition": 160.48011540532323
     },
     {
       "nodes": 192,
       "degree": 22,
-      "frequency_GHz": 16.684123136377057,
-      "R_B": 0.0231456191862134,
-      "backward_K_real": 0.24517469209225987,
-      "angle_deg": -27.899713988700015,
-      "edge_residual": 2.822202426173413e-15,
-      "power_balance": 1.2302232108138782e-13,
-      "condition": 160.4801154057372
+      "frequency_GHz": 16.68412313637782,
+      "R_B": 0.023145619185051536,
+      "backward_K_real": 0.24517469208713197,
+      "angle_deg": -27.899713989231714,
+      "edge_residual": 2.9845801657278512e-15,
+      "power_balance": 2.463729302104875e-13,
+      "condition": 160.48011540562518
     },
     {
       "nodes": 256,
       "degree": 22,
-      "frequency_GHz": 16.684123136378687,
-      "R_B": 0.023145619184021693,
-      "backward_K_real": 0.24517469208247114,
-      "angle_deg": -27.899713989673927,
-      "edge_residual": 2.980833864514783e-15,
-      "power_balance": 1.128103214426214e-13,
-      "condition": 160.48011540542944
+      "frequency_GHz": 16.68412313637751,
+      "R_B": 0.023145619185886528,
+      "backward_K_real": 0.2451746920904937,
+      "angle_deg": -27.89971398887754,
+      "edge_residual": 3.008311678061811e-15,
+      "power_balance": 8.753477878296551e-13,
+      "condition": 160.48011540463403
     }
   ],
   "branch_maximum": [
     {
       "nodes": 64,
       "degree": 22,
-      "frequency_GHz": 16.65467768994245,
-      "R_B": 0.931891474271886,
-      "backward_K_real": 0.5249493115920691,
-      "angle_deg": -13.888756047878408,
-      "edge_residual": 2.6874128731955815e-15,
-      "power_balance": 9.829736701791407e-14,
-      "condition": 160.47284402398128
+      "frequency_GHz": 16.6546776899426,
+      "R_B": 0.9318914727351364,
+      "backward_K_real": 0.5249493115403754,
+      "angle_deg": -13.888756050963527,
+      "edge_residual": 2.9000557530409476e-15,
+      "power_balance": 1.9585621016522526e-13,
+      "condition": 160.47284402404915
     },
     {
       "nodes": 128,
       "degree": 22,
-      "frequency_GHz": 16.654677689942535,
-      "R_B": 0.9318914727024769,
-      "backward_K_real": 0.5249493115190217,
-      "angle_deg": -13.88875605097998,
-      "edge_residual": 2.2556187189916228e-15,
-      "power_balance": 8.853001627015789e-14,
-      "condition": 160.47284402326065
+      "frequency_GHz": 16.65467768994324,
+      "R_B": 0.9318914676488298,
+      "backward_K_real": 0.5249493112318163,
+      "angle_deg": -13.888756059170053,
+      "edge_residual": 2.542214196682755e-15,
+      "power_balance": 8.41266795238401e-14,
+      "condition": 160.47284402343556
     },
     {
       "nodes": 192,
       "degree": 22,
-      "frequency_GHz": 16.6546776899423,
-      "R_B": 0.931891474150306,
-      "backward_K_real": 0.5249493115945854,
-      "angle_deg": -13.888756047804636,
-      "edge_residual": 2.458675345743598e-15,
-      "power_balance": 4.136757378342863e-14,
-      "condition": 160.47284402523647
+      "frequency_GHz": 16.654677689942584,
+      "R_B": 0.9318914725636829,
+      "backward_K_real": 0.5249493114806442,
+      "angle_deg": -13.888756051564945,
+      "edge_residual": 2.512180061675951e-15,
+      "power_balance": 7.438062038917907e-14,
+      "condition": 160.4728440252549
     },
     {
       "nodes": 256,
       "degree": 22,
-      "frequency_GHz": 16.654677689941778,
-      "R_B": 0.9318914791708601,
-      "backward_K_real": 0.5249493118530933,
-      "angle_deg": -13.88875604267334,
-      "edge_residual": 2.6597094153768015e-15,
-      "power_balance": 2.464613021996563e-13,
-      "condition": 160.47284402375277
+      "frequency_GHz": 16.654677689941295,
+      "R_B": 0.9318914818879585,
+      "backward_K_real": 0.5249493120135389,
+      "angle_deg": -13.888756037748228,
+      "edge_residual": 2.2971777491655343e-15,
+      "power_balance": 4.496019165394245e-14,
+      "condition": 160.4728440239489
     }
   ],
   "verdict": {
-    "worst_relative_change_vs_256_nodes": 6.941133616980165e-09,
+    "worst_relative_change_vs_256_nodes": 1.5279814152931387e-08,
     "tolerance": 1e-07,
     "pass": true
   }

@@ -1,58 +1,58 @@
 {
   "operating_point": {
     "zero": {
-      "R_B_2um": 0.023148416145443943,
-      "angle_deg": -27.89802709897994,
-      "power_balance_relative": 2.0065068683397226e-12,
-      "edge_scaled_residual": 2.6958589133069694e-15,
-      "frequency_GHz": 16.68411394765974,
+      "R_B_2um": 0.02314841614132141,
+      "angle_deg": -27.898027100778837,
+      "power_balance_relative": 1.4281439429684287e-12,
+      "edge_scaled_residual": 2.7903802536710196e-15,
+      "frequency_GHz": 16.684113947662556,
       "f_dimensionless": 0.0
     },
     "synthetic_1nC_m": {
-      "R_B_2um": 0.023145619184645957,
-      "angle_deg": -27.89971398936889,
-      "power_balance_relative": 8.260359038401398e-13,
-      "edge_scaled_residual": 2.8280569895076177e-15,
-      "frequency_GHz": 16.684123136378275,
+      "R_B_2um": 0.023145619184801968,
+      "angle_deg": -27.899713989338405,
+      "power_balance_relative": 2.4865384510551285e-13,
+      "edge_scaled_residual": 3.159131431494568e-15,
+      "frequency_GHz": 16.684123136378155,
       "f_dimensionless": 0.0025630916819169717
     },
     "ten_x": {
-      "R_B_2um": 0.02286973067837078,
-      "angle_deg": -28.067947984183903,
-      "power_balance_relative": 8.76666821684319e-13,
-      "edge_scaled_residual": 2.957774788717627e-15,
-      "frequency_GHz": 16.685031633323284,
+      "R_B_2um": 0.022869730677179314,
+      "angle_deg": -28.06794798469456,
+      "power_balance_relative": 7.020236222202568e-13,
+      "edge_scaled_residual": 2.843351809962734e-15,
+      "frequency_GHz": 16.68503163332404,
       "f_dimensionless": 0.025630916819169715
     },
-    "effect_of_synthetic_f_percent": -0.012082730759685953,
-    "effect_of_ten_times_f_percent": -1.2039072795397832
+    "effect_of_synthetic_f_percent": -0.01208271227874688,
+    "effect_of_ten_times_f_percent": -1.203907267092134
   },
   "peak": {
     "zero": {
-      "R_B_2um": 0.5792453172400415,
-      "angle_deg": -14.44844396448971,
-      "power_balance_relative": 1.2197991819773386e-12,
-      "edge_scaled_residual": 5.249401561025217e-15,
-      "frequency_GHz": 16.654968035732388,
+      "R_B_2um": 0.5792453174368354,
+      "angle_deg": -14.448443963854032,
+      "power_balance_relative": 4.853546921857902e-13,
+      "edge_scaled_residual": 3.4549038198775876e-15,
+      "frequency_GHz": 16.65496803573196,
       "f_dimensionless": 0.0
     },
     "synthetic_1nC_m": {
-      "R_B_2um": 0.5791800334428877,
-      "angle_deg": -14.448727906487978,
-      "power_balance_relative": 8.28508919020165e-13,
-      "edge_scaled_residual": 2.816650904632956e-15,
-      "frequency_GHz": 16.654976049283885,
+      "R_B_2um": 0.57918003281474,
+      "angle_deg": -14.448727907906465,
+      "power_balance_relative": 8.354149026087807e-14,
+      "edge_scaled_residual": 2.6469391440488697e-15,
+      "frequency_GHz": 16.65497604928513,
       "f_dimensionless": 0.0025630916819169717
     },
     "ten_x": {
-      "R_B_2um": 0.5727682613192873,
-      "angle_deg": -14.476873128716452,
-      "power_balance_relative": 2.541905528134237e-12,
-      "edge_scaled_residual": 2.4418485972192072e-15,
-      "frequency_GHz": 16.655768345454604,
+      "R_B_2um": 0.5727682618332639,
+      "angle_deg": -14.4768731274325,
+      "power_balance_relative": 6.173854632456134e-13,
+      "edge_scaled_residual": 2.0144668251259085e-15,
+      "frequency_GHz": 16.655768345453378,
       "f_dimensionless": 0.025630916819169715
     },
-    "effect_of_synthetic_f_percent": -0.011270492002390263,
-    "effect_of_ten_times_f_percent": -1.1181887411046756
+    "effect_of_synthetic_f_percent": -0.011270634415192932,
+    "effect_of_ten_times_f_percent": -1.1181886859668537
   }
 }

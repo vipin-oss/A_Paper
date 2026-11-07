@@ -77,9 +77,11 @@ def run(case_K: float, cfg: dict, degree: int = 22) -> dict:
         "cross": float(res["cross_power_left"] / res["incident_power_left"]),
         # edge-plane share on the same convention as the tabulated
         # configurations: both modes rescaled from the reference plane to x=0.
+        # ``d`` cancels in the ratio; it is passed as the real thickness so that
+        # no caller is invited to read it as anything else.
         "R_B_edge": edge_plane_fraction(float(res["backward_reflection_self_power"]),
                                         complex(res["incident_K"]),
-                                        complex(res["backward_K"]), 1.0),
+                                        complex(res["backward_K"]), p.d),
         "dissipation": float(res["dissipation_control_volume"]
                              / res["incident_power_left"]),
         "backward_energy": float(res["backward"]["energy"]),
@@ -119,7 +121,7 @@ def tracked_sweep(case_K: float, etas=(0.05, 0.025, 0.0, -0.025, -0.05)) -> list
                          backward_K_imag=float(complex(res["backward_K"]).imag),
                          R_B_edge=edge_plane_fraction(
                              float(res["backward_reflection_self_power"]),
-                             complex(res["incident_K"]), complex(res["backward_K"]), 1.0),
+                             complex(res["incident_K"]), complex(res["backward_K"]), p.d),
                          dissipation=float(res["dissipation_control_volume"]
                                            / res["incident_power_left"]),
                          power_balance_relative=float(res["power_balance_relative"])))
@@ -147,7 +149,7 @@ def reoptimised(eta: float, lo: float = 0.518, hi: float = 0.538,
                  frequency_GHz=float(res["frequency_Hz"]) / 1e9,
                  R_B_edge=edge_plane_fraction(
                      float(res["backward_reflection_self_power"]),
-                     complex(res["incident_K"]), complex(res["backward_K"]), 1.0),
+                     complex(res["incident_K"]), complex(res["backward_K"]), p.d),
                  power_balance_relative=float(res["power_balance_relative"]))
         if best is None or r["R_B"] > best["R_B"]:
             best = dict(r, neighbour_points=len(grid))

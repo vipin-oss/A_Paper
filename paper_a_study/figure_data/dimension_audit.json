@@ -24,7 +24,7 @@
     "cs_m_per_s": 2746.608754286421
   },
   "tensor_contraction": {
-    "candidate1_residual": 2.1713389901673235e-13,
+    "candidate1_residual": 2.1200564796802846e-13,
     "candidate2_residual": 3120089.016718819,
     "implemented": "A_(ijk)(lmn) = ell^2 c_(ij)(lm) delta_(kn)",
     "verdict": "candidate 1"

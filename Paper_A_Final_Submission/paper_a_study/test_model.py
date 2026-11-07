@@ -338,4 +338,230 @@ class TestCertifiedPeak(unittest.TestCase):
         self.assertLess(abs(rec['classification']['R_B_at_max'] - reported), 1e-5)
 
 
+class _EdgeProfile:
+    """Shared reference configuration and a call-time handle on the transform.
+
+    The transform is looked up through the module object on every call, never
+    bound at import: that is the only way a mutation that patches
+    ``build_figure_data.edge_plane_fraction`` reaches these tests, and a test
+    that cannot see a patched function cannot guard anything.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import sys
+        from pathlib import Path
+        here = Path(__file__).resolve().parent
+        if str(here) not in sys.path:
+            sys.path.insert(0, str(here))
+        from paper_a_study import build_figure_data as bfd
+        cls.bfd = bfd
+        cls.data = here / 'figure_data'
+        cls.K0, cls.KB0, cls.KY0 = bfd.K0, bfd.KB0, bfd.KY0
+        cls.REF = bfd.REF_NORM
+        # the certified maximum, from the solve itself (not from a stored value)
+        p = bfd.plate(0.0, degree=22)
+        mode = bfd.track(p, [0.5275], bfd.operating_mode(p))[0]
+        cls.omega = float(mode['omega'].real)
+        cls.p = p
+        cls._solves = {}
+
+    def edge(self, R, ki, kb, d, **kw):
+        return self.bfd.edge_plane_fraction(R, ki, kb, d, **kw)
+
+    def solve(self, L, K=0.5275, ky=None, omega=None):
+        key = (round(L, 6), round(K, 9), ky, omega)
+        if key not in self._solves:
+            if omega is None:
+                m = self.bfd.track(self.p, [K], self.bfd.operating_mode(self.p))[0]
+                omega = float(m['omega'].real)
+            res, _ = self.p.edge(self.bfd.KY0 if ky is None else float(ky),
+                                 omega, float(K), self.KB0, L=L)
+            self._solves[key] = res
+        return self._solves[key]
+
+
+class TestEdgePlaneTransform(_EdgeProfile, unittest.TestCase):
+    """The two-plane ratio transform, on synthetic data only.
+
+    Four identities and one distinction.  None of these tests reads a stored
+    record, so they fail if the transform is wrong for any reason at all --
+    halved exponent, flipped sign, wrong reference distance, or the thickness
+    replaced by the gradient length.
+    """
+
+    KI = 0.528235992 + 1.004047e-3j
+    KB = 0.526131801 - 1.002930e-3j
+    D = 200e-9
+    R = 0.9467952307
+
+    def test_coincident_planes_return_the_input(self):
+        got = self.edge(self.R, self.KI, self.KB, self.D, L_to=3.0, L_from=3.0)
+        self.assertLess(abs(got / self.R - 1.0), 1e-15,
+                        'the transform must be the identity between coincident planes')
+
+    def test_composition_is_additive_in_distance(self):
+        at5 = self.edge(self.R, self.KI, self.KB, self.D, L_to=5.0, L_from=10.0)
+        at0 = self.edge(at5, self.KI, self.KB, self.D, L_to=0.0, L_from=5.0)
+        direct = self.edge(self.R, self.KI, self.KB, self.D, L_to=0.0, L_from=10.0)
+        self.assertLess(abs(at0 / direct - 1.0), 1e-15,
+                        '10 -> 5 -> 0 must equal 10 -> 0')
+
+    def test_edge_value_uses_both_attenuations(self):
+        """The exponent is a sum of magnitudes, not the backward decay alone."""
+        expected = self.R * np.exp(2 * (abs(self.KI.imag) + abs(self.KB.imag)) * self.REF)
+        got = self.edge(self.R, self.KI, self.KB, self.D)
+        self.assertLess(abs(got / expected - 1.0), 1e-12)
+        backward_only = self.R * np.exp(2 * abs(self.KB.imag) * self.REF)
+        self.assertGreater(abs(backward_only / got - 1.0), 1e-3,
+                           'the single-mode decay differs from the ratio transform by '
+                           'about 2e-2 here; a transform that reproduces it is wrong')
+
+    def test_round_trip_between_planes(self):
+        at15 = self.edge(self.R, self.KI, self.KB, self.D, L_to=15.0, L_from=10.0)
+        back = self.edge(at15, self.KI, self.KB, self.D, L_to=10.0, L_from=15.0)
+        self.assertLess(abs(back / self.R - 1.0), 1e-15, 'round trip must return the input')
+        # moving *away* from the edge lowers the ratio: both modes attenuate and
+        # the ratio sees the sum of the two.  (This assertion had the direction
+        # reversed when it was first written; the derivation in
+        # build_figure_data.edge_plane_fraction is the authority.)
+        self.assertLess(at15, self.R,
+                        'the ratio must fall as the plane moves away from the edge')
+
+    def test_single_mode_transfer_is_a_different_quantity(self):
+        """isolated_transfer is legitimate, but it is not a ratio transform."""
+        single = self.bfd.isolated_transfer(self.R, self.KB, self.D, 0.0)
+        ratio = self.edge(self.R, self.KI, self.KB, self.D, L_to=0.0, L_from=self.REF)
+        self.assertLess(single, ratio)
+        self.assertGreater(abs(single / ratio - 1.0), 1e-3,
+                           'the two differ by ~2 % at the certified maximum; if they agree, '
+                           'someone has reused the single-mode decay as a ratio')
+
+    def test_zero_attenuation_leaves_the_ratio_alone(self):
+        got = self.edge(self.R, 0.5282 + 0j, 0.5261 + 0j, self.D)
+        self.assertLess(abs(got / self.R - 1.0), 1e-15)
+
+
+class TestPlaneInvariance(_EdgeProfile, unittest.TestCase):
+    """Is the reconstructed edge share a property of the edge or of the plane?
+
+    Four solves, no stored values.  A transform with the sign or the exponent
+    wrong makes the reconstructed value depend on the plane at which it was
+    read, which is exactly the failure this class exists to catch.
+    """
+
+    PLANES = (0.0, 10.0, 15.0, 20.0)
+
+    def _edge_from(self, L):
+        res = self.solve(L)
+        return float(self.edge(
+            res['backward_reflection_self_power'],
+            complex(res['incident_K']), complex(res['backward_K']), self.p.d,
+            L_to=0.0, L_from=L))
+
+    def test_reconstructed_edge_value_is_plane_independent(self):
+        direct = float(self.solve(0.0)['backward_reflection_self_power'])
+        for L in self.PLANES:
+            got = self._edge_from(L)
+            rel = abs(got / direct - 1.0)
+            self.assertLess(rel, 1e-9,
+                            f'reconstructed edge value depends on the plane (L={L}): '
+                            f'{rel:.2e} relative; the round-9 defect was 2e-2')
+
+    def test_solved_edge_value_equals_the_transform(self):
+        at_ref = self.solve(self.REF)
+        expected = float(self.edge(
+            at_ref['backward_reflection_self_power'],
+            complex(at_ref['incident_K']), complex(at_ref['backward_K']), self.p.d,
+            L_to=0.0, L_from=self.REF))
+        direct = float(self.solve(0.0)['backward_reflection_self_power'])
+        rel = abs(expected / direct - 1.0)
+        # the two differ only by the degree sensitivity of the edge solve (5e-9)
+        self.assertLess(rel, 1e-6, f'transform and direct solve differ by {rel:.2e}')
+
+    def test_the_raw_values_really_do_move(self):
+        """The invariance must not be vacuous: the ratio itself does depend on L."""
+        near = float(self.solve(0.0)['backward_reflection_self_power'])
+        far = float(self.solve(20.0)['backward_reflection_self_power'])
+        self.assertGreater(abs(near / far - 1.0), 1e-2,
+                           'the raw ratio must fall measurably over twenty thicknesses')
+
+
+class TestCrossScriptEdgeFraction(_EdgeProfile, unittest.TestCase):
+    """Every producer of an edge-plane share must use the same transform.
+
+    This is the gate for the round-9 defect: peak_search.py moved the ratio with
+    the single-mode decay and reported 0.965978 where mechanism_controls.py
+    reported 0.985572, and nothing compared the two.
+    """
+
+    def test_peak_search_record_matches_the_shared_transform(self):
+        import json
+        rec = json.loads((self.data / 'peak_search.json').read_text())
+        row = [r for r in rec['degree']
+               if abs(r['K'] - 0.5275) < 1e-12 and r['degree'] == 22][0]
+        expected = float(self.edge(float(row['R_B']), complex(*row['K_incident']),
+                                   complex(*row['K_backward']), self.p.d))
+        rel = abs(float(row['R_B_edge']) / expected - 1.0)
+        self.assertLess(rel, 1e-12,
+                        f'peak_search stored edge share vs the shared transform: {rel:.2e}')
+
+    def test_mechanism_controls_record_matches_the_shared_transform(self):
+        import json
+        mc = json.loads((self.data / 'mechanism_controls.json').read_text())
+        row = [r for r in mc['branch_consistent_H_sweep']['refined_peak'] if r['eta'] == 0.0][0]
+        ident = json.loads((self.data / 'peak_identity_audit.json').read_text())
+        peak = ident['cases']['peak']
+        ki = complex(*peak['K_incident'])
+        expected = float(self.edge(float(row['R_B']), ki,
+                                   complex(row['backward_K_real'], row['backward_K_imag']),
+                                   self.p.d))
+        rel = abs(float(row['R_B_edge']) / expected - 1.0)
+        self.assertLess(rel, 1e-12,
+                        f'mechanism_controls stored edge share vs the shared transform: {rel:.2e}')
+
+    def test_figure_csvs_match_the_shared_transform(self):
+        import csv  # noqa: F401
+        with open(self.data / 'fig05_channel_power.csv') as fh:
+            rows5 = [r for r in csv.DictReader(fh) if abs(float(r['eta'])) < 1e-12]
+        # fig05 is the operating point (k_x d = K0), not the certified maximum
+        res = self.solve(self.REF, K=self.K0)
+        expected5 = float(self.edge(float(res['backward_reflection_self_power']),
+                                    complex(res['incident_K']), complex(res['backward_K']),
+                                    self.p.d))
+        rel5 = abs(float(rows5[0]['R_B_edge']) / expected5 - 1.0)
+        self.assertLess(rel5, 1e-6, f'fig05 CSV vs shared transform: {rel5:.2e}')
+        with open(self.data / 'fig07_coupling_sensitivity.csv') as fh:
+            rows7 = [r for r in csv.DictReader(fh) if abs(float(r['eta'])) < 1e-12]
+        self.assertTrue(rows7, 'no H = 0 row in fig07')
+        # fig07 sweeps k_y at the fixed operating frequency and wavenumber, so the
+        # reference solve is posed the same way rather than branch-tracked
+        from paper_a_study.build_figure_data import OMEGA0, plate
+        p = plate(0.0, degree=22)
+        for row in (rows7[0], rows7[len(rows7) // 2], rows7[-1]):
+            res7, _ = p.edge(float(row['ky']), OMEGA0, self.K0, self.KB0)
+            expected = self.edge(float(res7['backward_reflection_self_power']),
+                                 complex(res7['incident_K']), complex(res7['backward_K']), p.d)
+            rel7 = abs(float(row['R_B_edge']) / expected - 1.0)
+            self.assertLess(rel7, 1e-6,
+                            f'fig07 CSV vs shared transform at ky={row["ky"]}: {rel7:.2e}')
+
+    def test_all_producers_agree_with_each_other(self):
+        import json
+        rec = json.loads((self.data / 'peak_search.json').read_text())
+        ps = float([r for r in rec['degree'] if abs(r['K'] - 0.5275) < 1e-12
+                    and r['degree'] == 22][0]['R_B_edge'])
+        mc = json.loads((self.data / 'mechanism_controls.json').read_text())
+        mcv = float([r for r in mc['branch_consistent_H_sweep']['refined_peak']
+                     if r['eta'] == 0.0][0]['R_B_edge'])
+        rel = abs(ps / mcv - 1.0)
+        self.assertLess(rel, 1e-6,
+                        f'peak_search and mechanism_controls disagree on the edge fraction '
+                        f'({rel:.2e} relative; the round-8 defect was 2.0e-2)')
+        # the edge fraction must exceed the reference-plane value it came from
+        self.assertGreater(ps, 0.9467952)
+        self.assertLess(ps, 1.0)
+
+
+
 if __name__=='__main__':unittest.main(verbosity=2)

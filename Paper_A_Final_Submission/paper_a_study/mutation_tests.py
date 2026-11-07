@@ -4,8 +4,9 @@
 A check that has never failed is not a check.  This script copies the manuscript
 to a scratch directory, introduces one known defect at a time, runs the gate that
 is supposed to catch it, and confirms that the gate fails.  The working tree is
-never modified: every mutation is applied to the copy, except the last, which is
-applied in process and reverted.
+never modified: M1-M4, M6 and M8 are applied to a temporary copy of the
+manuscript, and M5, M7, M9, M10, M10b, M11 and M12 are applied in process to
+attributes that are restored in a ``finally`` block immediately afterwards.
 
     M1  \\path inserted in a caption without \\protect  -> static_check
     M2  a registered headline number edited             -> claim_audit registry
@@ -15,6 +16,12 @@ applied in process and reverted.
     M6  the superseded coarse-grid headline re-inserted  -> claim_audit stale guard
     M7  the peak case relabelled with the backward root  -> TestCornerAssessmentCaseSelection
     M8  the incident wavenumber set to KB0 in the registry -> claim_audit source agreement
+    M9  the edge-plane transform reduced to the backward decay  -> cross-script edge test
+    M10 the sign of the plane-transform exponent flipped        -> cross-script + invariance
+    M11 the reference plane moved from 10 to 8 thicknesses      -> cross-script edge test
+    M12 the thickness d replaced by the gradient length l       -> cross-script edge test
+    M10b the same flipped exponent, checked by an invariance test that uses no
+        stored record at all                                    -> plane invariance
 
 Writes figure_data/mutation_tests.json.
 """
@@ -27,6 +34,8 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+import numpy as np
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
@@ -147,6 +156,85 @@ def main() -> int:
     results.append(dict(id="M7", defect="peak case labelled with KB0 instead of its incident root",
                         gate="TestCornerAssessmentCaseSelection", expected="FAIL",
                         caught=caught, evidence=evidence))
+
+
+    # ---- the plane transform: five mutants, three test classes --------------
+    # ``paper_a_study.build_figure_data`` and the script-style
+    # ``build_figure_data`` that the solver scripts import are two distinct
+    # module objects (the scripts insert their own directory on sys.path), so a
+    # mutation has to be applied to every copy that is loaded, and the tests
+    # must look the function up by attribute rather than bind it at import.
+    from paper_a_study import build_figure_data as _bfd  # noqa: E402
+
+    targets = [_bfd]
+    sys.path.insert(0, str(HERE))
+    import build_figure_data as _bfd_top  # noqa: E402
+    if _bfd_top is not _bfd:
+        targets.append(_bfd_top)
+    originals = {id(m): m.edge_plane_fraction for m in targets}
+
+    def set_transform(fn):
+        for m in targets:
+            m.edge_plane_fraction = fn
+
+    def restore_transform():
+        for m in targets:
+            m.edge_plane_fraction = originals[id(m)]
+
+    def run_case(cls):
+        suite = unittest.TestLoader().loadTestsFromTestCase(cls)
+        res = unittest.TextTestRunner(verbosity=0).run(suite)
+        ev = []
+        for holder in (res.failures, res.errors):
+            ev += [str(t[1]).strip().splitlines()[-1] for t in holder][:1]
+        return (not res.wasSuccessful()), ev
+
+    real = originals[id(_bfd)]
+
+    def backward_only(R, ki, kb, d, L_to=0.0, L_from=_bfd.REF_NORM):
+        # the round-8 defect: one channel's decay used as a ratio transform
+        return float(R * np.exp(2.0 * abs(kb.imag) * (L_from - L_to)))
+
+    def flipped_sign(R, ki, kb, d, L_to=0.0, L_from=_bfd.REF_NORM):
+        return float(R * np.exp(-2.0 * ((ki.imag - kb.imag) / d) * (L_from - L_to) * d))
+
+    def wrong_reference(R, ki, kb, d, L_to=0.0, L_from=_bfd.REF_NORM):
+        return real(R, ki, kb, d, L_to=L_to, L_from=8.0)
+
+    def thickness_for_length(R, ki, kb, d, L_to=0.0, L_from=_bfd.REF_NORM):
+        return float(R * np.exp(2.0 * (ki.imag - kb.imag) * (L_from - L_to) / 50e-9))
+
+    mutants = [
+        ("M9", "edge-plane transform reduced to the backward decay only "
+               "(omits the incident attenuation)",
+         "TestCrossScriptEdgeFraction", backward_only),
+        ("M10", "sign of the plane-transform exponent flipped (wrong direction of "
+                "propagation)", "TestCrossScriptEdgeFraction", flipped_sign),
+        ("M11", "reference plane moved from 10 to 8 thicknesses (wrong reference "
+                "distance)", "TestCrossScriptEdgeFraction", wrong_reference),
+        ("M12", "thickness d replaced by the gradient length l (L and l confused)",
+         "TestCrossScriptEdgeFraction", thickness_for_length),
+    ]
+    for mid, defect, cls_name, fn in mutants:
+        set_transform(fn)
+        try:
+            caught, evidence = run_case(getattr(test_model, cls_name))
+        finally:
+            restore_transform()
+        results.append(dict(id=mid, defect=defect, gate=cls_name, expected="FAIL",
+                            caught=caught, evidence=evidence))
+
+    # M10b: the same flipped exponent, checked by an invariance test that reads
+    # no stored record at all.  If the records were ever regenerated from a
+    # broken transform, M10 would pass and this one would still fail.
+    set_transform(flipped_sign)
+    try:
+        caught, evidence = run_case(test_model.TestPlaneInvariance)
+    finally:
+        restore_transform()
+    results.append(dict(id="M10b", defect="flipped exponent, checked by an invariance test "
+                        "that uses no stored values", gate="TestPlaneInvariance",
+                        expected="FAIL", caught=caught, evidence=evidence))
 
     ok = True
     for r in results:
