@@ -82,39 +82,22 @@ The strain-gradient backward branch, the modal partition of a guided mode at a
 free edge, and the measured, bounded effect of a carrier--strain-gradient
 enthalpy on that partition are the results the following sections establish.
 
-\subsection{The added coupling and its reciprocals}
 \label{sec:intro_coupling}
-
-The model used here is deliberately minimal.  On top of the standard
-flexoelectric piezoelectric-semiconductor enthalpy we add a single bilinear
-term,
-\begin{equation}
-\label{eq:added_coupling}
-\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l},
-\end{equation}
-where $\Delta n$ is the carrier-concentration perturbation, $\varepsilon_{jk,l}$
-the strain gradient and $H_{jkl}$ a third-order coupling tensor with the units
-of energy times length.  Because the enthalpy is a thermodynamic potential, the
-term in \cref{eq:added_coupling} generates two partners.  Differentiating with
-respect to the strain gradient gives an addition to the higher-order
-(hyper)stress,
-\begin{equation}
-\label{eq:added_hyperstress}
-\Delta\tau_{jkl}=\frac{\partial\Delta\mathcal{H}}{\partial\varepsilon_{jk,l}}
-=H_{jkl}\,\Delta n,
-\end{equation}
-and differentiating with respect to the carrier density gives an addition to the
-electrochemical potential,
-\begin{equation}
-\label{eq:added_mu}
-\Delta\widetilde\mu=\frac{\partial\Delta\mathcal{H}}{\partial\Delta n}
-=H_{jkl}\,\varepsilon_{jk,l}.
-\end{equation}
-Equations \eqref{eq:added_coupling}--\eqref{eq:added_mu} are one assumption,
-not three, and they are the only new physics in the article.  No additional
-field, no micro-inertia, no flexoelectric-gradient term and no nonlinear
-electromechanical feedback is introduced, and the classical constants are not
-refitted.
+The model used in this article is deliberately minimal.  On top of the standard
+flexoelectric piezoelectric-semiconductor enthalpy it carries one additional
+bilinear term, $\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l}$,
+\eqref{eq:added_coupling}, in which $\Delta n$ is the carrier-concentration
+perturbation, $\varepsilon_{jk,l}$ the strain gradient and $H_{jkl}$ a
+third-order coupling tensor with the units of energy times length.  Because that
+term belongs to a thermodynamic potential it generates its two conjugate
+partners: an addition $H_{jkl}\Delta n$ to the hyperstress,
+\eqref{eq:added_hyperstress}, and an addition $H_{jkl}\varepsilon_{jk,l}$ to the
+electrochemical potential, \eqref{eq:added_mu}.  The three relations are
+obtained in \cref{sec:governing_constitutive} by differentiating one enthalpy, so
+they are one assumption and not three, and they are the only new physics in the
+article.  No additional field, no micro-inertia, no flexoelectric-gradient term
+and no nonlinear electromechanical feedback is introduced, and the classical
+constants are not refitted.
 
 The reciprocal relation \eqref{eq:added_mu} is what makes the edge problem
 interesting.  A guided plate mode carries a strain gradient through the
@@ -123,7 +106,6 @@ moves; the carriers respond, the charge density changes, and the changed charge
 density modifies the hyperstress through \eqref{eq:added_hyperstress}.  The loop
 closes at the edge, where the conversion into outgoing branches takes place.
 
-\subsection{Scope and organisation}
 \label{sec:intro_scope}
 
 Three conventions are used throughout and are worth stating once.  The plate
@@ -136,19 +118,20 @@ from the edge or, if it is propagating, carries energy away from the edge.  Both
 definitions are operational: they are the ones implemented in the solution, not
 merely the ones used in the prose.
 
-The article is organised as follows.  \Cref{sec:governing} states the
-variational principle, the constitutive relations, the field equations and the
-boundary conditions, and fixes the nomenclature for the plate surfaces, the
-reflecting edge, the mechanical tractions, the higher-order double tractions,
-the electrical conditions and the carrier-blocking conditions; it closes with
-the limits of the formulation and with the condition under which the enthalpy
-remains positive definite.  \Cref{sec:numerics} describes the solution
-strategy: a Fourier reduction in the tangential direction with a single
-conserved wavenumber $k_y$, a spectral Galerkin discretisation through the
-thickness, a companion-matrix formulation in the direction of propagation, and
-an edge-matching step that separates incoming from outgoing modes.
-\Cref{sec:results} presents the ten figures of the study and the tables that
-support them, figure by figure and effect by effect.  \Cref{sec:discussion}
-places the mechanism beside the published formulations, records the provenance
-of every parameter and collects the limitations of the model, and
-\Cref{sec:conclusions} states the findings.
+The article is organised as follows.  \Cref{sec:governing} is the mathematical
+formulation: geometry and fields, the strain gradient and the enthalpy from which
+every constitutive relation is differentiated, the balance laws obtained by
+independent variations, the electric model with the two ratios that justify it,
+the boundary conditions at the faces and at the edge, the reduction to a single
+propagation direction, the power flux that defines a backward mode, the
+dimensionless groups, the limits of the model and the condition under which the
+enthalpy stays positive definite.  \Cref{sec:numerics} is the solution of the
+problem: the spectral Galerkin discretisation through the thickness, the quartic
+eigenvalue problem it produces, the two routes to that problem, the classification
+of roots and the matching at the edge.  \Cref{sec:results} reports the numerical
+results and discusses them: the dispersion and attenuation of the propagating
+modes, the geometry and material sweeps, the frequency response and the location
+of its maximum, the modal partition and its energy budget, the mechanism controls,
+the transverse-wavenumber sensitivity and the wave field, each beside the
+published formulations, the provenance of every parameter and the limitations of
+the model.  \Cref{sec:conclusions} states the findings.

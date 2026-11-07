@@ -117,6 +117,41 @@ electrochemical potential & $\widetilde\mu$ & J & kg\,m$^2$s$^{-2}$ \\
 \subsection{Enthalpy and constitutive relations}
 \label{sec:governing_constitutive}
 
+The only physics added to the classical flexoelectric piezoelectric-semiconductor
+enthalpy is one bilinear term coupling the carrier perturbation to the strain
+gradient,
+\begin{equation}
+\label{eq:added_coupling}
+\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l},
+\end{equation}
+with $H_{jkl}$ a third-order tensor whose units are energy times length.  The
+term is not free-standing: it is a piece of a thermodynamic potential, so its two
+conjugates follow from it by differentiation and carry no independent constants.
+Differentiating with respect to the strain gradient gives the addition to the
+hyperstress,
+\begin{equation}
+\label{eq:added_hyperstress}
+\Delta\tau_{jkl}=\frac{\partial\Delta\mathcal{H}}{\partial\varepsilon_{jk,l}}
+=H_{jkl}\,\Delta n ,
+\end{equation}
+and differentiating with respect to the carrier density gives the addition to the
+electrochemical potential,
+\begin{equation}
+\label{eq:added_mu}
+\Delta\widetilde\mu=\frac{\partial\Delta\mathcal{H}}{\partial\Delta n}
+=H_{jkl}\,\varepsilon_{jk,l} .
+\end{equation}
+The two additions of \eqref{eq:added_hyperstress}--\eqref{eq:added_mu} are
+reciprocal in the sense of the Maxwell identity
+$\partial^{2}w/\partial\eta_{jkl}\partial(\Delta n)
+=\partial^{2}w/\partial(\Delta n)\partial\eta_{jkl}$, which both sides of the
+pair satisfy with the same $H_{jkl}$; the discretised operator inherits the
+symmetry and the symmetry is what the test in
+\cref{sec:numerics_verification} measures.  A single scalar component,
+$H\equiv H_{zzz}$, is retained in the executed calculations, so that
+\eqref{eq:added_hyperstress} adds $H\Delta n$ to $\tau_{zzz}$ and
+\eqref{eq:added_mu} adds $H\eta_{zzz}$ to $\widetilde\mu$.
+
 The internal-energy density of the model is
 \begin{equation}
 \label{eq:enthalpy}
@@ -135,7 +170,9 @@ with $a=k_BT/n_0$.  The terms are, in order, the elastic, strain-gradient,
 dielectric, piezoelectric and flexoelectric energies of the classical
 flexoelectric dielectric \cite{shen2010theory}, the carrier compressibility, the
 added carrier--strain-gradient coupling and the electrostatic energy of the
-mobile charge.  The seventh term is the addition of this article.
+mobile charge.  The seventh term is the addition of this article, \eqref{eq:added_coupling},
+and the two entries of \eqref{eq:tau}--\eqref{eq:mu} that it produces are
+\eqref{eq:added_hyperstress}--\eqref{eq:added_mu}.
 
 Differentiating \eqref{eq:enthalpy} gives the constitutive relations
 \begin{align}
@@ -185,15 +222,53 @@ its measured influence on the reported numbers are stated in
 \subsection{Balance laws}
 \label{sec:governing_balance}
 
-Stationarity of the action with respect to $u_j$ gives the mechanical balance
+The field equations are the Euler--Lagrange equations of the enthalpy
+\eqref{eq:enthalpy}.  The kinematic variations follow from \eqref{eq:strain},
+\begin{equation}
+\label{eq:var_kinematics}
+\delta\varepsilon_{ij}=\tfrac12\bigl(\delta u_{i,j}+\delta u_{j,i}\bigr),
+\qquad
+\delta\eta_{ijk}=\tfrac12\bigl(\delta u_{i,jk}+\delta u_{j,ik}\bigr)
+=\delta u_{i,jk},
+\end{equation}
+the last equality holding because $\eta_{ijk}$ and therefore $\tau_{ijk}$ are
+symmetric in the first two indices, and the electric variation is
+$\delta E_i=-\partial_i\delta\varphi$.  With these, the virtual work of the
+internal fields at fixed time is
+\begin{equation}
+\label{eq:virtual_work}
+\delta W=\int_V\Bigl[\sigma_{ij}\,\delta\varepsilon_{ij}
++\tau_{ijk}\,\delta\eta_{ijk}-D_i\,\delta E_i
++\widetilde\mu\,\delta(\Delta n)\Bigr]\dd V .
+\end{equation}
+Two integrations by parts, one on each derivative carried by the stress and two
+on those carried by the hyperstress, move every derivative onto the fields and
+leave only surface terms,
+\begin{align}
+\int_V\sigma_{ij}\,\delta\varepsilon_{ij}\,\dd V
+&=-\int_V\sigma_{ij,j}\,\delta u_i\,\dd V
++\oint_{\partial V}n_j\sigma_{ij}\,\delta u_i\,\dd S ,
+\label{eq:ibp_stress}\\[2pt]
+\int_V\tau_{ijk}\,\delta\eta_{ijk}\,\dd V
+&=\int_V\partial_k\partial_j\tau_{ijk}\,\delta u_i\,\dd V
+-\oint_{\partial V}n_j\partial_k\tau_{ijk}\,\delta u_i\,\dd S
++\oint_{\partial V}n_k\tau_{ijk}\,\delta u_{i,j}\,\dd S .
+\label{eq:ibp_hyper}
+\end{align}
+The two boundary integrals of \eqref{eq:ibp_stress}--\eqref{eq:ibp_hyper} are the
+traction and the double traction; they are the surface terms evaluated in
+\cref{sec:governing_bc}.  In the volume, adding the inertial contribution
+$\int_V\rho\ddot u_i\,\delta u_i\dd V$ and requiring that the coefficient of the
+arbitrary $\delta u_i$ vanish gives the mechanical balance
 \begin{equation}
 \label{eq:momentum}
 \rho\,\ddot u_j=\partial_i\sigma_{ij}-\partial_i\partial_k\tau_{jik},
 \end{equation}
-where the double divergence of the hyperstress has the sign that makes the
-gradient energy energetically favourable to smooth fields: the variation of
-$\tfrac12A(\cdot)^2$ produces $+\partial_i\partial_k(A\,\eta)$ on the left of
-the weak form and therefore a minus sign here.  It is convenient to define the
+where the double divergence of the hyperstress enters with a minus sign because
+the two integrations by parts of \eqref{eq:ibp_hyper} carry two sign changes and
+the term is moved to the right-hand side: the gradient energy penalises
+curvature of the field, so it acts against the elastic restoring force rather
+than with it.  It is convenient to define the
 \emph{effective stress}
 \begin{equation}
 \label{eq:effective}
@@ -399,6 +474,84 @@ propagating members of $\{P_j\}$ transport energy to infinity, the evanescent
 members are reactive at the plane, and $P_{\text{cross}}$ is an interference
 correction.  The residual of \eqref{eq:energy_identity} is therefore evaluated for every
 reported solution and is plotted in \cref{fig:fig05}(c).
+
+\subsection{Reduction to a single propagation direction}
+\label{sec:governing_reduction}
+
+The plate is invariant along $y$ and in time, so a single tangential wavenumber
+and a single frequency are conserved by the linear problem and every field can be
+written as an amplitude in the thickness times a propagating factor,
+\begin{equation}
+\label{eq:ansatz}
+f(x,y,z,t)=\widehat f(z)\,\ee^{\ii(k_xx+k_yy-\omega t)} ,
+\end{equation}
+for which the four derivative operators act as
+\begin{equation}
+\label{eq:substitution}
+\partial_t\to-\ii\omega,\qquad
+\partial_x\to\ii k_x,\qquad
+\partial_y\to\ii k_y,\qquad
+\partial_z\to\frac{\dd}{\dd z}\equiv{}' .
+\end{equation}
+Substituting \eqref{eq:substitution} in \eqref{eq:strain} gives the six strain
+components in terms of the three displacement amplitudes,
+\begin{equation}
+\label{eq:strain_amplitudes}
+\begin{aligned}
+\widehat\varepsilon_{xx}&=\ii k_x\widehat u_1, &
+\widehat\varepsilon_{yy}&=\ii k_y\widehat u_2, &
+\widehat\varepsilon_{zz}&=\widehat u_3',\\
+\widehat\varepsilon_{yz}&=\tfrac12\bigl(\widehat u_2'+\ii k_y\widehat u_3\bigr),&
+\widehat\varepsilon_{xz}&=\tfrac12\bigl(\widehat u_1'+\ii k_x\widehat u_3\bigr),&
+\widehat\varepsilon_{xy}&=\tfrac12\ii\bigl(k_x\widehat u_2+k_y\widehat u_1\bigr),
+\end{aligned}
+\end{equation}
+and the eighteen strain-gradient components follow from
+$\eta_{ijk}=\varepsilon_{ij,k}$ with the same three replacements, each $x$
+derivative multiplying by $\ii k_x$, each $y$ derivative by $\ii k_y$ and each
+$z$ derivative acting on the amplitude.  Two representative entries are
+\begin{equation}
+\label{eq:eta_amplitudes}
+\widehat\eta_{xxx}=\partial_x\widehat\varepsilon_{xx}=-k_x^{2}\widehat u_1,
+\qquad
+\widehat\eta_{zzz}=\partial_z\widehat\varepsilon_{zz}=\widehat u_3'',
+\end{equation}
+and the electric field is $\widehat E_x=-\ii k_x\widehat\varphi$,
+$\widehat E_z=-\widehat\varphi'$.  The continuity equation
+\eqref{eq:continuity} reduces to the algebraic statement
+$-\ii\omega q\widehat N+\partial_i\widehat J_i=0$, so the carrier amplitude is
+carried by the same amplitude vector as the displacements rather than by an
+independent time evolution.
+
+The two balance laws then become a system of ordinary differential equations in
+$z$ for the four amplitudes $(\widehat u_1,\widehat u_2,\widehat u_3,
+\widehat\varphi)$ together with $\widehat N$, and the dependence of that system
+on the propagation direction is fixed by power counting.  The stress enters the
+mechanical balance through one derivative, $\partial_i\sigma_{ij}$, and $\sigma$
+is linear in $\varepsilon$ and $E$, both of which carry one power of $k$; the
+stress term is therefore at most quadratic in $k_x$.  The hyperstress enters
+through two derivatives, $\partial_i\partial_k\tau_{jik}$, and $\tau$ likewise
+carries one power of $k$; that term is therefore at most quartic in $k_x$.  No
+higher power can arise, because no field in \eqref{eq:enthalpy} carries more than
+one gradient.  Written as a matrix acting on the vector $\vect q$ of thickness
+degrees of freedom, the reduced problem is therefore exactly quartic,
+\begin{equation}
+\label{eq:quartic}
+\Bigl[\mathsf A_{00}
++\ii k_x\bigl(\mathsf A_{01}-\mathsf A_{10}\bigr)
++k_x^{2}\bigl(\mathsf A_{11}-\mathsf A_{02}-\mathsf A_{20}\bigr)
++\ii k_x^{3}\bigl(\mathsf A_{12}-\mathsf A_{21}\bigr)
++k_x^{4}\,\mathsf A_{22}\Bigr]\vect q=\vect 0 ,
+\end{equation}
+where $\mathsf A_{rs}$ collects the terms that carry $\partial_x^{r}$ inside the
+left test function and $\partial_x^{s}$ inside the right one; their construction
+is the subject of \cref{sec:numerics_basis}.  The two highest blocks are
+generated by the strain-gradient sector alone: with $\ell=0$, and with the
+flexoelectric constant and the added coupling removed with it, $\mathsf A_{22}$
+and $\mathsf A_{12}$ vanish identically and \eqref{eq:quartic} collapses to the
+familiar quadratic piezoelectric-semiconductor problem.  That collapse is the
+statement that the fourth-order structure of the plate problem is the
+strain-gradient energy, not the carrier physics.
 
 \subsection{Non-dimensionalisation}
 \label{sec:governing_nondim}

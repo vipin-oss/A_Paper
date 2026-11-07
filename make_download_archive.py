@@ -20,11 +20,19 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round13_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round13.zip"
+STAGE = Path("/tmp/paper_a_round14_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round14.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_CORRECTION_HISTORY.md",
+    "PAPER_A_ROUND14_AUTHOR_STYLE_AND_PRESENTATION_FAILURE_AUDIT.md",
+    "PAPER_A_ROUND14_MATHEMATICAL_DERIVATION_MATRIX.md",
+    "PAPER_A_ROUND14_FIGURE_REDESIGN_AUDIT.md",
+    "PAPER_A_ROUND14_MANUSCRIPT_STRUCTURE_CHANGES.md",
+    "PAPER_A_ROUND14_DERIVATION_VERIFICATION.md",
+    "PAPER_A_ROUND14_FINAL_MANUSCRIPT_PRESENTATION_REVIEW.md",
+    "SUPPLEMENTARY_COMPUTATIONAL_REPRODUCIBILITY.md",
+    "PAPER_A_ROUND13_SUPERVISOR_HANDOFF.md",
     "PAPER_A_ROUND13_PRE_EDIT_CLOSURE_AUDIT.md",
     "PAPER_A_ROUND13_FIG10_VECTOR_VERIFICATION.md",
     "PAPER_A_ROUND13_DOCUMENTATION_CORRECTIONS.md",
@@ -143,7 +151,7 @@ def main() -> int:
 
     (STAGE / "START_HERE.txt").write_text(
         "\n".join([
-            "Paper A -- round 13: targeted closure (fig10(c), docstring, packaging)",
+            "Paper A -- round 14: author style, written derivations, figure redesign, presentation",
             "=======================================================================",
             "",
             "Round 13 closed the two defects round 12 left open and re-verified everything those",

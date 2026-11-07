@@ -156,7 +156,7 @@ def fig01():
     a.set_xlim(0.10, 1.10)
     a.set_ylim(16.647, 16.895)
     S.style_axes(a)
-    ins = a.inset_axes([0.480, 0.545, 0.425, 0.395])
+    ins = a.inset_axes([0.300, 0.600, 0.420, 0.355])
     for eta in S.H_LEVELS:
         if eta == 0.0:
             continue
@@ -167,12 +167,16 @@ def fig01():
                  linewidth=1.4)
     ins.axhline(0, color="#202A44", linewidth=0.8)
     ins.set_xlabel(r"$k_x d$", fontsize=7.0, labelpad=1)
-    ins.set_ylabel(r"$\Delta f$ (kHz)", fontsize=7.0, labelpad=1)
+    ins.set_ylabel(r"$\Delta f$ (kHz)", fontsize=6.4, labelpad=1.2)
     ins.tick_params(labelsize=6.4, length=2, pad=1.2)
-    ins.set_ylim(-200, 215)
-    ins.set_yticks([-150, 0, 150])
+    # The shift grows monotonically with k_x d and is largest at the far end of
+    # the sweep, -183.7 kHz for H/H* = +0.050; the tick marks carry that value
+    # so that the reader does not have to estimate it from a spike.
+    ins.set_ylim(-196, 58)
+    ins.set_yticks([-180, -120, -60, 0])
     ins.grid(True, alpha=0.45, linewidth=0.4)
     ins.set_title(r"$\Delta f=f(H)-f(0)$", fontsize=6.9, pad=2.2)
+
 
     b.plot(col(base, "K"), col(base, "group_speed_m_s"), color="#087E8B",
            linestyle="-", linewidth=2.0, marker="o", markersize=4.0,
@@ -232,33 +236,39 @@ def fig02():
             if r.get("valid") in (True, "true")]
     n0 = sorted({r["value_SI"] for r in rows if r["parameter"] == "n0"})
     mu = sorted({r["value_SI"] for r in rows if r["parameter"] == "mobility"})
-    cn0, cmu = S.ramp(S.RAMP_N0, n0), S.ramp(S.RAMP_MU, mu)
+    st_n0, st_mu = S.ramp_styles(S.RAMP_N0, n0), S.ramp_styles(S.RAMP_MU, mu)
+
+    def family(style, lw, ms, every):
+        """A family member carries colour, dash and marker (round-14 rule)."""
+        return dict(style, linewidth=lw, markersize=ms,
+                    markerfacecolor="white", markeredgewidth=1.0,
+                    markevery=every)
     fig, axs = panel_axes()
     a, b, c, d = axs
 
-    def fam_legend(ax, values, colors, title, fmt, marker, loc="upper left"):
-        handles = [Line2D([], [], color=colors[v], linewidth=2.0, marker=marker,
-                          markersize=4.6, markerfacecolor="white") for v in values]
+    def fam_legend(ax, values, styles, title, fmt, loc="upper left"):
+        handles = [Line2D([], [], linewidth=2.0, markersize=4.6,
+                          markerfacecolor="white", **styles[v]) for v in values]
         ax.legend(handles, [fmt(v) for v in values], title=title, loc=loc,
-                  fontsize=7.6, title_fontsize=7.8, handlelength=1.9,
-                  borderpad=0.4, labelspacing=0.30)
+                  fontsize=6.9, title_fontsize=7.0, handlelength=1.9,
+                  borderpad=0.32, labelspacing=0.26, ncol=3,
+                  columnspacing=0.9, framealpha=0.94)
 
     for v in n0:
         sub = sorted(series(rows, parameter="n0", value_SI=v), key=lambda r: r["K"])
-        a.semilogy(col(sub, "K"), col(sub, "FWHM_MHz"), color=cn0[v], linewidth=1.9,
-                   marker="o", markersize=4.3, markerfacecolor="white", markevery=2)
+        a.semilogy(col(sub, "K"), col(sub, "FWHM_MHz"), **family(st_n0[v], 1.9, 4.3, 2))
     a.set_xlabel(r"normalised wavenumber  $k_x d$")
     a.set_ylabel(r"linewidth FWHM (MHz)")
     logify(a, "y")
+    a.set_ylim(6.0e-4, 1.7e-2)   # headroom for the in-axes family legend
     S.style_axes(a)
-    fam_legend(a, n0, cn0, r"carrier density $n_0$ ($10^{18}$ m$^{-3}$)",
-               lambda v: machine_label(v, 18), "o")
+    fam_legend(a, n0, st_n0, r"carrier density $n_0$ ($10^{18}$ m$^{-3}$)",
+               lambda v: machine_label(v, 18))
 
     for v in n0:
         sub = sorted(series(rows, parameter="n0", value_SI=v), key=lambda r: r["K"])
-        b.semilogy(col(sub, "K"), col(sub, "attenuation_dB_per_mm"), color=cn0[v],
-                   linewidth=1.9, marker="s", markersize=4.3,
-                   markerfacecolor="white", markevery=2)
+        b.semilogy(col(sub, "K"), col(sub, "attenuation_dB_per_mm"),
+                   **family(st_n0[v], 1.9, 4.3, 2))
     b.set_xlabel(r"normalised wavenumber  $k_x d$")
     b.set_ylabel(r"attenuation (dB mm$^{-1}$)")
     logify(b, "y")
@@ -269,28 +279,26 @@ def fig02():
     # reflectance (round-11 defect D1).
     for v in n0:
         sub = sorted(series(rows, parameter="n0", value_SI=v), key=lambda r: r["K"])
-        c.plot(col(sub, "K"), [100 * x for x in col(sub, "R_B_2um")], color=cn0[v],
-               linewidth=1.7, marker="D", markersize=3.4, markerfacecolor="white",
-               markeredgewidth=0.9, markevery=3)
+        c.plot(col(sub, "K"), [100 * x for x in col(sub, "R_B_2um")],
+               **family(st_n0[v], 1.7, 3.4, 3))
     c.set_xlabel(r"normalised wavenumber  $k_x d$")
     c.set_ylabel(r"$R_B$ at $L=2\,\mu$m (%)")
     c.set_ylim(-4, 92)
     S.style_axes(c)
     note(c, "backward modal share at $L=2\\,\\mu$m:" "\n"
-            r"all five $n_0$ levels lie on this curve" "\n"
-            r"($|\Delta R_B|/R_B<0.2\%$, see caption)", loc=(0.045, 0.94),
+            r"all five $n_0$ levels lie on this curve," "\n"
+            r"because $n_0$ and $\mu$ enter only as $n_0\mu$", loc=(0.045, 0.94),
          fontsize=6.9)
     for v in mu:
         sub = sorted(series(rows, parameter="mobility", value_SI=v), key=lambda r: r["K"])
-        d.semilogy(col(sub, "K"), col(sub, "FWHM_MHz"), color=cmu[v], linewidth=1.9,
-                   marker="^", markersize=4.3, markerfacecolor="white", markevery=2)
+        d.semilogy(col(sub, "K"), col(sub, "FWHM_MHz"), **family(st_mu[v], 1.9, 4.3, 2))
     d.set_xlabel(r"normalised wavenumber  $k_x d$")
     d.set_ylabel(r"linewidth FWHM (MHz)")
-    d.set_ylim(7e-4, 2.2e-2)
+    d.set_ylim(7e-4, 4.4e-2)   # headroom for the in-axes family legend
     logify(d, "y")
     S.style_axes(d)
-    fam_legend(d, mu, cmu, r"mobility $\mu$ ($10^{-3}$ m$^2$V$^{-1}$s$^{-1}$)",
-               lambda v: f"{v*1e3:.1f}", "^", loc="upper left")
+    fam_legend(d, mu, st_mu, r"mobility $\mu$ ($10^{-3}$ m$^2$V$^{-1}$s$^{-1}$)",
+               lambda v: f"{v*1e3:.1f}", loc="upper left")
 
     h_legend(fig, axs, y=0.998)
     return finish(fig, "fig02_material")
@@ -303,21 +311,25 @@ def fig03():
     rows = load("fig03_geometry_sweep.csv")
     ds = sorted({r["value_SI"] for r in rows if r["parameter"] == "d"})
     ells = sorted({r["value_SI"] for r in rows if r["parameter"] == "ell"})
-    cd, ce = S.ramp(S.RAMP_D, ds), S.ramp(S.RAMP_ELL, ells)
+    st_d, st_e = S.ramp_styles(S.RAMP_D, ds), S.ramp_styles(S.RAMP_ELL, ells)
+    cd = {v: st_d[v]["color"] for v in ds}
+    ce = {v: st_e[v]["color"] for v in ells}
     fig, axs = panel_axes()
     a, b, c, d = axs
 
     for v in ds:
         sub = sorted(series(rows, parameter="d", value_SI=v), key=lambda r: r["K"])
         base = abs(v - 200e-9) < 1e-12
-        a.plot(col(sub, "K"), col(sub, "frequency_GHz"), color=cd[v],
-               linewidth=2.7 if base else 1.8, marker="o", markersize=4.4,
-               markerfacecolor="white", markevery=3, zorder=6 if base else 3)
+        a.plot(col(sub, "K"), col(sub, "frequency_GHz"),
+               **dict(st_d[v], linewidth=2.7 if base else 1.8, markersize=4.4,
+                      markerfacecolor="white", markeredgewidth=1.0,
+                      markevery=3, zorder=6 if base else 3))
     a.set_xlabel(r"normalised wavenumber  $k_x d$")
     a.set_ylabel(r"frequency  $f$ (GHz)")
     S.style_axes(a)
-    a.set_ylim(9.0, 30.6)
-    a.legend([Line2D([], [], color=cd[v], linewidth=2.7 if abs(v - 200e-9) < 1e-12 else 1.8)
+    a.set_ylim(9.0, 34.0)   # headroom for the five-value legend
+    a.legend([Line2D([], [], linewidth=2.7 if abs(v - 200e-9) < 1e-12 else 1.8,
+                     markersize=4.4, markerfacecolor="white", **st_d[v])
               for v in ds], [r"$d$ = " + f"{v*1e9:.0f} nm" for v in ds],
              fontsize=7.4, loc="upper right", bbox_to_anchor=(0.995, 0.885),
              handlelength=1.8, ncol=2, columnspacing=1.0,
@@ -326,13 +338,16 @@ def fig03():
     for v in ells:
         sub = sorted(series(rows, parameter="ell", value_SI=v), key=lambda r: r["K"])
         base = abs(v - 50e-9) < 1e-12
-        b.plot(col(sub, "K"), col(sub, "frequency_GHz"), color=ce[v],
-               linewidth=2.7 if base else 1.8, marker="s", markersize=4.4,
-               markerfacecolor="white", markevery=3, zorder=6 if base else 3)
+        b.plot(col(sub, "K"), col(sub, "frequency_GHz"),
+               **dict(st_e[v], linewidth=2.7 if base else 1.8, markersize=4.4,
+                      markerfacecolor="white", markeredgewidth=1.0,
+                      markevery=3, zorder=6 if base else 3))
     b.set_xlabel(r"normalised wavenumber  $k_x d$")
     b.set_ylabel(r"frequency  $f$ (GHz)")
+    b.set_ylim(15.7, 19.9)   # headroom for the five-value legend
     S.style_axes(b)
-    b.legend([Line2D([], [], color=ce[v], linewidth=2.7 if abs(v - 50e-9) < 1e-12 else 1.8)
+    b.legend([Line2D([], [], linewidth=2.7 if abs(v - 50e-9) < 1e-12 else 1.8,
+                     markersize=4.4, markerfacecolor="white", **st_e[v])
               for v in ells], [r"$\ell$ = " + f"{v*1e9:.0f} nm" for v in ells],
              fontsize=7.4, loc="upper left", handlelength=1.8, ncol=2,
              columnspacing=1.0, borderpad=0.4, labelspacing=0.3)
@@ -365,9 +380,9 @@ def fig03():
         d.plot(col(sub, "K"),
                [100 * (r["frequency_GHz"] - ref_ell[round(r["K"], 6)])
                 / ref_ell[round(r["K"], 6)] for r in sub],
-               color=ce[v], linewidth=2.7 if abs(v - 50e-9) < 1e-12 else 1.8,
-               marker="^", markersize=4.2, markerfacecolor="white",
-               markevery=3, zorder=6 if abs(v - 50e-9) < 1e-12 else 3)
+               **dict(st_e[v], linewidth=2.7 if abs(v - 50e-9) < 1e-12 else 1.8,
+                      markersize=4.2, markerfacecolor="white", markeredgewidth=1.0,
+                      markevery=3, zorder=6 if abs(v - 50e-9) < 1e-12 else 3))
     d.axhline(0, color="#202A44", linewidth=1.0)
     d.set_xlabel(r"normalised wavenumber  $k_x d$")
     d.set_ylabel(r"$\Delta f/f_0$ (%)")

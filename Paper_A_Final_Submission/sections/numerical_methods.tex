@@ -1,4 +1,4 @@
-\section{Solution method}
+\section{Solution of the problem}
 \label{sec:numerics}
 
 The edge problem of \cref{sec:governing_bc} is solved at fixed frequency: the
@@ -44,7 +44,44 @@ rows of the discretised operator.  The basis is integrated with
 $\max(64,2n+10)$ Gauss--Legendre points, which resolves the mass and stiffness
 matrices to machine precision for every degree used here.
 
-The semi-discrete system is assembled as a polynomial of degree four in the
+The expansion \eqref{eq:basis} is inserted in the weak form of the reduced
+problem.  Multiplying the momentum balance, Gauss's law and the carrier
+continuity by test functions $\Psi_p(\zeta)$ of the same space, integrating over
+the thickness and integrating by parts in $z$ once for the stress and twice for
+the hyperstress gives
+\begin{equation}
+\label{eq:weak_form}
+\int_{-1}^{1}\Bigl[
+\widehat\sigma_{ij}\,\widehat\varepsilon^{*}_{ij}(\Psi)
++\widehat\tau_{ijk}\,\widehat\eta^{*}_{ijk}(\Psi)
+-\widehat D_i\,\widehat E_i^{*}(\Psi)
++\widetilde\mu\,N^{*}(\Psi)
+\Bigr]\dd\zeta
+=\omega^{2}\!\int_{-1}^{1}\rho\,\widehat u_i\,\Psi_i^{*}\,\dd\zeta ,
+\end{equation}
+in which $N^{*}$ and the starred quantities are those built from the test
+functions by
+\eqref{eq:strain_amplitudes}--\eqref{eq:eta_amplitudes}, and the surface terms
+of the integration by parts are exactly the natural conditions
+\eqref{eq:bc_faces_mech}--\eqref{eq:bc_faces_carrier}: they vanish because the
+faces are traction-free and double-traction-free and because the contacts block
+the carriers, while the two electrical cases enter as the essential and natural
+conditions already built into the basis.  Written in the inner product
+$\langle\vect a,\vect b\rangle_{\mathsf C}=\int_{-1}^{1}\vect a^{*\mathsf
+T}\mathsf C\,\vect b\,\dd\zeta$ of the elastic moduli, \eqref{eq:weak_form}
+produces the five contributions of the enthalpy one by one: the elastic term
+$\langle\mathsf B_r,\mathsf B_s\rangle_{\mathsf C}$, the gradient term
+$\lambda^{2}\langle\partial_\zeta^{l}\mathsf B_r,
+\partial_\zeta^{l}\mathsf B_s\rangle_{\mathsf C}$ with $\lambda^{2}$ the
+dimensionless gradient modulus, the piezoelectric cross terms in which
+$\mathsf G_r$ multiplies $\mathsf B_s$ and $\mathsf B_r$ multiplies
+$\mathsf G_s$, the dielectric term $\langle\mathsf G_r,\mathsf G_s\rangle_
+{\boldsymbol\kappa}$, the flexoelectric term in which $\mathsf G_r$ and
+$\partial_\zeta\mathsf B_s$ meet, the carrier term
+$(\alpha/\omega)\langle\mathsf M\mathsf G_r,\mathsf M\mathsf G_s\rangle$ and the
+inertial term $\omega^{2}\langle\mathsf U,\mathsf U\rangle$.  Each block carries
+one power of $k_x$ from the test side and one from the trial side, so the
+semi-discrete system is assembled as a polynomial of degree four in the
 propagation wavenumber $k_x$,
 \begin{equation}
 \label{eq:polynomial}
@@ -52,9 +89,12 @@ propagation wavenumber $k_x$,
 \mathsf{A}_{rs}(\omega,k_y)\Bigr]\vect{q}=0 ,
 \end{equation}
 where $\vect{q}$ collects all thickness degrees of freedom and the matrices
-$\mathsf{A}_{rs}$ contain the six blocks of \cref{tab:conjugates}.  That degree
-is the order of the hyperelastic operator; the classical limit $\ell=0$ returns
-the familiar quadratic problem.
+$\mathsf{A}_{rs}$ contain the six blocks of \cref{tab:conjugates}; expanded
+power by power, \eqref{eq:polynomial} is \eqref{eq:quartic} of
+\cref{sec:governing_reduction}.  That degree is the order of the hyperelastic
+operator and not of the interpolation: the classical limit $\ell=0$ returns the
+familiar quadratic problem, and it does so identically, with
+$\mathsf A_{22}=\mathsf A_{12}=0$.
 
 \subsection{Temporal and spatial routes}
 \label{sec:numerics_routes}
@@ -198,7 +238,9 @@ below $10^{-8}$ in the normalised measure reported in
 \end{enumerate}
 
 The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which
-verifies the symmetry of the discretised bilinear form including the $H$ term.
-The regression of these checks, and the further tests that guard the
-identification of the modes and the plane at which a share is quoted, are run as an automated suite and are described in \cref{app:checks} and
-\cref{app:repro}.
+verifies the symmetry of the discretised bilinear form including the added
+coupling.  The five comparisons above are the independent evidence for the
+implementation; the practical resolution at which they are carried out, the
+convergence of the reported quantities with degree and quadrature, and the
+conservation residual are stated in \cref{app:repro}, and the full computational
+record is given in the supplementary document that accompanies the article.

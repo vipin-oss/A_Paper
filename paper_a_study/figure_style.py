@@ -164,11 +164,24 @@ def h_legend(fig, axes, *, ncol: int = 5, y: float = 0.998, title: str | None = 
 # --------------------------------------------------------------------------
 # 2. Ordered sequential ramps for the other parameter families
 # --------------------------------------------------------------------------
-RAMP_N0 = ["#C7A6DE", "#AB7DC9", "#8D55AE", "#6A388C", "#46206A"]        # carrier density
-RAMP_MU = ["#D8C673", "#BEA94B", "#9A8A2F", "#76691C", "#4C4410"]        # mobility
-RAMP_D = ["#9CBBD7", "#79A0C5", "#5785B0", "#386A97", "#1C4C76"]         # thickness
-RAMP_ELL = ["#EFA3C9", "#DE7AAC", "#C85490", "#A83972", "#83235A"]       # gradient length
-RAMP_KY = ["#8FB588", "#6B9A66", "#4C7B4C", "#2F5C34", "#16381E"]        # ky slices
+# Round 14: each family is a *different hue*, not five shades of one hue, so a
+# reader can name the curve without consulting the legend, and every family is
+# separated from the H/H* triple (teal, blue, ink, gold, crimson) used for the
+# coupling.  Within a family the lightness step is large enough to survive
+# greyscale printing together with the dash and marker cycles below.
+# No step is a pastel: the lightest member of each family is a mid tone, so no
+# curve washes out against the white page at journal column width.
+RAMP_N0 = ["#8FB3DA", "#5E92C8", "#3773AE", "#1F5590", "#10325E"]        # carrier density  blue
+RAMP_MU = ["#8CC26A", "#5FA344", "#3F7F33", "#2A5C24", "#16381A"]        # mobility         green
+RAMP_D = ["#F0B366", "#DE9440", "#C0731F", "#94540F", "#5E3407"]         # thickness        orange
+RAMP_ELL = ["#CDB6E6", "#A87FD0", "#7F53B3", "#5A318C", "#371C60"]       # gradient length  purple
+RAMP_KY = ["#A8B4BE", "#828E99", "#5F6B75", "#3F4A53", "#242C33"]        # ky slices        neutral
+
+# One dash pattern and one marker per position in a five-value family, applied
+# by ramp_styles() so that two curves can never differ in colour alone.
+RAMP_DASH = ["-", (0, (6.0, 1.8)), (0, (1.4, 1.3)), (0, (7.0, 1.8, 1.4, 1.8)),
+             (0, (3.0, 1.3))]
+RAMP_MARK = ["o", "s", "^", "D", "v"]
 
 CMAP_SEQUENTIAL = LinearSegmentedColormap.from_list(
     "paper_a_seq", ["#F4F7FA", "#BBD2E4", "#6E9DC4", "#2F6BA0", "#12385E"])
@@ -182,6 +195,22 @@ def ramp(colors, values) -> dict:
     if len(values) != len(colors):
         raise ValueError(f"ramp needs {len(values)} colours, got {len(colors)}")
     return dict(zip(values, colors))
+
+
+def ramp_styles(colors, values) -> dict:
+    """Ordered ``value -> plot kwargs`` for a parameter family.
+
+    Colour alone is not a distinction: every family member also carries its own
+    dash pattern and marker, so five curves of one family stay separable in
+    greyscale and for colour-blind readers (round-14 figure redesign).
+    """
+    values = sorted(float(v) for v in values)
+    if len(values) != len(colors):
+        raise ValueError(f"ramp_styles needs {len(values)} colours, got {len(colors)}")
+    if len(values) > len(RAMP_DASH):
+        raise ValueError("ramp_styles covers at most five family members")
+    return {v: dict(color=c, linestyle=RAMP_DASH[i], marker=RAMP_MARK[i])
+            for i, (v, c) in enumerate(zip(values, colors))}
 
 
 # Fixed label formatting so every panel in the set uses the same precision.
