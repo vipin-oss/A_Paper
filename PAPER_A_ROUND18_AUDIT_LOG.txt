@@ -1,0 +1,128 @@
+Paper A -- round 18 independent mathematical audit
+========================================================================
+
+1. Dimensionless groups from the material file
+  [ok ] c_s [m/s]: max|err| = 2.864e-07 (tol 1e-08 x 2.75e+03) 
+  [ok ] frequency unit c_s/(2 pi d) [GHz]: max|err| = 2.001e-07 (tol 1e-06 x 2.19) 
+       T implied by Einstein = 301.7175 K
+  [ok ] a = k_B T / n0: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+  [ok ] L_D [m]: max|err| = 3.970e-14 (tol 1e-06 x 1) 
+  [ok ] Q = d/L_D: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+  [ok ] alpha_d = D/(d c_s): max|err| = 0.000e+00 (tol 1e-12 x 1) 
+       d/L_D = 0.074635;  L_D/d = 13.3986   <-- the manuscript must quote these the right way round
+  [ok ] lambda = ell/d: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+  [ok ] flexoelectric group f: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+       H_ref = d sqrt(a c44) = 1.892741e-21 J m
+       c* = 154.38 GPa
+       H_bound = ell sqrt(a c*) = 8.965976e-22 J m;  H* = 4.009706e-22
+  [ok ] h at |H| = 2.0e-23: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+       h = 1.056669e-02;  Schur number = 4.976e-04
+
+2. Basis, mass and stiffness on the implemented half interval
+   b_j(s) = sqrt(2j+1) P_j(2s), s = z/d in [-1/2, 1/2], measure ds
+   p = 4 (N = 5):
+  [ok ] mass matrix = identity (independent rule): max|err| = 8.216e-14 (tol 1e-12 x 1) 
+  [ok ] mass: model agrees with independent rule: max|err| = 8.948e-14 (tol 1e-10 x 1) 
+  [ok ] stiffness: model agrees with independent rule: max|err| = 3.502e-11 (tol 1e-09 x 360) 
+  [ok ] stiffness diagonal = 2j(j+1)(2j+1): max|err| = 3.809e-12 (tol 1e-10 x 360) 
+       largest off-diagonal stiffness entry = 80.4984; parity-violating entries (i+j odd) = 2.21e-15
+   p = 5 (N = 6):
+  [ok ] mass matrix = identity (independent rule): max|err| = 1.066e-13 (tol 1e-12 x 1) 
+  [ok ] mass: model agrees with independent rule: max|err| = 1.139e-13 (tol 1e-10 x 1) 
+  [ok ] stiffness: model agrees with independent rule: max|err| = 1.017e-10 (tol 1e-09 x 660) 
+  [ok ] stiffness diagonal = 2j(j+1)(2j+1): max|err| = 1.035e-11 (tol 1e-10 x 660) 
+       largest off-diagonal stiffness entry = 210.5991; parity-violating entries (i+j odd) = 2.21e-15
+   p = 6 (N = 7):
+  [ok ] mass matrix = identity (independent rule): max|err| = 1.341e-13 (tol 1e-12 x 1) 
+  [ok ] mass: model agrees with independent rule: max|err| = 1.422e-13 (tol 1e-10 x 1) 
+  [ok ] stiffness: model agrees with independent rule: max|err| = 2.442e-10 (tol 1e-09 x 1.09e+03) 
+  [ok ] stiffness diagonal = 2j(j+1)(2j+1): max|err| = 2.183e-11 (tol 1e-10 x 1.09e+03) 
+       largest off-diagonal stiffness entry = 432.6662; parity-violating entries (i+j odd) = 4.63e-15
+
+3. Grounded potential space and the two charge-matrix orientations
+   n_phi = 3 for grounded faces at p = 4 (N = 5, n_phi = N-2)
+  [ok ] psi_j(+/-1/2) = 0: max|err| = 8.882e-16 (tol 1e-14 x 1) 
+  [ok ] (phi_i,b_j) = delta_ij - r_i delta_{j,i+2}: max|err| = 1.144e-14 (tol 1e-12 x 1) 
+  [ok ] model charge matrix = same orientation: max|err| = 1.210e-14 (tol 1e-11 x 1) 
+       the transposed-index formula -r_j delta_{i,j+2} differs from the assembled matrix by 0.2981
+       assembled (phi_i, b_j) entries at j = i+2: -0.033378
+       transpose (b_i, phi_j) entries are the same numbers at (j, j+2)
+  [ok ] Q r_0 = Q/sqrt5: max|err| = 0.000e+00 (tol 1e-12 x 1) 
+  [ok ] Q from the model: max|err| = 2.428e-10 (tol 1e-08 x 1) 
+
+4. Transport and coupling entries of the assembled operator at p = 4
+   n_w = 23, n_u = 15, n_phi = 3, n_mu = 5
+   k_y^2 = 0.016848, k_x^2 = 0.541990, k_x^2 + k_y^2 = 0.558838
+  [ok ] A00 transport diag = -(alpha/omega)(ky^2 + S_jj): max|err| = 4.337e-19 (tol 1e-10 x 18.2) 
+  [ok ] A00 mass diag = -1: max|err| = 6.772e-15 (tol 1e-12 x 1) 
+  [ok ] A11 transport diag = -(alpha/omega) (mass): max|err| = 7.355e-16 (tol 1e-10 x 1) 
+   assembled A00 values: -i0.001828, -i1.303939, -i6.512380, -i18.231375, -i39.065142
+   assembled A11 value:  -i0.108509 (times k_x^2 = 0.541990)  (so the polynomial carries -(alpha/omega)(kx^2+ky^2+S))
+  [ok ] polynomial transport diag = (alpha/omega)(kk + S_jj): max|err| = 3.553e-15 (tol 1e-10 x 18.3) 
+   round-17 printed: -i0.00180, -i1.304, -i6.512, -i18.23 for A00
+   with the printed formula (kx^2+ky^2) inside the bracket, which belongs to A11+A00, the first value would have been -i0.0607
+  [ok ] A00 phimu = -Q (phi_i,b_j): max|err| = 8.743e-16 (tol 1e-11 x 1) 
+  [ok ] A00 muphi = A00 phimu^T: max|err| = 2.776e-17 (tol 1e-12 x 1) 
+   A00[phi_i, mu_(i+2)] = +0.033378+0.000000j
+   A00[mu_i, phi_(i+2)] = +0.000000+0.000000j
+   lambda^2 c33/c44 S_jj for j = 0..4: 0, 3.85, 19.3, 54, 116
+   j=1 entry = 3.8547; largest diagonal = 115.6395 at j = 4
+
+5. Carrier--strain-gradient coupling rows of eq:H_entry
+   u3-phi block at degree five (N = 6), row norms of int b_i'' psi_j: 0.0000, 0.0000, 26.8328, 91.6515, 191.2485, 336.1428
+  [ok ] row norms 0,0,26.83,91.65,191.25,336.14: max|err| = 2.941e-05 (tol 1e-05 x 336) 
+   matrix (rows i, columns j):
+         0.000     0.000     0.000     0.000
+         0.000     0.000     0.000     0.000
+        26.833    -0.000    -0.000    -0.000
+         0.000    91.652     0.000    -0.000
+        36.000     0.000   187.830     0.000
+        -0.000   114.891    -0.000   315.899
+   upper-triangular defect: max|entries below the diagonal| = 315.9 (the matrix is lower triangular)
+   nonzero entries: [(2, 0, 26.83281572999724), (3, 1, 91.65151389911586), (4, 0, 35.99999999999951), (4, 2, 187.82971010998), (5, 1, 114.89125293075847), (5, 3, 315.8987179461118)]
+   u3-mu block at degree six (N = 7): row norms 0.00, 0.00, 26.83, 91.65, 222.89, 450.87, 809.44; largest entry 580.5
+   the two physical couplings are h times the entry of the u3-mu block, max|int b_i'' b_j| = 321.7, and f times the entry of the u3-phi block, max|int b_i'' psi_j| = 315.9
+   at |H| = 2e-23 (h = 1.056669e-02) the u3-mu entry is 3.399, the u3-phi entry 0.810, against omega^2 = 58.27
+
+6. Unknown counts, grounded and open circuit
+   p =  4: N =  5, grounded n_w =  23 (5p+3 = 23), open n_w =  24 (5p+4 = 24)
+   p =  5: N =  6, grounded n_w =  28 (5p+3 = 28), open n_w =  29 (5p+4 = 29)
+   p = 18: N = 19, grounded n_w =  93 (5p+3 = 93), open n_w =  94 (5p+4 = 94)
+   p = 22: N = 23, grounded n_w = 113 (5p+3 = 113), open n_w = 114 (5p+4 = 114)
+   p = 30: N = 31, grounded n_w = 153 (5p+3 = 153), open n_w = 154 (5p+4 = 154)
+   state-operator size 4 n_w x 4 n_w = 76 x 76 (4 x 23)
+   boundary vector length = 38 vs n_w = 23 (rows = 2 n_u + n_phi + n_mu = 38)
+
+7. End-to-end evaluation of the reported share
+   P_edge = -0.0231505, P(-L) = -0.0231481, P_inc(-L) = 1.0001081
+  [ok ] R_B: max|err| = 4.167e-15 (tol 1e-12 x 1) 
+  [ok ] exp(2 Im k_B L): max|err| = 6.426e-09 (tol 1e-06 x 1) 
+
+8. Edge system row/column counts
+   p = 4: R is 38 x 23; square only when ell = 0
+   p = 18: R is 150 x 93; square only when ell = 0
+   ell = 0: R is 23 x 23 (square)
+
+9. Constitutive component relations against the assembled fields
+   (scaled units of the solver: sigma/c44, e/sqrt(c44 kappa33), kappa/kappa33,
+    dimensionless strains, wavenumbers and z derivatives)
+  [ok ] sigma_xz = 2 c44 eps_xz - e15 E_x: max|err| = 7.105e-15 (tol 1e-12 x 33.3) 
+  [ok ] sigma_yz = 2 c44 eps_yz - e15 E_y: max|err| = 3.997e-15 (tol 1e-12 x 23.8) 
+  [ok ] sigma_xy = 2 c66 eps_xy: max|err| = 9.992e-16 (tol 1e-12 x 4.86) 
+  [ok ] sigma_zz = c13(eps_xx+eps_yy) + c33 eps_zz - e33 E_z: max|err| = 2.274e-13 (tol 1e-12 x 922) 
+  [ok ] sigma_xx = c11 eps_xx + c12 eps_yy + c13 eps_zz - e31 E_z: max|err| = 5.684e-14 (tol 1e-12 x 462) 
+  [ok ] D_x = kappa11 E_x + 2 e15 eps_xz: max|err| = 2.665e-15 (tol 1e-12 x 8.17) 
+  [ok ] D_y = kappa11 E_y + 2 e15 eps_yz: max|err| = 8.882e-16 (tol 1e-12 x 5.85) 
+  [ok ] D_z = kappa33 E_z + e31(eps_xx+eps_yy) + e33 eps_zz + f u3'': max|err| = 2.842e-14 (tol 1e-12 x 116) 
+   the elastic shears carry the factor 2 of the tensor-to-Voigt conversion; the
+   electric terms carry the sign of E = -grad(phi), so '+2 e15 eps_xz' and
+   '- e15 E_x' are the same statement with E = -grad(phi)
+   tau_zzz is not returned by fields(); its f and h terms are therefore verified
+   by source inspection and exercised by the edge/dissipation checks, not here
+
+========================================================================
+RESULT: all independent checks agree
+                                                                                                                                                                             by source inspection and exercised by the edge/dissipation checks, not here
+
+========================================================================
+RESULT: all independent checks agree

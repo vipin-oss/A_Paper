@@ -29,8 +29,18 @@ as an identity, not as agreement.
 | gradient group | `λ = ℓ/d` | 50 nm / 200 nm | **0.25** |
 | coupling group | `h = H/(d√(a c₄₄))` | `d√(a c₄₄)` = 1.8927×10⁻²¹ J m | `h = H/1.8927×10⁻²¹` |
 
-**Interpretations attached in the text:** `d/L_D = 1/Q = 13.4`, so the plate is
-fourteen Debye lengths thick and the carrier perturbation is not a surface layer;
+**Interpretations attached in the text:** `d/L_D = Q = 0.0746`, so the plate is
+7.5 % of a Debye length thick (`L_D/d = 1/Q = 13.4`) and the carrier perturbation
+is not a surface layer;
+
+> *Erratum, round 18.* The two lines above were printed in round 17 as
+> "`d/L_D = 1/Q = 13.4`, so the plate is fourteen Debye lengths thick", which
+> inverts the ratio and contradicts itself.  `Q = d/L_D = 0.074635` and
+> `L_D/d = 1/Q = 13.3986`; the plate is thinner than one Debye length by a factor
+> 13.4.  The manuscript sentence was corrected in round 18; see
+> `PAPER_A_ROUND18_MATHEMATICAL_REPAIR.md` §F.  Nothing else in this report is
+> affected.
+
 `Q² = 5.57×10⁻³` multiplies the potential–potential block; `d²/D = 8.8×10⁻⁸ s`
 against `2d/c_s = 1.5×10⁻⁷ s`, so carrier and elastic time scales are *not*
 separated — the reason the carrier cannot be condensed out of the eigenproblem;

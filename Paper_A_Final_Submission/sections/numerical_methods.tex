@@ -132,9 +132,9 @@ enthalpy positive definite --- and with $\mathsf U$ the displacement basis, ever
 -\omega^{2}\bigl\langle\mathsf U_r,\mathsf U\bigr\rangle\delta_{r0}\delta_{s0},
 \end{aligned}
 \end{equation}
-in the inner product $\langle\vect a,\vect b\rangle=\int_{-1}^{1}
-\vect a^{*\mathsf T}\vect b\,\dd\zeta$ of the complex conjugate of the test
-factor, and with the eight terms, in order, the elastic, strain-gradient,
+in the inner product $\langle\vect a,\vect b\rangle=\int_{-1/2}^{1/2}
+\vect a^{*\mathsf T}\vect b\,\dd s$ over the half-interval coordinate
+\eqref{eq:app_measures}, with the complex conjugate of the test factor, and with the eight terms, in order, the elastic, strain-gradient,
 piezoelectric (two cross terms), dielectric, flexoelectric, carrier-transport,
 carrier-compressibility-and-coupling, and inertial contributions.  The first,
 second, third, fifth and sixth lines of \eqref{eq:block} are the discretisation of
@@ -165,9 +165,12 @@ where $\vect{q}$ collects all thickness degrees of freedom and the matrices
 $\mathsf{A}_{rs}$ contain the six blocks of \eqref{eq:sector_blocks}; expanded
 power by power, \eqref{eq:polynomial} is \eqref{eq:quartic} of
 \cref{sec:governing_reduction}.  That degree is the order of the hyperelastic
-operator and not of the interpolation: the classical limit $\ell=0$ returns the
-familiar quadratic problem, and it does so identically, with
-$\mathsf A_{22}=\mathsf A_{12}=0$.
+operator and not of the interpolation: the three blocks that supply the cubic and
+quartic terms, $\mathsf A_{12}$, $\mathsf A_{21}$ and $\mathsf A_{22}$, are
+each proportional to $\ell^{2}$ and vanish identically at $\ell=0$, leaving the
+classical quadratic problem
+$\mathsf A=\mathsf A_{00}+k_x\mathsf A_{01}+k_x^{2}\mathsf A_{11}$; the two
+blocks $\mathsf A_{02}$ and $\mathsf A_{20}$ vanish for every $\ell$.
 
 The blocks also carry the Hermitian structure one expects of an elastic problem
 with loss confined to the carriers: $\mathsf A_{12}=\mathsf A_{21}^{\mathsf H}$,
@@ -179,18 +182,21 @@ carrier-transport form of \eqref{eq:block}, which is the only non-Hermitian
 contribution in the construction.
 
 The sizes and the scaling are worth recording, because they decide how the
-algebraic problem is solved.  With $n$ basis functions per mechanical component,
-$n$ for the potential and $n$ for the carrier, the number of unknowns per
-thickness element is
+algebraic problem is solved.  With $n$ the polynomial degree, each field is
+expanded in $N=n+1$ basis functions \eqref{eq:app_basis}, so the three
+displacement components contribute $n_{\mathrm u}=3N$, the potential
+$n_\varphi=N-2$ on grounded faces ($N-1$ on open-circuit faces \eqref{eq:app_pot})
+and the carrier $n_\mu=N$; the number of unknowns per thickness element is
 \begin{equation}
 \label{eq:nw}
-n_{\mathrm{w}}=5n+3 ,
+n_{\mathrm{w}}=3N+n_\varphi+n_\mu=5n+3\ (\text{grounded}),\qquad
+5n+4\ (\text{open circuit}),
 \end{equation}
-so $n_{\mathrm{w}}=93$ at the degree used for the reported results and
-$n_{\mathrm{w}}=153$ at the highest degree examined; the polynomial
-\eqref{eq:polynomial} has degree $4n_{\mathrm{w}}$ in $k_x$, i.e.\ $372$ at
-$n_{\mathrm{w}}=93$, of which the $2n_{\mathrm{w}}$ roots with negative imaginary part are
-the ones that decay into the plate.  The Frobenius norms of the blocks at degree
+so $n_{\mathrm{w}}=113$ at the degree $n=22$ used for the reported results,
+$93$ at $n=18$ and $153$ at the highest degree examined, $n=30$.  The polynomial
+\eqref{eq:polynomial} has degree $4n_{\mathrm{w}}$ in $k_x$, i.e.\ $452$ at
+$n_{\mathrm{w}}=113$, of which the $2n_{\mathrm{w}}$ roots with negative
+imaginary part are the ones that decay into the plate.  The Frobenius norms of the blocks at degree
 four and zero coupling are
 \begin{equation}
 \label{eq:block_norms}
@@ -203,7 +209,7 @@ four and zero coupling are
 spanning four and a half decades.  The spread is not an artefact: it is the
 $\lambda^2c_{33}/c_{44}=0.32$ of the gradient term against the $O(10^{2})$ of
 the elastic term, multiplied by the $2j(j+1)(2j+1)$ growth of the stiffness
-matrix \eqref{eq:app_S_scaled} with the mode number.  Every block is therefore
+matrix \eqref{eq:app_S} with the mode number.  Every block is therefore
 equilibrated row by row before the eigenvalue problem is formed, and the
 conditioning quoted below is that of the equilibrated problem.
 

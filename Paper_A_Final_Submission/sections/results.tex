@@ -706,21 +706,29 @@ the out-of-plane displacement to the carrier, whose entries are
 \begin{equation}
 \label{eq:H_entry}
 \bigl(\mathsf A_{u\mu}\bigr)_{ij}
-=h\int_{-1}^{1}b_i''(\zeta)\,\psi_j(\zeta)\,\dd\zeta ,
+=h\int_{-1/2}^{1/2}b_i''(s)\,b_j(s)\,\dd s ,
 \end{equation}
-because $\widetilde\mu$ contains $-h\,\partial_\zeta^{2}u_3$ and
-\eqref{eq:mu} is the relation that carries the coupling.  At degree six the
-matrix of \eqref{eq:H_entry} has rows
-$0,\,0,\,26.83,\,91.65,\,187.8,\,315.9$ and is upper-triangular, so the coupling
-grows with the mode number exactly as the second derivative does.  With
-$h=\pm1.06\times10^{-2}$ the largest entry is $3.35$, against an inertia entry
-$\omega^{2}=58.3$ and a compressibility entry of $1$ in the same row: the
-coupling is a few per cent of the diagonal, which is why the flux profiles of the
+because $\widetilde\mu$ contains $-h\,\partial_s^{2}u_3$ and \eqref{eq:mu} is
+the relation that carries the coupling; written in the coordinate $\zeta=2s$ of
+the field equations the same term carries a factor four, $4\partial_\zeta^{2}$,
+and the measure $\dd s=\dd\zeta/2$ is what keeps \eqref{eq:H_entry} free of it.
+Since $b_i''$ has degree $i-2$ and $b_j$ has degree $j$, the matrix of
+\eqref{eq:H_entry} vanishes unless $j\le i-2$: it is lower triangular with two
+bands, not upper triangular, and its row norms
+$0,\,0,\,26.83,\,91.65,\,222.89,\,450.87,\,809.44$ at degree six grow with the
+mode number exactly as the second derivative does, the largest single entry being
+$580.5$ in the last row.  With $h=1.06\times10^{-2}$
+the largest entry of the assembled block is $6.13$, which is $10.5\%$ of the
+inertia scale $\omega^{2}=58.3$ that sets the through-thickness balance of the
+lowest rows, and four and a half orders of magnitude below the largest diagonal
+entry of the same rows, $2.16\times10^{5}$.  That is a statement about the size of the
+coupling, not about a mode: the operator is row-equilibrated before the
+eigenvalue problem is formed, so no entry ratio is a frequency.  What the size
+does predict is what \cref{fig:fig08}(a)--(c) shows: the flux profiles of the
 five levels differ by less than \SI{0.9}{\percent} of the peak value while still
 differing measurably in the partition (\cref{fig:fig07}).  The two statements are
-consistent: a few per cent of the eigenvector redistributes a comparable fraction
-of the power among the outgoing modes, and it changes a normalised profile much
-less.
+consistent: a coupling of this size redistributes a few per cent of the power
+among the outgoing modes, and it changes a normalised profile much less.
 
 The same reading applies to \cref{fig:fig02}(c), where five carrier densities
 collapse onto one curve.  The density enters the carrier sector only through the

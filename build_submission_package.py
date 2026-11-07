@@ -47,6 +47,8 @@ STUDY_FILES = [
     "claim_audit.py",
     "mutation_tests.py",
     "run_all_checks.py",
+    "round18_mathematical_audit.py",
+    "round18_reference_checks.py",
 ]
 
 FIGURE_STEMS = [

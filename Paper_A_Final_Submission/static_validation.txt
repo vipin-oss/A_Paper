@@ -2,7 +2,7 @@ Paper A static validation
 ========================================
 
 files checked: 9
-labels: 154   references: 98
+labels: 161   references: 103
 citation keys used: 13   bib entries: 13
 
 PASS
@@ -20,13 +20,15 @@ Notes:
   - label never referenced: eq:alphad_worked
   - label never referenced: eq:ansatz
   - label never referenced: eq:app_RB
+  - label never referenced: eq:app_S_off
   - label never referenced: eq:app_S_weighted
-  - label never referenced: eq:app_charge
   - label never referenced: eq:app_diel
   - label never referenced: eq:app_edge
+  - label never referenced: eq:app_mass
   - label never referenced: eq:app_w1
-  - label never referenced: eq:app_w2
+  - label never referenced: eq:app_w2_values
   - label never referenced: eq:app_w4
+  - label never referenced: eq:app_w5
   - label never referenced: eq:block_norms
   - label never referenced: eq:carrier_strong
   - label never referenced: eq:cs_worked
@@ -64,6 +66,6 @@ Notes:
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_material
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 20128
+  - approximate prose word count (including math tokens): 20870
 
 No TeX engine was invoked by this script.
