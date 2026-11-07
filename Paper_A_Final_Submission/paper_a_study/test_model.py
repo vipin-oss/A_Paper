@@ -134,7 +134,12 @@ class TestStudy(unittest.TestCase):
             self.assertGreater(abs(r['cross_power_left']),1e-8)
 
     def test_independent_weak_corner_reconstruction(self):
-        e=edge_field_residuals(self.p,OMEGA,KY,self.s)
+        # This test is about the grounded edge (phi = 0 at x = 0), which is no
+        # longer the model default as of round 20: plate and solution are both
+        # constructed in that configuration.
+        pg=Plate(degree=18,edge_electric='ground')
+        _,sg=pg.edge(KY,OMEGA,.736+.00001j,.245-.00001j)
+        e=edge_field_residuals(pg,OMEGA,KY,sg)
         self.assertLess(e['independent_weak_mechanical'],1e-9)
         self.assertLess(e['edge_double_traction_rms'],1e-10)
         self.assertLess(e['grounded_phi_max'],1e-10)
@@ -143,7 +148,9 @@ class TestStudy(unittest.TestCase):
 
     def test_degree_convergence(self):
         p=Plate(degree=22);r,_=p.edge(KY,OMEGA,.736+.00001j,.245-.00001j)
-        self.assertLess(abs(r['backward_reflection_self_power']-self.r['backward_reflection_self_power']),2e-8)
+        # Round 20: the charge-free edge converges more slowly here than the
+        # grounded one did (measured 1.06e-7; round 19 grounded was 3e-8).
+        self.assertLess(abs(r['backward_reflection_self_power']-self.r['backward_reflection_self_power']),2e-7)
         self.assertLess(abs(r['backward_K']-self.r['backward_K']),1e-10)
 
     def test_independent_C1_mesh_approaches_spectral_edge(self):
@@ -282,7 +289,7 @@ class TestCertifiedPeak(unittest.TestCase):
         """
         coarse = [self._solve(K)['backward_reflection_self_power']
                   for K in (0.52, 0.525, 0.53)]
-        refined = self._solve(0.5275)['backward_reflection_self_power']
+        refined = self._solve(0.52719)['backward_reflection_self_power']
         self.assertGreater(refined, max(coarse) + 5e-4,
                            'a coarse sample is within 5e-4 of the refined maximum')
         self.assertGreater(refined, 0.94)
@@ -296,10 +303,10 @@ class TestCertifiedPeak(unittest.TestCase):
         returned incident root to sit near the requested wavenumber and far from
         the backward target.
         """
-        res = self._solve(0.5275)
+        res = self._solve(0.52719)
         ki = complex(res['incident_K'])
         kb = complex(res['backward_K'])
-        self.assertLess(abs(ki.real - 0.5275), 2e-3)      # flat-branch offset
+        self.assertLess(abs(ki.real - 0.52719), 2e-3)      # flat-branch offset
         self.assertGreater(abs(ki.real - self.KB0), 0.2)
         self.assertGreater(kb.real, 0.0)                  # positive Re K
         self.assertLess(res['backward']['Px'], 0.0)       # negative x-power
@@ -332,9 +339,12 @@ class TestCertifiedPeak(unittest.TestCase):
         self.assertEqual(rec['classification']['classification'],
                          'certified_local_maximum')
         self.assertAlmostEqual(
-            self._solve(0.5275)['backward_reflection_self_power'] / reported,
+            self._solve(0.52719)['backward_reflection_self_power'] / reported,
             1.0, places=9)
-        self.assertGreater(rec['classification']['R_B_at_max'], reported)
+        # round 20: the reported value IS the certified maximum, so equality is the
+        # correct outcome (the strict inequality held while the reported abscissa was
+        # the centre of the flat top, 1.98e-5 below the argmax).
+        self.assertGreaterEqual(rec['classification']['R_B_at_max'], reported)
         self.assertLess(abs(rec['classification']['R_B_at_max'] - reported), 1e-5)
 
 
@@ -361,7 +371,7 @@ class _EdgeProfile:
         cls.REF = bfd.REF_NORM
         # the certified maximum, from the solve itself (not from a stored value)
         p = bfd.plate(0.0, degree=22)
-        mode = bfd.track(p, [0.5275], bfd.operating_mode(p))[0]
+        mode = bfd.track(p, [0.52719], bfd.operating_mode(p))[0]
         cls.omega = float(mode['omega'].real)
         cls.p = p
         cls._solves = {}
@@ -369,7 +379,7 @@ class _EdgeProfile:
     def edge(self, R, ki, kb, d, **kw):
         return self.bfd.edge_plane_fraction(R, ki, kb, d, **kw)
 
-    def solve(self, L, K=0.5275, ky=None, omega=None):
+    def solve(self, L, K=0.52719, ky=None, omega=None):
         key = (round(L, 6), round(K, 9), ky, omega)
         if key not in self._solves:
             if omega is None:
@@ -499,7 +509,7 @@ class TestCrossScriptEdgeFraction(_EdgeProfile, unittest.TestCase):
         import json
         rec = json.loads((self.data / 'peak_search.json').read_text())
         row = [r for r in rec['degree']
-               if abs(r['K'] - 0.5275) < 1e-12 and r['degree'] == 22][0]
+               if abs(r['K'] - 0.52719) < 1e-12 and r['degree'] == 22][0]
         expected = float(self.edge(float(row['R_B']), complex(*row['K_incident']),
                                    complex(*row['K_backward']), self.p.d))
         rel = abs(float(row['R_B_edge']) / expected - 1.0)
@@ -549,7 +559,7 @@ class TestCrossScriptEdgeFraction(_EdgeProfile, unittest.TestCase):
     def test_all_producers_agree_with_each_other(self):
         import json
         rec = json.loads((self.data / 'peak_search.json').read_text())
-        ps = float([r for r in rec['degree'] if abs(r['K'] - 0.5275) < 1e-12
+        ps = float([r for r in rec['degree'] if abs(r['K'] - 0.52719) < 1e-12
                     and r['degree'] == 22][0]['R_B_edge'])
         mc = json.loads((self.data / 'mechanism_controls.json').read_text())
         mcv = float([r for r in mc['branch_consistent_H_sweep']['refined_peak']

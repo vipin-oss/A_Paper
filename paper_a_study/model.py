@@ -31,7 +31,7 @@ def tensor_matrix(v):
 class Plate:
     def __init__(self,degree=18,d=200e-9,n0=2e18,mobility=.0175,
                  diffusivity=.000455,ell=50e-9,flexo=1e-9,H=0.,electric='ground',
-                 nquad=0):
+                 nquad=0,edge_electric='insulating'):
         self.degree=degree;self.n=degree+1;self.d=d;self.n0=n0
         self.cs=np.sqrt(SI['c44']/SI['rho']);self.fscale=self.cs/(2*np.pi*d)
         self.a=CONST['q']*diffusivity/(mobility*n0)
@@ -41,6 +41,14 @@ class Plate:
         self.h=H/(d*np.sqrt(self.a*SI['c44']))
         self.H=H;self.flexo_SI=flexo;self.ell_SI=ell
         self.mobility=mobility;self.diffusivity=diffusivity;self.electric=electric
+        # Electrical condition on the *reflecting edge* x=0.  The model of this
+        # article is 'insulating': D_x(0,z) = 0, natural, one row of
+        # boundary_vector on the potential test functions.  'ground' imposes
+        # phi(0,z) = 0, a Dirichlet condition for a metallised edge; it is a
+        # different boundary-value problem, it was the round-19 default, and it is
+        # retained so that the round-19 baseline is reproducible exactly.
+        if edge_electric not in ('ground','insulating'):raise ValueError(edge_electric)
+        self.edge_electric=edge_electric
         c=SI;c0=c['c44'];kap=c['kappa33']
         self.C=np.array([[c['c11'],c['c12'],c['c13'],0,0,0],
                          [c['c12'],c['c11'],c['c13'],0,0,0],
@@ -235,9 +243,17 @@ class Plate:
         return float(.5*value.real)
 
     def boundary_vector(self,y):
+        """Edge residuals at x=0, in the order (mechanical, double, electric, carrier).
+
+        T[:nu] is the traction-like flux conjugate to the displacement state,
+        R = tau_j11 the x-normal double traction, T[ip] = D_x the x-normal
+        electric displacement and T[im] = -J_x the x-normal carrier flux.  The
+        electrical row is the only one that depends on `edge_electric`.
+        """
         q,p,T,R=self.state_parts(y)
-        if self.lam:return np.r_[T[:self.nu],R,q[self.ip],T[self.im]]
-        return np.r_[T[:self.nu],q[self.ip],T[self.im]]
+        flux=T[self.ip] if self.edge_electric=='insulating' else q[self.ip]
+        if self.lam:return np.r_[T[:self.nu],R,flux,T[self.im]]
+        return np.r_[T[:self.nu],flux,T[self.im]]
 
     def waves(self,ky,omega):
         A=self.matrices(ky,omega);F=self.state_operator(A)

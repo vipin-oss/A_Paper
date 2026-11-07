@@ -30,9 +30,23 @@ import numpy as np
 from scipy.linalg import eig
 
 HERE = Path(__file__).resolve().parent
+BASELINE = HERE / "figure_data" / "round19_baseline"
 sys.path.insert(0, str(HERE))
 
-from build_figure_data import KB0, KY0, operating_mode, plate, track  # noqa: E402
+from build_figure_data import KB0, KY0, operating_mode, track  # noqa: E402
+from build_figure_data import plate as _plate  # noqa: E402
+
+
+def plate(eta: float = 0.0, **kw):
+    """Round-19 baseline: these data were produced with the *grounded* edge.
+
+    Round 20 established that the article's edge condition is charge-free
+    (D_x = 0) and that the round-19 solver imposed phi(0,z) = 0 instead.  This
+    suite is kept as the regression test of the round-19 baseline, so it pins
+    the configuration that produced it and reads the round-19 data snapshot.
+    """
+    kw.setdefault("edge_electric", "ground")
+    return _plate(eta, **kw)
 from round18_reference_checks import (  # noqa: E402
     C11, C12, C13, C33, C44, D_THICK, DIFFUSIVITY, ELL, F3ZZ, H_TEST, KAP33,
     KB, MOBILITY, N0, Q_EL, basis, cmp, cmp_arr, say,
@@ -197,7 +211,7 @@ def test_edge_system() -> bool:
 def test_modal_power_chain() -> bool:
     _head("T4  the degree-22 modal-power chain")
     ok = True
-    rows = json.loads((DATA / "modal_flux_audit.json").read_text())
+    rows = json.loads((BASELINE / "modal_flux_audit.json").read_text())
     row = [r for r in rows["cases"]["operating_point"] if r["degree"] == 22][0]
     amp = row["amplitude_abs"]
     px = row["raw_backward_Px"]
@@ -258,10 +272,10 @@ def test_stiffness_parity() -> bool:
 def test_three_numbers() -> bool:
     _head("T6  operating point, k_xd = 0.55 and the local peak")
     ok = True
-    rows = json.loads((DATA / "modal_flux_audit.json").read_text())
+    rows = json.loads((BASELINE / "modal_flux_audit.json").read_text())
     op = [r for r in rows["cases"]["operating_point"] if r["degree"] == 22][0]
     half = [r for r in rows["cases"]["peak"] if r["degree"] == 22][0]
-    search = json.loads((DATA / "peak_search.json").read_text())
+    search = json.loads((BASELINE / "peak_search.json").read_text())
     worst = max(r["R_B"] for r in search["refined"]) if "refined" in search else None
     ok &= cmp("operating point R_B", op["R_B"], 0.0231456, 2e-6)
     ok &= cmp("k_xd = 0.55 row, R_B", half["R_B"], 0.5791800, 3e-7)

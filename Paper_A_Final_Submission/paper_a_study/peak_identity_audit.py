@@ -41,7 +41,7 @@ from build_figure_data import (KB0, KY0, edge_plane_fraction,  # noqa: E402
                                operating_mode, plate, track)
 
 OUT = HERE / "figure_data" / "peak_identity_audit.json"
-CASES = [("operating_point", 0.7361990195318475), ("peak", 0.5275),
+CASES = [("operating_point", 0.7361990195318475), ("peak", 0.52719),
          ("flank", 0.55), ("window_start", 0.465)]
 
 
@@ -81,10 +81,10 @@ def main() -> int:
     # ---- 1 + 2: reference plane and normalisation -------------------------
     planes = []
     p = plate(0.0)
-    mode = track(p, [0.5275], operating_mode(p))[0]
+    mode = track(p, [0.52719], operating_mode(p))[0]
     omega = float(mode["omega"].real)
     for L in (0.0, 5.0, 10.0, 15.0, 20.0):   # L = 0 is the edge plane itself
-        res, _ = p.edge(KY0, omega, 0.5275, KB0, L=L)
+        res, _ = p.edge(KY0, omega, 0.52719, KB0, L=L)
         kb = complex(res["backward_K"])
         ki = complex(res["incident_K"])
         R = float(res["backward_reflection_self_power"])

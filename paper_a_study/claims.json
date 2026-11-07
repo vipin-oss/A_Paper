@@ -26,149 +26,149 @@
  "claims": [
   {
    "id": "R_B_operating_point",
-   "value": 0.0231456,
+   "value": 0.0192916,
    "tolerance_rel": 0.005,
    "in_abstract": true,
    "source": "figure_data/peak_certification.json rows[case=operating_point, degree=30].R_B",
    "tokens": [
     {
      "file": "main.tex",
-     "text": "2.31",
-     "value": 0.0231
+     "text": "1.93",
+     "value": 0.0192916
     },
     {
      "file": "sections/results.tex",
-     "text": "2.3146\\times10^{-2}",
-     "value": 0.023146
+     "text": "1.9292\\times10^{-2}",
+     "value": 0.0192916
     },
     {
      "file": "sections/results.tex",
-     "text": "0.023\\,146",
-     "value": 0.023146
+     "text": "0.019\\,292",
+     "value": 0.0192916
     },
     {
      "file": "sections/conclusions.tex",
-     "text": "2.31",
-     "value": 0.0231
+     "text": "1.93",
+     "value": 0.0192916
     }
    ]
   },
   {
    "id": "R_B_certified_maximum",
-   "value": 0.9467952,
+   "value": 0.9428718,
    "tolerance_rel": 0.002,
    "in_abstract": true,
    "source": "figure_data/peak_search.json classification.R_B_reported (k_x d = 0.5275, degree 22)",
    "tokens": [
     {
      "file": "main.tex",
-     "text": "94.68",
-     "value": 0.9468
+     "text": "94.29",
+     "value": 0.9429
     },
     {
      "file": "sections/results.tex",
-     "text": "0.946\\,795",
-     "value": 0.946795
+     "text": "0.942\\,872",
+     "value": 0.942872
     },
     {
      "file": "sections/results.tex",
-     "text": "0.9467952",
-     "value": 0.9467952
+     "text": "0.9428718",
+     "value": 0.9428718
     },
     {
      "file": "sections/conclusions.tex",
-     "text": "94.68",
-     "value": 0.9468
+     "text": "94.29",
+     "value": 0.9429
     },
     {
      "file": "sections/discussion.tex",
-     "text": "94.68",
-     "value": 0.9468
+     "text": "94.29",
+     "value": 0.9429
     }
    ]
   },
   {
    "id": "R_B_at_located_argmax",
-   "value": 0.9467954,
+   "value": 0.9428718,
    "tolerance_rel": 0.002,
    "in_abstract": false,
    "source": "figure_data/peak_search.json classification.R_B_at_max (k_x d = 0.52752)",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.9467954",
-     "value": 0.9467954
+     "text": "0.9428718",
+     "value": 0.9428718
     }
    ]
   },
   {
    "id": "R_B_earlier_sample",
-   "value": 0.9318915,
+   "value": 0.9256041,
    "tolerance_rel": 0.002,
    "in_abstract": false,
    "source": "figure_data/peak_certification.json rows[case=round7_sample, degree=30].R_B",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.931\\,891",
-     "value": 0.931891
+     "text": "0.925\\,604",
+     "value": 0.9256041
     }
    ]
   },
   {
    "id": "R_B_k055_sample",
-   "value": 0.5791801,
+   "value": 0.5519095,
    "tolerance_rel": 0.002,
    "in_abstract": false,
    "source": "figure_data/peak_certification.json rows[case=k055_sample, degree=30].R_B",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.579\\,180",
-     "value": 0.57918
+     "text": "0.551\\,910",
+     "value": 0.5519095
     }
    ]
   },
   {
    "id": "total_outgoing_peak",
-   "value": 0.99769,
+   "value": 0.99918,
    "tolerance_rel": 0.002,
    "in_abstract": true,
    "source": "figure_data/peak_certification.json rows[case=refined_peak].total_outgoing_propagating",
    "tokens": [
     {
      "file": "main.tex",
-     "text": "99.77",
-     "value": 0.9977
+     "text": "99.92",
+     "value": 0.99918
     },
     {
      "file": "sections/results.tex",
-     "text": "0.99769",
-     "value": 0.99769
+     "text": "0.99918",
+     "value": 0.99918
     },
     {
      "file": "sections/conclusions.tex",
-     "text": "99.77",
-     "value": 0.9977
+     "text": "99.92",
+     "value": 0.99918
     },
     {
      "file": "sections/discussion.tex",
-     "text": "0.99769",
-     "value": 0.99769
+     "text": "0.99918",
+     "value": 0.99918
     }
    ]
   },
   {
    "id": "total_outgoing_operating",
-   "value": 0.9998,
+   "value": 0.9999,
    "tolerance_rel": 0.002,
    "in_abstract": false,
    "source": "figure_data/peak_certification.json rows[case=operating_point].total_outgoing_propagating",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.99980",
-     "value": 0.9998
+     "text": "0.99990",
+     "value": 0.9999
     }
    ]
   },
@@ -203,49 +203,49 @@
   },
   {
    "id": "coupling_change_peak",
-   "value": 34.2,
+   "value": 36.1,
    "tolerance_rel": 0.02,
    "in_abstract": true,
    "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05]/H=0",
    "tokens": [
     {
      "file": "main.tex",
-     "text": "34.2",
-     "value": 34.2
+     "text": "36.1",
+     "value": 36.1
     },
     {
      "file": "sections/results.tex",
-     "text": "34.2",
-     "value": 34.2
+     "text": "36.1",
+     "value": 36.1
     },
     {
      "file": "sections/discussion.tex",
-     "text": "34.2",
-     "value": 34.2
+     "text": "36.1",
+     "value": 36.1
     },
     {
      "file": "sections/conclusions.tex",
-     "text": "34.2",
-     "value": 34.2
+     "text": "36.1",
+     "value": 36.1
     }
    ]
   },
   {
    "id": "coupling_change_peak_edge_plane",
-   "value": 11.1,
+   "value": 13.7,
    "tolerance_rel": 0.05,
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak R_B_edge ratio",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "11.1",
-     "value": 11.1
+     "text": "13.7",
+     "value": 13.7
     },
     {
      "file": "sections/discussion.tex",
-     "text": "11.1",
-     "value": 11.1
+     "text": "13.7",
+     "value": 13.7
     }
    ]
   },
@@ -298,20 +298,20 @@
   },
   {
    "id": "degree_stability_peak",
-   "value": 1e-08,
+   "value": 1e-05,
    "tolerance_rel": 1e-12,
    "in_abstract": false,
    "source": "figure_data/peak_search.json verdict.degree_spread[*]",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "10^{-8}",
-     "value": 1e-08
+     "text": "10^{-5}",
+     "value": 1e-05
     },
     {
      "file": "sections/conclusions.tex",
-     "text": "10^{-8}",
-     "value": 1e-08
+     "text": "10^{-5}",
+     "value": 1e-05
     }
    ],
    "kind": "bound",
@@ -378,76 +378,76 @@
   },
   {
    "id": "coupling_change_k055_edge_plane",
-   "value": 2.007,
+   "value": 1.649,
    "tolerance_rel": 0.05,
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B_edge vs [no_coupling].R_B_edge (2.007 %)",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "\\SI{2.01}{\\percent}",
-     "value": 2.0
+     "text": "\\SI{1.65}{\\percent}",
+     "value": 1.65
     }
    ]
   },
   {
    "id": "coupling_change_k055_reference_plane",
-   "value": -9.85,
+   "value": -10.171,
    "tolerance_rel": 0.02,
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B vs [no_coupling].R_B (-9.854 %)",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "\\SI{-9.85}{\\percent}",
-     "value": -9.9
+     "text": "\\SI{-10.17}{\\percent}",
+     "value": -10.17
     },
     {
      "file": "sections/discussion.tex",
-     "text": "\\SI{-9.85}{\\percent}",
-     "value": -9.85
+     "text": "\\SI{-10.17}{\\percent}",
+     "value": -10.17
     }
    ]
   },
   {
    "id": "R_B_edge_certified_maximum",
-   "value": 0.9856,
+   "value": 0.9824311,
    "tolerance_rel": 0.005,
    "in_abstract": false,
    "source": "figure_data/peak_search.json degree[K=0.5275, degree=22].R_B_edge and figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[eta=0].R_B_edge",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.9856",
-     "value": 0.9856
+     "text": "0.9824",
+     "value": 0.9824311
     }
    ]
   },
   {
    "id": "R_B_edge_operating_point",
-   "value": 0.0232,
+   "value": 0.0192957,
    "tolerance_rel": 0.005,
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json operating_point.no_coupling.R_B_edge",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.0232",
-     "value": 0.0232
+     "text": "0.0193",
+     "value": 0.0192957
     }
    ]
   },
   {
    "id": "R_B_edge_k055",
-   "value": 0.5802,
+   "value": 0.5529214,
    "tolerance_rel": 0.005,
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json k055_sample.no_coupling.R_B_edge",
    "tokens": [
     {
      "file": "sections/results.tex",
-     "text": "0.5802",
-     "value": 0.5802
+     "text": "0.5529",
+     "value": 0.5529214
     }
    ]
   },

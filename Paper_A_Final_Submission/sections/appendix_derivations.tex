@@ -329,43 +329,47 @@ neither of them is a $k_x$ power.
 \subsection{The edge-matching system}
 
 At the edge $x=0$ the conditions \eqref{eq:bc_edge} are imposed weakly, one row
-block per condition and each on the test functions of the field it multiplies:
-the traction $\Sigma_{3j}$ on the $n_{\mathrm u}=3N$ displacement test functions,
-the double traction $\tau_{3j3}$ on the same $n_{\mathrm u}$ test functions, the
-normal electric displacement $D_z$ on the $n_\varphi$ potential test functions
-and the normal carrier flux $J_z$ on the $n_\mu$ carrier test functions.  The
-number of rows is therefore
+block per condition and each on the test functions of the field it multiplies.
+The normal there is the $x$ direction, not the $z$ direction: the generalised
+traction $\bar\sigma_{1j}$ on the $n_{\mathrm u}=3N$ displacement test functions,
+the double traction $\tau_{1j1}\equiv\tau_{ijx}$ on the same $n_{\mathrm u}$ test
+functions, the normal electric displacement $D_x$ on the $n_\varphi$ potential
+test functions and the normal carrier flux $J_x$ on the $n_\mu$ carrier test
+functions.  The face quantities $\sigma_{iz}$, $\tau_{ijz}$ and $D_z$ of
+\eqref{eq:bc_faces_mech}--\eqref{eq:bc_grounded} belong to $z=\pm d/2$; they are
+the natural conditions of the expansion in $z$ and are not the edge conditions.
+The number of rows is therefore
 \begin{equation}
 \label{eq:app_edge_rows}
 m=2n_{\mathrm u}+n_\varphi+n_\mu ,
 \end{equation}
-with the double-traction block present whenever the hyperstress is non-zero --- a
-condition that is *not* $\ell\neq0$, as \eqref{eq:tauZnO} shows:
+with the double-traction block present whenever the hyperstress is non-zero.  At
+the edge only the axial strain gradient survives:
 \begin{equation}
 \label{eq:app_edge_tau}
-\tau_{3zz}=\ell^{2}\Bigl[c_{13}\bigl(\eta_{xxz}+\eta_{yyz}\bigr)
-+c_{33}\eta_{zzz}\Bigr]-f\,E_z+H\,\Delta n .
+\tau_{ijx}=\ell^{2}c_{ijkl}\eta_{klx} .
 \end{equation}
-The elastic part vanishes with $\ell^{2}$, the flexoelectric part with $f$ and the
-carrier part with $H$, so the block survives in four of the five limiting cases
-of the model: it is present for the full model, for $f=0$ with $\ell\neq0$
-(through the $\ell^{2}$ and $H$ terms), for $H=0$ with $\ell\neq0$ (through the
-$\ell^{2}$ and $f$ terms), and for $\ell=0$ with $f\neq0$ (through $-fE_z$, which
-carries no $\ell$); it is empty only in the classical limit
-$\ell=f=H=0$, where $\tau_{3j3}\equiv0$ and the double-traction statement
-degenerates to $0=0$ rather than to a boundary condition.  Between those cases
-the edge problem changes order, and with it the state:
+The two gradient couplings of \eqref{eq:tauZnO} act on the normal-derivative
+component --- $f$ pairs $E_z$ with $\eta_{zzz}$ and $H$ pairs $\Delta n$ with the
+same component --- so neither appears in \eqref{eq:app_edge_tau}.  The block
+therefore exists if and only if $\ell\neq0$, independently of $f$ and of $H$: it
+is present in cases A, B and D below, and it is empty in the classical limit
+$\ell=f=H=0$, where $\tau_{ijx}\equiv0$ and the double-traction statement
+degenerates to $0=0$ rather than to a boundary condition.  The case $\ell=0$ with
+$f\neq0$ retains a hyperstress but has no axial trace to pair it with, which is
+why it is not a case of this model.  Between those cases the edge problem changes
+order, and with it the state:
 
 \begin{center}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{@{}lllccl@{}}
 \toprule
-case & parameters & $\tau_{3j3}$ & $N_s$ & $m$ & double traction \\
+case & parameters & $\tau_{ijx}$ & $N_s$ & $m$ & double traction \\
 \midrule
-A & $\ell\neq0$, $f\neq0$, $H\neq0$ & all three terms & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
-B & $f=0$, $\ell\neq0$ & $\ell^{2}$ and $H$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
-C & $\ell=0$, $f\neq0$ & $-fE_z$ and $H$ & $2n_{\mathrm w}$ & $n_{\mathrm u}+n_\varphi+n_\mu$ & \emph{not available} \\
-D & $H=0$, $\ell\neq0$ & $\ell^{2}$ and $f$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+A & $\ell\neq0$, $f\neq0$, $H\neq0$ & $\ell^{2}c_{ijkl}\eta_{klx}$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+B & $f=0$, $\ell\neq0$ & $\ell^{2}c_{ijkl}\eta_{klx}$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+C & $\ell=0$, $f\neq0$ & $0$ (no axial gradient) & $2n_{\mathrm w}$ & $n_{\mathrm u}+n_\varphi+n_\mu$ & \emph{not available} \\
+D & $H=0$, $\ell\neq0$ & $\ell^{2}c_{ijkl}\eta_{klx}$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
 E & $\ell=f=H=0$ & $0$ & $2n_{\mathrm w}$ & $n_{\mathrm u}+n_\varphi+n_\mu$ & absent (identically zero) \\
 \bottomrule
 \end{tabular}
@@ -445,10 +449,10 @@ applied correctly.  At the operating point, for the backward mode,
 \begin{equation}
 \label{eq:app_power_numbers}
 \begin{aligned}
-n=18:&\quad \mathcal{P}_x=-0.0178923,\quad |a|=1.13749,\quad P_B=-0.0231481,\\
-n=22:&\quad \mathcal{P}_x=-0.0154248,\quad |a|=1.22510,\quad P_B=-0.0231481,\\
-n=26:&\quad \mathcal{P}_x=-0.0132455,\quad |a|=1.32205,\quad P_B=-0.0231481,\\
-n=30:&\quad \mathcal{P}_x=-0.0113777,\quad |a|=1.42644,\quad P_B=-0.0231481,
+n=18:&\quad \mathcal{P}_x=-0.0178923,\quad |a|=1.03848,\quad P_B=-0.0192957,\\
+n=22:&\quad \mathcal{P}_x=-0.0154248,\quad |a|=1.11846,\quad P_B=-0.0231481,\\
+n=26:&\quad \mathcal{P}_x=-0.0132455,\quad |a|=1.20697,\quad P_B=-0.0231481,\\
+n=30:&\quad \mathcal{P}_x=-0.0113777,\quad |a|=1.30227,\quad P_B=-0.0231481,
 \end{aligned}
 \end{equation}
 in which the raw power changes by \SI{57}{\percent} across the four degrees while
@@ -471,16 +475,16 @@ with degree even though their product does not:
 \label{eq:app_RB}
 R_B=\frac{|a_B|^{2}\bigl|\mathcal{P}_x\bigr|\,e^{2\Imag k_{Bx}L}}
 {P_{\text{inc}}\,e^{2\Imag k_{ix}L}}
-=\frac{0.0231505\times0.9998954}{1.0001081}
-=\frac{0.0231481}{1.0001081}=0.0231456 ,
+=\frac{0.0192957\times0.9998954}{1.0001081}
+=\frac{0.0192916}{1.0001081}=0.0192916 ,
 \end{equation}
 with, at $n=22$,
 \begin{equation}
 \label{eq:app_RB_inputs}
-|a_B|=1.2250974,\quad
-|a_B|^{2}=1.500864,\quad
+|a_B|=1.1184598,\quad
+|a_B|^{2}=1.250952,\quad
 \mathcal{P}_x=-0.015424813,\quad
-|a_B|^{2}\bigl|\mathcal{P}_x\bigr|=0.0231505 ,
+|a_B|^{2}\bigl|\mathcal{P}_x\bigr|=0.0192957 ,
 \end{equation}
 the last product being the power the backward port actually carries at the edge.
 The factor $e^{2\Imag k_{Bx}L}=0.9998954$ carries it to $x=-L$ with
@@ -494,10 +498,10 @@ plane each power was taken.
 
 The value and its meaning are two different statements and are kept apart.
 Equation \eqref{eq:app_RB} evaluates the share at the *operating point*,
-$2.31$ per cent of the incident power at $x=-10\,d$.  The local maximum of the
-same quantity over the frequency window, $R_B=0.9467952$, is a property of the
+$1.93$ per cent of the incident power at $x=-10\,d$.  The local maximum of the
+same quantity over the frequency window, $R_B=0.9428521$, is a property of the
 peak row, not of this one, and nothing in \eqref{eq:app_RB} computes or implies
 it.  Reading the operating-point row along the plate, the backward mode carries
-$2.31$ per cent at $x=-10\,d$ and $2.31\,\%\times e^{-2.13\times10^{-4}}$ at
+$1.93$ per cent at $x=-10\,d$ and $1.93\,\%\times e^{-2.13\times10^{-4}}$ at
 $x=-20\,d$: the decay of the share is governed by the *difference* of the two
 attenuation constants, not by either one of them.

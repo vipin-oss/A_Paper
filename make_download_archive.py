@@ -20,13 +20,21 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round19_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round19.zip"
+STAGE = Path("/tmp/paper_a_round20_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round20.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_CORRECTION_HISTORY.md",
     "PAPER_A_ROUND19_FINAL.md",
     "PAPER_A_ROUND19_PRE_EDIT_VERIFICATION.md",
+    "PAPER_A_ROUND20_FINAL_SUPERVISOR_DECISION.md",
+    "PAPER_A_ROUND20_NUMERICAL_IMPACT_AND_RECOMPUTATION.md",
+    "PAPER_A_ROUND20_SPATIAL_SPECTRAL_COUNT_AUDIT.md",
+    "PAPER_A_ROUND20_HYPERSTRESS_AND_CORNER_AUDIT.md",
+    "PAPER_A_ROUND20_ELECTRICAL_EDGE_CONDITION_AUDIT.md",
+    "PAPER_A_ROUND20_FACE_VS_EDGE_NORMAL_AUDIT.md",
+    "PAPER_A_ROUND20_VARIATIONAL_BOUNDARY_DERIVATION.md",
+    "PAPER_A_ROUND20_PRE_EDIT_BOUNDARY_AUDIT.md",
     "PAPER_A_ROUND19_HYPERSTRESS_AND_BOUNDARY_AUDIT.md",
     "PAPER_A_ROUND19_EDGE_SYSTEM_VERIFICATION.md",
     "PAPER_A_ROUND19_MODAL_POWER_RECALCULATION.md",
@@ -226,7 +234,8 @@ def main() -> int:
             "  python paper_a_study/round18_mathematical_audit.py   # 43 checks, exit 0",
             "  python paper_a_study/round18_reference_checks.py     # 59 checks, exit 0",
             "  python paper_a_study/test_model.py                   # 52 tests, OK",
-            "  python paper_a_study/round19_tests.py                # 7 tests, exit 0",
+            "  python paper_a_study/round19_tests.py                # 7 tests, round-19 baseline",
+            "  python paper_a_study/round20_boundary_audit.py       # 10 boundary checks, exit 0",
             "  python paper_a_study/round19_layout_check.py         # display-width screen (no engine)",
             "",
             "Checks run after this round's edits: the LaTeX static validator PASSes (170 labels, 107",

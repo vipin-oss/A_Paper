@@ -1,4 +1,4 @@
-# Paper A — review package (round 19)
+# Paper A — review package (round 20)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,14 +11,17 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 19 is a
-**targeted mathematical repair** of six items identified in the round-18 build: an overfull display on
-page 5, a double-traction block tied to the wrong constant, a boundary system described as
-overdetermined that is in fact square, a worked calculation that mixed two Galerkin degrees, a
-stiffness matrix described as banded that is only parity-structured, and a $k_x$ bookkeeping that
-counted one power twice. Three of the six were corrections of statements rather than of code. No
-constant, solver, dataset, figure or reported number changed; the lead value `R_B = 0.9467952` and the
-operating-point share $0.0231456$ stand, now each traceable to a single stored row at `n = 22`.
+**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 20 is an
+**independent audit of the boundary physics**, prompted by two submitted discrepancies: (i) the
+reflecting edge is described with face-normal quantities in Appendix A.4 although the edge normal is
+`x`, and (ii) the electrical row of the delivered edge operator was `phi(0,z) = 0` — a grounded,
+metallised edge — while the manuscript states the charge-free condition `D_x = 0`. The second is an
+implementation error and is repaired: the model now solves the charge-free edge, and every dataset,
+figure, number, claim-registry entry and test that depended on it was regenerated. Appendix A.4's
+normal labels and its hyperstress formula are corrected. The lead value is now `R_B = 0.9428718`
+(94.29 %) at `k_x d = 0.52719`, the certified maximum, and the operating-point share is `0.0192916`.
+The delivered round-19 numbers (`0.9467952`, `0.0231456`) are retained as the *grounded* configuration
+and remain reproducible with `edge_electric='ground'`.
 
 Round 12 — the section-by-section review of the manuscript's text — remains the place to read the
 prose as a whole: nineteen defects, ten of them numbers that disagreed with the delivered records.
@@ -29,14 +32,15 @@ arrow) and B6 (the docstring) are closed.
 
 ## 1. Headline result
 
-`R_B = 0.9467952` (94.68 %) at `k_x d = 0.5275`, a **numerically certified local maximum** of the
+`R_B = 0.9428718` (94.29 %) at `k_x d = 0.52719`, a **numerically certified local maximum** of the
 backward-modal power share inside the declared search interval `0.465 < k_x d < 0.625`. The top is flat:
-every sampled `k_x d` in `[0.5266, 0.5277]` lies within 0.01 percentage point of the maximum. This is
+every sampled `k_x d` in `[0.5267, 0.5276]` lies within 0.01 percentage point of the maximum, and the
+value at the centre of the top, `k_x d = 0.52752`, is `0.9428521`. This is
 **not** a global maximum and **not** a statement that energy is turned around — the incident flux at the
 maximum is 128 times smaller than at the operating point.
 
 `R_B` is defined at a reference plane ten plate thicknesses from the edge. At the edge plane itself the
-same solve gives 0.9855722; the two numbers are the same quantity at different planes and the manuscript
+same solve gives 0.9824311; the two numbers are the same quantity at different planes and the manuscript
 labels them by plane wherever they appear.
 
 ---

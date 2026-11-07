@@ -31,16 +31,16 @@
   {
    "plane_um": -2.0,
    "incident_centroid_y_um": -0.3530575777238147,
-   "backward_centroid_y_um": -1.0683031448439464,
+   "backward_centroid_y_um": -1.0674453713480585,
    "incident_peak": 0.9992301858284539,
-   "backward_peak": 0.04722429221071477
+   "backward_peak": 0.03935523292443689
   },
   {
    "plane_um": -40.0,
    "incident_centroid_y_um": -7.060020896229347,
-   "backward_centroid_y_um": -21.35163125436954,
+   "backward_centroid_y_um": -21.334653464967808,
    "incident_peak": 0.9952973148334244,
-   "backward_peak": 0.043001937122122226
+   "backward_peak": 0.035837394955338636
   }
  ],
  "primary_flux": {

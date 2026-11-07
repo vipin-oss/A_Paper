@@ -102,8 +102,17 @@ def dump_json(name: str, payload) -> Path:
     return path
 
 
+# Round 20: the reflecting edge x = 0 is charge-free, eq:bc_edge of the article
+# (sigma_ix = tau_ijx = D_x = J_x = 0), so phi is unconstrained there and D_x = 0 is
+# natural.  Round-19 data were produced with edge_electric='ground' (a metallised
+# edge, phi(0,z) = 0), which is a different boundary-value problem; those datasets
+# are reproduced by passing edge_electric='ground' explicitly.
+EDGE_ELECTRIC = "insulating"
+
+
 def plate(eta: float = 0.0, **kw) -> Plate:
     kw.setdefault("degree", DEGREE)
+    kw.setdefault("edge_electric", EDGE_ELECTRIC)
     return Plate(H=float(eta) * HCRIT, **kw)
 
 
@@ -634,7 +643,7 @@ def fig09() -> list[dict]:
     degrees = [14, 17, 18, 22, 25, 26, 33]
     rows = []
     for degree in degrees:
-        p = Plate(degree=degree)
+        p = plate(0.0, degree=degree)
         res, _ = p.edge(KY0, OMEGA0, K0, KB0)
         kb = complex(res["backward_K"])
         rows.append(dict(
@@ -660,7 +669,7 @@ def fig09() -> list[dict]:
 def fig09_consistency() -> list[dict]:
     """Temporal versus spatial eigenproblem dispersion consistency."""
     rows = []
-    p = Plate(degree=DEGREE)
+    p = plate(0.0, degree=DEGREE)
     Ks = np.linspace(0.30, 1.00, 11)
     modes = track(p, Ks, operating_mode(p))
     for K, m in zip(Ks, modes):
@@ -681,7 +690,7 @@ def fig09_consistency() -> list[dict]:
 # Figure 10 -- solved field maps and energy-flux directions
 # --------------------------------------------------------------------------
 def fig10() -> dict:
-    p = Plate(degree=DEGREE)
+    p = plate(0.0, degree=DEGREE)
     ky_nodes = np.linspace(KY0 - 0.05, KY0 + 0.05, 9)
     width = 0.022
     weights = np.exp(-0.5 * ((ky_nodes - KY0) / width) ** 2)

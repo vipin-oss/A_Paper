@@ -33,7 +33,7 @@ from build_figure_data import (HCRIT, KB0, KY0, edge_plane_fraction,  # noqa: E4
 from model import Plate  # noqa: E402
 
 DATA = HERE / "figure_data"
-CASES = {"operating_point": 0.7361990195318475, "refined_peak": 0.5275,
+CASES = {"operating_point": 0.7361990195318475, "refined_peak": 0.52719,   # certified argmax (round 20)
          "round7_sample": 0.525, "k055_sample": 0.55}
 ETA_COUPLING = 0.05
 

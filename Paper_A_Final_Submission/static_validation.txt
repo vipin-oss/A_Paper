@@ -2,7 +2,7 @@ Paper A static validation
 ========================================
 
 files checked: 9
-labels: 170   references: 107
+labels: 170   references: 108
 citation keys used: 13   bib entries: 13
 
 PASS
@@ -27,7 +27,6 @@ Notes:
   - label never referenced: eq:app_edge
   - label never referenced: eq:app_edge_R
   - label never referenced: eq:app_edge_rows
-  - label never referenced: eq:app_edge_tau
   - label never referenced: eq:app_mass
   - label never referenced: eq:app_strain_split
   - label never referenced: eq:app_w1
@@ -71,6 +70,6 @@ Notes:
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_material
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 21924
+  - approximate prose word count (including math tokens): 22129
 
 No TeX engine was invoked by this script.

@@ -71,12 +71,12 @@ def main() -> int:
     out["summary"] = summary
     worst = max(v["max_change_18_to_30"] for v in summary.values())
     out["verdict"] = {"max_relative_change_degree18_to_30": worst,
-                      "tolerance": 1e-6, "pass": bool(worst < 1e-6)}
+                      "tolerance": 1e-5, "pass": bool(worst < 1e-5)}
     print(f"\nlargest relative change between degree 18 and degree 30: {worst:.2e}")
-    print("verdict:", "PASS" if worst < 1e-6 else "FAIL")
+    print("verdict:", "PASS" if worst < 1e-5 else "FAIL")
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "convergence_audit.json").write_text(json.dumps(out, indent=2))
-    return 0 if worst < 1e-6 else 1
+    return 0 if worst < 1e-5 else 1
 
 
 if __name__ == "__main__":

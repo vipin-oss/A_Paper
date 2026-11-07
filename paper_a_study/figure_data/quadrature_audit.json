@@ -4,45 +4,45 @@
       "nodes": 64,
       "degree": 22,
       "frequency_GHz": 16.684123136378275,
-      "R_B": 0.023145619184645957,
+      "R_B": 0.019291601863380407,
       "backward_K_real": 0.24517469208547762,
       "angle_deg": -27.89971398936889,
-      "edge_residual": 2.8280569895076177e-15,
-      "power_balance": 8.260359038401398e-13,
-      "condition": 160.4801154048026
+      "edge_residual": 2.736933580525093e-15,
+      "power_balance": 8.302680633732495e-13,
+      "condition": 140.89206305273785
     },
     {
       "nodes": 128,
       "degree": 22,
       "frequency_GHz": 16.68412313637675,
-      "R_B": 0.023145619186775775,
+      "R_B": 0.01929160186523802,
       "backward_K_real": 0.24517469209467724,
       "angle_deg": -27.899713988467358,
-      "edge_residual": 3.095757430651058e-15,
-      "power_balance": 1.5873044758066922e-12,
-      "condition": 160.4801154052949
+      "edge_residual": 3.389726332730525e-15,
+      "power_balance": 1.5918692597279194e-12,
+      "condition": 140.8920630531728
     },
     {
       "nodes": 192,
       "degree": 22,
       "frequency_GHz": 16.684123136377057,
-      "R_B": 0.0231456191862134,
+      "R_B": 0.019291601864749007,
       "backward_K_real": 0.24517469209225987,
       "angle_deg": -27.899713988700015,
-      "edge_residual": 2.822202426173413e-15,
-      "power_balance": 1.2302232108138782e-13,
-      "condition": 160.4801154057372
+      "edge_residual": 2.937265804854235e-15,
+      "power_balance": 1.143682871356047e-13,
+      "condition": 140.89206305347295
     },
     {
       "nodes": 256,
       "degree": 22,
       "frequency_GHz": 16.684123136378687,
-      "R_B": 0.023145619184021693,
+      "R_B": 0.019291601862837123,
       "backward_K_real": 0.24517469208247114,
       "angle_deg": -27.899713989673927,
-      "edge_residual": 2.980833864514783e-15,
-      "power_balance": 1.128103214426214e-13,
-      "condition": 160.48011540542944
+      "edge_residual": 2.5854832309462933e-15,
+      "power_balance": 1.0149981844692665e-13,
+      "condition": 140.89206305318942
     }
   ],
   "branch_maximum": [
@@ -50,49 +50,49 @@
       "nodes": 64,
       "degree": 22,
       "frequency_GHz": 16.65467768994245,
-      "R_B": 0.931891474271886,
+      "R_B": 0.9256042622068523,
       "backward_K_real": 0.5249493115920691,
       "angle_deg": -13.888756047878408,
-      "edge_residual": 2.6874128731955815e-15,
-      "power_balance": 9.829736701791407e-14,
-      "condition": 160.47284402398128
+      "edge_residual": 2.0684392137704584e-15,
+      "power_balance": 1.1012450477515146e-13,
+      "condition": 140.8912210136939
     },
     {
       "nodes": 128,
       "degree": 22,
       "frequency_GHz": 16.654677689942535,
-      "R_B": 0.9318914727024769,
+      "R_B": 0.9256042604722319,
       "backward_K_real": 0.5249493115190217,
       "angle_deg": -13.88875605097998,
-      "edge_residual": 2.2556187189916228e-15,
-      "power_balance": 8.853001627015789e-14,
-      "condition": 160.47284402326065
+      "edge_residual": 2.2637853670698575e-15,
+      "power_balance": 1.1225257355820679e-13,
+      "condition": 140.89122101307703
     },
     {
       "nodes": 192,
       "degree": 22,
       "frequency_GHz": 16.6546776899423,
-      "R_B": 0.931891474150306,
+      "R_B": 0.925604262083035,
       "backward_K_real": 0.5249493115945854,
       "angle_deg": -13.888756047804636,
-      "edge_residual": 2.458675345743598e-15,
-      "power_balance": 4.136757378342863e-14,
-      "condition": 160.47284402523647
+      "edge_residual": 2.2746831990484487e-15,
+      "power_balance": 3.8728259305744e-14,
+      "condition": 140.89122101476826
     },
     {
       "nodes": 256,
       "degree": 22,
       "frequency_GHz": 16.654677689941778,
-      "R_B": 0.9318914791708601,
+      "R_B": 0.9256042676648523,
       "backward_K_real": 0.5249493118530933,
       "angle_deg": -13.88875604267334,
-      "edge_residual": 2.6597094153768015e-15,
-      "power_balance": 2.464613021996563e-13,
-      "condition": 160.47284402375277
+      "edge_residual": 2.1633478284236014e-15,
+      "power_balance": 2.7317495678779954e-13,
+      "condition": 140.89122101343193
     }
   ],
   "verdict": {
-    "worst_relative_change_vs_256_nodes": 6.941133616980165e-09,
+    "worst_relative_change_vs_256_nodes": 7.770729500113776e-09,
     "tolerance": 1e-07,
     "pass": true
   }

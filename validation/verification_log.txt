@@ -1,24 +1,24 @@
-Paper A verification run 2026-11-07T07:16:35+00:00
+Paper A verification run 2026-11-07T14:50:35+00:00
 ============================================================
 
-PASS  dimensional and constitutive audit     0.5s exit=0
-PASS  quasistatic justification              0.4s exit=0
-PASS  flexoelectric control                  5.1s exit=0
+PASS  dimensional and constitutive audit     0.6s exit=0
+PASS  quasistatic justification              0.5s exit=0
+PASS  flexoelectric control                  6.4s exit=0
 PASS  admissibility re-derivation            0.0s exit=0
 PASS  figure data and figure files           
-PASS  phase-speed and e.m. reconciliation    0.4s exit=0
-PASS  modal-flux rescaling proof             9.8s exit=0
-PASS  mechanism matched controls             198.5s exit=0
-PASS  corner assessment and regression       11.8s exit=0
-PASS  certified peak (four fixed wavenumbers) 13.9s exit=0
-PASS  peak search and classification         298.7s exit=0
-PASS  peak identity and artefact audit       22.0s exit=0
-PASS  spectral convergence                   8.8s exit=0
-PASS  quadrature sufficiency                 8.7s exit=0
-PASS  unit and scientific tests              20.6s exit=0
+PASS  phase-speed and e.m. reconciliation    0.5s exit=0
+PASS  modal-flux rescaling proof             12.0s exit=0
+PASS  mechanism matched controls             225.8s exit=0
+PASS  corner assessment and regression       13.6s exit=0
+PASS  certified peak (four fixed wavenumbers) 17.1s exit=0
+PASS  peak search and classification         498.0s exit=0
+PASS  peak identity and artefact audit       25.6s exit=0
+PASS  spectral convergence                   9.3s exit=0
+PASS  quadrature sufficiency                 10.2s exit=0
+PASS  unit and scientific tests              24.8s exit=0
 PASS  claim registry and stale guard         0.0s exit=0
-PASS  gate mutation tests                    8.7s exit=0
-PASS  LaTeX static validation                0.0s exit=0
+PASS  gate mutation tests                    10.6s exit=0
+PASS  LaTeX static validation                0.1s exit=0
 SKIP  LaTeX build                            no TeX engine found
 
 OVERALL: PASS

@@ -78,7 +78,7 @@ BRACKET = (0.5265, 0.5285)
 #: Brackets from which the local search is restarted independently.
 ALT_BRACKETS = [(0.520, 0.532), (0.524, 0.536)]
 #: Wavenumber at which the value printed in the manuscript is quoted.
-K_REPORTED = 0.5275
+K_REPORTED = 0.52719   # certified argmax; the flat top is centred at 0.52752
 
 
 def solve(degree: int, Ks, nquad: int = 0, eta: float = 0.0) -> list[dict]:

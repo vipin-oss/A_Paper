@@ -80,14 +80,14 @@ def main() -> int:
                             evidence=[l for l in out.splitlines() if "fragile" in l][:1]))
 
         copy = make_copy(tmpdir / "m2")
-        mutate(copy / "sections" / "conclusions.tex", "94.68", "94.86")
+        mutate(copy / "sections" / "conclusions.tex", "94.29", "94.86")
         rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy)], REPO)
         results.append(dict(id="M2", defect="registered headline 0.9468 edited to 0.9486",
                             gate="claim_audit registry", expected="FAIL", caught=rc != 0,
                             evidence=[l for l in out.splitlines() if "94.86" in l][:1]))
 
         copy = make_copy(tmpdir / "m3")
-        mutate(copy / "sections" / "results.tex", "0.99980", "0.99985")
+        mutate(copy / "sections" / "results.tex", "0.99990", "0.99995")
         rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy)], REPO)
         results.append(dict(id="M3", defect="deprecated total outgoing power 0.99985 re-inserted",
                             gate="claim_audit stale guard", expected="FAIL", caught=rc != 0,
@@ -102,7 +102,7 @@ def main() -> int:
                             evidence=[l for l in out.splitlines() if "nosuchkey" in l][:1]))
 
         copy = make_copy(tmpdir / "m6")
-        mutate(copy / "main.tex", "94.68", "93.19")
+        mutate(copy / "main.tex", "94.29", "93.19")
         rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy)], REPO)
         results.append(dict(id="M6",
                             defect="superseded coarse-grid maximum (93.19 at 0.525) reinstated",

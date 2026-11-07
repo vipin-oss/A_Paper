@@ -600,19 +600,30 @@ zero-thickness-mean gauge.  The gauge changes no field, no charge density and no
 power flux, but it also means that the open-circuit results are a solvable
 version of the same physics rather than an independent validation of it.
 
-\paragraph{Reflecting edge $x=0$.}  The edge is a free surface in vacuum:
+\paragraph{Reflecting edge $x=0$.}  The edge is a free surface in vacuum, and no
+datum is prescribed on it: no displacement, no potential, no carrier density.
+All four conditions are therefore natural, each acting on the test functions of
+the field it is conjugate to,
 \begin{equation}
 \label{eq:bc_edge}
-\sigma_{ix}=0,\qquad \tau_{ijx}=0,\qquad D_x=0,\qquad J_x=0,\qquad x=0 .
+\bar\sigma_{ix}=0,\qquad \tau_{ijx}=0,\qquad D_x=0,\qquad J_x=0,\qquad x=0 ,
 \end{equation}
-The first two are a traction and a double traction; the second is a condition on
-the hyperstress and is vacuous only when the hyperstress vanishes identically.
-Because $\tau_{ijx}$ contains the elastic term in $\ell^{2}$ and the
-flexoelectric term in $f$, that happens only in the classical limit
-$\ell=f=H=0$; the formulation therefore admits $\ell=0$ with $f\neq0$ only
-together with the statement that the double traction is then unavailable, and no
-result reported here takes that limit.  \cref{app:derivations} sets out the
-surviving terms case by case.
+where $\bar\sigma_{ix}=\sigma_{ix}-\partial_k\tau_{ixk}
+-\partial_j^{s}\tau_{ixj}$ is the generalised traction, the divergence of the
+hyperstress and its surface divergence along the face entering with the elastic
+stress.  The traction is a condition on that combination and not on $\sigma_{ix}$
+alone, and it is imposed through the surface term of the weak form of
+\cref{sec:numerics}.  The second entry is the double traction, conjugate to the
+normal derivative of the displacement on the edge; it is vacuous only when
+$\tau_{ijx}$ vanishes identically.  In this model
+$\tau_{ijx}=\ell^{2}c_{ijkl}\eta_{klx}$: both gradient couplings act on the
+normal-derivative component of the hyperstress, not on the axial one, so the edge
+double traction is present if and only if $\ell\neq0$, and the formulation admits
+$\ell=0$ with $f\neq0$ only together with the statement that the double traction
+is then unavailable.  No result reported here takes that limit.  The potential is
+free on the edge, so $D_x=0$ is its natural condition --- unlike the grounded
+face of \eqref{eq:bc_grounded}, where the potential is essential.
+\cref{app:derivations} sets out the surviving terms case by case.
 
 \paragraph{Far field $x\to-\infty$.}  The solution is an incoming guided mode
 plus outgoing branches; no wave arrives from $x=-\infty$ other than the

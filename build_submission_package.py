@@ -51,6 +51,8 @@ STUDY_FILES = [
     "round18_reference_checks.py",
     "round19_tests.py",
     "round19_layout_check.py",
+    "round20_boundary_audit.py",
+    "round20_recompute.py",
 ]
 
 FIGURE_STEMS = [

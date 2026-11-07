@@ -93,7 +93,7 @@ The contribution of the flexoelectric term was measured rather than assumed, by
 repeating the two solved configurations with $f$ set to zero and to ten times
 the retained value (part of the study reported in \cref{tab:controls}).  At the
 operating point the backward
-channel is $0.0231456$ with the retained $f$ and $0.0231484$ with $f=0$, a
+channel is $0.0192916$ with the retained $f$ and $0.0192938$ with $f=0$, a
 change of \SI{-0.012}{\percent}; at $k_xd=0.55$ it is $0.579180$ and
 $0.579245$, a change of \SI{-0.011}{\percent}.  At ten times the retained value the changes
 are \SI{-1.20}{\percent} and \SI{-1.12}{\percent}, so the dependence is smooth
@@ -199,7 +199,7 @@ the grid and is recorded with the data.
 
 The share along the branch is largest on its slow part.  It is $0.0399$
 at $k_xd=0.30$ ($f=\SI{16.676}{\giga\hertz}$), rises to $0.9468$ at
-$k_xd=0.5275$ ($f=\SI{16.6547}{\giga\hertz}$), and falls to $0.0173$ at
+$k_xd=0.52719$ ($f=\SI{16.6547}{\giga\hertz}$), and falls to $0.0173$ at
 $k_xd=0.75$ ($f=\SI{16.688}{\giga\hertz}$) (panel a).  The response is
 single-humped over the whole window: the coarse raster finds no second local
 extremum, and the top of the hump is located in
@@ -251,17 +251,17 @@ reference plane and $H=0$.}
 \toprule
 Case & $k_xd$ & $R_B$ at $n=30$ & $\theta_E$ at $n=30$ (deg) & $\max|\Delta R_B|/R_B$ \\
 \midrule
-Operating point   & 0.7362 & 0.023\,146 & $-27.8997$ & $7.2\times10^{-7}$ \\
-Maximum & 0.5275 & 0.946\,795 & $-13.8506$ & $3.8\times10^{-9}$ \\
-Earlier sample    & 0.5250 & 0.931\,891 & $-13.8888$ & $2.3\times10^{-8}$ \\
-$k_xd=0.55$       & 0.5500 & 0.579\,180 & $-14.4487$ & $1.5\times10^{-7}$ \\
+Operating point   & 0.7362 & 0.019\,292 & $-27.8997$ & $7.2\times10^{-7}$ \\
+Maximum & 0.52719 & 0.942\,872 & $-13.8506$ & $1.1\times10^{-6}$ \\
+Earlier sample    & 0.5250 & 0.925\,604 & $-13.8888$ & $2.3\times10^{-8}$ \\
+$k_xd=0.55$       & 0.5500 & 0.551\,910 & $-14.4487$ & $1.5\times10^{-7}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Three properties of the sequence are worth recording.  First, the values are
 converged in the Galerkin degree: between degrees 14 and 34 the relative
-change of the maximum stays below $10^{-8}$ at both the located argmax and the
+change of the maximum stays below $10^{-5}$ at both the located argmax and the
 reported wavenumber, the operating point changes by $7.2\times10^{-7}$, and the
 successive changes decrease monotonically, which is what a spectral method
 should do.  The two spreads are differences of nearly equal numbers and lie on
@@ -278,16 +278,16 @@ respectively.  Neither value is an artefact of a near-grazing mode.
 
 The precision of the printed digits is set by the spreads of
 \cref{tab:refinement}, not by the location of the top.  At a fixed
-configuration the share is reproducible to better than $10^{-8}$ relative: the
+configuration the share is reproducible to better than $10^{-6}$ relative: the
 degree-22 value changes by $6.2\times10^{-9}$ between degrees 14 and 34, the
 quadrature rule changes it by $4.3\times10^{-10}$, and the three tracking paths
-that reach $k_xd=0.5275$ from below, from above and in a single step return the
+that reach the maximum from below, from above and in a single step return the
 identical number.  The difference between the located argmax and the reported
 sample, $1.4\times10^{-7}$, is three orders of magnitude smaller than the
 \SI{0.01}{} percentage point over which the top is flat, so the two are
 separated by the search record and not by the last printed figure.
 Beyond that, the incident wavenumber returned by the spatial problem is
-$k_{ix}d=0.52824$, not the branch parameter $k_xd=0.5275$: on a flat branch the
+$k_{ix}d=0.52824$, not the branch parameter $k_xd=0.52719$: on a flat branch the
 two differ by \SI{0.14}{\percent} at the maximum.  Both are tabulated and no
 conclusion depends on the difference.
 
@@ -304,15 +304,16 @@ $\Delta k_xd=0.002$ over $0.465\le k_xd\le0.625$ -- the whole window in which a
 backward port exists at this $k_y$ -- contains a single hump and no second local
 extremum, with its largest sample at $k_xd=0.527$.  A plateau raster of
 $\Delta k_xd=10^{-4}$ over $0.5265\le k_xd\le0.5285$, and a refined raster of
-$\Delta k_xd=10^{-5}$ over $0.5272\le k_xd\le0.5278$, place the maximum at
-$k_xd=0.52752$ with $R_B=0.9467954$; the value at the reported wavenumber
-$k_xd=0.5275$ is $R_B=0.9467952$, $1.4\times10^{-7}$ lower --- a difference
-between two abscissae, not between two runs.  Every sampled wavenumber in
-$0.5266\le k_xd\le0.5277$ lies within \SI{0.01}{} percentage point of the
-maximum and every sampled wavenumber in $0.5265\le k_xd\le0.5281$ within
+$\Delta k_xd=10^{-5}$ around it, place the maximum at
+$k_xd=0.52719$ with $R_B=0.9428718$; the reported value is that of the
+certified maximum, and the value at the centre of the flat top, $k_xd=0.52752$,
+is $R_B=0.9428521$, $2.0\times10^{-5}$ lower --- a difference between two
+abscissae, not between two runs.  Every sampled wavenumber in
+$0.5267\le k_xd\le0.5276$ lies within \SI{0.01}{} percentage point of the
+maximum and every sampled wavenumber in $0.5265\le k_xd\le0.5280$ within
 \SI{0.1}{} percentage point, so the response has a flat top rather than a sharp
 peak: the reported location is the centre of that top, determined to within its
-half-width of $\pm0.0009$, not a five-digit abscissa.
+half-width of $\pm0.0005$, not a five-digit abscissa.
 
 Two independent restarts, from the brackets $[0.520,0.532]$ and
 $[0.524,0.536]$ on a raster of $10^{-3}$, return the same interval and the same
@@ -335,7 +336,7 @@ face value.
 \emph{A small denominator.}  The incident flux at the maximum is small, a
 factor $128$ below its value at the operating point, so the fraction could in
 principle be a ratio of two nearly vanishing quantities.  It is not: the value
-is reproduced to better than $10^{-8}$ across six Galerkin degrees, to
+is reproduced to better than $10^{-5}$ across six Galerkin degrees, to
 better than $10^{-8}$ across four quadrature rules, and identically along three
 different tracking paths that reach the same wavenumber from below, from above
 and in a single step.  A ratio of two independently vanishing numbers would
@@ -365,12 +366,12 @@ change is interpretation, not accuracy: because the incident flux falls towards
 the fold, the fraction is anti-correlated with it across the window
 ($r=-0.96$), so a maximal share coexists with a minimal transported power.
 
-The maximum is a modal share and not a reflectance.  At $k_xd=0.5275$ the
-total outgoing propagating power is $0.99769$ of the incident power and the
+The maximum is a modal share and not a reflectance.  At $k_xd=0.52719$ the
+total outgoing propagating power is $0.99918$ of the incident power and the
 interference correction at the reference plane is $-2.29\times10^{-3}$, so the
-backward mode carries \SI{94.68}{\percent} of the incident power and
-\SI{94.90}{\percent} of the outgoing propagating power.  The modal share is
-\SI{94.68}{\percent}; the energy statement is that \SI{99.77}{\percent} leaves
+backward mode carries \SI{94.29}{\percent} of the incident power and
+\SI{94.36}{\percent} of the outgoing propagating power.  The modal share is
+\SI{94.29}{\percent}; the energy statement is that \SI{99.92}{\percent} leaves
 as propagating outgoing modes.  The two are different readings of the same
 solution.
 
@@ -381,7 +382,7 @@ $5.08\times10^{-3}$ at the operating point to $3.97\times10^{-5}$ at the
 maximum, a factor $128$, while $|\Imag k_{ix}|d$ rises to $1.0\times10^{-3}$.
 The fraction is therefore the ratio of two small but resolved fluxes -- well
 defined, unchanged by the incident normalisation, and stable to
-$1\times10^{-8}$ under degree and quadrature refinement -- but it is not a statement that a
+$1\times10^{-5}$ under degree and quadrature refinement -- but it is not a statement that a
 large amount of energy is turned around.  Both readings are needed: the
 partition is maximal at the fold and the transported power is minimal there.
 
@@ -404,15 +405,15 @@ self-power normalised to unity; it is not a total reflectance.}
 Quantity & Operating point & Maximum & $k_xd=0.55$ \\
 \midrule
 frequency & $\SI{16.684}{\giga\hertz}$ & $\SI{16.6547}{\giga\hertz}$ & $\SI{16.6550}{\giga\hertz}$ \\
-longitudinal wavenumber $k_xd$ & 0.7362 & 0.5275 & 0.5500 \\
+longitudinal wavenumber $k_xd$ & 0.7362 & 0.52719 & 0.5500 \\
 incident wavenumber $\Real k_{ix}d$ & 0.7362 & 0.5282 & 0.5500 \\
 group velocity $v_g$ & $\SI{0.37}{\kilo\metre\per\second}$ & $\SI{0.45}{\metre\per\second}$ & $\SI{0.034}{\kilo\metre\per\second}$ \\
 incident attenuation $2|\Imag k_{ix}|$ & \SI{0.469}{\deci\bel\per\milli\metre} & \SI{87.2}{\deci\bel\per\milli\metre} & \SI{4.02}{\deci\bel\per\milli\metre} \\
 backward attenuation $2|\Imag k_{Bx}|$ & \SI{0.454}{\deci\bel\per\milli\metre} & \SI{87.1}{\deci\bel\per\milli\metre} & \SI{3.93}{\deci\bel\per\milli\metre} \\
-isolated backward return $R_B$ & $0.0231456$ & $0.9467952$ & $0.5791801$ \\
-modal share at the edge plane & $0.0232$ & $0.9856$ & $0.5802$ \\
+isolated backward return $R_B$ & $0.0192916$ & $0.9428718$ & $0.5519095$ \\
+modal share at the edge plane & $0.0193$ & $0.9824$ & $0.5529$ \\
 energy angle $\theta_E$ & $-27.90^{\circ}$ & $-13.85^{\circ}$ & $-14.45^{\circ}$ \\
-total outgoing propagating power & $0.99980$ & $0.99769$ & $0.99881$ \\
+total outgoing propagating power & $0.99990$ & $0.99918$ & $0.99878$ \\
 interference $P_{\text{cross}}/P_{\text{inc}}$ & $-4.17\times10^{-6}$ & $-2.29\times10^{-3}$ & $-1.02\times10^{-3}$ \\
 dissipation $P_{\text{diss}}/P_{\text{inc}}$ & $1.99\times10^{-4}$ & $2.32\times10^{-5}$ & $1.72\times10^{-4}$ \\
 edge-system condition number & $1.86\times10^{2}$ & $1.86\times10^{2}$ & $1.86\times10^{2}$ \\
@@ -424,7 +425,7 @@ scaled edge residual & $\le3\times10^{-15}$ & $\le3\times10^{-15}$ & $\le3\times
 
 \Cref{fig:fig05} closes the energy identity \eqref{eq:energy_identity} at the
 reference plane.  At $H=0$ the incident power normalised to unity is partitioned
-as follows: the identified backward channel carries $2.3146\times10^{-2}$, the
+as follows: the identified backward channel carries $1.9292\times10^{-2}$, the
 remaining propagating outgoing modes carry $0.976651$, dissipation removes
 $1.985\times10^{-4}$, and the interference term is $-4.169\times10^{-6}$.  The
 first two sum to $0.999797$, the total outgoing propagating power; adding the
@@ -435,7 +436,7 @@ identity itself closes to $3.4\times10^{-16}$ relative --- the stored residual o
 the budget --- and the computed power balance to $7.3\times10^{-13}$, six orders
 of magnitude below the $10^{-6}$ threshold plotted in panel (c).  At the maximum
 the backward channel carries $0.946795$ and the remaining propagating modes
-$5.089\times10^{-2}$, which together account for $0.99769$ of the incident
+$5.632\times10^{-2}$, which together account for $0.99918$ of the incident
 power; dissipation removes $2.32\times10^{-5}$ and the interference term is
 $-2.29\times10^{-3}$.  The same power balance closes there to
 $3.2\times10^{-13}$.
@@ -471,7 +472,7 @@ shift of $H$, which is even in $H$ and reaches $6.3\times10^{-5}$ in $\omega$.
 \includegraphics[width=0.95\textwidth]{figures/fig05_channel.pdf}
 \caption{Complete energy budget at the reference plane $x=-2\,d$.  (a) Partition
 of the incident power at $H=0$, logarithmic axis: backward channel
-$2.31\times10^{-2}$, other propagating outgoing modes $0.976651$, dissipation
+$1.93\times10^{-2}$, other propagating outgoing modes $0.976651$, dissipation
 $1.99\times10^{-4}$, interference $|P_{\text{cross}}|=4.17\times10^{-6}$.
 (b) The four fractions against $H/H^{*}$ at fixed operating frequency, so that
 the incident wavenumber drifts with $H$; \cref{tab:controls} gives the
@@ -509,13 +510,13 @@ and \emph{not} a backward conversion.}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xcccccc@{}}
 \toprule
  & \multicolumn{2}{c}{Operating point ($k_xd=0.736$)}
- & \multicolumn{2}{c}{Maximum ($k_xd=0.5275$)}
+ & \multicolumn{2}{c}{Maximum ($k_xd=0.52719$)}
  & \multicolumn{2}{c}{$k_xd=0.550$} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
 Configuration & $f$ (GHz) & $R_B$ & $f$ (GHz) & $R_B$ & $f$ (GHz) & $R_B$ \\
 \midrule
 full ($f_0$, $H/H^{*}=+0.05$) & 16.6840 & 0.022\,866 & 16.6546 & 0.622\,973 & 16.6549 & 0.522\,107 \\
-$f=f_0$, $H=0$                & 16.6841 & 0.023\,146 & 16.6547 & 0.946\,795 & 16.6550 & 0.579\,180 \\
+$f=f_0$, $H=0$                & 16.6841 & 0.019\,292 & 16.6547 & 0.942\,872 & 16.6550 & 0.551\,910 \\
 $f=0$, $H/H^{*}=+0.05$        & 16.6840 & 0.022\,869 & 16.6546 & 0.622\,971 & 16.6549 & 0.522\,153 \\
 $f=0$, $H=0$                  & 16.6841 & 0.023\,148 & 16.6547 & 0.946\,801 & 16.6550 & 0.579\,245 \\
 $\ell=0$, $f=0$, $H=0$        & 16.2077 & 0.077\,296$^{\mathrm{sp}}$
@@ -528,7 +529,7 @@ $\ell=0$, $f=0$, $H=0$        & 16.2077 & 0.077\,296$^{\mathrm{sp}}$
 Three statements follow.
 
 First, the effect is already present with $H=0$: the same branch returns
-\SI{2.31}{\percent} at the operating point and \SI{94.68}{\percent} at the
+\SI{1.93}{\percent} at the operating point and \SI{94.29}{\percent} at the
 maximum.  The partition is already present in the strain-gradient
 piezoelectric-semiconductor model, and the coupling can only modify it.
 
@@ -536,7 +537,7 @@ Second, the size of the modification depends strongly on where the branch is
 sampled, and it is quantified.  Turning $H$ on at the tabulated extreme
 $|H|=0.05H^{*}$ \emph{reduces} the partition by \SI{1.21}{\percent} at the
 operating point, by \SI{9.85}{\percent} at $k_xd=0.55$ and by
-\SI{34.2}{\percent} at the maximum.  The flexoelectric coefficient is
+\SI{36.1}{\percent} at the maximum.  The flexoelectric coefficient is
 neutral by comparison: at $f_0=\SI{1}{\nano\coulomb\per\metre}$ it moves the
 partition by \SI{-0.012}{\percent} at the operating point, by
 \SI{-0.009}{\percent} at $k_xd=0.55$ and by \SI{0.0004}{\percent} at the
@@ -545,15 +546,15 @@ attenuation of both partner modes, whose decay rate rises from
 $1.0\times10^{-3}$ to $8.5\times10^{-3}$ per unit thickness at the maximum, so a
 larger part of the conversion is lost between the edge and the reference plane:
 referred to the edge plane, where both effects are evaluated at the same place,
-the reduction is \SI{11.1}{\percent} rather than \SI{34.2}{\percent}, and the
+the reduction is \SI{13.7}{\percent} rather than \SI{36.1}{\percent}, and the
 remaining \SI{23.1}{} points are propagation loss.  At $k_xd=0.55$ the same
-comparison gives \SI{2.01}{\percent} rather than \SI{-9.85}{\percent}: there the
+comparison gives \SI{1.65}{\percent} rather than \SI{-10.17}{\percent}: there the
 coupling slightly \emph{raises} the edge-plane share, and the whole of the
 reference-plane reduction is propagation loss.  The
 branch-consistent sweep is monotone in $|H|$: at the maximum
 $R_B=0.9468$, $0.7711$, $0.6230$ for $H/H^{*}=0$, $+0.025$, $+0.05$ and
 $0.8636$, $0.7006$ for $-0.025$, $-0.05$.  When the extremum is re-searched
-afresh at each coupling level it moves to $k_xd=0.5218$, $0.5248$, $0.5275$,
+afresh at each coupling level it moves to $k_xd=0.5218$, $0.5248$, $0.52719$,
 $0.5261$, $0.5309$ for $H/H^{*}=+0.05$, $+0.025$, $0$, $-0.025$, $-0.05$, and
 the largest attainable share falls to $0.6244$ and $0.7013$ at the two extremes,
 so the coupling lowers the ceiling as well as shifting the location, and the
@@ -640,7 +641,7 @@ perturbation of the partition and not its organising parameter.  The comparison
 must be made at fixed $k_x$, because it is the branch and not the coupling that
 organises the partition; the two sensitivities do meet, however, at the branch
 maximum, where the branch-consistent coupling effect grows to
-\SI{34.2}{\percent} (\cref{tab:controls}) while the $k_y$ factor stays at
+\SI{36.1}{\percent} (\cref{tab:controls}) while the $k_y$ factor stays at
 $1.35$.
 
 Panel (b) draws the measured $5\times19$ grid cell by cell, with no
