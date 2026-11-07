@@ -7,6 +7,12 @@ written down.
 Baseline `75d86dc9710d69e2100a85fa5c8b56e9681f7744`; every gate below was run on
 the edited tree of this round.
 
+> **Round-13 status (added 2026-11-07, text below unchanged).** The one numerical
+> blemish recorded here — fig10(c) — is closed, and the test suite has grown from 47
+> to 52 checks. The scientific verdict of §2 (**NOT READY**, for the prior-art question
+> and the author declarations) is unchanged: round 13 closes defects, not questions.
+> The current assessment is `PAPER_A_ROUND13_SUPERVISOR_HANDOFF.md`.
+
 ---
 
 ## 1. Numerical readiness — **PASS**, with one carried figure defect

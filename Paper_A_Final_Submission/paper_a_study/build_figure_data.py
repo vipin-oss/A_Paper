@@ -785,6 +785,24 @@ def fig10() -> dict:
             backward_vEx=float(res["backward"]["vEx"]),
             backward_vEy=float(res["backward"]["vEy"]),
         ),
+        # The phase wavevector of each mode, so that the panel-(c) schematic can be
+        # drawn from a stored solve instead of from literals (round-13 defect B1:
+        # the old literal combined K_Bx/K_ix with |k_y|/K_Bx and the sign of the
+        # flux).  These are wavenumbers, not fluxes: k_B points into +x,+y while
+        # P_B points into -x,-y.
+        primary_wavenumbers=dict(
+            ky_d=float(res["ky"]),
+            incident_kx_d=float(res["incident_K"].real),
+            incident_im_kx_d=float(res["incident_K"].imag),
+            backward_kx_d=float(res["backward_K"].real),
+            backward_im_kx_d=float(res["backward_K"].imag),
+            incident_phase_angle_deg=float(np.degrees(np.arctan2(res["ky"], res["incident_K"].real))),
+            backward_phase_angle_deg=float(np.degrees(np.arctan2(res["ky"], res["backward_K"].real))),
+            magnitude_ratio_backward_over_incident=float(
+                np.hypot(res["backward_K"].real, res["ky"])
+                / np.hypot(res["incident_K"].real, res["ky"])),
+            configuration="H=0 (no carrier-strain-gradient coupling), the operating point of section 4",
+        ),
     )
     dump_json("fig10_field_metrics.json", payload)
     return payload

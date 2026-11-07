@@ -24,11 +24,31 @@ instead of being called "the maximum" by default:
                     argmax and independent restarts agree;
                     ``largest_admissible_sample`` otherwise.
 
-Convergence is measured three ways and reported separately: Galerkin degree,
-quadrature order, and -- because R_B is evaluated on a tracked branch -- the
-sensitivity to the branch-tracking path.  The last one is not a discretisation
-error, but near a zero-group-velocity fold it dominates the reproducibility of
-the printed digits, so it is measured rather than assumed.
+Convergence is measured on four separate diagnostics, each reported under its own
+key and none of them allowed to stand in for another:
+
+  * ``degree_spread``             Galerkin degree, 22 vs 26/30;
+  * ``quadrature_spread``         quadrature rule at a fixed degree;
+  * ``tracking_path_relative_spread``
+                                  because R_B is evaluated on a tracked branch,
+                                  the same value is reached from below, from above
+                                  and in a single step.  In the delivered data the
+                                  three paths agree to the last stored digit and
+                                  the spread is 0.0, so tracking order is not a
+                                  source of error here;
+  * ``restart_spread``            the sampling difference between the coarse
+                                  raster's best sample and the refined maximum.
+                                  This is the one that is large near the
+                                  zero-group-velocity fold (8.4e-6 absolute,
+                                  8.7e-6 relative in the delivered run); it is a
+                                  discretisation of the search, not a dependence
+                                  on the path taken to the fold.
+
+The distinction matters: an earlier revision of this docstring called the
+tracking-path sensitivity the dominant term, which the delivered numbers
+contradict.  Nothing about the search itself depends on that wording -- the
+four diagnostics are computed independently and stored -- but the record should
+describe what is stored, not what was assumed before it was measured.
 
 Run:  python paper_a_study/peak_search.py     (~6 min; writes peak_search.json)
 """

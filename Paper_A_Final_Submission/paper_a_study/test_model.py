@@ -653,4 +653,76 @@ class TestFigureProvenance(unittest.TestCase):
 
 
 
+
+class TestFigure10BackwardWavenumber(unittest.TestCase):
+    """Round-13 defect B1: fig10(c) drew the backward *wavenumber* along
+    (0.333, -0.530) -- one ratio from K_Bx/K_ix, one from |k_y|/K_Bx, and the
+    sign of the *flux*.  The solved wavevector points into +x,+y at +27.90 deg.
+    The guard is exercised below with the reversed vector, so a silent return of
+    the defect fails here.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        import json
+        import os
+        import sys
+        from pathlib import Path
+        cls.here = Path(__file__).resolve().parent
+        if str(cls.here) not in sys.path:
+            sys.path.insert(0, str(cls.here))
+        # the mutation harness points this at a mutated copy of the renderer
+        cls.src_root = Path(os.environ.get('PAPER_A_FIGURE_SRC', str(cls.here)))
+        spec = importlib.util.spec_from_file_location(
+            'fig10_module_under_test', cls.src_root / 'generate_final_figures.py')
+        cls.mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.mod)
+        cls.metrics = json.loads((cls.here / 'figure_data' /
+                                  'fig10_field_metrics.json').read_text())
+
+    def test_drawn_backward_wavenumber_is_the_solved_one(self):
+        pw = self.metrics['primary_wavenumbers']
+        drawn = self.mod.fig10_directions(self.metrics)['k_B']
+        expected = np.array([1.0, pw['ky_d'] / pw['backward_kx_d']])
+        np.testing.assert_allclose(drawn / np.linalg.norm(drawn),
+                                   expected / np.linalg.norm(expected), atol=1e-12)
+        self.assertGreater(float(drawn[0]), 0.0)
+        self.assertGreater(float(drawn[1]), 0.0, 'k_B points into +y, not into -y')
+        # the numbers the manuscript quotes for this panel
+        self.assertAlmostEqual(pw['ky_d'] / pw['backward_kx_d'], 0.529, places=3)
+        self.assertAlmostEqual(pw['backward_phase_angle_deg'], 27.9, places=1)
+        self.assertAlmostEqual(pw['incident_phase_angle_deg'], 10.0, places=6)
+
+    def test_the_drawn_length_keeps_the_solved_magnitude_ratio(self):
+        ratio = self.metrics['primary_wavenumbers']['magnitude_ratio_backward_over_incident']
+        pw = self.metrics['primary_wavenumbers']
+        solved = (np.hypot(pw['backward_kx_d'], pw['ky_d']) /
+                  np.hypot(pw['incident_kx_d'], pw['ky_d']))
+        self.assertAlmostEqual(ratio, solved, places=12)
+        self.assertLess(ratio, 0.5, 'the backward wavenumber is shorter than the incident one')
+
+    def test_flux_opposes_the_wavenumber(self):
+        dirs = self.mod.fig10_directions(self.metrics)
+        self.assertLess(float(np.dot(dirs['k_B'], dirs['P_B'])), 0.0,
+                        'for a backward mode the flux points opposite to the phase vector')
+        self.assertLess(float(dirs['P_B'][0]), 0.0)
+        self.assertLess(float(dirs['P_B'][1]), 0.0)
+        self.assertGreater(float(dirs['P_i'][0]), 0.0)
+        self.assertGreater(float(dirs['P_i'][1]), 0.0, 'the incident flux keeps +y')
+
+    def test_reversed_arrow_is_rejected(self):
+        drawn = self.mod.fig10_directions(self.metrics)['k_B']
+        self.mod.check_backward_wavenumber(drawn, self.metrics)          # passes
+        for bad in (-drawn, np.array([drawn[0], -drawn[1]]),
+                    np.array([0.333, -0.530])):                          # the old literal
+            with self.assertRaises(ValueError):
+                self.mod.check_backward_wavenumber(bad, self.metrics)
+
+    def test_the_renderer_calls_the_guard(self):
+        src = (self.src_root / 'generate_final_figures.py').read_text()
+        self.assertIn('check_backward_wavenumber(dirs["k_B"], metrics)', src,
+                      'the schematic must be guarded at render time, not only in tests')
+
+
 if __name__=='__main__':unittest.main(verbosity=2)

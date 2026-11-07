@@ -1,4 +1,4 @@
-# Paper A — review package (round 12)
+# Paper A — review package (round 13)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,14 +11,17 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 12 is a
-section-by-section review of the manuscript — mathematics, physics, language and what a journal
-requires — with two round-11 reporting defects corrected before any manuscript text was touched
-(`PAPER_A_ROUND12_PRELIMINARY_EVIDENCE_CORRECTIONS.md`, which is where a reader should start). The
-scientific content is unchanged: no equation, no constant, no boundary condition, no solver, no
-dataset, no figure PDF and no reported number. Nineteen prose defects were repaired, twenty printed
-numbers that disagreed with the delivered records among them; one frozen figure annotation defect is
-reported and not repaired (`PAPER_A_ROUND12_BLOCKING_ISSUES.md`, B1).
+**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 13 is a
+**targeted closure round**: it corrects the backward-wavenumber arrow in fig10(c) against the stored
+solve and guards it with five tests, repairs a docstring that contradicted its own output, fixes one
+misattributed number and one caption, and re-verifies everything those changes can touch. It changes
+no equation, no constant, no boundary condition, no solver, no dataset and no reported number; the
+fig10 field map came back byte-identical after regeneration.
+
+Round 12 — the section-by-section review of the manuscript's text — remains the place to read the
+prose as a whole: nineteen defects, ten of them numbers that disagreed with the delivered records.
+Two of its reports, and its readiness assessment, carry dated round-13 status notes: B1 (the figure
+arrow) and B6 (the docstring) are closed.
 
 ---
 
@@ -56,7 +59,7 @@ cp paper_a_study/figures_final/fig*.pdf Paper_A_Final_Submission/figures/
 OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/run_all_checks.py
 
 # individually
-.venv/bin/python -m unittest paper_a_study.test_model -v      # 47 tests, ~21 s
+.venv/bin/python -m unittest paper_a_study.test_model -v      # 52 tests, ~25 s
 .venv/bin/python paper_a_study/claim_audit.py                 # 23 claims, 46 tokens
 .venv/bin/python paper_a_study/mutation_tests.py              # 15 mutants, all caught
 ```
@@ -91,7 +94,8 @@ still fails when a spread exceeds it.
 | `paper_a_study/figure_data/` | every CSV and JSON the manuscript and figures are built from, including the search, certification, identity and matched-control records |
 | `validation/` | the verification log of this delivery |
 | `a0/`, `a0r/`, `a0s/` | completed historical studies, retained as review evidence; they are not part of the current result |
-| `PAPER_A_ROUND12_*.md` | the seven reports of this round: preliminary evidence corrections (Part A), section-by-section review, edit ledger, numerical traceability audit, readiness assessment, blocking issues, correction history |
+| `PAPER_A_ROUND13_*.md` | the six reports of this round: pre-edit closure audit, fig10 vector verification, documentation corrections, LaTeX build and page proof, targeted validation, supervisor handoff |
+| `PAPER_A_ROUND12_*.md` | the seven reports of round 12: preliminary evidence corrections, section-by-section review, edit ledger, numerical traceability audit, readiness assessment, blocking issues, correction history. Two of them carry dated round-13 status notes |
 | `PAPER_A_ROUND11_*.md` | the eight reports of round 11: pre-edit programming audit, numerical reproducibility, figure-by-figure audit, panel-source matrix, claim registry, mutation and regression results, correction ledger, final readiness. Two of these carry "Corrected in round 12" annotations where round 11 mislabelled a reproducibility number |
 | `PAPER_A_ROUND10_*.md` | the five reports of round 10: pre-edit audit, author style, structure comparison, edit log, closing audit |
 | `PAPER_A_ROUND9_*.md`, `PAPER_A_ROUND8_*.md` | the earlier rounds, retained as review evidence |

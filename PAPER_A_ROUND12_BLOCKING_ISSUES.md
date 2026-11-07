@@ -7,6 +7,14 @@ is wrong, what it affects, why it was not fixed here, and what would close it.
 
 Baseline `75d86dc9710d69e2100a85fa5c8b56e9681f7744`.
 
+> **Round-13 status (added 2026-11-07, text below unchanged).** B1 is **closed**
+> (the arrow is now derived from the stored solve, guarded at render time, and
+> pinned by five tests — `PAPER_A_ROUND13_FIG10_VECTOR_VERIFICATION.md`) and B6 is
+> **closed** (the docstring now separates the four diagnostics —
+> `PAPER_A_ROUND13_DOCUMENTATION_CORRECTIONS.md`). B2, B3, B4 and B5 remain open
+> exactly as described here. The entries below are the record of what round 12
+> found, not a current list of blockers.
+
 ---
 
 ## B1 — fig10(c) draws the backward wavenumber in the wrong direction

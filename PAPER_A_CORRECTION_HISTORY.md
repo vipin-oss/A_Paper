@@ -289,3 +289,39 @@ round-10 language and structure, the round-11 figure fixes, the `UNRESOLVED` nov
 synthetic $\ell$, $f$, $H$, the single-edge and corner caveats, and `BUILD UNVERIFIED`.
 **Still open:** B1 (fig10(c) arrow), B2 (prior art), B3 (corner field), B4 (build), B5 (author
 declarations), B6 (`peak_search.py` docstring) — `PAPER_A_ROUND12_BLOCKING_ISSUES.md`.
+
+---
+
+# Round 13 (2026-11-07) — targeted closure: fig10(c), docstrings, packaging
+
+A closure round, not a rewrite: close the two blockers round 12 left open, fix one
+report-level misattribution and one caption, repair the two counts the round's own
+new tests made stale. No equation, constant, boundary condition, solver, dataset,
+table or reported number changed.
+
+| # | Item | Before | After | Evidence |
+|---|---|---|---|---|
+| P13-1 | fig10(c) backward wavenumber arrow | `arrow((0.333, -0.530), … ${\bf k}_B$ …)`: one ratio from $K_{Bx}/K_{ix}$, one from $\lvert k_y\rvert/K_{Bx}$, the sign of the flux; drawn $57.9^{\circ}$ **below** $+x$, length ratio 0.829 | derived from the stored solve, $\vect{k}_B\propto(1,0.5295)$ at $+27.90^{\circ}$, length ratio 0.371 (= $\lvert\vect{k}_B\rvert/\lvert\vect{k}_i\rvert$), guarded at render time | edge solve at the figure's own configuration: $k_{Bx}=0.2451746921716515$, $k_y=0.1298117503$, `reflected_angle_deg` $=-27.8997$ |
+| P13-2 | the other three fig10(c) arrows | literals $(1,0.176)$, $(1,P_{iy})$, $(-1,-0.530)$ | all four derived from `fig10_field_metrics.json` → `primary_wavenumbers` / `primary_flux` | three of the four agree with their literals to the precision drawn; only $\vect{k}_B$ moved |
+| P13-3 | `fig10_field_metrics.json` | no wavenumber record | `primary_wavenumbers` block, 11 lines, written by the producer | regenerated `fig10_field_maps.csv` byte-identical, so the re-run was metadata-only |
+| P13-4 | regression guard | the defect was invisible to 47 tests | `TestFigure10BackwardWavenumber`, 5 tests; a reversed arrow fails 3 of them; `fig10()` calls the guard | mutant copy in `/tmp/m16`: `FAILED (failures=2, errors=1)` |
+| P13-5 | `peak_search.py` docstring | "the tracking-path sensitivity … dominates the reproducibility of the printed digits" | four diagnostics named separately; tracking spread 0.0, sampling error 8.4e-6 | `peak_search.json` → `verdict` |
+| P13-6 | round-12 correction history and download README | "62.2973 % at $k_xd=0.55$" | "62.2973 % at $k_xd=0.5275$ with $H/H^{*}=+0.05$", with a dated note | `mechanism_controls.json`: `refined_peak.full.R_B` 0.6229733; `k055_sample.full.R_B` 0.5221071 |
+| P13-7 | fig10 caption | "(c) schematic whose arrows are the solved flux directions" | "… the solved wavenumber and flux directions" | the panel draws both pairs |
+| P13-8 | test count | 47 in the appendix (three places) and the package README | 52, ~25 s | the round's five new tests |
+| P13-9 | round-12 status documents | "B1 open", "B6 open" | body unchanged, dated round-13 status note added at the top | the two defects are closed here |
+
+**Verification after the corrections:** 52 tests OK; new class 5/5; reversal mutant
+caught; claim registry 23/46, 5 deprecated guarded, 10 figures in order, 11/11 source
+rows; 15 mutants caught; phase-speed audit PASS; static check PASS (104 labels, 75
+references, 13/13 citations, 16 656 words); fig10 field map byte-identical; LaTeX
+build not possible (**BUILD UNVERIFIED**); full battery not re-run because no producer
+logic changed.
+
+**Not superseded:** the research model, every headline number, the tables, the 13
+citations, the round-10 language, the round-11 figure and registry work, the round-12
+prose corrections, the `UNRESOLVED` novelty status, the synthetic $\ell$, $f$, $H$,
+the single-edge and corner caveats, and `BUILD UNVERIFIED`.
+**Still open after this round:** B2 (prior art), B3 (corner field), B4 (build),
+B5 (author declarations). **Closed in this round:** B1, B6.
+

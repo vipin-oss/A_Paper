@@ -118,8 +118,14 @@ The governing equations, the constitutive constants, the boundary conditions
 (including the corner line force), the solver, the discretisation, the material
 data, all ten figure PDFs, all datasets, and every reported number: 2.31456 %,
 94.6795 % at $k_xd=0.5275$ / 0.52752, 16.6547 GHz, 0.9855722 at the edge plane,
-99.77 % propagating, 62.2973 % at $k_xd=0.55$, the 34.2 / 11.1 / 1.21 % coupling
-decomposition, and the four certified values with their spreads.
+99.77 % propagating, 62.2973 % at $k_xd=0.5275$ with $H/H^{*}=+0.05$, the
+34.2 / 11.1 / 1.21 % coupling decomposition, and the four certified values with
+their spreads.  *(Corrected in round 13: this sentence first attached 62.2973 % to
+$k_xd=0.55$, the wrong abscissa. The value is `mechanism_controls.json` →
+`refined_peak.full.R_B`, i.e. the refined peak at $H/H^{*}=+0.05$; at
+$k_xd=0.55$ the coupling-on share is 0.5221071 and the coupling-off share is
+0.5791800. The manuscript was correct throughout — §4.10 attaches 0.6230 to
+"the maximum".)*
 
 Also unchanged in status: the prior-art comparison **UNRESOLVED**, the corner field
 **unresolved**, $\ell$, $f$, $H$ **synthetic**, the maximum **local**, the typeset

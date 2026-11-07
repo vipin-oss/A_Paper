@@ -53,5 +53,16 @@
   "incident_vEx": 378.91212354918025,
   "backward_vEx": -186.02007632802471,
   "backward_vEy": -98.49137154145555
+ },
+ "primary_wavenumbers": {
+  "ky_d": 0.12981175031447484,
+  "incident_kx_d": 0.7361990195319493,
+  "incident_im_kx_d": 5.402718792523917e-06,
+  "backward_kx_d": 0.2451746921714963,
+  "backward_im_kx_d": -5.2305951976365535e-06,
+  "incident_phase_angle_deg": 9.999999999990488,
+  "backward_phase_angle_deg": 27.899713983558208,
+  "magnitude_ratio_backward_over_incident": 0.37110226697849763,
+  "configuration": "H=0 (no carrier-strain-gradient coupling), the operating point of section 4"
  }
 }

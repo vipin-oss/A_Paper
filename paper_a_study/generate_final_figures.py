@@ -810,6 +810,52 @@ def fig09():
 # ==========================================================================
 # Figure 10 -- solved field maps and energy-flux directions
 # ==========================================================================
+def fig10_directions(metrics):
+    """The four arrow directions of the fig10(c) schematic, from the stored solve.
+
+    Round-13 defect B1: the backward *wavenumber* used to be drawn as
+    ``(0.333, -0.530)``, which mixes ``K_Bx/K_ix`` with ``|k_y|/K_Bx`` and takes
+    the sign of the *flux*.  For a backward mode the phase wavevector and the
+    energy flux point in opposite directions: here ``k_B`` points into ``+x,+y``
+    at +27.9 deg while ``P_B`` points into ``-x,-y``.  Every component below is
+    read from ``fig10_field_metrics.json``, so the drawing cannot drift from the
+    solve that produced panels (a) and (b).
+    """
+    pw = metrics["primary_wavenumbers"]
+    flux = metrics["primary_flux"]
+    ky = float(pw["ky_d"])
+    k_i = np.array([1.0, ky / float(pw["incident_kx_d"])])
+    k_B = np.array([1.0, ky / float(pw["backward_kx_d"])])
+    P_i = np.array([1.0, float(flux["incident_Py"]) / float(flux["incident_Px"])])
+    P_B = np.array([float(flux["backward_Px"]), float(flux["backward_Py"])])
+    P_B = P_B / abs(P_B[0])
+    return dict(k_i=k_i, k_B=k_B, P_i=P_i, P_B=P_B,
+                magnitude_ratio=float(pw["magnitude_ratio_backward_over_incident"]))
+
+
+def check_backward_wavenumber(direction, metrics, tol=1e-9):
+    """Guard called at render time: the drawn k_B must be the solved wavevector.
+
+    Raises if the arrow is not in the first quadrant or does not match
+    ``(1, k_y / k_Bx)`` rebuilt from the stored components, so a reversed arrow
+    (the round-12 defect) cannot come back silently.
+    """
+    pw = metrics["primary_wavenumbers"]
+    d = np.asarray(direction, dtype=float)
+    if d[0] <= 0.0 or d[1] <= 0.0:
+        raise ValueError("fig10(c): the backward wavenumber must point into +x,+y; "
+                         f"got {tuple(float(x) for x in d)}. The vector that points "
+                         "into -x,-y is the energy flux P_B, not the phase k_B.")
+    expected = np.array([1.0, float(pw["ky_d"]) / float(pw["backward_kx_d"])])
+    d = d / np.linalg.norm(d)
+    expected = expected / np.linalg.norm(expected)
+    if float(np.max(np.abs(d - expected))) > tol:
+        raise ValueError("fig10(c): the drawn backward wavenumber does not match the "
+                         f"solved direction {tuple(float(x) for x in expected)} "
+                         f"(got {tuple(float(x) for x in d)}).")
+    return d
+
+
 def fig10():
     rows = load("fig10_field_maps.csv")
     metrics = json.loads((DATA / "fig10_field_metrics.json").read_text())
@@ -866,8 +912,9 @@ def fig10():
            va="top", bbox=dict(boxstyle="round,pad=0.22", fc="white", ec="#c6ced5",
                                lw=0.5, alpha=0.92))
 
-    # (c) schematic, all directions taken from the solved flux
-    p = metrics["primary_flux"]
+    # (c) schematic, all directions taken from the solved wavevectors and fluxes
+    dirs = fig10_directions(metrics)
+    check_backward_wavenumber(dirs["k_B"], metrics)
     c.set_xlim(-1.45, 0.30)
     c.set_ylim(-1.05, 1.05)
     c.axvspan(-1.45, 0.0, color="#EEF3F7", zorder=0)
@@ -883,18 +930,23 @@ def fig10():
                arrowprops=dict(arrowstyle="-|>", lw=0.9, color="#8a949d"))
     c.text(-1.42, 0.0, r"$y$", fontsize=8.4, va="center")
 
-    def arrow(vec, color, label, anchor, scale, ha="left"):
+    def arrow(vec, color, label, anchor, scale, ha="left", label_dy=0.0):
         tip = (anchor[0] + scale * vec[0], anchor[1] + scale * vec[1])
         c.annotate("", xy=tip, xytext=anchor,
                    arrowprops=dict(arrowstyle="-|>", lw=1.8, color=color,
                                    shrinkA=0, shrinkB=0))
-        c.text(tip[0] + (0.045 if ha == "left" else -0.045), tip[1], label,
+        c.text(tip[0] + (0.045 if ha == "left" else -0.045), tip[1] + label_dy, label,
                fontsize=8.6, color=color, va="center", ha=ha)
 
-    arrow((1.0, 0.176), "#C83E58", r"${\bf k}_i$", (-1.16, -0.50), 0.55)
-    arrow((0.333, -0.530), "#087E8B", r"${\bf k}_B$", (-0.82, 0.74), 0.74, ha="right")
-    arrow((1.0, p["incident_Py"]), "#B4552A", r"${\bf P}_i$", (-1.16, 0.12), 0.50)
-    arrow((-1.0, -0.530), "#6C3F8D", r"${\bf P}_B$", (-0.26, 0.06), 0.46, ha="right")
+    arrow(dirs["k_i"], "#C83E58", r"${\bf k}_i$", (-1.16, -0.50), 0.55)
+    # k_B is drawn at the solved magnitude ratio to k_i, not at an arbitrary length
+    length_i = 0.55 * float(np.linalg.norm(dirs["k_i"]))
+    # the label sits above a short arrow, clear of the shaft
+    arrow(dirs["k_B"], "#087E8B", r"${\bf k}_B$", (-1.00, 0.34),
+          length_i * dirs["magnitude_ratio"] / float(np.linalg.norm(dirs["k_B"])),
+          ha="right", label_dy=0.10)
+    arrow(dirs["P_i"], "#B4552A", r"${\bf P}_i$", (-1.16, 0.12), 0.50)
+    arrow(dirs["P_B"], "#6C3F8D", r"${\bf P}_B$", (-0.26, 0.06), 0.46, ha="right")
     c.set_xticks([])
     c.set_yticks([])
     for spine in c.spines.values():
