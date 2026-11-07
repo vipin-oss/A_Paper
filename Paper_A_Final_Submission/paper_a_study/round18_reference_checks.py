@@ -11,7 +11,7 @@ script is wrong, never that a tolerance was relaxed.
 
 Run from the repository root::
 
-    PYTHONPATH=/home/user/A_Paper python paper_a_study/round18_reference_checks.py
+    PYTHONPATH=. python paper_a_study/round18_reference_checks.py
 
 Exit status 0 means every printed number reproduced.  A failure prints the value
 computed here, the value the manuscript prints, and the relative difference.

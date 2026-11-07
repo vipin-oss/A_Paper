@@ -1,0 +1,26 @@
+quantity,value,unit,source_file,source_key,note
+R_B at the certified local maximum,0.942871839272569,-,peak_search.json,verdict.R_B_at_max,backward modal share at x = -2 um; NOT a reflectance
+k_x d at the certified maximum,0.52719,-,peak_search.json,verdict.K_at_max,
+flat-top interval (1e-4 level),"[0.5267, 0.5276]",-,peak_search.json,classification.plateau_flat_1e_minus4_interval,
+classification,certified_local_maximum,-,peak_search.json,verdict.classification,local maximum inside the searched domain; not demonstrated global
+degree spread of R_B,1.1047168215699311e-06,relative,peak_search.json,verdict.degree_spread,degrees 14..34
+quadrature spread of R_B,1.698845860143633e-09,relative,peak_search.json,verdict.quadrature_spread,64..256 nodes
+restart spread of R_B,3.2390049181652003e-06,relative,peak_search.json,verdict.restart_spread,
+R_B at the operating point,0.019291537462333058,-,peak_certification.json,verdict.operating_point.R_B_finest,"K0 = 0.7361990195318475, Omega0 = 7.633372404423294"
+reflected angle at the operating point,-27.899713988642947,deg,peak_certification.json,verdict.operating_point.angle_finest,
+reflected angle at the certified maximum,-13.850624233748388,deg,peak_certification.json,verdict.refined_peak.angle_finest,
+R_B at k_x d = 0.55,0.5519094843546367,-,peak_certification.json,verdict.k055_sample.R_B_finest,off-peak sample
+R_B at the edge plane (certified maximum),0.9824311,-,claims.json,claims: R_B_edge_certified_maximum,value as registered in the claim registry
+degree-audit worst relative change (18 -> 30),8.842957853405062e-06,relative,convergence_audit.json,verdict.max_relative_change_degree18_to_30,tolerance 1e-05; pass = True
+quadrature worst relative change vs 256 nodes,7.770729500113776e-09,relative,quadrature_audit.json,verdict.worst_relative_change_vs_256_nodes,tolerance 1e-07; pass = True
+backward-channel P_x at the reference plane,-0.015424813079369343,normalised,fig10_field_metrics.json,primary_flux.backward_Px,
+incident P_x at the reference plane,0.9999999999999977,normalised,fig10_field_metrics.json,primary_flux.incident_Px,
+reflected angle from the Fig. 10 metrics,-27.89971398105782,deg,fig10_field_metrics.json,primary_flux.reflected_angle_deg,
+"corner line force, operating point deg10 (corner_max_rel)",0.0841719601786055,relative,round21/gate12_corner.json,[operating point deg10].corner_max_rel,bounded closure; exponent approx -0.63
+"Gate 1 identity, operating point deg10 (id_incident)",1.1549616536868823e-13,relative,round21/gate12_corner.json,[operating point deg10].id_incident,
+"Gate 1 identity, operating point deg10 (id_plain_worst)",17.787560523202224,relative,round21/gate12_corner.json,[operating point deg10].id_plain_worst,the same identity with the corner term dropped
+"corner line force, operating point deg28 (corner_max_rel)",0.044576811067561596,relative,round21/gate12_corner.json,[operating point deg28].corner_max_rel,bounded closure; exponent approx -0.63
+"corner line force, corrected maximum deg10 (corner_max_rel)",0.0032710766884455826,relative,round21/gate12_corner.json,[corrected maximum deg10].corner_max_rel,bounded closure; exponent approx -0.63
+"corner line force, corrected maximum deg28 (corner_max_rel)",0.001707506938703752,relative,round21/gate12_corner.json,[corrected maximum deg28].corner_max_rel,bounded closure; exponent approx -0.63
+"corner line force, k_x d = 0.55 deg10 (corner_max_rel)",0.03791395799605175,relative,round21/gate12_corner.json,[k_x d = 0.55 deg10].corner_max_rel,bounded closure; exponent approx -0.63
+"corner line force, k_x d = 0.55 deg28 (corner_max_rel)",0.01981884096076023,relative,round21/gate12_corner.json,[k_x d = 0.55 deg28].corner_max_rel,bounded closure; exponent approx -0.63

@@ -1,0 +1,290 @@
+{
+ "title": "Paper A run manifest",
+ "generated_by": "04_REPRODUCTION/make_run_manifest.py",
+ "generated_utc": "2026-11-07T18:22:26+00:00",
+ "battery_log": "validation/verification_log.txt",
+ "battery_log_sha256": "181401b92e956060014f8358e367854f66e89563bcc1788d00ea07b5e5b31f2e",
+ "interpreter": "Python 3.11.2",
+ "dependencies": {
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "matplotlib": "3.11.2"
+ },
+ "seeds": "none used (fully deterministic)",
+ "environment_note": "TeX engine absent in the build environment: the LaTeX build step is recorded as SKIP, never as PASS.",
+ "steps": [
+  {
+   "step": "dimensional and constitutive audit",
+   "kind": "audit",
+   "command": "python paper_a_study/verify_dimensions.py",
+   "outputs": [
+    "paper_a_study/figure_data/dimension_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 0.6
+  },
+  {
+   "step": "quasistatic justification",
+   "kind": "audit",
+   "command": "python paper_a_study/quasistatic_check.py",
+   "outputs": [
+    "paper_a_study/figure_data/quasistatic_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 0.5
+  },
+  {
+   "step": "flexoelectric control",
+   "kind": "audit",
+   "command": "python paper_a_study/flexo_control.py",
+   "outputs": [
+    "paper_a_study/figure_data/flexo_control.json"
+   ],
+   "status": "PASS",
+   "seconds": 5.7
+  },
+  {
+   "step": "admissibility re-derivation",
+   "kind": "audit",
+   "command": "python paper_a_study/reclassify_csv.py",
+   "outputs": [
+    "paper_a_study/figure_data/fig02_material_parameter_sweep.csv"
+   ],
+   "status": "PASS",
+   "seconds": 0.0
+  },
+  {
+   "step": "figure data and figure files",
+   "kind": "data",
+   "command": "(inline)",
+   "outputs": [
+    "paper_a_study/figure_data/fig01_dispersion_velocity_attenuation.csv",
+    "paper_a_study/figure_data/figure_panel_sources.json"
+   ],
+   "status": "PASS",
+   "seconds": null
+  },
+  {
+   "step": "phase-speed and e.m. reconciliation",
+   "kind": "audit",
+   "command": "python -m paper_a_study.phase_speed_audit",
+   "outputs": [
+    "paper_a_study/figure_data/phase_speed_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 0.5
+  },
+  {
+   "step": "modal-flux rescaling proof",
+   "kind": "audit",
+   "command": "python -m paper_a_study.modal_flux_audit",
+   "outputs": [
+    "paper_a_study/figure_data/modal_flux_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 10.6
+  },
+  {
+   "step": "mechanism matched controls",
+   "kind": "audit",
+   "command": "python -m paper_a_study.mechanism_controls",
+   "outputs": [
+    "paper_a_study/figure_data/mechanism_controls.json"
+   ],
+   "status": "PASS",
+   "seconds": 239.0
+  },
+  {
+   "step": "corner assessment and regression",
+   "kind": "audit",
+   "command": "python -m paper_a_study.corner_assessment",
+   "outputs": [
+    "paper_a_study/figure_data/corner_assessment.json"
+   ],
+   "status": "PASS",
+   "seconds": 14.0
+  },
+  {
+   "step": "certified peak (four fixed wavenumbers)",
+   "kind": "result",
+   "command": "python -m paper_a_study.certify_peak",
+   "outputs": [
+    "paper_a_study/figure_data/peak_certification.json"
+   ],
+   "status": "PASS",
+   "seconds": 16.0
+  },
+  {
+   "step": "peak search and classification",
+   "kind": "result",
+   "command": "python -m paper_a_study.peak_search",
+   "outputs": [
+    "paper_a_study/figure_data/peak_search.json"
+   ],
+   "status": "PASS",
+   "seconds": 3832.3
+  },
+  {
+   "step": "peak identity and artefact audit",
+   "kind": "audit",
+   "command": "python -m paper_a_study.peak_identity_audit",
+   "outputs": [
+    "paper_a_study/figure_data/peak_identity_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 22.6
+  },
+  {
+   "step": "spectral convergence",
+   "kind": "audit",
+   "command": "python paper_a_study/convergence_audit.py",
+   "outputs": [
+    "paper_a_study/figure_data/convergence_audit.json",
+    "paper_a_study/figure_data/fig09_validation_convergence.csv"
+   ],
+   "status": "PASS",
+   "seconds": 8.7
+  },
+  {
+   "step": "quadrature sufficiency",
+   "kind": "audit",
+   "command": "python paper_a_study/quadrature_audit.py",
+   "outputs": [
+    "paper_a_study/figure_data/quadrature_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 9.3
+  },
+  {
+   "step": "unit and scientific tests",
+   "kind": "test",
+   "command": "python -m unittest paper_a_study.test_model",
+   "outputs": [
+    "paper_a_study/test_model.py (52 tests)"
+   ],
+   "status": "PASS",
+   "seconds": 24.0
+  },
+  {
+   "step": "natural boundary data identity",
+   "kind": "gate",
+   "command": "python paper_a_study/round21_gate1_traction.py",
+   "outputs": [
+    "paper_a_study/figure_data/round21/gate1_traction_identity.json"
+   ],
+   "status": "PASS",
+   "seconds": 4.7
+  },
+  {
+   "step": "corner line force gate",
+   "kind": "gate",
+   "command": "python paper_a_study/round21_gate_corner.py",
+   "outputs": [
+    "paper_a_study/figure_data/round21/gate12_corner.json"
+   ],
+   "status": "PASS",
+   "seconds": 26.6
+  },
+  {
+   "step": "insulating edge default audit",
+   "kind": "gate",
+   "command": "python paper_a_study/round21_edge_default_audit.py",
+   "outputs": [
+    "paper_a_study/figure_data/round21/gate3_edge_default.json"
+   ],
+   "status": "PASS",
+   "seconds": 0.4
+  },
+  {
+   "step": "round-21 regression tests",
+   "kind": "test",
+   "command": "python -m unittest paper_a_study.round21_tests",
+   "outputs": [
+    "paper_a_study/round21_tests.py"
+   ],
+   "status": "PASS",
+   "seconds": 2.3
+  },
+  {
+   "step": "claim registry and stale guard",
+   "kind": "test",
+   "command": "python paper_a_study/claim_audit.py",
+   "outputs": [
+    "paper_a_study/figure_data/claim_audit.json"
+   ],
+   "status": "PASS",
+   "seconds": 0.0
+  },
+  {
+   "step": "gate mutation tests",
+   "kind": "test",
+   "command": "python paper_a_study/mutation_tests.py",
+   "outputs": [
+    "paper_a_study/figure_data/mutation_tests.json"
+   ],
+   "status": "PASS",
+   "seconds": 9.5
+  },
+  {
+   "step": "LaTeX static validation",
+   "kind": "manuscript",
+   "command": "python scripts/static_check.py (cwd = manuscript)",
+   "outputs": [
+    "02_OVERLEAF/static_validation.txt"
+   ],
+   "status": "PASS",
+   "seconds": 0.1
+  },
+  {
+   "step": "LaTeX build",
+   "kind": "manuscript",
+   "command": "pdflatex main && bibtex main && pdflatex main \u00d72",
+   "outputs": [
+    "02_OVERLEAF/main.pdf"
+   ],
+   "status": "SKIP",
+   "seconds": null
+  }
+ ],
+ "not_in_battery": [
+  {
+   "step": "figure data build",
+   "command": "cd paper_a_study && python build_figure_data.py",
+   "outputs": [
+    "paper_a_study/figure_data/*.csv",
+    "paper_a_study/figure_data/*.json"
+   ],
+   "kind": "data"
+  },
+  {
+   "step": "figure generation",
+   "command": "cd paper_a_study && python generate_final_figures.py",
+   "outputs": [
+    "paper_a_study/figures_final/fig01..fig10.{pdf,png,svg}"
+   ],
+   "kind": "figure"
+  },
+  {
+   "step": "parameter manifest",
+   "command": "python 04_REPRODUCTION/make_parameter_manifest.py",
+   "outputs": [
+    "09_ARCHIVE_METADATA/parameter_manifest.json"
+   ],
+   "kind": "metadata"
+  },
+  {
+   "step": "archive build",
+   "command": "python 01_PROGRAM/tools/build_repro_archive.py",
+   "outputs": [
+    "PAPER_A_COMPLETE_REPRODUCIBILITY_ARCHIVE.zip"
+   ],
+   "kind": "metadata"
+  }
+ ],
+ "artifacts": {
+  "02_OVERLEAF/static_validation.txt": {
+   "bytes": 2991,
+   "sha256": "96cf297969f251e90f82b305a1cf5c3d26aaf427d28ea3a2bca73183be553baf"
+  }
+ }
+}

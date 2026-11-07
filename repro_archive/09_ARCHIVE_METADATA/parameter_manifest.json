@@ -1,0 +1,505 @@
+{
+ "title": "Paper A parameter manifest",
+ "generated_by": "04_REPRODUCTION/make_parameter_manifest.py",
+ "principle": "Every value is read from a file in this archive.  Entries whose value is a modelling choice carry status NOT_SOURCED and the manuscript says so. No value was invented for this manifest.",
+ "material_set": {
+  "description": "n-type ZnO, 6mm, c-axis x3",
+  "citation": {
+   "doi": "10.1007/s10483-025-3272-7",
+   "location": "Table 1; generalized constitutive law Eqs. (2)-(3)",
+   "url": "https://www.amm.shu.edu.cn/article/2025/0253-4827/0253-4827-2025-07-1331.shtml",
+   "accessed_utc": "2026-11-05",
+   "fang_cross_check": "UNRESOLVED: full parameter table unavailable; not assumed to agree"
+  }
+ },
+ "materials_json_not_sourced": {
+  "flexoelectric_tensor_C_per_m": null,
+  "strain_gradient_tensor_Pa_m2": null,
+  "H_tensor_J_m": null,
+  "sample_doping_m_minus3": null,
+  "sample_thickness_m": null,
+  "sample_surface_properties": null
+ },
+ "materials_json_choices": {
+  "reference_thickness_m": 1e-06,
+  "reference_n0_m_minus3": 1e+19,
+  "n0_note": "a modeling scenario also used in Zhang Fig. 2 and Fig. 7; not a measured sample doping",
+  "synthetic_ell_over_d": 0.05,
+  "synthetic_eta_values": [
+   -0.8,
+   -0.5,
+   0.0,
+   0.5,
+   0.8
+  ],
+  "synthetic_tensor": "A_(jk l)(mn r) = ell^2 C_jkmn delta_lr; H333 only, set by strict full-3D Schur bound",
+  "flexoelectric_note": "No nonzero flexoelectric coefficient is assigned. f=0 is used ONLY as an explicitly labeled classical-limit diagnostic, not as the finalized fixed model."
+ },
+ "build_log": {
+  "degree": 22,
+  "nquad": null,
+  "H_crit_T": 4.0097064373759543e-22
+ },
+ "entries": [
+  {
+   "group": "material",
+   "name": "c11",
+   "symbol": "c11",
+   "value": 210000000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c11",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "c12",
+   "symbol": "c12",
+   "value": 121000000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c12",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "c13",
+   "symbol": "c13",
+   "value": 105000000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c13",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "c33",
+   "symbol": "c33",
+   "value": 221000000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c33",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "c44",
+   "symbol": "c44",
+   "value": 43000000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c44",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "c66",
+   "symbol": "c66",
+   "value": 44500000000.0,
+   "unit": "Pa",
+   "source": "materials.json:SI.c66",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "e15",
+   "symbol": "e15",
+   "value": -0.48,
+   "unit": "C/m^2",
+   "source": "materials.json:SI.e15",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "e31",
+   "symbol": "e31",
+   "value": -0.57,
+   "unit": "C/m^2",
+   "source": "materials.json:SI.e31",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "e33",
+   "symbol": "e33",
+   "value": 1.32,
+   "unit": "C/m^2",
+   "source": "materials.json:SI.e33",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "kappa11",
+   "symbol": "kappa11",
+   "value": 7.61e-11,
+   "unit": "F/m",
+   "source": "materials.json:SI.kappa11",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "kappa33",
+   "symbol": "kappa33",
+   "value": 8.85e-11,
+   "unit": "F/m",
+   "source": "materials.json:SI.kappa33",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "rho",
+   "symbol": "rho",
+   "value": 5700.0,
+   "unit": "kg/m^3",
+   "source": "materials.json:SI.rho",
+   "status": "SOURCED",
+   "note": "DOI 10.1007/s10483-025-3272-7, Table 1"
+  },
+  {
+   "group": "material",
+   "name": "q",
+   "symbol": "q",
+   "value": 1.602176634e-19,
+   "unit": "C",
+   "source": "materials.json:SI_definitions.q",
+   "status": "SOURCED",
+   "note": "CODATA / SI definition"
+  },
+  {
+   "group": "material",
+   "name": "kB",
+   "symbol": "kB",
+   "value": 1.380649e-23,
+   "unit": "J/K",
+   "source": "materials.json:SI_definitions.kB",
+   "status": "SOURCED",
+   "note": "CODATA / SI definition"
+  },
+  {
+   "group": "material",
+   "name": "epsilon0",
+   "symbol": "epsilon0",
+   "value": 8.8541878188e-12,
+   "unit": "F/m",
+   "source": "materials.json:SI_definitions.epsilon0",
+   "status": "SOURCED",
+   "note": "CODATA / SI definition"
+  },
+  {
+   "group": "geometry",
+   "name": "thickness",
+   "symbol": "d",
+   "value": 2e-07,
+   "unit": "m",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "design value; the A0 study used 1 um as a reference thickness"
+  },
+  {
+   "group": "geometry",
+   "name": "gradient_length",
+   "symbol": "ell",
+   "value": 5e-08,
+   "unit": "m",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "no measured strain-gradient length for ZnO"
+  },
+  {
+   "group": "geometry",
+   "name": "reference_plane",
+   "symbol": "L",
+   "value": 10.0,
+   "unit": "d",
+   "source": "model.py/build_figure_data.py:REF_NORM",
+   "status": "modelling choice",
+   "note": "L = 10 d = 2 um; both channels evaluated at the same plane"
+  },
+  {
+   "group": "transport",
+   "name": "doping",
+   "symbol": "n0",
+   "value": 2e+18,
+   "unit": "m^-3",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "materials.json lists sample_doping as null; A0 scenario value was 1e19"
+  },
+  {
+   "group": "transport",
+   "name": "mobility",
+   "symbol": "mu_e",
+   "value": 0.0175,
+   "unit": "m^2/(V s)",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "materials.json:SI.electron_mobility = 0.01 was the A0 feasibility value; the production plate uses 0.0175"
+  },
+  {
+   "group": "transport",
+   "name": "diffusivity",
+   "symbol": "D",
+   "value": 0.000455,
+   "unit": "m^2/s",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "materials.json:SI.electron_diffusivity = 2.6e-4; D/mu_e = 0.026 V implies T = 301.72 K"
+  },
+  {
+   "group": "transport",
+   "name": "temperature",
+   "symbol": "T",
+   "value": 301.72,
+   "unit": "K",
+   "source": "derived:D/(mu_e kB)",
+   "status": "DERIVED",
+   "note": "not an independent input; the Einstein relation fixes it"
+  },
+  {
+   "group": "coupling",
+   "name": "flexoelectric_f3zz",
+   "symbol": "f",
+   "value": 1e-09,
+   "unit": "C/m",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "placeholder magnitude; -0.012 % effect at 1 nC/m, -1.176 % at 10 nC/m (figure_data/flexo_control.json)"
+  },
+  {
+   "group": "coupling",
+   "name": "carrier_gradient_H",
+   "symbol": "H",
+   "value": 0.0,
+   "unit": "J m",
+   "source": "model.py:Plate(default)",
+   "status": "NOT_SOURCED",
+   "note": "production value 0; sweeps at H = eta*H*, |eta| <= 0.05"
+  },
+  {
+   "group": "operating_point",
+   "name": "K0",
+   "symbol": "K0",
+   "value": 0.7361990195318475,
+   "unit": "dimensionless",
+   "source": "reference_constants.json:derived",
+   "status": "frozen",
+   "note": "guarded by test_reference_values_are_frozen"
+  },
+  {
+   "group": "operating_point",
+   "name": "KB0",
+   "symbol": "KB0",
+   "value": 0.2451746921716515,
+   "unit": "dimensionless",
+   "source": "reference_constants.json:derived",
+   "status": "frozen",
+   "note": "guarded by test_reference_values_are_frozen"
+  },
+  {
+   "group": "operating_point",
+   "name": "KY0",
+   "symbol": "KY0",
+   "value": 0.12981175031447484,
+   "unit": "dimensionless",
+   "source": "reference_constants.json:derived",
+   "status": "frozen",
+   "note": "guarded by test_reference_values_are_frozen"
+  },
+  {
+   "group": "operating_point",
+   "name": "OMEGA0",
+   "symbol": "OMEGA0",
+   "value": 7.633372404423294,
+   "unit": "dimensionless",
+   "source": "reference_constants.json:derived",
+   "status": "frozen",
+   "note": "guarded by test_reference_values_are_frozen"
+  },
+  {
+   "group": "operating_point",
+   "name": "HCRIT",
+   "symbol": "HCRIT",
+   "value": 4.0097064373759543e-22,
+   "unit": "J m",
+   "source": "reference_constants.json:derived",
+   "status": "frozen",
+   "note": "guarded by test_reference_values_are_frozen"
+  },
+  {
+   "group": "derived",
+   "name": "schur_bound",
+   "symbol": "H_bound",
+   "value": 8.965976163791138e-22,
+   "unit": "J m",
+   "source": "derived:ell*sqrt(a c*), c* = c33 - 2c13^2/(c11+c12)",
+   "status": "DERIVED",
+   "note": "H* = H_bound/sqrt(5) is the plotting normalisation (s = 0.2)"
+  },
+  {
+   "group": "derived",
+   "name": "shear_wave_speed",
+   "symbol": "c_s",
+   "value": 2746.608754286421,
+   "unit": "m/s",
+   "source": "derived:sqrt(c44/rho)",
+   "status": "DERIVED",
+   "note": "2746.6 m/s"
+  },
+  {
+   "group": "derived",
+   "name": "compressibility",
+   "symbol": "a",
+   "value": 2.0828470814000003e-39,
+   "unit": "J m^3",
+   "source": "derived:kB*T/n0",
+   "status": "DERIVED",
+   "note": ""
+  },
+  {
+   "group": "derived",
+   "name": "debye_length",
+   "symbol": "L_D",
+   "value": 2.6797231902544423e-06,
+   "unit": "m",
+   "source": "derived:sqrt(kappa33 kB T/(q^2 n0))",
+   "status": "DERIVED",
+   "note": ""
+  },
+  {
+   "group": "derived",
+   "name": "frequency_unit",
+   "symbol": "c_s/(2 pi d)",
+   "value": 2185681799.9207845,
+   "unit": "Hz",
+   "source": "derived:c_s/(2 pi d)",
+   "status": "DERIVED",
+   "note": "2.1857 GHz at d = 200 nm"
+  },
+  {
+   "group": "numerics",
+   "name": "polynomial_degree",
+   "symbol": "n-1",
+   "value": 22,
+   "unit": "-",
+   "source": "figure_data/build_log.json",
+   "status": "setting",
+   "note": "production degree"
+  },
+  {
+   "group": "numerics",
+   "name": "quadrature_nodes",
+   "symbol": "nquad",
+   "value": 64,
+   "unit": "-",
+   "source": "model.py:Plate(max(64, 2 degree+10))",
+   "status": "setting",
+   "note": ""
+  },
+  {
+   "group": "numerics",
+   "name": "faces_electric",
+   "symbol": "-",
+   "value": "ground",
+   "unit": "-",
+   "source": "model.py:Plate(electric=...)",
+   "status": "setting",
+   "note": "phi = 0 on z = +-d/2 (default)"
+  },
+  {
+   "group": "numerics",
+   "name": "edge_electric",
+   "symbol": "-",
+   "value": "insulating",
+   "unit": "-",
+   "source": "model.py:Plate(edge_electric=...)",
+   "status": "setting",
+   "note": "D_x(0,z) = 0, the model of record since round 20; 'ground' only reproduces round 19"
+  },
+  {
+   "group": "numerics",
+   "name": "outgoing_cutoff",
+   "symbol": "tau",
+   "value": "2e-8*max(1,|k_x|)",
+   "unit": "-",
+   "source": "model.py:Plate.edge",
+   "status": "setting",
+   "note": ""
+  },
+  {
+   "group": "numerics",
+   "name": "svd_rank_cutoff",
+   "symbol": "-",
+   "value": 1e-12,
+   "unit": "relative",
+   "source": "model.py:Plate.edge",
+   "status": "setting",
+   "note": "rank deficiency raises RuntimeError instead of regularising"
+  },
+  {
+   "group": "numerics",
+   "name": "random_seed",
+   "symbol": "-",
+   "value": null,
+   "unit": "-",
+   "source": "none used",
+   "status": "NOT APPLICABLE",
+   "note": "the production path is fully deterministic; there are no seeds"
+  },
+  {
+   "group": "uncertainty",
+   "name": "degree_spread_R_B",
+   "symbol": "-",
+   "value": 1.1047168215699311e-06,
+   "unit": "relative",
+   "source": "figure_data/peak_search.json:degree_spread",
+   "status": "MEASURED",
+   "note": "degrees 14..34"
+  },
+  {
+   "group": "uncertainty",
+   "name": "quadrature_spread_R_B",
+   "symbol": "-",
+   "value": 1.698845860143633e-09,
+   "unit": "relative",
+   "source": "figure_data/peak_search.json:quadrature_spread",
+   "status": "MEASURED",
+   "note": "64..256 nodes"
+  },
+  {
+   "group": "uncertainty",
+   "name": "restart_spread_R_B",
+   "symbol": "-",
+   "value": 3.2390049181652003e-06,
+   "unit": "relative",
+   "source": "figure_data/peak_search.json:restart_spread",
+   "status": "MEASURED",
+   "note": "fixed-point restarts"
+  },
+  {
+   "group": "uncertainty",
+   "name": "experimental_uncertainty",
+   "symbol": "-",
+   "value": null,
+   "unit": "-",
+   "source": "no measurement exists",
+   "status": "NOT AVAILABLE",
+   "note": "no measured f or H for this structure"
+  },
+  {
+   "group": "uncertainty",
+   "name": "fisher_information_CRLB",
+   "symbol": "-",
+   "value": null,
+   "unit": "-",
+   "source": "not performed",
+   "status": "NOT AVAILABLE",
+   "note": "sensitivity is reported as finite-difference sweeps instead"
+  }
+ ]
+}

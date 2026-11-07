@@ -8,7 +8,7 @@ evaluated directly.
 
 Run from the repository root:
 
-    PYTHONPATH=/home/user/A_Paper python paper_a_study/round18_mathematical_audit.py
+    PYTHONPATH=. python paper_a_study/round18_mathematical_audit.py
 
 Exit status 0 means every check passed.  A failure prints the offending index and
 both numbers; nothing is suppressed.
