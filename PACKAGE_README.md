@@ -1,4 +1,4 @@
-# Paper A — review package (round 9)
+# Paper A — review package (round 10)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,10 +11,11 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of the seven round-9 reports. The Stage-1
-audit (`PAPER_A_ROUND9_STAGE1_NORMALIZATION_AUDIT.md`) is the one to read before anything else: it
-documents, before any edit, the normalisation defect that round 9 repaired and why the headline is not
-affected by it.
+**Read first.** `START_HERE.txt` gives the reading order of this round's reports. The one to read
+before anything else is `PAPER_A_ROUND10_STYLE_AND_STRUCTURE_AUDIT.md`, written **before** the first
+edit: it records what the manuscript looked like, what the author's published papers look like, and
+what round 10 changed, refused to change, or deferred. Round 10 is a presentation round: no equation,
+no number, no figure and no dataset was changed.
 
 ---
 
@@ -56,9 +57,17 @@ OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/generate_final_figures.py
 Run one solver script at a time. On two cores, two concurrent solver runs make each about ten times
 slower and the peak search then exceeds its own timeout.
 
-The gate results of this delivery are recorded in `validation/verification_log.txt`, the mutant record
-in `paper_a_study/figure_data/mutation_tests.json`, and the registry audit in
-`paper_a_study/figure_data/claim_audit.json`.
+The gate results of the round-10 run are recorded in `validation/verification_log.txt` and, verbatim,
+in `validation/round10_battery_run_2026-11-07.log`; the mutant record is in
+`paper_a_study/figure_data/mutation_tests.json` and the registry audit in
+`paper_a_study/figure_data/claim_audit.json`. That run returned **17 PASS, 1 FAIL, 1 SKIP**: the claim
+registry gate failed because the regenerated search record moves two *differences of nearly equal
+numbers* at the round-off floor (degree spread 5.613e-9 against the committed 4.973e-9; quadrature
+spread 9.382e-10 against 5.591e-9) while the headline is unchanged at `0.9467953677961777` against
+`0.9467953685099261`. The data records were restored to their committed state, which is what a
+manuscript-only round requires, and the gate then passes with 9 of 9 source rows.
+`validation/round10_registry_gate_note.txt` records the whole sequence and the round-11 item it
+raises.
 
 ---
 
@@ -71,8 +80,9 @@ in `paper_a_study/figure_data/mutation_tests.json`, and the registry audit in
 | `paper_a_study/figure_data/` | every CSV and JSON the manuscript and figures are built from, including the search, certification, identity and matched-control records |
 | `validation/` | the verification log of this delivery |
 | `a0/`, `a0r/`, `a0s/` | completed historical studies, retained as review evidence; they are not part of the current result |
-| `PAPER_A_ROUND9_*.md` | the seven reports of this round |
-| `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8 and round-9 addenda at the end |
+| `PAPER_A_ROUND10_*.md` | the five reports of this round: pre-edit audit, author style, structure comparison, edit log, closing audit |
+| `PAPER_A_ROUND9_*.md`, `PAPER_A_ROUND8_*.md` | the earlier rounds, retained as review evidence |
+| `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8, round-9 and round-10 addenda at the end |
 
 ---
 

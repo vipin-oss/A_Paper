@@ -1,0 +1,121 @@
+verification run 2026-11-07T05:25:41+00:00
+
+[PASS] unit and scientific tests  (18.9s)
+[PASS] dimensional and constitutive audit  (0.6s)
+      3. strain-gradient index contraction (exact SH branch, K = 0.8)
+        A = ell^2 c_(ij)(lm) delta_(kn)   |dw| = 2.171e-13
+        A = ell^2 c_(ij)(kl) delta_(mn)   |dw| = 3.120e+06
+      
+      wrote /home/user/A_Paper/paper_a_study/figure_data/dimension_audit.json
+      RESULT: PASS
+[PASS] quasistatic justification  (0.5s)
+        (k_EM d)^2  retardation order      4.889e-08
+        omega * tau_dielectric             1654.429   (carrier response is NOT instantaneous)
+        tau_dielectric / period            263.311
+        d / Debye length                   0.0746
+      wrote /home/user/A_Paper/paper_a_study/figure_data/quasistatic_audit.json
+      RESULT: PASS
+[PASS] flexoelectric control  (5.9s)
+        synthetic_1nC_m  f = 2.563e-03  R_B = 0.579180033  theta = -14.4487  balance = 8.3e-13
+        ten_x            f = 2.563e-02  R_B = 0.572768261  theta = -14.4769  balance = 2.5e-12
+        effect of f = 1 nC/m : -0.011 %
+        effect of f = 10 nC/m: -1.118 %
+      
+      wrote /home/user/A_Paper/paper_a_study/figure_data/flexo_control.json
+[PASS] admissibility re-derivation  (0.0s)
+      fig02_material_parameter_sweep.csv         rows= 130 admissible= 130 flipped=0
+      fig04_frequency_reflection.csv             rows= 139 admissible= 139 flipped=0
+      fig07_coupling_sensitivity.csv             rows=  95 admissible=  95 flipped=0
+      fig06_attenuation_distance.csv             rows=50 (annotation only)
+[PASS] figure data and figure files
+[PASS] phase-speed and e.m. reconciliation  (0.5s)
+          k_EM d            2.200000e-04 vs  2.211005e-04   rel=4.98e-03  ok
+          d/lambda_EM       3.520000e-05 vs  3.518925e-05   rel=3.06e-04  ok
+        round-4 pre-fix values (evidence only): v_p = 2800 m/s, lambda_EM = 0.905 mm (= 1/k_EM), d/lambda = 0.00022 (= k_EM d)
+      
+      wrote /home/user/A_Paper/paper_a_study/figure_data/phase_speed_audit.json
+      RESULT: PASS
+[PASS] modal-flux rescaling proof  (9.4s)
+        R_B before rescaling : 0.023145619185
+        R_B after  rescaling : 0.023145619185
+        relative difference  : 1.499e-15
+      
+      wrote /home/user/A_Paper/paper_a_study/figure_data/modal_flux_audit.json
+      RESULT: PASS
+[PASS] mechanism matched controls  (198.4s)
+        H/H*=+0.025  coarse K=0.5250  refined K=0.5248  R_B=0.771453328  f=16.6546 GHz
+        H/H*=+0.000  coarse K=0.5270  refined K=0.5275  R_B=0.946795231  f=16.6547 GHz
+        H/H*=-0.025  coarse K=0.5260  refined K=0.5261  R_B=0.863645145  f=16.6547 GHz
+        H/H*=-0.050  coarse K=0.5310  refined K=0.5309  R_B=0.701314587  f=16.6546 GHz
+      
+      wrote /home/user/A_Paper/paper_a_study/figure_data/mechanism_controls.json
+[PASS] corner assessment and regression  (12.2s)
+          22,
+          26,
+          30
+        ]
+      }
+      certification cross-check: PASS
+[PASS] certified peak (four fixed wavenumbers)  (13.9s)
+          "max_relative_change": 1.4625398261155146e-07,
+          "max_angle_change_deg": 2.0206893935892367e-09,
+          "R_B_finest": 0.579180058557786,
+          "angle_finest": -14.448727908508667
+        }
+      }
+[PASS] peak search and classification  (292.4s)
+       },
+       "quadrature_spread": 9.382201049219094e-10,
+       "tracking_path_relative_spread": 0.0,
+       "restart_spread": 8.361657806821299e-06,
+       "elapsed_s": 291.9
+      }
+[PASS] peak identity and artefact audit  (20.0s)
+       "min_candidate_separation_ratio": 2.0039957211513895,
+       "max_condition": 160.4801154048026,
+       "min_delta_K_over_decay": 1.4480631280830107,
+       "relative_error_bound": 3.5633743823382825e-14,
+       "artefact": false
+      }
+[PASS] spectral convergence  (8.1s)
+        26   133 16.654677690  0.9318914823    3.83e-09   0.524949   2.1e-15   5.2e-13     85.3
+        30   153 16.654677690  0.9318914859    0.00e+00   0.524949   2.2e-15   1.8e-12    185.9
+        successive relative changes: 4.0e-08 8.1e-09 8.6e-09 3.8e-09
+      
+      largest relative change between degree 18 and degree 30: 7.21e-07
+      verdict: PASS
+[PASS] quadrature sufficiency  (8.4s)
+      branch_maximum       22    128  16.654678  0.931891473  -6.94e-09   0.524949
+      branch_maximum       22    192  16.654678  0.931891474  -5.39e-09   0.524949
+      branch_maximum       22    256  16.654678  0.931891479  +0.00e+00   0.524949
+      
+      worst relative change of R_B against the 256-node rule: 6.94e-09
+      verdict: PASS
+[FAIL] claim registry and stale guard  (0.0s)
+      deprecated values guarded: 5
+      figure first-citation order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      source-agreement rows: 9 (7 passing)
+      FAIL
+        - degree_stability_peak: registry says 5e-09 but the stored search-record degree spread at the reported wavenumber is 5.6134094739540506e-09 (1.2e-01 > 1.0e-02)
+        - quadrature_stability_peak: registry says 5.6e-09 but the stored search-record quadrature spread is 9.382201049219094e-10 (8.3e-01 > 1.0e-02)
+[PASS] gate mutation tests  (7.3s)
+      M12  CAUGHT  TestCrossScriptEdgeFraction      thickness d replaced by the gradient length l (L and l confused)
+              AssertionError: 1.0 not less than 1e-06 : fig05 CSV vs shared transform: 1.00e+00
+      M10b  CAUGHT  TestPlaneInvariance              flipped exponent, checked by an invariance test that uses no stored values
+              AssertionError: 0.07714125271109584 not less than 1e-09 : reconstructed edge value depends on the plane (L=10.0): 7.71e-
+      
+      verdict: PASS
+[PASS] LaTeX static validation  (0.0s)
+        - label never referenced: sec:results_material
+        - label never referenced: sec:results_validation
+        - label never referenced: tab:package
+        - approximate prose word count (including math tokens): 16291
+      
+      No TeX engine was invoked by this script.
+[SKIP] LaTeX build: no TeX engine found in this environment
+PASS  LaTeX static validation                0.0s exit=0
+SKIP  LaTeX build                            no TeX engine found
+
+OVERALL: FAIL
+
+TeX compilation: NOT EXECUTED - no engine available; source is statically validated only

@@ -1,6 +1,20 @@
 \section{Mathematical formulation}
 \label{sec:governing}
 
+The formulation is built in the order in which the constitutive statement
+generates the equations of motion: the geometry and the fields are fixed first
+(\cref{sec:governing_variational}), then the kinematics and the gradient energy
+(\cref{sec:governing_kinematics}), then the enthalpy from which every
+constitutive relation is differentiated (\cref{sec:governing_constitutive}),
+then the balance laws obtained by independent variations
+(\cref{sec:governing_balance}), then the electric model with the two ratios
+that justify it (\cref{sec:governing_electric}), the boundary conditions
+(\cref{sec:governing_bc}), the power flux that defines a backward mode
+(\cref{sec:governing_energy}), the dimensionless groups
+(\cref{sec:governing_nondim}), the limits of the model
+(\cref{sec:governing_limits}) and the condition under which the enthalpy stays
+positive definite (\cref{sec:governing_stability}).
+
 \subsection{Geometry, fields and notation}
 \label{sec:governing_variational}
 
@@ -11,8 +25,7 @@ a single tangential wavenumber $k_y$ is conserved, and every field has the form
 $f(x,z)\,e^{ik_yy-i\omega t}$ with three displacement components retained.  The
 formulation is therefore two-and-a-half-dimensional (2.5D): a discrete
 cross-section in $(x,z)$ carrying full three-component kinematics, a single
-conserved tangential wavenumber, and no discretisation of $y$.  It is not a full
-three-dimensional simulation, and nothing below is reported as one.  The independent fields are
+conserved tangential wavenumber, and no discretisation of $y$.  The independent fields are
 the displacement $u_i(\vect{x},t)$, the electrostatic potential
 $\varphi(\vect{x},t)$ and the electron-number perturbation
 $\Delta n(\vect{x},t)$ measured from the uniform doping $n_0$.  The polar $c$
@@ -55,12 +68,11 @@ gradient index of the first strain gradient and the sixth with that of the
 second.  This is the only contraction for which the energy depends on the
 gradient of the strain through $c_{ijlm}\eta_{ijk}\eta_{lmk}$; contracting any
 other pair of slots would break the major symmetry
-$A_{ijklmn}=A_{lmnijk}$ that a second derivative of an energy must possess.  The
-implementation is verified against the closed-form shear-horizontal branch in
-\cref{sec:numerics_verification}: the two candidate contractions predict
-different exact branches, and only \eqref{eq:gradient_energy} reproduces the
-solver's spectrum (residual $2\times10^{-13}$, against $3\times10^{6}$ for the
-alternative).
+$A_{ijklmn}=A_{lmnijk}$ that a second derivative of an energy must possess.  The two candidate contractions are also distinguishable by their spectra: the
+fundamental shear-horizontal branch of \eqref{eq:gradient_energy} has the closed
+form recorded in \cref{sec:numerics_verification} and is reproduced to
+$2\times10^{-13}$, while the alternative contraction misses that branch by a
+residual of $3\times10^{6}$.
 
 The units follow from \eqref{eq:gradient_energy} and are collected in
 \cref{tab:units}.  Because $\eta$ carries an inverse length, the gradient
@@ -68,9 +80,9 @@ modulus $A$ is \emph{not} a stiffness: it has the units of a force
 ($\mathrm{N}=\mathrm{J/m}$), one factor of length times the elastic stiffness.
 Correspondingly the hyperstress conjugate to $\eta$ has the units of a force per
 unit length ($\mathrm{N/m}$), and its double divergence has the units of a force
-density, as the balance law requires.  Writing $A$ in pascals, or the
-hyperstress in pascals, is dimensionally wrong for a strain-gradient energy of
-the form \eqref{eq:gradient_energy}.
+density, as the balance law requires.  A strain-gradient energy of the form \eqref{eq:gradient_energy} therefore
+assigns a force, and not a stiffness, to $A$, and a force per unit length, and
+not a stress, to the hyperstress.
 
 \begin{table}[t]
 \centering
@@ -123,7 +135,7 @@ with $a=k_BT/n_0$.  The terms are, in order, the elastic, strain-gradient,
 dielectric, piezoelectric and flexoelectric energies of the classical
 flexoelectric dielectric \cite{shen2010theory}, the carrier compressibility, the
 added carrier--strain-gradient coupling and the electrostatic energy of the
-mobile charge.  Only the seventh term is new in this work.
+mobile charge.  The seventh term is the addition of this article.
 
 Differentiating \eqref{eq:enthalpy} gives the constitutive relations
 \begin{align}
@@ -144,8 +156,7 @@ Equation \eqref{eq:mu} is the electrochemical potential of an electron in
 joules: the compressibility term $k_BT\,\Delta n/n_0$ is the chemical part, the
 $-q\varphi$ term is the electrostatic energy of a particle of charge $-q$, and
 the $H$ term is the energy the added coupling assigns to a carrier sitting in a
-strain gradient.  Every term of \eqref{eq:mu} is an energy, which is the
-convention the solver implements; a dimensionless form obtained by dividing
+strain gradient.  Every term of \eqref{eq:mu} is an energy, which is the convention used throughout; a dimensionless form obtained by dividing
 \eqref{eq:mu} by $k_BT$ is used internally and is recorded in
 \cref{sec:governing_nondim}.
 
@@ -247,9 +258,8 @@ $\Delta n$ & $\widetilde\mu$ & \cref{eq:mu} & J & compressibility + $H$ \\
 
 Equations \eqref{eq:gauss}--\eqref{eq:continuity} are electrostatic: no
 magnetic induction, no displacement-current term in Amp\`ere's law and no
-electromagnetic radiation mode are retained.  The approximation is justified at
-the operating point by evaluating the two ratios that control it, rather than
-by a generic statement about small devices.
+electromagnetic radiation mode are retained.  The approximation is justified at the operating point by evaluating the two
+ratios that control it.
 
 \emph{Retardation.}  At $f=\SI{16.68}{\giga\hertz}$ ($\omega=\SI{1.048e11}{%
 \per\second}$) and with the relative permittivity $\kappa_{33}/\varepsilon_0=10$
@@ -260,12 +270,11 @@ $\lambda_{\mathrm{EM}}=2\pi/k_{\mathrm{EM}}=v_{\mathrm{EM}}/f=\SI{5.68}{%
 $d=\SI{200}{\nano\metre}$ thick, hence $d/\lambda_{\mathrm{EM}}=3.52\times10^{-5}$
 and $k_{\mathrm{EM}}d=2.2\times10^{-4}$; the retardation correction is
 controlled by $k_{\mathrm{EM}}d$ and not by $d/\lambda_{\mathrm{EM}}$, and it is
-of order $(k_{\mathrm{EM}}d)^2=4.9\times10^{-8}$.  The same conclusion follows
-from the wave itself: its phase speed is
+of order $(k_{\mathrm{EM}}d)^2=4.9\times10^{-8}$.  The wave itself gives the same conclusion: its phase speed is
 $v_p=(\omega/|\vect{k}|)=\SI{28.0}{\kilo\metre\per\second}$, i.e.\
 $v_p/c=9.4\times10^{-5}$, so the magnetic energy is smaller than the electric
-energy by $(v_p/c)^2\approx8.8\times10^{-9}$.  The quasistatic reduction is
-therefore not a limitation of this work at the reported operating points.
+energy by $(v_p/c)^2\approx8.8\times10^{-9}$.  The quasistatic reduction is therefore accurate, to the order quoted, at the
+reported operating points.
 
 \emph{Carrier relaxation.}  The opposite conclusion holds for the carriers, and
 this is the substantive point.  With $\sigma_e=q\mu_en_0=\SI{5.6e-3}{\siemens
@@ -334,11 +343,11 @@ traction conditions are not independent: the classical Mindlin decomposition
 produces a line force along the corner whose density is
 $n_z\tau_{ijz}|_{x=0}$ evaluated on the limit of the face conditions.  That line
 force is a weak singularity of the discretisation and is \emph{not} resolved
-pointwise here; the solver imposes the weak form exactly at the corners, and the
-verification suite asserts that the corner line force is non-zero
-($>10^{-4}$) rather than claiming it is zero.  The geometry solved is therefore
-a plate with a straight edge and unresolved corner behaviour, not a fully
-resolved three-dimensional edge problem.
+pointwise here; the weak form is imposed exactly at the corners, the line force is non-zero
+there ($>10^{-4}$), and \cref{sec:disc_limitations} shows that the reported
+partitions do not rest on the energy it contains.  The geometry solved is
+therefore a plate with a straight edge and a corner field that is not
+resolved.
 
 \subsection{Power flux and the energy identity}
 \label{sec:governing_energy}
@@ -354,7 +363,7 @@ thickness, is
 where $\Gamma_x$ is the $x$ component of the carrier flux; the four terms are
 the elastic, hyperelastic, dielectric and chemical contributions, each with the
 dimensions of a power per unit area ($\mathrm{W\,m^{-2}}$); that the four are
-mutually consistent is verified by an independent dimensional audit.  It is this
+mutually consistent is verified by an independent dimensional check.  It is this
 quantity, and not the magnitude of the wavevector, that decides whether a mode
 is backward: a mode is backward when $\mathcal{P}_x<0$ while it is outgoing at
 the edge.
@@ -380,13 +389,13 @@ the conduction loss inside the control volume.  The terms of
 \eqref{eq:energy_identity} are not independent energy channels: only the
 propagating members of $\{P_j\}$ transport energy to infinity, the evanescent
 members are reactive at the plane, and $P_{\text{cross}}$ is an interference
-correction.  The residual of \eqref{eq:energy_identity} is the primary numerical
-check and is plotted in \cref{fig:fig05}(c).
+correction.  The residual of \eqref{eq:energy_identity} is therefore evaluated for every
+reported solution and is plotted in \cref{fig:fig05}(c).
 
 \subsection{Non-dimensionalisation}
 \label{sec:governing_nondim}
 
-The solver works with lengths scaled by $d$, stresses by $c_{44}$, time by
+The calculation uses lengths scaled by $d$, stresses by $c_{44}$, time by
 $d/c_s$ with $c_s=\sqrt{c_{44}/\rho}$, carrier densities by $n_0$ and energies
 per carrier by $k_BT$.  Two derived scales appear repeatedly,
 \begin{equation}
@@ -429,6 +438,46 @@ $d\sqrt{a\,c_{44}}$ has units of J\,m --- exactly the units of $H$ required by
 $H_{\mathrm{ref}}=d\sqrt{a\,c_{44}}=\SI{1.89e-21}{\joule\metre}$ used to
 non-dimensionalise the coupling in the tables.
 
+\subsection{Limits of the formulation}
+\label{sec:governing_limits}
+
+The model of \eqref{eq:enthalpy} contains four sectors that can be switched off
+independently, and the limits they generate are the ones against which the
+calculation is read.
+
+\emph{Classical piezoelectric plate.}  Setting $\ell=f=H=0$ and removing the
+carrier sector ($\Delta n\equiv0$) leaves the classical piezoelectric
+formulation, with a polynomial in $k_x$ of degree two rather than four.
+
+\emph{Strain-gradient dielectric.}  With $H=0$ and no carriers the enthalpy is
+the flexoelectric dielectric enthalpy of \cite{shen2010theory} completed by the
+gradient energy \eqref{eq:gradient_energy}.  In this limit the fundamental
+shear-horizontal branch has the closed form
+$\omega=\sqrt{c_{66}K^2(1+\ell^2K^2)}$, which is used as one of the checks of
+\cref{sec:numerics_verification}.
+
+\emph{Piezoelectric semiconductor without the gradient sector.}  Setting
+$\ell=f=H=0$ and retaining the carriers leaves a drift--diffusion plate whose
+sagittal spectrum is examined in \cref{sec:results_mechanism}: it contains no
+outgoing mode with a positive axial wavenumber and a negative axial power
+apart from the specular reflection.  The backward branch is therefore a property
+of the gradient sector, and the negative-reflection problem is not well posed
+without it.
+
+\emph{Uncoupled carriers.}  With $H=0$ and the strain-gradient sector retained,
+the carrier dynamics still enter through Gauss's law and through the continuity
+equation \eqref{eq:continuity}, so the plate remains a piezoelectric
+semiconductor; only the direct carrier--gradient enthalpy of
+\eqref{eq:added_coupling} is removed.  This is the limit in which the controls
+of \cref{sec:results_mechanism} are computed, and it is the limit that shows the
+partition to be a property of the branch rather than of the added term.
+
+Two further reductions are used in the text rather than tabulated here: the
+electrostatic reduction of \cref{sec:governing_electric}, whose two controlling
+ratios are evaluated at the operating point, and the thin-plate limit
+$d/L_D=0.075$, in which the carrier perturbation is not confined to a surface
+layer.
+
 \subsection{Thermodynamic admissibility}
 \label{sec:governing_stability}
 
@@ -446,8 +495,7 @@ $c^{*}=c_{33}-2c_{13}^2/(c_{11}+c_{12})=\SI{154.4}{\giga\pascal}$ and not $c_{33
 itself.  The bound is attained at
 $H_{\text{bound}}=\ell\sqrt{a\,c^{*}}=\SI{8.97e-22}{\joule\metre}$, which is the
 value at which the coupled stiffness of the plate ceases to be positive for
-every strain-gradient field.  The solver enforces \eqref{eq:schur} and refuses
-to run outside it.  All reported solutions have
+every strain-gradient field.  Every calculation reported below is confined to \eqref{eq:schur}.  All reported solutions have
 $|H|\le\SI{2.0e-23}{\joule\metre}=0.022\,H_{\text{bound}}$, i.e.\ $s\le
 5\times10^{-4}$: the enthalpy is strictly convex with a margin of more than two
 thousand, and no reported result sits near a constitutive instability.
@@ -459,8 +507,7 @@ content beyond fixing the swept interval $|H/H^{*}|\le0.05$, that is
 $|H|\le2.0\times10^{-23}\,\si{\joule\metre}$, the tabulated extreme.  The
 separate symbol $H_{\mathrm{ref}}=d\sqrt{a\,c_{44}}=\SI{1.89e-21}{%
 \joule\metre}$ used in \cref{tab:configurations} is the thickness-based
-reference of \eqref{eq:enthalpy}; it is not the plotting normalisation, and the
-two should not be interchanged.  No strain-gradient elasticity measurement for
+reference of \eqref{eq:enthalpy}; it is not the plotting normalisation, and the two differ.  No strain-gradient elasticity measurement for
 ZnO fixes any of $\ell$, $f$ or $H$, so the reported intervals are modelling
 choices and carry no experimental uncertainty; the numerical uncertainty of a
 reported $R_B$ is its refinement spread, below $10^{-6}$ in relative terms

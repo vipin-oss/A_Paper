@@ -2,7 +2,7 @@ Paper A static validation
 ========================================
 
 files checked: 8
-labels: 102   references: 64
+labels: 104   references: 75
 citation keys used: 13   bib entries: 13
 
 PASS
@@ -24,18 +24,9 @@ Notes:
   - label never referenced: sec:disc_material
   - label never referenced: sec:disc_meaning
   - label never referenced: sec:disc_mechanism
-  - label never referenced: sec:governing_balance
-  - label never referenced: sec:governing_constitutive
-  - label never referenced: sec:governing_energy
-  - label never referenced: sec:governing_kinematics
-  - label never referenced: sec:governing_stability
-  - label never referenced: sec:governing_variational
   - label never referenced: sec:intro
   - label never referenced: sec:intro_scope
-  - label never referenced: sec:numerics_admissibility
-  - label never referenced: sec:numerics_basis
-  - label never referenced: sec:numerics_edge
-  - label never referenced: sec:numerics_routes
+  - label never referenced: sec:numerics_repro
   - label never referenced: sec:results_attenuation
   - label never referenced: sec:results_boundary
   - label never referenced: sec:results_channel
@@ -46,6 +37,6 @@ Notes:
   - label never referenced: sec:results_material
   - label never referenced: sec:results_validation
   - label never referenced: tab:package
-  - approximate prose word count (including math tokens): 15960
+  - approximate prose word count (including math tokens): 16291
 
 No TeX engine was invoked by this script.

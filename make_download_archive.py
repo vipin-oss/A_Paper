@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the round-9 downloadable project archive.
+"""Build the round-10 downloadable project archive.
 
 Deterministic and read-only with respect to the sources: it copies from the
 working tree into a staging directory, writes START_HERE.txt, PACKAGE_README.md
@@ -20,11 +20,16 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round9_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round9.zip"
+STAGE = Path("/tmp/paper_a_round10_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round10.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_CORRECTION_HISTORY.md",
+    "PAPER_A_ROUND10_STYLE_AND_STRUCTURE_AUDIT.md",
+    "PAPER_A_ROUND10_AUTHOR_WRITING_STYLE.md",
+    "PAPER_A_ROUND10_STRUCTURE_COMPARISON.md",
+    "PAPER_A_ROUND10_LANGUAGE_AND_STRUCTURE_CHANGES.md",
+    "PAPER_A_ROUND10_FINAL_MANUSCRIPT_STYLE_AUDIT.md",
     "PAPER_A_ROUND9_STAGE1_NORMALIZATION_AUDIT.md",
     "PAPER_A_ROUND9_CORRECTION_HISTORY.md",
     "PAPER_A_ROUND9_PLANE_INVARIANCE_VALIDATION.md",
@@ -117,45 +122,46 @@ def main() -> int:
 
     (STAGE / "START_HERE.txt").write_text(
         "\n".join([
-            "Paper A -- round-9 plane-normalisation correction",
-            "=================================================",
+            "Paper A -- round 10: structure, language and presentation",
+            "==========================================================",
             "",
-            "Read in this order:",
-            "  PAPER_A_ROUND9_STAGE1_NORMALIZATION_AUDIT.md   the defect, derived and reproduced before any edit",
-            "  PAPER_A_ROUND9_CORRECTION_HISTORY.md           every edit, old -> new, and what was left alone",
-            "  PAPER_A_ROUND9_PLANE_INVARIANCE_VALIDATION.md  five planes, one reconstructed value (2.3e-16)",
-            "  PAPER_A_ROUND9_MUTATION_REPORT.md              13 injected defects, 13 caught, by which gate",
-            "  PAPER_A_ROUND9_CLAIMS_AND_MANUSCRIPT_AUDIT.md  22 claims, 45 tokens, every re-read number classified",
-            "  PAPER_A_ROUND9_TEST_RESULTS.md                 39 tests, 18 gates, what they do not establish",
-            "  PAPER_A_ROUND9_DELIVERY_AND_STATUS.md          archive, digest, open items",
-            "  PAPER_A_CORRECTION_HISTORY.md                  cumulative history (round-9 addendum at the end)",
+            "Round 10 changed the way the article is written. It changed no equation, no number,",
+            "no table cell, no figure, no dataset and no line of code. Read in this order:",
+            "",
+            "  PAPER_A_ROUND10_STYLE_AND_STRUCTURE_AUDIT.md       what was there before any edit, and why it changed",
+            "  PAPER_A_ROUND10_AUTHOR_WRITING_STYLE.md            the author's habits, with the papers they come from",
+            "  PAPER_A_ROUND10_STRUCTURE_COMPARISON.md            section skeleton against five published papers",
+            "  PAPER_A_ROUND10_LANGUAGE_AND_STRUCTURE_CHANGES.md  every edit, classified, and what was left alone",
+            "  PAPER_A_ROUND10_FINAL_MANUSCRIPT_STYLE_AUDIT.md    the closing audit, the battery, the open items",
+            "  PAPER_A_CORRECTION_HISTORY.md                      cumulative history (round-10 addendum at the end)",
             "",
             "The manuscript is Paper_A_Final_Submission/main.tex; the ten vector figures are in",
             "Paper_A_Final_Submission/figures/.",
             "",
-            "BUILD STATUS: UNVERIFIED -- no TeX engine was available, so no PDF is included and",
-            "none is claimed. Build with:",
+            "BUILD STATUS: UNVERIFIED -- no TeX engine was available, so no PDF is included and none is",
+            "claimed. Build with:",
             "  cd Paper_A_Final_Submission",
             "  pdflatex main && bibtex main && pdflatex main && pdflatex main",
             "",
             "Reproduce every number and figure (Python 3.11, numpy, scipy, matplotlib):",
-            "  python paper_a_study/run_all_checks.py      # 18 gates + 39 unit tests, ~5 min",
+            "  python paper_a_study/run_all_checks.py      # the gates, ~10 min on two cores",
             "  python paper_a_study/build_figure_data.py   # the CSV/JSON datasets",
             "  python paper_a_study/generate_final_figures.py",
             "",
-            "Headline result: R_B = 0.9467952 (94.68 %) at k_x d = 0.5275, a certified LOCAL",
-            "maximum of the backward-modal share, flat to 0.01 pp over 0.5266 <= k_x d <= 0.5277;",
-            "the incident flux there is 128 times smaller than at the operating point, so the",
-            "share is not a statement about energy turned around. At the edge plane the same",
-            "solve gives 0.9855722. The earlier 93.19 % at 0.525 was a coarse-grid sample and is",
-            "withdrawn. Novelty against the primary 2025 source is UNRESOLVED (closed access);",
-            "no priority claim is made.",
+            "The battery of 2026-11-07 returned 17 PASS, 1 FAIL, 1 SKIP. The failing gate is the claim",
+            "registry: the regenerated search record moves two spreads that are differences of nearly",
+            "equal numbers (degree spread 5.613e-9 vs the committed 4.973e-9; quadrature spread",
+            "9.382e-10 vs 5.591e-9) while the headline is unchanged to twelve digits. The records were",
+            "restored to their committed state, as a manuscript-only round requires, and the gate then",
+            "passes on 9 of 9 source rows. See validation/round10_registry_gate_note.txt.",
             "",
-            "Round-9 correction in one line: three call sites moved a modal-power RATIO between",
-            "planes with the single-mode absolute decay, which omits the incident attenuation;",
-            "the exponent must be 2(|Im K_i| + |Im K_B|), and the largest error it caused was",
-            "0.965978 against 0.985572 (1.96 pp) in the peak-search record. The reference-plane",
-            "headline never depended on the transform and is unchanged.",
+            "Headline result: R_B = 0.9467952 (94.68 %) at k_x d = 0.5275, a LOCAL maximum of the",
+            "backward-modal share, flat to 0.01 pp over 0.5266 <= k_x d <= 0.5277. The incident flux there",
+            "is 128 times smaller than at the operating point, so the share is not a statement about",
+            "energy turned around. At the edge plane the same solve gives 0.9855722; the two differ by the",
+            "net attenuation of the two partner modes over ten thicknesses. Novelty against the primary",
+            "2025 source is UNRESOLVED (closed access); no priority claim is made, and the manuscript is",
+            "not claimed to be submission-ready.",
         ]) + "\n")
     copied += 1
     # Fixed timestamp so that repeated builds are byte-identical.

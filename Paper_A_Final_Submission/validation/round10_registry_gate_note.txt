@@ -1,0 +1,54 @@
+Paper A — note on the round-10 battery run (2026-11-07)
+======================================================
+
+`verification_log.txt` records the full battery as executed on 2026-11-07 during
+round 10: 17 gates PASS, 1 gate FAIL, 1 SKIP (no TeX engine). The failing gate is
+"claim registry and stale guard". This note records exactly what happened, because
+the failure is a property of a regenerated record and not of the manuscript.
+
+Sequence
+--------
+1. The battery was run on the round-10 tree. Several steps regenerate their own
+   records; among them `peak_search.py`, which rewrote
+   `paper_a_study/figure_data/peak_search.json`.
+2. In the regenerated record the headline is unchanged to twelve digits
+   (`K_at_max = 0.52752`, `R_B_at_max = 0.9467953677961777`, against the committed
+   `0.9467953685099261`, a relative difference of 8e-13) and the classification is
+   unchanged (`certified_local_maximum`). Two *spreads* moved:
+     degree_spread      committed 4.973e-09 / 7.281e-09   regenerated 5.613e-09 / 6.220e-09
+     quadrature_spread  committed 5.591e-09               regenerated 9.382e-10
+3. `claim_audit.py` compares those two spreads with the registry values
+   (5.0e-09 and 5.6e-09) at a 1 % relative tolerance and therefore failed, with
+   9 source-agreement rows of which 7 passed. Nothing else failed, and every
+   scientific gate passed — including the peak search itself, the identity audit
+   and the matched controls.
+4. Round 10 is a manuscript-only round, so the regenerated data records were
+   restored to their committed state (`git checkout -- paper_a_study/figure_data/`)
+   and the registry gate was re-run on the restored tree: PASS, 22 claims,
+   45 tokens, 9 of 9 source-agreement rows.
+
+Why the spreads move
+--------------------
+Both quantities are differences of nearly equal numbers (`R_B` at two Galerkin
+degrees, `R_B` under two quadrature rules). Their value is at the round-off floor,
+around 1e-9, while the underlying `R_B` values agree to about 1e-12 absolute
+between runs. A 1e-12 perturbation of a 5e-9 difference is a 20 % change; the
+registry tolerance of 1 % is therefore stricter than the quantity can support on a
+different machine or a different BLAS.
+
+Consequence for the manuscript
+------------------------------
+The two sentences that quote these spreads ("stable to 5.0e-09 between degrees 14
+and 34", "5.6e-09 across four quadrature rules") are quoted at a precision the
+re-run does not support. They remain true as order-of-magnitude statements and the
+numbers are the ones in the committed record, so nothing was edited in round 10.
+The correction belongs to round 11, where records and tolerances may be changed:
+
+  ROUND11_SCIENTIFIC_OR_FIGURE_REVIEW_ITEM R10-5
+    Report both spreads as bounds (for example "below 1e-08") rather than as three
+    significant figures, re-derive `degree_stability_peak` and
+    `quadrature_stability_peak` from a record produced on the delivery machine, and
+    widen the registry tolerance for difference-of-two-nearly-equal-values claims.
+
+The full battery output, including the failing comparison, is preserved verbatim in
+`round10_battery_run_2026-11-07.log` beside this note.

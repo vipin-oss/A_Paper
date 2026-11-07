@@ -5,12 +5,12 @@
 %
 %  Build:  pdflatex main && bibtex main && pdflatex main && pdflatex main
 %
-%  NOTE ON THE BUILD TEST.  The authoring environment used for the final
-%  correction had no TeX installation available, so the source below was
-%  validated statically (balanced environments, every \cite key resolved
-%  against references.bib, every \ref matched to a \label, every figure file
-%  present, no undefined macros) but was NOT compiled.  See the round-4
-%  report PAPER_A_FINAL_SCIENTIFIC_AUDIT.md, section 11.
+%  NOTE ON THE BUILD.  The authoring environment has no TeX installation, so the
+%  source below is validated statically (balanced environments, every \cite
+%  key resolved against references.bib, every \ref matched to a \label, every
+%  figure file present, no undefined macros) but has NOT been compiled.  The
+%  typeset output is therefore unverified; the content and the cross-references
+%  are not.
 % ===========================================================================
 \documentclass[10pt,a4paper]{article}
 
@@ -48,8 +48,8 @@
 \DeclareMathOperator{\Real}{Re}
 \DeclareMathOperator{\Imag}{Im}
 
-\title{\bfseries Backward-branch negative reflection of guided waves at a free
-edge in a flexoelectric piezoelectric--semiconductor plate}
+\title{\bfseries Backward-branch negative reflection of guided waves from the
+free edge of a flexoelectric piezoelectric semiconductor plate}
 
 \author{Vipin Kumar\textsuperscript{*}\\[2pt]
 \small Department of Applied Mechanics, Indian Institute of Technology Delhi,
@@ -62,35 +62,33 @@ New Delhi 110016, India}
 
 \begin{abstract}
 \noindent
-Strain gradients polarise a dielectric, and in a piezoelectric semiconductor the
-resulting polarisation is screened by mobile carriers; whether that coupling
-alters the way a guided plate mode is scattered at a free edge has not been
-settled.  A transversely isotropic ($6mm$) n-type ZnO plate of thickness $d$ is
-modelled with strain-gradient elasticity, piezoelectricity, flexoelectricity and
-linearised electron drift--diffusion, the only constitutive addition being a
-bilinear carrier--strain-gradient enthalpy, and the free-edge problem is solved
-as a Fourier-reduced spectral Galerkin matching of outgoing modes.  At
-$k_xd=0.736$ (\SI{16.68}{\giga\hertz}) the backward-propagating branch carries
-\SI{2.31}{\percent} of the incident power; along the same branch the share rises
-to a maximum of \SI{94.68}{\percent} at $k_xd=0.5275$
+A guided mode reaching the free edge of a plate is scattered into the outgoing
+branches that the edge supports, and strain-gradient elasticity admits a branch
+whose energy flux opposes its phase velocity.  The partition is computed for a
+transversely isotropic ($6mm$) n-type ZnO plate with strain-gradient
+elasticity, piezoelectricity, flexoelectricity and linearised electron
+drift--diffusion, with a single bilinear carrier--strain-gradient enthalpy and
+its reciprocal partners.  The edge problem is solved at fixed frequency by a
+spectral Galerkin expansion through the thickness, matched to the
+traction-free edge conditions.  At $k_xd=0.736$ (\SI{16.68}{\giga\hertz}) the
+backward mode carries \SI{2.31}{\percent} of the incident power; along the same
+branch the share reaches \SI{94.68}{\percent} at $k_xd=0.5275$
 (\SI{16.6547}{\giga\hertz}), where the incident and backward wavenumbers differ
-by \SI{0.4}{\percent} and the group velocity is below
-\SI{1}{\metre\per\second}.  The maximum is a certified local extremum, flat to
-\SI{0.01}{} percentage point over $0.5266\le k_xd\le0.5277$, and a modal share:
-\SI{99.77}{\percent} of the incident power leaves as propagating modes, although
-the incident flux at the fold is a factor 128 smaller than at the operating
-point.  Removing
-the strain-gradient sector removes the backward branch, while switching the
-coupling off leaves the share unchanged; at its tabulated extreme the coupling
-lowers the share by \SI{1.21}{\percent} at the operating point and by
-\SI{34.2}{\percent} at the maximum, chiefly by attenuating the backward mode.
-The gradient length, flexoelectric coefficient and coupling are synthetic;
-corner line forces are not certified.
+by \SI{0.4}{\percent} and the group velocity vanishes.  The figure is a modal
+share of the scattered power and not a reflectance: \SI{99.77}{\percent} of the
+incident power leaves as propagating modes, and at the fold the incident flux is
+a factor 128 smaller than at the operating point.  Removing the coupling
+leaves the partition unchanged, so the conversion belongs to the
+strain-gradient branch; at its tabulated extreme it lowers the share by
+\SI{1.21}{\percent} at the operating point and by \SI{34.2}{\percent} at the
+maximum, chiefly by attenuating the backward mode.  The
+gradient length, the flexoelectric coefficient and the coupling constant are
+synthetic; corner line forces are not resolved.
 
 \medskip
-\noindent\textbf{Keywords:} flexoelectricity; piezoelectric semiconductor;
-strain-gradient elasticity; guided waves; negative reflection; spectral Galerkin
-method.
+\noindent\textbf{Keywords:} flexoelectric semiconductor; strain-gradient
+elasticity; guided plate waves; backward branch; negative reflection; spectral
+Galerkin method.
 \end{abstract}
 
 \input{sections/introduction}

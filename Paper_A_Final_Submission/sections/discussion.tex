@@ -1,40 +1,37 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{What the reported numbers are, and what they are not}
+\subsection{The observable: a modal partition of the scattered power}
 \label{sec:disc_meaning}
 
-The central quantity of this paper is $R_B$, and the most important thing to say
-about it is what it does not mean.  $R_B$ is the share of the incident power
-that ends up in one particular outgoing mode, measured at a plane ten
-thicknesses from the edge.  It is a partition of the scattered field, not a
-reflectance.  At the operating point the backward mode takes
+The quantity at the centre of this article is $R_B$: the share of the incident
+power that ends up in one particular outgoing mode, measured at a plane ten
+thicknesses from the edge.  It is a partition of the scattered field rather than
+a reflectance.  At the operating point the backward mode takes
 \SI{2.31}{\percent} while the remaining propagating outgoing modes take
-\SI{97.67}{\percent}; at the certified maximum the backward mode takes
+\SI{97.67}{\percent}; at the maximum the backward mode takes
 \SI{94.68}{\percent} while the rest take \SI{5.09}{\percent}.  At the operating
 point the total outgoing propagating power is $0.99980$ of the incident power
 and at the maximum $0.99769$, so the plate is an almost perfect scatterer of the
 guided mode in both cases and the interesting question is not how much is
 reflected but into which branch it goes.
 
-This distinction has a practical consequence.  A measurement of total
-reflectance from an edge would see essentially unity everywhere on the branch
-and would conclude that nothing of interest happens.  A measurement that resolves
-the modal content --- by, for instance, a wavenumber filter or a time-of-flight
-separation of the branches --- would see the partition move from almost nothing
-in the backward channel to more than half of the incident power.  The negative
-reflection discussed here is therefore an observable that requires modal
-resolution; it is not visible in a single total-power measurement.
+The distinction has a practical consequence.  A measurement of the total
+reflectance of an edge would see essentially unity everywhere on the branch.  A
+measurement that resolves the modal content -- by a wavenumber filter, or by a
+time-of-flight separation of the branches -- would see the partition move from
+almost nothing in the backward channel to more than half of the incident power.
+The negative reflection discussed here is an observable that requires modal
+resolution.
 
-A second clarification concerns the word ``backward''.  In this paper it is
-defined operationally by the sign of the $x$ component of the thickness-integrated
-Poynting flux, and it is confirmed by the classification \eqref{eq:classification}
-that the same mode is outgoing at the edge.  The dispersion branch has a region
-where $v_g$ and $v_E$ are negative (\cref{fig:fig01}b), which is necessary for a
-backward mode to exist, but the existence of that region is not by itself
-evidence of negative reflection: it is a property of the infinite plate.  What
-creates the conversion is the edge, and what controls its strength is where the
-operating point sits on the branch.
+The word ``backward'' is used in an operational sense: a mode is backward when
+the $x$ component of its thickness-integrated Poynting flux is negative, and
+\eqref{eq:classification} confirms that the same mode is outgoing at the edge.
+The dispersion branch has a region where $v_g$ and $v_E$ are negative
+(\cref{fig:fig01}b), which is necessary for a backward mode to exist, and that
+region is a property of the infinite plate.  What creates the conversion is the
+edge, and what controls its strength is where the operating point sits on the
+branch.
 
 \subsection{The mechanism}
 \label{sec:disc_mechanism}
@@ -52,12 +49,10 @@ Panel (c) of \cref{fig:fig04} makes this explicit: all coupling levels collapse
 onto one curve in $k_{Bx}/k_{ix}$, with the conversion maximal as the ratio
 approaches unity.  The same mechanism explains why the conversion falls steeply
 on both flanks: on the fast side the wavenumbers separate, and on the far side of
-the fold the branch has changed character.  A grid of $\Delta k_xd=0.05$ is too
-coarse to resolve this maximum, because the whole top of the response is
-$10^{-3}$ wide; the two rasters of \cref{fig:fig04} and the search of
-\cref{sec:results_certification} are what locate it.
+the fold the branch has changed character.  A grid of $\Delta k_xd=0.05$ would miss this maximum, because the whole top of
+the response is $10^{-3}$ wide; the two rasters of \cref{fig:fig04} locate it.
 
-The reading has a second half, and it is not optional.  At the fold the incident
+The reading has a second half.  At the fold the incident
 mode itself is nearly cut off: its group velocity vanishes, so the flux it
 carries per unit normalisation falls by a factor $128$ with respect to the
 operating point.  The partition is maximal exactly where the transported power
@@ -68,7 +63,7 @@ makes only the first.
 The reflection itself is present before the coupling is switched on.  The
 controls of \cref{sec:results_mechanism} establish this directly: with $H=0$ the
 same branch converts \SI{94.68}{\percent} of the incident power at the
-certified maximum and \SI{2.31}{\percent} at the operating point, and when the
+maximum and \SI{2.31}{\percent} at the operating point, and when the
 strain-gradient sector is removed the backward branch does not exist at all.
 The strong negative reflection is therefore a property of the higher-order
 guided branch and of the edge, not a resonance of the added coupling.
@@ -78,11 +73,10 @@ shifts the dispersion by less than $4\times10^{-6}$ in relative terms
 (\cref{fig:fig01}a), it shifts the loss by up to a factor of sixty-two
 (\cref{fig:fig06}c,d), and the partition follows with a weight that depends on
 where the branch is sampled: \SI{-1.21}{\percent} at the operating point,
-\SI{-9.85}{\percent} at $k_xd=0.55$ and \SI{-34.2}{\percent} at the certified
-maximum (\cref{tab:controls}).  The ordering --- dispersion unaffected,
+\SI{-9.85}{\percent} at $k_xd=0.55$ and \SI{-34.2}{\percent} at the maximum (\cref{tab:controls}).  The ordering --- dispersion unaffected,
 partition affected only where the branch is slow, loss strongly affected
 everywhere --- is what a carrier-level coupling acting through conduction loss
-should produce.  The third of the partition lost at the certified maximum is mostly
+should produce.  The third of the partition lost at the maximum is mostly
 loss acting on the backward mode between the edge and the reference plane:
 referred to the edge plane, where both effects act at the same place, the same
 comparison gives \SI{11.1}{\percent} rather than \SI{34.2}{\percent}, so
@@ -97,7 +91,7 @@ The transverse wavenumber is the organising parameter at the operating point,
 not the coupling.  \Cref{fig:fig07} shows that $k_y$ changes the backward
 channel by a factor of $1.35$ across the solved box while $H$ moves it by
 \SI{1.21}{\percent} branch-consistently (\SI{2.4}{\percent} at fixed frequency).
-At the certified maximum, however, the coupling becomes the larger of the two
+At the maximum, however, the coupling becomes the larger of the two
 effects, moving the partition by \SI{34.2}{\percent} while the $k_y$ factor
 stays at $1.35$.  The ordering is not a property of the coupling alone; it is a
 property of the coupling and the operating point together.
@@ -176,7 +170,7 @@ explicitly to avoid a misreading: in \cite{qu2025thermodynamic} and
 elasticity tensor, which in this paper is written $A_{ijklmn}$ (\cref{eq:enthalpy}, \cref{eq:tau});
 our $H_{jkl}$ is a third-order carrier--strain-gradient
 coefficient with different units (J\,m).  The two are unrelated, and the
-admissibility bounds derived in \cref{sec:governing} apply only to the latter.
+positivity bounds derived in \cref{sec:governing} apply only to the latter.
 
 Third, the comparison also locates the contribution of this paper.  If the
 part played by the coupling were the headline, the contribution would be a
@@ -239,14 +233,14 @@ added, bounded, and measured \\
 \end{tabularx}
 \end{table}
 
-No claim of priority, equivalence or superiority is made, and the title does not
-suggest that the added coupling produces the strong reflection.  What the paper
-claims, and can demonstrate from its own numbers, is that the edge-scattering
-problem is well posed, that its energy budget closes to $10^{-12}$, that
-$\ell=0$ removes the backward branch and therefore the effect, and that the
-added coupling moves the partition by a quantified and reproducible amount
+The comparison in this section is made against the equations that could be
+inspected, and no priority claim follows from it: the status of the added term in
+the full theory remains unresolved.  What the present numbers establish is that
+the edge-scattering problem is well posed, that its energy budget closes to
+$10^{-12}$, that $\ell=0$ removes the backward branch and with it the effect, and
+that the added coupling moves the partition by a quantified amount
 (\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at
-$k_xd=0.55$, \SI{34.2}{\percent} at the certified maximum, all at
+$k_xd=0.55$, \SI{34.2}{\percent} at the maximum, all at
 $|H|=0.05H^{*}$).
 
 \subsection{Material provenance}
@@ -256,11 +250,10 @@ The provenance of the parameters is mixed and is stated explicitly in
 \cref{tab:provenance}.  The classical constants are literature values; the
 transport parameters are representative values for n-type ZnO at room
 temperature linked by the Einstein relation; the strain-gradient length, the
-flexoelectric coefficient and the coupling scale are \emph{synthetic}.  In
-particular, no measured value of $H_{jkl}$ exists, and the numbers used here
-($|H|\le\SI{2.0e-23}{\joule\metre}$) were chosen so that the enthalpy remains
-strictly convex with a margin of a factor of twenty
-(\cref{eq:schur}), not because they correspond to a particular specimen.
+flexoelectric coefficient and the coupling scale are \emph{synthetic}.  In particular, no measured value of $H_{jkl}$ exists, and the numbers used here
+($|H|\le\SI{2.0e-23}{\joule\metre}$) are fixed by the positivity bound
+\eqref{eq:schur}, which leaves the enthalpy strictly convex with a margin of a
+factor of twenty; no specimen supplies them.
 
 \begin{table}[t]
 \centering
@@ -296,9 +289,10 @@ $H_{jkl}$ & $H_{333}$ only, $|H|\le2.0\times10^{-23}\,\si{\joule\metre}
 \subsection{Limitations}
 \label{sec:disc_limitations}
 
-Five limitations bound the conclusions.
+Five limitations bound the conclusions, and each is stated where it enters the
+model.
 
-The model is a two-and-a-half-dimensional (2.5D) Fourier-reduced formulation of
+\paragraph{Geometry.}  The model is a two-and-a-half-dimensional (2.5D) Fourier-reduced formulation of
 a plate that is infinite in $y$ and semi-infinite in $x$, with three displacement
 components on a discrete $(x,z)$ cross-section.  It is not a finite plate, it does not
 include a second edge, and it does not resolve the three-dimensional corner at
@@ -308,23 +302,23 @@ strain-gradient energy density on the edge plane was computed from the coherent
 sum of all outgoing modes plus the incident mode, and its concentration in the
 outer band $|z|>0.4\,d/2$ was followed through the degree refinement.  Both cases
 are incident configurations identified by their incident axial wavenumber ---
-$k_xd=0.7362$ at the operating point, $0.5275$ at the certified maximum and
+$k_xd=0.7362$ at the operating point, $0.5275$ at the maximum and
 $0.5500$ on the descending flank --- and every row records the incident and
-backward wavenumbers returned by the solver, with the operating-point rows
+backward wavenumbers returned by the spatial problem, with the operating-point rows
 cross-checked against the independent refinement study of
 \cref{tab:refinement} (they agree to the last stored digit).  At the operating
 point the band carries $0.93$--$1.00$~\% of the strain-gradient energy, at the
-certified maximum $1.22$--$1.30$~\% and at $k_xd=0.55$ $1.18$--$1.26$~\%, its
+maximum $1.22$--$1.30$~\% and at $k_xd=0.55$ $1.18$--$1.26$~\%, its
 peak-to-mean ratio inside the band is $0.098$--$0.102$, $0.126$--$0.130$ and
 $0.122$--$0.126$ respectively (below the mean, not above it), and the share
 \emph{decreases} by \SI{6.8}{}~\%, \SI{6.6}{}~\% and \SI{6.6}{}~\% between
 degree 18 and degree 30 instead of growing.  A corner singularity would show
-the opposite trend.  This is evidence that the outer band does not accumulate
-gradient energy as the discretisation is refined, and that the reported
-partitions (degree spread $7.2\times10^{-7}$ and $1.5\times10^{-7}$) are not
-supported by a corner energy reservoir.
+the opposite trend.  The reported partitions (degree spread $7.2\times10^{-7}$ and
+$1.5\times10^{-7}$) are therefore not supported by a corner energy reservoir.
 
-It is \emph{not} a proof that a corner line force is dynamically negligible.  A
+\paragraph{The corner.}  This is evidence that the outer band does not
+accumulate gradient energy under refinement, and it is not a proof that a corner
+line force is dynamically negligible.  A
 small band fraction bounds the energy that sits near the corner in the computed
 field; it does not bound the work that a singular corner traction could do on
 the admissible variations, because the polynomial basis cannot represent that
@@ -333,29 +327,34 @@ corner-eigenvalue analysis of the higher-order edge problem, or a formulation
 with corner-enriched functions, and neither is attempted here.  We therefore
 record two separate facts: the global partitions are insensitive to the corner
 at the level shown above, and the pointwise corner field, together with the
-line force associated with it, remains uncertified.  This is an unresolved
+line force associated with it, remains unresolved pointwise.  This is an unresolved
 limitation of the model, not a demonstrated error.
 
-The carrier physics is linearised about a uniform doping and a zero bias.  The
+\paragraph{The carrier model.}  The carrier physics is linearised about a
+uniform doping and a zero bias.  The
 nonlinear drift--diffusion regime, in which the carrier perturbation is not
 small compared with $n_0$, is outside the scope of this model; the
 finite-element treatment of that regime by other authors shows that the
 nonlinearity matters when the perturbation is large, and nothing in this paper
 addresses that.
 
-The classical constants are those of a bulk crystal and the transport
-parameters are representative.  No attempt is made to model a specific sample,
+\paragraph{The parameters.}  The classical constants are those of a bulk
+crystal and the transport parameters are representative.  No attempt is made to model a specific sample,
 and the flexoelectric, strain-gradient and $H$ parameters are synthetic.  The
 reported percentages should therefore be read as the response of this model, not
 as predictions for a particular ZnO film, and the flexoelectric sector in
 particular is present but subdominant (\cref{sec:results_scope}): the paper does
 not claim a calibrated flexoelectric mechanism.
 
-The open-circuit electrical condition required a gauge to remove the null space
-of the electrostatic operator.  That gauge does not alter any physical field,
+\paragraph{The electrical condition.}  The open-circuit condition required a
+gauge to remove the null space of the electrostatic operator.  That gauge does not alter any physical field,
 but it also means that the open-circuit results are not an independent
 validation of anything; they are a solvable version of the same physics.
 
-Finally, the relation of the added coupling to the published
-flexoelectric-semiconductor constitutive relations remains unresolved, as
-discussed in \cref{sec:disc_literature}.
+\paragraph{The constitutive relation.}  The relation of the added coupling to
+the published flexoelectric-semiconductor constitutive relations remains
+unresolved, as discussed in \cref{sec:disc_literature}.  What the model does
+establish is that a bilinear carrier--strain-gradient enthalpy can be added
+inside the positivity bound, that its reciprocal partners follow from the same
+potential, and that its incremental effect on the partition is measurable, of
+one sign, and small compared with the effect of the branch itself.

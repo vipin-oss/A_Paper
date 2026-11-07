@@ -41,7 +41,7 @@ entry can run past the right margin.}
 \path{paper_a_study/quadrature_audit.py} & the same two configurations under Gauss--Legendre rules of 64 to 256 nodes at a fixed basis \\
 \path{paper_a_study/claim_audit.py} & registry check, stale-value guard and figure-order check over the manuscript \\
 \path{paper_a_study/claims.json} & the registry itself: every quoted number, the string that carries it, and its source \\
-\path{paper_a_study/mutation_tests.py} & five deliberate defects, each expected to be caught by the gate that is supposed to catch it \\
+\path{paper_a_study/mutation_tests.py} & deliberate defects injected into the solution path, each expected to be caught by the check that is supposed to catch it \\
 \path{paper_a_study/reference_constants.json} & frozen reference values and the literature bands used by the material regression test \\
 \path{paper_a_study/run_all_checks.py} & the whole battery, one log \\
 \path{paper_a_study/figure_data/*.csv} & the twelve data files behind the figures \\
@@ -57,6 +57,63 @@ Two legacy scripts that are superseded by
 caches; they are not part of the reproduction path and are not shipped.  Every
 indispensable input is a JSON, a CSV or a Python source file, so a clean
 extraction reproduces the results without any binary intermediate.
+
+\subsection{Automated checks}
+\label{app:checks}
+
+The verification statements of \cref{sec:numerics_verification} are executed as
+an automated suite of 39 tests, which includes the regression tests that pin
+the material and reference constants.  The suite also contains checks that are
+not physics checks and are recorded here rather than in the body of the article,
+because they guard against errors of identification rather than errors of
+solution.
+
+Two regression tests guard the case identification of the corner study of
+\cref{sec:disc_limitations}: they assert that the study identifies its
+configurations by the incident wavenumber ($K_0=0.7362$ at the operating point,
+not $K_B=0.2452$), and that its stored operating-point $R_B$ agrees row by row
+with the independent refinement study of \cref{tab:refinement} to $10^{-9}$.
+Both are guards against a mislabelled configuration returning a plausible
+number, which the physics tests cannot detect.
+
+Four further tests guard the maximum of \cref{sec:results_certification}, and
+all four are written as solver evaluations rather than as stored expectations,
+so that they fail if the physics moves.  The first requires the refined
+wavenumber to beat every sample of the coarse raster by a margin; a maximum read
+off a grid fails it.  The second requires the incident root returned at that
+wavenumber to lie within $2\times10^{-3}$ of the requested value and more than
+$0.2$ away from the backward target $K_B$.  The third measures the net
+attenuation exponent of the two partner modes between two reference planes and
+requires the partition to rescale by exactly that factor, which fails if only
+the backward decay is used.  The fourth requires the stored classification of
+the search to remain a local maximum of the stated window and the stored
+headline to equal a fresh solve to nine places.
+
+Three further tests concern the plane at which a modal share is quoted.  Every
+ratio reported at the edge plane is obtained from the reference-plane value with
+the single transform
+$R(L_{\text{to}}) = R(L_{\text{from}})\exp[2(\Imag K_i-\Imag K_B)(L_{\text{from}}-L_{\text{to}})]$,
+and every script calls the same implementation of it rather than re-deriving the
+exponent.  The first test checks the identities of that transform analytically
+(identity at equal planes, composition over two steps, invariance when both
+attenuations vanish); the second solves the same scattering problem at $L=0$,
+$10$, $15$ and $20$ thicknesses and requires the value reconstructed at the edge
+to be independent of the plane used, which it is to $2\times10^{-16}$; the third
+compares the stored edge-plane fractions produced by the search, the matched
+controls and two figure datasets and requires agreement to $10^{-6}$ relative.
+A single-mode decay used in place of the two-mode ratio transform fails all
+three, and a defect of that kind is injected deliberately in
+\path{paper_a_study/mutation_tests.py} to confirm that the suite catches it.
+
+\subsection{Reproducibility of the plotted numbers}
+\label{sec:numerics_repro}
+
+Every plotted number is produced by two programs and no value is transcribed by
+hand: one solves the physics and writes the stored datasets, the other reads
+those datasets and only plots.  The refinement and quadrature studies of
+\cref{sec:results_peak} are generated from stored datasets in the same way.  The
+material constants are read from a single machine-readable file, which is part
+of the distributed package because the model cannot start without it.
 
 \subsection{Commands}
 \label{app:repro_commands}

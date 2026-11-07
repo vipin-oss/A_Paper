@@ -171,3 +171,31 @@ classification, the reference-plane definition of `R_B` (the transform was corre
 not the definition), `isolated_transfer` and the fig06 absolute quantities, the `R_B_100um` legacy column,
 and the legacy runners whose exponent was already algebraically correct. The 94.68 % figure was not
 adjusted to compensate for any of this.
+
+# Round 10 addendum — presentation only, no scientific correction
+
+Round 10 changed no result and corrected no defect. It changed the way the article is written: the
+structure, the register and the figure captions. The audit that precedes it is
+`PAPER_A_ROUND10_STYLE_AND_STRUCTURE_AUDIT.md`; the edit log is
+`PAPER_A_ROUND10_LANGUAGE_AND_STRUCTURE_CHANGES.md`; the closing check is
+`PAPER_A_ROUND10_FINAL_MANUSCRIPT_STYLE_AUDIT.md`. The entry is recorded here so that the history of the
+manuscript is complete, and so that no later reader mistakes the rewording for a revision of the
+physics.
+
+| # | Item | `aabcb77` | Round 10 | Reason |
+|---|---|---|---|---|
+| P10-1 | title | "…at a free edge in a flexoelectric piezoelectric--semiconductor plate" | "…from the free edge of a flexoelectric piezoelectric semiconductor plate" | naming the process, not the chain of modifiers |
+| P10-2 | abstract | 236 words, one third of them certification bookkeeping | 222 words: system, solution, two findings, coupling, caveats | the author's abstracts are findings, not delivery statements |
+| P10-3 | register | *certified* 39, *audit* 19, *admissib\** 20, *solver* 21, *script* 18, *CSV* 12 | appendix only, except two label names and one data-availability sentence | an article is not a verification report |
+| P10-4 | §3 / appendix | software tests, regression guards and reproducibility prose inside the method section | method in §3, the same prose in the appendix | separates the mathematics from the package |
+| P10-5 | §2 | no limits subsection | §2.10 collects the four limits and the two reductions used in the text | the author's papers flag limiting cases; the material already existed |
+| P10-6 | §4 titles | "Refinement study", "Certification of the maximum", "Why the high fraction is not an artefact" | "Convergence of the reported values", "Location of the maximum", "The maximum read as a modal share" | titles describe the physics, not the procedure |
+| P10-7 | §5.5 | limitations in two long paragraphs plus an embedded rebuttal | five headed paragraphs in one subsection, the corner evidence separated from its limit | grouped, as the brief requires |
+| P10-8 | `fig02` caption | "at $\ell=\SI{2}{\micro\metre}$" — a distance labelled with the gradient length | "at the reference plane $L=\SI{2}{\micro\metre}$" | a symbol error in a caption; no datum involved |
+| P10-9 | `fig07` caption | "95/95 rows admissible" | removed; the grid is described in the text | row counts belong with the data |
+| P10-10 | §6 | two of five items were precision statements | five physical findings, precision folded into the finding that it qualifies | conclusions state findings |
+
+**Not superseded, not re-derived, not re-worded numerically:** every value of `claims.json` (45 tokens,
+still PASS), the tables, the ten figures, the 13 citations, the operating-point and maximum values, the
+`UNRESOLVED` novelty status, the synthetic parameters, the single-edge and corner caveats, and the
+`BUILD UNVERIFIED` status of the typeset output.

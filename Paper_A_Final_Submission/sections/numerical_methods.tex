@@ -1,5 +1,15 @@
-\section{Solution method and verification}
+\section{Solution method}
 \label{sec:numerics}
+
+The edge problem of \cref{sec:governing_bc} is solved at fixed frequency: the
+outgoing spectrum is obtained as the set of eigenvalues of the spatial problem,
+and the partition among those modes follows from the free-edge conditions.  The
+three ingredients are the thickness discretisation
+(\cref{sec:numerics_basis}), the two solution routes that the same polynomial
+problem admits (\cref{sec:numerics_routes}) and the matching at the edge
+(\cref{sec:numerics_edge}); the conditions under which a computed share is
+reported are collected in \cref{sec:numerics_admissibility}, and the checks on
+the implementation in \cref{sec:numerics_verification}.
 
 \subsection{Thickness discretisation}
 \label{sec:numerics_basis}
@@ -49,7 +59,7 @@ limit $\ell=0$ returns the familiar quadratic problem.
 \subsection{Temporal and spatial routes}
 \label{sec:numerics_routes}
 
-Two independent solution routes are implemented.
+Two independent solution routes follow from \eqref{eq:polynomial}.
 
 The \emph{temporal} route fixes a real $k_x$ and solves the generalised
 eigenvalue problem in $\omega^2$ obtained from \eqref{eq:polynomial} with the
@@ -65,23 +75,24 @@ The \emph{spatial} route fixes a real frequency and solves the quartic problem
 \eqref{eq:polynomial} directly for $k_x$.  It is the route that is physically
 relevant at an edge, because reflection is a process at fixed frequency, and it
 is the only route that gives the spatial attenuation
-$\alpha=2|\Imag k_x|$ used in \cref{fig:fig01,fig:fig06}.  Reporting the
-imaginary part of $\sqrt{K^2+k_y^2}$ for a real $K$ as an attenuation would
-return zero identically and is not done anywhere in this work.
+$\alpha=2|\Imag k_x|$ used in \cref{fig:fig01,fig:fig06}.  The attenuation is
+taken from the complex root; it is not inferred from the imaginary part of
+$\sqrt{K^2+k_y^2}$ at real $K$, which vanishes by construction.
 
-Both routes are cross-checked against each other (\cref{fig:fig09}d) and against
-strong-form integrations of the reduced system
-(\cref{sec:numerics_verification}).  They are two implementations of the same
-dispersion relation; agreement between them tests the implementation, not the
-physics, and is described that way throughout.
+The two routes are compared with each other in \cref{fig:fig09}(d) and with
+strong-form integrations of the reduced system in
+\cref{sec:numerics_verification}.  Both comparisons establish the consistency of
+the implementation, which is what they are used for; the independent checks on
+the physics are the exact limits and the finite-element plate of
+\cref{sec:numerics_verification}.
 
 \subsection{Edge matching}
 \label{sec:numerics_edge}
 
 At fixed $\omega$ the spatial problem returns $2M$ eigenvalues $k_x^{(j)}$ and
 their states $\vect{y}^{(j)}$, with $M$ the number of unknowns in
-\eqref{eq:polynomial}.  Each is classified as outgoing or incoming by
-
+\eqref{eq:polynomial}.  Each is classified as outgoing or incoming by the sign
+of its decay and of its axial power,
 \begin{equation}
 \label{eq:classification}
 \text{outgoing}\iff
@@ -92,9 +103,9 @@ their states $\vect{y}^{(j)}$, with $M$ the number of unknowns in
 where $\tau=2\times10^{-8}\max(1,|k_x|)$ and $\mathcal{P}_x$ is the
 thickness-integrated power flux \eqref{eq:Px_int}.  A purely real root is
 therefore outgoing when it carries energy away from the edge, and an
-evanescent root is outgoing when it decays away from the edge.  The solver
-verifies that the number of outgoing roots equals $M$ and aborts otherwise;
-this is a structural check on the eigenvalue count, not a tolerance.
+evanescent root is outgoing when it decays away from the edge.  The number of
+outgoing roots must equal $M$, which is a structural property of the
+eigenvalue problem and not a tolerance.
 
 The solution is written as the incident mode plus a combination of the outgoing
 modes,
@@ -106,12 +117,11 @@ and the coefficients $a_j$ follow from the homogeneous edge conditions
 \eqref{eq:bc_edge} written as
 $\mathsf{B}\vect{a}=-\vect{b}_{\text{inc}}$.  The system is row- and
 column-scaled and solved in the least-squares sense through a singular-value
-decomposition.  The rank of $\mathsf{B}$ is required to equal its column count
-with a cut-off of $10^{-12}$ of the largest singular value; a rank deficiency
-raises an error instead of returning a regularised answer.  The reported
-condition number at the operating point is $1.6\times10^{2}$, and the scaled
-residual of \eqref{eq:edge_ansatz} is below $10^{-12}$ for every row used in
-this paper.
+decomposition, with the rank of $\mathsf{B}$ required to equal its column count
+at a cut-off of $10^{-12}$ of the largest singular value; a deficient system is
+reported as such rather than regularised.  The condition number at the
+operating point is $1.6\times10^{2}$, and the scaled residual of
+\eqref{eq:edge_ansatz} is below $10^{-12}$ for every row used in this article.
 
 The backward channel is the outgoing mode whose real wavenumber is closest to
 the target $k_{Bx}$, and its share of the incident power is
@@ -123,14 +133,14 @@ R_B=\frac{-\,P_{B}\,e^{2\Imag k_{Bx}L}}{P_{\text{inc}}\,e^{2\Imag k_{ix}L}}
 evaluated at the reference plane $x=-L$, $L=10\,d=\SI{2}{\micro\metre}$.  The
 two exponentials are retained explicitly so that the ratio is measured at the
 same plane for both modes.  Equation \eqref{eq:RB} defines a \emph{modal share}
-of the outgoing power.  It is not a reflectance: the quantity that would
-correspond to a reflectance is the sum over all propagating outgoing modes,
-which is reported separately in \cref{fig:fig05}.
+of the outgoing power, one member of the partition of the incident power; the
+total propagating share, which is the quantity closest to a reflectance, is
+reported separately in \cref{fig:fig05}.
 
-\subsection{Admissibility of a reported value}
+\subsection{Conditions on a reported share}
 \label{sec:numerics_admissibility}
 
-A solved row is accepted only if it satisfies three conditions, none of which
+A computed share is reported when it satisfies three conditions, none of which
 is a plotting threshold.
 
 \emph{Conservation.}  The backward mode is one of the outgoing modes, so its
@@ -139,36 +149,30 @@ self-power cannot exceed the power available at the plane,
 \label{eq:admissible}
 0\le R_B\le1+\frac{|P_{\text{cross}}|}{P_{\text{inc}}} .
 \end{equation}
-Across the certified solves the interference term is between $10^{-6}$ and
+Across the reported solutions the interference term is between $10^{-6}$ and
 $10^{-2}$ of the incident power, so \eqref{eq:admissible} is applied with a
-bound of $1.01$.  Rows that violate it would imply that a single outgoing mode
-carries more power than the incident wave plus the interference, which is
-impossible for a solution of the boundary-value problem; they indicate that the
-identified mode is not the physical continuation of the backward branch and are
-discarded.  A criterion based on the energy angle alone --- discarding rows whose
-angle exceeds $80^{\circ}$ --- is a plotting convention rather than a physical
-test, and it is not used: \eqref{eq:admissible} is the test that is applied.
+bound of $1.01$.  A row that violates it would assert that a single outgoing
+mode carries more power than the incident wave plus the interference, which no
+solution of the boundary-value problem can do; such a row indicates that the
+identified mode is not the continuation of the backward branch.
 
 \emph{Convergence.}  The reported quantity must be stable under refinement of
-the Galerkin degree.  The refinement study in
-\cref{sec:results_peak} shows that both the operating-point value and the
-branch-maximum value change by less than $10^{-6}$ between degree 18 and degree
-30.
+the Galerkin degree.  The study of \cref{sec:results_peak} shows that both the
+operating-point value and the branch maximum change by less than $10^{-6}$
+between degree 18 and degree 30.
 
 \emph{Resolution of the measured projection.}  $R_B$ is a ratio of $x$ fluxes.
 When the energy angle of a mode approaches $\pm90^{\circ}$ its $x$ flux
 vanishes and the ratio loses meaning even though the mode itself is perfectly
-well resolved.  Rather than exclude such rows silently, the solver stores the
-flux fraction $|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ next to every row so
-that the reader can see how well the projection is resolved.  The two values
-quoted in this paper have $|\cos\theta_E|=0.88$ and $0.97$ respectively.
+well resolved.  The flux fraction
+$|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is therefore stored with every row,
+and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
 
 \subsection{Verification}
 \label{sec:numerics_verification}
 
-The implementation is verified in five independent ways.  All of the following
-run as an automated suite of 39 tests, which includes the regression tests that
-pin the material and reference constants.
+The implementation is verified in five independent ways, each of which compares
+a computed quantity with a closed-form or independently discretised one.
 
 \begin{enumerate}
 \item \emph{Exact classical limit.}  With $\ell=f=H=0$ the plate supports
@@ -185,67 +189,16 @@ nonzero $f$ and $H$.
 \item \emph{Independent discretisation.}  A $C^1$ finite-element plate
 formulation in the thickness direction converges monotonically to the spectral
 edge result, with an error below $3\times10^{-5}$ on the finest mesh.  This is
-the only check in the list that tests the edge solver rather than the
-dispersion solver.
+the only check in the list that tests the edge problem rather than the dispersion
+problem.
 \item \emph{Residuals of the strong form.}  For every mode used, the momentum,
 Gauss, carrier-continuity, traction, double-traction and blocking residuals are
 below $10^{-8}$ in the normalised measure reported in
 \cref{fig:fig09}(c), and the scaled edge residual is below $10^{-12}$.
 \end{enumerate}
 
-Two further checks are written as tests rather than as figures.  The
-reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which
-verifies the symmetry of the discretised bilinear form including the $H$ term;
-and a deliberately singular edge system is rejected with an explicit error
-rather than being regularised into a plausible-looking number.
-
-Two regression tests guard the case identification of the corner study of
-\cref{sec:disc_limitations}: they assert that the study identifies its
-configurations by the incident wavenumber ($K_0=0.7362$ at the operating point,
-not $K_B=0.2452$), and that its stored operating-point $R_B$ agrees row by row
-with the independent refinement study of \cref{tab:refinement} to $10^{-9}$.
-Neither is a physics check.  Both are guards against a mislabelled
-configuration returning a plausible number, which the physics tests cannot
-detect.
-
-Four further tests guard the maximum of \cref{sec:results_certification}, and
-all four are written as solver evaluations rather than as stored expectations,
-so that they fail if the physics moves.  The first requires the refined
-wavenumber to beat every sample of the coarse raster by a margin; a maximum read
-off a grid fails it.  The second requires the incident root returned at that
-wavenumber to lie within $2\times10^{-3}$ of the requested value and more than
-$0.2$ away from the backward target $K_B$, which is the blunder that once
-produced a plausible $0.5444$ from a mislabelled case.  The third measures the
-net attenuation exponent of the two partner modes between two reference planes
-and requires the partition to rescale by exactly that factor, which fails if
-only the backward decay is used.  The fourth requires the stored classification
-of the search to remain \texttt{certified\_local\_maximum} and the stored
-headline to equal a fresh solve to nine places.
-
-Three further tests concern the plane at which a modal share is quoted, which is
-where the last inconsistency in this study was found.  Every ratio reported at
-the edge plane is obtained from the reference-plane value with the single
-transform $R(L_{\text{to}}) = R(L_{\text{from}})\exp[2(\Imag K_i-\Imag K_B)(L_{\text{from}}-L_{\text{to}})]$,
-and every script calls the same implementation of it rather than re-deriving the
-exponent.  The first test checks the identities of that transform analytically
-(identity at equal planes, composition over two steps, invariance when both
-attenuations vanish); the second solves the same scattering problem at $L=0$,
-$10$, $15$ and $20$ thicknesses and requires the value reconstructed at the edge
-to be independent of the plane used, which it is to $2\times10^{-16}$; the third
-compares the stored edge-plane fractions produced by the search, the matched
-controls and two figure datasets and requires agreement to $10^{-6}$ relative.
-A single-mode decay used in place of the two-mode ratio transform fails all
-three, which is what the round-eight version of the search script did, and a
-deliberate mutation of that kind is now part of the suite of
-\cref{sec:numerics_repro}.
-
-\subsection{Reproducibility}
-\label{sec:numerics_repro}
-
-Every plotted number is produced by two programs and no value is transcribed by
-hand: one solves the physics and writes the stored datasets, the other reads
-those datasets and only plots.  The refinement and quadrature studies of
-\cref{sec:results_peak} are generated from stored datasets in the same way.  The
-material constants are read from a single machine-readable file, which is part
-of the distributed package because the model cannot start without it.
-\Cref{app:repro} lists the exact commands.
+The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which
+verifies the symmetry of the discretised bilinear form including the $H$ term.
+The regression of these checks, and the further tests that guard the
+identification of the modes and the plane at which a share is quoted, are run as an automated suite and are described in \cref{app:checks} and
+\cref{app:repro}.

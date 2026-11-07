@@ -12,7 +12,7 @@
     "figures/fig08_boundary.pdf": "aa334c8d3f66be9810f64bfe6fa9120fd3bf29c1cd11e952f244ed4bdb60711e",
     "figures/fig09_validation.pdf": "8a9f31e15387aefd18d4aaedf3cc5e22774ebec2a2f2decb3decd16d114c4a23",
     "figures/fig10_field.pdf": "98aed36e3116b0765d2e5bf681866f746ccd418f02cc0e35852728bf368655b9",
-    "main.tex": "c5fbf40aaef53d0b9782d8fb52f310256c3beedb3f453c07a4fd98f4a1b31cbb",
+    "main.tex": "039c8407763e2a0446ecba8c70b5f55c9cd52a9c28b2b2e416c6562c18f0305c",
     "paper_a_study/__init__.py": "d1e1ffaab12669111cdcf0eb07b5e855a6ba4c4347fe1248563bd5225a68d6ce",
     "paper_a_study/build_figure_data.py": "5b69b47c0a688c95b5297da66c5896025035d8c1470e2485bb53599d2a46f328",
     "paper_a_study/certify_peak.py": "26d2e92af30ecb4e03fac05eb5f66741dbe5154ae278711600313d2a7008be63",
@@ -70,15 +70,16 @@
     "scripts/generate_final_figures.py": "e3d4348b1f4b5d5c9c8baf09d69263d00abadd67565d559973d3c325b933293a",
     "scripts/model.py": "c72ce871d1e79e5013db188bdbb0f27fe0ba31b41ddc2f3450c0145aea1eb832",
     "scripts/static_check.py": "b6b004e28878c5989b1e5f41295f22e7724b4beb117ad060e1b706af137903f3",
-    "sections/appendix_reproducibility.tex": "22bc557b56724348921966dbedc22b6b01bb5cdcd18f7e3b3168fc8478a4c730",
-    "sections/conclusions.tex": "9b8fac0fc7425b8e0dd2385b1ba6780f833a54fe007ef5d2bd4c5974536e2f70",
-    "sections/discussion.tex": "995fbedaa0c6d5fb352dc2e7edd6d0a0f599eaed82d5d13f4caf5500b2b731d0",
-    "sections/governing_equations.tex": "ab3efa26df24c87395596de6a77fb4e3992c6d73547b57e79411aee6a34c9a0c",
-    "sections/introduction.tex": "cc8d02f760fbd7871a43efe0bf69ae734c213850c01314c7dedc6e6c8ce39f23",
-    "sections/numerical_methods.tex": "cbcf85921c0ad696dbbbfe8415bf171b9f131006c5bb87f9bbf996a677cb7fc1",
-    "sections/results.tex": "9390987583283d0bef64ae3ff25080146eaa29e7c8708137f2bdf4e28934abff",
-    "static_validation.txt": "acbe5b7428dd8292ba1f1b20c25e0a5e20191290424f133c17e4951627613241",
-    "validation/verification_log.txt": "5eb46de01500f2d7e51275a85f311b2ce6147cc2ba2a4bd2014caa9a5035b608"
+    "sections/appendix_reproducibility.tex": "57a5b10c045fa297fe1ce0b724c7162db6814f7e71793e3f931897e122a0a041",
+    "sections/conclusions.tex": "5d0592b4d0f622e54a9c4fc8b02490b485bd83f9293b8b555b0162da7c764929",
+    "sections/discussion.tex": "752b52bde86f2e6299792c6d27d35edb2b4bfa79b960890d616fc80b9bc1c1da",
+    "sections/governing_equations.tex": "fac0d0bedcbc36a0b143b0309c8b6c08c13e3938c0faf2189ca57dd2d570d9d4",
+    "sections/introduction.tex": "b57158bb66cabdd4056a052d4102069e5fb1d5889bd367e8ad87b6dab10b3742",
+    "sections/numerical_methods.tex": "8037e63707016997d3c707a5c7db018585f4ef813c7b928885122bc51c610a07",
+    "sections/results.tex": "2f338bb829ee14a7ddf0b73d6da01df7bb069cabcc7a362d87503a28d9fe6529",
+    "static_validation.txt": "6154f95ea92d28818e7bbdf7d3f61b33967727b881deee236fbb77abce141bae",
+    "validation/round10_registry_gate_note.txt": "833acf212badaef9c678e188a4f4c364b6b298123a343404752f2440c211e479",
+    "validation/verification_log.txt": "4b22e63cc146fb67793323dcb53f6b2443eaa4a011d493b8d84ae15a0eee0682"
   },
-  "count": 79
+  "count": 80
 }
