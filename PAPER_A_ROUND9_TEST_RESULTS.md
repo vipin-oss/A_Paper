@@ -10,7 +10,7 @@ earlier round, and nothing here is claimed that was not executed.
 
 ```
 python -m unittest paper_a_study.test_model -v
-Ran 39 tests in 8.3s
+Ran 39 tests in 8.9s
 OK
 ```
 

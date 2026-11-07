@@ -5,9 +5,9 @@ authoritative manuscript, all ten vector figures, the solver and every verificat
 dataset regenerated from the corrected transform, the eighteen-gate battery log, and the seven round-9
 reports.
 
-* Size: **2,924,165 bytes** (2.92 MB)
+* Size: **2,924,173 bytes** (2.92 MB)
 * Entries: **210**
-* SHA-256: `9a927a01005a2e8a41db115831c09cdf226bceecb59ad6fb3c6f1a5d8ca75e42`
+* SHA-256: `85548a0c84f4c66a563f7d4bda21fd98b9565c4cf4fd6f61da03a1e36726a580`
 * Also stored beside this file as `PACKAGE_SHA256.txt` (a checksum is never placed inside the archive it
   describes).
 * Verified by extraction, a full per-entry CRC test, a re-hash of all **79** `MANIFEST.json` entries on
@@ -45,9 +45,9 @@ the edge plane both give 0.985572 (1.96 percentage points).
   **certified local maximum** inside `0.465 < k_x d < 0.625`, flat to 0.01 pp over `0.5266–0.5277`;
 * the edge-plane records were regenerated: search 0.9855722, density sweep up to 0.5804, coupling
   dataset 0.019304–0.025601, operating point 0.023151;
-* four manuscript numbers were re-read, two table cells moved (0.0231 → 0.0232 on rounding, 1.7e-9 →
-  3.8e-9 on regeneration), and the Fig. 9 paragraph was rewritten because it had been wrong about the
-  round-off levels;
+* four manuscript numbers were re-read, three table cells moved (0.0231 → 0.0232 on rounding;
+  1.7e-9 → 3.8e-9 and 2.1e-8 → 2.3e-8 on regeneration), and the Fig. 9 paragraph was rewritten
+  because it had been wrong about the round-off levels;
 * the transform is now implemented once and imported everywhere, the edge share is a registered claim,
   a cross-script gate compares the two producers, and three new test classes (13 tests) cover it;
 * packaging bug fixed: `build_submission_package.py` now runs the static validator *before* writing

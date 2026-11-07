@@ -97,8 +97,8 @@ defective transform only ever produced edge-plane numbers. What changed is the e
 search record moved from 0.965978 to 0.985572 (1.96 pp), the coupling dataset from a 0.019173–0.025598
 range to 0.019304–0.025601, the density sweep's edge column by up to 0.14 % relative, and the printed
 spreads of the maximum over degrees and quadrature from 5.6e-9 / 9.4e-10 to 5.0e-9 / 5.6e-9. Four
-manuscript numbers were re-read from the regenerated records, two table cells moved (one on rounding,
-0.0231 → 0.0232; one on regeneration, 1.7e-9 → 3.8e-9), one paragraph about Fig. 9 was rewritten
+manuscript numbers were re-read from the regenerated records, three table cells moved (0.0231 → 0.0232
+on rounding; 1.7e-9 → 3.8e-9 and 2.1e-8 → 2.3e-8 on regeneration), one paragraph about Fig. 9 was rewritten
 because it had been wrong about the round-off levels, and the edge-plane share is now a registered
 claim with a cross-script gate behind it.
 
