@@ -4,14 +4,16 @@
 The edge problem of \cref{sec:governing_bc} is solved at fixed frequency: the
 outgoing spectrum is obtained as the set of eigenvalues of the spatial problem,
 and the partition among those modes follows from the free-edge conditions.  The
-three ingredients are the thickness discretisation
-(\cref{sec:numerics_basis}), the two solution routes that the same polynomial
-problem admits (\cref{sec:numerics_routes}) and the matching at the edge
-(\cref{sec:numerics_edge}); the conditions under which a computed share is
-reported are collected in \cref{sec:numerics_admissibility}, and the checks on
-the implementation in \cref{sec:numerics_verification}.
+calculation has three parts.  \Cref{sec:numerics_basis} discretises the thickness
+direction and constructs the blocks \eqref{eq:block} element by element, so that
+every entry of the discrete operator can be traced to one integral of
+\eqref{eq:app_block}.  \Cref{sec:numerics_routes} obtains the modes at fixed
+frequency, classifies them, and solves the free-edge system for the amplitudes;
+the conditions under which the resulting share is reported are stated there, with
+the two numbers that decide them.  \Cref{sec:numerics_verification} collects the
+independent checks on the discrete problem.
 
-\subsection{Thickness discretisation}
+\subsection{Thickness discretisation and the assembly of the blocks}
 \label{sec:numerics_basis}
 
 The thickness dependence is represented by a spectral Galerkin expansion.
@@ -160,7 +162,7 @@ propagation wavenumber $k_x$,
 \mathsf{A}_{rs}(\omega,k_y)\Bigr]\vect{q}=0 ,
 \end{equation}
 where $\vect{q}$ collects all thickness degrees of freedom and the matrices
-$\mathsf{A}_{rs}$ contain the six blocks of \cref{tab:conjugates}; expanded
+$\mathsf{A}_{rs}$ contain the six blocks of \eqref{eq:sector_blocks}; expanded
 power by power, \eqref{eq:polynomial} is \eqref{eq:quartic} of
 \cref{sec:governing_reduction}.  That degree is the order of the hyperelastic
 operator and not of the interpolation: the classical limit $\ell=0$ returns the
@@ -176,8 +178,39 @@ $\mathsf A_{00}$ and $\mathsf A_{11}$ fail to be Hermitian by exactly the
 carrier-transport form of \eqref{eq:block}, which is the only non-Hermitian
 contribution in the construction.
 
-\subsection{Temporal and spatial routes}
+The sizes and the scaling are worth recording, because they decide how the
+algebraic problem is solved.  With $n$ basis functions per mechanical component,
+$n$ for the potential and $n$ for the carrier, the number of unknowns per
+thickness element is
+\begin{equation}
+\label{eq:nw}
+n_{\mathrm{w}}=5n+3 ,
+\end{equation}
+so $n_{\mathrm{w}}=93$ at the degree used for the reported results and
+$n_{\mathrm{w}}=153$ at the highest degree examined; the polynomial
+\eqref{eq:polynomial} has degree $4n_{\mathrm{w}}$ in $k_x$, i.e.\ $372$ at
+$n_{\mathrm{w}}=93$, of which the $2n_{\mathrm{w}}$ roots with negative imaginary part are
+the ones that decay into the plate.  The Frobenius norms of the blocks at degree
+four and zero coupling are
+\begin{equation}
+\label{eq:block_norms}
+\|\mathsf A_{00}\|=1.89\times10^{4},\quad
+\|\mathsf A_{01}\|=5.67\times10^{2},\quad
+\|\mathsf A_{11}\|=2.35\times10^{2},\quad
+\|\mathsf A_{12}\|=4.04,\quad
+\|\mathsf A_{22}\|=7.12\times10^{-1},
+\end{equation}
+spanning four and a half decades.  The spread is not an artefact: it is the
+$\lambda^2c_{33}/c_{44}=0.32$ of the gradient term against the $O(10^{2})$ of
+the elastic term, multiplied by the $2j(j+1)(2j+1)$ growth of the stiffness
+matrix \eqref{eq:app_S_scaled} with the mode number.  Every block is therefore
+equilibrated row by row before the eigenvalue problem is formed, and the
+conditioning quoted below is that of the equilibrated problem.
+
+\subsection{Modes, the free-edge system and the conditions on a reported share}
 \label{sec:numerics_routes}
+\label{sec:numerics_edge}
+\label{sec:numerics_admissibility}
 
 Two independent solution routes follow from \eqref{eq:polynomial}.
 
@@ -206,8 +239,6 @@ the implementation, which is what they are used for; the independent checks on
 the physics are the exact limits and the finite-element plate of
 \cref{sec:numerics_verification}.
 
-\subsection{Edge matching}
-\label{sec:numerics_edge}
 
 At fixed $\omega$ the spatial problem returns $2M$ eigenvalues $k_x^{(j)}$ and
 their states $\vect{y}^{(j)}$, with $M$ the number of unknowns in
@@ -257,8 +288,44 @@ of the outgoing power, one member of the partition of the incident power; the
 total propagating share, which is the quantity closest to a reflectance, is
 reported separately in \cref{fig:fig05}.
 
-\subsection{Conditions on a reported share}
-\label{sec:numerics_admissibility}
+
+Evaluating \eqref{eq:RB} at the operating point takes four stored numbers and
+three steps, and the steps are the ones an author repeats on paper.  The first is
+the power of the unit-amplitude backward mode at the edge, which the
+normalisation of \cref{app:derivations} makes independent of the degree:
+\begin{equation}
+\label{eq:RB_worked}
+\mathcal{P}_x=-0.0178923,\qquad |a_B|^{2}=1.2938,\qquad
+P_{B}^{\text{edge}}=|a_B|^{2}\mathcal{P}_x=-0.0231505 .
+\end{equation}
+The second is the propagation to the reference plane, with the attenuation taken
+from the complex root,
+\begin{equation}
+\label{eq:RB_prop}
+\Imag k_{Bx}=-5.2306\times10^{-6},\quad
+\Imag k_{ix}=+5.4027\times10^{-6}\ \text{(per unit $d$)},\quad L=10\,d ,
+\end{equation}
+\begin{equation}
+\label{eq:RB_planes}
+P_{B}(-L)=-0.0231505\,e^{2(-5.2306\times10^{-6})(10)}
+=-0.0231481,\qquad
+P_{\text{inc}}(-L)=e^{2(5.4027\times10^{-6})(10)}=1.0001081 ,
+\end{equation}
+where the incident mode is normalised to unit power at the edge.  The third is
+the ratio,
+\begin{equation}
+\label{eq:RB_value}
+R_B=\frac{-P_{B}(-L)}{P_{\text{inc}}(-L)}
+=\frac{0.0231481}{1.0001081}=0.0231456 ,
+\end{equation}
+that is \SI{2.31}{\percent}.  The two exponentials move the fourth digit in
+opposite directions --- the backward mode decays and the incident mode grows as
+$x\to-L$ --- so the ratio changes by $1.05\times10^{-4}$ relative to the
+unnormalised value $|a_B|^{2}|\mathcal{P}_x|=0.0231505$, and it is that
+difference which \eqref{eq:RB} exists to account for.  The same evaluation at the
+branch maximum gives $0.9468$ (\SI{94.68}{\percent}), and the two values differ
+by the factor of forty that \cref{sec:results_peak} attributes to the proximity
+of the branch to the coincidence condition.
 
 A computed share is reported when it satisfies three conditions, none of which
 is a plotting threshold.
@@ -288,10 +355,10 @@ well resolved.  The flux fraction
 $|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is therefore stored with every row,
 and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
 
-\subsection{Verification}
+\subsection{Consistency and independent checks}
 \label{sec:numerics_verification}
 
-The implementation is verified in five independent ways, each of which compares
+The implementation is checked in five independent ways, each of which compares
 a computed quantity with a closed-form or independently discretised one.
 
 \begin{enumerate}
@@ -318,7 +385,7 @@ below $10^{-8}$ in the normalised measure reported in
 \end{enumerate}
 
 The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which
-verifies the symmetry of the discretised bilinear form including the added
+exposes the symmetry of the discretised bilinear form including the added
 coupling.  The five comparisons above are the independent evidence for the
 implementation; the practical resolution at which they are carried out, the
 convergence of the reported quantities with degree and quadrature, and the

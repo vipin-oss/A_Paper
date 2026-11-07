@@ -18,13 +18,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig01_dispersion.pdf",
-    "bytes": 39577,
-    "sha256": "e3a92bf26bda631c764a7006d430dec3e06cf4473a5247b4c678ab1a86066d21"
+    "bytes": 39540,
+    "sha256": "e457dde5b4d389cf633d378e53f04c313c2d30263e974456d57bf988c7f41db1"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig01_dispersion.png",
-    "bytes": 551962,
-    "sha256": "f14bb8d58dd3cc66912d3630eed0de36b9a9f223be7a856d45c5418b10520392"
+    "bytes": 552510,
+    "sha256": "245309bb798e2e8090522ac9442499ea60d45f2cd15b703cb5e28e12d0b5901e"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig01_dispersion.svg",
@@ -50,13 +50,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig02_material.pdf",
-    "bytes": 37574,
-    "sha256": "ceeda246801c9cf7bcb9f05848f789cd5d48ab26a7e9f452acf06efaed6e11db"
+    "bytes": 38976,
+    "sha256": "07db661a9749abb67a81e4aa197631e94957f46a5c9a436dab193a5558cfce9b"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig02_material.png",
-    "bytes": 530014,
-    "sha256": "6e1773016a118f5f3b50af1fc656fd11dbc16c39669b22751bf8fbd9b6b200f8"
+    "bytes": 541026,
+    "sha256": "de2d6645952b7c45cceff622999a12237747629de661b124c592ea201d92c042"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig02_material.svg",
@@ -83,7 +83,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig03_geometry.pdf",
     "bytes": 37074,
-    "sha256": "38e4a56f12efc91f459fa22dbfd6b4971650fc29ee8d0d6b2c3cd759b0745702"
+    "sha256": "06e429b4bc09a19e426b5e98464c6c9b6b52b3e3c718d457a6f05f24cce94036"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig03_geometry.png",
@@ -114,13 +114,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig04_frequency.pdf",
-    "bytes": 39974,
-    "sha256": "1847ed9f905f63ceb53946a42bd4880f8753ec84484df68861898e07e9ad6340"
+    "bytes": 39532,
+    "sha256": "06ea81fe6ff1f02b26c7b94fbdf3bfb17ef24ffade2fecfaf6001acd8258cd4c"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig04_frequency.png",
-    "bytes": 395422,
-    "sha256": "c90cbb0d3a98c112a3ebbad75736952a77f312cbbc9e274c39009ddf429320af"
+    "bytes": 399603,
+    "sha256": "f28813fe6d752017d82603bacb4dcf2e4393cd5f9aa2603d4f7d40ac86fca19f"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig04_frequency.svg",
@@ -147,7 +147,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig05_channel.pdf",
     "bytes": 34588,
-    "sha256": "1df82fca2f7b08b04db8d42490e276081e1ce01410a92808cfedd8bc549f296a"
+    "sha256": "610fe18dcf15bfae9d0f163c87387c577a0f58156a2704b434eec97d77623cba"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig05_channel.png",
@@ -178,13 +178,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig06_attenuation.pdf",
-    "bytes": 33779,
-    "sha256": "3d52b2558ca60cfc10bd2156a79e0f92cc5e03e9e7e4f4191ad92882429d903c"
+    "bytes": 33797,
+    "sha256": "48a7b5cd6778b3380d01e33b92711e5b98e5ed58310cae418b8a50631d32c01a"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig06_attenuation.png",
-    "bytes": 407919,
-    "sha256": "ef11ee02973914abf4624ca839674ea59ddfcc14eee4f2b9617e37fb72f8a718"
+    "bytes": 408106,
+    "sha256": "12383130cfce81d5aca4061b6ad7096c495d0445c652d1e89b9307efd534bf0d"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig06_attenuation.svg",
@@ -210,13 +210,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig07_coupling.pdf",
-    "bytes": 35836,
-    "sha256": "9a654d38c50ccefb44d2c8c3958bbdf84673170d2e569c9414737ebbf9c5bcc4"
+    "bytes": 35714,
+    "sha256": "8b094ad9fcc0c4765577ffc0eefa9e19a0545ffe3a2fc661f58b0a7be3144450"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig07_coupling.png",
-    "bytes": 417640,
-    "sha256": "a6892b7b39645808bb09f758bfa5eb029b3abcbbd2d8ffba632a8fbec7859acc"
+    "bytes": 414386,
+    "sha256": "314ae1cea46cf9d8236f05c31aaf9fc5c5c136f8b0b015e7465f64af19026905"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig07_coupling.svg",
@@ -242,13 +242,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig08_boundary.pdf",
-    "bytes": 39037,
-    "sha256": "7d7915e11afde78ba9bbb2341f00b2258717488effce1586b03dc93f173121f0"
+    "bytes": 39257,
+    "sha256": "2d09161589d6092f9d945a31bb50740f5a82a27ca1ef344c2195ab7add27a14d"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig08_boundary.png",
-    "bytes": 398213,
-    "sha256": "a988380068989df40597b8ab7da08fa5235f178bcde977928a26dffb4fd4eb23"
+    "bytes": 404503,
+    "sha256": "212f14d6e79717c8ebe7e7031835d122922a8a7c11bf3311e34c78a1bff0c403"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig08_boundary.svg",
@@ -277,7 +277,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig09_validation.pdf",
     "bytes": 33815,
-    "sha256": "be5357814bd47c0421a85569fcdc2de538ace3be6ef7d7ac2fb60d37435bf8db"
+    "sha256": "62ea76d9f0dd3596a1cc4b47b6b86a4a9209fe18e20afded3c0917518a0e5742"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig09_validation.png",
@@ -309,7 +309,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig10_field.pdf",
     "bytes": 48618,
-    "sha256": "e686905c2e632f640911d61a3af91bc914e063cc4c7e5f948135c97d8eb05972"
+    "sha256": "8c1ea289d101ac3d6188c14b293aac9e6d930094b50cd1058ed8b4f8576b94df"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig10_field.png",

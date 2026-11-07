@@ -31,8 +31,15 @@
 
 % siunitx v2 and v3 both understand \sisetup.  The previous source used
 % \siunitxsetup, which exists only in v3 and aborted the build on v2.
+% Numeric typography.  Round 17: the previous setting grouped digits in the
+% fractional part as well (group-digits=all is the v2 default), so a decimal such
+% as 16.6547 acquired a separator.  Grouping is now restricted to the integer
+% part and is switched off below five digits, and the decimal marker is pinned, so
+% every scientific decimal prints exactly as written while long integers keep
+% their conventional thousands separator.
 \sisetup{detect-all=true,per-mode=symbol,exponent-product=\times,
-         group-separator={,},group-minimum-digits=4}
+         group-digits=integer,group-minimum-digits=5,
+         output-decimal-marker={.},group-separator={\,}}
 
 % Line-breaking slack for the prose.  This absorbs the residual overfull lines
 % of long inline paths and wide math without touching the font size anywhere.
@@ -170,6 +177,7 @@ generative-tool assistance must be applied, and the statement must describe the
 tooling actually used.
 
 \appendix
+\input{sections/appendix_derivations}
 \input{sections/appendix_reproducibility}
 
 \bibliographystyle{plain}

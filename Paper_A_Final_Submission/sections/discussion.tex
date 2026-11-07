@@ -1,4 +1,4 @@
-\subsection{Discussion: the meaning of the partition, the mechanism, the literature and the limits}
+\section{Discussion}
 \label{sec:discussion}
 
 The numbers above are read in this section rather than restated: what the
@@ -6,7 +6,7 @@ partition means, which sector of the model supplies the branch, how the
 mechanism sits beside the published formulations, where every constant comes
 from and what the model does not resolve.
 
-\subsubsection{The observable: a modal partition of the scattered power}
+\subsection{The observable: a modal partition of the scattered power}
 \label{sec:disc_meaning}
 
 The quantity at the centre of this article is $R_B$: the share of the incident
@@ -38,7 +38,7 @@ region is a property of the infinite plate.  What creates the conversion is the
 edge, and what controls its strength is where the operating point sits on the
 branch.
 
-\subsubsection{The mechanism}
+\subsection{The mechanism}
 \label{sec:disc_mechanism}
 
 The sweep along the branch (\cref{fig:fig04}) places the maximum of the
@@ -106,7 +106,7 @@ wavenumber much better than it controls the doping or the mobility --- which is
 consistent with the observation of \cref{fig:fig02} that changing the density by
 a factor of three leaves the partition unchanged.
 
-\subsubsection{Relation to the literature}
+\subsection{Relation to the literature}
 \label{sec:disc_literature}
 
 The formulation belongs to the flexoelectric-semiconductor continuum developed
@@ -177,78 +177,36 @@ our $H_{jkl}$ is a third-order carrier--strain-gradient
 coefficient with different units (J\,m).  The two are unrelated, and the
 positivity bounds derived in \cref{sec:governing} apply only to the latter.
 
-Third, the comparison also locates the contribution of this paper.  If the
-part played by the coupling were the headline, the contribution would be a
-constitutive hypothesis of the kind \cite{qu2025thermodynamic} already
-systematises.  It is not the headline: \cref{sec:results_mechanism} shows that
-the negative reflection exists with $H=0$.  What this paper contributes is the
-\emph{scattering} problem --- the partition of a guided mode into the outgoing
-branches of a free edge, with a backward branch on which energy and phase travel
-in opposite directions --- together with the demonstration that the
-carrier--strain-gradient enthalpy can be added to a strain-gradient
-piezoelectric semiconductor without violating the energy bounds, and a
-quantified account of its incremental effect, which is one per cent of the
-partition at the operating point and a third of it at the slow point.  The relation of
-the added term to the primary literature is summarised in
-\cref{tab:novelty}.
+Third, the comparison locates the contribution.  If the part played by the
+coupling were the headline, the contribution would be a constitutive hypothesis
+of the kind \cite{qu2025thermodynamic} already systematises, and it is not the
+headline: \cref{sec:results_mechanism} shows that the negative reflection exists
+with $H=0$.  What this paper contributes is the \emph{scattering} problem --- the
+partition of a guided mode into the outgoing branches of a free edge, with a
+backward branch on which energy and phase travel in opposite directions ---
+together with the demonstration that a carrier--strain-gradient enthalpy can be
+added to a strain-gradient piezoelectric semiconductor without violating the
+positivity bound, and a quantified account of its incremental effect.
 
-\begin{table}[t]
-\centering
-\caption{Equation-level comparison of the added enthalpy
-\eqref{eq:added_coupling} with the primary continuum formulations.  ``Absent in
-the inspected equations'' means that the published decomposition we could read
-contains no term with a carrier density multiplying a strain gradient; it is not
-a statement about the full article.  Statuses follow the evidence actually
-obtained.}
-\label{tab:novelty}
-\small
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}X@{}}
-\toprule
-Reference & Carrier energy & Flexoelectric term & $\Delta n\,H_{jkl}
-\varepsilon_{jk,l}$ & Status \\
-\midrule
-Qu et al.\ \cite{qu2025thermodynamic} (IJES 208, 104165) &
-$\Psi_{\text{Carrier}}(n,p)$ only, via \cite{hu2025computational}
-Eqs.~(4a)--(4e) &
-$-\eta_{ijk}e_i\varepsilon_{jk}-\mu_{lijk}e_lg_{ijk}$ &
-absent in the inspected equations &
-\textsc{unresolved} (full article not accessible) \\
-Qu et al.\ \cite{qu2020mobile,qu2022thermal} &
-linearised $\Delta n$ coupling to $\varepsilon$, $\nabla T$ &
-$-\mu_{lijk}e_lg_{ijk}$ &
-absent &
-\textsc{unresolved} \\
-Yang et al.\ \cite{yang2018lamb,yang2020rayleigh} &
-no carriers &
-$-\mu_{lijk}e_lg_{ijk}$ &
-not applicable (dielectric) &
-\textsc{absent by scope} \\
-Wang et al.\ \cite{wang2025rayleigh};
-Zhang et al.\ \cite{zhang2025pscplate} &
-PS carrier model, no strain gradient &
---- (piezoelectric) &
-absent &
-\textsc{absent} \\
-This work & $\Psi_{\text{Carrier}}(n,p)$ &
-$-\mu_{lijk}e_lg_{ijk}$ &
-$\Delta n\,H_{jkl}\varepsilon_{jk,l}$
-+\ reciprocal terms &
-added, bounded, and measured \\
-\bottomrule
-\end{tabularx}
-\end{table}
+The added term is therefore not put forward as new.  The formulations compared
+above already contain a flexoelectric coupling of strain gradients to the
+electric field, and the carrier density enters them through the free energy of
+the electron gas; the term $\Delta n\,H_{jkl}\varepsilon_{jk,l}$ with its
+reciprocal partners in $\sigma_{ij}$ and $\widetilde\mu$ is written here as the
+minimal extension that closes the enthalpy, and the paper establishes as much
+about what it does not do as about what it does: it moves the partition by
+\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at
+$k_xd=0.55$ and \SI{34.2}{\percent} at the maximum, all at $|H|=0.05H^{*}$, and
+it is not the origin of the backward branch.  No priority claim is made for it.
+The comparison is made against the equations that could be inspected, and the
+full text of \cite{qu2025thermodynamic} was not among them; the question of
+whether that formulation already contains a term of this structure therefore
+remains open here rather than being settled in either direction.  What the
+present numbers do establish is that the edge-scattering problem is well posed,
+that its energy budget closes to $10^{-12}$, and that $\ell=0$ removes the
+backward branch and with it the effect.
 
-The comparison in this section is made against the equations that could be
-inspected, and no priority claim follows from it: the status of the added term in
-the full theory remains unresolved.  What the present numbers establish is that
-the edge-scattering problem is well posed, that its energy budget closes to
-$10^{-12}$, that $\ell=0$ removes the backward branch and with it the effect, and
-that the added coupling moves the partition by a quantified amount
-(\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at
-$k_xd=0.55$, \SI{34.2}{\percent} at the maximum, all at
-$|H|=0.05H^{*}$).
-
-\subsubsection{Material provenance}
+\subsection{Material provenance}
 \label{sec:disc_material}
 
 The provenance of the parameters is mixed and is stated explicitly in
@@ -267,7 +225,7 @@ factor of twenty; no specimen supplies them.
 \small
 \begin{tabular}{@{}p{0.2\textwidth}p{0.42\textwidth}p{0.3\textwidth}@{}}
 \toprule
-Parameter & Value and status & Source \\
+Parameter & Value and provenance & Source \\
 \midrule
 $c_{ij}$, $e_{ij}$, $\kappa_{ij}$, $\rho$ &
 $c_{11}=210$, $c_{33}=221$, $c_{44}=43\,\si{\giga\pascal}$;
@@ -291,75 +249,59 @@ $H_{jkl}$ & $H_{333}$ only, $|H|\le2.0\times10^{-23}\,\si{\joule\metre}
 \end{tabular}
 \end{table}
 
-\subsubsection{Limitations}
+\subsection{Limitations}
 \label{sec:disc_limitations}
 
-Six limitations bound the conclusions, and each is stated where it enters the
+Five limitations bound the conclusions, and each is stated where it enters the
 model.
 
-\paragraph{Geometry.}  The model is a two-and-a-half-dimensional (2.5D) Fourier-reduced formulation of
-a plate that is infinite in $y$ and semi-infinite in $x$, with three displacement
-components on a discrete $(x,z)$ cross-section.  It is not a finite plate, it does not
-include a second edge, and it does not resolve the three-dimensional corner at
-the intersection of the edge and the free surfaces.  Corner effects were
-assessed rather than assumed, in the only way the formulation allows: the
-strain-gradient energy density on the edge plane was computed from the coherent
-sum of all outgoing modes plus the incident mode, and its concentration in the
-outer band $|z|>0.4\,d/2$ was followed through the degree refinement.  Both cases
-are incident configurations identified by their incident axial wavenumber ---
-$k_xd=0.7362$ at the operating point, $0.5275$ at the maximum and
-$0.5500$ on the descending flank --- and every row records the incident and
-backward wavenumbers returned by the spatial problem, with the operating-point rows
-cross-checked against the independent refinement study of
-\cref{tab:refinement} (they agree to the last stored digit).  At the operating
-point the band carries $0.93$--$1.00$~\% of the strain-gradient energy, at the
-maximum $1.22$--$1.30$~\% and at $k_xd=0.55$ $1.18$--$1.26$~\%, its
-peak-to-mean ratio inside the band is $0.098$--$0.102$, $0.126$--$0.130$ and
-$0.122$--$0.126$ respectively (below the mean, not above it), and the share
-\emph{decreases} by \SI{6.8}{}~\%, \SI{6.6}{}~\% and \SI{6.6}{}~\% between
-degree 18 and degree 30 instead of growing.  A corner singularity would show
-the opposite trend.  The reported partitions (degree spread $7.2\times10^{-7}$ and
-$1.5\times10^{-7}$) are therefore not supported by a corner energy reservoir.
-
-\paragraph{The corner.}  This is evidence that the outer band does not
-accumulate gradient energy under refinement, and it is not a proof that a corner
-line force is dynamically negligible.  A
-small band fraction bounds the energy that sits near the corner in the computed
-field; it does not bound the work that a singular corner traction could do on
-the admissible variations, because the polynomial basis cannot represent that
-singularity in the first place.  Establishing the second statement would need a
-corner-eigenvalue analysis of the higher-order edge problem, or a formulation
-with corner-enriched functions, and neither is attempted here.  We therefore
-record two separate facts: the global partitions are insensitive to the corner
-at the level shown above, and the pointwise corner field, together with the
-line force associated with it, remains unresolved pointwise.  This is an unresolved
-limitation of the model, not a demonstrated error.
-
-\paragraph{The carrier model.}  The carrier physics is linearised about a
-uniform doping and a zero bias.  The
-nonlinear drift--diffusion regime, in which the carrier perturbation is not
-small compared with $n_0$, is outside the scope of this model; the
-finite-element treatment of that regime by other authors shows that the
-nonlinearity matters when the perturbation is large, and nothing in this paper
-addresses that.
-
-\paragraph{The parameters.}  The classical constants are those of a bulk
-crystal and the transport parameters are representative.  No attempt is made to model a specific sample,
-and the flexoelectric, strain-gradient and $H$ parameters are synthetic.  The
-reported percentages should therefore be read as the response of this model, not
-as predictions for a particular ZnO film, and the flexoelectric sector in
-particular is present but subdominant (\cref{sec:results_scope}): the paper does
-not claim a calibrated flexoelectric mechanism.
-
-\paragraph{The electrical condition.}  The open-circuit condition required a
-gauge to remove the null space of the electrostatic operator.  That gauge does not alter any physical field,
-but it also means that the open-circuit results are not an independent
-validation of anything; they are a solvable version of the same physics.
-
-\paragraph{The constitutive relation.}  The relation of the added coupling to
-the published flexoelectric-semiconductor constitutive relations remains
-unresolved, as discussed in \cref{sec:disc_literature}.  What the model does
-establish is that a bilinear carrier--strain-gradient enthalpy can be added
-inside the positivity bound, that its reciprocal partners follow from the same
-potential, and that its incremental effect on the partition is measurable, of
-one sign, and small compared with the effect of the branch itself.
+\begin{enumerate}
+\item \emph{Geometry.}  The formulation is two-and-a-half-dimensional: a plate
+infinite in $y$, semi-infinite in $x$, with three displacement components on the
+$(x,z)$ cross-section.  It has one edge and not two, and it does not resolve the
+three-dimensional corner where the edge meets the free surfaces.  A finite
+plate, a second edge, and the interference between them are outside the model.
+\item \emph{The corner.}  Corner effects were assessed rather than assumed, in
+the only way this formulation allows: the strain-gradient energy density on the
+edge plane was computed from the coherent sum of the incident mode and all
+outgoing modes, and its concentration in the outer band $|z|>0.4\,d/2$ was
+followed through the degree refinement.  At the operating point the band carries
+$0.93$--$1.00$~\% of that energy, at the maximum $1.22$--$1.30$~\% and at
+$k_xd=0.55$ $1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is
+$0.098$--$0.102$, $0.126$--$0.130$ and $0.122$--$0.126$ (below the mean), and its
+share \emph{decreases} by \SI{6.8}{}, \SI{6.6}{} and \SI{6.6}{}~\% between degree
+18 and degree 30 instead of growing.  A corner singularity would show the
+opposite trend, so the reported partitions (degree spread $7.2\times10^{-7}$ and
+$1.5\times10^{-7}$) are not supported by a corner energy reservoir.  That is
+evidence about the energy and not a proof that the corner line force is
+dynamically negligible: a small band fraction bounds the energy near the corner
+in the computed field, but it does not bound the work a singular corner traction
+could do on the admissible variations, because the polynomial basis cannot
+represent that singularity in the first place.  The global partitions are
+insensitive to the corner at the level shown; the pointwise corner field and the
+line force associated with it remain unresolved, and settling them would need a
+corner-eigenvalue analysis of the higher-order edge problem or corner-enriched
+trial functions, neither of which is attempted here.
+\item \emph{The carrier model and the electrical condition.}  The carrier
+physics is linearised about a uniform doping and zero bias, so the nonlinear
+drift--diffusion regime, in which the perturbation is not small compared with
+$n_0$, is outside the model.  The open-circuit condition required a gauge to
+remove the null space of the electrostatic operator; the gauge changes no
+physical field, but it also means that the open-circuit results are a solvable
+version of the same physics rather than an independent check of it.
+\item \emph{The parameters.}  The classical constants are those of a bulk
+crystal and the transport parameters are representative values for n-type ZnO at
+room temperature; the strain-gradient length, the flexoelectric coefficient and
+the coupling scale are synthetic, and no measured value of $H_{jkl}$ exists.
+The reported percentages should therefore be read as the response of this model
+and not as predictions for a particular film, and the flexoelectric sector, which
+is present but subdominant (\cref{sec:results_scope}), is not a calibrated
+mechanism.
+\item \emph{The constitutive attribution.}  The relation of the added coupling
+to the published flexoelectric--semiconductor formulations remains open, as
+discussed in \cref{sec:disc_literature}; no priority is claimed for it.  What the
+model does establish is that a bilinear carrier--strain-gradient enthalpy can be
+added inside the positivity bound, that its reciprocal partners follow from the
+same potential, and that its incremental effect on the partition is measurable,
+of one sign, and small compared with the effect of the branch itself.
+\end{enumerate}

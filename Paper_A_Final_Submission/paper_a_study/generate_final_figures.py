@@ -146,9 +146,12 @@ def fig01():
     a.plot([K0], [k0f], marker="*", markersize=13, color="#C83E58",
            markeredgecolor="white", markeredgewidth=0.7, zorder=9,
            linestyle="None")
+    # Round 17: the label used to sit on the flat part of the branch.  It is now
+    # placed in the empty wedge below the steep segment, to the right of the
+    # marker, where no curve passes.
     a.annotate("operating point\n$k_xd=0.736$", xy=(K0, k0f),
-               xytext=(0.128, 16.664), fontsize=7.4, color="#202A44",
-               va="center", ha="left",
+               xytext=(0.975, 0.085), textcoords="axes fraction",
+               fontsize=7.0, color="#202A44", va="center", ha="right",
                arrowprops=dict(arrowstyle="-", linewidth=0.9, color="#C83E58",
                                shrinkA=2, shrinkB=7, alpha=0.9))
     a.set_xlabel(r"normalised wavenumber  $k_x d$")
@@ -277,17 +280,25 @@ def fig02():
     # (c) the quantity that matters: the backward modal share at the
     # reference plane L = 2 um.  It is a share of the incident power, not a
     # reflectance (round-11 defect D1).
+    # Round 17: this sweep is sampled on a coarse wavenumber raster, so the trace
+    # looks polygonal between samples.  The samples are now drawn as open symbols
+    # of the curve's own colour, which shows where the raster lies instead of
+    # inviting the reader to read a smooth line.
     for v in n0:
         sub = sorted(series(rows, parameter="n0", value_SI=v), key=lambda r: r["K"])
+        st_v = dict(st_n0[v])
+        st_v.pop("marker", None)
         c.plot(col(sub, "K"), [100 * x for x in col(sub, "R_B_2um")],
-               **family(st_n0[v], 1.7, 3.4, 3))
+               marker="o", markersize=2.6, markerfacecolor="white",
+               markeredgewidth=0.7, **st_v)
     c.set_xlabel(r"normalised wavenumber  $k_x d$")
     c.set_ylabel(r"$R_B$ at $L=2\,\mu$m (%)")
     c.set_ylim(-4, 92)
     S.style_axes(c)
     note(c, "backward modal share at $L=2\\,\\mu$m:" "\n"
             r"all five $n_0$ levels lie on this curve," "\n"
-            r"because $n_0$ and $\mu$ enter only as $n_0\mu$", loc=(0.045, 0.94),
+            r"because $n_0$ and $\mu$ enter only as $n_0\mu$;" "\n"
+            r"open symbols mark the sampled wavenumbers", loc=(0.045, 0.94),
          fontsize=6.9)
     for v in mu:
         sub = sorted(series(rows, parameter="mobility", value_SI=v), key=lambda r: r["K"])
@@ -407,8 +418,11 @@ def fig04():
     # ---- (a) the response against the branch parameter ---------------------
     for eta in S.H_LEVELS:
         sub = sorted(series(rows, eta=eta), key=lambda r: r["K"])
+        # Round 17: the sweep is dense near the maximum, so markers every second
+        # point merged into a band that hid the branch shape; the marker stride
+        # is widened and the curve carries the trace instead.
         S.h_plot(a, col(sub, "K"), 100 * col(sub, "R_B_2um"), eta,
-                 markevery=2, markersize=4.2)
+                 markevery=9, markersize=3.6, linewidth=1.5)
     a.plot([top["K"]], [100 * top["R_B_2um"]], marker="*", markersize=10,
            color="#B4552A", markeredgecolor="white", markeredgewidth=0.6,
            linestyle="None", zorder=6)
@@ -418,7 +432,13 @@ def fig04():
     S.style_axes(a)
     # The top of the response is 1e-3 wide in k_x d: unreadable on the main
     # axis, so it is resolved in an inset that uses the same data, uncut.
-    ins = a.inset_axes([0.600, 0.560, 0.382, 0.392])
+    # Round 17: the inset was placed over the descending branch and its tick
+    # labels fell on the main curve.  It now sits in the empty upper-left region,
+    # carries an opaque face so that nothing shows through, and its labels are
+    # inside its own frame.
+    ins = a.inset_axes([0.150, 0.575, 0.360, 0.395],
+                       facecolor="white", zorder=6)
+    ins.patch.set_alpha(1.0)
     zoom = sorted([r for r in peak if 0.5180 <= r["K"] <= 0.5380], key=lambda r: r["K"])
     ins.plot(col(zoom, "K"), 100 * col(zoom, "R_B_2um"), color="#202A44",
              linewidth=1.2, marker="o", markersize=2.4, markerfacecolor="white",
@@ -426,9 +446,9 @@ def fig04():
     ins.plot([top["K"]], [100 * top["R_B_2um"]], marker="*", markersize=7.0,
              color="#B4552A", linestyle="None", markeredgecolor="white",
              markeredgewidth=0.4)
-    ins.set_xlabel(r"$k_x d$", fontsize=6.8, labelpad=0.8)
+    ins.set_xlabel(r"$k_x d$", fontsize=6.6, labelpad=1.0)
     ins.set_yticks([80, 90])
-    ins.tick_params(labelsize=6.0, length=1.8, width=0.55, pad=1.4)
+    ins.tick_params(labelsize=6.0, length=1.8, width=0.55, pad=1.2)
     ins.set_ylim(78, 97)
     ins.set_xlim(0.518, 0.538)
     ins.grid(True, alpha=0.22, linewidth=0.5)
@@ -649,8 +669,10 @@ def fig07():
     a.set_xlabel(r"transverse wavenumber  $k_y d$")
     a.set_ylabel(r"$R_B$ (%)")
     S.style_axes(a)
-    note(a, r"$k_y$ sets the level; the five $H$ levels" "\n" r"are superposed",
-         loc=(0.04, 0.055), fontsize=6.8)
+    # Round 17: the note previously sat on the x tick labels; a left-aligned
+    # panel title carries the same statement without covering any data.
+    a.set_title(r"$k_y$ sets the level; the five $H$ levels are superposed",
+                fontsize=6.9, loc="left", pad=3.0)
 
     # (b) the (ky, H) landscape, drawn as the measured grid (no interpolation)
     grid = np.array([[100 * r["R_B_2um"] for r in sorted(series(rows, eta=e),
@@ -670,21 +692,32 @@ def fig07():
 
     # (c) how much H matters along three declared slices
     slices = [kys[0], kys[len(kys) // 2], kys[-1]]
-    colr = [S.RAMP_KY[0], S.RAMP_KY[2], S.RAMP_KY[4]]
+    colr = ["#3867D6", "#B4552A", "#6C3F8D"]  # three distinct hues, not three greys
     for i, kv in enumerate(slices):
         sub = sorted(series(rows, ky=kv), key=lambda r: r["eta"])
         c.plot(col(sub, "eta"), col(sub, "rel_change_percent"),
                color=colr[i], linewidth=1.9, marker=["o", "s", "^"][i],
-               markersize=5.6, markerfacecolor="white", markeredgewidth=1.2,
-               label=rf"$k_yd={kv:.3f}$")
+               markersize=5.6, markerfacecolor="white", markeredgewidth=1.2)
     c.axhline(0, color="#202A44", linewidth=1.0)
     c.set_xlabel(r"$H/H^{*}$")
     c.set_ylabel(r"$\Delta R_B/R_B$ (%)")
     c.set_xticks(S.H_LEVELS)
     c.set_xticklabels(ticks, fontsize=8)
-    c.set_ylim(-3.0, 0.55)
-    c.legend(loc="lower left", fontsize=7.2, handlelength=1.6, borderpad=0.3,
-             labelspacing=0.25)
+    c.set_ylim(-2.80, 0.35)
+    # Round 17: the three slices are separated by up to 0.44 percentage points
+    # at the ends and by 0.10 in the middle, so they must be labelled; the label
+    # is a three-row legend in the empty lower-left corner, where no curve
+    # reaches, rather than annotations that ran into the tick labels.
+    handles = [plt.Line2D([], [], color=colr[i], linewidth=1.9,
+                          marker=["o", "s", "^"][i], markersize=5.0,
+                          markerfacecolor="white", markeredgewidth=1.1,
+                          label=rf"$k_yd={kv:.3f}$")
+               for i, kv in enumerate(slices)]
+    c.legend(handles=handles, loc="lower left", fontsize=6.5, handlelength=1.35,
+             labelspacing=0.22, borderpad=0.26, handletextpad=0.38,
+             framealpha=0.94, edgecolor="#BFC6D4")
+    c.set_xlim(S.H_LEVELS[0] - 0.004, S.H_LEVELS[-1] + 0.004)
+    c.set_ylim(-2.80, 0.35)
     S.style_axes(c)
 
     # (d) the same change against the transverse wavenumber
@@ -730,8 +763,11 @@ def fig08():
 
     # the five H levels cannot be separated on this figure: say so instead of
     # pretending that five distinguishable curves are drawn
-    note(b, "all five $H/H^{*}$ levels:" "\n" r"profiles agree to $<0.9\%$ of the peak",
-         loc=(0.255, 0.50), fontsize=6.8, va="center")
+    # Round 17: the coincidence is stated once, in the first panel it applies to,
+    # and quantified there; (b) and (c) carry the same five curves by design.
+    note(c, "the five $H/H^{*}$ levels coincide in (a)--(c):" "\n"
+         r"agreement to $<0.9\%$ of the peak value",
+         loc=(0.050, 0.930), fontsize=6.6, va="top")
     b.set_xticks([-0.006, -0.003, 0.0, 0.003, 0.006])
     b.set_xticklabels([r"$-0.006$", r"$-0.003$", r"$0$", r"$0.003$", r"$0.006$"],
                       fontsize=8)

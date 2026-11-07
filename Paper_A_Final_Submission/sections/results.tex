@@ -1,4 +1,4 @@
-\section{Numerical results and discussion}
+\section{Numerical results}
 \label{sec:results}
 
 The operating point used throughout is
@@ -8,8 +8,9 @@ set to zero unless a sweep says otherwise, and with grounded faces.  The
 reference plane for every reported return is $L=10\,d=\SI{2}{\micro\metre}$ from
 the edge.  Unless stated otherwise the Galerkin degree is $n=22$.
 
-\subsection{Dispersion and wave speeds}
+\subsection{Dispersion, wave speeds and the operating point}
 \label{sec:results_dispersion}
+\label{sec:results_scope}
 
 \Cref{fig:fig01} characterises the guided branch that is later scattered at the
 edge.  Panel (a) plots the frequency against $k_xd$ for the five coupling
@@ -72,8 +73,6 @@ $d=\SI{200}{\nano\metre}$ and $n_0=\SI{2e18}{\per\cubic\metre}$.}
 \label{fig:fig01}
 \end{figure}
 
-\subsection{The material specialisation and the role of the flexoelectric sector}
-\label{sec:results_scope}
 
 The title names the full flexoelectric framework, and it is worth fixing which
 part of \eqref{eq:enthalpy} the calculations exercise before the numbers are
@@ -110,8 +109,10 @@ coupling, inside a flexoelectric-semiconductor formulation; they do not support
 the attribution of the negative reflection to the flexoelectric mechanism
 itself.
 
-\subsection{Carrier density and mobility}
+\subsection{Dependence on carrier density, thickness and frequency}
 \label{sec:results_material}
+\label{sec:results_geometry}
+\label{sec:results_frequency}
 
 \Cref{fig:fig02} sweeps the two material families.  Increasing the carrier
 density from $1$ to $3\times10^{18}\,\si{\per\cubic\metre}$ raises the linewidth
@@ -152,8 +153,6 @@ $k_xd=0.55$; (d) linewidth for five mobilities.}
 \label{fig:fig02}
 \end{figure}
 
-\subsection{Thickness and gradient length}
-\label{sec:results_geometry}
 
 \Cref{fig:fig03} separates the two geometric families, which scale differently
 and must not be plotted on a common axis.  Plate thickness is the dominant
@@ -186,8 +185,6 @@ against $k_xd$ for the five gradient lengths.}
 \label{fig:fig03}
 \end{figure}
 
-\subsection{Backward conversion along the branch}
-\label{sec:results_frequency}
 
 \Cref{fig:fig04} sweeps the drive along the solved guided branch rather than at
 a fixed frequency.  The distinction matters away from the operating point, where
@@ -234,8 +231,9 @@ coupling levels are drawn in every panel.  The top of the response is resolved i
 \label{fig:fig04}
 \end{figure}
 
-\subsection{Convergence of the reported values}
+\subsection{The branch maximum and its convergence}
 \label{sec:results_peak}
+\label{sec:results_certification}
 
 The maximum of \cref{fig:fig04} falls between two samples of the coarse raster,
 so it is solved again at four Galerkin degrees with the same physics, and each
@@ -293,8 +291,6 @@ $k_{ix}d=0.52824$, not the branch parameter $k_xd=0.5275$: on a flat branch the
 two differ by \SI{0.14}{\percent} at the maximum.  Both are tabulated and no
 conclusion depends on the difference.
 
-\subsection{Location of the maximum}
-\label{sec:results_certification}
 
 The quantity maximised is the one defined by \eqref{eq:RB}: the modal self-power
 of the identified backward outgoing mode at the reference plane, divided by the
@@ -329,8 +325,9 @@ raster is flat and interior; a raster that is not flat, or that meets the
 boundary of the interval, is reported as the largest sample rather than as a
 maximum.
 
-\subsection{The maximum read as a modal share}
+\subsection{The maximum read as a modal share and the energy budget of the edge}
 \label{sec:results_artefact}
+\label{sec:results_channel}
 
 Three properties of the solution decide whether such a number can be read at
 face value.
@@ -424,8 +421,6 @@ scaled edge residual & $\le3\times10^{-15}$ & $\le3\times10^{-15}$ & $\le3\times
 \end{tabular}
 \end{table}
 
-\subsection{Energy budget of the edge problem}
-\label{sec:results_channel}
 
 \Cref{fig:fig05} closes the energy identity \eqref{eq:energy_identity} at the
 reference plane.  At $H=0$ the incident power normalised to unity is partitioned
@@ -486,8 +481,9 @@ $H=0$ at fixed frequency.}
 \label{fig:fig05}
 \end{figure}
 
-\subsection{What creates the backward channel}
+\subsection{What creates the backward channel, and how far it survives}
 \label{sec:results_mechanism}
+\label{sec:results_attenuation}
 
 The partition quoted above was computed at $H=0$, with the
 carrier--strain-gradient coupling switched off, and the contribution of that
@@ -583,8 +579,6 @@ third of it at the slow point, because there the conversion is large and the
 added decay has the whole distance to the reference plane to act.  It modifies
 the picture; it does not create it.
 
-\subsection{Distance, survival and attenuation}
-\label{sec:results_attenuation}
 
 \Cref{fig:fig06} follows the two channels away from the edge.  The backward
 coefficient decays with the observation distance $L$ (panel a) as
@@ -626,8 +620,9 @@ $H/H^{*}$.}
 \label{fig:fig06}
 \end{figure}
 
-\subsection{Coupling sensitivity in $(k_y,H)$}
+\subsection{Coupling sensitivity and the through-thickness flux}
 \label{sec:results_coupling}
+\label{sec:results_boundary}
 
 \Cref{fig:fig07} resolves the two-parameter dependence.  Over the solved box
 $0.05\le k_yd\le0.20$ and $-0.05\le H/H^{*}\le0.05$, the backward channel ranges
@@ -662,8 +657,6 @@ declared $k_yd$ slices; (d) the same relative change against $k_yd$.}
 \label{fig:fig07}
 \end{figure}
 
-\subsection{Through-thickness flux distribution}
-\label{sec:results_boundary}
 
 \Cref{fig:fig08} examines how the backward flux is distributed through the
 thickness.  The plotted quantity is the $x$ component of the backward Poynting
@@ -701,13 +694,46 @@ and the dotted vertical line is the zero reference, not a sixth profile.
 (c) Running thickness integral of $P_x^{\mathrm{B}}$ normalised to its own
 total; the five curves are again indistinguishable at this scale.  (d) Shape
 comparison between the backward and incident $x$ fluxes at $H=0$.  These are
-normalised profiles; the local flux is reported as computed and was not
-independently validated.}
+normalised profiles of the computed field, plotted as evaluated; no independent
+measurement constrains the through-thickness distribution.}
 \label{fig:fig08}
 \end{figure}
 
-\subsection{Convergence and cross-checks}
+The coincidence of the five profiles in \cref{fig:fig08}(a)--(c) is a property
+of the assembly and not a plotting decision, and it can be quantified rather than
+asserted.  The coupling enters through the two off-diagonal blocks that connect
+the out-of-plane displacement to the carrier, whose entries are
+\begin{equation}
+\label{eq:H_entry}
+\bigl(\mathsf A_{u\mu}\bigr)_{ij}
+=h\int_{-1}^{1}b_i''(\zeta)\,\psi_j(\zeta)\,\dd\zeta ,
+\end{equation}
+because $\widetilde\mu$ contains $-h\,\partial_\zeta^{2}u_3$ and
+\eqref{eq:mu} is the relation that carries the coupling.  At degree six the
+matrix of \eqref{eq:H_entry} has rows
+$0,\,0,\,26.83,\,91.65,\,187.8,\,315.9$ and is upper-triangular, so the coupling
+grows with the mode number exactly as the second derivative does.  With
+$h=\pm1.06\times10^{-2}$ the largest entry is $3.35$, against an inertia entry
+$\omega^{2}=58.3$ and a compressibility entry of $1$ in the same row: the
+coupling is a few per cent of the diagonal, which is why the flux profiles of the
+five levels differ by less than \SI{0.9}{\percent} of the peak value while still
+differing measurably in the partition (\cref{fig:fig07}).  The two statements are
+consistent: a few per cent of the eigenvector redistributes a comparable fraction
+of the power among the outgoing modes, and it changes a normalised profile much
+less.
+
+The same reading applies to \cref{fig:fig02}(c), where five carrier densities
+collapse onto one curve.  The density enters the carrier sector only through the
+screening group $Q^{2}=d^{2}q^{2}n_0/(\kappa_{33}k_BT)$, which multiplies the
+single potential block $\mathsf A_{\varphi\mu}$, and through the mobility in
+$\alpha_{\mathrm d}=\mu_ek_BT/(q\,d\,c_s)$; in the response the two appear as the
+conductivity $n_0\mu_e$, so at fixed $n_0\mu_e$ the partition is unchanged and
+the collapse is a measured statement about that product rather than about either
+parameter separately.
+
+\subsection{Independent cross-checks and the near field}
 \label{sec:results_validation}
+\label{sec:results_field}
 
 \Cref{fig:fig09} documents the numerical behaviour of the edge solve.  Panels
 (a) and (b) show the relative error of the backward channel and of the backward
@@ -744,8 +770,6 @@ implementation and not an independent physical validation.}
 \label{fig:fig09}
 \end{figure}
 
-\subsection{Wave field and flux directions}
-\label{sec:results_field}
 
 \Cref{fig:fig10} closes the presentation with the solved field.  Panels (a) and
 (b) show the incident and backward intensities on a shared logarithmic colour

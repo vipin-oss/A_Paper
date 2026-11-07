@@ -153,10 +153,13 @@ def h_legend(fig, axes, *, ncol: int = 5, y: float = 0.998, title: str | None = 
                     labels.append(lab)
     if not handles:
         return None
+    # Round 17: five entries at 6.5 in width overflowed the right margin with
+    # the old spacing; the handles are shortened and the columns tightened so
+    # that the whole legend sits inside the canvas at every figure width used.
     leg = fig.legend(handles, labels, ncol=ncol, loc=loc,
                      bbox_to_anchor=(0.5, y), frameon=True, title=title,
-                     borderaxespad=0.0, columnspacing=1.0, handlelength=1.9,
-                     handletextpad=0.5, borderpad=0.35, prop={"size": fontsize},
+                     borderaxespad=0.0, columnspacing=0.62, handlelength=1.24,
+                     handletextpad=0.36, borderpad=0.32, prop={"size": fontsize},
                      **kw)
     return leg
 

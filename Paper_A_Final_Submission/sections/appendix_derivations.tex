@@ -1,0 +1,268 @@
+\section{Detailed mathematical derivations}
+\label{app:derivations}
+
+This appendix contains the calculations that are used in the article but whose
+length would interrupt it: the element matrices of the Legendre basis, five
+worked matrix elements, the construction of the blocks \eqref{eq:block} from the
+weak equations, the edge-matching system, the normalisation of the modal power,
+and one end-to-end numerical evaluation of the reported share.
+
+\subsection{Element matrices of the Legendre basis}
+
+With $\zeta\in[-1,1]$ and the normalised basis
+\begin{equation}
+\label{eq:app_basis}
+b_j(\zeta)=\sqrt{2j+1}\,P_j(\zeta),\qquad
+\int_{-1}^{1}b_ib_j\,\dd\zeta=\delta_{ij},
+\end{equation}
+the mass matrix of \eqref{eq:block} is the identity by \eqref{eq:app_basis},
+which is why no mass matrix appears in the formulas below.  The stiffness matrix
+is $S_{ij}=\int b_i'b_j'\dd\zeta$.  For $i=j$, integrating by parts and using the
+Legendre equation,
+\begin{equation}
+\label{eq:app_S}
+S_{jj}=\int_{-1}^{1}\bigl(P_j'\bigr)^{2}\dd\zeta=j(j+1),
+\end{equation}
+the classical companion of the Legendre equation.  What is derived here, because
+it is the step that is usually skipped, is the weighted form that follows from
+the equation itself.  Multiplying $\bigl[(1-\zeta^{2})P_j'\bigr]'=-j(j+1)P_j$ by
+$P_k$ and integrating by parts, the boundary term carrying the factor
+$(1-\zeta^{2})$ vanishes at both ends and
+\begin{equation}
+\label{eq:app_S_weighted}
+\int_{-1}^{1}(1-\zeta^{2})P_j'P_k'\,\dd\zeta
+=\frac{2j(j+1)}{2j+1}\,\delta_{jk},
+\end{equation}
+which is the orthogonality of the derivatives with the weight $(1-\zeta^{2})$;
+\eqref{eq:app_S} is the unweighted version of the same statement and is used
+below only through the closed form it implies.  The discrete matrix checks both:
+the assembled $S_{jj}$ must equal $2(2j+1)j(j+1)$ in the scaled variable, and it
+does, to machine precision, for every $j\le n-1$ and every degree used in this
+article.  For $i\neq j$ the parity of $P_i'P_j'$ leaves $S_{ij}\neq0$ only when $i$ and $j$ have the same parity, which is why \eqref{eq:app_S_matrix} is banded by two.  On the half-interval $z\in[-\tfrac12,
+\tfrac12]$ used by the program every derivative with respect to $z$ carries a
+factor $2$ and every integral a factor $\tfrac12$, so that the stiffness used in
+the assembly is
+\begin{equation}
+\label{eq:app_S_scaled}
+\mathsf S^{\text{asm}}_{jj}=2\,(2j+1)\,j(j+1)
+=2j(j+1)(2j+1),
+\end{equation}
+whose first values, for $j=1,\dots,5$, are $12,\,60,\,168,\,360,\,660$.  Evaluating
+the matrix at $n=6$ gives
+\begin{equation}
+\label{eq:app_S_matrix}
+\mathsf S^{\text{asm}}=
+\begin{pmatrix}
+0&0&0&0&0&0\\
+0&12&0&18.330&0&22.978\\
+0&0&60&0&80.498&0\\
+0&18.330&0&168&0&210.60\\
+0&0&80.498&0&360&0\\
+0&22.978&0&210.60&0&660
+\end{pmatrix},
+\end{equation}
+in which the diagonal reproduces \eqref{eq:app_S_scaled} entry by entry and the
+off-diagonal entries are $S_{ij}=2\sqrt{(2i+1)(2j+1)}\,\langle P_i',P_j'\rangle$.
+Equation \eqref{eq:app_S_matrix} is the entire gradient-energy content of the
+discretisation for a single field: it is real, symmetric and independent of the
+material, and every strain-gradient block of \eqref{eq:block} is a product of
+this matrix with an elastic modulus.
+
+Two further element matrices are needed.  The potential space of the grounded
+problem is spanned by
+\begin{equation}
+\label{eq:app_pot}
+\psi_j(\zeta)=b_j(\zeta)-r_j\,b_{j+2}(\zeta),\qquad
+r_j=\sqrt{\frac{2j+1}{2j+5}},\qquad j=0,\dots,n_\varphi-1 ,
+\end{equation}
+which vanishes at $\zeta=\pm1$ for every $j$ because $P_j(\pm1)=(\pm1)^j$ and
+$r_j$ is exactly the ratio that makes the two terms cancel.  With
+\eqref{eq:app_pot} the charge-coupling matrix of \eqref{eq:weak_gauss} is
+\begin{equation}
+\label{eq:app_charge}
+\int_{-1}^{1}\psi_ib_j\,\dd\zeta=\delta_{ij}-r_j\,\delta_{i,j+2},
+\end{equation}
+so that the coupling block is $Q$ times a unit matrix minus a single subdiagonal
+band, and the dielectric block is
+$\kappa_{33}\int\psi_i'\psi_j'+\kappa_{11}k_y^{2}\int\psi_i\psi_j$, whose first
+term is
+\begin{equation}
+\label{eq:app_diel}
+\int_{-1}^{1}\psi_i'\psi_j'\,\dd\zeta
+=S_{ij}-r_jS_{i,j+2}-r_iS_{j,i+2}+r_ir_jS_{i+2,j+2}.
+\end{equation}
+
+\subsection{Five worked matrix elements}
+
+The following five entries are evaluated for the operating point
+$k_xd=0.7362$, $k_yd=0.1298$, $\omega=7.6334$, at degree $n=5$ (so that the row
+has $3n+n_\varphi+n=23$ entries), and each is quoted to the digits that the
+assembly reproduces.
+
+\begin{enumerate}
+\item \emph{Compressibility (mass) entry}, row $\widehat\mu_i$, column
+$\widehat\mu_j$:
+\begin{equation}
+\label{eq:app_w1}
+-\int_{-1}^{1}b_ib_j\,\dd\zeta=-\delta_{ij}
+\quad\text{so that}\quad
+(\mathsf A_{00})_{\mu_0\mu_0}=-1 .
+\end{equation}
+\item \emph{Transport entry}, same rows and columns:
+\begin{equation}
+\label{eq:app_w2}
+-\frac{\ii\alpha_{\mathrm d}}{\omega}\Bigl[\bigl(k_x^{2}+k_y^{2}\bigr)\delta_{ij}
++S_{ij}\Bigr]
+\;\text{so that}\;
+(\mathsf A_{00})_{\mu_0\mu_0}\big|_{\text{transport}}
+=-\ii\,\frac{0.8283}{7.6334}\bigl(0.5420+0.0169\bigr)=-\ii\,1.80\times10^{-3},
+\end{equation}
+and $-\ii\,1.304$, $-\ii\,6.512$, $-\ii\,18.23$ for $j=1,2,3$: the transport
+entry grows with the mode number because the gradient energy of a higher Legendre
+mode is larger, which is the discrete statement that the carrier diffusion
+penalises thickness structure.
+\item \emph{Carrier--potential entry}, row $\widehat\mu_i$, column
+$\widehat\varphi_j$: $-Q(\delta_{ij}-r_j\delta_{i,j+2})$, i.e. $-0.074635$ on the
+diagonal and $-0.033378$ on the first subdiagonal, from
+$Qr_0=0.074635\times0.4472$.
+\item \emph{Gradient-stiffness entry}, row $\widehat u_{3,i}$, column
+$\widehat u_{3,j}$, with $\lambda=0.25$ and $c_{33}/c_{44}=5.14$:
+\begin{equation}
+\label{eq:app_w4}
+\lambda^{2}\frac{c_{33}}{c_{44}}\int b_i'b_j'
+=0.0625\times5.14\times12=3.86\quad(i=j=1),
+\end{equation}
+which is the largest single mechanical entry at this degree and the reason the
+discrete operator is badly scaled before the row equilibration of
+\cref{sec:numerics_edge}.
+\item \emph{Inertia entry}: $-\omega^{2}\delta_{ij}=-58.27\,\delta_{ij}$ at
+$\omega=7.6334$; the ratio of the inertia to the gradient-stiffness entry,
+$58.27/3.86=15.1$, sets the frequency at which the first thickness mode of the
+gradient operator appears.
+\end{enumerate}
+
+\subsection{Construction of the blocks from the weak equations}
+
+Each of the nine blocks $\mathsf A_{rs}$ is the sum of the eight bilinear forms
+listed in \eqref{eq:block}.  Written out with the operators of
+\eqref{eq:sector_blocks} and the integrals of Appendix~\ref{app:derivations}.1,
+the block is
+\begin{equation}
+\label{eq:app_block}
+\begin{aligned}
+\mathsf A_{rs}={}&\underbrace{\bigl\langle\mathsf B_r,\mathsf C\mathsf B_s
+\bigr\rangle}_{\text{elastic}}
++\underbrace{\lambda^{2}\bigl\langle\partial_\zeta\mathsf B_r,
+\mathsf C\,\partial_\zeta\mathsf B_s\bigr\rangle}_{\text{gradient}}
++\underbrace{\bigl\langle\mathsf G_r,\mathsf e\mathsf B_s\bigr\rangle
++\bigl\langle\mathsf B_r,\mathsf e^{\mathsf T}\mathsf G_s\bigr\rangle}_{\text{piezoelectric}}\\
+&-\underbrace{\bigl\langle\mathsf G_r,\boldsymbol\kappa\mathsf G_s\bigr\rangle
+}_{\text{dielectric}}
++\underbrace{f\bigl[\bigl\langle\mathsf G_r^{(2)},\partial_\zeta\mathsf B_s^{(2)}
+\bigr\rangle+\bigl\langle\partial_\zeta\mathsf B_r^{(2)},\mathsf G_s^{(2)}
+\bigr\rangle\bigr]}_{\text{flexoelectric}}
+-\underbrace{\frac{\ii\alpha_{\mathrm d}}{\omega}
+\bigl\langle\mathsf M\mathsf G_r,\mathsf M\mathsf G_s\bigr\rangle}_{\text{transport}}\\
+&-\underbrace{\bigl\langle\mathsf W_r,\mathsf W_s\bigr\rangle}_{\text{carrier}}
+-\underbrace{\omega^{2}\bigl\langle\mathsf U_r,\mathsf U\bigr\rangle\delta_{r0}
+\delta_{s0}}_{\text{inertia}},
+\end{aligned}
+\end{equation}
+with $\langle\vect a,\vect b\rangle=\int_{-1}^{1}\vect a^{\mathsf H}\vect b\,
+\dd\zeta$.  The strain operator carries the $k_x$ power in its first slot,
+$\mathsf B_0$ contains $\ii k_xb_j$ for $\varepsilon_{xx}$ and $\mathsf B_1$ contains $b_j$ for the
+$\partial_x^1$ part, so that the $k_x$ power of a block is the sum of the powers
+in its two factors; this is the bookkeeping that produces
+\eqref{eq:polynomial} from \eqref{eq:app_block} without any further algebra.
+
+\subsection{The edge-matching system}
+
+At the edge $x=0$ the conditions \eqref{eq:bc_edge} are four scalar statements
+per field on the two faces: the traction $\Sigma_{3j}$, the double traction
+$\tau_{3j3}$, the blocking condition $J_z$ and the charge condition $D_z$, each
+evaluated for the total field.  Writing the total field as the incident mode plus
+the outgoing modes, \eqref{eq:edge_ansatz}, and collecting the four conditions on
+the $M$ degrees of freedom of the amplitude vector gives
+\begin{equation}
+\label{eq:app_edge}
+\underbrace{\begin{pmatrix}
+\mathsf R_{\Sigma}\\
+\mathsf R_{\tau}\\
+\mathsf R_{J}\\
+\mathsf R_{D}
+\end{pmatrix}}_{\mathsf R\in\mathbb{C}^{4n\times M}}
+\vect y(0)=
+\underbrace{\begin{pmatrix}
+\mathsf R_{\Sigma}\\
+\mathsf R_{\tau}\\
+\mathsf R_{J}\\
+\mathsf R_{D}
+\end{pmatrix}}_{\mathsf R}\vect y_{\text{inc}}
++\sum_{j}a_j\,\mathsf R\,\vect y^{(j)}=\vect 0 ,
+\end{equation}
+where each row block is the weak-form evaluation of one boundary condition on
+the trial vector, and where the sum runs over the $M$ outgoing modes.  The system
+actually solved is the column-scaled form of
+$\mathsf B\vect a=-\vect b_{\text{inc}}$ with
+$\mathsf B_{ij}=(\mathsf R\vect y^{(j)})_i$ and
+$\vect b_{\text{inc}}=\mathsf R\vect y_{\text{inc}}$, scaled per column by the
+norm of that column and per row by the norm of that row, and solved by a
+singular-value decomposition; the rank condition and the residual are quoted in
+\cref{sec:numerics_edge}, and the conditioning at the operating point is
+$1.6\times10^{2}$ after scaling.
+
+\subsection{Normalisation of the modal power}
+
+The power \eqref{eq:Px_int} is bilinear in a mode and its conjugate, so the power
+carried by the $j$-th outgoing mode scales with the square of its excitation
+amplitude and with the normalisation of its eigenvector.  The eigenvector is
+normalised by $\vect y^{(j)}\to\vect y^{(j)}/\sqrt{\mathsf y^{\mathsf H}\mathsf
+M\mathsf y}$, which fixes its mass norm but leaves the *sign* of the power free:
+the physical power is
+\begin{equation}
+\label{eq:app_power}
+P_j=|a_j|^{2}\,\mathcal{P}_x\bigl(\vect y^{(j)}\bigr),
+\end{equation}
+and the degree-invariance of $P_j$ is the test that the normalisation has been
+applied correctly.  At the operating point, for the backward mode,
+\begin{equation}
+\label{eq:app_power_numbers}
+\begin{aligned}
+n=18:&\quad \mathcal{P}_x=-0.0178923,\quad |a|=1.13749,\quad P_B=-0.0231481,\\
+n=22:&\quad \mathcal{P}_x=-0.0154248,\quad |a|=1.22510,\quad P_B=-0.0231481,\\
+n=26:&\quad \mathcal{P}_x=-0.0132455,\quad |a|=1.32205,\quad P_B=-0.0231481,\\
+n=30:&\quad \mathcal{P}_x=-0.0113777,\quad |a|=1.42644,\quad P_B=-0.0231481,
+\end{aligned}
+\end{equation}
+in which the raw power changes by \SI{57}{\percent} across the four degrees while
+the physical power is constant to the seven digits shown.  That constancy is the
+numerical statement of \eqref{eq:app_power} and it is the reason the reported
+share is degree-independent at the $10^{-7}$ level of
+\cref{tab:refinement}.
+
+\subsection{One end-to-end evaluation of the reported share}
+
+The reported number at the operating point is assembled from five quantities,
+each of which is stored with every row of the data: the raw backward power
+$\mathcal{P}_x$, the scattering amplitude $|a_B|$, the incident power at the
+reference plane, the two attenuation exponents and the reference distance
+$L=10\,d$.  With the values of \eqref{eq:app_power_numbers} at $n=22$,
+\begin{equation}
+\label{eq:app_RB}
+R_B=\frac{|a_B|^{2}\bigl|\mathcal{P}_x\bigr|\,e^{2\Imag k_{Bx}L}}
+{P_{\text{inc}}\,e^{2\Imag k_{ix}L}}
+=\frac{0.0231505\times0.9998954}{1.0001081}
+=\frac{0.0231481}{1.0001081}=0.0231456 ,
+\end{equation}
+where $|a_B|^{2}|\mathcal{P}_x|=1.2938\times0.0178923=0.0231505$ is the power at
+the edge, the factor $e^{2\Imag k_{Bx}L}=0.9998954$ carries it to $x=-L$ with
+$\Imag k_{Bx}=-5.2306\times10^{-6}$ per unit $d$, and the incident mode carries a
+factor $e^{2\Imag k_{ix}L}=1.0001081$ with $\Imag k_{ix}=+5.4027\times10^{-6}$.
+What the number measures
+is the ratio of two physical powers, $-P_B/P_{\text{inc}}=0.0231481$, and the
+two exponential factors are there to state at which plane each power was taken.
+Reading the same row the other way, the backward mode carries
+$\SI{2.31}{\percent}$ of the incident power at $x=-10d$, and
+$\SI{2.31}{\percent}\times e^{-2.13\times10^{-4}}$ at $x=-20d$: the decay of the
+share along the plate is governed by the *difference* of the two attenuation
+constants, not by either one of them.
