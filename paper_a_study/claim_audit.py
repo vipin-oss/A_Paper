@@ -140,6 +140,37 @@ def main() -> int:
     agree("quadrature_stability_peak", rec["verdict"]["quadrature_spread"], 1e-2,
           "search-record quadrature spread")
 
+    # Gate 2c: the edge-plane share must be the same number in every producer.
+    # This is the round-9 defect: peak_search.py used a single-mode decay and
+    # disagreed with mechanism_controls.py by 1.96 percentage points.
+    ps_edge = None
+    for row in rec.get("degree", []):
+        if abs(row["K"] - cls["K_reported"]) < 1e-12 and row.get("degree") == 22:
+            ps_edge = float(row["R_B_edge"])
+            break
+    if ps_edge is None:
+        problems.append("peak_search.json: no degree-22 row at the reported wavenumber")
+    else:
+        agree("R_B_edge_certified_maximum", ps_edge, 1e-4, "search-record edge-plane share")
+        mc = json.loads((DATA / "mechanism_controls.json").read_text())
+        mc_edge = float([r for r in mc["branch_consistent_H_sweep"]["refined_peak"]
+                         if r["eta"] == 0.0][0]["R_B_edge"])
+        rel = abs(mc_edge - ps_edge) / ps_edge
+        source_rows.append(dict(claim="cross-script edge fraction", data=mc_edge,
+                                what="mechanism_controls vs peak_search",
+                                relative_difference=rel, tolerance=1e-6, pass_=rel <= 1e-6))
+        if rel > 1e-6:
+            problems.append(f"cross-script edge fraction: peak_search says {ps_edge}, "
+                            f"mechanism_controls says {mc_edge} ({rel:.1e} apart) - "
+                            "the two scripts are not using the same plane transform")
+        # the three tabulated edge shares, each against its own stored record
+        for claim_id, case in (("R_B_edge_operating_point", "operating_point"),
+                               ("R_B_edge_k055", "k055_sample")):
+            # a four-decimal share cannot be compared more tightly than its
+            # rounding (0.023151 -> 0.0232 is a 2e-3 relative step)
+            agree(claim_id, float(mc[case]["no_coupling"]["R_B_edge"]), 5e-3,
+                  f"mechanism_controls edge share ({case}, H = 0)")
+
     text = read(root, "sections/results.tex")
     order = [int(m.group(1)) for m in re.finditer(r"\\[cC]ref\{fig:fig(\d\d)\}", text)]
     firsts: list[int] = []
@@ -157,10 +188,18 @@ def main() -> int:
     print("PASS" if not problems else "FAIL")
     for p in problems:
         print("  -", p)
-    DATA.mkdir(parents=True, exist_ok=True)
-    (DATA / "claim_audit.json").write_text(json.dumps(
-        dict(rows=rows, source_rows=source_rows, figure_order=firsts, problems=problems,
-             verdict="PASS" if not problems else "FAIL"), indent=2))
+    # The record is written only when the real manuscript is audited.  The
+    # mutation harness runs this script against a mutated *copy* (--root); if the
+    # copy's verdict were written here it would overwrite the delivered record
+    # with a FAIL produced on purpose.
+    real_tree = Path(args.root).resolve() == (HERE.parent / "Paper_A_Final_Submission").resolve()
+    if real_tree:
+        DATA.mkdir(parents=True, exist_ok=True)
+        (DATA / "claim_audit.json").write_text(json.dumps(
+            dict(rows=rows, source_rows=source_rows, figure_order=firsts, problems=problems,
+                 verdict="PASS" if not problems else "FAIL"), indent=2))
+    else:
+        print("  (mutation run: the delivered record is not overwritten)")
     return 0 if not problems else 1
 
 

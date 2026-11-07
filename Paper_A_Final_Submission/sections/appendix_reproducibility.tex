@@ -29,7 +29,7 @@ entry can run past the right margin.}
 \path{paper_a_study/make_atlas.py} & two-page contact sheet of the ten figures \\
 \path{paper_a_study/peak_search.py} & the staged search that locates and classifies the maximum of \cref{sec:results_certification} \\
 \path{paper_a_study/peak_identity_audit.py} & the five artefact probes of \cref{sec:results_artefact}: reference-plane rescaling, incident-mode identity, mode separation, conditioning and flux scale \\
-\path{paper_a_study/test_model.py} & the 26 automated checks of \cref{sec:numerics_verification} \\
+\path{paper_a_study/test_model.py} & the 39 automated checks of \cref{sec:numerics_verification}, including the plane-invariance and cross-script edge-fraction tests \\
 \path{paper_a_study/verify_dimensions.py} & dimensional and constitutive audit, including the strain-gradient contraction test \\
 \path{paper_a_study/quasistatic_check.py} & the ratios of \cref{sec:governing_electric} \\
 \path{paper_a_study/flexo_control.py} & the measured flexoelectric contribution of \cref{sec:results_scope} \\
@@ -67,7 +67,7 @@ containing \texttt{numpy}, \texttt{scipy} and \texttt{matplotlib}:
 \begin{verbatim}
 # exit status 0 = every check passed
 python paper_a_study/run_all_checks.py            # battery, ~15 min
-python -m unittest paper_a_study.test_model -v    # 26 tests, ~14 s
+python -m unittest paper_a_study.test_model -v    # 39 tests, ~9 s
 python paper_a_study/convergence_audit.py         # degree sequence, ~10 s
 python paper_a_study/quadrature_audit.py          # node sequence, ~10 s
 python paper_a_study/claim_audit.py               # manuscript vs registry, ~1 s

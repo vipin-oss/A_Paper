@@ -167,7 +167,7 @@ quoted in this paper have $|\cos\theta_E|=0.88$ and $0.97$ respectively.
 \label{sec:numerics_verification}
 
 The implementation is verified in five independent ways.  All of the following
-run as an automated suite of 26 tests, which includes the regression tests that
+run as an automated suite of 39 tests, which includes the regression tests that
 pin the material and reference constants.
 
 \begin{enumerate}
@@ -221,6 +221,23 @@ and requires the partition to rescale by exactly that factor, which fails if
 only the backward decay is used.  The fourth requires the stored classification
 of the search to remain \texttt{certified\_local\_maximum} and the stored
 headline to equal a fresh solve to nine places.
+
+Three further tests concern the plane at which a modal share is quoted, which is
+where the last inconsistency in this study was found.  Every ratio reported at
+the edge plane is obtained from the reference-plane value with the single
+transform $R(L_{\text{to}}) = R(L_{\text{from}})\exp[2(\Imag K_i-\Imag K_B)(L_{\text{from}}-L_{\text{to}})]$,
+and every script calls the same implementation of it rather than re-deriving the
+exponent.  The first test checks the identities of that transform analytically
+(identity at equal planes, composition over two steps, invariance when both
+attenuations vanish); the second solves the same scattering problem at $L=0$,
+$10$, $15$ and $20$ thicknesses and requires the value reconstructed at the edge
+to be independent of the plane used, which it is to $2\times10^{-16}$; the third
+compares the stored edge-plane fractions produced by the search, the matched
+controls and two figure datasets and requires agreement to $10^{-6}$ relative.
+A single-mode decay used in place of the two-mode ratio transform fails all
+three, which is what the round-eight version of the search script did, and a
+deliberate mutation of that kind is now part of the suite of
+\cref{sec:numerics_repro}.
 
 \subsection{Reproducibility}
 \label{sec:numerics_repro}

@@ -298,34 +298,34 @@
     },
     {
       "id": "degree_stability_peak",
-      "value": 5.6e-09,
+      "value": 5e-09,
       "tolerance_rel": 0.2,
       "in_abstract": false,
       "source": "figure_data/peak_search.json verdict.degree_spread[\"0.52752\"]",
       "tokens": [
         {
           "file": "sections/results.tex",
-          "text": "5.6\\times10^{-9}",
-          "value": 5.6e-09
+          "text": "5.0\\times10^{-9}",
+          "value": 5e-09
         },
         {
           "file": "sections/conclusions.tex",
-          "text": "5.6\\times10^{-9}",
-          "value": 5.6e-09
+          "text": "5.0\\times10^{-9}",
+          "value": 5e-09
         }
       ]
     },
     {
       "id": "quadrature_stability_peak",
-      "value": 9.4e-10,
+      "value": 5.6e-09,
       "tolerance_rel": 0.2,
       "in_abstract": false,
       "source": "figure_data/peak_search.json verdict.quadrature_spread",
       "tokens": [
         {
           "file": "sections/results.tex",
-          "text": "9.4\\times10^{-10}",
-          "value": 9.4e-10
+          "text": "5.6\\times10^{-9}",
+          "value": 5.6e-09
         }
       ]
     },
@@ -374,14 +374,14 @@
     },
     {
       "id": "coupling_change_k055_edge_plane",
-      "value": 2.0,
+      "value": 2.007,
       "tolerance_rel": 0.05,
       "in_abstract": false,
       "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B_edge vs [no_coupling].R_B_edge (2.007 %)",
       "tokens": [
         {
           "file": "sections/results.tex",
-          "text": "\\SI{2.0}{\\percent}",
+          "text": "\\SI{2.01}{\\percent}",
           "value": 2.0
         }
       ]
@@ -395,13 +395,55 @@
       "tokens": [
         {
           "file": "sections/results.tex",
-          "text": "\\SI{-9.9}{\\percent}",
+          "text": "\\SI{-9.85}{\\percent}",
           "value": -9.9
         },
         {
           "file": "sections/discussion.tex",
           "text": "\\SI{-9.85}{\\percent}",
           "value": -9.85
+        }
+      ]
+    },
+    {
+      "id": "R_B_edge_certified_maximum",
+      "value": 0.9856,
+      "tolerance_rel": 0.005,
+      "in_abstract": false,
+      "source": "figure_data/peak_search.json degree[K=0.5275, degree=22].R_B_edge and figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[eta=0].R_B_edge",
+      "tokens": [
+        {
+          "file": "sections/results.tex",
+          "text": "0.9856",
+          "value": 0.9856
+        }
+      ]
+    },
+    {
+      "id": "R_B_edge_operating_point",
+      "value": 0.0232,
+      "tolerance_rel": 0.005,
+      "in_abstract": false,
+      "source": "figure_data/mechanism_controls.json operating_point.no_coupling.R_B_edge",
+      "tokens": [
+        {
+          "file": "sections/results.tex",
+          "text": "0.0232",
+          "value": 0.0232
+        }
+      ]
+    },
+    {
+      "id": "R_B_edge_k055",
+      "value": 0.5802,
+      "tolerance_rel": 0.005,
+      "in_abstract": false,
+      "source": "figure_data/mechanism_controls.json k055_sample.no_coupling.R_B_edge",
+      "tokens": [
+        {
+          "file": "sections/results.tex",
+          "text": "0.5802",
+          "value": 0.5802
         }
       ]
     }

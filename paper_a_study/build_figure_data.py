@@ -147,24 +147,57 @@ def power_profile(p: Plate, kx: float, ky: float, omega: float, q):
     return out
 
 
-def edge_plane_fraction(R2um: float, ki: complex, kb: complex, d: float,
-                        L: float = REF_NORM) -> float:
-    """The same modal share referred to the edge plane.
+def edge_plane_fraction(R_at: float, ki: complex, kb: complex, d: float,
+                        L_to: float = 0.0, L_from: float = REF_NORM) -> float:
+    """Move a modal power *ratio* between two planes parallel to the edge.
 
-    Both modes attenuate, in opposite directions: between the reference plane
-    and the edge the incident loses exp(-2|Im k_i| L) and the backward mode
-    gains exp(+2|Im k_B| L).  The net exponent is therefore
-    2(|Im k_i| + |Im k_B|) L, not the backward decay alone; the two differ by
-    2 % at the certified maximum and by 0.005 % at the operating point, and the
-    figure-data audit ``peak_identity_audit.json`` measures the net exponent
-    directly by moving the reference plane.
+    This is THE transform for a two-mode ratio, and it is the only one in the
+    package.  Derivation, in the solver's own convention
+    ``phi = Y(z) exp(i K x)`` with K dimensionless (k d), the plate in ``x < 0``
+    and the free edge at ``x = 0``:
+
+    * a modal amplitude at distance ``L`` (in thicknesses) from the edge is
+      ``a(L) = a(0) exp(-i K L)``, so ``|a(L)| = |a(0)| exp(-Im K . L)``;
+    * the incident mode has ``Im K_i > 0`` (it attenuates on the way in) and the
+      backward mode ``Im K_B < 0`` (it attenuates on the way out);
+    * the modal *powers* therefore go as ``exp(-2 Im K_j L)`` for each j, and
+      the ratio ``R = P_B / P_i`` transforms as
+
+          R(L_to) = R(L_from) exp[ 2 (Im K_i - Im K_B) (L_from - L_to) ],
+
+      which is ``exp[+2(|Im K_i| + |Im K_B|)(L_from - L_to)]`` in the regime
+      ``Im K_i > 0 > Im K_B`` that the ports impose.
+
+    The sign is a **sum of magnitudes**, not a difference: both modes attenuate,
+    in opposite directions, and the ratio amplifies them in the same sense.  The
+    single-mode transform ``exp(-alpha l)`` (see ``isolated_transfer``) is a
+    different quantity and must never be used for a ratio.
+
+    The exponent is dimensionless, so ``d`` cancels; it is kept in the signature
+    because every caller has it and because ``alpha = 2|Im K|/d`` is the
+    physical attenuation in m^-1 that the papers quote.
+
+    Identity checks (enforced by ``test_model.TestEdgePlaneTransform``):
+    ``L_to == L_from`` returns the input unchanged; ``L_to == 0, L_from == L_ref``
+    is the edge-plane value; applying ``L_from->L_to`` then ``L_to->L_from``
+    returns the input; and ``Im K_i = Im K_B = 0`` leaves the ratio unchanged.
     """
-    net = 2.0 * (abs(ki.imag) + abs(kb.imag)) / d
-    return float(R2um * np.exp(net * L * d))
+    exponent = 2.0 * ((ki.imag - kb.imag) / d) * (L_from - L_to) * d
+    return float(R_at * np.exp(exponent))
 
 
 def isolated_transfer(R2um: float, kb: complex, d: float, distance_m: float) -> float:
-    """R_B(l) from the 2 um reference value using the solved backward decay."""
+    """SINGLE-MODE absolute transfer of the backward channel along x.
+
+    ``R_B(l) = R_B(2 um) exp[-alpha_B (l - 2 um)]`` with ``alpha_B = 2|Im K_B|/d``.
+    This is the decay of one channel's absolute power with the observation
+    distance (Figure 6a).  It is **not** a plane transformation of the ratio
+    ``P_B/P_i`` and must not be used as one: the ratio needs the incident
+    attenuation as well, with the opposite sign
+    (``edge_plane_fraction``).  The two differ by 2.0 percentage points at the
+    certified maximum, where the ratio is large enough for the distinction to
+    matter.
+    """
     alpha_b = 2.0 * abs(kb.imag) / d
     return float(R2um * np.exp(-alpha_b * (distance_m - REF_NORM * d)))
 
@@ -235,7 +268,8 @@ def fig02() -> list[dict]:
                     R2 = float(res["backward_reflection_self_power"])
                     row.update(
                         R_B_2um=R2,
-                        R_B_edge=isolated_transfer(R2, kb, p.d, 0.0),
+                        R_B_edge=edge_plane_fraction(
+                            R2, complex(res["incident_K"]), kb, p.d),
                         angle_deg=float(res["reflected_angle_deg"]),
                         edge_scaled_residual=float(res["edge_scaled_residual"]),
                         power_balance_error=float(res["power_balance_relative"]),
@@ -423,7 +457,6 @@ def fig05() -> list[dict]:
         propagate = np.abs(K.imag) <= PROPAGATING_TOL
         ib = int(np.argmin(np.abs(K - complex(res["backward_K"]))))
         kb = complex(res["backward_K"])
-        alpha_b = 2 * abs(kb.imag) / p.d
         R2 = float(res["backward_reflection_self_power"])
         other_prop = float(-np.sum(flux[propagate & (flux < 0)]) / inc + flux[ib] / inc)
         evanescent = float(np.sum(np.abs(flux[~propagate])) / inc)
@@ -436,7 +469,8 @@ def fig05() -> list[dict]:
         rows.append(dict(
             eta=float(eta),
             R_B_2um=R2,
-            R_B_edge=float(R2 * np.exp(alpha_b * REF_NORM * p.d)),
+            R_B_edge=edge_plane_fraction(
+                R2, complex(res["incident_K"]), kb, p.d),
             incident_self_power=inc,
             backward_channel_fraction=float(-flux[ib] / inc),
             other_propagating_fraction=other_prop,
@@ -500,11 +534,11 @@ def fig07() -> list[dict]:
                 res, _ = p.edge(float(ky), OMEGA0, K0, KB0)
                 kb = complex(res["backward_K"])
                 R2 = float(res["backward_reflection_self_power"])
-                alpha_b = 2 * abs(kb.imag) / p.d
                 back = res["backward"]
                 row.update(
                     R_B_2um=R2,
-                    R_B_edge=float(R2 * np.exp(alpha_b * REF_NORM * p.d)),
+                    R_B_edge=edge_plane_fraction(
+                        R2, complex(res["incident_K"]), kb, p.d),
                     angle_deg=float(res["reflected_angle_deg"]),
                     Px_backward=float(back["Px"] / res["incident"]["Px"]),
                     Py_backward=float(back["Py"] / res["incident"]["Px"]),

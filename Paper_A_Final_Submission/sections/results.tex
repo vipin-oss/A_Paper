@@ -254,21 +254,21 @@ reference plane and $H=0$.}
 Case & $k_xd$ & $R_B$ at $n=30$ & $\theta_E$ at $n=30$ (deg) & $\max|\Delta R_B|/R_B$ \\
 \midrule
 Operating point   & 0.7362 & 0.023\,146 & $-27.8997$ & $7.2\times10^{-7}$ \\
-Certified maximum & 0.5275 & 0.946\,795 & $-13.8506$ & $1.7\times10^{-9}$ \\
-Earlier sample    & 0.5250 & 0.931\,891 & $-13.8888$ & $2.1\times10^{-8}$ \\
+Certified maximum & 0.5275 & 0.946\,795 & $-13.8506$ & $3.8\times10^{-9}$ \\
+Earlier sample    & 0.5250 & 0.931\,891 & $-13.8888$ & $2.3\times10^{-8}$ \\
 $k_xd=0.55$       & 0.5500 & 0.579\,180 & $-14.4487$ & $1.5\times10^{-7}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Three conclusions follow.  First, the values are converged in the Galerkin
-degree: between degrees 14 and 34 the maximum moves by $5.6\times10^{-9}$
-relative at the located argmax and by $6.2\times10^{-9}$ at the reported
+degree: between degrees 14 and 34 the maximum moves by $5.0\times10^{-9}$
+relative at the located argmax and by $7.3\times10^{-9}$ at the reported
 wavenumber, the operating point by $7.2\times10^{-7}$, and the successive
 changes decrease monotonically, which is what a spectral method should do.  No
 rate is fitted, because the sequence reaches the round-off floor before an
 asymptotic slope exists.  Quadrature is not a limitation either: the rule from
-64 to 256 nodes moves the maximum by $9.4\times10^{-10}$.  Second, the values
+64 to 256 nodes moves the maximum by $5.6\times10^{-9}$.  Second, the values
 are well conditioned: the singular-value condition number of the edge system is
 at most $1.9\times10^{2}$ and the scaled edge residual is below
 $3\times10^{-15}$ in every case.  Third, the values are resolved projections:
@@ -333,18 +333,23 @@ spurious.
 \emph{Vanishing denominator.}  The incident flux at the maximum is small, a
 factor $128$ below its value at the operating point, so the fraction could in
 principle be a ratio of two nearly vanishing quantities.  It is not: the value
-is reproduced to $5.6\times10^{-9}$ across six Galerkin degrees, to
-$9.4\times10^{-10}$ across four quadrature rules, and identically along three
+is reproduced to $5.0\times10^{-9}$ across six Galerkin degrees, to
+$5.6\times10^{-9}$ across four quadrature rules, and identically along three
 different tracking paths that reach the same wavenumber from below, from above
 and in a single step.  A ratio of two independently vanishing numbers would
 scatter under all three.
 
-\emph{Branch ambiguity.}  The reference plane is moved from $5$ to $20$
+\emph{Branch ambiguity.}  The reference plane is moved from $0$ to $20$
 thicknesses and the partition is rescaled by
 $\exp[2(|\Imag k_{ix}|+|\Imag k_{Bx}|)(L-L_{\text{ref}})/d]$, which is the net
 attenuation of the two partner modes travelling in opposite directions.  The
 rescaled values agree to $2\times10^{-16}$, so the number is a property of the
-edge and both attenuations are resolved rather than assumed.  The backward port
+edge and both attenuations are resolved rather than assumed.  The transform is
+implemented once and imported everywhere it is used, and the stored edge-plane
+fractions of the search, of the matched controls and of the coupling dataset
+are reproduced by a fresh evaluation to $10^{-10}$ relative or better; the plane at
+which a share is quoted is therefore a reporting choice and not a second
+definition.  The backward port
 is also unique: the second outgoing candidate lies $2.0|k_x|$ away, the
 condition number of the normalised edge matrix is $1.6\times10^{2}$, and the
 relative error bound of the projection is $\text{cond}\times\epsilon=4\times10^{-14}$.
@@ -375,7 +380,7 @@ $5.08\times10^{-3}$ at the operating point to $3.97\times10^{-5}$ at the
 maximum, a factor $128$, while $|\Imag k_{ix}|d$ rises to $1.0\times10^{-3}$.
 The fraction is therefore the ratio of two small but resolved fluxes -- well
 defined, unchanged by the incident normalisation, and stable to
-$6\times10^{-9}$ under degree refinement -- but it is not a statement that a
+$1\times10^{-8}$ under degree and quadrature refinement -- but it is not a statement that a
 large amount of energy is turned around.  Both readings are needed: the
 partition is maximal at the fold and the transported power is minimal there.
 
@@ -404,7 +409,7 @@ group velocity $v_g$ & $\SI{0.37}{\kilo\metre\per\second}$ & $\SI{0.45}{\metre\p
 incident attenuation $2|\Imag k_{ix}|$ & \SI{0.469}{\deci\bel\per\milli\metre} & \SI{87.2}{\deci\bel\per\milli\metre} & \SI{4.02}{\deci\bel\per\milli\metre} \\
 backward attenuation $2|\Imag k_{Bx}|$ & \SI{0.454}{\deci\bel\per\milli\metre} & \SI{87.1}{\deci\bel\per\milli\metre} & \SI{3.93}{\deci\bel\per\milli\metre} \\
 isolated backward return $R_B$ & $0.0231456$ & $0.9467952$ & $0.5791801$ \\
-modal share at the edge plane & $0.0231$ & $0.9856$ & $0.5802$ \\
+modal share at the edge plane & $0.0232$ & $0.9856$ & $0.5802$ \\
 energy angle $\theta_E$ & $-27.90^{\circ}$ & $-13.85^{\circ}$ & $-14.45^{\circ}$ \\
 total outgoing propagating power & $0.99980$ & $0.99769$ & $0.99881$ \\
 interference $P_{\text{cross}}/P_{\text{inc}}$ & $-4.17\times10^{-6}$ & $-2.29\times10^{-3}$ & $-1.02\times10^{-3}$ \\
@@ -424,13 +429,13 @@ as follows: the identified backward channel carries $2.3146\times10^{-2}$, the
 remaining propagating outgoing modes carry $0.976651$, dissipation removes
 $1.985\times10^{-4}$, and the interference term is $-4.169\times10^{-6}$.  As
 rounded, these four numbers close to $1.4\times10^{-6}$; evaluated at full
-precision the identity closes to $3.4\times10^{-16}$, and the solver's own power
-balance to $7.3\times10^{-13}$, six orders of magnitude below the $10^{-6}$
+precision the identity closes to $1.9\times10^{-17}$, and the solver's own power
+balance to $6.6\times10^{-13}$, six orders of magnitude below the $10^{-6}$
 threshold plotted in panel (c).  At the certified maximum the partition is
 $0.946795$ in the backward channel, $5.089\times10^{-2}$ in the remaining
 propagating modes, $2.32\times10^{-5}$ dissipated and $-2.29\times10^{-3}$ in
 the interference term, which sums to $0.99769$ against an incident power of
-unity; the solver closes the same identity to $3.2\times10^{-13}$.
+unity; the solver closes the same identity to $3.0\times10^{-13}$.
 
 The evanescent spectrum does not belong to the transported budget.  At the
 reference plane the entire evanescent content has decayed by a factor
@@ -539,7 +544,7 @@ larger part of the conversion is lost between the edge and the reference plane:
 referred to the edge plane, where both effects are evaluated at the same place,
 the reduction is \SI{11.1}{\percent} rather than \SI{34.2}{\percent}, and the
 remaining \SI{23.1}{} points are propagation loss.  At $k_xd=0.55$ the same
-comparison gives \SI{2.0}{\percent} rather than \SI{-9.9}{\percent}: there the
+comparison gives \SI{2.01}{\percent} rather than \SI{-9.85}{\percent}: there the
 coupling slightly \emph{raises} the edge-plane share, and the whole of the
 reference-plane reduction is propagation loss.  The
 branch-consistent sweep is monotone in $|H|$: at the certified maximum
@@ -692,14 +697,16 @@ independent local-flux validation.}
 
 \Cref{fig:fig09} documents the numerical behaviour of the edge solve.  Panels
 (a) and (b) show the relative error of the backward channel and of the backward
-wavenumber against the degree-30 reference: both fall from $3\times10^{-6}$ and
-$4\times10^{-12}$ at $n=14$ to the round-off floor by $n=26$, and the error of
-$R_B$ is still decreasing at the highest degree used for production.  Panel (c)
+wavenumber against the degree-30 reference: the channel error falls from
+$3\times10^{-6}$ at $n=14$ to $10^{-7}$ at $n=26$, while the wavenumber error
+stays at the $10^{-12}$ round-off floor over the whole range, so the channel
+error is still decreasing at the highest degree used for production.  Panel (c)
 shows the scaled edge residual and the relative energy-balance error for every
-degree; both remain at $10^{-12}$--$10^{-13}$, four to five orders below the
-$10^{-8}$ and $10^{-10}$ tolerances drawn in the panel.  Panel (d) compares the
-temporal and spatial routes for the same dispersion relation across the box;
-they agree to $2\times10^{-5}$.
+degree: the residual stays at $3\times10^{-15}$ and the energy-balance error
+between $2\times10^{-13}$ and $1\times10^{-12}$, six to seven orders below the
+$10^{-8}$ tolerance and two to three orders below the $10^{-10}$ tolerance drawn
+in the panel.  Panel (d) compares the temporal and spatial routes for the same
+dispersion relation across the box; they agree to $2\times10^{-5}$.
 
 The last panel is a check on the implementation, not a physical validation.  The
 two routes discretise the same variational statement and differ only in which

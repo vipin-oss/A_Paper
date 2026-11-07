@@ -45,8 +45,8 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from build_figure_data import (KB0, KY0, dump_json, operating_mode,  # noqa: E402
-                               plate, track)
+from build_figure_data import (KB0, KY0, dump_json, edge_plane_fraction,  # noqa: E402
+                               operating_mode, plate, track)
 
 #: Domain in which a backward port exists at all at this k_y (see fig04).
 DOMAIN = (0.465, 0.625)
@@ -77,8 +77,11 @@ def solve(degree: int, Ks, nquad: int = 0, eta: float = 0.0) -> list[dict]:
             omega=float(m["omega"].real),
             frequency_GHz=float(res["frequency_Hz"]) / 1e9,
             R_B=float(res["backward_reflection_self_power"]),
-            R_B_edge=float(res["backward_reflection_self_power"]
-                           * np.exp(2 * abs(kb.imag) * 10.0)),
+            # the shared two-mode ratio transform; the single-mode decay that
+            # stood here until round 9 omitted the incident attenuation and
+            # disagreed with mechanism_controls.py by 1.96 percentage points
+            R_B_edge=edge_plane_fraction(
+                float(res["backward_reflection_self_power"]), ki, kb, p.d),
             angle_deg=float(res["reflected_angle_deg"]),
             K_backward=[kb.real, kb.imag], K_incident=[ki.real, ki.imag],
             incident_K_offset=float(ki.real - float(K)),
