@@ -233,5 +233,59 @@ being the LaTeX build, for which this environment has no engine.
 **Not superseded:** the research model, every headline number (2.31456 %, 94.6795 %, 0.5275 /
 0.52752, 16.6547 GHz, 62.2973 %, 98.5572 %), the tables, the 13 citations, the round-10
 language and structure, the `UNRESOLVED` novelty status, the synthetic $\ell$, $f$, $H$, the
-single-edge and corner caveats, and `BUILD UNVERIFIED` for the typeset PDF. Round 12 has not
-begun; this round stops here for supervisor review.
+single-edge and corner caveats, and `BUILD UNVERIFIED` for the typeset PDF.
+
+---
+
+# Round 12 (2026-11-07) — section-by-section review of the manuscript
+
+A final editorial and scientific pass over `main.tex` and its seven section files, with every number
+traced to a stored record. Content frozen: no equation, constant, boundary condition, solver, dataset,
+figure PDF or reported number changed (`PAPER_A_ROUND12_SECTION_BY_SECTION_REVIEW.md`).
+
+First, two round-11 reporting defects were corrected, because later text would otherwise have been
+reviewed against numbers that do not exist (`PAPER_A_ROUND12_PRELIMINARY_EVIDENCE_CORRECTIONS.md`):
+
+| # | Item | Before (round 11) | After | Reason |
+|---|---|---|---|---|
+| P12-A1 | headline stability | "1.5×10⁻⁷ … below the 10⁻⁸ bound", pooled with a 1.86 % comparison at two different wavenumbers | 7.54×10⁻¹⁰ at fixed $k_xd=0.52752$ and 1.00×10⁻¹⁰ at fixed $0.5275$; the 1.46×10⁻⁷ is named for what it is (argmax vs reported sample, `offset_reported_vs_argmax` 1.37×10⁻⁷) | the pooled number measured sampling between two abscissae, not the reproducibility of a run |
+| P12-A2 | "tracking-path sensitivity" | 8.4×10⁻⁶ / 9.0×10⁻⁶ ascribed to the branch-tracking path | tracking-path spread **0.0**; 8.36×10⁻⁶ is the coarse-raster sampling error (`restart_spread`, rel 8.69×10⁻⁶) | the three tracking paths return identical values; the reported number was the restart spread |
+
+Then nineteen prose corrections (full before/after table in `PAPER_A_ROUND12_EDIT_LEDGER.md`):
+
+| # | Item | Before | After | Reason |
+|---|---|---|---|---|
+| P12-1 | §4.1 phase-speed endpoints | 105.8 km/s at $k_xd=1.05$, 20.0 "near the cutoff" | transposed back to their abscissae (105.8 at 0.15, 20.0 at 1.05) | the data have the opposite assignment |
+| P12-2 | §4.1 linewidth ordering | "a clear ordering in $H$" | smallest at $H=0$, rising with $\lvert H\rvert$, larger for $+H$ | the note goes $0<-0.025<+0.025<-0.05<+0.05$ |
+| P12-3 | §4.1 attenuation maximum | "peaks sharply at $k_xd\approx0.52$" | the sampled maximum (0.54, 3.2 dB/mm) distinguished from the fold value (87.2 dB/mm) | the plotted grid steps over the fold |
+| P12-4 | §4.3 density factor | nine times (twice) and ten times | a factor of three | $\Delta$k and $\Delta\alpha$ are exactly linear in $n_0$ (0.00084 → 0.00251 MHz) |
+| P12-5 | §4.3 mobility factor | five times | a factor of three | the mobility column is identical to the density column; both sweeps are one sweep |
+| P12-6 | §4.3 backward share | "reflectance" | "backward share" | the one loose use of the word in the article |
+| P12-7 | §4.3 panel (c) tail | "falls to $10^{-7}$ at $k_xd=0.9$" | $<10^{-7}$ beyond 0.8; $1.6\times10^{-11}$ at 0.9 | four orders off at the quoted sample |
+| P12-8 | §4.4 thickness wording | "the branch moves from 30.4 to 10.5 GHz" | those are the ends of the 120/180/220/320 nm family | one branch cannot be both |
+| P12-9 | §4.4 gradient-length abscissae | 0.15 and 1.05 | 0.145 and 1.000 | neither 0.15 nor 1.05 is on the solved grid |
+| P12-10 | §4.6 reproducibility | $1.8\times10^{-12}\to5.6\times10^{-6}$, "$\pm6\times10^{-6}$" | the registered spreads (degree 6.2×10⁻⁹, quadrature 4.3×10⁻¹⁰, tracking 0, sampling 8.4×10⁻⁶) | neither number exists in any record; a direct evaluation gives ~1.5×10⁻⁹ |
+| P12-11 | §4.7 offset justification | "below the reproducibility of the frequency map" | "a difference between two abscissae, not between two runs" | two runs return the same sample |
+| P12-12 | §4.9 energy budget | "close to 1.4×10⁻⁶", identity 1.9×10⁻¹⁷, balance 6.6×10⁻¹³, 0.99769 "sums all four" | four numbers close to 8.3×10⁻⁶ (twice the interference term), identity 3.4×10⁻¹⁶, balances 7.3×10⁻¹³ and 3.2×10⁻¹³, 0.9969 + 0.0008 | five arithmetic/provenance errors in one paragraph |
+| P12-13 | §4.11 distance symbol | $\ell$ | $L$ | $\ell$ is the gradient length, and the panel uses $L$ |
+| P12-14 | §4.11 attenuation change | "falls by a factor of three" | 18.5 → 0.54 → 0.30 mm (a factor of 62 to the fold) | self-contradictory in the same sentence |
+| P12-15 | fig06 caption | "attenuation length $L$" | "attenuation length"; $\alpha_i$, $\alpha_B$ named | $L$ is the distance from the edge; the panel has three coefficients |
+| P12-16 | §4.14 residual attribution | 3×10⁻¹⁵ and 2×10⁻¹³–10⁻¹² "six to seven orders below 10⁻⁸ and two to three below 10⁻¹⁰" | residual 2.7–3.3×10⁻¹⁵ (five orders below 10⁻¹⁰); balance 2.4×10⁻¹⁵–4.1×10⁻¹² (one to five orders below the 10⁻¹⁰ line) | two quantities, two tolerances, one sentence |
+| P12-17 | §4.15 backward wavenumber | $(0.333,\,-0.530)$ | $(1,\,0.529)$; $\vect{P}_B\propto(-1,-0.529)$ | mixes $K_{Bx}/K_{ix}$ with $k_y/K_{Bx}$ and takes the flux sign; the solved vector points $+27.9^{\circ}$ |
+| P12-18 | §3.1 polynomial | "three-term polynomial" | "polynomial of degree four" | the displayed sum spans $k^0\ldots k^4$ and the section itself says quartic |
+| P12-19 | §2.7 / `tab:groups` | $\alpha$ | $\alpha_{\mathrm{d}}$, plus a clause that the dissipation integral is in scaled units | $\alpha$ also denotes the attenuation $2\lvert\Imag k_x\rvert$ from §3 onward |
+| P12-20 | §5.5 limitations | "Five limitations" | "Six limitations" | six paragraphs follow |
+| P12-21 | appendix | 39 tests, ~9 s, twelve data files | 47 tests, ~25 s, eleven files | all three counts had moved in round 11 |
+| P12-22 | abstract | "The figure is a modal share"; "unchanged"; "the backward mode" | "The reported number"; "almost unchanged"; "the two partner modes" | no antecedent for "the figure"; 1.21 % is not "unchanged"; which flux changes matters |
+
+**Verification after the corrections:** 47 tests OK; claim registry 23/46, 5 deprecated guarded,
+10 figures in citation order, 11/11 source rows; 15 mutants caught; phase-speed audit PASS; static
+check PASS (104 labels, 75 references, 13/13 citations, 16 634 words); LaTeX build not executed
+(**BUILD UNVERIFIED**); full battery not re-executed because no producer, dataset or solver file
+changed (`PAPER_A_ROUND12_CORRECTION_HISTORY.md` Phase D).
+
+**Not superseded:** the research model, every headline number, the tables, the 13 citations, the
+round-10 language and structure, the round-11 figure fixes, the `UNRESOLVED` novelty status, the
+synthetic $\ell$, $f$, $H$, the single-edge and corner caveats, and `BUILD UNVERIFIED`.
+**Still open:** B1 (fig10(c) arrow), B2 (prior art), B3 (corner field), B4 (build), B5 (author
+declarations), B6 (`peak_search.py` docstring) — `PAPER_A_ROUND12_BLOCKING_ISSUES.md`.

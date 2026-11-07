@@ -85,13 +85,25 @@ Headline reproduction:
 
 | quantity | round 10 (committed) | round 11 (clean run) | relative difference |
 |---|---|---|---|
-| $R_B$ at the certified maximum | 0.9467953685099261 | 0.9467952305821763 | $1.5\times10^{-7}$ |
+| $R_B$ at the located argmax, $k_xd=0.52752$ | 0.9467953685099261 | 0.9467953677961777 | $7.5\times10^{-10}$ |
+| $R_B$ at the reported sample, $k_xd=0.5275$ | 0.9467952306769204 | 0.9467952305821763 | $1.0\times10^{-10}$ |
 | $k_xd$ at the maximum | 0.52752 | 0.52752 | 0 |
 | classification | `certified_local_maximum` | `certified_local_maximum` | — |
 
-The $1.5\times10^{-7}$ movement is the solver's reproducible jitter; it is three
-orders of magnitude inside the registered tolerance (0.2 %) and does not move a
-single printed digit.
+**Corrected in round 12.** This table previously compared the round-10 value at
+the argmax (0.9467953685099261, $k_xd=0.52752$) with the round-11 value at the
+reported sample (0.9467952305821763, $k_xd=0.5275$) and called the resulting
+$1.5\times10^{-7}$ difference "the solver's reproducible jitter". The two
+numbers are evaluated at different wavenumbers, so the difference is the
+offset between those wavenumbers (stored as `offset_reported_vs_argmax`), not a
+run-to-run change. Compared like for like, the same configuration moves by
+$7.5\times10^{-10}$ and $1.0\times10^{-10}$ relative, i.e. four to five orders
+of magnitude less than the number quoted, and neither movement reaches the
+seventh printed digit. The round-10 and round-11 records each store two
+independent evaluations per configuration (degree sweep and quadrature sweep),
+and their separations are of the same size, $10^{-10}$, so a
+fixed-configuration reproducibility at the $10^{-10}$ level is measured in the
+delivered data rather than inferred.
 
 ---
 
@@ -119,7 +131,18 @@ Round 11 resolution, in three parts:
    | degree spread at the located argmax | $5.613\times10^{-9}$ | $10^{-8}$ | 1.8× |
    | degree spread at the reported wavenumber | $6.220\times10^{-9}$ | $10^{-8}$ | 1.6× |
    | quadrature spread (degree 22, four rules) | $4.317\times10^{-10}$ | $10^{-8}$ | 23× |
-   | tracking-path spread (three paths) | $8.36\times10^{-6}$ (absolute, $R_B$) | reported separately | — |
+   | tracking-path spread (three paths) | $0.0$ (identical values, `verdict.tracking_path_relative_spread`) | reported separately | — |
+   | restart spread, coarse raster vs refined maximum | $8.362\times10^{-6}$ (`verdict.restart_spread`, $R_B$ absolute) | reported separately | — |
+
+   **Corrected in round 12.** The row above was headed "tracking-path spread
+   (three paths)" but carried $8.36\times10^{-6}$, which is `restart_spread`: the
+   coarse-raster argmax at $k_xd=0.527$ ($R_B=0.9467870061$) against the refined
+   maximum ($0.9467954$), a relative $8.69\times10^{-6}$, i.e. the sampling
+   error of a raster of $\Delta k_xd=2\times10^{-3}$. The tracking-path spread
+   itself is stored as zero: the three paths (ascending over 31 points,
+   descending over 31 points, single step) return the identical $R_B$ and the
+   identical $\omega$ to the last stored digit. The two diagnostics are distinct
+   and are now tabulated separately; neither is a discretisation error.
 
    The margins are small because the bound is honest: it is the observed order of
    magnitude, not a comfortable constant. Mutation **M13** proves the gate still

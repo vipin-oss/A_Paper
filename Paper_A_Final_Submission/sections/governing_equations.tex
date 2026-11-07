@@ -381,11 +381,19 @@ $P_{\text{cross}}$ the bilinear interference between them (non-zero whenever the
 modes are not orthogonal in the power metric) and
 \begin{equation}
 \label{eq:dissipation}
-P_{\text{diss}}=\tfrac12\alpha\iint
+P_{\text{diss}}=\tfrac12\alpha_{\mathrm{d}}\iint
 \Bigl[(k_x^2+k_y^2)|\widetilde\mu|^2+|\partial_z\widetilde\mu|^2\Bigr]\dd z ,
-\qquad \alpha=\frac{D}{d\,c_s},
+\qquad \alpha_{\mathrm{d}}=\frac{D}{d\,c_s},
 \end{equation}
-the conduction loss inside the control volume.  The terms of
+written in the scaled variables of \cref{sec:governing_nondim} --- the wavenumber
+components and the thickness coordinate are the scaled ones and
+$\widetilde\mu$ is the electrochemical potential divided by $k_BT$, which makes
+$\alpha_{\mathrm{d}}$ the dimensionless ratio of the diffusion rate to the
+elastic rate --- and it is the conduction loss inside the control volume.  The
+symbol $\alpha$ itself is used later for the spatial attenuation
+$2|\Imag k_x|$ of a mode (\cref{sec:numerics}); the group
+$\alpha_{\mathrm{d}}$ is a property of the material and of the thickness, not of
+a mode.  The terms of
 \eqref{eq:energy_identity} are not independent energy channels: only the
 propagating members of $\{P_j\}$ transport energy to infinity, the evanescent
 members are reactive at the plane, and $P_{\text{cross}}$ is an interference
@@ -422,7 +430,7 @@ used, $T=qD/(\mu_ek_B)$.}
 Group & Definition & Value & Meaning \\
 \midrule
 $Q$ & $d/L_D$ & $7.46\times10^{-2}$ & thickness over Debye length \\
-$\alpha$ & $D/(d\,c_s)$ & $8.28\times10^{-1}$ & diffusion rate over elastic rate \\
+$\alpha_{\mathrm{d}}$ & $D/(d\,c_s)$ & $8.28\times10^{-1}$ & diffusion rate over elastic rate \\
 $\lambda$ & $\ell/d$ & $2.50\times10^{-1}$ & gradient length over thickness \\
 $f$ & $f_{3zz}/(d\sqrt{c_{44}\kappa_{33}})$ & $2.56\times10^{-3}$ & flexoelectric coupling \\
 $h$ & $H/(d\sqrt{a\,c_{44}})$ & $\eta\times2.12\times10^{-1}$ & carrier--gradient coupling \\

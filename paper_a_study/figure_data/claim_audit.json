@@ -349,7 +349,7 @@
       "denoted": 1e-08,
       "relative_difference": 0.0,
       "tolerance": 1e-12,
-      "occurrences": 7,
+      "occurrences": 8,
       "pass_": true
     },
     {
@@ -371,7 +371,7 @@
       "denoted": 1e-08,
       "relative_difference": 0.0,
       "tolerance": 1e-12,
-      "occurrences": 7,
+      "occurrences": 8,
       "pass_": true
     },
     {

@@ -44,7 +44,7 @@ rows of the discretised operator.  The basis is integrated with
 $\max(64,2n+10)$ Gauss--Legendre points, which resolves the mass and stiffness
 matrices to machine precision for every degree used here.
 
-The semi-discrete system is assembled as a three-term polynomial in the
+The semi-discrete system is assembled as a polynomial of degree four in the
 propagation wavenumber $k_x$,
 \begin{equation}
 \label{eq:polynomial}
@@ -52,9 +52,9 @@ propagation wavenumber $k_x$,
 \mathsf{A}_{rs}(\omega,k_y)\Bigr]\vect{q}=0 ,
 \end{equation}
 where $\vect{q}$ collects all thickness degrees of freedom and the matrices
-$\mathsf{A}_{rs}$ contain the six blocks of \cref{tab:conjugates}.  The degree
-in $k_x$ is four, which is the order of the hyperelastic operator; the classical
-limit $\ell=0$ returns the familiar quadratic problem.
+$\mathsf{A}_{rs}$ contain the six blocks of \cref{tab:conjugates}.  That degree
+is the order of the hyperelastic operator; the classical limit $\ell=0$ returns
+the familiar quadratic problem.
 
 \subsection{Temporal and spatial routes}
 \label{sec:numerics_routes}

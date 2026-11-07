@@ -37,6 +37,6 @@ Notes:
   - label never referenced: sec:results_material
   - label never referenced: sec:results_validation
   - label never referenced: tab:package
-  - approximate prose word count (including math tokens): 16355
+  - approximate prose word count (including math tokens): 16654
 
 No TeX engine was invoked by this script.

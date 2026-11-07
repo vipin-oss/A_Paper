@@ -1,4 +1,4 @@
-# Paper A — review package (round 11)
+# Paper A — review package (round 12)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,12 +11,14 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of this round's reports. The one to read
-before anything else is `PAPER_A_ROUND11_STAGE1_PROGRAMMING_AND_FIGURE_AUDIT.md`, written **before**
-the first edit: it records what the code and the forty figure panels looked like, which suspicions
-were confirmed and which were disproved, and what round 11 then repaired. Round 11 is a programming
-and figure-verification round: no equation, no boundary condition, no solution method and no headline
-number was changed.
+**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 12 is a
+section-by-section review of the manuscript — mathematics, physics, language and what a journal
+requires — with two round-11 reporting defects corrected before any manuscript text was touched
+(`PAPER_A_ROUND12_PRELIMINARY_EVIDENCE_CORRECTIONS.md`, which is where a reader should start). The
+scientific content is unchanged: no equation, no constant, no boundary condition, no solver, no
+dataset, no figure PDF and no reported number. Nineteen prose defects were repaired, twenty printed
+numbers that disagreed with the delivered records among them; one frozen figure annotation defect is
+reported and not repaired (`PAPER_A_ROUND12_BLOCKING_ISSUES.md`, B1).
 
 ---
 
@@ -89,7 +91,8 @@ still fails when a spread exceeds it.
 | `paper_a_study/figure_data/` | every CSV and JSON the manuscript and figures are built from, including the search, certification, identity and matched-control records |
 | `validation/` | the verification log of this delivery |
 | `a0/`, `a0r/`, `a0s/` | completed historical studies, retained as review evidence; they are not part of the current result |
-| `PAPER_A_ROUND11_*.md` | the eight reports of this round: pre-edit audit, numerical reproducibility, figure-by-figure audit, panel-source matrix, claim registry, mutation and regression results, correction ledger, final readiness |
+| `PAPER_A_ROUND12_*.md` | the seven reports of this round: preliminary evidence corrections (Part A), section-by-section review, edit ledger, numerical traceability audit, readiness assessment, blocking issues, correction history |
+| `PAPER_A_ROUND11_*.md` | the eight reports of round 11: pre-edit programming audit, numerical reproducibility, figure-by-figure audit, panel-source matrix, claim registry, mutation and regression results, correction ledger, final readiness. Two of these carry "Corrected in round 12" annotations where round 11 mislabelled a reproducibility number |
 | `PAPER_A_ROUND10_*.md` | the five reports of round 10: pre-edit audit, author style, structure comparison, edit log, closing audit |
 | `PAPER_A_ROUND9_*.md`, `PAPER_A_ROUND8_*.md` | the earlier rounds, retained as review evidence |
 | `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8 … round-11 addenda at the end |
@@ -119,7 +122,9 @@ The plate thickness is `d = 200 nm`; the reference plane is `L = 10` thicknesses
   access). Absence from a search is not evidence of novelty, and no priority claim is made.
 * **Not a submission-ready SCI Q1 manuscript.** The physics, the numbers and the internal consistency
   are verified as far as this environment allows; the novelty question and the corner-line boundary
-  condition remain open, and the LaTeX build is unverified.
+  condition remain open, the LaTeX build is unverified, and five declarations await the author.
+  Numerical readiness and scientific readiness are assessed separately in
+  `PAPER_A_ROUND12_READINESS_ASSESSMENT.md`.
 * **Corner line not certified.** The corner band carries 0.9–1.3 % of the strain-gradient energy and its
   share drifts 6.6–6.8 % between degrees 18 and 30; no quoted number depends on it beyond the third
   digit.

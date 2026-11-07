@@ -34,8 +34,9 @@ v_E&=\frac{\mathcal{P}_x}{E},
 with $\mathcal{P}_x$ from \eqref{eq:Px_int} and $E$ the stored energy per unit
 length.  The phase speed \eqref{eq:vp} is a positive magnitude and cannot
 change sign; it is plotted on the right-hand axis of panel (b) and it decreases
-monotonically from \SI{105.8}{\kilo\metre\per\second} at $k_xd=1.05$ to
-\SI{20.0}{\kilo\metre\per\second} near the cutoff, as a phase speed should.  The
+monotonically from \SI{105.8}{\kilo\metre\per\second} near the cutoff at
+$k_xd=0.15$ to \SI{20.0}{\kilo\metre\per\second} at $k_xd=1.05$, as a phase
+speed should.  The
 group and energy velocities are signed and are plotted on the left-hand axis:
 they run from $-188$ and $-189$ to $+1097$ and $+1136\,\si{\metre\per\second}$,
 change sign just below $k_xd=0.53$, and agree with each other to within
@@ -47,11 +48,15 @@ opposite to the phase, and that is the mode the edge subsequently selects.
 
 Panels (c) and (d) report the linewidth and the attenuation.  The linewidth
 ranges from \SI{1.4}{\kilo\hertz} to \SI{0.27}{\mega\hertz} and grows
-monotonically with $k_xd$, with a clear ordering in $H$.  The attenuation
+monotonically with $k_xd$; it is smallest at $H=0$ and rises with $|H|$, further
+for positive than for negative coupling.  The attenuation
 $\alpha=2|\Imag k_x|$, obtained from the complex spatial root at real frequency,
 ranges from \SI{0.23}{\deci\bel\per\milli\metre} to
-\SI{456}{\deci\bel\per\milli\metre}, peaks sharply at $k_xd\approx0.52$ and is
-positive everywhere on the branch.
+\SI{456}{\deci\bel\per\milli\metre} and is positive everywhere on the branch.
+It is largest on the slow part of the branch, but the plotted grid of
+$\Delta k_xd=0.03$ resolves that maximum only at its own sample, $k_xd=0.54$:
+the fold itself carries \SI{87.2}{\deci\bel\per\milli\metre} at $H=0$
+(\cref{tab:configurations}), which a raster of that spacing cannot show.
 
 \begin{figure}[htbp]
 \centering
@@ -110,8 +115,9 @@ itself.
 
 \Cref{fig:fig02} sweeps the two material families.  Increasing the carrier
 density from $1$ to $3\times10^{18}\,\si{\per\cubic\metre}$ raises the linewidth
-(a) and the attenuation (b) by roughly a factor of nine and a factor of ten
-respectively, and lowers the frequency only slightly.  Panel (c) is the
+(a) and the attenuation (b) by a factor of three each --- the conduction loss is
+linear in the density over this range --- and lowers the frequency only
+slightly.  Panel (c) is the
 important one: the backward channel at the reference plane is plotted against
 $k_xd$ for the five densities, and the five curves collapse onto one.  The
 maximum of $R_B=0.5796$ is reached near $k_xd=0.55$ for every density, and the
@@ -121,14 +127,17 @@ margin but not the partition of the scattered power.
 
 The mobility behaves in the same way (panel d): over the factor-of-three range
 $0.00875$ to $0.02625\,\si{\square\metre\per\volt\per\second}$ the linewidth
-changes by a factor of about five while the reflectance is unchanged to the
-same $0.2$ per cent.  Both results are consistent with $Q=d/L_D=0.075<1$: the
+changes by the same factor of three, while the backward share is unchanged to
+the same $0.2$ per cent.  The two sweeps are in fact identical row by row,
+because the density and the mobility enter the conduction term only through
+their product.  Both results are consistent with $Q=d/L_D=0.075<1$: the
 plate is thinner than the Debye length, the carrier perturbation is not confined
 to a surface layer, and the density enters the problem mainly through the
 conduction loss.
 
-Every row of this sweep satisfies the conservation bound \eqref{eq:admissible}; the curve in panel (c) extends to $k_xd=0.9$ and falls to
-$10^{-7}$ there, which is the backward port ceasing to carry energy rather than
+Every row of this sweep satisfies the conservation bound \eqref{eq:admissible}; the curve in panel (c) extends to $k_xd=0.9$, falling below
+$10^{-7}$ beyond $k_xd=0.8$ and reaching $1.6\times10^{-11}$ at the last sample,
+which is the backward port ceasing to carry energy rather than
 a numerical failure.  Rows at that end have $|\cos\theta_E|\to0$, and the flux
 fraction is stored with each row so that the loss of resolution is visible.
 
@@ -148,13 +157,13 @@ $k_xd=0.55$; (d) linewidth for five mobilities.}
 
 \Cref{fig:fig03} separates the two geometric families, which scale differently
 and must not be plotted on a common axis.  Plate thickness is the dominant
-scale: between \SI{120}{\nano\metre} and \SI{320}{\nano\metre} the branch moves
-from \SI{30.4}{\giga\hertz} to \SI{10.5}{\giga\hertz} and the relative change is
-of order unity for every wavenumber (panels a and c).  The gradient length is a
+scale: across the family between \SI{120}{\nano\metre} and \SI{320}{\nano\metre}
+the branch lies between \SI{10.5}{\giga\hertz} and \SI{30.4}{\giga\hertz}, and
+the relative change is of order unity for every wavenumber (panels a and c).  The gradient length is a
 weak perturbation of the same branch (panels b and d): relative to
 $\ell=\SI{50}{\nano\metre}$, a change to $\ell=\SI{90}{\nano\metre}$ shifts the
-frequency by \SI{+2.0}{\percent} at $k_xd=0.15$ and by \SI{+10.2}{\percent} at
-$k_xd=1.05$, while $\ell=\SI{35}{\nano\metre}$ shifts it by \SI{-1.9}{\percent}
+frequency by \SI{+2.0}{\percent} at $k_xd=0.145$ and by \SI{+10.2}{\percent} at
+$k_xd=1.00$, while $\ell=\SI{35}{\nano\metre}$ shifts it by \SI{-1.9}{\percent}
 and \SI{-4.9}{\percent} at the same two points.  The sign of the effect changes
 with $\ell$ across the reference value, which is why the panel is plotted as a
 relative change and not as an absolute frequency.
@@ -269,12 +278,16 @@ the energy angles are $-13.9^{\circ}$ and $-27.9^{\circ}$, so the measured $x$
 flux is \SI{97.1}{\percent} and \SI{88.4}{\percent} of the total modal flux
 respectively.  Neither value is an artefact of a near-grazing mode.
 
-One sensitivity sets the precision of the printed digits.  The spatial problem
-is solved at the real part of the tracked frequency, and on a flat branch that
-map is ill-conditioned: a relative change of $1.8\times10^{-12}$ in the
-frequency moves $R_B$ by $5.6\times10^{-6}$.  The maximum is therefore
-reproducible to about $\pm6\times10^{-6}$ ($\pm0.0006$ percentage point) even
-though the Galerkin and quadrature errors are two to three orders smaller.
+The precision of the printed digits is set by the spreads of
+\cref{tab:refinement}, not by the location of the top.  At a fixed
+configuration the share is reproducible to better than $10^{-8}$ relative: the
+degree-22 value changes by $6.2\times10^{-9}$ between degrees 14 and 34, the
+quadrature rule changes it by $4.3\times10^{-10}$, and the three tracking paths
+that reach $k_xd=0.5275$ from below, from above and in a single step return the
+identical number.  The difference between the located argmax and the reported
+sample, $1.4\times10^{-7}$, is three orders of magnitude smaller than the
+\SI{0.01}{} percentage point over which the top is flat, so the two are
+separated by the search record and not by the last printed figure.
 Beyond that, the incident wavenumber returned by the spatial problem is
 $k_{ix}d=0.52824$, not the branch parameter $k_xd=0.5275$: on a flat branch the
 two differ by \SI{0.14}{\percent} at the maximum.  Both are tabulated and no
@@ -297,8 +310,8 @@ extremum, with its largest sample at $k_xd=0.527$.  A plateau raster of
 $\Delta k_xd=10^{-4}$ over $0.5265\le k_xd\le0.5285$, and a refined raster of
 $\Delta k_xd=10^{-5}$ over $0.5272\le k_xd\le0.5278$, place the maximum at
 $k_xd=0.52752$ with $R_B=0.9467954$; the value at the reported wavenumber
-$k_xd=0.5275$ is $R_B=0.9467952$, $1.4\times10^{-7}$ lower, which is below the
-reproducibility of the frequency map.  Every sampled wavenumber in
+$k_xd=0.5275$ is $R_B=0.9467952$, $1.4\times10^{-7}$ lower --- a difference
+between two abscissae, not between two runs.  Every sampled wavenumber in
 $0.5266\le k_xd\le0.5277$ lies within \SI{0.01}{} percentage point of the
 maximum and every sampled wavenumber in $0.5265\le k_xd\le0.5281$ within
 \SI{0.1}{} percentage point, so the response has a flat top rather than a sharp
@@ -418,14 +431,19 @@ scaled edge residual & $\le3\times10^{-15}$ & $\le3\times10^{-15}$ & $\le3\times
 reference plane.  At $H=0$ the incident power normalised to unity is partitioned
 as follows: the identified backward channel carries $2.3146\times10^{-2}$, the
 remaining propagating outgoing modes carry $0.976651$, dissipation removes
-$1.985\times10^{-4}$, and the interference term is $-4.169\times10^{-6}$.  As
-rounded, these four numbers close to $1.4\times10^{-6}$; evaluated at full
-precision the identity closes to $1.9\times10^{-17}$, and the computed power balance to $6.6\times10^{-13}$, six orders of magnitude below the $10^{-6}$
-threshold plotted in panel (c).  At the maximum the partition is
-$0.946795$ in the backward channel, $5.089\times10^{-2}$ in the remaining
-propagating modes, $2.32\times10^{-5}$ dissipated and $-2.29\times10^{-3}$ in
-the interference term, which sums to $0.99769$ against an incident power of
-unity; the same identity closes to $3.0\times10^{-13}$.
+$1.985\times10^{-4}$, and the interference term is $-4.169\times10^{-6}$.  The
+first two sum to $0.999797$, the total outgoing propagating power; adding the
+dissipation and the interference correction leaves $0.9999917$, short of unity by
+$8.3\times10^{-6}$, which is twice the interference term, because the outgoing
+shares are quoted as magnitudes while the interference term is signed.  The
+identity itself closes to $3.4\times10^{-16}$ relative --- the stored residual of
+the budget --- and the computed power balance to $7.3\times10^{-13}$, six orders
+of magnitude below the $10^{-6}$ threshold plotted in panel (c).  At the maximum
+the backward channel carries $0.946795$ and the remaining propagating modes
+$5.089\times10^{-2}$, which together account for $0.99769$ of the incident
+power; dissipation removes $2.32\times10^{-5}$ and the interference term is
+$-2.29\times10^{-3}$.  The same power balance closes there to
+$3.2\times10^{-13}$.
 
 The evanescent spectrum does not belong to the transported budget.  At the
 reference plane the entire evanescent content has decayed by a factor
@@ -569,18 +587,21 @@ the picture; it does not create it.
 \label{sec:results_attenuation}
 
 \Cref{fig:fig06} follows the two channels away from the edge.  The backward
-coefficient decays with the observation distance (panel a) as
-$\exp(-\alpha_B\ell)$ with $\alpha_B=2|\Imag k_{Bx}|$, and the incident power
+coefficient decays with the observation distance $L$ (panel a) as
+$\exp(-\alpha_B L)$ with $\alpha_B=2|\Imag k_{Bx}|$, and the incident power
 arriving at the edge obeys a survival factor normalised to its edge value, which
 therefore cannot exceed unity (panel b); the minimum over the solved range is
-$0.0356$ at $\ell=\SI{1000}{\micro\metre}$.  The normalisation is to the edge
-value, so the survival factor is bounded by unity by construction.
+$0.0356$ at $L=\SI{1000}{\micro\metre}$, a millimetre from the edge.  The
+normalisation is to the edge value, so the survival factor is bounded by unity
+by construction.
 
 Panels (c) and (d) give the attenuation length and the loss coefficient against
 the coupling.  Both are obtained from the complex spatial roots,
 $\alpha=2|\Imag k_x|$, and neither is derived from a real square root.  The
 attenuation length is largest at $H=0$ ($\approx\SI{18}{\milli\metre}$) and
-falls by a factor of three at the extremes of the coupling range, and the loss
+falls by more than an order of magnitude at either extreme of the coupling
+range --- to \SI{0.54}{\milli\metre} at $H/H^{*}=-0.05$ and to
+\SI{0.30}{\milli\metre} at $+0.05$ --- and the loss
 coefficient follows the same pattern with a minimum of
 \SI{0.47}{\deci\bel\per\milli\metre} at $H=0$ and a maximum of
 \SI{29}{\deci\bel\per\milli\metre} at $H/H^{*}=+0.05$; the corresponding
@@ -599,8 +620,9 @@ the opposite of what one might expect from the magnitude of the term
 \caption{Distance, survival and attenuation.  (a) Backward channel against the
 distance from the edge, isolated-channel convention; (b) incident power arriving
 at the edge, normalised to its edge value, with the unitary limit marked;
-(c) attenuation length $L$ and (d) loss coefficient $\alpha$, both from the
-solved complex spatial roots, against $H/H^{*}$.}
+(c) attenuation length and (d) loss coefficient $\alpha_i$ (incident) and
+$\alpha_B$ (backward), both from the solved complex spatial roots, against
+$H/H^{*}$.}
 \label{fig:fig06}
 \end{figure}
 
@@ -690,10 +712,11 @@ $3\times10^{-6}$ at $n=14$ to $10^{-7}$ at $n=26$, while the wavenumber error
 stays at the $10^{-12}$ round-off floor over the whole range, so the channel
 error is still decreasing at the highest degree used for production.  Panel (c)
 shows the scaled edge residual and the relative energy-balance error for every
-degree: the residual stays at $3\times10^{-15}$ and the energy-balance error
-between $2\times10^{-13}$ and $1\times10^{-12}$, six to seven orders below the
-$10^{-8}$ tolerance and two to three orders below the $10^{-10}$ tolerance drawn
-in the panel.  Panel (d) compares the temporal and spatial routes for the same
+degree: the residual stays at $3\times10^{-15}$, six to seven orders below the
+$10^{-8}$ tolerance drawn in the panel, and the energy-balance error stays
+between $2\times10^{-15}$ and $4\times10^{-12}$, one to five orders below the
+$10^{-10}$ line.  Both are round-off in a relative measure, and the panel is
+there to show that neither drifts with the degree.  Panel (d) compares the temporal and spatial routes for the same
 dispersion relation across the box; they agree to $2\times10^{-5}$.
 
 The last panel is a check on the implementation, not a physical validation.  The
@@ -731,12 +754,14 @@ leaves it at $-27.9^{\circ}$, both measured from the thickness-integrated
 Poynting flux.
 
 Panel (c) is a schematic, but its arrows are not drawn by hand: they are the
-solved directions, $\vect{k}_i\propto(1,0.176)$, $\vect{k}_B\propto(0.333,-0.530)$,
-$\vect{P}_i\propto(1,0.176)$ and $\vect{P}_B\propto(-1,-0.530)$, taken from the
-computed flux of the incident and backward modes.  The last of these is the
-geometric content of the word ``negative'': the backward mode carries energy in
-$-x$ and in $-y$ simultaneously, so its energy transport is opposite in both
-components to that of the incident wave.  Panel (d) shows the two components of
+solved directions.  The two wavenumbers point into the plate,
+$\vect{k}_i\propto(1,0.176)$ and $\vect{k}_B\propto(1,0.529)$, because $k_y$ is
+positive and both axial wavenumbers are real and positive.  The incident flux
+follows its wavenumber, $\vect{P}_i\propto(1,0.176)$, whereas the backward flux
+is $\vect{P}_B\propto(-1,-0.529)$: the backward mode carries energy in $-x$ and
+in $-y$ simultaneously, so its energy transport is opposite in both components
+to its own phase direction, and the two flux arrows are the geometric content of
+the word ``negative''.  Panel (d) shows the two components of
 the backward flux against $k_yd$; both are negative throughout the box, and both
 tend to a common small value as $k_yd\to0.2$.
 

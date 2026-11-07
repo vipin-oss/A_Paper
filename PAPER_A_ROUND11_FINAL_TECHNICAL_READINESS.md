@@ -29,7 +29,7 @@ environment. No PDF is included and none is claimed.
 |---|---|
 | The delivered data regenerate from an empty directory | `PAPER_A_ROUND11_NUMERICAL_REPRODUCIBILITY.md` §1–2: every plotted column reproduces to ≤ 4 × 10⁻⁶ relative, the dispersion frequency bit for bit |
 | The battery passes on that regenerated data, nothing restored | 18 PASS / 0 FAIL / 1 SKIP, `OVERALL: PASS`, `validation/round11_battery_run_clean_reproduction.log` |
-| The headline is stable across runs | 0.9467953685099261 → 0.9467952305821763 ($1.5\times10^{-7}$), same classification, same $k_xd=0.52752$ |
+| The headline is stable across runs | at the same configuration, 0.9467953685099261 → 0.9467953677961777 at $k_xd=0.52752$ ($7.5\times10^{-10}$ relative) and 0.9467952306769204 → 0.9467952305821763 at $k_xd=0.5275$ ($1.0\times10^{-10}$); same classification. (Corrected in round 12: the row previously paired the argmax value of one run with the reported-sample value of the other and called the $1.5\times10^{-7}$ between them jitter. It is the offset between two abscissae.) |
 | The refinement bounds are real bounds | degree spreads 5.61e−9 and 6.22e−9 against a registered bound of 1e−8; quadrature 4.32e−10; mutant M13 fails when a spread exceeds its bound |
 | The manuscript and the records agree | 23 claims, 46 tokens, 11 of 11 source-agreement rows, 5 deprecated values still guarded |
 | The figures say what they plot | 8 label/graphic defects repaired, panel map generated from the code, 8 provenance tests, 15 mutants caught |
