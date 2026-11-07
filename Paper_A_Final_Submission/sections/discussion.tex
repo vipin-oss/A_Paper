@@ -137,7 +137,21 @@ for a flexoelectric semiconductor from the free-energy imbalance with the
 Coleman--Noll procedure, and who obtain the drift--diffusion current, the
 flexoelectric and piezoelectric couplings and the higher-order stress in one
 framework.  The primary article is closed access and no repository or preprint
-copy is indexed, so its equations could not be inspected directly.  Its
+copy is indexed, so its equations could not be inspected directly.  What the
+publisher's record does establish, and what is enough to rule out a priority
+claim here, is that the interaction between strain gradient and electric current
+in flexoelectric semiconductors \emph{is} the subject of that article: its
+abstract states a continuum theory obtained from mass, charge, momentum and
+angular-momentum balance with the thermodynamic laws, constitutive equations from
+the dissipation inequality by the Coleman--Noll procedure that include
+piezoelectric, flexoelectric, thermoelectric and drift--diffusion couplings, a
+principle of virtual work for the strain-gradient semiconducting continuum, and
+its geometric linearisation for small carrier perturbations.  A
+carrier--strain-gradient coupling of the class used here is therefore
+\emph{not} new to that framework, and none is claimed to be.  Whether the
+specific third-order enthalpy term written here coincides with a term of that
+article cannot be settled without its equations; the comparison below is made
+against the equations that were inspected.  Its
 free-energy
 decomposition is, however, reproduced explicitly, with attribution, in the
 open-access computational paper of Hu et al.\ \cite{hu2025computational}
@@ -195,7 +209,7 @@ the electron gas; the term $\Delta n\,H_{jkl}\varepsilon_{jk,l}$ with its
 reciprocal partners in $\sigma_{ij}$ and $\widetilde\mu$ is written here as the
 minimal extension that closes the enthalpy, and the paper establishes as much
 about what it does not do as about what it does: it moves the partition by
-\SI{1.21}{\percent} at the operating point, \SI{9.85}{\percent} at
+\SI{1.21}{\percent} at the operating point, \SI{10.17}{\percent} at
 $k_xd=0.55$ and \SI{36.1}{\percent} at the maximum, all at $|H|=0.05H^{*}$, and
 it is not the origin of the backward branch.  No priority claim is made for it.
 The comparison is made against the equations that could be inspected, and the
@@ -261,27 +275,36 @@ infinite in $y$, semi-infinite in $x$, with three displacement components on the
 $(x,z)$ cross-section.  It has one edge and not two, and it does not resolve the
 three-dimensional corner where the edge meets the free surfaces.  A finite
 plate, a second edge, and the interference between them are outside the model.
-\item \emph{The corner.}  Corner effects were assessed rather than assumed, in
-the only way this formulation allows: the strain-gradient energy density on the
-edge plane was computed from the coherent sum of the incident mode and all
-outgoing modes, and its concentration in the outer band $|z|>0.4\,d/2$ was
-followed through the degree refinement.  At the operating point the band carries
-$0.93$--$1.00$~\% of that energy, at the maximum $1.22$--$1.30$~\% and at
-$k_xd=0.55$ $1.18$--$1.26$~\%, its peak-to-mean ratio inside the band is
-$0.098$--$0.102$, $0.126$--$0.130$ and $0.122$--$0.126$ (below the mean), and its
-share \emph{decreases} by \SI{6.8}{}, \SI{6.6}{} and \SI{6.6}{}~\% between degree
-18 and degree 30 instead of growing.  A corner singularity would show the
-opposite trend, so the reported partitions (degree spread $7.2\times10^{-7}$ and
-$1.5\times10^{-7}$) are not supported by a corner energy reservoir.  That is
-evidence about the energy and not a proof that the corner line force is
-dynamically negligible: a small band fraction bounds the energy near the corner
-in the computed field, but it does not bound the work a singular corner traction
-could do on the admissible variations, because the polynomial basis cannot
-represent that singularity in the first place.  The global partitions are
-insensitive to the corner at the level shown; the pointwise corner field and the
-line force associated with it remain unresolved, and settling them would need a
-corner-eigenvalue analysis of the higher-order edge problem or corner-enriched
-trial functions, neither of which is attempted here.
+\item \emph{The corner.}  The corner line force \eqref{eq:corner_force} is a
+natural datum that the polynomial basis cannot annihilate pointwise, so it is
+measured instead of assumed, on the coherent sum of the incident mode and every
+outgoing mode.  Relative to the incident mode's own corner scale it is
+$8.4\times10^{-2}$ at the operating point, $3.3\times10^{-3}$ at the corrected
+maximum and $3.8\times10^{-2}$ at $k_xd=0.55$, all at the lowest degree tested
+(10), and it falls to $4.5\times10^{-2}$, $1.7\times10^{-3}$ and
+$2.0\times10^{-2}$ at degree 28.  Over that range it follows one algebraic law in
+each configuration, $3.5\times10^{-1}n^{-0.62}$,
+$1.4\times10^{-2}n^{-0.63}$ and $1.6\times10^{-1}n^{-0.63}$: the same exponent to
+$0.014$ in three independent configurations, which is the signature of an
+unresolved corner singularity of the continuum solution rather than of a
+quadrature or coding artefact, and it is unchanged to six digits when the
+quadrature rule is varied from 96 to 192 nodes.  Two things are therefore
+established and one is not.  Established: the line force decays towards zero
+algebraically and is bounded by the numbers above over the whole tested range;
+and it is not load-bearing, because the reported partition at the maximum moves
+by $3.9\times10^{-6}$ between degrees 10 and 28, while the line force itself
+halves over the same range and the energy identity closes to $10^{-12}$.  Not
+established: that the force vanishes, or that the exponent is $0.62$ as opposed
+to a nearby value; a proof would need the local corner eigenvalue problem of the
+second-gradient operator with the flexoelectric and carrier couplings.  The
+closure claimed here is therefore a \emph{bounded} one, not a full one, and the
+scattering result does not rest on it.  The same measurements settle what the
+earlier band-energy argument could not: the strain-gradient energy in the outer
+band $|z|>0.4\,d/2$ is $0.93$--$1.00$~\% of the total at the operating point,
+$1.22$--$1.30$~\% at the maximum and $1.18$--$1.26$~\% at $k_xd=0.55$, and its
+share decreases with degree, but the band average of the mixed hyperstress
+exceeds the pointwise corner value by factors of five to ten, so no band average
+is used here to argue the corner datum away.
 \item \emph{The carrier model and the electrical condition.}  The carrier
 physics is linearised about a uniform doping and zero bias, so the nonlinear
 drift--diffusion regime, in which the perturbation is not small compared with

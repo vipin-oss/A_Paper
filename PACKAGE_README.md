@@ -1,4 +1,4 @@
-# Paper A — review package (round 20)
+# Paper A — review package (round 21, submission candidate)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,8 +11,20 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 20 is an
-**independent audit of the boundary physics**, prompted by two submitted discrepancies: (i) the
+**Read first.** `START_HERE.txt` gives the reading order. Round 21 is the **submission-candidate
+round**: it resolves the two items that round 20 left open. The generalised traction, the double
+traction and the corner line force are now *derived* and then *verified* against the discrete flux rows
+the solver imposes, mode by mode, on the complete incident+reflected field: the identity closes to
+`1.4e-13` for the incident guided mode at every degree from 10 to 28 and every quadrature rule tested,
+and fails at `1.7e+1` if the corner line force is dropped — so the corner force is load-bearing, and it
+is now measured rather than assumed (`8.4e-2` of the incident corner scale at the operating point,
+`3.3e-3` at the corrected maximum, decaying as `n^-0.62` with the same exponent in three independent
+configurations, unchanged to six digits under quadrature refinement, and not load-bearing in any
+reported number: the partition moves by `3.9e-6` while the corner force halves). The closure is
+**bounded**, not full: the exponent is measured, not proved. The manuscript's surface-divergence index
+was also wrong (`tau_ixj` instead of `tau_ijx`) and is corrected, and a stale coupling figure
+(`9.85 %` at `k_x d = 0.55`, actually `10.17 %`) has been fixed in two places. Round 20's audit of the
+boundary physics remains below, unchanged. It was prompted by two submitted discrepancies: (i) the
 reflecting edge is described with face-normal quantities in Appendix A.4 although the edge normal is
 `x`, and (ii) the electrical row of the delivered edge operator was `phi(0,z) = 0` — a grounded,
 metallised edge — while the manuscript states the charge-free condition `D_x = 0`. The second is an

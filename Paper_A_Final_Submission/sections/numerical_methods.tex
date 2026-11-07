@@ -393,7 +393,7 @@ and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
 \subsection{Consistency and independent checks}
 \label{sec:numerics_verification}
 
-The implementation is checked in five independent ways, each of which compares
+The implementation is checked in six independent ways, each of which compares
 a computed quantity with a closed-form or independently discretised one.
 
 \begin{enumerate}
@@ -417,6 +417,24 @@ problem.
 Gauss, carrier-continuity, traction, double-traction and blocking residuals are
 below $10^{-8}$ in the normalised measure reported in
 \cref{fig:fig09}(c), and the scaled edge residual is below $10^{-12}$.
+\item \emph{Natural boundary data, derived against discrete.}  The traction,
+double traction and corner line force of
+\eqref{eq:generalised_traction}--\eqref{eq:corner_force} are evaluated from the
+physical fields and compared, mode by mode, with the canonical flux rows that
+the solver actually imposes.  The comparison is stated in
+\eqref{eq:corner_identity}; it closes to $1.4\times10^{-13}$ for the incident
+guided mode at every degree from 10 to 28 and every quadrature rule tested, and
+it is the check that fixes the index placement and the sign of the corner term
+rather than accepting them from the derivation.  What the same comparison shows
+about the pointwise natural conditions --- which a Galerkin statement imposes
+only weakly --- is reported in \cref{sec:disc_limitations}: the double traction
+is annihilated pointwise to $10^{-12}$, whereas the traction leaves an interior
+residual of $9.4\times10^{-4}$ of the incident scale at the corrected maximum
+(larger, $3.6\times10^{-2}$, at the operating point) that does not decrease
+further with degree, and the corner line force stands at $1.7\times10^{-3}$ there
+and decays only algebraically.  Those residuals are properties of the
+weak solution, not of the implementation, and they are quoted rather than
+suppressed.
 \end{enumerate}
 
 The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which

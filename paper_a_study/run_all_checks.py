@@ -26,7 +26,11 @@ The battery is:
 15. unit and scientific tests      (test_model; needs the records above)
 16. claim registry and stale guard (claim_audit)
 17. gate mutation tests            (mutation_tests, fifteen deliberate defects)
-18. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
+18. natural boundary data identity (round21_gate1_traction: traction+corner, double)
+19. corner line force gate          (round21_gate_corner: three configurations)
+19b. insulating edge default audit   (round21_edge_default_audit: Gate 3)
+20. round-21 regression tests       (round21_tests: repaired physics only)
+21. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
 
 TeX/BibTeX compilation is attempted only if an engine is present; otherwise the
 log records explicitly that no engine was found.
@@ -137,6 +141,14 @@ def main() -> int:
     # (round-11 finding D27).
     run("unit and scientific tests",
         [PY, "-m", "unittest", "paper_a_study.test_model"], ROOT, 1800)
+    run("natural boundary data identity",
+        [PY, "paper_a_study/round21_gate1_traction.py"], ROOT, 1800)
+    run("corner line force gate",
+        [PY, "paper_a_study/round21_gate_corner.py"], ROOT, 1800)
+    run("insulating edge default audit",
+        [PY, "paper_a_study/round21_edge_default_audit.py"], ROOT, 300)
+    run("round-21 regression tests",
+        [PY, "-m", "unittest", "paper_a_study.round21_tests"], ROOT, 900)
     run("claim registry and stale guard", [PY, "paper_a_study/claim_audit.py"], ROOT, 300)
     run("gate mutation tests", [PY, "paper_a_study/mutation_tests.py"], ROOT, 900)
     run("LaTeX static validation",

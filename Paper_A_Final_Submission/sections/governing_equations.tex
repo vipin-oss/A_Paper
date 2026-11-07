@@ -608,12 +608,29 @@ the field it is conjugate to,
 \label{eq:bc_edge}
 \bar\sigma_{ix}=0,\qquad \tau_{ijx}=0,\qquad D_x=0,\qquad J_x=0,\qquad x=0 ,
 \end{equation}
-where $\bar\sigma_{ix}=\sigma_{ix}-\partial_k\tau_{ixk}
--\partial_j^{s}\tau_{ixj}$ is the generalised traction, the divergence of the
-hyperstress and its surface divergence along the face entering with the elastic
-stress.  The traction is a condition on that combination and not on $\sigma_{ix}$
-alone, and it is imposed through the surface term of the weak form of
-\cref{sec:numerics}.  The second entry is the double traction, conjugate to the
+where
+\begin{equation}
+\label{eq:generalised_traction}
+\bar\sigma_{ix}=\underbrace{\sigma_{ix}-\partial_k\tau_{ixk}}_{\Sigma_{ix}}
+-\partial_j^{s}\tau_{ijx},\qquad j=y,z,
+\end{equation}
+is the generalised traction, the divergence of the hyperstress and its surface
+divergence along the face entering with the elastic stress.  Two index points in
+\eqref{eq:generalised_traction} are not free choices and are easy to get wrong.
+The free index is the first index of the hyperstress, because the two integrations
+by parts of \eqref{eq:ibp_hyper}, after the $(i,j)$ symmetry is used to move both
+variations onto the same factor, leave $\delta u_i$ multiplying
+$\partial_j^{s}(n_k\tau_{ijk})$: the free index comes first, the
+surface-divergence index second; and the \emph{gradient} index of that surface
+term is the face normal $x$, not the surface-divergence direction, so the term is
+$\partial_j^s\tau_{ijx}$ and not $\partial_j^s\tau_{ixj}$.  With $n=e_x$ and a
+tangential wavenumber $k_y$,
+\eqref{eq:generalised_traction} reads
+$\bar\sigma_{jx}=\Sigma_{jx}-\ii k_y\tau_{jyx}-\partial_z\tau_{jzx}$.
+The traction is a condition on that combination and not on $\sigma_{ix}$ alone,
+and it is imposed through the surface term of the weak form of
+\cref{sec:numerics}; \cref{sec:disc_limitations} reports how closely the computed
+solution meets it pointwise.  The second entry is the double traction, conjugate to the
 normal derivative of the displacement on the edge; it is vacuous only when
 $\tau_{ijx}$ vanishes identically.  In this model
 $\tau_{ijx}=\ell^{2}c_{ijkl}\eta_{klx}$: both gradient couplings act on the
@@ -629,16 +646,42 @@ face of \eqref{eq:bc_grounded}, where the potential is essential.
 plus outgoing branches; no wave arrives from $x=-\infty$ other than the
 prescribed incident one.
 
-\paragraph{The corner.}  Where the edge meets a face the traction and double
-traction conditions are not independent: the classical Mindlin decomposition
-produces a line force along the corner whose density is
-$n_z\tau_{ijz}|_{x=0}$ evaluated on the limit of the face conditions.  That line
-force is a weak singularity of the discretisation and is \emph{not} resolved
-pointwise here; the weak form is imposed exactly at the corners, the line force is non-zero
-there ($>10^{-4}$), and \cref{sec:disc_limitations} shows that the reported
-partitions do not rest on the energy it contains.  The geometry solved is
-therefore a plate with a straight edge and a corner field that is not
-resolved.
+\paragraph{The corner.}  Where the edge meets a face, the surface divergence of
+\eqref{eq:generalised_traction} itself has a boundary, and the same integration by
+parts that produced the traction produces a line force along the corner.  With
+$\nu$ the co-normal of the edge boundary inside the face, its density per unit
+length is
+\begin{equation}
+\label{eq:corner_force}
+f_i=\nu_j\,n_k\,\tau_{jik}
+\end{equation}
+summed over the two free faces that meet along the corner.  For this geometry the
+two contributions are the mixed normal--tangential components $\tau_{i31}$
+(gradient along the edge normal, pair carrying the surface co-normal) and
+$\tau_{i13}$ (the transpose pair), so
+$f_i=\tau_{i31}+\tau_{i13}$; the relative sign follows from the outward
+orientations of the two faces and is not assumed here --- it is fixed, together
+with \eqref{eq:generalised_traction} and the double traction $m_i=\tau_{i11}$, by
+the identity
+\begin{equation}
+\label{eq:corner_identity}
+\bigl\langle T_{\!u}-t\bigr\rangle
+=f_+\,b_0(+\tfrac12)-f_-\,b_0(-\tfrac12),
+\qquad
+\bigl\langle R-m\bigr\rangle=0 ,
+\end{equation}
+between the derived fields and the discrete flux rows $T_{\!u}$, $R$ of the
+canonical state, with $\langle\cdot\rangle$ the projection on the displacement
+test basis $b_0$.  Equation \eqref{eq:corner_identity} is satisfied to
+$1.4\times10^{-13}$ relative for the incident guided mode at every degree from 10
+to 28 and every quadrature rule tested, and is violated at the level of
+$1.7\times10^{1}$ if the corner terms are dropped, at $5.7\times10^{-1}$ if only
+$\tau_{i31}$ is kept, and at $1.1\times10^{0}$ if the two are subtracted instead
+of added.  The corner line force is therefore a load-bearing part of the natural
+data, not a bookkeeping artefact, and it is the one natural datum that a
+polynomial Galerkin basis cannot annihilate pointwise.  Its magnitude, its decay
+and its irrelevance to the reported partitions are quantified in
+\cref{sec:disc_limitations}.
 
 
 The power flowing in the $x$ direction, per unit width and integrated over the
