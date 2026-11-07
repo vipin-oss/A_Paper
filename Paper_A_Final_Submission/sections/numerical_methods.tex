@@ -68,10 +68,12 @@ twice vanish on the free, double-traction-free faces
 \begin{equation}
 \label{eq:weak_gauss}
 -\int_{-1}^{1}\widehat D_i\,\widehat E_i^{*}(\psi)\,\dd\zeta
--\int_{-1}^{1}\widehat N\,\psi^{*}\,\dd\zeta=0 ,
+-Q\int_{-1}^{1}\widehat N\,\psi^{*}\,\dd\zeta=0 ,
 \end{equation}
-with the trial $\widehat D$ from \eqref{eq:D} and $\widehat N$ the dimensionless
-carrier amplitude.  The second integral is the mobile charge of \eqref{eq:gauss};
+with the trial $\widehat D$ from \eqref{eq:D}, $\widehat N$ the dimensionless
+carrier amplitude and $Q=d/L_D$ the dimensionless charge of \cref{tab:groups}
+that the scaling of \cref{sec:governing_nondim} puts in front of $-q\Delta n$.
+The second integral is the mobile charge of \eqref{eq:gauss};
 without it \eqref{eq:weak_gauss} would be the statement for a dielectric rather
 than Gauss's law.  The grounded condition is essential and is built into the
 potential space; the open-circuit condition $D_z=0$ is the natural boundary term
@@ -81,13 +83,19 @@ of \eqref{eq:weak_gauss} and is imposed through it.
 \begin{equation}
 \label{eq:weak_carrier}
 \int_{-1}^{1}\Bigl[\widehat N\,\Phi^{*}
--\frac{\ii\alpha_{\mathrm d}}{\omega}\,\partial_i\widetilde\mu\,\partial_i\Phi^{*}\Bigr]\dd\zeta=0 ,
++\frac{\ii\alpha_{\mathrm d}}{\omega}\,\partial_i\widetilde\mu\,\partial_i\Phi^{*}\Bigr]\dd\zeta=0 ,
 \end{equation}
 where $\widehat N=\widetilde\mu+Q\widehat\varphi$ is the carrier amplitude that
-\eqref{eq:continuity} delivers.  Equation \eqref{eq:weak_carrier} is the
-time-harmonic continuity equation multiplied by $\ii/\omega$, so it is equivalent
-to $-\ii\omega\widehat N-\alpha_{\mathrm d}\,\partial_i\partial_i\widetilde\mu=0$, and the
-blocking condition $J_z=0$ is its natural boundary term.  It is a transport
+\eqref{eq:continuity} delivers.  Both signs are fixed by the time convention
+$\partial_t\to-\ii\omega$: multiplying
+$-\ii\omega\widehat N-\alpha_{\mathrm d}\,\partial_i\partial_i\widetilde\mu=0$
+by $\ii/\omega$ and using $\ii(-\ii)=1$ gives
+$\widehat N-(\ii\alpha_{\mathrm d}/\omega)\partial_i\partial_i\widetilde\mu=0$,
+and one integration by parts moves the gradient term to the plus displayed
+above, the boundary term
+$(\ii\alpha_{\mathrm d}/\omega)\partial_z\widetilde\mu\,\Phi^{*}$ vanishing with
+the blocking condition $J_z=0$, which is therefore natural for
+\eqref{eq:weak_carrier}.  It is a transport
 equation, not a statement about the enthalpy: the enthalpy reaches it only through
 $\widetilde\mu$, which is why the coupling also appears in \eqref{eq:weak_mech},
 through $\widehat\tau$.
@@ -129,8 +137,10 @@ piezoelectric (two cross terms), dielectric, flexoelectric, carrier-transport,
 carrier-compressibility-and-coupling, and inertial contributions.  The first,
 second, third, fifth and sixth lines of \eqref{eq:block} are the discretisation of
 \eqref{eq:weak_mech}; the third and fourth supply the piezoelectric cross terms
-that \eqref{eq:weak_gauss} needs; the seventh is \eqref{eq:weak_carrier}; the
-eighth is the compressibility and the added coupling, which appear in the carrier
+that \eqref{eq:weak_gauss} needs; the seventh is \eqref{eq:weak_carrier}, whose
+transport term enters with the opposite sign because each block is minus the
+residual of the weak equation rather than the equation itself;
+the eighth is the compressibility and the added coupling, which appear in the carrier
 rows and, through $\widehat\tau$, in the mechanical rows as well.  Equation
 \eqref{eq:block} is the construction: each block is one quadrature of the listed
 integrands against the Legendre basis, so the entries can be regenerated from the

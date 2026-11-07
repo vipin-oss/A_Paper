@@ -299,11 +299,13 @@ the minus sign being the charge of the electron, and variation with respect to
 $\Delta n$ gives the carrier continuity equation in electrochemical form,
 \begin{equation}
 \label{eq:continuity}
-q\,\partial_t(\Delta n)+\partial_iJ_i=0,
+\partial_t(\Delta n)+\partial_iJ_i=0,
 \qquad
 J_i=-\frac{D\,n_0}{k_BT}\,\partial_i\widetilde\mu ,
 \end{equation}
-where $J_i$ is the electron \emph{number} flux and $D$ the diffusivity.  The
+where $J_i$ is the electron \emph{number} flux and $D$ the diffusivity; the
+charge balance follows from \eqref{eq:continuity} by multiplying by $-q$, which
+turns $J_i$ into the current \eqref{eq:current}.  The
 transport coefficient of \eqref{eq:continuity} follows from the Einstein
 relation: with $\mu_e$ the mobility, $D=\mu_ek_BT/q$, so that
 $Dn_0/k_BT=\mu_en_0/q$ and \eqref{eq:continuity} carries exactly the
@@ -530,7 +532,7 @@ $z$ derivative acting on the amplitude.  Two representative entries are
 and the electric field is $\widehat E_x=-\ii k_x\widehat\varphi$,
 $\widehat E_z=-\widehat\varphi'$.  The continuity equation
 \eqref{eq:continuity} reduces to the algebraic statement
-$-\ii\omega q\widehat N+\partial_i\widehat J_i=0$, so the carrier amplitude is
+$-\ii\omega\widehat N+\partial_i\widehat J_i=0$, so the carrier amplitude is
 carried by the same amplitude vector as the displacements rather than by an
 independent time evolution.
 
@@ -569,7 +571,10 @@ strain-gradient energy, not the carrier physics.
 
 The calculation uses lengths scaled by $d$, stresses by $c_{44}$, time by
 $d/c_s$ with $c_s=\sqrt{c_{44}/\rho}$, carrier densities by $n_0$ and energies
-per carrier by $k_BT$.  Two derived scales appear repeatedly,
+per carrier by $k_BT$.  The carrier amplitude of \eqref{eq:continuity} is
+measured so that the compressibility term of \eqref{eq:enthalpy} is
+$\tfrac12\int\widehat N^{2}$ in the scaled units used by \eqref{eq:block}, which
+is what fixes the coefficient of $\widehat N^{2}$ there.  Two derived scales appear repeatedly,
 \begin{equation}
 \label{eq:a_scale}
 a=\frac{k_BT}{n_0},\qquad L_D=\sqrt{\frac{\kappa_{33}k_BT}{q^2n_0}},
