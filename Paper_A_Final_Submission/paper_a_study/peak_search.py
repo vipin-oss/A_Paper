@@ -186,11 +186,15 @@ def main() -> int:
         spreads[f"{K0:.5f}"] = float((vals.max() - vals.min()) / vals.mean())
     out["degree_spread"] = spreads
 
+    # The quadrature spread must isolate the quadrature order: one degree, four
+    # rules.  Round 10 pooled degrees 22 and 30 into a single "quadrature"
+    # spread, which mixed degree error into a quantity named for the rule
+    # (round-11 defect D8).  The degree-30 rows are still written out.
     quad_rows = []
     for d, nq in ((22, 64), (22, 128), (22, 192), (22, 256), (30, 64), (30, 256)):
         quad_rows += solve(d, [K_REPORTED], nquad=nq)
     out["quadrature"] = quad_rows
-    qv = np.array([r["R_B"] for r in quad_rows])
+    qv = np.array([r["R_B"] for r in quad_rows if r["degree"] == 22])
     out["quadrature_spread"] = float((qv.max() - qv.min()) / qv.mean())
 
     # tracking-path sensitivity: reach K_REPORTED from below and from above

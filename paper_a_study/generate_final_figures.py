@@ -169,8 +169,8 @@ def fig01():
     ins.set_xlabel(r"$k_x d$", fontsize=7.0, labelpad=1)
     ins.set_ylabel(r"$\Delta f$ (kHz)", fontsize=7.0, labelpad=1)
     ins.tick_params(labelsize=6.4, length=2, pad=1.2)
-    ins.set_ylim(-150, 150)
-    ins.set_yticks([-100, 0, 100])
+    ins.set_ylim(-200, 215)
+    ins.set_yticks([-150, 0, 150])
     ins.grid(True, alpha=0.45, linewidth=0.4)
     ins.set_title(r"$\Delta f=f(H)-f(0)$", fontsize=6.9, pad=2.2)
 
@@ -264,19 +264,22 @@ def fig02():
     logify(b, "y")
     S.style_axes(b)
 
-    # (c) the quantity that matters: the backward reflectance itself
+    # (c) the quantity that matters: the backward modal share at the
+    # reference plane L = 2 um.  It is a share of the incident power, not a
+    # reflectance (round-11 defect D1).
     for v in n0:
         sub = sorted(series(rows, parameter="n0", value_SI=v), key=lambda r: r["K"])
         c.plot(col(sub, "K"), [100 * x for x in col(sub, "R_B_2um")], color=cn0[v],
                linewidth=1.7, marker="D", markersize=3.4, markerfacecolor="white",
                markeredgewidth=0.9, markevery=3)
     c.set_xlabel(r"normalised wavenumber  $k_x d$")
-    c.set_ylabel("backward reflectance $R_B$ (%)")
+    c.set_ylabel(r"$R_B$ at $L=2\,\mu$m (%)")
     c.set_ylim(-4, 92)
     S.style_axes(c)
-    note(c, r"all five $n_0$ levels lie on this curve" "\n"
-            r"($|\Delta R_B|/R_B<0.2\%$, see caption)", loc=(0.045, 0.93),
-         fontsize=7.0)
+    note(c, "backward modal share at $L=2\\,\\mu$m:" "\n"
+            r"all five $n_0$ levels lie on this curve" "\n"
+            r"($|\Delta R_B|/R_B<0.2\%$, see caption)", loc=(0.045, 0.94),
+         fontsize=6.9)
     for v in mu:
         sub = sorted(series(rows, parameter="mobility", value_SI=v), key=lambda r: r["K"])
         d.semilogy(col(sub, "K"), col(sub, "FWHM_MHz"), color=cmu[v], linewidth=1.9,
@@ -395,12 +398,12 @@ def fig04():
            color="#B4552A", markeredgecolor="white", markeredgewidth=0.6,
            linestyle="None", zorder=6)
     a.set_xlabel(r"wavenumber  $k_x d$")
-    a.set_ylabel(r"$R_B$ at $\ell=2\,\mu$m (%)")
+    a.set_ylabel(r"$R_B$ at $L=2\,\mu$m (%)")
     a.set_ylim(bottom=0)
     S.style_axes(a)
     # The top of the response is 1e-3 wide in k_x d: unreadable on the main
     # axis, so it is resolved in an inset that uses the same data, uncut.
-    ins = a.inset_axes([0.588, 0.525, 0.390, 0.415])
+    ins = a.inset_axes([0.600, 0.560, 0.382, 0.392])
     zoom = sorted([r for r in peak if 0.5180 <= r["K"] <= 0.5380], key=lambda r: r["K"])
     ins.plot(col(zoom, "K"), 100 * col(zoom, "R_B_2um"), color="#202A44",
              linewidth=1.2, marker="o", markersize=2.4, markerfacecolor="white",
@@ -434,7 +437,7 @@ def fig04():
         S.h_plot(c, col(sub, "K_ratio"), 100 * col(sub, "R_B_2um"), eta,
                  markevery=2, markersize=4.2)
     c.set_xlabel(r"$k_{Bx}/k_{ix}$")
-    c.set_ylabel(r"$R_B$ at $\ell=2\,\mu$m (%)")
+    c.set_ylabel(r"$R_B$ at $L=2\,\mu$m (%)")
     c.set_ylim(0, 100)
     S.style_axes(c)
     note(c, r"$k_{Bx}/k_{ix}\to1$: maximal conversion", loc=(0.058, 0.955), fontsize=7.2)
@@ -509,8 +512,11 @@ def fig05():
     c.axhline(1e-6, color="#C83E58", linewidth=1.0, linestyle=(0, (5, 3)))
     c.text(eta[0], 1.6e-6, "acceptance threshold $10^{-6}$", fontsize=6.8,
            color="#C83E58")
+    c.text(eta[-1], 2.6e-13, "round-off floor", fontsize=6.8, color="#4A5468",
+           ha="right", va="bottom")
     c.set_xlabel(r"$H/H^{*}$")
-    c.set_ylabel("relative power balance error")
+    c.set_ylabel("power-balance residual")
+    c.axhspan(1e-13, 3e-12, color="#8A94A6", alpha=0.14, linewidth=0)
     c.set_xticks(S.H_LEVELS)
     c.set_xticklabels(ticks, fontsize=8)
     c.set_ylim(1e-13, 3e-6)
@@ -553,9 +559,9 @@ def fig06():
     a.set_yscale("log")
     logify(a, "x")
     logify(a, "y")
-    a.set_xlabel(r"distance from edge  $\ell$ ($\mu$m)")
+    a.set_xlabel(r"distance from the edge  $L$ ($\mu$m)")
     note(a, "isolated channel", loc=(0.035, 0.06), fontsize=7.0)
-    a.set_ylabel(r"$R_B(\ell)$")
+    a.set_ylabel(r"$R_B(L)$")
     S.style_axes(a)
 
     for eta in S.H_LEVELS:
@@ -568,7 +574,7 @@ def fig06():
     logify(b, "y")
     b.axhline(1.0, color="#202A44", linewidth=0.9, linestyle=(0,(4,3)))
     b.text(1.25, 0.40, r"unitary limit", fontsize=7.0, color="#202A44")
-    b.set_xlabel(r"distance from edge  $\ell$ ($\mu$m)")
+    b.set_xlabel(r"distance from the edge  $L$ ($\mu$m)")
     b.set_ylabel("power at the edge")
     S.style_axes(b)
 
@@ -580,7 +586,7 @@ def fig06():
                color="#B4552A", linewidth=2.1, marker="s", markersize=7.0,
                markerfacecolor="white", linestyle="--", label="backward channel")
     c.set_xlabel(r"$H/H^{*}$")
-    c.set_ylabel(r"$L$ (mm)")
+    c.set_ylabel("attenuation length (mm)")
     c.set_xticks(S.H_LEVELS)
     c.set_xticklabels(ticks, fontsize=8)
     logify(c, "y")
@@ -686,7 +692,9 @@ def fig07():
 # ==========================================================================
 def fig08():
     rows = load("fig08_thickness_flux.csv")
-    fig, axs = panel_axes()
+    # the xlabel of panel (c) is a tall integral; the default bottom margin
+    # cuts it at the canvas edge (round-11 finding D24)
+    fig, axs = panel_axes(bottom=0.150)
     a, b, c, d = axs
     p_inc = float(np.mean(col(sorted(series(rows, eta=0.0), key=lambda r: r["z"]),
                               "incident_Px")))
@@ -750,10 +758,10 @@ def fig09():
     a.axhline(1e-6, color="#B4552A", linewidth=1.0, linestyle=(0, (4, 3)))
     a.set_xlabel(r"Galerkin basis degree  $n$")
     a.set_ylabel(r"$|\Delta R_B|/R_B$")
-    a.set_ylim(1e-9, 1e-4)
+    a.set_ylim(1e-13, 1e-4)
     logify(a, "y")
     S.style_axes(a)
-    note(a, r"reference $n=33$ excluded; dashed $=10^{-6}$", loc=(0.035, 0.955),
+    note(a, r"reference $n=33$ excluded; below $10^{-9}$: round-off floor", loc=(0.035, 0.955),
          fontsize=7.0)
 
     b.semilogy(n, np.maximum(col(rows, "K_B_rel_error"), 1e-14), color="#087E8B", linewidth=2.1,
@@ -761,7 +769,7 @@ def fig09():
     b.axhline(1e-6, color="#B4552A", linewidth=1.0, linestyle=(0, (4, 3)))
     b.set_xlabel(r"Galerkin basis degree  $n$")
     b.set_ylabel(r"$|\Delta k_B|/|k_B|$")
-    b.set_ylim(1e-14, 1e-5)
+    b.set_ylim(1e-15, 1e-5)
     logify(b, "y")
     S.style_axes(b)
 
@@ -776,12 +784,12 @@ def fig09():
     c.text(14.3, 1.3e-8, r"$10^{-8}$ tolerance", fontsize=7.0, color="#202A44")
     c.text(14.3, 1.3e-10, r"$10^{-10}$ tolerance", fontsize=7.0, color="#202A44")
     c.set_xlabel(r"Galerkin basis degree  $n$")
-    c.set_ylabel("magnitude")
+    c.set_ylabel("residual magnitude")
     c.set_ylim(1e-16, 1e-6)
     logify(c, "y")
     c.legend(loc="lower left", fontsize=7.2, handlelength=2.0, borderpad=0.4)
     S.style_axes(c)
-    note(c, "round-off floor, not a convergence trend", loc=(0.035, 0.955),
+    note(c, r"floor $\sim10^{-15}$: not a convergence trend", loc=(0.035, 0.955),
          fontsize=7.0)
 
     d.semilogy(col(cons, "K"), np.maximum(col(cons, "rel_K_mismatch"), 1e-16),
@@ -865,6 +873,8 @@ def fig10():
     c.axvspan(-1.45, 0.0, color="#EEF3F7", zorder=0)
     c.axvline(0, color="#101820", linewidth=1.9, zorder=4)
     c.text(-1.40, 0.86, "ZnO plate, $d$ = 200 nm", fontsize=7.8)
+    c.text(-1.40, 0.63, "schematic", fontsize=7.4, color="#5A6570",
+           style="italic", va="center")
     c.text(-0.05, 0.86, "edge", fontsize=7.6, rotation=90, ha="right", va="top")
     c.annotate("", xy=(-0.02, -0.92), xytext=(-1.34, -0.92),
                arrowprops=dict(arrowstyle="-|>", lw=0.9, color="#8a949d"))
@@ -922,11 +932,102 @@ ALL = {
 }
 
 
+# --------------------------------------------------------------------------
+# panel provenance
+# --------------------------------------------------------------------------
+# Written out with the figures on every run (round-11 defect D4).  The map that
+# shipped up to round 10 was maintained by hand and had drifted away from the
+# code for six of the ten figures; deriving it from this table and writing it
+# here means it cannot disagree with what is plotted.
+PANEL_SOURCES = {
+    "fig01_dispersion": dict(data_source="fig01_dispersion_velocity_attenuation.csv", panels=[
+        ("a", "frequency f(k_xd) for the five H levels, operating point marked", "frequency_GHz"),
+        ("b", "phase speed (right axis), group and energy velocity (left axis)", "phase_speed_m_s; group_speed_m_s; energy_speed_m_s"),
+        ("c", "linewidth FWHM", "FWHM_MHz"),
+        ("d", "carrier attenuation", "attenuation_dB_per_mm")]),
+    "fig02_material": dict(data_source="fig02_material_parameter_sweep.csv", panels=[
+        ("a", "linewidth FWHM against carrier density n0", "FWHM_MHz"),
+        ("b", "attenuation against carrier density n0", "attenuation_dB_per_mm"),
+        ("c", "backward modal share R_B at the reference plane L = 2 um (all n0)", "R_B_2um"),
+        ("d", "linewidth FWHM against mobility", "FWHM_MHz")]),
+    "fig03_geometry": dict(data_source="fig03_geometry_sweep.csv", panels=[
+        ("a", "frequency against k_xd for the plate-thickness family", "frequency_GHz"),
+        ("b", "frequency against k_xd for the gradient-length family", "frequency_GHz"),
+        ("c", "frequency change at k_xd = 0.50 against plate thickness", "frequency_GHz"),
+        ("d", "relative frequency change against k_xd for the gradient length", "frequency_GHz")]),
+    "fig04_frequency": dict(data_source="fig04_frequency_reflection.csv", panels=[
+        ("a", "R_B at the reference plane L = 2 um against k_xd, peak resolved in an inset", "R_B_2um"),
+        ("b", "energy angle theta_E", "angle_deg"),
+        ("c", "R_B at L = 2 um against the wavenumber ratio k_Bx/k_ix", "R_B_2um; K_ratio"),
+        ("d", "group velocity v_g", "group_speed_m_s")]),
+    "fig05_channel": dict(data_source="fig05_channel_power.csv", panels=[
+        ("a", "modal power budget of the solved flux at H = 0", "backward_channel_fraction; other_propagating_fraction; dissipated_fraction; cross_interference_fraction"),
+        ("b", "the same four fractions against H", "backward_channel_fraction; other_propagating_fraction; dissipated_fraction; cross_interference_fraction"),
+        ("c", "relative power-balance residual against H (round-off floor, not a trend)", "power_balance_error"),
+        ("d", "relative change of the reference-plane share, [R_B(H)-R_B(0)]/R_B(0)", "R_B_2um")]),
+    "fig06_attenuation": dict(data_source="fig06_attenuation_distance.csv", panels=[
+        ("a", "isolated-channel R_B against distance L from the edge", "R_B_isolated"),
+        ("b", "incident power surviving to distance L from the edge", "incident_survival"),
+        ("c", "attenuation length L_alpha of both channels against H", "attenuation_length_incident_mm; attenuation_length_backward_mm"),
+        ("d", "attenuation coefficient alpha of both channels against H", "incident_attenuation_dB_per_mm; backward_attenuation_dB_per_mm")]),
+    "fig07_coupling": dict(data_source="fig07_coupling_sensitivity.csv", panels=[
+        ("a", "R_B against transverse wavenumber for the five H levels", "R_B_2um"),
+        ("b", "the (k_y d, H) landscape drawn on the measured grid, no interpolation", "R_B_2um"),
+        ("c", "relative change of R_B against H along three declared slices", "rel_change_percent"),
+        ("d", "the same change against the transverse wavenumber", "rel_change_percent")]),
+    "fig08_boundary": dict(data_source="fig08_thickness_flux.csv", panels=[
+        ("a", "backward x flux through the thickness, P_Bx(z)/P_inc", "backward_Px; incident_Px"),
+        ("b", "backward z flux through the thickness, P_Bz(z)/P_inc", "backward_Pz; incident_Px"),
+        ("c", "running through-thickness integral of the backward x flux", "backward_Px; quadrature_weight"),
+        ("d", "shape of the backward and incident modes at H = 0", "backward_Px; incident_Px")]),
+    "fig09_validation": dict(data_source="fig09_validation_convergence.csv",
+                              additional=["fig09_temporal_spatial_consistency.csv"], panels=[
+        ("a", "relative error of the share against the Galerkin degree", "R_B_rel_error"),
+        ("b", "relative error of the backward wavenumber against the degree", "K_B_rel_error"),
+        ("c", "scaled edge residual and relative energy-balance error (floor ~1e-15)", "edge_scaled_residual; power_error"),
+        ("d", "temporal-generator versus complex spatial QEP mismatch against k_xd", "rel_K_mismatch")]),
+    "fig10_field": dict(data_source="fig10_field_maps.csv", panels=[
+        ("a", "incident intensity map, normalised to the common maximum", "incident_intensity"),
+        ("b", "backward intensity map on the same colour scale", "backward_intensity"),
+        ("c", "schematic of the plate and the edge; arrow directions taken from the solved flux", "figure_data/fig10_field_metrics.json"),
+        ("d", "backward x and y flux fractions against the transverse wavenumber", "Px_backward; Py_backward")]),
+}
+
+
+def write_panel_sources() -> None:
+    """Write the panel provenance next to the figure data, from PANEL_SOURCES."""
+    import hashlib
+
+    payload: dict = {"figures": [], "row_counts": {}}
+    for stem, spec in PANEL_SOURCES.items():
+        entry = {
+            "figure": stem,
+            "data_source": spec["data_source"],
+            "additional_sources": spec.get("additional", []),
+            "panels": [f"({letter}) {text}" for letter, text, _ in spec["panels"]],
+            "columns": {letter: columns for letter, _, columns in spec["panels"]},
+        }
+        for ext in ("pdf", "png", "svg"):
+            path = OUT / f"{stem}.{ext}"
+            if path.exists():
+                blob = path.read_bytes()
+                entry[ext] = {"file": str(path.relative_to(HERE.parent)),
+                              "bytes": len(blob),
+                              "sha256": hashlib.sha256(blob).hexdigest()}
+        payload["figures"].append(entry)
+        for name in [spec["data_source"], *spec.get("additional", [])]:
+            if name.endswith(".csv"):
+                with (DATA / name).open() as handle:
+                    payload["row_counts"][name] = sum(1 for _ in csv.DictReader(handle))
+    (DATA / "figure_panel_sources.json").write_text(json.dumps(payload, indent=1) + "\n")
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for stem, fn in ALL.items():
         print(f"[render] {stem} ...", flush=True)
         fn()
+    write_panel_sources()
     print("[render] done ->", OUT)
 
 

@@ -30,6 +30,7 @@ Writes  figure_data/claim_audit.json
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -99,9 +100,29 @@ def main() -> int:
     source_rows: list[dict] = []
 
     def agree(claim_id, data_value, tol, what):
+        """Compare a stored number with the registry.
+
+        A claim carrying ``"kind": "bound"`` is an inequality: the manuscript
+        quotes an upper bound and the gate accepts any executed value at or
+        below it.  This is the round-11 repair of defect D9: the two refinement
+        spreads are differences of nearly equal numbers sitting on the
+        round-off floor, so an equality test at 1 % fired on float noise while
+        the headline moved by 8e-13.
+        """
         claim = by_id.get(claim_id)
         if claim is None:
             problems.append(f"{claim_id}: missing from the registry ({what})")
+            return
+        if claim.get("kind") == "bound":
+            value = float(data_value)
+            ok = 0.0 < value <= claim["value"]
+            source_rows.append(dict(claim=claim_id, data=value, what=what,
+                                    bound=claim["value"], relative_difference=None,
+                                    tolerance=None, pass_=ok))
+            if not ok:
+                problems.append(f"{claim_id}: the registered bound is {claim['value']} but the "
+                                f"stored {what} is {value} "
+                                f"({'not computed' if value <= 0 else 'above the bound'})")
             return
         rel = abs(float(data_value) - claim["value"]) / abs(claim["value"])
         source_rows.append(dict(claim=claim_id, data=data_value, what=what,
@@ -134,11 +155,29 @@ def main() -> int:
     if abs(k_inc - cls["K_reported"]) < 1e-4:
         problems.append("incident_wavenumber_peak: the incident root equals the branch "
                         "parameter; the two are distinct quantities and are reported apart")
-    # both are quoted to two significant figures in the text, hence the tolerance
-    agree("degree_stability_peak", rec["verdict"]["degree_spread"]["0.52752"], 1e-2,
-          "search-record degree spread at the reported wavenumber")
+    # Round-11 defect D9: both refinement spreads are registered as upper
+    # bounds and are tested against every entry the executed record contains,
+    # not against one hand-picked key.
+    for key, value in sorted(rec["verdict"]["degree_spread"].items()):
+        agree("degree_stability_peak", value, 1e-2,
+              f"search-record degree spread at K = {key}")
     agree("quadrature_stability_peak", rec["verdict"]["quadrature_spread"], 1e-2,
-          "search-record quadrature spread")
+          "search-record quadrature spread (degree 22, four nodes rules)")
+
+    # Round-11 defect D11: the largest frequency shift the coupling produces on
+    # the plotted branch.  The text quotes it; the figure data carry it.
+    f01 = list(csv.DictReader((DATA / "fig01_dispersion_velocity_attenuation.csv").open()))
+    base_f = {float(r["K"]): float(r["frequency_GHz"]) for r in f01 if float(r["eta"]) == 0.0}
+    shift = 0.0
+    for r in f01:
+        if float(r["eta"]) == 0.0:
+            continue
+        k = float(r["K"])
+        if k in base_f:
+            # the CSV stores GHz; the claim is registered in kHz
+            shift = max(shift, abs(float(r["frequency_GHz"]) - base_f[k]) * 1e6)
+    agree("coupling_frequency_shift_max", shift, 2e-3,
+          "largest coupling-induced frequency shift on the plotted branch (kHz)")
 
     # Gate 2c: the edge-plane share must be the same number in every producer.
     # This is the round-9 defect: peak_search.py used a single-mode decay and

@@ -1,451 +1,470 @@
 {
-  "note": "Machine-readable registry of the quantitative claims in the manuscript; built and checked by claim_audit.py.",
-  "manuscript_root": "Paper_A_Final_Submission",
-  "deprecated": [
+ "note": "Machine-readable registry of the quantitative claims in the manuscript; built and checked by claim_audit.py.",
+ "manuscript_root": "Paper_A_Final_Submission",
+ "deprecated": [
+  {
+   "text": "0.99985",
+   "why": "mislabelled total outgoing power"
+  },
+  {
+   "text": "28.06",
+   "why": "reciprocal survival factor"
+  },
+  {
+   "text": "93.19",
+   "why": "superseded headline: the 0.525 sample is not the maximum"
+  },
+  {
+   "text": "33.1",
+   "why": "superseded coupling figure at the 0.525 sample"
+  },
+  {
+   "text": "110 rows",
+   "why": "row count belongs with the data, not the text"
+  }
+ ],
+ "claims": [
+  {
+   "id": "R_B_operating_point",
+   "value": 0.0231456,
+   "tolerance_rel": 0.005,
+   "in_abstract": true,
+   "source": "figure_data/peak_certification.json rows[case=operating_point, degree=30].R_B",
+   "tokens": [
     {
-      "text": "0.99985",
-      "why": "mislabelled total outgoing power"
+     "file": "main.tex",
+     "text": "2.31",
+     "value": 0.0231
     },
     {
-      "text": "28.06",
-      "why": "reciprocal survival factor"
+     "file": "sections/results.tex",
+     "text": "2.3146\\times10^{-2}",
+     "value": 0.023146
     },
     {
-      "text": "93.19",
-      "why": "superseded headline: the 0.525 sample is not the maximum"
+     "file": "sections/results.tex",
+     "text": "0.023\\,146",
+     "value": 0.023146
     },
     {
-      "text": "33.1",
-      "why": "superseded coupling figure at the 0.525 sample"
-    },
-    {
-      "text": "110 rows",
-      "why": "row count belongs with the data, not the text"
+     "file": "sections/conclusions.tex",
+     "text": "2.31",
+     "value": 0.0231
     }
-  ],
-  "claims": [
+   ]
+  },
+  {
+   "id": "R_B_certified_maximum",
+   "value": 0.9467952,
+   "tolerance_rel": 0.002,
+   "in_abstract": true,
+   "source": "figure_data/peak_search.json classification.R_B_reported (k_x d = 0.5275, degree 22)",
+   "tokens": [
     {
-      "id": "R_B_operating_point",
-      "value": 0.0231456,
-      "tolerance_rel": 0.005,
-      "in_abstract": true,
-      "source": "figure_data/peak_certification.json rows[case=operating_point, degree=30].R_B",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "2.31",
-          "value": 0.0231
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "2.3146\\times10^{-2}",
-          "value": 0.023146
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "0.023\\,146",
-          "value": 0.023146
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "2.31",
-          "value": 0.0231
-        }
-      ]
+     "file": "main.tex",
+     "text": "94.68",
+     "value": 0.9468
     },
     {
-      "id": "R_B_certified_maximum",
-      "value": 0.9467952,
-      "tolerance_rel": 0.002,
-      "in_abstract": true,
-      "source": "figure_data/peak_search.json classification.R_B_reported (k_x d = 0.5275, degree 22)",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "94.68",
-          "value": 0.9468
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "0.946\\,795",
-          "value": 0.946795
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "0.9467952",
-          "value": 0.9467952
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "94.68",
-          "value": 0.9468
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "94.68",
-          "value": 0.9468
-        }
-      ]
+     "file": "sections/results.tex",
+     "text": "0.946\\,795",
+     "value": 0.946795
     },
     {
-      "id": "R_B_at_located_argmax",
-      "value": 0.9467954,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json classification.R_B_at_max (k_x d = 0.52752)",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.9467954",
-          "value": 0.9467954
-        }
-      ]
+     "file": "sections/results.tex",
+     "text": "0.9467952",
+     "value": 0.9467952
     },
     {
-      "id": "R_B_earlier_sample",
-      "value": 0.9318915,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_certification.json rows[case=round7_sample, degree=30].R_B",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.931\\,891",
-          "value": 0.931891
-        }
-      ]
+     "file": "sections/conclusions.tex",
+     "text": "94.68",
+     "value": 0.9468
     },
     {
-      "id": "R_B_k055_sample",
-      "value": 0.5791801,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_certification.json rows[case=k055_sample, degree=30].R_B",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.579\\,180",
-          "value": 0.57918
-        }
-      ]
-    },
-    {
-      "id": "total_outgoing_peak",
-      "value": 0.99769,
-      "tolerance_rel": 0.002,
-      "in_abstract": true,
-      "source": "figure_data/peak_certification.json rows[case=refined_peak].total_outgoing_propagating",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "99.77",
-          "value": 0.9977
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "0.99769",
-          "value": 0.99769
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "99.77",
-          "value": 0.9977
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "0.99769",
-          "value": 0.99769
-        }
-      ]
-    },
-    {
-      "id": "total_outgoing_operating",
-      "value": 0.9998,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_certification.json rows[case=operating_point].total_outgoing_propagating",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.99980",
-          "value": 0.9998
-        }
-      ]
-    },
-    {
-      "id": "coupling_change_operating",
-      "value": 1.21,
-      "tolerance_rel": 0.05,
-      "in_abstract": true,
-      "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05] vs operating_point",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "1.21",
-          "value": 1.21
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "1.21",
-          "value": 1.21
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "1.21",
-          "value": 1.21
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "1.21",
-          "value": 1.21
-        }
-      ]
-    },
-    {
-      "id": "coupling_change_peak",
-      "value": 34.2,
-      "tolerance_rel": 0.02,
-      "in_abstract": true,
-      "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05]/H=0",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "34.2",
-          "value": 34.2
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "34.2",
-          "value": 34.2
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "34.2",
-          "value": 34.2
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "34.2",
-          "value": 34.2
-        }
-      ]
-    },
-    {
-      "id": "coupling_change_peak_edge_plane",
-      "value": 11.1,
-      "tolerance_rel": 0.05,
-      "in_abstract": false,
-      "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak R_B_edge ratio",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "11.1",
-          "value": 11.1
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "11.1",
-          "value": 11.1
-        }
-      ]
-    },
-    {
-      "id": "attenuation_peak_backward",
-      "value": 87.1,
-      "tolerance_rel": 0.01,
-      "in_abstract": false,
-      "source": "figure_data/peak_certification.json rows[case=refined_peak].backward attenuation 8.686*2|ImK|/d",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "87.1",
-          "value": 87.1
-        }
-      ]
-    },
-    {
-      "id": "wavenumber_ratio_peak",
-      "value": 0.996,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json degree[K=0.5275].K_ratio",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.9960",
-          "value": 0.996
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "0.996",
-          "value": 0.996
-        }
-      ]
-    },
-    {
-      "id": "incident_wavenumber_peak",
-      "value": 0.5282,
-      "tolerance_rel": 0.002,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json degree[K=0.5275].K_incident[0] (NOT the branch parameter 0.5275 and NOT KB0)",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.5282",
-          "value": 0.5282
-        }
-      ]
-    },
-    {
-      "id": "degree_stability_peak",
-      "value": 5e-09,
-      "tolerance_rel": 0.2,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json verdict.degree_spread[\"0.52752\"]",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "5.0\\times10^{-9}",
-          "value": 5e-09
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "5.0\\times10^{-9}",
-          "value": 5e-09
-        }
-      ]
-    },
-    {
-      "id": "quadrature_stability_peak",
-      "value": 5.6e-09,
-      "tolerance_rel": 0.2,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json verdict.quadrature_spread",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "5.6\\times10^{-9}",
-          "value": 5.6e-09
-        }
-      ]
-    },
-    {
-      "id": "incident_power_ratio_fold",
-      "value": 128.0,
-      "tolerance_rel": 0.02,
-      "in_abstract": true,
-      "source": "figure_data/peak_identity_audit.json cases.peak.modal_power_incident_raw vs cases.operating_point",
-      "tokens": [
-        {
-          "file": "main.tex",
-          "text": "128",
-          "value": 128
-        },
-        {
-          "file": "sections/results.tex",
-          "text": "128",
-          "value": 128
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "128",
-          "value": 128
-        },
-        {
-          "file": "sections/conclusions.tex",
-          "text": "128",
-          "value": 128
-        }
-      ]
-    },
-    {
-      "id": "reference_plane_closure",
-      "value": 2e-16,
-      "tolerance_rel": 0.5,
-      "in_abstract": false,
-      "source": "figure_data/peak_identity_audit.json reference_plane.spread_relative",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "2\\times10^{-16}",
-          "value": 2e-16
-        }
-      ]
-    },
-    {
-      "id": "coupling_change_k055_edge_plane",
-      "value": 2.007,
-      "tolerance_rel": 0.05,
-      "in_abstract": false,
-      "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B_edge vs [no_coupling].R_B_edge (2.007 %)",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "\\SI{2.01}{\\percent}",
-          "value": 2.0
-        }
-      ]
-    },
-    {
-      "id": "coupling_change_k055_reference_plane",
-      "value": -9.85,
-      "tolerance_rel": 0.02,
-      "in_abstract": false,
-      "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B vs [no_coupling].R_B (-9.854 %)",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "\\SI{-9.85}{\\percent}",
-          "value": -9.9
-        },
-        {
-          "file": "sections/discussion.tex",
-          "text": "\\SI{-9.85}{\\percent}",
-          "value": -9.85
-        }
-      ]
-    },
-    {
-      "id": "R_B_edge_certified_maximum",
-      "value": 0.9856,
-      "tolerance_rel": 0.005,
-      "in_abstract": false,
-      "source": "figure_data/peak_search.json degree[K=0.5275, degree=22].R_B_edge and figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[eta=0].R_B_edge",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.9856",
-          "value": 0.9856
-        }
-      ]
-    },
-    {
-      "id": "R_B_edge_operating_point",
-      "value": 0.0232,
-      "tolerance_rel": 0.005,
-      "in_abstract": false,
-      "source": "figure_data/mechanism_controls.json operating_point.no_coupling.R_B_edge",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.0232",
-          "value": 0.0232
-        }
-      ]
-    },
-    {
-      "id": "R_B_edge_k055",
-      "value": 0.5802,
-      "tolerance_rel": 0.005,
-      "in_abstract": false,
-      "source": "figure_data/mechanism_controls.json k055_sample.no_coupling.R_B_edge",
-      "tokens": [
-        {
-          "file": "sections/results.tex",
-          "text": "0.5802",
-          "value": 0.5802
-        }
-      ]
+     "file": "sections/discussion.tex",
+     "text": "94.68",
+     "value": 0.9468
     }
-  ]
+   ]
+  },
+  {
+   "id": "R_B_at_located_argmax",
+   "value": 0.9467954,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json classification.R_B_at_max (k_x d = 0.52752)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9467954",
+     "value": 0.9467954
+    }
+   ]
+  },
+  {
+   "id": "R_B_earlier_sample",
+   "value": 0.9318915,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=round7_sample, degree=30].R_B",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.931\\,891",
+     "value": 0.931891
+    }
+   ]
+  },
+  {
+   "id": "R_B_k055_sample",
+   "value": 0.5791801,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=k055_sample, degree=30].R_B",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.579\\,180",
+     "value": 0.57918
+    }
+   ]
+  },
+  {
+   "id": "total_outgoing_peak",
+   "value": 0.99769,
+   "tolerance_rel": 0.002,
+   "in_abstract": true,
+   "source": "figure_data/peak_certification.json rows[case=refined_peak].total_outgoing_propagating",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "99.77",
+     "value": 0.9977
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.99769",
+     "value": 0.99769
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "99.77",
+     "value": 0.9977
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "0.99769",
+     "value": 0.99769
+    }
+   ]
+  },
+  {
+   "id": "total_outgoing_operating",
+   "value": 0.9998,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=operating_point].total_outgoing_propagating",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.99980",
+     "value": 0.9998
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_operating",
+   "value": 1.21,
+   "tolerance_rel": 0.05,
+   "in_abstract": true,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05] vs operating_point",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "1.21",
+     "value": 1.21
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_peak",
+   "value": 34.2,
+   "tolerance_rel": 0.02,
+   "in_abstract": true,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05]/H=0",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "34.2",
+     "value": 34.2
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "34.2",
+     "value": 34.2
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "34.2",
+     "value": 34.2
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "34.2",
+     "value": 34.2
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_peak_edge_plane",
+   "value": 11.1,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak R_B_edge ratio",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "11.1",
+     "value": 11.1
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "11.1",
+     "value": 11.1
+    }
+   ]
+  },
+  {
+   "id": "attenuation_peak_backward",
+   "value": 87.1,
+   "tolerance_rel": 0.01,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=refined_peak].backward attenuation 8.686*2|ImK|/d",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "87.1",
+     "value": 87.1
+    }
+   ]
+  },
+  {
+   "id": "wavenumber_ratio_peak",
+   "value": 0.996,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275].K_ratio",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9960",
+     "value": 0.996
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.996",
+     "value": 0.996
+    }
+   ]
+  },
+  {
+   "id": "incident_wavenumber_peak",
+   "value": 0.5282,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275].K_incident[0] (NOT the branch parameter 0.5275 and NOT KB0)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.5282",
+     "value": 0.5282
+    }
+   ]
+  },
+  {
+   "id": "degree_stability_peak",
+   "value": 1e-08,
+   "tolerance_rel": 1e-12,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json verdict.degree_spread[*]",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "10^{-8}",
+     "value": 1e-08
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "10^{-8}",
+     "value": 1e-08
+    }
+   ],
+   "kind": "bound",
+   "note": "upper bound: the quantity is a difference of nearly equal numbers on the round-off floor, so the manuscript quotes a bound and the gate checks data <= bound (round-11 defect D9)"
+  },
+  {
+   "id": "quadrature_stability_peak",
+   "value": 1e-08,
+   "tolerance_rel": 1e-12,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json verdict.quadrature_spread",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "10^{-8}",
+     "value": 1e-08
+    }
+   ],
+   "kind": "bound",
+   "note": "upper bound: the quantity is a difference of nearly equal numbers on the round-off floor, so the manuscript quotes a bound and the gate checks data <= bound (round-11 defect D9)"
+  },
+  {
+   "id": "incident_power_ratio_fold",
+   "value": 128.0,
+   "tolerance_rel": 0.02,
+   "in_abstract": true,
+   "source": "figure_data/peak_identity_audit.json cases.peak.modal_power_incident_raw vs cases.operating_point",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "128",
+     "value": 128
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "128",
+     "value": 128
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "128",
+     "value": 128
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "128",
+     "value": 128
+    }
+   ]
+  },
+  {
+   "id": "reference_plane_closure",
+   "value": 2e-16,
+   "tolerance_rel": 0.5,
+   "in_abstract": false,
+   "source": "figure_data/peak_identity_audit.json reference_plane.spread_relative",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "2\\times10^{-16}",
+     "value": 2e-16
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_k055_edge_plane",
+   "value": 2.007,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B_edge vs [no_coupling].R_B_edge (2.007 %)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "\\SI{2.01}{\\percent}",
+     "value": 2.0
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_k055_reference_plane",
+   "value": -9.85,
+   "tolerance_rel": 0.02,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B vs [no_coupling].R_B (-9.854 %)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "\\SI{-9.85}{\\percent}",
+     "value": -9.9
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "\\SI{-9.85}{\\percent}",
+     "value": -9.85
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_certified_maximum",
+   "value": 0.9856,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275, degree=22].R_B_edge and figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[eta=0].R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9856",
+     "value": 0.9856
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_operating_point",
+   "value": 0.0232,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json operating_point.no_coupling.R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.0232",
+     "value": 0.0232
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_k055",
+   "value": 0.5802,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json k055_sample.no_coupling.R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.5802",
+     "value": 0.5802
+    }
+   ]
+  },
+  {
+   "id": "coupling_frequency_shift_max",
+   "value": 183.7115,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/fig01_dispersion_velocity_attenuation.csv: max |f(H)-f(0)| over the plotted grid",
+   "note": "maximum |df| = 183.7 kHz at k_xd = 1.05, H/H* = +0.05 (units: kHz)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "184}{\\kilo\\hertz",
+     "value": 183.7
+    }
+   ]
+  }
+ ]
 }

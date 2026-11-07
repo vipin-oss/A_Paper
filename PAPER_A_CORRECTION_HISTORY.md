@@ -199,3 +199,39 @@ physics.
 still PASS), the tables, the ten figures, the 13 citations, the operating-point and maximum values, the
 `UNRESOLVED` novelty status, the synthetic parameters, the single-edge and corner caveats, and the
 `BUILD UNVERIFIED` status of the typeset output.
+
+---
+
+# Round 11 (2026-11-07) — programming audit, numerical reproducibility, figure verification
+
+Round 10 was a writing round; round 11 went back to the code and the figures. Twenty-eight
+items were audited (D1–D28 in `PAPER_A_ROUND11_STAGE1_PROGRAMMING_AND_FIGURE_AUDIT.md`), the
+confirmed ones were repaired, and the full battery was then run on a **cleanly regenerated
+data directory** with nothing restored: **18 PASS / 0 FAIL / 1 SKIP** (`OVERALL: PASS`), the skip
+being the LaTeX build, for which this environment has no engine.
+
+| # | Item | Before | After | Reason |
+|---|---|---|---|---|
+| P11-1 | §4.1 coupling shift | "at most ±60 kHz … less than 4×10⁻⁶" | 184 kHz (1.1×10⁻⁵) at $k_xd=1.05$, 92 kHz for the negative coupling | the stored data of the cited panel give 183.7 kHz; the old figure was three times too small |
+| P11-2 | §4.1 $v_g$ vs $v_E$ | "better than 3.5 % over the whole branch (2 % in the interior)" | "within 3.5 % except the lowest sample, where they differ by 6.4 %" | the interior bound was not supported either (3.40 % at $k_xd=0.54$) |
+| P11-3 | §4.3 gradient-length percentages | +1.9 % at $k_xd=0.1$, −1.8 % | +2.0 % at $k_xd=0.15$, −1.9 % | the solved grid starts at 0.15 |
+| P11-4 | refinement spreads | quoted as values (5.0×10⁻⁹, 5.6×10⁻⁹), tested by 1 % equality | quoted as bounds (<10⁻⁸), registered as bounds, tested as inequalities | they are differences of near-equal numbers on the round-off floor; the round-10 battery failed on their noise while the headline moved by 10⁻¹³ |
+| P11-5 | quadrature spread | pooled degrees 22 and 30 | degree 22 only, four rules | a metric named for the quadrature rule must not contain degree error |
+| P11-6 | fig02(c) axis | "backward reflectance" | "$R_B$ at $L=2\,\mu$m", note "backward modal share" | $R_B$ is a share; round 10 had fixed the same error in the *caption* only |
+| P11-7 | fig04(a),(c) axis | "$R_B$ at $\ell=2\,\mu$m" | "$R_B$ at $L=2\,\mu$m" | $\ell$ is the gradient length |
+| P11-8 | fig06 axes | $\ell$ for distance from the edge; $L$ for the attenuation length | $L$ for the distance; "attenuation length (mm)" | two symbols, two meanings, three labels |
+| P11-9 | figure panel map | hand-maintained, wrong for most figures | generated from the plotting code on every render, with a test | provenance that drifts is worse than none |
+| P11-10 | fig10(c) | a schematic with no label | in-panel "schematic" | a drawing inside a results figure must say so |
+| P11-11 | fig05(c), fig09(c) | residuals at 10⁻¹²–10⁻¹⁵ plotted as if resolved | floor band/labels printed in the panel | a 16-fold change in a number of size 10⁻¹⁵ is not physics |
+| P11-12 | fig01(a) inset | ±150 kHz, clipping the −183.7 kHz point | −200…215 kHz | the reader could not see the largest shift the text discusses |
+| P11-13 | fig08(c) xlabel | cut by the canvas edge | bottom margin raised; pixel test added | invisible in a PDF viewer, visible in the render |
+| P11-14 | test suite | 39 tests, none about figures | 47 tests, eight of them figure provenance | the seven figure defects were invisible to 39 passing tests |
+| P11-15 | mutant suite | 13 mutants | 15 (bound semantics, figure label) | a bound that cannot fail is decoration |
+| P11-16 | battery order | unit tests first, reading records not yet built | tests after the producers | on a clean directory the old order failed with five missing-record errors |
+| P11-17 | legacy generator | `regenerate_revised_data.py` silently rewrote the datasets with a 14-column schema | refuses to run without an explicit opt-in | it caused two corrupted data states during this round's own work |
+
+**Not superseded:** the research model, every headline number (2.31456 %, 94.6795 %, 0.5275 /
+0.52752, 16.6547 GHz, 62.2973 %, 98.5572 %), the tables, the 13 citations, the round-10
+language and structure, the `UNRESOLVED` novelty status, the synthetic $\ell$, $f$, $H$, the
+single-edge and corner caveats, and `BUILD UNVERIFIED` for the typeset PDF. Round 12 has not
+begun; this round stops here for supervisor review.

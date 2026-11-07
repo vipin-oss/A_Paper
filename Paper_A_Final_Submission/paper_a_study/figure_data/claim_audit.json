@@ -344,34 +344,34 @@
     {
       "claim": "degree_stability_peak",
       "file": "sections/results.tex",
-      "text": "5.0\\times10^{-9}",
-      "registered": 5e-09,
-      "denoted": 5e-09,
+      "text": "10^{-8}",
+      "registered": 1e-08,
+      "denoted": 1e-08,
       "relative_difference": 0.0,
-      "tolerance": 0.2,
-      "occurrences": 2,
+      "tolerance": 1e-12,
+      "occurrences": 7,
       "pass_": true
     },
     {
       "claim": "degree_stability_peak",
       "file": "sections/conclusions.tex",
-      "text": "5.0\\times10^{-9}",
-      "registered": 5e-09,
-      "denoted": 5e-09,
+      "text": "10^{-8}",
+      "registered": 1e-08,
+      "denoted": 1e-08,
       "relative_difference": 0.0,
-      "tolerance": 0.2,
+      "tolerance": 1e-12,
       "occurrences": 1,
       "pass_": true
     },
     {
       "claim": "quadrature_stability_peak",
       "file": "sections/results.tex",
-      "text": "5.6\\times10^{-9}",
-      "registered": 5.6e-09,
-      "denoted": 5.6e-09,
+      "text": "10^{-8}",
+      "registered": 1e-08,
+      "denoted": 1e-08,
       "relative_difference": 0.0,
-      "tolerance": 0.2,
-      "occurrences": 2,
+      "tolerance": 1e-12,
+      "occurrences": 7,
       "pass_": true
     },
     {
@@ -494,60 +494,90 @@
       "tolerance": 0.005,
       "occurrences": 1,
       "pass_": true
+    },
+    {
+      "claim": "coupling_frequency_shift_max",
+      "file": "sections/results.tex",
+      "text": "184}{\\kilo\\hertz",
+      "registered": 183.7115,
+      "denoted": 183.7,
+      "relative_difference": 6.259814981649096e-05,
+      "tolerance": 0.002,
+      "occurrences": 1,
+      "pass_": true
     }
   ],
   "source_rows": [
     {
       "claim": "R_B_certified_maximum",
-      "data": 0.9467952306769204,
+      "data": 0.9467952305821763,
       "what": "search-record headline",
-      "relative_difference": 3.24007984496921e-08,
+      "relative_difference": 3.230073023910848e-08,
       "tolerance": 0.0001,
       "pass_": true
     },
     {
       "claim": "coarse raster cannot reach the maximum",
-      "data": 0.9467870060974054,
+      "data": 0.9467870061383709,
       "what": "max over rec.coarse",
-      "relative_difference": 8.686756384601164e-06,
+      "relative_difference": 8.686613049772994e-06,
       "tolerance": 0.001,
       "pass_": true
     },
     {
       "claim": "incident_wavenumber_peak",
-      "data": 0.528235992448085,
+      "data": 0.5282359922928204,
       "what": "identity-audit incident root",
-      "relative_difference": 6.814170406085333e-05,
+      "relative_difference": 6.814141011049557e-05,
       "tolerance": 0.0001,
       "pass_": true
     },
     {
       "claim": "degree_stability_peak",
-      "data": 4.973131407567745e-09,
-      "what": "search-record degree spread at the reported wavenumber",
-      "relative_difference": 0.00537371848645095,
-      "tolerance": 0.01,
+      "data": 6.220088433382246e-09,
+      "what": "search-record degree spread at K = 0.52750",
+      "bound": 1e-08,
+      "relative_difference": null,
+      "tolerance": null,
+      "pass_": true
+    },
+    {
+      "claim": "degree_stability_peak",
+      "data": 5.6134094739540506e-09,
+      "what": "search-record degree spread at K = 0.52752",
+      "bound": 1e-08,
+      "relative_difference": null,
+      "tolerance": null,
       "pass_": true
     },
     {
       "claim": "quadrature_stability_peak",
-      "data": 5.591238075549933e-09,
-      "what": "search-record quadrature spread",
-      "relative_difference": 0.0015646293660832886,
-      "tolerance": 0.01,
+      "data": 4.3174455076703166e-10,
+      "what": "search-record quadrature spread (degree 22, four nodes rules)",
+      "bound": 1e-08,
+      "relative_difference": null,
+      "tolerance": null,
+      "pass_": true
+    },
+    {
+      "claim": "coupling_frequency_shift_max",
+      "data": 183.7115000000722,
+      "what": "largest coupling-induced frequency shift on the plotted branch (kHz)",
+      "relative_difference": 3.9295929733972114e-13,
+      "tolerance": 0.002,
       "pass_": true
     },
     {
       "claim": "R_B_edge_certified_maximum",
-      "data": 0.9855721942926737,
+      "data": 0.9855722003583303,
       "what": "search-record edge-plane share",
-      "relative_difference": 2.8211959543730213e-05,
+      "relative_difference": 2.8205805265592423e-05,
       "tolerance": 0.0001,
       "pass_": true
     },
     {
       "claim": "cross-script edge fraction",
-      "data": 0.9855721942926737,
+      "data": 0.9855722003583303,
       "what": "mechanism_controls vs peak_search",
       "relative_difference": 0.0,
       "tolerance": 1e-06,
@@ -555,17 +585,17 @@
     },
     {
       "claim": "R_B_edge_operating_point",
-      "data": 0.023150542000836445,
+      "data": 0.02315054200072222,
       "what": "mechanism_controls edge share (operating_point, H = 0)",
-      "relative_difference": 0.0021318103087738472,
+      "relative_difference": 0.0021318103136973216,
       "tolerance": 0.005,
       "pass_": true
     },
     {
       "claim": "R_B_edge_k055",
-      "data": 0.5802413734918933,
+      "data": 0.5802413741233194,
       "what": "mechanism_controls edge share (k055_sample, H = 0)",
-      "relative_difference": 7.130901739617297e-05,
+      "relative_difference": 7.131010568664798e-05,
       "tolerance": 0.005,
       "pass_": true
     }

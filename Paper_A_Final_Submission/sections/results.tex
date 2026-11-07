@@ -15,9 +15,10 @@ the edge.  Unless stated otherwise the Galerkin degree is $n=22$.
 edge.  Panel (a) plots the frequency against $k_xd$ for the five coupling
 levels.  The five curves superimpose to within the width of the line over the
 whole range $0.15\le k_xd\le1.05$, and the inset resolves their difference: the
-coupling shifts the frequency by at most $\pm\SI{60}{\kilo\hertz}$ on a carrier
-of \SI{16.7}{\giga\hertz}, that is by less than $4\times10^{-6}$ in relative
-terms.  This is the first indication, confirmed in \cref{sec:results_coupling},
+coupling lowers the frequency by at most \SI{184}{\kilo\hertz}, at
+$k_xd=1.05$ where the carrier is \SI{16.87}{\giga\hertz}, that is by
+$1.1\times10^{-5}$ in relative terms; at the negative coupling the lowering
+stays below \SI{92}{\kilo\hertz} over the same range.  This is the first indication, confirmed in \cref{sec:results_coupling},
 that the added coupling is a perturbation of the dispersion and a modifier of
 the edge partition rather than a driver of the branch itself.
 
@@ -37,9 +38,9 @@ monotonically from \SI{105.8}{\kilo\metre\per\second} at $k_xd=1.05$ to
 \SI{20.0}{\kilo\metre\per\second} near the cutoff, as a phase speed should.  The
 group and energy velocities are signed and are plotted on the left-hand axis:
 they run from $-188$ and $-189$ to $+1097$ and $+1136\,\si{\metre\per\second}$,
-change sign just below $k_xd=0.53$, and agree with each other to better than
-\SI{3.5}{\percent} over the whole branch (better than \SI{2}{\percent} in the
-interior).  The sign change of $v_g$ and $v_E$ marks the backward part of the branch.  A
+change sign just below $k_xd=0.53$, and agree with each other to within
+\SI{3.5}{\percent} at every sample except the lowest, where the two differ by
+\SI{6.4}{\percent} because both velocities pass close to zero there.  The sign change of $v_g$ and $v_E$ marks the backward part of the branch.  A
 backward branch exists whether or not an edge is present, and what the edge adds
 is the conversion into it: the branch provides a mode whose energy travels
 opposite to the phase, and that is the mode the edge subsequently selects.
@@ -152,8 +153,8 @@ from \SI{30.4}{\giga\hertz} to \SI{10.5}{\giga\hertz} and the relative change is
 of order unity for every wavenumber (panels a and c).  The gradient length is a
 weak perturbation of the same branch (panels b and d): relative to
 $\ell=\SI{50}{\nano\metre}$, a change to $\ell=\SI{90}{\nano\metre}$ shifts the
-frequency by \SI{+1.9}{\percent} at $k_xd=0.1$ and by \SI{+10.2}{\percent} at
-$k_xd=1.0$, while $\ell=\SI{35}{\nano\metre}$ shifts it by \SI{-1.8}{\percent}
+frequency by \SI{+2.0}{\percent} at $k_xd=0.15$ and by \SI{+10.2}{\percent} at
+$k_xd=1.05$, while $\ell=\SI{35}{\nano\metre}$ shifts it by \SI{-1.9}{\percent}
 and \SI{-4.9}{\percent} at the same two points.  The sign of the effect changes
 with $\ell$ across the reference value, which is why the panel is plotted as a
 relative change and not as an absolute frequency.
@@ -252,13 +253,15 @@ $k_xd=0.55$       & 0.5500 & 0.579\,180 & $-14.4487$ & $1.5\times10^{-7}$ \\
 \end{table}
 
 Three properties of the sequence are worth recording.  First, the values are
-converged in the Galerkin degree: between degrees 14 and 34 the maximum moves by $5.0\times10^{-9}$
-relative at the located argmax and by $7.3\times10^{-9}$ at the reported
-wavenumber, the operating point by $7.2\times10^{-7}$, and the successive
-changes decrease monotonically, which is what a spectral method should do.  No
-rate is fitted, because the sequence reaches the round-off floor before an
-asymptotic slope exists.  Quadrature is not a limitation either: the rule from
-64 to 256 nodes moves the maximum by $5.6\times10^{-9}$.  Second, the values
+converged in the Galerkin degree: between degrees 14 and 34 the relative
+change of the maximum stays below $10^{-8}$ at both the located argmax and the
+reported wavenumber, the operating point changes by $7.2\times10^{-7}$, and the
+successive changes decrease monotonically, which is what a spectral method
+should do.  The two spreads are differences of nearly equal numbers and lie on
+the round-off floor, so they are quoted as bounds and not as values.  No rate is
+fitted, because the sequence reaches that floor before an asymptotic slope
+exists.  Quadrature is not a limitation either: with the degree fixed at 22 and
+the rule taken from 64 to 256 nodes the maximum changes by less than $10^{-8}$.  Second, the values
 are well conditioned: the singular-value condition number of the edge system is
 at most $1.9\times10^{2}$ and the scaled edge residual is below
 $3\times10^{-15}$ in every case.  Third, the values are resolved projections:
@@ -322,8 +325,8 @@ face value.
 \emph{A small denominator.}  The incident flux at the maximum is small, a
 factor $128$ below its value at the operating point, so the fraction could in
 principle be a ratio of two nearly vanishing quantities.  It is not: the value
-is reproduced to $5.0\times10^{-9}$ across six Galerkin degrees, to
-$5.6\times10^{-9}$ across four quadrature rules, and identically along three
+is reproduced to better than $10^{-8}$ across six Galerkin degrees, to
+better than $10^{-8}$ across four quadrature rules, and identically along three
 different tracking paths that reach the same wavenumber from below, from above
 and in a single step.  A ratio of two independently vanishing numbers would
 scatter under all three.

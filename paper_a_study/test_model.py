@@ -564,4 +564,93 @@ class TestCrossScriptEdgeFraction(_EdgeProfile, unittest.TestCase):
 
 
 
+class TestFigureProvenance(unittest.TestCase):
+    """Round-11 defects D1-D7: a figure's labels and its provenance are part of
+    the result, and were invisible to the 39 numerical tests that preceded them.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        import json
+        import sys
+        from pathlib import Path
+        import os
+        cls.here = Path(__file__).resolve().parent
+        # generate_final_figures.py imports figure_style as a sibling module,
+        # exactly as it is run by the renderer
+        if str(cls.here) not in sys.path:
+            sys.path.insert(0, str(cls.here))
+        from generate_final_figures import PANEL_SOURCES
+        cls.panel_sources = PANEL_SOURCES
+        # the mutation harness points this at a mutated copy of the renderer
+        src_root = Path(os.environ.get('PAPER_A_FIGURE_SRC', str(cls.here)))
+        cls.src = (src_root / 'generate_final_figures.py').read_text()
+        cls.map = json.loads((cls.here / 'figure_data' /
+                              'figure_panel_sources.json').read_text())
+
+    def test_panel_map_agrees_with_the_plotting_code(self):
+        derived = {f['figure']: f['panels'] for f in self.map['figures']}
+        expected = {stem: [f'({letter}) {text}' for letter, text, _ in spec['panels']]
+                    for stem, spec in self.panel_sources.items()}
+        self.assertEqual(derived, expected,
+                         'figure_panel_sources.json has drifted from the plotting code')
+
+    def test_every_figure_is_mapped_with_four_panels(self):
+        self.assertEqual(len(self.map['figures']), 10)
+        for entry in self.map['figures']:
+            self.assertEqual(len(entry['panels']), 4,
+                             f'{entry["figure"]} does not list four panels')
+            for ext in ('pdf', 'png', 'svg'):
+                self.assertIn(ext, entry, f'{entry["figure"]} has no {ext}')
+
+    def test_backward_share_is_never_called_a_reflectance(self):
+        self.assertNotIn('backward reflectance', self.src,
+                         'R_B is a modal share of the incident power, not a reflectance')
+        self.assertNotIn('reflectance $R_B$', self.src)
+
+    def test_the_reference_plane_is_L_and_the_gradient_length_is_l(self):
+        self.assertNotIn(r'\ell=2', self.src,
+                         'the reference plane is written with the gradient-length symbol')
+        self.assertNotIn(r'$R_B(\ell)$', self.src,
+                         'the distance from the edge is L, not the gradient length')
+        self.assertNotIn(r'distance from edge  $\ell$', self.src,
+                         'the distance from the edge is L, not the gradient length')
+
+    def test_residual_panels_declare_their_round_off_floor(self):
+        self.assertIn('round-off floor', self.src,
+                      'a residual panel drawn on a log axis must name the numerical floor')
+        self.assertIn(r'floor $\sim10^{-15}$', self.src)
+
+    def test_the_schematic_panel_is_labelled(self):
+        self.assertIn('"schematic"', self.src,
+                      'fig10(c) is a drawing and must say so inside the panel')
+
+    def test_figure_csvs_carry_the_columns_the_plotters_read(self):
+        """A stale generator writes the same file names with an older schema."""
+        required = {
+            'fig01_dispersion_velocity_attenuation.csv':
+                {'ky', 'attenuation_dB_per_mm', 'K_spatial_imag'},
+            'fig04_frequency_reflection.csv': {'R_B_2um', 'K_ratio'},
+            'fig05_channel_power.csv': {'R_B_2um', 'power_balance_error'},
+            'fig08_thickness_flux.csv': {'backward_Px', 'quadrature_weight'},
+            'fig09_validation_convergence.csv': {'edge_scaled_residual', 'power_error'},
+            'fig10_field_maps.csv': {'incident_intensity', 'backward_intensity'},
+        }
+        for name, cols in required.items():
+            header = (self.here / 'figure_data' / name).read_text().splitlines()[0]
+            missing = cols - set(header.split(','))
+            self.assertFalse(missing, f'{name} lacks {sorted(missing)}: built by a stale generator?')
+
+    def test_no_panel_ink_touches_the_canvas_edge(self):
+        from PIL import Image
+        for entry in self.map['figures']:
+            png = self.here / 'figures_final' / f"{entry['figure']}.png"
+            im = np.asarray(Image.open(png).convert('L'))
+            ink = im < 200
+            rows, cols = ink.sum(axis=1), ink.sum(axis=0)
+            self.assertEqual(rows[0] + cols[0] + rows[-1] + cols[-1], 0,
+                             f'{png.name}: ink reaches the canvas edge (clipped label)')
+
+
+
 if __name__=='__main__':unittest.main(verbosity=2)

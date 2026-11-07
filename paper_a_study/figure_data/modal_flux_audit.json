@@ -3,102 +3,102 @@
     "operating_point": [
       {
         "degree": 18,
-        "raw_backward_Px": -0.017892253333740497,
-        "raw_mode_power": -0.017892253333745667,
-        "amplitude_abs": 1.137490958496694,
-        "physical_backward_power": -0.023148108689092624,
-        "incident_power_at_plane": 1.0001080602095058,
-        "R_B": 0.02314560756989617,
+        "raw_backward_Px": -0.017892253333615923,
+        "raw_mode_power": -0.017892253333612704,
+        "amplitude_abs": 1.1374909585196669,
+        "physical_backward_power": -0.023148108689825024,
+        "incident_power_at_plane": 1.0001080602082226,
+        "R_B": 0.023145607570647334,
         "ok": true
       },
       {
         "degree": 22,
-        "raw_backward_Px": -0.015424813083016506,
-        "raw_mode_power": -0.015424813083015734,
-        "amplitude_abs": 1.2250974237779353,
-        "physical_backward_power": -0.023148120305299103,
-        "incident_power_at_plane": 1.0001080602111356,
-        "R_B": 0.023145619184801968,
+        "raw_backward_Px": -0.015424813083039373,
+        "raw_mode_power": -0.015424813083040589,
+        "amplitude_abs": 1.2250974237739258,
+        "physical_backward_power": -0.0231481203051603,
+        "incident_power_at_plane": 1.0001080602120087,
+        "R_B": 0.023145619184645957,
         "ok": true
       },
       {
         "degree": 26,
-        "raw_backward_Px": -0.013245459308750393,
-        "raw_mode_power": -0.0132454593087499,
-        "amplitude_abs": 1.3220476383052036,
-        "physical_backward_power": -0.023148123981589035,
-        "incident_power_at_plane": 1.0001080602074388,
-        "R_B": 0.023145622860780538,
+        "raw_backward_Px": -0.013245459308029691,
+        "raw_mode_power": -0.01324545930802873,
+        "amplitude_abs": 1.322047638444796,
+        "physical_backward_power": -0.023148123985118434,
+        "incident_power_at_plane": 1.0001080602124106,
+        "R_B": 0.023145622864193673,
         "ok": true
       },
       {
         "degree": 30,
-        "raw_backward_Px": -0.01137772928248339,
-        "raw_mode_power": -0.011377729282484808,
-        "amplitude_abs": 1.4264377740947898,
-        "physical_backward_power": -0.02314812537048449,
-        "incident_power_at_plane": 1.0001080602184664,
-        "R_B": 0.023145624249274452,
+        "raw_backward_Px": -0.011377729282162746,
+        "raw_mode_power": -0.011377729282161625,
+        "amplitude_abs": 1.426437774149958,
+        "physical_backward_power": -0.023148125372224892,
+        "incident_power_at_plane": 1.0001080601975696,
+        "R_B": 0.023145624251493125,
         "ok": true
       }
     ],
     "peak": [
       {
         "degree": 18,
-        "raw_backward_Px": -0.0012567635076502492,
-        "raw_mode_power": -0.0012567635076482933,
-        "amplitude_abs": 21.487087044644806,
-        "physical_backward_power": -0.5797168505127319,
-        "incident_power_at_plane": 1.0009269605235214,
-        "R_B": 0.5791799735403437,
+        "raw_backward_Px": -0.0012567635066306091,
+        "raw_mode_power": -0.0012567635066297466,
+        "amplitude_abs": 21.487087056506436,
+        "physical_backward_power": -0.5797168507522713,
+        "incident_power_at_plane": 1.00092696040215,
+        "R_B": 0.5791799738503958,
         "ok": true
       },
       {
         "degree": 22,
-        "raw_backward_Px": -0.000929393386268719,
-        "raw_mode_power": -0.0009293933862695963,
-        "amplitude_abs": 24.986450009767445,
-        "physical_backward_power": -0.5797169098280934,
-        "incident_power_at_plane": 1.0009269605018867,
-        "R_B": 0.57918003281474,
+        "raw_backward_Px": -0.0009293933840983076,
+        "raw_mode_power": -0.0009293933840961049,
+        "amplitude_abs": 24.986450052579556,
+        "physical_backward_power": -0.5797169104600303,
+        "incident_power_at_plane": 1.0009269605041065,
+        "R_B": 0.5791800334428877,
         "ok": true
       },
       {
         "degree": 26,
-        "raw_backward_Px": -0.0007092920104325119,
-        "raw_mode_power": -0.0007092920104303188,
-        "amplitude_abs": 28.60169817547979,
-        "physical_backward_power": -0.5797169287486149,
-        "incident_power_at_plane": 1.0009269605041657,
-        "R_B": 0.5791800517140828,
+        "raw_backward_Px": -0.0007092920114796252,
+        "raw_mode_power": -0.0007092920114792939,
+        "amplitude_abs": 28.601698144205738,
+        "physical_backward_power": -0.5797169283484002,
+        "incident_power_at_plane": 1.0009269604849227,
+        "R_B": 0.5791800513268939,
         "ok": true
       },
       {
         "degree": 30,
-        "raw_backward_Px": -0.0005563739099624233,
-        "raw_mode_power": -0.0005563739099615577,
-        "amplitude_abs": 32.2939358408025,
-        "physical_backward_power": -0.5797169367302959,
-        "incident_power_at_plane": 1.0009269605734812,
-        "R_B": 0.5791800596491528,
+        "raw_backward_Px": -0.0005563739124222564,
+        "raw_mode_power": -0.0005563739124219646,
+        "amplitude_abs": 32.293935735564524,
+        "physical_backward_power": -0.5797169355774306,
+        "incident_power_at_plane": 1.0009269604700781,
+        "R_B": 0.579180058557786,
         "ok": true
       }
     ]
   },
   "spreads": {
     "operating_point": {
-      "raw": -0.36409746328441916,
-      "physical": -7.206368376477812e-07,
-      "R_B": 7.206282328642288e-07
+      "raw": -0.3640974632979126,
+      "physical": -7.206803833703646e-07,
+      "R_B": 7.206916361468529e-07
     },
     "peak": {
-      "raw": -0.5572962561566839,
-      "physical": -1.4872355547090876e-07,
-      "R_B": 1.4867366449067276e-07
+      "raw": -0.5572962538402325,
+      "physical": -1.46321685878803e-07,
+      "R_B": 1.462540040186866e-07
     }
   },
   "rescaling_test": {
-    "R_B_before": 0.023145619184801968,
-    "R_B_after": 0.02314561918480209
+    "R_B_before": 0.023145619184645957,
+    "R_B_after": 0.023145619184645923
   }
 }

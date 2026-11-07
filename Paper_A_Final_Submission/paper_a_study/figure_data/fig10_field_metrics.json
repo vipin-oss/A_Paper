@@ -30,28 +30,28 @@
  "percentages": [
   {
    "plane_um": -2.0,
-   "incident_centroid_y_um": -0.35305757772899315,
-   "backward_centroid_y_um": -1.0683031448269733,
-   "incident_peak": 0.9992301858303485,
-   "backward_peak": 0.047224292210857194
+   "incident_centroid_y_um": -0.3530575777238147,
+   "backward_centroid_y_um": -1.0683031448439464,
+   "incident_peak": 0.9992301858284539,
+   "backward_peak": 0.04722429221071477
   },
   {
    "plane_um": -40.0,
-   "incident_centroid_y_um": -7.0600208963483535,
-   "backward_centroid_y_um": -21.351631253961063,
-   "incident_peak": 0.9952973148220368,
-   "backward_peak": 0.04300193712283556
+   "incident_centroid_y_um": -7.060020896229347,
+   "backward_centroid_y_um": -21.35163125436954,
+   "incident_peak": 0.9952973148334244,
+   "backward_peak": 0.043001937122122226
   }
  ],
  "primary_flux": {
-  "incident_Px": 1.0000000000000377,
-  "incident_Py": 0.17632698072114633,
-  "backward_Px": -0.015424813079356598,
-  "backward_Py": -0.008166919538711405,
-  "incident_angle_deg": 10.00000000070431,
-  "reflected_angle_deg": -27.8997139810503,
-  "incident_vEx": 378.9121235490256,
-  "backward_vEx": -186.0200763280007,
-  "backward_vEy": -98.49137154141161
+  "incident_Px": 0.9999999999999977,
+  "incident_Py": 0.17632698072108405,
+  "backward_Px": -0.015424813079369343,
+  "backward_Py": -0.008166919538720743,
+  "incident_angle_deg": 10.00000000070124,
+  "reflected_angle_deg": -27.89971398105782,
+  "incident_vEx": 378.91212354918025,
+  "backward_vEx": -186.02007632802471,
+  "backward_vEy": -98.49137154145555
  }
 }

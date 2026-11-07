@@ -22,12 +22,16 @@ attributes that are restored in a ``finally`` block immediately afterwards.
     M12 the thickness d replaced by the gradient length l       -> cross-script edge test
     M10b the same flipped exponent, checked by an invariance test that uses no
         stored record at all                                    -> plane invariance
+    M13 a refinement spread registered as a bound is itself too small
+        (a genuinely unconverged result)                        -> claim_audit bound
+    M14 the figure label corrected in round 11 put back        -> TestFigureProvenance
 
 Writes figure_data/mutation_tests.json.
 """
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -43,8 +47,8 @@ SRC = REPO / "Paper_A_Final_Submission"
 DATA = HERE / "figure_data"
 
 
-def run(cmd: list[str], cwd: Path) -> tuple[int, str]:
-    p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+def run(cmd: list[str], cwd: Path, env: dict | None = None) -> tuple[int, str]:
+    p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, env=env)
     return p.returncode, (p.stdout + p.stderr)
 
 
@@ -122,6 +126,44 @@ def main() -> int:
                             caught=rc != 0,
                             evidence=[l for l in out.splitlines()
                                       if "KB0" in l or "incident root" in l][:1]))
+
+        # M13: the bound semantics must bite.  The registry is given a bound
+        # (1e-10) tighter than the spread the solver actually produces (~5e-9),
+        # which is what an unconverged or wrongly-computed spread would look
+        # like.  A bound that can never fail would be decoration.
+        copy = make_copy(tmpdir / "m13")
+        registry = json.loads((HERE / "claims.json").read_text())
+        for claim in registry["claims"]:
+            if claim["id"] == "degree_stability_peak":
+                claim["value"] = 1e-10
+                for tok in claim["tokens"]:
+                    tok["value"] = 1e-10
+        path = tmpdir / "registry_m13.json"
+        path.write_text(json.dumps(registry))
+        rc, out = run([sys.executable, str(HERE / "claim_audit.py"), "--root", str(copy),
+                       "--registry", str(path)], REPO)
+        results.append(dict(id="M13",
+                            defect="registered refinement bound tighter than the executed spread",
+                            gate="claim_audit bound", expected="FAIL", caught=rc != 0,
+                            evidence=[l for l in out.splitlines() if "bound" in l][:1]))
+
+        # M14: the label defect corrected in round 11 is put back in a copy of the
+        # plotting code; the provenance test must catch it.
+        m14 = tmpdir / "m14"
+        m14.mkdir()
+        text = (HERE / "generate_final_figures.py").read_text()
+        old_label = '    c.set_ylabel(r"$R_B$ at $L=2\\,\\mu$m (%)")'
+        if old_label not in text:
+            raise RuntimeError("M14: the fig02 label to mutate was not found")
+        (m14 / "generate_final_figures.py").write_text(
+            text.replace(old_label, '    c.set_ylabel("backward reflectance $R_B$ (%)")', 1))
+        env = dict(os.environ, PAPER_A_FIGURE_SRC=str(m14))
+        rc, out = run([sys.executable, "-m", "unittest",
+                       "paper_a_study.test_model.TestFigureProvenance."
+                       "test_backward_share_is_never_called_a_reflectance"], REPO, env=env)
+        results.append(dict(id="M14", defect="R_B labelled a reflectance again",
+                            gate="TestFigureProvenance", expected="FAIL", caught=rc != 0,
+                            evidence=[l for l in out.splitlines() if "reflectance" in l][-1:]))
 
     sys.path.insert(0, str(REPO))
     from paper_a_study import model  # noqa: E402

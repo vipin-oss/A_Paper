@@ -9,21 +9,24 @@ root and is copied into the submission package by `build_submission_package.py`.
 
 The battery is:
 
-1. unit and scientific tests      (test_model)
-2. dimensional / constitutive     (verify_dimensions)
-3. quasistatic justification      (quasistatic_check)
-4. flexoelectric control          (flexo_control)
-5. admissibility re-derivation    (reclassify_csv, no re-solving)
-6. figure-data integrity          (this file, inline)
-7. phase-speed / e.m. reconciliation (phase_speed_audit, 0 = text agrees)
-8. modal-flux rescaling proof     (modal_flux_audit)
-9. mechanism matched controls     (mechanism_controls)
-10. corner assessment + regression (corner_assessment)
-11. spectral convergence           (convergence_audit, degrees 14..30)
-12. quadrature sufficiency         (quadrature_audit, 64..256 nodes)
-13. claim registry and stale guard (claim_audit)
-14. gate mutation tests            (mutation_tests, five deliberate defects)
-15. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
+1. dimensional / constitutive     (verify_dimensions)
+2. quasistatic justification      (quasistatic_check)
+3. flexoelectric control          (flexo_control)
+4. admissibility re-derivation    (reclassify_csv, no re-solving)
+5. figure-data integrity          (this file, inline)
+6. phase-speed / e.m. reconciliation (phase_speed_audit, 0 = text agrees)
+7. modal-flux rescaling proof     (modal_flux_audit)
+8. mechanism matched controls     (mechanism_controls)
+9. corner assessment + regression (corner_assessment)
+10. certified peak                (certify_peak, four fixed wavenumbers)
+11. peak search and classification (peak_search)
+12. peak identity and artefacts    (peak_identity_audit)
+13. spectral convergence           (convergence_audit, degrees 14..34)
+14. quadrature sufficiency         (quadrature_audit, 64..256 nodes)
+15. unit and scientific tests      (test_model; needs the records above)
+16. claim registry and stale guard (claim_audit)
+17. gate mutation tests            (mutation_tests, fifteen deliberate defects)
+18. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
 
 TeX/BibTeX compilation is attempted only if an engine is present; otherwise the
 log records explicitly that no engine was found.
@@ -102,8 +105,6 @@ def main() -> int:
     print(f"verification run {datetime.now(timezone.utc).isoformat(timespec='seconds')}")
     print()
 
-    run("unit and scientific tests",
-        [PY, "-m", "unittest", "paper_a_study.test_model"], ROOT, 1800)
     run("dimensional and constitutive audit",
         [PY, "paper_a_study/verify_dimensions.py"], ROOT, 600)
     run("quasistatic justification",
@@ -129,6 +130,13 @@ def main() -> int:
         [PY, "-m", "paper_a_study.peak_identity_audit"], ROOT, 1800)
     run("spectral convergence", [PY, "paper_a_study/convergence_audit.py"], ROOT, 1200)
     run("quadrature sufficiency", [PY, "paper_a_study/quadrature_audit.py"], ROOT, 900)
+    # The test suite reads the stored solver records (peak certification, corner
+    # assessment, the cross-script edge fraction), so it must run *after* the
+    # producers above.  On a clean data directory the old order failed with five
+    # missing-record errors in a battery that had not yet written those records
+    # (round-11 finding D27).
+    run("unit and scientific tests",
+        [PY, "-m", "unittest", "paper_a_study.test_model"], ROOT, 1800)
     run("claim registry and stale guard", [PY, "paper_a_study/claim_audit.py"], ROOT, 300)
     run("gate mutation tests", [PY, "paper_a_study/mutation_tests.py"], ROOT, 900)
     run("LaTeX static validation",

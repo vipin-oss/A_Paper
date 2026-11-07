@@ -1,265 +1,339 @@
 {
-  "figures": [
-    {
-      "figure": "fig01_dispersion",
-      "data_source": "fig01_dispersion_velocity_attenuation.csv",
-      "panels": [
-        "(a) Frequency",
-        "(b) Phase/group/energy speed",
-        "(c) Power FWHM",
-        "(d) Carrier attenuation"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig01_dispersion.pdf",
-        "bytes": 31272,
-        "sha256": "b6a825946615fc7e40471ec32fa051e94b0258733a3f4b2b3b058abef3aaf8ae"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig01_dispersion.png",
-        "bytes": 589118,
-        "sha256": "a6692d3bfedcca865f090fe163119e550f0e8dfee988c14a5dbb67917865eeef"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig01_dispersion.svg",
-        "bytes": 80633,
-        "sha256": "c6be0cc6b0ba376e969ae6e5366a97cc112366660a07959a47d48812d844e925"
-      }
-    },
-    {
-      "figure": "fig02_material",
-      "data_source": "fig02_material_parameter_sweep.csv",
-      "panels": [
-        "(a) Dispersion",
-        "(b) R_B",
-        "(c) Attenuation",
-        "(d) Family"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig02_material.pdf",
-        "bytes": 26396,
-        "sha256": "574bce8614853b33c599c9e7f5d51e82385eccf4cea75f9e86ac4454e1ff66cf"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig02_material.png",
-        "bytes": 494363,
-        "sha256": "bc9a58308f578fb6f51b31309f5f31984b819f726bd62c7897d39a9b9d86d3ee"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig02_material.svg",
-        "bytes": 53746,
-        "sha256": "f715566d1c2c64386b06187ff36599c09ae57a91895d0c3e16016bd3e384c9a4"
-      }
-    },
-    {
-      "figure": "fig03_geometry",
-      "data_source": "fig03_geometry_sweep.csv",
-      "panels": [
-        "(a) Frequency",
-        "(b) Gradient length",
-        "(c) Frequency",
-        "(d) Frequency"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig03_geometry.pdf",
-        "bytes": 32436,
-        "sha256": "3470f1e38779b6452b5f82d37dd350888c0a38f2eb459e47231f23440f878185"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig03_geometry.png",
-        "bytes": 400915,
-        "sha256": "476dc141a9a6c30011a7e93ba758380eba9ffa8c2cbc7a9ff90c3dad8adaf3b4"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig03_geometry.svg",
-        "bytes": 67936,
-        "sha256": "4b45115d4d397ced1f922905b9f239f827037797ca11d2e34b765d3fd3e223c9"
-      }
-    },
-    {
-      "figure": "fig04_frequency",
-      "data_source": "fig04_frequency_reflection.csv",
-      "panels": [
-        "(a) R_B edge",
-        "(b) R_B at 2 um",
-        "(c) R_B at 100 um",
-        "(d) Angle"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig04_frequency.pdf",
-        "bytes": 30381,
-        "sha256": "a3932ec91c793835a25eeaef7bf6c532fcb79439867e9f96bb4120273fcc608c"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig04_frequency.png",
-        "bytes": 655007,
-        "sha256": "5136258d1444cbfdcf3cf026e540b127e837a0ae2ebbeaaf059ed9c4ba59b7bf"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig04_frequency.svg",
-        "bytes": 63212,
-        "sha256": "0341997d36d0bca2572907f8afa7b0851414ff7647d4e59accfdb14c1a790c19"
-      }
-    },
-    {
-      "figure": "fig05_channel",
-      "data_source": "fig05_channel_power.csv",
-      "panels": [
-        "(a) R_B",
-        "(b) Backward modes",
-        "(c) Negative-power fraction",
-        "(d) Total outgoing fraction"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig05_channel.pdf",
-        "bytes": 25952,
-        "sha256": "79c4301d1a563e9997ab654cd419d1d548470b35203c6df0f2eae435637ef2fe"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig05_channel.png",
-        "bytes": 343647,
-        "sha256": "663def53855e486b08db158f43750b5df6d3324cf0037d046351715eb0151b85"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig05_channel.svg",
-        "bytes": 35271,
-        "sha256": "410db55d650e64004bc3f4a9abd84762215c0eb3055d216d33612645cfe13344"
-      }
-    },
-    {
-      "figure": "fig06_attenuation",
-      "data_source": "fig06_attenuation_distance.csv",
-      "panels": [
-        "(a) R_B",
-        "(b) Backward attenuation",
-        "(c) Incident survival",
-        "(d) Incident attenuation"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig06_attenuation.pdf",
-        "bytes": 24149,
-        "sha256": "289ad06e1af68ce4b723f5d8a8be76eb67427d11da04ce3b2b708f11d9d71fe0"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig06_attenuation.png",
-        "bytes": 678775,
-        "sha256": "4df489c7fd164238f6c9ef12d866a37e1790bdb2d7c54e03d5d2db3d0de9ad55"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig06_attenuation.svg",
-        "bytes": 68896,
-        "sha256": "eae723cb422a9f33c856d6c5bb5ea56e2a9929d447e34d1fd71b3a85bd80cc50"
-      }
-    },
-    {
-      "figure": "fig07_coupling",
-      "data_source": "fig07_coupling_sensitivity.csv",
-      "panels": [
-        "(a) 3D surface",
-        "(b) Contour",
-        "(c) H slices",
-        "(d) ky slices"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig07_coupling.pdf",
-        "bytes": 32701,
-        "sha256": "0a46fc6dd5c25e7a6b97e1111a621fe701757f0a2bde13f1a72da2350929068f"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig07_coupling.png",
-        "bytes": 798483,
-        "sha256": "bbdc2e8ec3f0fb00193ebea6a5c9eb1a918b8a4c212227a6e551b08c2f708391"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig07_coupling.svg",
-        "bytes": 80356,
-        "sha256": "9083a8b00c4aa6d5b1d389f8c2c51a3f87d5a3bc6d46fc6aa1c0422449061bc6"
-      }
-    },
-    {
-      "figure": "fig08_boundary",
-      "data_source": "fig08_boundary_sensitivity.csv",
-      "panels": [
-        "(a) Frequency",
-        "(b) R_B",
-        "(c) Angle",
-        "(d) Weak residual"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig08_boundary.pdf",
-        "bytes": 23558,
-        "sha256": "1ec68a183a0c389c4c2a445773ea9843476fb20005a8787e3d2653937930f8e8"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig08_boundary.png",
-        "bytes": 388423,
-        "sha256": "f01e880c43bbd2254768e71330d0e5c0a68219b40394cf9837e70a42e5f65a5d"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig08_boundary.svg",
-        "bytes": 45005,
-        "sha256": "b83d6176bd35a5a4e705bda1185bd10b473d4ff92c67d2c3b548c3c2a4b74b42"
-      }
-    },
-    {
-      "figure": "fig09_validation",
-      "data_source": "fig09_validation_convergence.csv",
-      "panels": [
-        "(a) R_B error",
-        "(b) Edge residual",
-        "(c) Power error",
-        "(d) K_B imag"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig09_validation.pdf",
-        "bytes": 25361,
-        "sha256": "94f3ce9930c1ce773c9332982ea0f91c4d8ba65962050146192dd1a184da7094"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig09_validation.png",
-        "bytes": 581818,
-        "sha256": "7a64afd739b11150ff791c70bc7e1639c2db501c12ba7a91d01b2c7bf5252879"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig09_validation.svg",
-        "bytes": 62047,
-        "sha256": "528fa2b855da2f39fd98e0aaefc73ec78dded715eac89d8df9135b2dbbb83009"
-      }
-    },
-    {
-      "figure": "fig10_field",
-      "data_source": "fig10_field_metrics.json",
-      "panels": [
-        "(a) Incident field",
-        "(b) Backward field",
-        "(c) Coordinate convention",
-        "(d) Flux arrows"
-      ],
-      "pdf": {
-        "file": "paper_a_study/figures_final/fig10_field.pdf",
-        "bytes": 3543300,
-        "sha256": "37587c85239f5deacc106be37171e7108bbfb7f87b4931ff800ea7e28129c548"
-      },
-      "png": {
-        "file": "paper_a_study/figures_final/fig10_field.png",
-        "bytes": 630181,
-        "sha256": "893d02e2424eebcbd40f39e1b6648c191786282eb2485d9ec7cac034ee14b8db"
-      },
-      "svg": {
-        "file": "paper_a_study/figures_final/fig10_field.svg",
-        "bytes": 29583134,
-        "sha256": "3fb7a35a67f3fd7cdabe319546fafb82ec2003902c071f84b8ba335303e4b8bb"
-      }
-    }
-  ],
-  "row_counts": {
-    "fig01_dispersion_velocity_attenuation.csv": 185,
-    "fig02_material_parameter_sweep.csv": 150,
-    "fig03_geometry_sweep.csv": 230,
-    "fig04_frequency_reflection.csv": 95,
-    "fig05_channel_power.csv": 5,
-    "fig06_attenuation_distance.csv": 45,
-    "fig07_coupling_sensitivity.csv": 95,
-    "fig08_boundary_sensitivity.csv": 6,
-    "fig09_validation_convergence.csv": 9
+ "figures": [
+  {
+   "figure": "fig01_dispersion",
+   "data_source": "fig01_dispersion_velocity_attenuation.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) frequency f(k_xd) for the five H levels, operating point marked",
+    "(b) phase speed (right axis), group and energy velocity (left axis)",
+    "(c) linewidth FWHM",
+    "(d) carrier attenuation"
+   ],
+   "columns": {
+    "a": "frequency_GHz",
+    "b": "phase_speed_m_s; group_speed_m_s; energy_speed_m_s",
+    "c": "FWHM_MHz",
+    "d": "attenuation_dB_per_mm"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig01_dispersion.pdf",
+    "bytes": 39532,
+    "sha256": "da92f1c4447ef3a20fb88f5cfdce024ff7f324ee026e9483297fb41f53341444"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig01_dispersion.png",
+    "bytes": 545998,
+    "sha256": "2b54bf5c505f98219f5e6f0e984d18ebe2dd3bd0087ea8b891e9fea60ebd95c9"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig01_dispersion.svg",
+    "bytes": 80598,
+    "sha256": "69326bc4f2c6ca2f92618a5fc1cf5c37e3366638a52414fe4e906c2252939316"
+   }
+  },
+  {
+   "figure": "fig02_material",
+   "data_source": "fig02_material_parameter_sweep.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) linewidth FWHM against carrier density n0",
+    "(b) attenuation against carrier density n0",
+    "(c) backward modal share R_B at the reference plane L = 2 um (all n0)",
+    "(d) linewidth FWHM against mobility"
+   ],
+   "columns": {
+    "a": "FWHM_MHz",
+    "b": "attenuation_dB_per_mm",
+    "c": "R_B_2um",
+    "d": "FWHM_MHz"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig02_material.pdf",
+    "bytes": 38559,
+    "sha256": "b1c9900f9e0304872a7d29524175499e85e633414effb259ca4f0504cee3628d"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig02_material.png",
+    "bytes": 519449,
+    "sha256": "31d53d4a27e42c52640738d3c6e677f280fe44ee7becf0e16b6becfecd0dc3a5"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig02_material.svg",
+    "bytes": 55175,
+    "sha256": "90be6831350468d44e9304224f2592c5b3ffd88674e60fcf2dce2e72c1401770"
+   }
+  },
+  {
+   "figure": "fig03_geometry",
+   "data_source": "fig03_geometry_sweep.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) frequency against k_xd for the plate-thickness family",
+    "(b) frequency against k_xd for the gradient-length family",
+    "(c) frequency change at k_xd = 0.50 against plate thickness",
+    "(d) relative frequency change against k_xd for the gradient length"
+   ],
+   "columns": {
+    "a": "frequency_GHz",
+    "b": "frequency_GHz",
+    "c": "frequency_GHz",
+    "d": "frequency_GHz"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig03_geometry.pdf",
+    "bytes": 36616,
+    "sha256": "d7f6280eb16125559502b158582056292322c79182e7ed1921394275cb11320e"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig03_geometry.png",
+    "bytes": 440099,
+    "sha256": "bf224afdb208f9a2ae91c9c4866078840d243f89df25ca0b7579500e1622fe1c"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig03_geometry.svg",
+    "bytes": 67936,
+    "sha256": "0a8f41ba10ef1b54de701251fe9262fcbbb69d45ef11bf0a86816857c2a7368f"
+   }
+  },
+  {
+   "figure": "fig04_frequency",
+   "data_source": "fig04_frequency_reflection.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) R_B at the reference plane L = 2 um against k_xd, peak resolved in an inset",
+    "(b) energy angle theta_E",
+    "(c) R_B at L = 2 um against the wavenumber ratio k_Bx/k_ix",
+    "(d) group velocity v_g"
+   ],
+   "columns": {
+    "a": "R_B_2um",
+    "b": "angle_deg",
+    "c": "R_B_2um; K_ratio",
+    "d": "group_speed_m_s"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig04_frequency.pdf",
+    "bytes": 39974,
+    "sha256": "6024050d506b3e9be234748076cb1e267f261efb0a514f8b86a54c5bc37d6984"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig04_frequency.png",
+    "bytes": 395422,
+    "sha256": "c90cbb0d3a98c112a3ebbad75736952a77f312cbbc9e274c39009ddf429320af"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig04_frequency.svg",
+    "bytes": 63211,
+    "sha256": "4a289910756380771b0b8bae5276584392b112398ccd0ad05a3114112537d88c"
+   }
+  },
+  {
+   "figure": "fig05_channel",
+   "data_source": "fig05_channel_power.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) modal power budget of the solved flux at H = 0",
+    "(b) the same four fractions against H",
+    "(c) relative power-balance residual against H (round-off floor, not a trend)",
+    "(d) relative change of the reference-plane share, [R_B(H)-R_B(0)]/R_B(0)"
+   ],
+   "columns": {
+    "a": "backward_channel_fraction; other_propagating_fraction; dissipated_fraction; cross_interference_fraction",
+    "b": "backward_channel_fraction; other_propagating_fraction; dissipated_fraction; cross_interference_fraction",
+    "c": "power_balance_error",
+    "d": "R_B_2um"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig05_channel.pdf",
+    "bytes": 34221,
+    "sha256": "35cb599ab08620970dd5e09492a08f582f4e7eaf30b8c4134a5d99a8e4a4607b"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig05_channel.png",
+    "bytes": 321548,
+    "sha256": "a847b573a4d255ec469c95cf0c96b6aea331088e11e88af6ec019fe3bbd21355"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig05_channel.svg",
+    "bytes": 84708,
+    "sha256": "04dd82f981e108e79afe975d18df3dc0a7ed21df8448e531fb5441a764455574"
+   }
+  },
+  {
+   "figure": "fig06_attenuation",
+   "data_source": "fig06_attenuation_distance.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) isolated-channel R_B against distance L from the edge",
+    "(b) incident power surviving to distance L from the edge",
+    "(c) attenuation length L_alpha of both channels against H",
+    "(d) attenuation coefficient alpha of both channels against H"
+   ],
+   "columns": {
+    "a": "R_B_isolated",
+    "b": "incident_survival",
+    "c": "attenuation_length_incident_mm; attenuation_length_backward_mm",
+    "d": "incident_attenuation_dB_per_mm; backward_attenuation_dB_per_mm"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig06_attenuation.pdf",
+    "bytes": 33779,
+    "sha256": "5743d9e0c1bbbc780565bfb8b023bb914d8290e3aef200731874a2be472705c5"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig06_attenuation.png",
+    "bytes": 407919,
+    "sha256": "ef11ee02973914abf4624ca839674ea59ddfcc14eee4f2b9617e37fb72f8a718"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig06_attenuation.svg",
+    "bytes": 68896,
+    "sha256": "2ef9dd1a13225c7888dba46ba3399ef5e3d20aed3884f3f3f9e5ba2d139c5415"
+   }
+  },
+  {
+   "figure": "fig07_coupling",
+   "data_source": "fig07_coupling_sensitivity.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) R_B against transverse wavenumber for the five H levels",
+    "(b) the (k_y d, H) landscape drawn on the measured grid, no interpolation",
+    "(c) relative change of R_B against H along three declared slices",
+    "(d) the same change against the transverse wavenumber"
+   ],
+   "columns": {
+    "a": "R_B_2um",
+    "b": "R_B_2um",
+    "c": "rel_change_percent",
+    "d": "rel_change_percent"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig07_coupling.pdf",
+    "bytes": 35843,
+    "sha256": "ad7922ba5b548779f381892fe746895920b5cbba0303388da3aea31b413a3175"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig07_coupling.png",
+    "bytes": 418455,
+    "sha256": "ccd6fb4adec6752763da70e56199e018cdd1b3b8093ec826d35a2bc98058672c"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig07_coupling.svg",
+    "bytes": 81815,
+    "sha256": "cb4a0ab7fe60deb7861928e30c5b3efe1b906677314f256bb0fe9584f2ba324f"
+   }
+  },
+  {
+   "figure": "fig08_boundary",
+   "data_source": "fig08_thickness_flux.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) backward x flux through the thickness, P_Bx(z)/P_inc",
+    "(b) backward z flux through the thickness, P_Bz(z)/P_inc",
+    "(c) running through-thickness integral of the backward x flux",
+    "(d) shape of the backward and incident modes at H = 0"
+   ],
+   "columns": {
+    "a": "backward_Px; incident_Px",
+    "b": "backward_Pz; incident_Px",
+    "c": "backward_Px; quadrature_weight",
+    "d": "backward_Px; incident_Px"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig08_boundary.pdf",
+    "bytes": 35778,
+    "sha256": "c1bdc001d50969a59b1449c1b5e91a140f5cbff2c4ec2d1a481ccc442031f171"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig08_boundary.png",
+    "bytes": 364244,
+    "sha256": "a9509f18447d59d1532bc4d99086860f8c0c519369e9f9eb069ae2f1afce3e7c"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig08_boundary.svg",
+    "bytes": 46209,
+    "sha256": "3037f91c5c7ebfce909e20c99f4f95c4b9f936d106670121f9eb85d1e13403db"
+   }
+  },
+  {
+   "figure": "fig09_validation",
+   "data_source": "fig09_validation_convergence.csv",
+   "additional_sources": [
+    "fig09_temporal_spatial_consistency.csv"
+   ],
+   "panels": [
+    "(a) relative error of the share against the Galerkin degree",
+    "(b) relative error of the backward wavenumber against the degree",
+    "(c) scaled edge residual and relative energy-balance error (floor ~1e-15)",
+    "(d) temporal-generator versus complex spatial QEP mismatch against k_xd"
+   ],
+   "columns": {
+    "a": "R_B_rel_error",
+    "b": "K_B_rel_error",
+    "c": "edge_scaled_residual; power_error",
+    "d": "rel_K_mismatch"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig09_validation.pdf",
+    "bytes": 33815,
+    "sha256": "9ffcf52eeb4ac057b5d2f47d459dcc5da2eca4c6f16efc1631895bb49b244ca3"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig09_validation.png",
+    "bytes": 419303,
+    "sha256": "4c1738d57757cbc9090805e5c20e112be9e4654c37fb159f05930d772d6f74ab"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig09_validation.svg",
+    "bytes": 53018,
+    "sha256": "759eab0c3db8be9fbd1463e6ec64a87cace3241ea60934a47a678b82b06d1de6"
+   }
+  },
+  {
+   "figure": "fig10_field",
+   "data_source": "fig10_field_maps.csv",
+   "additional_sources": [],
+   "panels": [
+    "(a) incident intensity map, normalised to the common maximum",
+    "(b) backward intensity map on the same colour scale",
+    "(c) schematic of the plate and the edge; arrow directions taken from the solved flux",
+    "(d) backward x and y flux fractions against the transverse wavenumber"
+   ],
+   "columns": {
+    "a": "incident_intensity",
+    "b": "backward_intensity",
+    "c": "figure_data/fig10_field_metrics.json",
+    "d": "Px_backward; Py_backward"
+   },
+   "pdf": {
+    "file": "paper_a_study/figures_final/fig10_field.pdf",
+    "bytes": 48621,
+    "sha256": "291886373190a8b5012290e2bb4622404a2db394f96d7c49c212494e4ef5c1ff"
+   },
+   "png": {
+    "file": "paper_a_study/figures_final/fig10_field.png",
+    "bytes": 270247,
+    "sha256": "9746eb909ada4b1b30f7162030d6552eb1be24e94a52ff9443e1c8f733ac2839"
+   },
+   "svg": {
+    "file": "paper_a_study/figures_final/fig10_field.svg",
+    "bytes": 29519187,
+    "sha256": "da6dbb01db1207be137f6f10f12a64adebc03fe537507aa6e1efdd2e5521d794"
+   }
   }
+ ],
+ "row_counts": {
+  "fig01_dispersion_velocity_attenuation.csv": 155,
+  "fig02_material_parameter_sweep.csv": 130,
+  "fig03_geometry_sweep.csv": 210,
+  "fig04_frequency_reflection.csv": 139,
+  "fig05_channel_power.csv": 5,
+  "fig06_attenuation_distance.csv": 50,
+  "fig07_coupling_sensitivity.csv": 95,
+  "fig08_thickness_flux.csv": 320,
+  "fig09_validation_convergence.csv": 7,
+  "fig09_temporal_spatial_consistency.csv": 11,
+  "fig10_field_maps.csv": 22801
+ }
 }

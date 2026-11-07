@@ -1,4 +1,17 @@
-"""Regenerate revised publication datasets for Paper A.
+"""SUPERSEDED (round 11, finding D25) --- do not run in the delivered tree.
+
+This script writes the *same file names* as ``build_figure_data.py`` but with an
+older, 14-column schema (no ``ky``, no ``attenuation_dB_per_mm``, no
+``K_spatial_*``).  Running it replaces the delivered datasets with data the
+figures cannot read and the manuscript does not describe.  The delivered
+datasets are produced by::
+
+    python paper_a_study/build_figure_data.py
+
+Setting ``PAPER_A_ALLOW_LEGACY_REGENERATION=1`` re-enables this script for the
+legacy figures of ``generate_revised_figures.py`` only.
+
+Regenerate revised publication datasets for Paper A.
 
 The earlier numerical pipeline contained four bookkeeping errors that are fixed
 here:
@@ -20,6 +33,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -484,6 +498,13 @@ def field_metrics() -> dict:
 
 
 def main():
+    if os.environ.get("PAPER_A_ALLOW_LEGACY_REGENERATION") != "1":
+        raise SystemExit(
+            "regenerate_revised_data.py is superseded by build_figure_data.py.\n"
+            "It writes the same file names with an older 14-column schema and would\n"
+            "silently replace the delivered datasets (round-11 finding D25).\n"
+            "Use:  python paper_a_study/build_figure_data.py\n"
+            "Set PAPER_A_ALLOW_LEGACY_REGENERATION=1 only for the legacy figures.")
     protocol = json.loads((RESULTS / "protocol.json").read_text())
     omin = float(protocol["baseline_minimum_omega"])
     ocut = float(protocol["baseline_cutoff_omega"])

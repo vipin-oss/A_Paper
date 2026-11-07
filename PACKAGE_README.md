@@ -1,4 +1,4 @@
-# Paper A — review package (round 10)
+# Paper A — review package (round 11)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -12,10 +12,11 @@ authoring environment. Build with
 An earlier compiled PDF is not included and would not certify this source.
 
 **Read first.** `START_HERE.txt` gives the reading order of this round's reports. The one to read
-before anything else is `PAPER_A_ROUND10_STYLE_AND_STRUCTURE_AUDIT.md`, written **before** the first
-edit: it records what the manuscript looked like, what the author's published papers look like, and
-what round 10 changed, refused to change, or deferred. Round 10 is a presentation round: no equation,
-no number, no figure and no dataset was changed.
+before anything else is `PAPER_A_ROUND11_STAGE1_PROGRAMMING_AND_FIGURE_AUDIT.md`, written **before**
+the first edit: it records what the code and the forty figure panels looked like, which suspicions
+were confirmed and which were disproved, and what round 11 then repaired. Round 11 is a programming
+and figure-verification round: no equation, no boundary condition, no solution method and no headline
+number was changed.
 
 ---
 
@@ -41,33 +42,41 @@ matplotlib 3.11.2).
 ```bash
 python -m venv .venv && .venv/bin/pip install numpy scipy matplotlib
 
-# 18 verification gates, one line each, ~5 min on two cores
+# 1. the datasets (7 min on two cores).  Run this FIRST: the tests and the
+#    figures read what it writes.
+OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/build_figure_data.py
+
+# 2. the ten vector figures (10 s), then copy them into the manuscript
+OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/generate_final_figures.py
+cp paper_a_study/figures_final/fig*.pdf Paper_A_Final_Submission/figures/
+
+# 3. the 18 verification gates (13 min on two cores)
 OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/run_all_checks.py
 
-# the datasets and the ten vector figures
-OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/build_figure_data.py
-OMP_NUM_THREADS=1 .venv/bin/python paper_a_study/generate_final_figures.py
-
-# tests, registry, mutants, individually
-.venv/bin/python -m unittest paper_a_study.test_model -v      # 39 tests, ~9 s
-.venv/bin/python paper_a_study/claim_audit.py                 # 22 claims, 45 tokens
-.venv/bin/python paper_a_study/mutation_tests.py              # 13 mutants, all caught
+# individually
+.venv/bin/python -m unittest paper_a_study.test_model -v      # 47 tests, ~21 s
+.venv/bin/python paper_a_study/claim_audit.py                 # 23 claims, 46 tokens
+.venv/bin/python paper_a_study/mutation_tests.py              # 15 mutants, all caught
 ```
 
 Run one solver script at a time. On two cores, two concurrent solver runs make each about ten times
 slower and the peak search then exceeds its own timeout.
 
-The gate results of the round-10 run are recorded in `validation/verification_log.txt` and, verbatim,
-in `validation/round10_battery_run_2026-11-07.log`; the mutant record is in
-`paper_a_study/figure_data/mutation_tests.json` and the registry audit in
-`paper_a_study/figure_data/claim_audit.json`. That run returned **17 PASS, 1 FAIL, 1 SKIP**: the claim
-registry gate failed because the regenerated search record moves two *differences of nearly equal
-numbers* at the round-off floor (degree spread 5.613e-9 against the committed 4.973e-9; quadrature
-spread 9.382e-10 against 5.591e-9) while the headline is unchanged at `0.9467953677961777` against
-`0.9467953685099261`. The data records were restored to their committed state, which is what a
-manuscript-only round requires, and the gate then passes with 9 of 9 source rows.
-`validation/round10_registry_gate_note.txt` records the whole sequence and the round-11 item it
-raises.
+The round-11 battery was run **on freshly generated data, with nothing restored**, starting from an
+empty `paper_a_study/figure_data/`. It returned **18 PASS, 0 FAIL, 1 SKIP** — the skip is the LaTeX
+build, for which this environment has no engine. The run is recorded verbatim in
+`validation/round11_battery_run_clean_reproduction.log`; the mutant record is in
+`paper_a_study/figure_data/mutation_tests.json` (15 mutants, all caught) and the registry audit in
+`paper_a_study/figure_data/claim_audit.json` (23 claims, 46 tokens, 11 of 11 source rows).
+
+That PASS replaces the round-10 failure honestly rather than by restoring records. Round 10 failed
+because the two refinement *spreads* — differences of nearly equal numbers lying on the round-off
+floor — were registered as values and tested by a 1 % equality test; the headline meanwhile moved by
+1e-13. Round 11 recomputed the quadrature spread at a fixed degree (it had pooled two degrees),
+registered both spreads as **bounds** (<1e-8), taught the gate inequality semantics, and restated the
+manuscript sentences as bounds. In the delivered run the degree spreads are 5.61e-9 and 6.22e-9 and
+the quadrature spread is 4.32e-10, all below the registered bound, and mutation M13 shows the gate
+still fails when a spread exceeds it.
 
 ---
 
@@ -80,9 +89,10 @@ raises.
 | `paper_a_study/figure_data/` | every CSV and JSON the manuscript and figures are built from, including the search, certification, identity and matched-control records |
 | `validation/` | the verification log of this delivery |
 | `a0/`, `a0r/`, `a0s/` | completed historical studies, retained as review evidence; they are not part of the current result |
-| `PAPER_A_ROUND10_*.md` | the five reports of this round: pre-edit audit, author style, structure comparison, edit log, closing audit |
+| `PAPER_A_ROUND11_*.md` | the eight reports of this round: pre-edit audit, numerical reproducibility, figure-by-figure audit, panel-source matrix, claim registry, mutation and regression results, correction ledger, final readiness |
+| `PAPER_A_ROUND10_*.md` | the five reports of round 10: pre-edit audit, author style, structure comparison, edit log, closing audit |
 | `PAPER_A_ROUND9_*.md`, `PAPER_A_ROUND8_*.md` | the earlier rounds, retained as review evidence |
-| `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8, round-9 and round-10 addenda at the end |
+| `PAPER_A_CORRECTION_HISTORY.md` | cumulative correction history, with the round-8 … round-11 addenda at the end |
 
 ---
 
