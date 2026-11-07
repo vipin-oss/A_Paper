@@ -84,7 +84,7 @@ def copy_files(names, dst: Path) -> int:
     for name in names:
         src = ROOT / name
         if src.is_dir():                     # a doc subfolder, e.g. 04_REPRODUCTION/logs
-            target = dst.parent / src.name
+            target = dst / src.name
             target.mkdir(parents=True, exist_ok=True)
             for f in sorted(src.rglob("*")):
                 if f.is_file():
@@ -227,15 +227,25 @@ def main() -> int:
         counts["root"] += 1
 
     # ---- integrity ------------------------------------------------------
-    rows = []
-    for path in sorted(STAGE.rglob("*")):
-        if path.is_file():
-            h = hashlib.sha256(path.read_bytes()).hexdigest()
-            rows.append((path.relative_to(STAGE).as_posix(), path.stat().st_size, h))
-    (STAGE / "09_ARCHIVE_METADATA" / "file_manifest_sha256.csv").write_text(
-        "path,bytes,sha256\n" + "".join(f"{p},{b},{h}\n" for p, b, h in rows))
+    manifest = STAGE / "09_ARCHIVE_METADATA" / "file_manifest_sha256.csv"
+
+    def hash_tree(exclude=()):
+        out = []
+        for path in sorted(STAGE.rglob("*")):
+            rel = path.relative_to(STAGE).as_posix()
+            if path.is_file() and path.name != "SHA256SUMS.txt" and rel not in exclude:
+                out.append((rel, path.stat().st_size,
+                            hashlib.sha256(path.read_bytes()).hexdigest()))
+        return out
+
+    # the manifest cannot contain its own hash (it would change itself), so it is
+    # excluded from its own rows and covered by SHA256SUMS.txt instead.
+    rows_manifest = hash_tree(exclude={"09_ARCHIVE_METADATA/file_manifest_sha256.csv"})
+    manifest.write_text("path,bytes,sha256\n"
+                        + "".join(f"{p},{b},{h}\n" for p, b, h in rows_manifest))
+    rows = hash_tree()                      # now includes the finished manifest
     (STAGE / "SHA256SUMS.txt").write_text(
-        "".join(f"{h}  {p}\n" for p, b, h in rows if not p.endswith(("SHA256SUMS.txt",))))
+        "".join(f"{h}  {p}\n" for p, b, h in rows))
 
     # ---- zip ------------------------------------------------------------
     ZIP_OUT.parent.mkdir(parents=True, exist_ok=True)
