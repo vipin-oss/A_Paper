@@ -96,29 +96,33 @@ Galerkin method.
 
 \begin{center}
 \small
-\begin{tabular}{@{}ll p{7mm} ll@{}}
+\begin{tabular}{@{}ll@{\qquad}ll@{}}
 \toprule
 Symbol & Quantity & Symbol & Quantity \\
 \midrule
-$u_i$ & displacement & $\sigma_{ij}$ & Cauchy stress \\
-$\varepsilon_{ij}$ & small strain & $\tau_{ijk}$ & hyperstress \\
-$\eta_{ijk}=\varepsilon_{ij,k}$ & strain gradient & $\Sigma_{ij}=\sigma_{ij}-\partial_k\tau_{ijk}$ & effective stress \\
+$u_i$ & displacement & $v_i$ & test displacement \\
+$\varepsilon_{ij}$ & small strain & $\eta_{ijk}=\varepsilon_{ij,k}$ & strain gradient \\
+$\sigma_{ij}$ & Cauchy stress & $\tau_{ijk}$ & hyperstress ($\tau_{ijk}=\tau_{jik}$) \\
+$\Sigma_{ij}$ & $\sigma_{ij}-\partial_k\tau_{ijk}$ & $n_i$ & surface normal \\
 $c_{ijkl}$ & elastic stiffness & $A_{ijklmn}$ & strain-gradient modulus \\
 $e_{kij}$ & piezoelectric constant & $f_{ijkl}$ & flexoelectric constant \\
 $\kappa_{ij}$ & permittivity & $\ell$ & strain-gradient length \\
-$\varphi$ & electrostatic potential & $E_i=-\partial_i\varphi$ & electric field \\
-$D_i$ & electric displacement & $\Delta n$ & carrier-number perturbation \\
+$\varphi$ & electrostatic potential & $\psi$ & test potential \\
+$E_i=-\partial_i\varphi$ & electric field & $D_i$ & electric displacement \\
+$\Delta n$ & carrier-number perturbation & $\widehat N=\widetilde\mu+Q\widehat\varphi$ & carrier amplitude \\
 $n_0$ & steady carrier density & $\mu_e$ & electron mobility \\
 $D$ & electron diffusivity & $q$ & elementary charge \\
-$\widetilde\mu$ & electrochemical potential & $H_{jkl}$ & carrier--strain-gradient coupling \\
-$H/H^{*}$ & normalised coupling & $a=k_BT/n_0$ & carrier compressibility \\
+$\widetilde\mu$ & electrochemical potential & $\Phi$ & test electrochemical potential \\
+$H_{jkl}$, $H\equiv H_{zzz}$ & carrier--strain-gradient coupling & $H/H^{*}$ & normalised coupling \\
+$a=k_BT/n_0$ & carrier compressibility & $Q$ & dimensionless charge \\
 $k_x$ & propagation wavenumber & $k_y$ & transverse wavenumber \\
+$k_{Bx}$ & backward-branch wavenumber & $k_{ix}$ & incident wavenumber \\
 $d$ & plate thickness & $\zeta=2z/d$ & scaled thickness \\
 $\omega$, $f$ & angular frequency, frequency & $\lambda=\ell/d$ & dimensionless gradient length \\
 $x=0$ & reflecting edge & $L$ & reference-plane distance \\
 $R_B$ & backward modal share & $P_x$ & thickness-integrated power flux \\
 $P_{\text{inc}}$ & incident self-power & $\theta_E$ & energy angle \\
-$\Imag k_x$ & spatial decay rate & $\alpha=2|\Imag k_x|$ & spatial attenuation \\
+$\alpha_{\mathrm d}=D/(dc_s)$ & transport-over-elastic rate & $\alpha=2|\Imag k_x|$ & spatial attenuation \\
 \bottomrule
 \end{tabular}
 \end{center}

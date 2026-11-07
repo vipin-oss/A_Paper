@@ -510,7 +510,7 @@ def fig05():
     b.set_ylabel("fraction of incident power")
     b.set_xticks(S.H_LEVELS)
     b.set_xticklabels(ticks, fontsize=8)
-    b.set_ylim(8e-7, 30.0)
+    b.set_ylim(8e-7, 3.0e2)   # headroom: the legend must not sit on the 10^0 curve
     logify(b, "y")
     S.style_axes(b)
     b.legend(handles=[Line2D([], [], color=c0[2], linewidth=2.0, marker=c0[3],
@@ -527,8 +527,8 @@ def fig05():
     c.axhline(1e-6, color="#C83E58", linewidth=1.0, linestyle=(0, (5, 3)))
     c.text(eta[0], 1.6e-6, "acceptance threshold $10^{-6}$", fontsize=6.8,
            color="#C83E58")
-    c.text(eta[-1], 2.6e-13, "round-off floor", fontsize=6.8, color="#4A5468",
-           ha="right", va="bottom")
+    c.text(eta[0], 4e-10, "round-off floor of the solver", fontsize=6.8,
+           color="#4A5468", ha="left", va="center")
     c.set_xlabel(r"$H/H^{*}$")
     c.set_ylabel("power-balance residual")
     c.axhspan(1e-13, 3e-12, color="#8A94A6", alpha=0.14, linewidth=0)
@@ -719,11 +719,23 @@ def fig08():
             sub = sorted(series(rows, eta=eta), key=lambda r: r["z"])
             S.h_plot(ax, col(sub, key) / p_inc, col(sub, "z"), eta,
                      marker=False)
-        ax.axvline(0, color="#202A44", linewidth=1.0)
+        # zero reference, dotted and thin so that it is not mistaken for a
+        # sixth data curve
+        ax.axvline(0, color="#8A94A6", linewidth=0.9, linestyle=(0, (2, 2)),
+                   zorder=1)
         ax.set_xlabel(rf"$P_{sym}^{{\rm B}}(z)\,/\,P_x^{{\rm inc}}$")
         ax.set_ylabel(r"$z/d$")
         ax.set_ylim(0, 1)
         S.style_axes(ax)
+
+    # the five H levels cannot be separated on this figure: say so instead of
+    # pretending that five distinguishable curves are drawn
+    note(b, "all five $H/H^{*}$ levels:" "\n" r"profiles agree to $<0.9\%$ of the peak",
+         loc=(0.255, 0.50), fontsize=6.8, va="center")
+    b.set_xticks([-0.006, -0.003, 0.0, 0.003, 0.006])
+    b.set_xticklabels([r"$-0.006$", r"$-0.003$", r"$0$", r"$0.003$", r"$0.006$"],
+                      fontsize=8)
+    b.set_xlim(-0.0068, 0.0068)
 
     # (c) running (through-thickness) integral, normalised to its own total
     for eta in S.H_LEVELS:
@@ -750,8 +762,8 @@ def fig08():
     d.set_ylabel(r"$z/d$")
     d.set_ylim(0, 1)
     d.set_xlim(0.2, 1.06)
-    d.legend(loc="lower left", fontsize=7.8, handlelength=1.9, borderpad=0.35,
-             labelspacing=0.3)
+    d.legend(loc="upper left", fontsize=6.8, handlelength=1.5, borderpad=0.3,
+             labelspacing=0.25, framealpha=0.94)
     S.style_axes(d)
 
     h_legend(fig, (a, b, c), y=0.998)

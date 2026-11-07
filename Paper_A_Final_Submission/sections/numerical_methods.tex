@@ -44,44 +44,105 @@ rows of the discretised operator.  The basis is integrated with
 $\max(64,2n+10)$ Gauss--Legendre points, which resolves the mass and stiffness
 matrices to machine precision for every degree used here.
 
-The expansion \eqref{eq:basis} is inserted in the weak form of the reduced
-problem.  Multiplying the momentum balance, Gauss's law and the carrier
-continuity by test functions $\Psi_p(\zeta)$ of the same space, integrating over
-the thickness and integrating by parts in $z$ once for the stress and twice for
-the hyperstress gives
+The expansion \eqref{eq:basis} is inserted in the weak equations of the reduced
+problem.  There are three of them, and they are kept apart here because they are
+three different statements: the mechanical balance, Gauss's law and the carrier
+continuity.  Let $(\vect v,\psi,\Phi)$ be test fields of the same spaces as
+$(\vect u,\varphi,\widetilde\mu)$.
+
+\emph{(A) Mechanical balance.}
 \begin{equation}
-\label{eq:weak_form}
-\int_{-1}^{1}\Bigl[
-\widehat\sigma_{ij}\,\widehat\varepsilon^{*}_{ij}(\Psi)
-+\widehat\tau_{ijk}\,\widehat\eta^{*}_{ijk}(\Psi)
--\widehat D_i\,\widehat E_i^{*}(\Psi)
-+\widetilde\mu\,N^{*}(\Psi)
-\Bigr]\dd\zeta
-=\omega^{2}\!\int_{-1}^{1}\rho\,\widehat u_i\,\Psi_i^{*}\,\dd\zeta ,
+\label{eq:weak_mech}
+\int_{-1}^{1}\Bigl[\widehat\sigma_{ij}\,\widehat\varepsilon^{*}_{ij}(\vect v)
++\widehat\tau_{ijk}\,\widehat\eta^{*}_{ijk}(\vect v)\Bigr]\dd\zeta
+=\omega^{2}\int_{-1}^{1}\rho\,\widehat u_i\,v_i^{*}\,\dd\zeta ,
 \end{equation}
-in which $N^{*}$ and the starred quantities are those built from the test
-functions by
-\eqref{eq:strain_amplitudes}--\eqref{eq:eta_amplitudes}, and the surface terms
-of the integration by parts are exactly the natural conditions
-\eqref{eq:bc_faces_mech}--\eqref{eq:bc_faces_carrier}: they vanish because the
-faces are traction-free and double-traction-free and because the contacts block
-the carriers, while the two electrical cases enter as the essential and natural
-conditions already built into the basis.  Written in the inner product
-$\langle\vect a,\vect b\rangle_{\mathsf C}=\int_{-1}^{1}\vect a^{*\mathsf
-T}\mathsf C\,\vect b\,\dd\zeta$ of the elastic moduli, \eqref{eq:weak_form}
-produces the five contributions of the enthalpy one by one: the elastic term
-$\langle\mathsf B_r,\mathsf B_s\rangle_{\mathsf C}$, the gradient term
-$\lambda^{2}\langle\partial_\zeta^{l}\mathsf B_r,
-\partial_\zeta^{l}\mathsf B_s\rangle_{\mathsf C}$ with $\lambda^{2}$ the
-dimensionless gradient modulus, the piezoelectric cross terms in which
-$\mathsf G_r$ multiplies $\mathsf B_s$ and $\mathsf B_r$ multiplies
-$\mathsf G_s$, the dielectric term $\langle\mathsf G_r,\mathsf G_s\rangle_
-{\boldsymbol\kappa}$, the flexoelectric term in which $\mathsf G_r$ and
-$\partial_\zeta\mathsf B_s$ meet, the carrier term
-$(\alpha/\omega)\langle\mathsf M\mathsf G_r,\mathsf M\mathsf G_s\rangle$ and the
-inertial term $\omega^{2}\langle\mathsf U,\mathsf U\rangle$.  Each block carries
-one power of $k_x$ from the test side and one from the trial side, so the
-semi-discrete system is assembled as a polynomial of degree four in the
+with $\widehat\sigma$ and $\widehat\tau$ the trial fields of
+\eqref{eq:sigma}--\eqref{eq:tau}.  The boundary terms produced by integrating
+$\partial_j\widehat\sigma_{ij}$ once and $\partial_j\partial_k\widehat\tau_{ijk}$
+twice vanish on the free, double-traction-free faces
+\eqref{eq:bc_faces_mech}; they are the traction and the double traction of
+\cref{sec:governing_bc}.
+
+\emph{(B) Gauss's law.}
+\begin{equation}
+\label{eq:weak_gauss}
+-\int_{-1}^{1}\widehat D_i\,\widehat E_i^{*}(\psi)\,\dd\zeta
+-\int_{-1}^{1}\widehat N\,\psi^{*}\,\dd\zeta=0 ,
+\end{equation}
+with the trial $\widehat D$ from \eqref{eq:D} and $\widehat N$ the dimensionless
+carrier amplitude.  The second integral is the mobile charge of \eqref{eq:gauss};
+without it \eqref{eq:weak_gauss} would be the statement for a dielectric rather
+than Gauss's law.  The grounded condition is essential and is built into the
+potential space; the open-circuit condition $D_z=0$ is the natural boundary term
+of \eqref{eq:weak_gauss} and is imposed through it.
+
+\emph{(C) Carrier continuity.}
+\begin{equation}
+\label{eq:weak_carrier}
+\int_{-1}^{1}\Bigl[\widehat N\,\Phi^{*}
+-\frac{\ii\alpha_{\mathrm d}}{\omega}\,\partial_i\widetilde\mu\,\partial_i\Phi^{*}\Bigr]\dd\zeta=0 ,
+\end{equation}
+where $\widehat N=\widetilde\mu+Q\widehat\varphi$ is the carrier amplitude that
+\eqref{eq:continuity} delivers.  Equation \eqref{eq:weak_carrier} is the
+time-harmonic continuity equation multiplied by $\ii/\omega$, so it is equivalent
+to $-\ii\omega\widehat N-\alpha_{\mathrm d}\,\partial_i\partial_i\widetilde\mu=0$, and the
+blocking condition $J_z=0$ is its natural boundary term.  It is a transport
+equation, not a statement about the enthalpy: the enthalpy reaches it only through
+$\widetilde\mu$, which is why the coupling also appears in \eqref{eq:weak_mech},
+through $\widehat\tau$.
+
+\emph{(D) The assembled system.}  Because the three equations are coupled they are
+discretised in one matrix.  The unknown vector is
+$\vect q=(\widehat{\vect u},\widehat{\boldsymbol\varphi},
+\widetilde{\boldsymbol\mu})$ of dimension $3n+n_\varphi+n$, and the matrix is
+stored as nine blocks $\mathsf A_{rs}$, $r,s\in\{0,1,2\}$, indexed by the power of
+$k_x$ carried by the test factor ($r$) and by the trial factor ($s$).  With
+$\mathsf B_r$, $\mathsf G_r$ and $\mathsf M\mathsf G_r$ the strain, electric-field
+and electrochemical-gradient operators carrying $\partial_x^{r}$, with
+$\mathsf W$ the row vector of the completed square
+$\widehat N-h\,\partial_\zeta^{2}\widehat u_3$ of the carrier sector --- the
+compressibility $a(\Delta n)^{2}$, the coupling $2H\Delta n\,\eta_{zzz}$ and the
+gradient energy of the added term written as one square, which is what makes the
+enthalpy positive definite --- and with $\mathsf U$ the displacement basis, every block is the bilinear form
+\begin{equation}
+\label{eq:block}
+\begin{aligned}
+\mathsf A_{rs}={}&\bigl\langle\mathsf B_r,\mathsf C\,\mathsf B_s\bigr\rangle
++\lambda^{2}\bigl\langle\partial_\zeta^{l}\mathsf B_r,
+\mathsf C\,\partial_\zeta^{l}\mathsf B_s\bigr\rangle
++\bigl\langle\mathsf G_r,\mathsf e\,\mathsf B_s\bigr\rangle
++\bigl\langle\mathsf B_r,\mathsf e^{\mathsf T}\mathsf G_s\bigr\rangle
+-\bigl\langle\mathsf G_r,\boldsymbol\kappa\,\mathsf G_s\bigr\rangle\\
+&+f\Bigl[\bigl\langle\mathsf G_r^{(2)},\partial_\zeta\mathsf B_s^{(2)}\bigr\rangle
++\bigl\langle\partial_\zeta\mathsf B_r^{(2)},\mathsf G_s^{(2)}\bigr\rangle\Bigr]
+-\frac{\ii\alpha_{\mathrm d}}{\omega}\bigl\langle\mathsf M\mathsf G_r,
+\mathsf M\mathsf G_s\bigr\rangle
+-\bigl\langle\mathsf W_r,\mathsf W_s\bigr\rangle
+-\omega^{2}\bigl\langle\mathsf U_r,\mathsf U\bigr\rangle\delta_{r0}\delta_{s0},
+\end{aligned}
+\end{equation}
+in the inner product $\langle\vect a,\vect b\rangle=\int_{-1}^{1}
+\vect a^{*\mathsf T}\vect b\,\dd\zeta$ of the complex conjugate of the test
+factor, and with the eight terms, in order, the elastic, strain-gradient,
+piezoelectric (two cross terms), dielectric, flexoelectric, carrier-transport,
+carrier-compressibility-and-coupling, and inertial contributions.  The first,
+second, third, fifth and sixth lines of \eqref{eq:block} are the discretisation of
+\eqref{eq:weak_mech}; the third and fourth supply the piezoelectric cross terms
+that \eqref{eq:weak_gauss} needs; the seventh is \eqref{eq:weak_carrier}; the
+eighth is the compressibility and the added coupling, which appear in the carrier
+rows and, through $\widehat\tau$, in the mechanical rows as well.  Equation
+\eqref{eq:block} is the construction: each block is one quadrature of the listed
+integrands against the Legendre basis, so the entries can be regenerated from the
+stated integrands without reading the program.
+
+Each block carries one power of $k_x$ from the test side and one from the trial
+side, but two of the nine vanish identically: $\mathsf A_{02}=\mathsf A_{20}=0$,
+because no field of the enthalpy carries two derivatives in the propagation
+direction --- the second derivative of the strain never appears, only the first,
+and the two factors of $k_x$ in the hyperstress term come from one derivative of
+the stress-free field and one differentiation of the hyperstress.  The
+semi-discrete system is therefore assembled as a polynomial of degree four in the
 propagation wavenumber $k_x$,
 \begin{equation}
 \label{eq:polynomial}
@@ -95,6 +156,15 @@ power by power, \eqref{eq:polynomial} is \eqref{eq:quartic} of
 operator and not of the interpolation: the classical limit $\ell=0$ returns the
 familiar quadratic problem, and it does so identically, with
 $\mathsf A_{22}=\mathsf A_{12}=0$.
+
+The blocks also carry the Hermitian structure one expects of an elastic problem
+with loss confined to the carriers: $\mathsf A_{12}=\mathsf A_{21}^{\mathsf H}$,
+$\mathsf A_{22}=\mathsf A_{22}^{\mathsf H}$ and
+$\mathsf A_{01}=\mathsf A_{10}^{\mathsf H}$ hold to $10^{-15}$, so the cubic
+coefficient $\ii(\mathsf A_{12}-\mathsf A_{21})$ is Hermitian, while
+$\mathsf A_{00}$ and $\mathsf A_{11}$ fail to be Hermitian by exactly the
+carrier-transport form of \eqref{eq:block}, which is the only non-Hermitian
+contribution in the construction.
 
 \subsection{Temporal and spatial routes}
 \label{sec:numerics_routes}

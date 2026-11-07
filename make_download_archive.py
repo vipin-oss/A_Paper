@@ -20,11 +20,18 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-STAGE = Path("/tmp/paper_a_round14_stage")   # outside the repo: no second main.tex
-OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round14.zip"
+STAGE = Path("/tmp/paper_a_round15_stage")   # outside the repo: no second main.tex
+OUT = ROOT / "downloads" / "Paper_A_Complete_Project_round15.zip"
 
 ROOT_REPORTS = [
     "PAPER_A_CORRECTION_HISTORY.md",
+    "PAPER_A_ROUND15_SUPERVISOR_DECISION.md",
+    "PAPER_A_ROUND15_INDEPENDENT_MATHEMATICAL_AUDIT.md",
+    "PAPER_A_ROUND15_COMPLETE_COUPLED_WEAK_FORM.md",
+    "PAPER_A_ROUND15_BOUNDARY_VARIATION_AND_CORNER_AUDIT.md",
+    "PAPER_A_ROUND15_FIGURE_5_8_VISUAL_REVIEW.md",
+    "PAPER_A_ROUND15_LATEX_AND_NOMENCLATURE_AUDIT.md",
+    "PAPER_A_ROUND15_PRE_EDIT_MATHEMATICAL_AUDIT.md",
     "PAPER_A_ROUND14_AUTHOR_STYLE_AND_PRESENTATION_FAILURE_AUDIT.md",
     "PAPER_A_ROUND14_MATHEMATICAL_DERIVATION_MATRIX.md",
     "PAPER_A_ROUND14_FIGURE_REDESIGN_AUDIT.md",
@@ -151,7 +158,7 @@ def main() -> int:
 
     (STAGE / "START_HERE.txt").write_text(
         "\n".join([
-            "Paper A -- round 14: author style, written derivations, figure redesign, presentation",
+            "Paper A -- round 15: independent mathematics, weak-form repair, figures 5/8, nomenclature",
             "=======================================================================",
             "",
             "Round 13 closed the two defects round 12 left open and re-verified everything those",

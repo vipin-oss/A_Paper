@@ -181,6 +181,7 @@ Differentiating \eqref{eq:enthalpy} gives the constitutive relations
 \label{eq:sigma}\\
 \tau_{ijk}&=\frac{\partial w}{\partial\eta_{ijk}}
 =A_{ijklmn}\eta_{lmn}+H_{ijk}\Delta n-f_{lijk}E_l,
+\qquad \tau_{ijk}=\tau_{jik},
 \label{eq:tau}\\
 D_i&=-\frac{\partial w}{\partial E_i}
 =\kappa_{ij}E_j+e_{ijk}\varepsilon_{jk}+f_{ijkl}\eta_{jkl},
@@ -228,12 +229,22 @@ The field equations are the Euler--Lagrange equations of the enthalpy
 \label{eq:var_kinematics}
 \delta\varepsilon_{ij}=\tfrac12\bigl(\delta u_{i,j}+\delta u_{j,i}\bigr),
 \qquad
-\delta\eta_{ijk}=\tfrac12\bigl(\delta u_{i,jk}+\delta u_{j,ik}\bigr)
-=\delta u_{i,jk},
+\delta\eta_{ijk}=\tfrac12\bigl(\delta u_{i,jk}+\delta u_{j,ik}\bigr),
 \end{equation}
-the last equality holding because $\eta_{ijk}$ and therefore $\tau_{ijk}$ are
-symmetric in the first two indices, and the electric variation is
-$\delta E_i=-\partial_i\delta\varphi$.  With these, the virtual work of the
+and the electric variation is $\delta E_i=-\partial_i\delta\varphi$.  The two
+terms of \eqref{eq:var_kinematics} are not equal component by component, and this
+article does not use them as such.  What is used is the contracted identity
+\begin{equation}
+\label{eq:contraction}
+\tau_{ijk}\,\delta\eta_{ijk}=\tau_{ijk}\,\delta u_{i,jk},
+\end{equation}
+which holds because $\eta_{ijk}=\eta_{jik}$ by \eqref{eq:strain} and the
+hyperstress is its conjugate, $\tau_{ijk}=\partial w/\partial\eta_{ijk}$ taken on
+the symmetric subspace, so that $\tau_{ijk}=\tau_{jik}$; the antisymmetric part
+of $\delta u_{i,jk}$ in $(i,j)$ is then annihilated,
+$\tfrac12\tau_{ijk}(\delta u_{i,jk}-\delta u_{j,ik})=0$ by relabelling
+$i\leftrightarrow j$ in the second term.  Only \eqref{eq:contraction} enters the
+integrations by parts below.  With these, the virtual work of the
 internal fields at fixed time is
 \begin{equation}
 \label{eq:virtual_work}

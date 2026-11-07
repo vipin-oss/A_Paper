@@ -19,7 +19,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig01_dispersion.pdf",
     "bytes": 39577,
-    "sha256": "26dd475293f115f40176108cf385bd631de320b34ac84d4edbd8e8d0623347fe"
+    "sha256": "e3a92bf26bda631c764a7006d430dec3e06cf4473a5247b4c678ab1a86066d21"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig01_dispersion.png",
@@ -51,7 +51,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig02_material.pdf",
     "bytes": 37574,
-    "sha256": "dfd22c06c6f7be415e0c9e213a6c3e18e2cac0f21e5706f401f35b9ed25a7b51"
+    "sha256": "ceeda246801c9cf7bcb9f05848f789cd5d48ab26a7e9f452acf06efaed6e11db"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig02_material.png",
@@ -83,7 +83,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig03_geometry.pdf",
     "bytes": 37074,
-    "sha256": "375618e7515a48b4099fd7b2b3e6c50818a38a6fd5340236c080c377796d6236"
+    "sha256": "38e4a56f12efc91f459fa22dbfd6b4971650fc29ee8d0d6b2c3cd759b0745702"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig03_geometry.png",
@@ -115,7 +115,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig04_frequency.pdf",
     "bytes": 39974,
-    "sha256": "76efabb667cc5ab10540c02d3510d9ed3e46875e3a22d7c0f6cb977cc95051c2"
+    "sha256": "1847ed9f905f63ceb53946a42bd4880f8753ec84484df68861898e07e9ad6340"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig04_frequency.png",
@@ -146,13 +146,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig05_channel.pdf",
-    "bytes": 34221,
-    "sha256": "36db3bde050160a21d6223f9089aca935a6de0696950df59b7457f3a1fc8221c"
+    "bytes": 34588,
+    "sha256": "1df82fca2f7b08b04db8d42490e276081e1ce01410a92808cfedd8bc549f296a"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig05_channel.png",
-    "bytes": 321548,
-    "sha256": "a847b573a4d255ec469c95cf0c96b6aea331088e11e88af6ec019fe3bbd21355"
+    "bytes": 325698,
+    "sha256": "23178a1ae2081f6808f5f0d227d7d6a3623ac2832c569bde3726d264e80ca4f9"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig05_channel.svg",
@@ -179,7 +179,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig06_attenuation.pdf",
     "bytes": 33779,
-    "sha256": "0dfe4a9c5439655c3ffc9adbc0884c39c99936216c426b269b28962405036101"
+    "sha256": "3d52b2558ca60cfc10bd2156a79e0f92cc5e03e9e7e4f4191ad92882429d903c"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig06_attenuation.png",
@@ -211,7 +211,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig07_coupling.pdf",
     "bytes": 35836,
-    "sha256": "788f5c07b41e2066d4556197bce6b9ff8b0ae38c6214463e53133d7e53251076"
+    "sha256": "9a654d38c50ccefb44d2c8c3958bbdf84673170d2e569c9414737ebbf9c5bcc4"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig07_coupling.png",
@@ -242,13 +242,13 @@
    },
    "pdf": {
     "file": "paper_a_study/figures_final/fig08_boundary.pdf",
-    "bytes": 35778,
-    "sha256": "bc124bd24dca7c9c48f56456b1efafaca48caa66d50d34eb62de145d40bdb3c9"
+    "bytes": 39037,
+    "sha256": "7d7915e11afde78ba9bbb2341f00b2258717488effce1586b03dc93f173121f0"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig08_boundary.png",
-    "bytes": 364244,
-    "sha256": "a9509f18447d59d1532bc4d99086860f8c0c519369e9f9eb069ae2f1afce3e7c"
+    "bytes": 398213,
+    "sha256": "a988380068989df40597b8ab7da08fa5235f178bcde977928a26dffb4fd4eb23"
    },
    "svg": {
     "file": "paper_a_study/figures_final/fig08_boundary.svg",
@@ -277,7 +277,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig09_validation.pdf",
     "bytes": 33815,
-    "sha256": "020678bcd51e7a2384125f924f412f4df9805f41050c033de244432258087d7a"
+    "sha256": "be5357814bd47c0421a85569fcdc2de538ace3be6ef7d7ac2fb60d37435bf8db"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig09_validation.png",
@@ -309,7 +309,7 @@
    "pdf": {
     "file": "paper_a_study/figures_final/fig10_field.pdf",
     "bytes": 48618,
-    "sha256": "07b3d1c7a5f52f0cb0c617b5ccf1560941796860faa0f5eae34d09d2cd1bbfd5"
+    "sha256": "e686905c2e632f640911d61a3af91bc914e063cc4c7e5f948135c97d8eb05972"
    },
    "png": {
     "file": "paper_a_study/figures_final/fig10_field.png",
