@@ -64,6 +64,8 @@
     "paper_a_study/reclassify_csv.py": "dc5570ee6646586534189a5ccd821b7b627ea3a231715b4e66d4959082fe10ce",
     "paper_a_study/round18_mathematical_audit.py": "a3e5154b2eb3f6db8c72cbe0c7986ab18f1fa54da48440fa55c23eab71601734",
     "paper_a_study/round18_reference_checks.py": "3fe53f888d69a0921cd7a943c5d128174e867161de96876e6bef550e20261c05",
+    "paper_a_study/round19_layout_check.py": "f9c69cef3d23965ae673157c626ae68d1ea5a054177b9b18a3f7724ab1d93686",
+    "paper_a_study/round19_tests.py": "d6bed8ccd83fb1239e8fe0022f55f850426eede22ad232290c82818aa6c96fe4",
     "paper_a_study/run_all_checks.py": "ebaa7c38a181fa12d8de66326d9de894ee1b7d3cc3f9c8611a61ce2a67fe00d0",
     "paper_a_study/test_model.py": "9ac048cc9fc5fbe66b9f477beb89cb6390c1b3c9f48dd9aa16500c5cc702e725",
     "paper_a_study/verify_dimensions.py": "1e0889347f08030bf2524081313d480a309cea2de97498bfb0036e25c8f793b9",
@@ -72,17 +74,17 @@
     "scripts/generate_final_figures.py": "e3d4348b1f4b5d5c9c8baf09d69263d00abadd67565d559973d3c325b933293a",
     "scripts/model.py": "c72ce871d1e79e5013db188bdbb0f27fe0ba31b41ddc2f3450c0145aea1eb832",
     "scripts/static_check.py": "b6b004e28878c5989b1e5f41295f22e7724b4beb117ad060e1b706af137903f3",
-    "sections/appendix_derivations.tex": "b76d5a1809e71620a97462352d2ea27a562cf9449d7d9d44dca2bcdd68dac4fb",
+    "sections/appendix_derivations.tex": "8e01c3196243c468fd43098e3ecc6f256dd37689bec7659253ada4353ea3f32c",
     "sections/appendix_reproducibility.tex": "030cf5780631a050a0092c7618981a0bd7ec56ecfda8c3e635a101b36ac6c73f",
     "sections/conclusions.tex": "82c601c0b95679ee735cdd55be4a63bb57b7e6c691f4271131117baa144af5d0",
     "sections/discussion.tex": "4c974be7f75ff61fe8d8e033eb81dd7b00f4da5c8d130fd6e191f1b333e9a0d5",
-    "sections/governing_equations.tex": "2bacc2ced2dddd0fbd5cc2322a5d844d446841da84f6f96c0e1495c3f75c6ca9",
+    "sections/governing_equations.tex": "615c1e3f6c5e3fc2ac45c623ef0fa4bc0e2fcaad1d0c13dbd58f141fe8e98461",
     "sections/introduction.tex": "d975ff13401a10c1736178610b3a732847022e8ca3c647a2f34cad67bb04c677",
-    "sections/numerical_methods.tex": "3e9a8b00e98fdd9b76b8d1aed4b45ff4e54242ec75fab092f5aa12b2d9571e38",
+    "sections/numerical_methods.tex": "88dd9450f4b9961c5643e7025149395184bfefa8a598e3349fbd9a2573e2f4f3",
     "sections/results.tex": "033818c27503c3ce92b86ac6e3cac3306db624339b88be15f025876c065c5875",
-    "static_validation.txt": "d0ccf3a6d07dace3511d345396022a178c8f35f1e5801d7a58c1a63ff792fbe4",
+    "static_validation.txt": "5e46d90ace639316e30b79bf500ce9774022547b4c45edc22ff6d1d0aba5ac9b",
     "validation/round10_registry_gate_note.txt": "833acf212badaef9c678e188a4f4c364b6b298123a343404752f2440c211e479",
     "validation/verification_log.txt": "c918055e748a5d581a387aa8a0156e0c9515d04b6a77b4298455f202959c4795"
   },
-  "count": 83
+  "count": 85
 }

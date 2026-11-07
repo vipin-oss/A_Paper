@@ -188,21 +188,26 @@ contributions, $w=\sum_\alpha w_\alpha$, the derivatives are
 \begin{align}
 \frac{\partial w_{\text{el}}}{\partial\varepsilon_{ij}}
 &=\tfrac12 c_{klij}\varepsilon_{kl}+\tfrac12 c_{ijkl}\varepsilon_{kl}
-=c_{ijkl}\varepsilon_{kl},
-&\frac{\partial w_{\text{grad}}}{\partial\eta_{ijk}}
+=c_{ijkl}\varepsilon_{kl},\label{eq:diff_el}\\[2pt]
+\frac{\partial w_{\text{grad}}}{\partial\eta_{ijk}}
 &=\tfrac12 A_{lmnijk}\eta_{lmn}+\tfrac12 A_{ijklmn}\eta_{lmn}
-=A_{ijklmn}\eta_{lmn},\label{eq:diff_el}\\[2pt]
+=A_{ijklmn}\eta_{lmn},\\[2pt]
 \frac{\partial w_{\text{piezo}}}{\partial\varepsilon_{ij}}&=-e_{kij}E_k,
-&\frac{\partial w_{\text{flexo}}}{\partial\eta_{ijk}}&=-f_{lijk}E_l,
+\qquad
+\frac{\partial w_{\text{flexo}}}{\partial\eta_{ijk}}=-f_{lijk}E_l,
 \label{eq:diff_coup}\\[2pt]
 \frac{\partial w_{\text{diel}}}{\partial E_i}&=-\kappa_{ij}E_j,
-&\frac{\partial w_{\text{piezo}}}{\partial E_i}&=-e_{ijk}\varepsilon_{jk},
-&\frac{\partial w_{\text{flexo}}}{\partial E_i}&=-f_{ijkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{piezo}}}{\partial E_i}=-e_{ijk}\varepsilon_{jk},
 \label{eq:diff_elec}\\[2pt]
-\frac{\partial w_{\text{carr}}}{\partial\Delta n}&=a\,\Delta n,
-&\frac{\partial w_{H}}{\partial\Delta n}&=H_{jkl}\eta_{jkl},
-&\frac{\partial w_{\text{es}}}{\partial\Delta n}&=-q\varphi,
-\label{eq:diff_carr}
+\frac{\partial w_{\text{flexo}}}{\partial E_i}&=-f_{ijkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{carr}}}{\partial\Delta n}=a\,\Delta n,
+\label{eq:diff_carr}\\[2pt]
+\frac{\partial w_{H}}{\partial\Delta n}&=H_{jkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{es}}}{\partial\Delta n}=-q\varphi,
+\label{eq:diff_es}
 \end{align}
 and \eqref{eq:sigma}--\eqref{eq:mu} are these lines collected, with the electric
 relation taken as $D_i=-\partial w/\partial E_i$ because $E_i$ is the field and
@@ -420,12 +425,15 @@ components out in full, the out-of-plane one, because it is the component that
 carries all four sectors at once:
 \begin{equation}
 \label{eq:momentum_expanded}
-\rho\omega^{2}\widehat u_3
+\begin{aligned}
+&\rho\omega^{2}\widehat u_3
 +\partial_x\bigl(2c_{44}\varepsilon_{xz}-e_{15}E_x\bigr)
-+\partial_y\bigl(2c_{44}\varepsilon_{yz}-e_{15}E_y\bigr)
++\partial_y\bigl(2c_{44}\varepsilon_{yz}-e_{15}E_y\bigr)\\
+&\qquad
 +\partial_z\bigl(c_{13}(\varepsilon_{xx}+\varepsilon_{yy})
 +c_{33}\varepsilon_{zz}-e_{33}E_z\bigr)
 +\partial_i\partial_k\tau_{3ik}=0 ,
+\end{aligned}
 \end{equation}
 where the last term is the double divergence of the hyperstress of
 \eqref{eq:tauZnO} and the sign is the $-\partial_i\partial_k\tau_{jik}$ of
@@ -460,13 +468,16 @@ the minus sign being the charge of the electron.  Substituting
 into the electrostatic operator of the model,
 \begin{equation}
 \label{eq:gauss_expanded}
--\kappa_{11}\bigl(\varphi_{,xx}+\varphi_{,yy}\bigr)
+\begin{aligned}
+&-\kappa_{11}\bigl(\varphi_{,xx}+\varphi_{,yy}\bigr)
 -\kappa_{33}\varphi_{,zz}
-+2e_{15}\bigl(\varepsilon_{xz,x}+\varepsilon_{yz,y}\bigr)
++2e_{15}\bigl(\varepsilon_{xz,x}+\varepsilon_{yz,y}\bigr)\\
+&\qquad
 +e_{31}\bigl(\varepsilon_{xx,z}+\varepsilon_{yy,z}\bigr)
 +e_{33}\,\varepsilon_{zz,z}
 +f\,\eta_{zzz,z}
 =-q\,\Delta n ,
+\end{aligned}
 \end{equation}
 in which the second line contains the piezoelectric and flexoelectric
 contribution to the charge density and the first is the dielectric operator.  The
@@ -594,6 +605,14 @@ version of the same physics rather than an independent validation of it.
 \label{eq:bc_edge}
 \sigma_{ix}=0,\qquad \tau_{ijx}=0,\qquad D_x=0,\qquad J_x=0,\qquad x=0 .
 \end{equation}
+The first two are a traction and a double traction; the second is a condition on
+the hyperstress and is vacuous only when the hyperstress vanishes identically.
+Because $\tau_{ijx}$ contains the elastic term in $\ell^{2}$ and the
+flexoelectric term in $f$, that happens only in the classical limit
+$\ell=f=H=0$; the formulation therefore admits $\ell=0$ with $f\neq0$ only
+together with the statement that the double traction is then unavailable, and no
+result reported here takes that limit.  \cref{app:derivations} sets out the
+surviving terms case by case.
 
 \paragraph{Far field $x\to-\infty$.}  The solution is an incoming guided mode
 plus outgoing branches; no wave arrives from $x=-\infty$ other than the

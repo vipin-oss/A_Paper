@@ -194,17 +194,33 @@ n_{\mathrm{w}}=3N+n_\varphi+n_\mu=5n+3\ (\text{grounded}),\qquad
 \end{equation}
 so $n_{\mathrm{w}}=113$ at the degree $n=22$ used for the reported results,
 $93$ at $n=18$ and $153$ at the highest degree examined, $n=30$.  The polynomial
-\eqref{eq:polynomial} has degree $4n_{\mathrm{w}}$ in $k_x$, i.e.\ $452$ at
-$n_{\mathrm{w}}=113$, of which the $2n_{\mathrm{w}}$ roots with negative
-imaginary part are the ones that decay into the plate.  The Frobenius norms of the blocks at degree
+\eqref{eq:polynomial} is formally of degree $4n_{\mathrm{w}}$ in $k_x$, which
+would be $452$ roots at $n_{\mathrm{w}}=113$, but its leading coefficient
+$\mathsf A_{22}$ has rank $n_{\mathrm u}$ rather than $n_{\mathrm{w}}$
+(\eqref{eq:app_A22}), so $2(n_{\mathrm{w}}-n_{\mathrm u})=2(n_\varphi+n_\mu)$
+eigenvalues of the matrix polynomial are infinite and the finite spectrum
+contains
+\begin{equation}
+\label{eq:finite_roots}
+4n_{\mathrm{w}}-2(n_{\mathrm{w}}-n_{\mathrm u})=2(n_{\mathrm{w}}+n_{\mathrm u})
+\end{equation}
+roots: $364$ at $n=22$, $300$ at $n=18$, $76$ at degree four.  That number is the
+state dimension, not twice it, and it is the reason the axial unknown $u_3$ enters
+the state \eqref{eq:app_block} together with its derivative: the hyperelastic term
+is the only one that carries $k_x^{2}$, and it is supported on the displacement
+slots alone.  Half of the finite roots are outgoing and half incoming, but the
+split is not made by the sign of $\Imag k_x$; the criterion is stated below
+\eqref{eq:classification}.  The Frobenius norms of the blocks at degree
 four and zero coupling are
 \begin{equation}
 \label{eq:block_norms}
-\|\mathsf A_{00}\|=1.89\times10^{4},\quad
+\begin{aligned}
+&\|\mathsf A_{00}\|=1.89\times10^{4},\quad
 \|\mathsf A_{01}\|=5.67\times10^{2},\quad
-\|\mathsf A_{11}\|=2.35\times10^{2},\quad
-\|\mathsf A_{12}\|=4.04,\quad
+\|\mathsf A_{11}\|=2.35\times10^{2},\\
+&\|\mathsf A_{12}\|=4.04,\quad
 \|\mathsf A_{22}\|=7.12\times10^{-1},
+\end{aligned}
 \end{equation}
 spanning four and a half decades.  The spread is not an artefact: it is the
 $\lambda^2c_{33}/c_{44}=0.32$ of the gradient term against the $O(10^{2})$ of
@@ -246,9 +262,10 @@ the physics are the exact limits and the finite-element plate of
 \cref{sec:numerics_verification}.
 
 
-At fixed $\omega$ the spatial problem returns $2M$ eigenvalues $k_x^{(j)}$ and
-their states $\vect{y}^{(j)}$, with $M$ the number of unknowns in
-\eqref{eq:polynomial}.  Each is classified as outgoing or incoming by the sign
+At fixed $\omega$ the spatial problem returns $2(n_{\mathrm{w}}+n_{\mathrm u})$
+finite eigenvalues $k_x^{(j)}$ and their states $\vect{y}^{(j)}$
+(\eqref{eq:finite_roots}); the infinite ones are not states of the problem and
+carry no boundary data.  Each is classified as outgoing or incoming by the sign
 of its decay and of its axial power,
 \begin{equation}
 \label{eq:classification}
@@ -272,11 +289,16 @@ modes,
 \end{equation}
 and the coefficients $a_j$ follow from the homogeneous edge conditions
 \eqref{eq:bc_edge} written as
-$\mathsf{B}\vect{a}=-\vect{b}_{\text{inc}}$.  The system is row- and
-column-scaled and solved in the least-squares sense through a singular-value
-decomposition, with the rank of $\mathsf{B}$ required to equal its column count
-at a cut-off of $10^{-12}$ of the largest singular value; a deficient system is
-reported as such rather than regularised.  The condition number at the
+$\mathsf{B}\vect{a}=-\vect{b}_{\text{inc}}$, with
+$\mathsf{B}\in\mathbb{C}^{m\times M}$.  The system is square by construction,
+$m=M=n_{\mathrm{w}}+n_{\mathrm{u}}$ (\eqref{eq:app_edge_square}), which at
+$n=22$ is $182$ rows against $182$ columns; it is row- and column-scaled and
+solved through a singular-value decomposition, with the rank of $\mathsf{B}$
+required to equal its column count at a cut-off of $10^{-12}$ of the largest
+singular value.  A deficient system is reported as such rather than regularised.
+Because the system is square, a small residual is a statement about the
+conditioning of the edge operator and not about the physical admissibility of the
+edge conditions; the latter is argued from \eqref{eq:bc_edge} independently.  The condition number at the
 operating point is $1.6\times10^{2}$, and the scaled residual of
 \eqref{eq:edge_ansatz} is below $10^{-12}$ for every row used in this article.
 
@@ -301,9 +323,15 @@ the power of the unit-amplitude backward mode at the edge, which the
 normalisation of \cref{app:derivations} makes independent of the degree:
 \begin{equation}
 \label{eq:RB_worked}
-\mathcal{P}_x=-0.0178923,\qquad |a_B|^{2}=1.2938,\qquad
-P_{B}^{\text{edge}}=|a_B|^{2}\mathcal{P}_x=-0.0231505 .
+\mathcal{P}_x=-0.0154248,\qquad |a_B|=1.2250974,\qquad
+P_{B}^{\text{edge}}=|a_B|^{2}\mathcal{P}_x=-0.0231505 ,
 \end{equation}
+the three numbers being read from the same $n=22$ row.  They are separately
+degree-dependent --- $\mathcal{P}_x$ falls by $14$ per cent and $|a_B|^{2}$ rises
+by $16$ per cent between $n=18$ and $n=22$ --- and their product is not:
+$0.0231505$ at $n=18$, $22$, $26$ and $30$ alike, to seven digits
+(\eqref{eq:app_power_numbers}).  Quoting $\mathcal{P}_x$ or $|a_B|$ alone
+therefore measures the normalisation of the eigenvector, not the port.
 The second is the propagation to the reference plane, with the attenuation taken
 from the complex root,
 \begin{equation}
@@ -313,9 +341,10 @@ from the complex root,
 \end{equation}
 \begin{equation}
 \label{eq:RB_planes}
-P_{B}(-L)=-0.0231505\,e^{2(-5.2306\times10^{-6})(10)}
-=-0.0231481,\qquad
-P_{\text{inc}}(-L)=e^{2(5.4027\times10^{-6})(10)}=1.0001081 ,
+\begin{aligned}
+P_{B}(-L)&=-0.0231505\,e^{2(-5.2306\times10^{-6})(10)}=-0.0231481,\\
+P_{\text{inc}}(-L)&=e^{2(5.4027\times10^{-6})(10)}=1.0001081 ,
+\end{aligned}
 \end{equation}
 where the incident mode is normalised to unit power at the edge.  The third is
 the ratio,

@@ -2,7 +2,7 @@ Paper A static validation
 ========================================
 
 files checked: 9
-labels: 161   references: 103
+labels: 170   references: 107
 citation keys used: 13   bib entries: 13
 
 PASS
@@ -19,12 +19,17 @@ Notes:
   - label never referenced: eq:a_worked
   - label never referenced: eq:alphad_worked
   - label never referenced: eq:ansatz
-  - label never referenced: eq:app_RB
+  - label never referenced: eq:app_RB_inputs
   - label never referenced: eq:app_S_off
   - label never referenced: eq:app_S_weighted
+  - label never referenced: eq:app_ar_s
   - label never referenced: eq:app_diel
   - label never referenced: eq:app_edge
+  - label never referenced: eq:app_edge_R
+  - label never referenced: eq:app_edge_rows
+  - label never referenced: eq:app_edge_tau
   - label never referenced: eq:app_mass
+  - label never referenced: eq:app_strain_split
   - label never referenced: eq:app_w1
   - label never referenced: eq:app_w2_values
   - label never referenced: eq:app_w4
@@ -35,12 +40,12 @@ Notes:
   - label never referenced: eq:diff_carr
   - label never referenced: eq:diff_coup
   - label never referenced: eq:diff_elec
+  - label never referenced: eq:diff_es
   - label never referenced: eq:dissipation
   - label never referenced: eq:effective
   - label never referenced: eq:eta_amplitudes
   - label never referenced: eq:gauss_expanded
   - label never referenced: eq:lam_worked
-  - label never referenced: eq:nw
   - label never referenced: eq:strain_amplitudes
   - label never referenced: eq:vE
   - label never referenced: eq:vg
@@ -66,6 +71,6 @@ Notes:
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_material
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 20870
+  - approximate prose word count (including math tokens): 21924
 
 No TeX engine was invoked by this script.

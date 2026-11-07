@@ -1,4 +1,4 @@
-# Paper A — review package (round 13)
+# Paper A — review package (round 19)
 
 **Topic.** Negative reflection of guided waves at the free edge of a flexoelectric
 piezoelectric–semiconductor plate: the strain-gradient backward branch, its modal-power partition and
@@ -11,12 +11,14 @@ authoring environment. Build with
 `cd Paper_A_Final_Submission && pdflatex main && bibtex main && pdflatex main && pdflatex main`.
 An earlier compiled PDF is not included and would not certify this source.
 
-**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 13 is a
-**targeted closure round**: it corrects the backward-wavenumber arrow in fig10(c) against the stored
-solve and guards it with five tests, repairs a docstring that contradicted its own output, fixes one
-misattributed number and one caption, and re-verifies everything those changes can touch. It changes
-no equation, no constant, no boundary condition, no solver, no dataset and no reported number; the
-fig10 field map came back byte-identical after regeneration.
+**Read first.** `START_HERE.txt` gives the reading order of this round's reports. Round 19 is a
+**targeted mathematical repair** of six items identified in the round-18 build: an overfull display on
+page 5, a double-traction block tied to the wrong constant, a boundary system described as
+overdetermined that is in fact square, a worked calculation that mixed two Galerkin degrees, a
+stiffness matrix described as banded that is only parity-structured, and a $k_x$ bookkeeping that
+counted one power twice. Three of the six were corrections of statements rather than of code. No
+constant, solver, dataset, figure or reported number changed; the lead value `R_B = 0.9467952` and the
+operating-point share $0.0231456$ stand, now each traceable to a single stored row at `n = 22`.
 
 Round 12 — the section-by-section review of the manuscript's text — remains the place to read the
 prose as a whole: nineteen defects, ten of them numbers that disagreed with the delivered records.

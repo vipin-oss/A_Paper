@@ -76,7 +76,13 @@ have the same parity, and
 \label{eq:app_S_off}
 S_{ij}=2\sqrt{(2i+1)(2j+1)}\int_{-1}^{1}P_i'P_j'\,\dd\zeta ,
 \end{equation}
-which is why \eqref{eq:app_S_matrix} is banded by two.  At $N=6$ the matrix is
+which is the reason for the structure of \eqref{eq:app_S_matrix}: the matrix is
+real and symmetric and it vanishes between basis functions of opposite parity,
+but the same-parity entries are not confined to a band.  At $N=6$ the entry
+$S_{15}=22.978$ couples indices four apart, and at any $N$ the row $i$ has
+non-zero entries in every column $j\le i$ of the same parity, so the matrix is
+not tridiagonal and has no fixed bandwidth; what bounds it is the parity rule,
+not a band.  At $N=6$ the matrix is
 \begin{equation}
 \label{eq:app_S_matrix}
 \mathsf S=
@@ -258,30 +264,133 @@ the block is
 \end{aligned}
 \end{equation}
 with $\langle\vect a,\vect b\rangle=\int_{-1/2}^{1/2}\vect a^{\mathsf H}\vect b\,
-\dd s$ in the measure of \eqref{eq:app_measures}.  The strain operator carries the $k_x$ power in its first slot,
-$\mathsf B_0$ contains $\ii k_xb_j$ for $\varepsilon_{xx}$ and $\mathsf B_1$ contains $b_j$ for the
-$\partial_x^1$ part, so that the $k_x$ power of a block is the sum of the powers
-in its two factors; this is the bookkeeping that produces
-\eqref{eq:polynomial} from \eqref{eq:app_block} without any further algebra.
+\dd s$ in the measure of \eqref{eq:app_measures}.
+
+The powers of $k_x$ are counted by the block indices $(r,s)$ and by nothing else,
+and it is worth writing that out because the bookkeeping is easy to double count.
+The strain of a single mode is split once and for all as
+\begin{equation}
+\label{eq:app_strain_split}
+\varepsilon_{ij}=\varepsilon^{(0)}_{ij}+\ii k_x\,\varepsilon^{(1)}_{ij},
+\end{equation}
+with both coefficient vectors independent of $k_x$:
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+component & $\varepsilon^{(0)}_{ij}$ & $\varepsilon^{(1)}_{ij}$ \\
+\midrule
+$\varepsilon_{xx}$ & $0$ & $b_j$ in the $\widehat u_1$ slot \\
+$\varepsilon_{yy}$ & $\ii k_yb_j$ in the $\widehat u_2$ slot & $0$ \\
+$\varepsilon_{zz}$ & $b_j'$ in the $\widehat u_3$ slot & $0$ \\
+$\varepsilon_{yz}$ & $b_j'$ in $\widehat u_2$, $\ii k_yb_j$ in $\widehat u_3$ & $0$ \\
+$\varepsilon_{xz}$ & $b_j'$ in the $\widehat u_1$ slot & $b_j$ in the $\widehat u_3$ slot \\
+$\varepsilon_{xy}$ & $\ii k_yb_j$ in the $\widehat u_1$ slot & $b_j$ in the $\widehat u_2$ slot \\
+\bottomrule
+\end{tabular}
+\end{center}
+no component carries more than one power of $\ii k_x$, so the split terminates at
+first order.  The strain gradient is split the same way, with $\partial_x$ acting
+on the test factor and on the trial factor separately, and the block is defined as
+the coefficient of $(-\ii k_x)^{r}(\ii k_x)^{s}$ in \eqref{eq:app_block}:
+\begin{equation}
+\label{eq:app_ar_s}
+\mathsf A_{rs}=\bigl\langle\varepsilon^{(r)},\mathsf C\varepsilon^{(s)}\bigr\rangle
++\lambda^{2}\bigl\langle\partial_z\varepsilon^{(r)},\mathsf C\partial_z\varepsilon^{(s)}\bigr\rangle
++\cdots ,
+\end{equation}
+the remaining terms of \eqref{eq:app_block} being split in the same way.  Two
+consequences are worth stating in this language.  First, the leading coefficient
+is the gradient energy of the axial part of the strain alone,
+\begin{equation}
+\label{eq:app_A22}
+\mathsf A_{22}=\lambda^{2}\bigl\langle\varepsilon^{(1)},\mathsf C\varepsilon^{(1)}\bigr\rangle
+\neq0 ,
+\end{equation}
+which is where the quartic term and the four wave families come from; its rank is
+$n_{\mathrm u}$ rather than $n_{\mathrm w}$, because $\varepsilon^{(1)}$ is
+supported on the displacement slots only.  Secondly, no strain component carries
+two powers of $\ii k_x$, which is exactly why
+$\mathsf A_{02}=\mathsf A_{20}=0$ and the polynomial is a quartic in the
+$(r,s)$ bookkeeping of \eqref{eq:polynomial} rather than a sextic: the
+$k_x^{4}$ term needs one factor from each side of the gradient energy and cannot
+be produced by a single factor carrying two.
+
+The same bookkeeping fixes where the flexoelectric constant can appear.  The only
+non-zero component of $f_{ijkl}$ used in this article is $f_{3333}$, which pairs
+the field $E_z$ with the gradient component $\eta_{zzz}=\partial_z\varepsilon_{zz}$;
+neither carries a power of $k_x$, since $E_z=-\partial_z\varphi$ and
+$\varepsilon_{zz}$ is axial, so $f$ enters $\mathsf A_{00}$ and no other block.
+That is a statement about the operator, and it is the reason a non-zero $f$ can
+change the elastic-like term and the double traction without touching the quartic
+coefficient $\mathsf A_{22}$: the two constants sit in different blocks, and
+neither of them is a $k_x$ power.
 
 \subsection{The edge-matching system}
 
 At the edge $x=0$ the conditions \eqref{eq:bc_edge} are imposed weakly, one row
 block per condition and each on the test functions of the field it multiplies:
 the traction $\Sigma_{3j}$ on the $n_{\mathrm u}=3N$ displacement test functions,
-the double traction $\tau_{3j3}$ on the same $n_{\mathrm u}$ test functions (a
-block that exists only when the strain-gradient length is non-zero, since
-$\tau_{3j3}$ vanishes with it), the normal electric displacement $D_z$ on the
-$n_\varphi$ potential test functions and the normal carrier flux $J_z$ on the
-$n_\mu$ carrier test functions.  With the edge ansatz \eqref{eq:edge_ansatz},
+the double traction $\tau_{3j3}$ on the same $n_{\mathrm u}$ test functions, the
+normal electric displacement $D_z$ on the $n_\varphi$ potential test functions
+and the normal carrier flux $J_z$ on the $n_\mu$ carrier test functions.  The
+number of rows is therefore
+\begin{equation}
+\label{eq:app_edge_rows}
+m=2n_{\mathrm u}+n_\varphi+n_\mu ,
+\end{equation}
+with the double-traction block present whenever the hyperstress is non-zero --- a
+condition that is *not* $\ell\neq0$, as \eqref{eq:tauZnO} shows:
+\begin{equation}
+\label{eq:app_edge_tau}
+\tau_{3zz}=\ell^{2}\Bigl[c_{13}\bigl(\eta_{xxz}+\eta_{yyz}\bigr)
++c_{33}\eta_{zzz}\Bigr]-f\,E_z+H\,\Delta n .
+\end{equation}
+The elastic part vanishes with $\ell^{2}$, the flexoelectric part with $f$ and the
+carrier part with $H$, so the block survives in four of the five limiting cases
+of the model: it is present for the full model, for $f=0$ with $\ell\neq0$
+(through the $\ell^{2}$ and $H$ terms), for $H=0$ with $\ell\neq0$ (through the
+$\ell^{2}$ and $f$ terms), and for $\ell=0$ with $f\neq0$ (through $-fE_z$, which
+carries no $\ell$); it is empty only in the classical limit
+$\ell=f=H=0$, where $\tau_{3j3}\equiv0$ and the double-traction statement
+degenerates to $0=0$ rather than to a boundary condition.  Between those cases
+the edge problem changes order, and with it the state:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lllccl@{}}
+\toprule
+case & parameters & $\tau_{3j3}$ & $N_s$ & $m$ & double traction \\
+\midrule
+A & $\ell\neq0$, $f\neq0$, $H\neq0$ & all three terms & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+B & $f=0$, $\ell\neq0$ & $\ell^{2}$ and $H$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+C & $\ell=0$, $f\neq0$ & $-fE_z$ and $H$ & $2n_{\mathrm w}$ & $n_{\mathrm u}+n_\varphi+n_\mu$ & \emph{not available} \\
+D & $H=0$, $\ell\neq0$ & $\ell^{2}$ and $f$ & $2n_{\mathrm w}+2n_{\mathrm u}$ & $2n_{\mathrm u}+n_\varphi+n_\mu$ & required \\
+E & $\ell=f=H=0$ & $0$ & $2n_{\mathrm w}$ & $n_{\mathrm u}+n_\varphi+n_\mu$ & absent (identically zero) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Case C is the one the earlier reading of this appendix got wrong.  It is
+not a case of the present model: the hyperstress would be non-zero while the
+second-order state of case E, which has no $\partial_x u$ trace to pair the
+double traction with, is the only one available at $\ell=0$.  The formulation
+therefore admits $\ell=0$ only in the classical limit $f=H=0$, and states that
+restriction rather than assuming that $\ell=0$ implies a second-order model.  No
+number in this article depends on case C: every reported run has $\ell\neq0$.
+
+With the edge ansatz \eqref{eq:edge_ansatz} and the modal state
+$\vect y^{(j)}\in\mathbb{C}^{N_s}$ --- the $n_{\mathrm w}$ displacement and
+potential coefficients, the $n_{\mathrm u}$ axial traces, and the $n_{\mathrm w}$
+and $n_{\mathrm u}$ conjugate rows --- the system is
 \begin{equation}
 \label{eq:app_edge}
 \vect y(0)=\vect y_{\text{inc}}+\sum_{j=1}^{M}a_j\,\vect y^{(j)},
 \qquad
 \mathsf B\vect a=-\vect b_{\text{inc}},
 \end{equation}
-where the matrix of the system and its right-hand side are the four row blocks
-of the boundary operator $\mathsf R$ applied to the modes,
+where the boundary operator acts on a *state* and the boundary matrix on the
+modal index,
 \begin{equation}
 \label{eq:app_edge_R}
 \mathsf R=\begin{pmatrix}
@@ -289,23 +398,36 @@ of the boundary operator $\mathsf R$ applied to the modes,
 \mathsf R_{\tau}\\
 \mathsf R_{D}\\
 \mathsf R_{J}
-\end{pmatrix}\in\mathbb{C}^{m\times M},
+\end{pmatrix}\in\mathbb{C}^{m\times N_s},
 \qquad
-\mathsf B_{ij}=\bigl(\mathsf R\vect y^{(j)}\bigr)_i,\quad
-\vect b_{\text{inc}}=\mathsf R\,\vect y_{\text{inc}},
+\mathsf B=\bigl[\mathsf R\vect y^{(1)}\ \cdots\ \mathsf R\vect y^{(M)}\bigr]
+\in\mathbb{C}^{m\times M},
+\qquad
+\vect b_{\text{inc}}=\mathsf R\,\vect y_{\text{inc}}\in\mathbb{C}^{m},
 \end{equation}
-so that $m=2n_{\mathrm u}+n_\varphi+n_\mu$.  At degree four
-($n_{\mathrm u}=15$, $n_\varphi=3$, $n_\mu=5$) this is $m=38$ rows against
-$M=n_{\mathrm w}=23$ columns: the edge system is overdetermined by the fifteen
-double-traction rows and is solved in the least-squares sense by a singular-value
-decomposition.  With the flexoelectric coupling switched off the
-$\mathsf R_\tau$ block is absent and $m=n_{\mathrm u}+n_\varphi+n_\mu=23=n_{\mathrm w}$
-is square, which is the only case in which it is.  The system solved is the
-column-scaled form of \eqref{eq:app_edge_R}, scaled per column by the norm of
-that column and per row by the norm of that row; the rank condition and the
-residual are quoted in \cref{sec:numerics_edge}, and the conditioning at the
-operating point is $1.6\times10^{2}$ after scaling.
-
+so the three objects have three different second dimensions and only the last two
+agree.  They do agree, identically rather than accidentally: the number of
+decaying states is half the state dimension, $M=N_s/2=n_{\mathrm w}+n_{\mathrm u}$
+in cases A, B and D, and $M=n_{\mathrm w}$ in case E where $N_s=2n_{\mathrm w}$;
+with $n_{\mathrm w}=n_{\mathrm u}+n_\varphi+n_\mu$ from \eqref{eq:nw},
+\begin{equation}
+\label{eq:app_edge_square}
+M=n_{\mathrm w}+n_{\mathrm u}=2n_{\mathrm u}+n_\varphi+n_\mu=m
+\quad(\ell\neq0),
+\qquad
+M=n_{\mathrm w}=n_{\mathrm u}+n_\varphi+n_\mu=m
+\quad(\ell=0),
+\end{equation}
+so the edge system is square in every case and never over- or under-determined.
+At degree four ($n_{\mathrm u}=15$, $n_\varphi=3$, $n_\mu=5$, $n_{\mathrm w}=23$)
+this is $N_s=76$, $m=M=38$; at degree eighteen ($57$, $17$, $19$, $93$) it is
+$N_s=300$, $m=M=150$; at the reported degree twenty-two ($69$, $21$, $23$, $113$)
+it is $N_s=364$, $m=M=182$.  The singular-value decomposition is still used, but
+as a square solve rather than a least-squares fit: the requirement is that the
+rank equal the column count at a cut-off of $10^{-12}$ of the largest singular
+value, and a deficient system is reported rather than regularised.  Row and
+column scaling are applied as before, and the conditioning at the operating point
+is $1.6\times10^{2}$ after scaling.
 \subsection{Normalisation of the modal power}
 
 The power \eqref{eq:Px_int} is bilinear in a mode and its conjugate, so the power
@@ -341,7 +463,10 @@ The reported number at the operating point is assembled from five quantities,
 each of which is stored with every row of the data: the raw backward power
 $\mathcal{P}_x$, the scattering amplitude $|a_B|$, the incident power at the
 reference plane, the two attenuation exponents and the reference distance
-$L=10\,d$.  With the values of \eqref{eq:app_power_numbers} at $n=22$,
+$L=10\,d$.  The five are quoted below from **one** row, the reported degree
+$n=22$, and not mixed with the neighbouring degrees of
+\eqref{eq:app_power_numbers}, because the raw power and the amplitude both change
+with degree even though their product does not:
 \begin{equation}
 \label{eq:app_RB}
 R_B=\frac{|a_B|^{2}\bigl|\mathcal{P}_x\bigr|\,e^{2\Imag k_{Bx}L}}
@@ -349,15 +474,30 @@ R_B=\frac{|a_B|^{2}\bigl|\mathcal{P}_x\bigr|\,e^{2\Imag k_{Bx}L}}
 =\frac{0.0231505\times0.9998954}{1.0001081}
 =\frac{0.0231481}{1.0001081}=0.0231456 ,
 \end{equation}
-where $|a_B|^{2}|\mathcal{P}_x|=1.2938\times0.0178923=0.0231505$ is the power at
-the edge, the factor $e^{2\Imag k_{Bx}L}=0.9998954$ carries it to $x=-L$ with
-$\Imag k_{Bx}=-5.2306\times10^{-6}$ per unit $d$, and the incident mode carries a
-factor $e^{2\Imag k_{ix}L}=1.0001081$ with $\Imag k_{ix}=+5.4027\times10^{-6}$.
-What the number measures
-is the ratio of two physical powers, $-P_B/P_{\text{inc}}=0.0231481$, and the
-two exponential factors are there to state at which plane each power was taken.
-Reading the same row the other way, the backward mode carries
-$\SI{2.31}{\percent}$ of the incident power at $x=-10d$, and
-$\SI{2.31}{\percent}\times e^{-2.13\times10^{-4}}$ at $x=-20d$: the decay of the
-share along the plate is governed by the *difference* of the two attenuation
-constants, not by either one of them.
+with, at $n=22$,
+\begin{equation}
+\label{eq:app_RB_inputs}
+|a_B|=1.2250974,\quad
+|a_B|^{2}=1.500864,\quad
+\mathcal{P}_x=-0.015424813,\quad
+|a_B|^{2}\bigl|\mathcal{P}_x\bigr|=0.0231505 ,
+\end{equation}
+the last product being the power the backward port actually carries at the edge.
+The factor $e^{2\Imag k_{Bx}L}=0.9998954$ carries it to $x=-L$ with
+$\Imag k_{Bx}=-5.2306\times10^{-6}$ per unit $d$, and the incident mode carries
+$e^{2\Imag k_{ix}L}=1.0001081$ with $\Imag k_{ix}=+5.4027\times10^{-6}$; both
+exponents are degree-independent to the seven digits quoted, so the degree of the
+row enters \eqref{eq:app_RB} only through $|a_B|^{2}|\mathcal{P}_x|$.  What the
+number measures is the ratio of two physical powers,
+$-P_B/P_{\text{inc}}=0.0231481$, and the two exponential factors state at which
+plane each power was taken.
+
+The value and its meaning are two different statements and are kept apart.
+Equation \eqref{eq:app_RB} evaluates the share at the *operating point*,
+$2.31$ per cent of the incident power at $x=-10\,d$.  The local maximum of the
+same quantity over the frequency window, $R_B=0.9467952$, is a property of the
+peak row, not of this one, and nothing in \eqref{eq:app_RB} computes or implies
+it.  Reading the operating-point row along the plate, the backward mode carries
+$2.31$ per cent at $x=-10\,d$ and $2.31\,\%\times e^{-2.13\times10^{-4}}$ at
+$x=-20\,d$: the decay of the share is governed by the *difference* of the two
+attenuation constants, not by either one of them.

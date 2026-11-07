@@ -122,7 +122,3 @@ Paper A -- round 18 independent mathematical audit
 
 ========================================================================
 RESULT: all independent checks agree
-                                                                                                                                                                             by source inspection and exercised by the edge/dissipation checks, not here
-
-========================================================================
-RESULT: all independent checks agree
