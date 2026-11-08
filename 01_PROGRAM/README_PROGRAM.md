@@ -35,6 +35,11 @@ and is optional for the paper's results.
     modal_flux_audit.py          rescaling-invariance of the modal power
     phase_speed_audit.py         phase/energy-speed and EM reconciliation
     mechanism_controls.py        matched controls for the H mechanism (dominant cost)
+    fe2d.py                      direct 2D (x,z) finite-element solve of the edge problem (B-spline in x
+                                 graded to the edge, absorbing layer, scattered-field load, modal fit)
+    fe2d_validate.py             runs fe2d.py at the operating point -> figure_data/fe2d_validation.csv
+                                 (Table tab:fe2d).  `python3 fe2d_validate.py op`; `fold` is NOT a valid test
+                                 (incident and backward modes coincide there)
     corner_assessment.py         corner line-force assessment + regression
     quasistatic_check.py         quasistatic justification
     flexo_control.py             flexoelectric magnitude control

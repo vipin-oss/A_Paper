@@ -1,8 +1,7 @@
 # PAPER A -- complete package for independent checking
 
 Paper: *Backward-branch negative reflection of guided waves from the free edge of a
-flexoelectric piezoelectric semiconductor plate* (target journal: Applied Mathematical
-Modelling).  Author: Dr Vipin Gupta.
+flexoelectric piezoelectric semiconductor plate*.  Author: Dr Vipin Gupta.
 
 You (the checker) are asked to decide, independently, whether the equations, the
 program and the numbers in this paper are correct and consistent.  Everything needed is
@@ -12,14 +11,18 @@ in this zip.  No network, no GPU and no random numbers are used.
 
 | Folder | Content |
 |---|---|
-| `02_MANUSCRIPT/` | LaTeX source (`main.tex`, `sections/*.tex`, `references.bib`, `figures/`) and `PAPER_A.pdf` (45 pages) |
+| `02_MANUSCRIPT/` | LaTeX source (`main.tex`, `sections/*.tex`, `references.bib`, `figures/`) and `PAPER_A.pdf` (49 pages) |
 | `01_PROGRAM/` | the Python solver and every check (`paper_a_study/model.py` is the solver) |
 | `01_PROGRAM/paper_a_study/figure_data/` | stored datasets behind every figure and table |
 | `03_EXPECTED_OUTPUTS/` | the output the author's run produced, to compare with yours |
 | `CHECKER_BRIEF.md` | what to check, the equation-to-code map, the claims table, and the weak points |
 
-`01_PROGRAM/Paper_A_Final_Submission/` is a byte-identical copy of `02_MANUSCRIPT/` kept
-only because some automated checks read the manuscript from that location.
+`01_PROGRAM/Paper_A_Final_Submission/` holds a synced copy of `main.tex` and `sections/` kept
+only because some automated checks read the manuscript from that location.  The master copy is
+`02_MANUSCRIPT/`; after any edit there, copy `main.tex` and `sections/` across.
+
+**Read `HANDOFF_NOTES.md` first** if you are resuming this project after a break: it records
+the decisions taken, the standing rules, what is verified, and what is still open.
 
 ## 2. Run it (three steps, nothing else is needed)
 
@@ -39,6 +42,12 @@ cd ..
 
 # Step 3 (about 10 min): the complete battery, including 15 deliberate-defect tests
 python3 paper_a_study/run_all_checks.py                     # last line: OVERALL: PASS
+```
+
+Optional, about 10 min: the independent two-dimensional finite-element check (Table `tab:fe2d`):
+
+```bash
+cd 01_PROGRAM/paper_a_study && python3 fe2d_validate.py op     # rewrites figure_data/fe2d_validation.csv
 ```
 
 Compare your output with `03_EXPECTED_OUTPUTS/`.  Differences in the last 2-3 printed

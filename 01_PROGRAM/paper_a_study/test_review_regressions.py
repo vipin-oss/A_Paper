@@ -1,5 +1,6 @@
 """Regression tests for the independent review of the original archive (A01, A02, B01, B02)."""
 import sys
+import os
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -48,7 +49,7 @@ class FigureDataRegressions(unittest.TestCase):
     @staticmethod
     def _rows(name):
         import csv
-        with open(f"figure_data/{name}") as fh:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "figure_data", name)) as fh:
             return list(csv.DictReader(fh))
 
     def test_F01_group_equals_energy_speed(self):

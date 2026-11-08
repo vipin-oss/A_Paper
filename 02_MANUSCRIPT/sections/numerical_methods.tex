@@ -387,6 +387,7 @@ nonzero $f$ and $H$.
 formulation in the thickness direction (it keeps the modal $x$-dependence, so it tests the thickness discretization and not the two-dimensional corner) converges monotonically to the spectral
 edge result at an observed order between $3.9$ and $4.4$, with an error below
 $3\times10^{-5}$ on the finest mesh.  This is the only check in the list that tests the edge problem; the dispersion checks do not.
+\item \emph{Two-dimensional finite-element solution.}  The same variational problem is solved directly on the $(x,z)$ cross-section, without modal $x$-dependence, at the operating point.  The thickness basis is the spectral plate or the $C^{1}$ finite-element plate; in $x$ a degree-4 B-spline basis is graded geometrically towards the edge, with a first cell of $0.02\,d$ in the reference case, and a mass-proportional absorbing layer of length $170\,d$ terminates the strip, because a conventional perfectly matched layer fails for backward waves.  The incident mode enters as a scattered-field load, and the field on $-20d\le x\le-4d$ is fitted on the outgoing modes of \cref{sec:numerics_edge}.  The fitted backward share $R_B$ agrees with the modal value $0.019292$ to between $-0.14$ and $+0.42$~\% over the variations in \cref{tab:fe2d}.  The test applies at the operating point only: at the fold the incident and backward modes coincide, so the modal fit that this comparison relies on is not defined there.
 \item \emph{Residuals of the strong form.}  For each mode used, the momentum,
 Gauss, carrier-continuity, traction, double-traction and blocking residuals are
 below $10^{-8}$ in the normalized measure reported in
@@ -408,7 +409,29 @@ and decays only algebraically.  Those residuals are properties of the
 weak solution and not of the implementation, and they are reported with the other checks.
 \end{enumerate}
 
-The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which verifies the symmetry of the discretized bilinear form, including the added coupling.  The six comparisons above are the independent evidence for the
+\begin{table}[t]
+\centering
+\caption{Two-dimensional finite-element check at the operating point.  Modal value $R_B=0.019292$ (spectral plate; $0.019396$ and $0.019298$ for the $C^{1}$ plate with $25$ and $49$ points).  The reference case has strip length $200\,d$, absorbing layer $170\,d$ with strength $0.1$, $500$ uniform cells, first graded cell $0.02\,d$ and B-spline degree $4$.}
+\label{tab:fe2d}
+\begin{tabular}{lcc}
+\toprule
+Variation of the reference case & $R_B^{\mathrm{FE}}$ & Difference (\%) \\
+\midrule
+Reference & 0.019324 & $+0.17$ \\
+Strip $300\,d$, layer $260\,d$ & 0.019346 & $+0.28$ \\
+Layer strength $0.05$ & 0.019373 & $+0.42$ \\
+$800$ uniform cells & 0.019311 & $+0.10$ \\
+B-spline degree $5$ & 0.019265 & $-0.14$ \\
+First cell $0.005\,d$ & 0.019320 & $+0.15$ \\
+First cell $0.00125\,d$ & 0.019313 & $+0.11$ \\
+Thickness degree $14$, $18$ & 0.019324 & $+0.17$ \\
+$C^{1}$ plate (25 pts), first cell $0.00125\,d$ & 0.019418 & $+0.11$ \\
+$C^{1}$ plate (49 pts), first cell $0.00125\,d$ & 0.019320 & $+0.11$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which verifies the symmetry of the discretized bilinear form, including the added coupling.  The seven comparisons above are the independent evidence for the
 implementation; the practical resolution at which they are carried out, the
 convergence of the reported quantities with degree and quadrature, and the
 conservation residual are stated in \cref{app:repro}, and the full computational

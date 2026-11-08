@@ -265,7 +265,7 @@ form of the edge condition closes to machine precision, but the pointwise tracti
 operating point its normalized norm away from the corners is $4.3\times10^{-2}$ at degree 10 and
 $3.6\times10^{-2}$ at degree 28, while its maximum over the edge, which sits at the corners,
 grows from $0.77$ to $2.4$ over the same range.  The free edge is therefore satisfied in the weak sense,
-and a two-dimensional $x$--$z$ discretization that resolves the corner is the natural next check and is left for future work.  The same measurements settle what the
+and a direct two-dimensional $x$--$z$ finite-element solution of the same variational problem, with the edge cells refined down to $0.00125\,d$, reproduces the modal backward share at the operating point to within $0.5$~\% (\cref{tab:fe2d}), with no systematic drift under refinement.  That check is made at the operating point only.  The same measurements settle what the
 earlier band-energy argument could not: the strain-gradient energy in the outer
 band $|z|>0.4\,d/2$ is $0.93$--$1.00$~\% of the total at the operating point,
 $1.22$--$1.30$~\% at the maximum and $1.18$--$1.26$~\% at $k_xd=0.55$, and its

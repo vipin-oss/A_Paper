@@ -2,13 +2,10 @@ Paper A static validation
 ========================================
 
 files checked: 9
-labels: 174   references: 111
-citation keys used: 61   bib entries: 61
+labels: 178   references: 101
+citation keys used: 60   bib entries: 60
 
-FAIL
-
-Problems:
-  - macros outside the whitelist: lvert, rvert
+PASS
 
 Notes:
   - label never referenced: app:checks
@@ -45,7 +42,6 @@ Notes:
   - label never referenced: eq:diff_elec
   - label never referenced: eq:diff_es
   - label never referenced: eq:dissipation
-  - label never referenced: eq:effective
   - label never referenced: eq:eta_amplitudes
   - label never referenced: eq:gauss_expanded
   - label never referenced: eq:lam_worked
@@ -53,27 +49,42 @@ Notes:
   - label never referenced: eq:vE
   - label never referenced: eq:vg
   - label never referenced: eq:virtual_work
+  - label never referenced: sec:conclusions
   - label never referenced: sec:disc_material
   - label never referenced: sec:disc_meaning
   - label never referenced: sec:disc_mechanism
   - label never referenced: sec:discussion
+  - label never referenced: sec:governing
   - label never referenced: sec:governing_balance
+  - label never referenced: sec:governing_bc
+  - label never referenced: sec:governing_constitutive
+  - label never referenced: sec:governing_electric
   - label never referenced: sec:governing_energy
   - label never referenced: sec:governing_kinematics
   - label never referenced: sec:governing_limits
+  - label never referenced: sec:governing_nondim
+  - label never referenced: sec:governing_reduction
   - label never referenced: sec:governing_stability
+  - label never referenced: sec:governing_variational
   - label never referenced: sec:intro
   - label never referenced: sec:intro_scope
+  - label never referenced: sec:numerics
   - label never referenced: sec:numerics_admissibility
+  - label never referenced: sec:numerics_basis
+  - label never referenced: sec:numerics_routes
+  - label never referenced: sec:numerics_verification
+  - label never referenced: sec:results
   - label never referenced: sec:results_artefact
   - label never referenced: sec:results_attenuation
   - label never referenced: sec:results_boundary
+  - label never referenced: sec:results_certification
+  - label never referenced: sec:results_channel
   - label never referenced: sec:results_dispersion
   - label never referenced: sec:results_field
   - label never referenced: sec:results_frequency
   - label never referenced: sec:results_geometry
-  - label never referenced: sec:results_material
+  - label never referenced: sec:results_scope
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 23761
+  - approximate prose word count (including math tokens): 24650
 
 No TeX engine was invoked by this script.
