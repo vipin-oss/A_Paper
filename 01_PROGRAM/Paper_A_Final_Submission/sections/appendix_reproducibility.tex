@@ -1,0 +1,36 @@
+\section{Numerical resolution and data availability}
+\label{app:repro}
+
+\paragraph{Resolution.}  The reported solutions use polynomial degree $n=22$, that is
+$N=23$ Legendre modes per field ($N-2=21$ for the grounded potential), and every integral is evaluated
+with $\max(64,2n+10)$ Gauss--Legendre nodes, which resolves the mass, stiffness
+and coupling matrices to machine precision at the degrees used here.  The two
+electrical cases differ only in the potential space: the grounded basis is built
+from the combinations that vanish on both faces, and the open-circuit basis
+keeps all $N$ modes, because a constant potential is not a gauge for a nonzero in-plane wavenumber.  No field is discretized in $x$ or in $y$.
+
+\paragraph{Convergence and conservation.}  Between degree $18$ and degree $30$
+both the operating-point share and the branch maximum change by less than
+$10^{-5}$, and successive differences at the branch maximum decrease
+monotonically with degree.  Refining the quadrature from $64$ to $256$ nodes at
+fixed basis changes no reported digit.  The energy identity
+\eqref{eq:energy_identity} is satisfied to $4\times10^{-12}$ of the incident
+power at the reported solutions, and the partition at the branch maximum varies by $1.0\times10^{-6}$ in absolute terms between
+degrees $14$ and $34$.  These are the quantities that
+license quoting the shares to the precision used in the text.
+
+\paragraph{Data availability.}  The material constants are read from a single
+machine-readable record that travels with the manuscript, each constant carrying
+its provenance tag as reported in \cref{tab:provenance}.  Every figure is drawn
+from stored datasets, one dataset per figure, and the dataset records the solve
+that produced it; every tabulated and quoted number is traced to a stored dataset, and no plotted
+quantity is computed inside the plotting code.  The datasets and the material
+record are available from the author on reasonable request.
+
+\paragraph{Computational record.}  \label{app:checks} The programs, command
+sequence, software versions, the inventory of automated checks and the defect
+injection record are deposited with the code and data (see the data availability statement), so that the
+article itself states the method and the evidence that the method is
+implemented correctly without listing its tooling.  Nothing in that record
+changes a result reported here: it records how the results were produced and how
+the implementation was tested.

@@ -1,0 +1,145 @@
+{
+  "operating_point": [
+    {
+      "nodes": 64,
+      "degree": 22,
+      "frequency_GHz": 16.684123136378155,
+      "R_B": 0.019291601863518266,
+      "backward_K_real": 0.24517469208597725,
+      "angle_deg": -27.899713989338398,
+      "edge_residual": 2.7405790797601072e-15,
+      "power_balance": 2.4780958678936733e-13,
+      "condition": 140.892063053845
+    },
+    {
+      "nodes": 128,
+      "degree": 22,
+      "frequency_GHz": 16.684123136379203,
+      "R_B": 0.019291601861946363,
+      "backward_K_real": 0.24517469207809336,
+      "angle_deg": -27.899713990087424,
+      "edge_residual": 2.784234913303349e-15,
+      "power_balance": 1.7673030536007765e-13,
+      "condition": 140.89206305322924
+    },
+    {
+      "nodes": 192,
+      "degree": 22,
+      "frequency_GHz": 16.68412313637782,
+      "R_B": 0.01929160186373733,
+      "backward_K_real": 0.24517469208713197,
+      "angle_deg": -27.899713989231714,
+      "edge_residual": 2.6943692489455085e-15,
+      "power_balance": 2.615156737731712e-13,
+      "condition": 140.8920630533805
+    },
+    {
+      "nodes": 256,
+      "degree": 22,
+      "frequency_GHz": 16.68412313637751,
+      "R_B": 0.0192916018644642,
+      "backward_K_real": 0.2451746920904937,
+      "angle_deg": -27.89971398887754,
+      "edge_residual": 2.8194442961548757e-15,
+      "power_balance": 8.465661705544447e-13,
+      "condition": 140.892063052551
+    }
+  ],
+  "near_peak_k0p525": [
+    {
+      "nodes": 64,
+      "degree": 22,
+      "frequency_GHz": 16.6546776899426,
+      "R_B": 0.9256042605375405,
+      "backward_K_real": 0.5249493115403754,
+      "angle_deg": -13.888756050963527,
+      "edge_residual": 2.1248449393888457e-15,
+      "power_balance": 2.5188774484980474e-13,
+      "condition": 140.891221013713
+    },
+    {
+      "nodes": 128,
+      "degree": 22,
+      "frequency_GHz": 16.65467768994324,
+      "R_B": 0.9256042548160931,
+      "backward_K_real": 0.5249493112318163,
+      "angle_deg": -13.888756059170053,
+      "edge_residual": 2.4327613726651996e-15,
+      "power_balance": 9.938720061850583e-14,
+      "condition": 140.89122101324824
+    },
+    {
+      "nodes": 192,
+      "degree": 22,
+      "frequency_GHz": 16.654677689942584,
+      "R_B": 0.9256042602726519,
+      "backward_K_real": 0.5249493114806442,
+      "angle_deg": -13.888756051564945,
+      "edge_residual": 2.209719357189842e-15,
+      "power_balance": 6.689671676483624e-14,
+      "condition": 140.8912210148084
+    },
+    {
+      "nodes": 256,
+      "degree": 22,
+      "frequency_GHz": 16.654677689941295,
+      "R_B": 0.9256042707148956,
+      "backward_K_real": 0.5249493120135389,
+      "angle_deg": -13.888756037748228,
+      "edge_residual": 2.233222385514852e-15,
+      "power_balance": 4.7309906842173053e-14,
+      "condition": 140.8912210136586
+    }
+  ],
+  "peak_k0p52719": [
+    {
+      "nodes": 64,
+      "degree": 22,
+      "frequency_GHz": 16.654675001870682,
+      "R_B": 0.9428718390424711,
+      "backward_K_real": 0.5261564368329981,
+      "angle_deg": -13.849333837706762,
+      "edge_residual": 2.700540361257118e-15,
+      "power_balance": 6.22477992988358e-14,
+      "condition": 140.8912173153946
+    },
+    {
+      "nodes": 128,
+      "degree": 22,
+      "frequency_GHz": 16.65467500187202,
+      "R_B": 0.9428718387774697,
+      "backward_K_real": 0.5261564361970016,
+      "angle_deg": -13.849333866792419,
+      "edge_residual": 2.190571696590977e-15,
+      "power_balance": 2.0984771321304172e-14,
+      "condition": 140.89121731454878
+    },
+    {
+      "nodes": 192,
+      "degree": 22,
+      "frequency_GHz": 16.65467500187114,
+      "R_B": 0.9428718384083098,
+      "backward_K_real": 0.5261564365398511,
+      "angle_deg": -13.849333852048176,
+      "edge_residual": 2.4014098971792986e-15,
+      "power_balance": 2.1966182796915582e-14,
+      "condition": 140.89121731467097
+    },
+    {
+      "nodes": 256,
+      "degree": 22,
+      "frequency_GHz": 16.654675001871414,
+      "R_B": 0.9428718380716715,
+      "backward_K_real": 0.5261564364870159,
+      "angle_deg": -13.849333854238354,
+      "edge_residual": 2.2763299571898716e-15,
+      "power_balance": 5.845317612179788e-13,
+      "condition": 140.8912173156963
+    }
+  ],
+  "verdict": {
+    "worst_relative_change_vs_256_nodes": 1.7176673660408223e-08,
+    "tolerance": 1e-07,
+    "pass": true
+  }
+}

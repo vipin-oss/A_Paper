@@ -1,0 +1,58 @@
+{
+  "operating_point": {
+    "zero": {
+      "R_B_2um": 0.019293841963664654,
+      "angle_deg": -27.898027100778837,
+      "power_balance_relative": 1.437255732030875e-12,
+      "edge_scaled_residual": 2.7383420509124457e-15,
+      "frequency_GHz": 16.684113947662556,
+      "f_dimensionless": 0.0
+    },
+    "synthetic_1nC_m": {
+      "R_B_2um": 0.019291601863518266,
+      "angle_deg": -27.899713989338398,
+      "power_balance_relative": 2.4780958678936733e-13,
+      "edge_scaled_residual": 2.7405790797601072e-15,
+      "frequency_GHz": 16.684123136378155,
+      "f_dimensionless": 0.0025630916819169717
+    },
+    "ten_x": {
+      "R_B_2um": 0.01907055008866057,
+      "angle_deg": -28.06794798469456,
+      "power_balance_relative": 6.874036041427328e-13,
+      "edge_scaled_residual": 2.7846485257407474e-15,
+      "frequency_GHz": 16.68503163332404,
+      "f_dimensionless": 0.025630916819169715
+    },
+    "effect_of_synthetic_f_percent": -0.011610441044385971,
+    "effect_of_ten_times_f_percent": -1.1573219860751451
+  },
+  "peak": {
+    "zero": {
+      "R_B_2um": 0.5519755141649202,
+      "angle_deg": -14.448443963854032,
+      "power_balance_relative": 5.391826510669951e-13,
+      "edge_scaled_residual": 3.4660962691309852e-15,
+      "frequency_GHz": 16.65496803573196,
+      "f_dimensionless": 0.0
+    },
+    "synthetic_1nC_m": {
+      "R_B_2um": 0.5519100424915215,
+      "angle_deg": -14.448727907906465,
+      "power_balance_relative": 5.6158486249075275e-14,
+      "edge_scaled_residual": 2.1714563495056306e-15,
+      "frequency_GHz": 16.65497604928513,
+      "f_dimensionless": 0.0025630916819169717
+    },
+    "ten_x": {
+      "R_B_2um": 0.5454856271562946,
+      "angle_deg": -14.4768731274325,
+      "power_balance_relative": 7.712839743484681e-13,
+      "edge_scaled_residual": 2.0670775963773556e-15,
+      "frequency_GHz": 16.655768345453378,
+      "f_dimensionless": 0.025630916819169715
+    },
+    "effect_of_synthetic_f_percent": -0.01186133654818102,
+    "effect_of_ten_times_f_percent": -1.17575632289489
+  }
+}

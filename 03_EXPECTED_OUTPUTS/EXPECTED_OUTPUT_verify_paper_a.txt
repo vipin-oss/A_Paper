@@ -1,0 +1,52 @@
+
+=== Part 1: plain-arithmetic checks (no solver) ===
+PASS  T from Einstein relation (K)                               expected 301.7          computed 301.71747      tol 0.05
+PASS  c_s (m/s)                                                  expected 2746.6         computed 2746.6088      tol 0.27
+PASS  Debye length L_D (um)                                      expected 2.6797         computed 2.679712       tol 0.00054
+PASS  Q = d/L_D                                                  expected 0.074635       computed 0.074634887    tol 1.5e-05
+PASS  alpha_d = D/(d c_s)                                        expected 0.8283         computed 0.82829416     tol 0.00017
+PASS  reduced modulus c* (GPa)                                   expected 154.4          computed 154.38369      tol 0.15
+PASS  H_ref = d sqrt(a c44) (J m)                                expected 1.8927e-21     computed 1.8927406e-21  tol 3.8e-25
+PASS  H_bound (J m)                                              expected 8.97e-22       computed 8.9659762e-22  tol 1.8e-24
+PASS  H* = H_bound/sqrt5 (J m)                                   expected 4.01e-22       computed 4.0097064e-22  tol 8e-25
+PASS  tabulated extreme 0.05 H* (J m)                            expected 2e-23          computed 2.0048532e-23  tol 6e-26
+PASS  s = Schur ratio at extreme                                 expected 0.0005         computed 0.0005         tol 1e-05
+PASS  h = 0.05 H*/H_ref                                          expected 0.0106         computed 0.01059233     tol 0.00011
+PASS  frequency unit c_s/(2 pi d) (GHz)                          expected 2.1857         computed 2.1856818      tol 0.00022
+PASS  operating frequency 7.6334*unit (GHz)                      expected 16.684         computed 16.684183      tol 0.0017
+PASS  k_EM d  (retardation)                                      expected 0.00022        computed 0.00022109892  tol 6.6e-06
+PASS  omega * tau_d (carrier relaxation)                         expected 1650           computed 1654.4166      tol 16
+PASS  lambda^2 c33/c44                                           expected 0.32122        computed 0.32122093     tol 3.2e-05
+
+=== Part 2: solver from scratch ===
+PASS  operating omega (units c_s/d)                              expected 7.6334         computed 7.6333724      tol 0.00015
+PASS  operating frequency (GHz)                                  expected 16.684         computed 16.684123      tol 0.00033
+PASS  R_B at operating point (H=0)                               expected 0.0192916      computed 0.019291602    tol 3.9e-06
+PASS  backward energy angle (deg)                                expected -27.8997       computed -27.899714     tol 0.002
+PASS  scaled edge residual below 1e-12                           expected 0              computed 2.7405791e-15  tol 1e-12
+PASS  power balance below 1e-10                                  expected 0              computed 2.4780959e-13  tol 1e-10
+PASS  total outgoing propagating power (op. point)               expected 0.9998         computed 0.99979649     tol 2e-05
+PASS  R_B at certified fold k_x d=0.52719                        expected 0.9428718      computed 0.94287184     tol 2.8e-06
+PASS  fold frequency (GHz)                                       expected 16.6547        computed 16.654675      tol 0.00017
+PASS  incident modal power ratio operating/fold (raw)            expected 131            computed 130.98512      tol 1.3
+PASS  total outgoing power at fold                               expected 1.0005         computed 1.0004958      tol 2e-05
+PASS  k_Bx/k_ix at fold                                          expected 0.996          computed 0.99610947     tol 0.0002
+PASS  R_B at k_x d=0.55 (H=0)                                    expected 0.55191        computed 0.55191004     tol 1.7e-05
+PASS  coupling effect at operating point (%)                     expected -1.21          computed -1.2097827     tol 0.06
+PASS  coupling effect at k_x d=0.55 (%)                          expected -10.17         computed -10.170849     tol 0.06
+PASS  coupling effect at fold (%)                                expected -36.1          computed -36.121514     tol 0.06
+PASS  |a_B| at n=22 (appendix worked example)                    expected 1.1184598      computed 1.1184598      tol 2.2e-06
+PASS  |a_B|^2 |P_x| = R_B * P_inc(-L)  (edge power)              expected 0.0192957      computed 0.019295705    tol 3.9e-08
+PASS  P_inc(-L) = exp(2 Im k_ix L)                               expected 1.0001081      computed 1.0001081      tol 2e-07
+PASS  Im k_Bx (per d)                                            expected -5.2306e-06    computed -5.2305951e-06 tol 2e-09
+PASS  R_B, f=0, H=0 (tab:controls)                               expected 0.019294       computed 0.019293842    tol 5.8e-06
+PASS  R_B, f=0, H=+0.05 H* (tab:controls)                        expected 0.01906        computed 0.01906042     tol 5.7e-06
+PASS  fold k_x d at lambda=0.25                                  expected 0.527          computed 0.52710351     tol 0.0015
+PASS  fold k_x d at lambda=0 (classical)                         expected 0.824          computed 0.82388445     tol 0.0015
+PASS  classical fold frequency (GHz)                             expected 13.686         computed 13.685534      tol 0.002
+PASS  S_15 entry (N=6)                                           expected 22.978         computed 22.978251      tol 0.0005
+PASS  S_24 entry (N=6)                                           expected 80.498         computed 80.498447      tol 0.0005
+PASS  S_35 entry (N=6)                                           expected 210.6          computed 210.59915      tol 0.005
+PASS  S_jj = 2 j (j+1)(2j+1), j=5                                expected 660            computed 660            tol 1e-06
+
+46 / 46 checks passed

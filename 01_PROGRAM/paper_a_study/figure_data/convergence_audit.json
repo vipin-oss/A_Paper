@@ -1,0 +1,210 @@
+{
+  "operating_point": [
+    {
+      "degree": 14,
+      "dof": 73,
+      "frequency_GHz": 16.684123136378446,
+      "R_B": 0.01929202167322515,
+      "backward_K_real": 0.2451746920842335,
+      "angle_deg": -27.899713989493407,
+      "edge_residual": 2.62256546024977e-15,
+      "power_balance": 4.075634648374795e-12,
+      "condition": 43.29012794965462
+    },
+    {
+      "degree": 18,
+      "dof": 93,
+      "frequency_GHz": 16.684123136378425,
+      "R_B": 0.019291708055923378,
+      "backward_K_real": 0.24517469208426557,
+      "angle_deg": -27.89971398949362,
+      "edge_residual": 2.9091368457258463e-15,
+      "power_balance": 6.119521127752291e-12,
+      "condition": 50.57229759888154
+    },
+    {
+      "degree": 22,
+      "dof": 113,
+      "frequency_GHz": 16.684123136378155,
+      "R_B": 0.019291601863518266,
+      "backward_K_real": 0.24517469208597725,
+      "angle_deg": -27.899713989338398,
+      "edge_residual": 2.7405790797601072e-15,
+      "power_balance": 2.4780958678936733e-13,
+      "condition": 140.892063053845
+    },
+    {
+      "degree": 26,
+      "dof": 133,
+      "frequency_GHz": 16.68412313638018,
+      "R_B": 0.019291558099066013,
+      "backward_K_real": 0.24517469207225143,
+      "angle_deg": -27.89971399064946,
+      "edge_residual": 2.9151624089404657e-15,
+      "power_balance": 6.036797119926068e-13,
+      "condition": 77.324809758255
+    },
+    {
+      "degree": 30,
+      "dof": 153,
+      "frequency_GHz": 16.684123136378144,
+      "R_B": 0.01929153746041151,
+      "backward_K_real": 0.2451746920861525,
+      "angle_deg": -27.899713989314563,
+      "edge_residual": 3.2180066324864488e-15,
+      "power_balance": 4.0465047687682516e-12,
+      "condition": 171.59109019158737
+    }
+  ],
+  "near_peak_k0p525": [
+    {
+      "degree": 14,
+      "dof": 73,
+      "frequency_GHz": 16.654677689941625,
+      "R_B": 0.9256053432945862,
+      "backward_K_real": 0.5249493119143163,
+      "angle_deg": -13.888756040268545,
+      "edge_residual": 2.3180460730322312e-15,
+      "power_balance": 1.0364886888042778e-13,
+      "condition": 43.28994343091886
+    },
+    {
+      "degree": 18,
+      "dof": 93,
+      "frequency_GHz": 16.65467768994272,
+      "R_B": 0.9256045286418942,
+      "backward_K_real": 0.524949311501893,
+      "angle_deg": -13.88875605133224,
+      "edge_residual": 2.0394820558057463e-15,
+      "power_balance": 5.0500083678172446e-14,
+      "condition": 50.58381190299125
+    },
+    {
+      "degree": 22,
+      "dof": 113,
+      "frequency_GHz": 16.6546776899426,
+      "R_B": 0.9256042605375405,
+      "backward_K_real": 0.5249493115403754,
+      "angle_deg": -13.888756050963527,
+      "edge_residual": 2.1248449393888457e-15,
+      "power_balance": 2.5188774484980474e-13,
+      "condition": 140.891221013713
+    },
+    {
+      "degree": 26,
+      "dof": 133,
+      "frequency_GHz": 16.654677689942595,
+      "R_B": 0.9256041525807116,
+      "backward_K_real": 0.5249493116047896,
+      "angle_deg": -13.888756048319047,
+      "edge_residual": 1.8751857590944378e-15,
+      "power_balance": 1.561720596623403e-13,
+      "condition": 77.3257117897802
+    },
+    {
+      "degree": 30,
+      "dof": 153,
+      "frequency_GHz": 16.654677689941717,
+      "R_B": 0.9256041104784535,
+      "backward_K_real": 0.5249493119598235,
+      "angle_deg": -13.8887560417035,
+      "edge_residual": 2.1479804112575592e-15,
+      "power_balance": 1.4105026483265442e-12,
+      "condition": 171.65677621343875
+    }
+  ],
+  "peak_k0p52719": [
+    {
+      "degree": 14,
+      "dof": 73,
+      "frequency_GHz": 16.654675001870697,
+      "R_B": 0.9428727280135384,
+      "backward_K_real": 0.5261564368236197,
+      "angle_deg": -13.849333837787297,
+      "edge_residual": 2.3298377867600583e-15,
+      "power_balance": 9.314108735200571e-14,
+      "condition": 43.28994527564244
+    },
+    {
+      "degree": 18,
+      "dof": 93,
+      "frequency_GHz": 16.654675001870775,
+      "R_B": 0.9428720572593272,
+      "backward_K_real": 0.5261564367883718,
+      "angle_deg": -13.849333838495568,
+      "edge_residual": 2.092481438879949e-15,
+      "power_balance": 1.4411178902968233e-13,
+      "condition": 50.584486265205875
+    },
+    {
+      "degree": 22,
+      "dof": 113,
+      "frequency_GHz": 16.654675001870682,
+      "R_B": 0.9428718390424711,
+      "backward_K_real": 0.5261564368329981,
+      "angle_deg": -13.849333837706762,
+      "edge_residual": 2.700540361257118e-15,
+      "power_balance": 6.22477992988358e-14,
+      "condition": 140.8912173153946
+    },
+    {
+      "degree": 26,
+      "dof": 133,
+      "frequency_GHz": 16.6546750018694,
+      "R_B": 0.9428717526767361,
+      "backward_K_real": 0.5261564374951261,
+      "angle_deg": -13.849333800514504,
+      "edge_residual": 2.0785663866162518e-15,
+      "power_balance": 1.0049695612528025e-12,
+      "condition": 77.32571167870226
+    },
+    {
+      "degree": 30,
+      "dof": 153,
+      "frequency_GHz": 16.654675001870505,
+      "R_B": 0.9428717078704723,
+      "backward_K_real": 0.5261564369750512,
+      "angle_deg": -13.84933382840807,
+      "edge_residual": 2.092278522494619e-15,
+      "power_balance": 1.319068575146713e-13,
+      "condition": 171.6584772263769
+    }
+  ],
+  "summary": {
+    "operating_point": {
+      "successive_relative_changes": [
+        1.6256321244225745e-05,
+        5.504562105364612e-06,
+        2.268575339817418e-06,
+        1.0698282843811244e-06
+      ],
+      "monotone_decrease": true,
+      "max_change_18_to_30": 8.843023124506838e-06
+    },
+    "near_peak_k0p525": {
+      "successive_relative_changes": [
+        8.801296339452952e-07,
+        2.89653243282208e-07,
+        1.1663389368815737e-07,
+        4.548624593666866e-08
+      ],
+      "monotone_decrease": true,
+      "max_change_18_to_30": 4.5177353474240784e-07
+    },
+    "peak_k0p52719": {
+      "successive_relative_changes": [
+        7.113942224069463e-07,
+        2.3143845918472408e-07,
+        9.159859424351393e-08,
+        4.752105859902361e-08
+      ],
+      "monotone_decrease": true,
+      "max_change_18_to_30": 3.7055821279010056e-07
+    }
+  },
+  "verdict": {
+    "max_relative_change_degree18_to_30": 8.843023124506838e-06,
+    "tolerance": 1e-05,
+    "pass": true
+  }
+}

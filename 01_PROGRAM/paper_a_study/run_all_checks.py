@@ -1,0 +1,226 @@
+#!/usr/bin/env python3
+"""Run the complete verification battery and write one log.
+
+    python paper_a_study/run_all_checks.py
+
+Each check is executed as a subprocess so that a failure in one does not hide
+the result of the others.  The log is written to `validation/` at the repository
+root and is copied into the submission package by `build_submission_package.py`.
+
+The battery is:
+
+1. dimensional / constitutive     (verify_dimensions)
+2. quasistatic justification      (quasistatic_check)
+3. flexoelectric control          (flexo_control)
+4. admissibility re-derivation    (reclassify_csv, no re-solving)
+5. figure-data integrity          (this file, inline)
+6. phase-speed / e.m. reconciliation (phase_speed_audit, 0 = text agrees)
+7. modal-flux rescaling proof     (modal_flux_audit)
+8. mechanism matched controls     (mechanism_controls)
+9. corner assessment + regression (corner_assessment)
+10. certified peak                (certify_peak, four fixed wavenumbers)
+11. peak search and classification (peak_search)
+12. peak identity and artefacts    (peak_identity_audit)
+13. spectral convergence           (convergence_audit, degrees 14..34)
+14. quadrature sufficiency         (quadrature_audit, 64..256 nodes)
+15. unit and scientific tests      (test_model; needs the records above)
+16. claim registry and stale guard (claim_audit)
+17. gate mutation tests            (mutation_tests, fifteen deliberate defects)
+18. natural boundary data identity (round21_gate1_traction: traction+corner, double)
+19. corner line force gate          (round21_gate_corner: three configurations)
+19b. insulating edge default audit   (round21_edge_default_audit: Gate 3)
+20. round-21 regression tests       (round21_tests: repaired physics only)
+21. LaTeX static validation        (Paper_A_Final_Submission/scripts/static_check.py)
+
+TeX/BibTeX compilation is attempted only if an engine is present; otherwise the
+log records explicitly that no engine was found.
+"""
+from __future__ import annotations
+
+import json
+import shutil
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+STUDY = ROOT / "paper_a_study"
+SUB = ROOT / "Paper_A_Final_Submission"
+VALID = ROOT / "validation"
+PY = sys.executable
+
+RESULTS: list[tuple[str, bool, str]] = []
+
+
+def run(name: str, cmd: list[str], cwd: Path, timeout: int = 1800) -> bool:
+    t0 = datetime.now()
+    proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True,
+                          timeout=timeout)
+    dt = (datetime.now() - t0).total_seconds()
+    tail = (proc.stdout or "").strip().splitlines()[-6:]
+    ok = proc.returncode == 0
+    RESULTS.append((name, ok, f"{dt:.1f}s exit={proc.returncode}"))
+    print(f"[{'PASS' if ok else 'FAIL'}] {name}  ({dt:.1f}s)")
+    for line in tail:
+        print("      " + line)
+    if not ok and proc.stderr:
+        print("      stderr: " + proc.stderr.strip().splitlines()[-1])
+    return ok
+
+
+def figure_data_chk() -> bool:
+    """Every CSV the figures read exists and has the expected row counts."""
+    expected = {
+        "fig01_dispersion_velocity_attenuation.csv": 155,
+        "fig02_material_parameter_sweep.csv": 130,
+        # coarse raster plus the fine raster (5e-4, H=0 only); the count is a
+        # property of the data, never quoted in the manuscript
+        "fig04_frequency_reflection.csv": 139,
+        "fig07_coupling_sensitivity.csv": 95,
+        "fig09_validation_convergence.csv": None,
+    }
+    data = STUDY / "figure_data"
+    ok = True
+    for name, rows in expected.items():
+        path = data / name
+        if not path.exists():
+            print(f"      missing {name}")
+            ok = False
+            continue
+        n = len(path.read_text().strip().splitlines()) - 1
+        if rows is not None and n != rows:
+            print(f"      {name}: {n} rows, expected {rows}")
+            ok = False
+    for stem in ["fig01_dispersion", "fig02_material", "fig03_geometry",
+                 "fig04_frequency", "fig05_channel", "fig06_attenuation",
+                 "fig07_coupling", "fig08_boundary", "fig09_validation",
+                 "fig10_field"]:
+        if not (SUB / "figures" / f"{stem}.pdf").exists():
+            print(f"      missing figure {stem}.pdf")
+            ok = False
+    RESULTS.append(("figure data and figure files", ok, ""))
+    print(f"[{'PASS' if ok else 'FAIL'}] figure data and figure files")
+    return ok
+
+
+def latex_gate() -> bool:
+    """Clean-directory TeX/BibTeX lifecycle; fails on any unresolved reference."""
+    import re
+    import tempfile
+    engine = shutil.which("pdflatex")
+    bib = shutil.which("bibtex8") or shutil.which("bibtex")
+    if not engine or not bib:
+        RESULTS.append(("LaTeX build", None, "pdflatex/bibtex not found"))
+        print("[SKIP] LaTeX build: pdflatex or bibtex not found")
+        return True
+    ok, why = True, ""
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp) / "build"
+        # copy the sources only: no stale .aux/.bbl/.pdf can leak into the build
+        shutil.copytree(SUB, work, ignore=shutil.ignore_patterns(
+            "main.aux", "main.bbl", "main.blg", "main.log", "main.out", "main.pdf", "main.toc"))
+        steps = [[engine, "-halt-on-error", "-interaction=nonstopmode", "main.tex"],
+                 [bib, "main"],
+                 [engine, "-halt-on-error", "-interaction=nonstopmode", "main.tex"],
+                 [engine, "-halt-on-error", "-interaction=nonstopmode", "main.tex"]]
+        for cmd in steps:
+            try:
+                r = subprocess.run(cmd, cwd=work, capture_output=True, text=True, timeout=900)
+            except subprocess.TimeoutExpired:
+                ok, why = False, f"timeout in {' '.join(cmd[:2])}"
+                break
+            if r.returncode != 0:
+                ok, why = False, f"{' '.join(cmd[:2])} exited {r.returncode}"
+                break
+        if ok:
+            log = (work / "main.log").read_text(errors="replace")
+            bbl = work / "main.bbl"
+            pdf = work / "main.pdf"
+            nbib = len(re.findall(r"\\bibitem", bbl.read_text(errors="replace"))) if bbl.exists() else 0
+            bad = re.findall(r"(?:Citation|Reference) `[^']*' .*undefined", log)
+            if bad:
+                ok, why = False, f"{len(bad)} undefined citation/reference warnings"
+            elif nbib == 0:
+                ok, why = False, "bibliography is empty (no \\bibitem in main.bbl)"
+            elif not pdf.exists():
+                ok, why = False, "main.pdf missing"
+            else:
+                why = f"{nbib} bibliography entries, no undefined references"
+    RESULTS.append(("LaTeX clean build (pdflatex/bibtex/pdflatex x2)", ok, why))
+    print(f"[{'PASS' if ok else 'FAIL'}] LaTeX clean build: {why}")
+    return ok
+
+
+def main() -> int:
+    VALID.mkdir(exist_ok=True)
+    print(f"verification run {datetime.now(timezone.utc).isoformat(timespec='seconds')}")
+    print()
+
+    run("dimensional and constitutive audit",
+        [PY, "paper_a_study/verify_dimensions.py"], ROOT, 600)
+    run("quasistatic justification",
+        [PY, "paper_a_study/quasistatic_check.py"], ROOT, 600)
+    run("flexoelectric control",
+        [PY, "paper_a_study/flexo_control.py"], ROOT, 900)
+    run("admissibility re-derivation",
+        [PY, "paper_a_study/reclassify_csv.py"], ROOT, 600)
+    figure_data_chk()
+    run("phase-speed and e.m. reconciliation",
+        [PY, "-m", "paper_a_study.phase_speed_audit"], ROOT, 600)
+    run("modal-flux rescaling proof",
+        [PY, "-m", "paper_a_study.modal_flux_audit"], ROOT, 900)
+    run("mechanism matched controls",
+        [PY, "-m", "paper_a_study.mechanism_controls"], ROOT, 1800)
+    run("corner assessment and regression",
+        [PY, "-m", "paper_a_study.corner_assessment"], ROOT, 1200)
+    run("certified peak (four fixed wavenumbers)",
+        [PY, "-m", "paper_a_study.certify_peak"], ROOT, 1800)
+    run("peak search and classification",
+        [PY, "-m", "paper_a_study.peak_search"], ROOT, 1800)
+    run("peak identity and artefact audit",
+        [PY, "-m", "paper_a_study.peak_identity_audit"], ROOT, 1800)
+    run("spectral convergence", [PY, "paper_a_study/convergence_audit.py"], ROOT, 1200)
+    run("quadrature sufficiency", [PY, "paper_a_study/quadrature_audit.py"], ROOT, 900)
+    # The test suite reads the stored solver records (peak certification, corner
+    # assessment, the cross-script edge fraction), so it must run *after* the
+    # producers above.  On a clean data directory the old order failed with five
+    # missing-record errors in a battery that had not yet written those records
+    # (round-11 finding D27).
+    run("unit and scientific tests",
+        [PY, "-m", "unittest", "paper_a_study.test_model"], ROOT, 1800)
+    run("natural boundary data identity",
+        [PY, "paper_a_study/round21_gate1_traction.py"], ROOT, 1800)
+    run("corner line force gate",
+        [PY, "paper_a_study/round21_gate_corner.py"], ROOT, 1800)
+    run("insulating edge default audit",
+        [PY, "paper_a_study/round21_edge_default_audit.py"], ROOT, 300)
+    run("round-21 regression tests",
+        [PY, "-m", "unittest", "paper_a_study.round21_tests"], ROOT, 900)
+    run("review regression tests (A01, A02, B01, B02)",
+        [PY, "-m", "unittest", "paper_a_study.test_review_regressions"], ROOT, 900)
+    run("claim registry and stale guard", [PY, "paper_a_study/claim_audit.py"], ROOT, 300)
+    run("gate mutation tests", [PY, "paper_a_study/mutation_tests.py"], ROOT, 900)
+    run("LaTeX static validation",
+        [sys.executable, "scripts/static_check.py"], SUB, 300)
+
+    latex_gate()
+
+    ok = all(r[1] is not False for r in RESULTS)
+    lines = [
+        f"Paper A verification run {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
+        "=" * 60, "",
+    ]
+    for name, res, note in RESULTS:
+        tag = "PASS" if res else ("SKIP" if res is None else "FAIL")
+        lines.append(f"{tag:5s} {name:38s} {note}")
+    lines += ["", f"OVERALL: {'PASS' if ok else 'FAIL'}",
+              "", "TeX compilation: " + ("executed" if shutil.which("pdflatex") else
+              "NOT EXECUTED - no engine available; source is statically validated only")]
+    (VALID / "verification_log.txt").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines[-6:]))
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

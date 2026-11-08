@@ -1,0 +1,3 @@
+case,label,independent_K_delta,relative_power_delta,relative_mean_energy_delta,relative_dissipation_delta,degree_K_max_delta
+bulk_Hall_transfer_d0.2_synthetic_gradient,primary,3.9934788579381614e-13,1.422648721856333e-13,1.6961203027727177e-15,2.9020687268755054e-14,6.881166066256035e-13
+literature_model_d0.2_synthetic_gradient,fallback,7.420781473917022e-13,3.3201251419126775e-13,1.2438596517915683e-15,1.293977623393068e-14,0.0

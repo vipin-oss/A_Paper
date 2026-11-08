@@ -1,0 +1,142 @@
+% ===========================================================================
+%  Paper A -- Negative reflection of guided waves at a free edge in a
+%  flexoelectric piezoelectric-semiconductor plate: the strain-gradient
+%  backward branch
+%
+%  Build:  pdflatex main && bibtex main && pdflatex main && pdflatex main
+%
+% ===========================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=22mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+% Numeric typography: digit grouping is restricted to the integer part so that
+% decimals print exactly as written.
+\sisetup{detect-all=true,per-mode=symbol,exponent-product=\times,
+         group-digits=integer,group-minimum-digits=5,
+         output-decimal-marker={.},group-separator={\,}}
+
+% Line-breaking slack for the prose.
+\setlength{\emergencystretch}{2em}
+
+% Short alias for bold vectors.
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+
+\title{\bfseries Backward-branch negative reflection of guided waves from the
+free edge of a flexoelectric piezoelectric semiconductor plate}
+
+\author{Author Name\\[2pt]
+\small Department, Institution, City, Country}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+A guided mode reaching the free edge of a plate is scattered into the outgoing
+branches that the edge supports, and a plate can support a branch whose energy flux is opposite to its phase velocity.  The partition is computed for a
+transversely isotropic ($6mm$) n-type ZnO plate with strain-gradient
+elasticity, piezoelectricity, flexoelectricity and linearized electron
+drift--diffusion, with a single bilinear carrier--strain-gradient enthalpy and
+its reciprocal partners.  The edge problem is solved at fixed frequency by a
+spectral Galerkin expansion through the thickness, matched to the
+traction-free edge conditions.  At $k_xd=0.736$ (\SI{16.68}{\giga\hertz}) the
+backward mode carries \SI{1.93}{\percent} of the incident power; along the same
+branch the share reaches \SI{94.29}{\percent} at $k_xd=0.52719$
+(\SI{16.6547}{\giga\hertz}), where the incident and backward wavenumbers differ
+by \SI{0.4}{\percent} and the group velocity vanishes.  This is a modal share, not a reflectance: the propagating outgoing modes carry the incident
+power to within \SI{0.1}{\percent}, and at the fold the incident flux is a
+factor of 131 smaller than at the operating point.  The conversion is a property of the
+backward branch of the plate, not of the added coupling, which at its
+tabulated extreme lowers the share by \SI{1.21}{\percent} at the operating
+point and by \SI{36.1}{\percent} at the maximum.  The share at the fold falls with carrier density, from $0.943$ at $2\times10^{18}$ to $0.545$ at $2\times10^{20}\,\si{\per\cubic\metre}$, and with an added loss tangent, to $0.600$ at $10^{-5}$.  The gradient length, the flexoelectric coefficient and the
+coupling constant are assumed values.  The corner line force is computed, not imposed; the partition at the maximum changes by $3.9\times10^{-6}$ between Galerkin degrees 10 and 28, over which that force halves.
+
+\medskip
+\noindent\textbf{Keywords:} flexoelectric semiconductor; strain-gradient
+elasticity; guided plate waves; backward branch; negative reflection; spectral
+Galerkin method.
+\end{abstract}
+
+\section*{Nomenclature}
+
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{\qquad}ll@{}}
+\toprule
+Symbol & Quantity & Symbol & Quantity \\
+\midrule
+$u_i$ & displacement & $v_i$ & test displacement \\
+$\varepsilon_{ij}$ & small strain & $\eta_{ijk}=\varepsilon_{ij,k}$ & strain gradient \\
+$\sigma_{ij}$ & Cauchy stress & $\tau_{ijk}$ & hyperstress ($\tau_{ijk}=\tau_{jik}$) \\
+$\Sigma_{ij}$ & $\sigma_{ij}-\partial_k\tau_{ijk}$ & $n_i$ & surface normal \\
+$c_{ijkl}$ & elastic stiffness & $A_{ijklmn}$ & strain-gradient modulus \\
+$e_{kij}$ & piezoelectric constant & $f_{ijkl}$ & flexoelectric constant \\
+$\kappa_{ij}$ & permittivity & $\ell$ & strain-gradient length \\
+$\varphi$ & electrostatic potential & $\psi$ & test potential \\
+$E_i=-\partial_i\varphi$ & electric field & $D_i$ & electric displacement \\
+$\Delta n$ & carrier-number perturbation & $\widehat N=\widetilde\mu+Q\widehat\varphi-h\widehat u_3''$ & carrier amplitude \\
+$n_0$ & steady carrier density & $\mu_e$ & electron mobility \\
+$D$ & electron diffusivity & $q$ & elementary charge \\
+$\widetilde\mu$ & electrochemical potential & $\Phi$ & test electrochemical potential \\
+$H_{jkl}$, $H\equiv H_{zzz}$ & carrier--strain-gradient coupling & $H/H^{*}$ & normalized coupling \\
+$a=k_BT/n_0$ & carrier compressibility & $Q$ & dimensionless charge \\
+$k_x$ & propagation wavenumber & $k_y$ & transverse wavenumber \\
+$k_{Bx}$ & backward-branch wavenumber & $k_{ix}$ & incident wavenumber \\
+$d$ & plate thickness & $\zeta=2z/d$ & scaled thickness \\
+$\omega$, $f$ & angular frequency, frequency & $\lambda=\ell/d$ & dimensionless gradient length \\
+$x=0$ & reflecting edge & $L$ & reference-plane distance \\
+$R_B$ & backward modal share & $P_x$ & thickness-integrated power flux \\
+$P_{\text{inc}}$ & incident self-power & $\theta_E$ & energy angle \\
+$\alpha_{\mathrm d}=D/(dc_s)$ & transport-over-elastic rate & $\alpha=2|\Imag k_x|$ & spatial attenuation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\input{sections/introduction}
+\input{sections/governing_equations}
+\input{sections/numerical_methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+
+\section*{Data availability}
+The data behind each figure and table, and the programs that generate them, are
+available at \url{https://github.com/vipin-oss/A_Paper}.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+During the preparation of this work the author used Claude (Anthropic) to check
+equations and numerical results against the computational code, to verify
+bibliographic records and to edit the language. After using this tool, the author
+reviewed and edited the content as needed and takes full responsibility for the
+content of the publication.
+
+\appendix
+\input{sections/appendix_derivations}
+\input{sections/appendix_reproducibility}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

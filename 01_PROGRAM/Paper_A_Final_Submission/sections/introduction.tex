@@ -1,0 +1,170 @@
+\section{Introduction}
+\label{sec:intro}
+
+Piezoelectric semiconductors, of which n-type zinc oxide is the standard
+example, join a piezoelectric response to a population of mobile charge
+carriers.  The combination underlies nanogenerators and piezotronic devices
+\cite{wang2006nanogenerators,wang2012progress} and rests on a material whose
+electronic and mechanical properties are well characterized
+\cite{ozgur2005zno}.  Acoustic waves in such a medium are not purely elastic.
+The piezoelectric field that accompanies a wave acts on the carriers, the carriers redistribute and screen it, and in doing so they absorb energy from the wave; the foundations of this picture were laid for bulk waves by Hutson and
+White \cite{hutson1962elastic}, and White \cite{white1962amplification} showed
+that drifting carriers can amplify ultrasound as well as attenuate it.  The
+linearized drift--diffusion description of the carriers has since been combined
+with the elastic and piezoelectric equations for rods \cite{zhang2016extensional}
+and plates \cite{zhang2025pscplate}, and it is the description adopted here.
+
+When the plate is a few hundred nanometers thick and the frequency is of the
+order of ten gigahertz, two further effects can no longer be set aside.  The
+first is flexoelectricity, the polarization produced by a strain gradient rather than by a strain \cite{tagantsev1986piezo,majdoub2008enhanced,
+yudin2013fundamentals,zubko2013flexoelectric,shen2010theory,deng2020impact}.  It is small in absolute terms but scales inversely with a length, so it
+becomes comparable with piezoelectricity in thin films, at free surfaces and
+around edges, and it is already exploited in semiconductors
+\cite{narvaez2016enhanced,bhaskar2016flexoelectric,wang2020flexoelectronics}.
+The second is the dependence of the elastic energy on the strain gradient, which
+introduces an internal length into the equations of motion
+\cite{mindlin1964micro,mindlin1968first}.  In a semiconductor the two effects are
+coupled to the carriers: the bound charge induced by the strain gradient is
+screened by mobile charge, the screening moves the carriers, and the redistributed carriers act back on the field.  This closed loop is the content of the
+flexoelectric semiconductor theory
+\cite{qu2020mobile,qu2022thermal,qu2022bending}.
+
+The continuum formulation of that theory combines the flexoelectric balance laws (with the strain gradient in the constitutive relations), Gauss's law with mobile charge and the carrier
+continuity equations of drift--diffusion; it can be derived from a free-energy density
+that contains the strain, the strain gradient, the electric field and the
+carrier-concentration perturbation.  Qu, Jin and Yang \cite{qu2020mobile} used the balance-law form to show
+that bending moves mobile charge in a composite
+flexoelectric dielectric--semiconductor beam, with the flexoelectric coupling confined to the dielectric layer; related models treat
+the bending of a flexoelectric semiconductor plate \cite{qu2022bending} and
+thermally induced carrier redistribution \cite{qu2022thermal}.  The
+most complete statement of the framework is the Coleman--Noll derivation of Qu,
+Pan, Zhu and Deng \cite{qu2025thermodynamic}, whose additive free-energy
+decomposition is the reference against which the added term of
+\cref{sec:intro_coupling} is placed in \cref{sec:disc_literature}.  A computational
+treatment of flexoelectric semiconductor junctions has also appeared
+\cite{hu2025computational}.  All of these works make a point that constrains any extension of the model: the additional constitutive couplings are not free
+parameters, they are constrained by a thermodynamic potential, and the
+reciprocal partner of each added term in the stress has to appear in the
+electrochemical potential.
+
+The wave theory of flexoelectric media has been developed for several
+geometries.  Yang, Deng, Liang and Shen \cite{yang2018lamb} computed the
+dispersion of Lamb waves in a plate with both flexoelectricity and
+strain-gradient elasticity, and Yang and co-workers treated Rayleigh waves on a
+centrosymmetric flexoelectric half-space \cite{yang2020rayleigh}.  Jiao, Wei and
+Li \cite{jiao2018slab} obtained the reflection and transmission of plane waves
+through a flexoelectric piezoelectric slab between two half-spaces, and the same
+group replaced the slab by a piezoelectric semiconductor to study the effect of
+the carrier density and of a bias field \cite{jiao2019semiconductor}.  Mondal,
+Sahu and Nirwal \cite{mondal2022scattering} computed the reflection of plane
+quasi-longitudinal waves at the free surface of a pre-stressed, rotating
+flexoelectric half-space.  For flexoelectric semiconductors, Rayleigh waves have been analyzed for an n-type half-space with second-order strain gradients \cite{biswas2025rayleigh}, and the exact multi-field solution of a
+piezoelectric semiconductor plate has identified the range of carrier
+concentrations in which the semiconductor coupling is active at all
+\cite{zhang2025pscplate}.  Size-dependent Rayleigh waves in piezoelectric semiconductor media
+have also been studied with nonlocal, void, fractional and memory-dependent
+thermal effects \cite{gupta2025psvoid}.  Guided waves in plates governed by strain-gradient
+elasticity alone have been analyzed for the Mindlin Form-II theory in isotropic
+plates \cite{vavva2009gradient} and for a generalized first strain-gradient
+theory \cite{sidhardh2019microplate}.  In all of these studies the quantity
+computed is a dispersion relation or a set of reflection coefficients for the
+few body waves of a half-space; none treats the scattering of a guided mode at
+the end of a plate.
+
+The scattering of a guided mode at a free plate edge is a classical problem for
+elastic plates.  The edge couples the propagating Lamb modes to an infinite
+family of evanescent ones, and the partition of the incident power among the
+propagating modes was computed by modal expansion and variational methods
+\cite{torvik1967reflection,auld1977variational,gregory1983reflection}, and
+compared with measurement \cite{morvan2003lamb}; the oblique incidence that
+matters here was treated by Santhanam and Demirli \cite{santhanam2013reflection}.
+Moreover, the same edge supports a resonance at the frequencies of zero group velocity
+\cite{prada2005laser,clorennec2007local,prada2008power,ces2011edge}, and it is at
+these frequencies that the dispersion branch turns back on itself.  Lamb modes include backward modes, whose energy flux is opposed to their phase velocity
+\cite{meitzler1965backward}; where a forward and a backward mode coexist near a
+zero-group-velocity point \cite{prada2008local}, the free edge converts one
+into the other, giving negative reflection
+\cite{germano2012anomalous,gerardin2016negative,veres2016broad}.  The same
+conversion at thickness steps gives negative refraction
+\cite{bramhavar2011negative,philippe2015focusing}, in the manner of the
+metamaterial negative refraction of elastic waves \cite{zhu2014negative}; it has
+been used to build devices \cite{legrand2021cloaking} and has been observed in
+chaotic and disordered plates \cite{gerardin2019chaotic}.  Every one of these
+results is for an elastic plate without strain-gradient elasticity,
+flexoelectricity or mobile carriers.
+
+The computation of guided waves in plates is now routinely handled by semi-analytical
+methods, which discretize the thickness and leave the propagation direction
+analytic.  Spectral expansions through the thickness converge exponentially for
+smooth fields \cite{adamou2004spectral,quintanilla2015modeling}, the
+finite-element variant handles damped waveguides \cite{bartoli2006modeling}, and
+the Legendre--Galerkin construction \cite{shen1994efficient} gives well-conditioned
+systems for the fourth-order operators that strain-gradient elasticity
+introduces.
+
+The studies above do not treat the edge scattering of a guided mode in a
+plate with strain-gradient elasticity, flexoelectricity and mobile carriers
+together.  In such a plate the outgoing spectrum is discrete, it may contain a
+backward-propagating member whose energy flux is opposite to its phase velocity, and the
+carriers take part in the partition.  That is the problem addressed here.  An
+incident guided mode is reflected into its time-reversed partner and into a finite
+family of mode-converted branches, and a backward branch is excited whenever the
+edge problem admits one.  Two questions follow, and they are answered separately in
+this article.  Does this plate admit a backward branch at the reported
+frequency, and how strongly does the edge convert into it?  Does the
+carrier--strain-gradient coupling bias that partition?
+
+The answers separate the two mechanisms.  The branch, and with it the strong
+conversion, belongs to the plate and not to the added coupling: it persists when the added coupling is removed, and the gradient length places its fold at the reported
+frequency.  The added coupling acts on the partition through the attenuation it
+gives the two partner modes, by \SI{1.21}{\percent} at the operating point and
+by \SI{36.1}{\percent} at the maximum along the branch.  The article reports the
+two effects with their own numbers and their own controls, at fixed transverse
+wavenumber, so that the contribution of each can be read without the other.
+The main contributions are:
+(i) a formulation of the free-edge problem for a strain-gradient, flexoelectric,
+piezoelectric-semiconductor plate in which the generalized traction and the
+independent double traction are imposed separately;
+(ii) a spectral Legendre--Galerkin solution validated against an independent
+$C^{1}$ finite-element discretization, against exact limits and against an
+energy balance that closes to round-off;
+(iii) the partition of the incident power into a backward branch, with the
+distinction between a modal share and a reflectance made explicit; and
+(iv) a quantified, bounded effect of the added carrier--strain-gradient
+enthalpy on that partition.
+
+\label{sec:intro_coupling}
+The model used in this article is kept minimal.  On top of the standard
+flexoelectric piezoelectric-semiconductor enthalpy it adds one
+bilinear term, $\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l}$,
+\eqref{eq:added_coupling}, in which $\Delta n$ is the carrier-concentration
+perturbation, $\varepsilon_{jk,l}$ the strain gradient and $H_{jkl}$ a
+third-order coupling tensor with the units of energy times length.  Because that
+term belongs to a thermodynamic potential it generates its two conjugate
+partners: an addition $H_{jkl}\Delta n$ to the hyperstress,
+\eqref{eq:added_hyperstress}, and an addition $H_{jkl}\varepsilon_{jk,l}$ to the
+electrochemical potential, \eqref{eq:added_mu}.  The three relations are
+obtained by differentiating one enthalpy, so
+they are one assumption and not three, and they are the only addition to the standard model in the
+article (a term of this structure is given in Appendix~C of \cite{qu2025thermodynamic}).  No additional field, no micro-inertia, no flexoelectric-gradient term
+and no nonlinear electromechanical feedback is introduced, and the classical
+constants are not refitted.
+
+The reciprocal relation \eqref{eq:added_mu} is what gives the edge problem
+its character.  A guided plate mode has a strain gradient through the
+thickness, so it perturbs the electrochemical potential before any carrier
+moves; the carriers respond, the charge density changes, and the changed charge
+density modifies the hyperstress through \eqref{eq:added_hyperstress}.  The loop
+closes at the edge, where the conversion into outgoing branches takes place.
+
+\label{sec:intro_scope}
+
+Three conventions are used throughout.  The plate
+occupies $x<0$ and the reflecting edge is at $x=0$; the $z$ axis is the
+six-fold axis of ZnO and points through the thickness, with the faces at
+$z=\pm d/2$.  A quantity is called \emph{backward} when its energy flux has a
+negative component along $x$, the direction of propagation of the incident wave, and a mode is called \emph{outgoing} when it either decays away
+from the edge or, if it is propagating, carries energy away from the edge.  Both
+definitions are operational, being the ones implemented in the solution.
+
+The formulation and the solution method are given first, followed by the numerical results with their discussion, and the findings are collected at the end.

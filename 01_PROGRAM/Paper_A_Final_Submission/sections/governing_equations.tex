@@ -1,0 +1,1040 @@
+\section{Mathematical formulation}
+\label{sec:governing}
+
+The formulation follows the order in which one enthalpy generates the constitutive relations, the field equations, the boundary conditions at the faces and the edge, and the power flux that identifies a backward mode.  The section ends with the dimensionless groups, the reductions the model must reproduce, and the condition for positive definiteness of the elastic--gradient--carrier block.
+
+\subsection{Geometry, kinematics and the gradient energy}
+\label{sec:governing_variational}
+\label{sec:governing_kinematics}
+
+Consider a transversely isotropic ($6mm$) n-type ZnO plate of thickness $d$
+whose faces are the planes $z=\pm d/2$, occupying the half-space $x<0$ and
+terminating at a traction-free edge at $x=0$.  The plate is unbounded in $y$, so
+a single tangential wavenumber $k_y$ is conserved, and each field has the form
+$f(x,z)\,e^{ik_yy-i\omega t}$ with three displacement components retained.  The formulation is thus two-and-a-half-dimensional (2.5D): a discrete
+cross-section in $(x,z)$ carrying full three-component kinematics, a single
+conserved tangential wavenumber, and no discretization of $y$.  The independent fields are
+the displacement $u_i(\vect{x},t)$, the electrostatic potential
+$\varphi(\vect{x},t)$ and the electron-number perturbation
+$\Delta n(\vect{x},t)$ measured from the uniform doping $n_0$.  The polar $c$
+axis of the crystal is $x_3\equiv z$; Latin indices run over $1,2,3$, a comma
+denotes a spatial derivative and a superimposed dot a time derivative.
+
+Three conventions are fixed once and used everywhere.  The electric field is
+$E_i=-\partial_i\varphi$.  The electron charge is $-q$ with $q>0$.  The
+quantity $\widetilde\mu$ is the \emph{electrochemical potential of an electron
+per carrier}, measured in joules, so that each term appearing in it is an
+energy and no term is a dimensionless ratio.
+
+
+The small-strain tensor and its gradient are
+\begin{equation}
+\label{eq:strain}
+\varepsilon_{ij}=\tfrac12\bigl(u_{i,j}+u_{j,i}\bigr),
+\qquad
+\eta_{ijk}\equiv\varepsilon_{ij,k}=\tfrac12\bigl(u_{i,jk}+u_{j,ik}\bigr),
+\end{equation}
+so that $\eta_{ijk}$ is symmetric in its first two indices,
+$\eta_{ijk}=\eta_{jik}$, and has the dimension of an inverse length.
+All three displacement components are retained; the strain has six independent
+components and the strain gradient eighteen.
+
+The higher-order elastic energy is taken in the single-length
+(isotropic-gradient) form
+\begin{equation}
+\label{eq:gradient_energy}
+w_g=\tfrac12\,A_{ijklmn}\,\eta_{ijk}\,\eta_{lmn}
+=\tfrac12\,\ell^{2}\,c_{ijlm}\,\eta_{ijk}\,\eta_{lmk},
+\qquad
+A_{ijklmn}=\ell^{2}\,c_{ijlm}\,\delta_{kn},
+\end{equation}
+where in \eqref{eq:gradient_energy} the \emph{third and sixth slots} of
+$A_{ijklmn}$ are the gradient directions: the third slot is contracted with the
+gradient index of the first strain gradient and the sixth with that of the
+second.  This is the only contraction for which the energy depends on the
+gradient of the strain through $c_{ijlm}\eta_{ijk}\eta_{lmk}$; contracting any
+other pair of slots would break the major symmetry
+$A_{ijklmn}=A_{lmnijk}$ that a second derivative of an energy must possess.  The two candidate contractions are also distinguishable by their spectra: the
+fundamental shear-horizontal branch of \eqref{eq:gradient_energy} has the closed
+form and is reproduced to
+$10^{-10}$, which the alternative contraction does not allow.
+
+Every unit in the formulation follows from one derivative of an energy, so the units are read off from these derivatives rather than from a list of dimensions.
+The displacement $u_i$ is a length (m); the strain \eqref{eq:strain} is its
+gradient and so is dimensionless, and the strain gradient $\eta_{ijk}$
+has the dimension of an inverse length (m$^{-1}$).  A stress is an energy density,
+$\sigma_{ij}=\partial w/\partial\varepsilon_{ij}$, so both $\sigma_{ij}$ and the
+elastic stiffness $c_{ijkl}$ are pascals.  The hyperstress is the derivative of
+the same energy with respect to a quantity that already has one inverse
+length, $\tau_{ijk}=\partial w/\partial\eta_{ijk}$, so it is a force per unit
+length ($\mathrm{N\,m^{-1}}$) and not a stress, and the gradient modulus
+$A_{ijklmn}=\partial\tau_{ijk}/\partial\eta_{lmn}$ is a force
+($\mathrm{N}=\mathrm{J\,m^{-1}}$), one factor of length times the elastic stiffness.  The double
+divergence $\partial_i\partial_k\tau_{jik}$ is a force density, which is what
+the balance law \eqref{eq:momentum} requires.  The piezoelectric constant
+$e_{kij}=\partial\sigma_{ij}/\partial E_k$ is a charge per unit area
+(\si{\coulomb\per\square\metre}), the permittivity $\kappa_{ij}$ is a charge
+per unit area per unit field (\si{\farad\per\metre}), and the flexoelectric
+constant $f_{ijkl}=\partial D_i/\partial\eta_{jkl}=-\partial\tau_{jkl}/\partial
+E_i$ is a charge per unit length (\si{\coulomb\per\metre}), one factor of
+length below $e$.  In the carrier sector $\Delta n$ is a number density
+(m$^{-3}$), $\widetilde\mu$ is an energy per carrier (J), the compressibility
+$a=k_BT/n_0$ is an energy times a volume ($\mathrm{J\,m^{3}}$) and the
+coupling $H_{jkl}=\partial\widetilde\mu/\partial\eta_{jkl}=\partial\tau_{jkl}/
+\partial(\Delta n)$ is an energy times a length (\si{\joule\metre}), the one
+non-classical unit in the model.  These three non-classical units ($\mathrm{N}=\mathrm{J\,m^{-1}}$ for $A$, $\mathrm{N\,m^{-1}}$ for $\tau_{ijk}$ and
+\si{\joule\metre} for $H_{jkl}$) are the ones most easily mis-stated, and
+each is fixed by the derivative that produced it.
+
+
+\subsection{Constitutive relations and the balance laws}
+\label{sec:governing_constitutive}
+\label{sec:governing_balance}
+
+The only physics added to the classical flexoelectric piezoelectric-semiconductor
+enthalpy is one bilinear term coupling the carrier perturbation to the strain
+gradient,
+\begin{equation}
+\label{eq:added_coupling}
+\Delta\mathcal{H}=\Delta n\,H_{jkl}\,\varepsilon_{jk,l},
+\end{equation}
+with $H_{jkl}$ a third-order tensor whose units are energy times length.  The
+term is not free-standing: it is a piece of a thermodynamic potential, so its two
+conjugates follow from it by differentiation and bring in no independent constants.
+Differentiating with respect to the strain gradient gives the addition to the
+hyperstress,
+\begin{equation}
+\label{eq:added_hyperstress}
+\Delta\tau_{jkl}=\frac{\partial\Delta\mathcal{H}}{\partial\varepsilon_{jk,l}}
+=H_{jkl}\,\Delta n ,
+\end{equation}
+and differentiating with respect to the carrier density gives the addition to the
+electrochemical potential,
+\begin{equation}
+\label{eq:added_mu}
+\Delta\widetilde\mu=\frac{\partial\Delta\mathcal{H}}{\partial\Delta n}
+=H_{jkl}\,\varepsilon_{jk,l} .
+\end{equation}
+The two additions of \eqref{eq:added_hyperstress}--\eqref{eq:added_mu} are
+reciprocal in the sense of the Maxwell identity
+$\partial^{2}w/\partial\eta_{jkl}\partial(\Delta n)
+=\partial^{2}w/\partial(\Delta n)\partial\eta_{jkl}$, which both sides of the
+pair satisfy with the same $H_{jkl}$; the discretized operator inherits this symmetry, and the numerical test verifies it.  A single scalar component,
+$H\equiv H_{zzz}$, is retained in the executed calculations, so that
+\eqref{eq:added_hyperstress} adds $H\Delta n$ to $\tau_{zzz}$ and
+\eqref{eq:added_mu} adds $H\eta_{zzz}$ to $\widetilde\mu$.
+
+The internal-energy density of the model is
+\begin{equation}
+\label{eq:enthalpy}
+\begin{aligned}
+w={}&\tfrac12\,\varepsilon_{ij}c_{ijkl}\varepsilon_{kl}
++\tfrac12\,A_{ijklmn}\eta_{ijk}\eta_{lmn}
+-\tfrac12\,E_i\kappa_{ij}E_j
+-e_{kij}E_k\varepsilon_{ij}
+-f_{ijkl}E_i\eta_{jkl}\\
+&+\tfrac12\,a\,(\Delta n)^2
++H_{jkl}\,\Delta n\,\eta_{jkl}
+-q\,\Delta n\,\varphi ,
+\end{aligned}
+\end{equation}
+with $a=k_BT/n_0$.  The terms are, in order, the elastic, strain-gradient,
+dielectric, piezoelectric and flexoelectric energies of the classical
+flexoelectric dielectric \cite{shen2010theory}, the carrier compressibility, the
+added carrier--strain-gradient coupling and the electrostatic energy of the
+mobile charge.  The seventh term, \eqref{eq:added_coupling}, is the one added to the standard enthalpy here, with the structure of the chemo-mechanical term of \cite{qu2025thermodynamic} (Appendix~C),
+and the two entries of \eqref{eq:tau}--\eqref{eq:mu} that it produces are
+\eqref{eq:added_hyperstress}--\eqref{eq:added_mu}.
+
+Differentiating \eqref{eq:enthalpy} gives the constitutive relations
+\begin{align}
+\sigma_{ij}&=\frac{\partial w}{\partial\varepsilon_{ij}}
+=c_{ijkl}\varepsilon_{kl}-e_{kij}E_k,
+\label{eq:sigma}\\
+\tau_{ijk}&=\frac{\partial w}{\partial\eta_{ijk}}
+=A_{ijklmn}\eta_{lmn}+H_{ijk}\Delta n-f_{lijk}E_l,
+\qquad \tau_{ijk}=\tau_{jik},
+\label{eq:tau}\\
+D_i&=-\frac{\partial w}{\partial E_i}
+=\kappa_{ij}E_j+e_{ijk}\varepsilon_{jk}+f_{ijkl}\eta_{jkl},
+\label{eq:D}\\
+\widetilde\mu&=\frac{\partial w}{\partial\Delta n}
+=a\,\Delta n-q\varphi+H_{jkl}\eta_{jkl}.
+\label{eq:mu}
+\end{align}
+The four relations are the derivatives of one function and they are carried out term by term here, because each sign and each factor of two used later comes
+from one of the four lines.  Writing \eqref{eq:enthalpy} as the sum of its eight
+contributions, $w=\sum_\alpha w_\alpha$, the derivatives are
+\begin{align}
+\frac{\partial w_{\text{el}}}{\partial\varepsilon_{ij}}
+&=\tfrac12 c_{klij}\varepsilon_{kl}+\tfrac12 c_{ijkl}\varepsilon_{kl}
+=c_{ijkl}\varepsilon_{kl},\label{eq:diff_el}\\[2pt]
+\frac{\partial w_{\text{grad}}}{\partial\eta_{ijk}}
+&=\tfrac12 A_{lmnijk}\eta_{lmn}+\tfrac12 A_{ijklmn}\eta_{lmn}
+=A_{ijklmn}\eta_{lmn},\\[2pt]
+\frac{\partial w_{\text{piezo}}}{\partial\varepsilon_{ij}}&=-e_{kij}E_k,
+\qquad
+\frac{\partial w_{\text{flexo}}}{\partial\eta_{ijk}}=-f_{lijk}E_l,
+\label{eq:diff_coup}\\[2pt]
+\frac{\partial w_{\text{diel}}}{\partial E_i}&=-\kappa_{ij}E_j,
+\qquad
+\frac{\partial w_{\text{piezo}}}{\partial E_i}=-e_{ijk}\varepsilon_{jk},
+\label{eq:diff_elec}\\[2pt]
+\frac{\partial w_{\text{flexo}}}{\partial E_i}&=-f_{ijkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{carr}}}{\partial\Delta n}=a\,\Delta n,
+\label{eq:diff_carr}\\[2pt]
+\frac{\partial w_{H}}{\partial\Delta n}&=H_{jkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{es}}}{\partial\Delta n}=-q\varphi,
+\label{eq:diff_es}
+\end{align}
+and \eqref{eq:sigma}--\eqref{eq:mu} are these lines collected, with the electric
+relation taken as $D_i=-\partial w/\partial E_i$ because $E_i$ is the field and
+not its conjugate.  Two remarks make the bookkeeping checkable.  First, the
+symmetries $c_{ijkl}=c_{jikl}=c_{klij}$ and $A_{ijklmn}=A_{lmnijk}$ are what
+merge the two halves of each quadratic derivative in \eqref{eq:diff_el}: because
+the strain $\varepsilon_{ij}$ and the strain gradient $\eta_{ijk}$ are symmetric
+in $(i,j)$, the antisymmetric halves of $c$ and $A$ never contribute, and a
+tensor that violates those symmetries would produce a different stress from the
+same energy.  Second, $w$ is homogeneous of degree two in
+$(\varepsilon,\eta,E,\Delta n)$ apart from the electrostatic term $-q\Delta n
+\varphi$, which is linear in $\Delta n$; Euler's theorem then gives
+\begin{equation}
+\label{eq:euler}
+\varepsilon_{ij}\frac{\partial w}{\partial\varepsilon_{ij}}
++\eta_{ijk}\frac{\partial w}{\partial\eta_{ijk}}
++E_i\frac{\partial w}{\partial E_i}
++\Delta n\frac{\partial w}{\partial\Delta n}
+=2w+q\,\Delta n\,\varphi ,
+\end{equation}
+an identity that is used twice below: once to write the internal energy of a mode
+as $w=\tfrac12[\varepsilon:\sigma+\eta\vdots\tau-E\cdot D+\widetilde\mu\,\Delta n]$
+less the electrostatic term $\tfrac12 q\Delta n\varphi$, and once to check the energy budget.  The factor $\tfrac12$ and the $-q\Delta n\varphi$
+term of \eqref{eq:euler} are the only two places where the quadratic structure
+of the enthalpy enters the calculations explicitly.
+
+Equation \eqref{eq:mu} is the electrochemical potential of an electron in
+joules: the compressibility term $k_BT\,\Delta n/n_0$ is the chemical part, the
+$-q\varphi$ term is the electrostatic energy of a particle of charge $-q$, and
+the $H$ term is the energy the added coupling assigns to a carrier sitting in a
+strain gradient.  Every term of \eqref{eq:mu} is an energy, which is the convention used throughout; a dimensionless form obtained by dividing
+\eqref{eq:mu} by $k_BT$ is used internally.
+
+The three non-classical entries of \eqref{eq:tau}--\eqref{eq:mu} are reciprocal.
+The pair $(\Delta n,\eta)$ contributes $H_{jkl}\Delta n$ to the hyperstress and
+$H_{jkl}\eta_{jkl}$ to the electrochemical potential; the pair $(E,\eta)$
+contributes $-f_{lijk}E_l$ to the hyperstress and $+f_{ijkl}\eta_{jkl}$ to the
+electric displacement.  In both cases the same tensor appears in the two
+conjugate relations, which is the content of the Maxwell identities
+$\partial^2w/\partial\eta\partial(\Delta n)=\partial^2w/\partial(\Delta
+n)\partial\eta$ and $\partial^2w/\partial\eta\partial E=\partial^2w/\partial
+E\partial\eta$.  The reciprocity of the discretized operator is confirmed
+numerically at $\pm k_y$ to $10^{-13}$.
+
+The flexoelectric sector is the symmetric one generated by the single term
+$-f_{ijkl}E_i\eta_{jkl}$ of \eqref{eq:enthalpy}: the direct effect appears in
+$D$ and the converse effect in $\tau$, both through the same constant.  In the
+executed calculations a single component is retained, $f\equiv f_{3zz}$, so
+that $D_z=e_{zjk}\varepsilon_{jk}+\kappa_{zz}E_z+f\,\eta_{zzz}$ and
+$\tau_{zzz}=A_{zzz\,lmn}\eta_{lmn}-f E_z$.  Neither the surface flexoelectric
+effect of \cite{shen2010theory} nor the electric-field-gradient (higher-order)
+flexoelectric terms are included.  The value of $f$ used, its provenance and
+its measured influence on the reported numbers are given with the results.
+
+\emph{Material symmetry reduction.}  For the $6mm$ class with the polar axis
+$x_3\equiv z$ the four-index tensors of \eqref{eq:sigma}--\eqref{eq:mu} reduce
+to five elastic constants, three piezoelectric constants and two permittivities,
+and the reduction is easiest to follow in two steps: the Voigt matrices first,
+the component relations second.  In the ordering
+$(\varepsilon_{xx},\varepsilon_{yy},\varepsilon_{zz},\gamma_{yz},\gamma_{xz},
+\gamma_{xy})$, with $\gamma_{ij}=2\varepsilon_{ij}$ the engineering shear, the
+elastic matrix of bulk ZnO is
+\begin{equation}
+\label{eq:CZnO}
+\mathsf C=
+\begin{pmatrix}
+c_{11}&c_{12}&c_{13}&0&0&0\\
+c_{12}&c_{11}&c_{13}&0&0&0\\
+c_{13}&c_{13}&c_{33}&0&0&0\\
+0&0&0&c_{44}&0&0\\
+0&0&0&0&c_{44}&0\\
+0&0&0&0&0&c_{66}
+\end{pmatrix},
+\qquad
+\begin{aligned}
+c_{11}&=\SI{210}{\giga\pascal},& c_{33}&=\SI{221}{\giga\pascal},\\
+c_{13}&=\SI{105}{\giga\pascal},& c_{12}&=\SI{121}{\giga\pascal},\\
+c_{44}&=\SI{43}{\giga\pascal},& c_{66}&=\tfrac12(c_{11}-c_{12}),
+\end{aligned}
+\end{equation}
+the piezoelectric matrix $e_{k\,ij}$ (rows $k=x,y,z$) is
+\begin{equation}
+\label{eq:ZnOe}
+\mathsf e=
+\begin{pmatrix}
+0&0&0&0&e_{15}&0\\
+0&0&0&e_{15}&0&0\\
+e_{31}&e_{31}&e_{33}&0&0&0
+\end{pmatrix},
+\qquad
+e_{33}=\SI{1.32}{\coulomb\per\square\metre},\;
+e_{31}=\SI{-0.57}{\coulomb\per\square\metre},\;
+e_{15}=\SI{-0.48}{\coulomb\per\square\metre},
+\end{equation}
+and the permittivity is diagonal, $\kappa_{11}=\kappa_{22}$,
+$\kappa_{33}=\SI{8.85e-11}{\farad\per\metre}$, with
+$\kappa_{33}/\varepsilon_0=10$.  Assembling \eqref{eq:CZnO}--\eqref{eq:ZnOe} in
+\eqref{eq:sigma} gives the component relations actually used,
+\begin{equation}
+\label{eq:sigmaZnO}
+\begin{aligned}
+\sigma_{xx}&=c_{11}\varepsilon_{xx}+c_{12}\varepsilon_{yy}
++c_{13}\varepsilon_{zz}-e_{31}E_z,\\
+\sigma_{yy}&=c_{12}\varepsilon_{xx}+c_{11}\varepsilon_{yy}
++c_{13}\varepsilon_{zz}-e_{31}E_z,\\
+\sigma_{zz}&=c_{13}(\varepsilon_{xx}+\varepsilon_{yy})
++c_{33}\varepsilon_{zz}-e_{33}E_z,\\
+\sigma_{yz}&=2c_{44}\varepsilon_{yz}-e_{15}E_y,\qquad
+\sigma_{xz}=2c_{44}\varepsilon_{xz}-e_{15}E_x,\qquad
+\sigma_{xy}=2c_{66}\varepsilon_{xy},
+\end{aligned}
+\end{equation}
+where the factors of two are the tensor-to-Voigt conversion of the shear
+entries and not a convention of the program.  The hyperstress of
+\eqref{eq:tau} contains the gradient modulus $A_{ijklmn}=\ell^2c_{ijlm}\delta_{kn}$
+of \eqref{eq:gradient_energy}; only one of its components is touched by the two
+non-classical constants retained here, and that component is
+\begin{equation}
+\label{eq:tauZnO}
+\tau_{zzz}=\ell^{2}\Bigl[c_{13}\bigl(\eta_{xxz}+\eta_{yyz}\bigr)
++c_{33}\,\eta_{zzz}\Bigr]-f\,E_z+H\,\Delta n ,
+\end{equation}
+with $f\equiv f_{3zz}$ and $H\equiv H_{zzz}$ the two single components retained,
+as stated above.  Substituting \eqref{eq:sigmaZnO}--\eqref{eq:tauZnO} and the
+electric relations
+\begin{equation}
+\label{eq:DZnO}
+\begin{aligned}
+D_x&=\kappa_{11}E_x+2e_{15}\varepsilon_{xz},\qquad
+D_y=\kappa_{11}E_y+2e_{15}\varepsilon_{yz},\\
+D_z&=\kappa_{33}E_z+e_{31}(\varepsilon_{xx}+\varepsilon_{yy})
++e_{33}\varepsilon_{zz}+f\,\eta_{zzz},
+\end{aligned}
+\end{equation}
+in the balance laws of the next paragraph produces the coupled field equations.
+Each of them is a differential operator of order four in the mechanical sector
+and of order two in the electrical and carrier sectors, and that order
+difference is the reason the plate supports four wave families per branch, not two.
+
+
+The field equations are the Euler--Lagrange equations of the enthalpy
+\eqref{eq:enthalpy}.  The kinematic variations follow from \eqref{eq:strain},
+\begin{equation}
+\label{eq:var_kinematics}
+\delta\varepsilon_{ij}=\tfrac12\bigl(\delta u_{i,j}+\delta u_{j,i}\bigr),
+\qquad
+\delta\eta_{ijk}=\tfrac12\bigl(\delta u_{i,jk}+\delta u_{j,ik}\bigr),
+\end{equation}
+and the electric variation is $\delta E_i=-\partial_i\delta\varphi$.  The two
+terms of \eqref{eq:var_kinematics} are not equal component by component, and this
+article does not use them as such.  What is used is the contracted identity
+\begin{equation}
+\label{eq:contraction}
+\tau_{ijk}\,\delta\eta_{ijk}=\tau_{ijk}\,\delta u_{i,jk},
+\end{equation}
+which holds because $\eta_{ijk}=\eta_{jik}$ by \eqref{eq:strain} and the
+hyperstress is its conjugate, $\tau_{ijk}=\partial w/\partial\eta_{ijk}$ taken on
+the symmetric subspace, so that $\tau_{ijk}=\tau_{jik}$; the antisymmetric part
+of $\delta u_{i,jk}$ in $(i,j)$ is then annihilated,
+$\tfrac12\tau_{ijk}(\delta u_{i,jk}-\delta u_{j,ik})=0$ by relabelling
+$i\leftrightarrow j$ in the second term.  Only \eqref{eq:contraction} enters the
+integrations by parts below.  With these, the virtual work of the
+internal fields at fixed time is
+\begin{equation}
+\label{eq:virtual_work}
+\delta W=\int_V\Bigl[\sigma_{ij}\,\delta\varepsilon_{ij}
++\tau_{ijk}\,\delta\eta_{ijk}-D_i\,\delta E_i
++\widetilde\mu\,\delta(\Delta n)\Bigr]\dd V .
+\end{equation}
+One integration by parts on the derivative carried by the stress and two on
+those carried by the hyperstress move all derivatives onto the fields and
+leave only surface terms,
+\begin{align}
+\int_V\sigma_{ij}\,\delta\varepsilon_{ij}\,\dd V
+&=-\int_V\sigma_{ij,j}\,\delta u_i\,\dd V
++\oint_{\partial V}n_j\sigma_{ij}\,\delta u_i\,\dd S ,
+\label{eq:ibp_stress}\\[2pt]
+\int_V\tau_{ijk}\,\delta\eta_{ijk}\,\dd V
+&=\int_V\partial_k\partial_j\tau_{ijk}\,\delta u_i\,\dd V
+-\oint_{\partial V}n_j\partial_k\tau_{ijk}\,\delta u_i\,\dd S
++\oint_{\partial V}n_k\tau_{ijk}\,\delta u_{i,j}\,\dd S .
+\label{eq:ibp_hyper}
+\end{align}
+The two boundary integrals of \eqref{eq:ibp_stress}--\eqref{eq:ibp_hyper} are the
+traction and the double traction; they are the surface terms evaluated below.  In the volume, adding the inertial contribution
+$\int_V\rho\ddot u_i\,\delta u_i\dd V$ and requiring that the coefficient of the
+arbitrary $\delta u_i$ vanish gives the mechanical balance
+\begin{equation}
+\label{eq:momentum}
+\rho\,\ddot u_j=\partial_i\sigma_{ij}-\partial_i\partial_k\tau_{jik},
+\end{equation}
+where the double divergence of the hyperstress enters with a minus sign because
+the two integrations by parts of \eqref{eq:ibp_hyper} produce two sign changes and
+the term is moved to the right-hand side: the gradient energy penalizes
+curvature of the field, so it acts against the elastic restoring force rather
+than with it.  It is convenient to define the
+\emph{effective stress}
+\begin{equation}
+\label{eq:effective}
+\Sigma_{ij}=\sigma_{ij}-\partial_k\tau_{ijk},
+\end{equation}
+in terms of which \eqref{eq:momentum} is the familiar $\rho\ddot u_j=
+\partial_i\Sigma_{ij}$, and the traction on a surface is $t_j=n_i\Sigma_{ij}$.
+$\Sigma$ is not the quantity that enters the constitutive law; it is the
+divergence of the hyperstress that makes \eqref{eq:momentum} look classical.
+
+Carrying \eqref{eq:sigmaZnO}--\eqref{eq:DZnO} into \eqref{eq:momentum} gives
+the coupled field equations.  It is enough to write one of the three mechanical
+components out in full, the out-of-plane one, because it is the component in which
+all four sectors appear at once:
+\begin{equation}
+\label{eq:momentum_expanded}
+\begin{aligned}
+&\rho\omega^{2}\widehat u_3
++\partial_x\bigl(2c_{44}\varepsilon_{xz}-e_{15}E_x\bigr)
++\partial_y\bigl(2c_{44}\varepsilon_{yz}-e_{15}E_y\bigr)\\
+&\qquad
++\partial_z\bigl(c_{13}(\varepsilon_{xx}+\varepsilon_{yy})
++c_{33}\varepsilon_{zz}-e_{33}E_z\bigr)
+-\partial_i\partial_k\tau_{3ik}=0 ,
+\end{aligned}
+\end{equation}
+where the last term is the double divergence of the hyperstress of
+\eqref{eq:tauZnO}; its sign is that of \eqref{eq:momentum} after
+$\ddot u_j\to-\omega^{2}u_j$, and it makes the gradient energy stiffen the
+dispersion, $\rho\omega^{2}=ck^{2}+Ak^{4}$ in one dimension.  Of the derivatives it contains, only the
+$(j,k)=(z,z)$ one meets the two non-classical constants, because $f$ and $H$ sit
+in the single component $\tau_{3zz}$; the quantity $\partial_z^{2}\tau_{3zz}$, which enters
+\eqref{eq:momentum_expanded} with a minus sign, contains the terms
+\begin{equation}
+\label{eq:Hterm}
+\partial_z^{2}\bigl(-f\,E_z+H\,\Delta n\bigr)
+= f\,\partial_z^{2}\partial_z\varphi+H\,\partial_z^{2}\Delta n ,
+\end{equation}
+which is the mechanical signature of both the flexoelectric and the
+carrier--strain-gradient couplings: a strain gradient is driven by the second
+thickness derivative of the potential and by that of the carrier density.  The
+remaining terms of $\partial_i\partial_k\tau_{3ik}$ are the elastic
+$\ell^{2}c_{3jlm}\eta_{lmk}$ of \eqref{eq:gradient_energy}, which supply the
+fourth-order piece of \eqref{eq:momentum_expanded} in the combinations
+$\ell^{2}c_{44}$ (shear) and $\ell^{2}c_{33}$ (thickness stretch).  The two
+in-plane components of \eqref{eq:momentum} have the same structure with
+$(c_{11},c_{44},e_{15},e_{31})$ replacing $(c_{33},c_{44},e_{33},e_{15})$ and
+with the $c_{13}$ coupling between them; they are recorded in
+\cref{app:derivations}.
+
+Variation with respect to $\varphi$ gives Gauss's law
+\begin{equation}
+\label{eq:gauss}
+\partial_iD_i=-q\,\Delta n,
+\end{equation}
+the minus sign being the charge of the electron.  Substituting
+\eqref{eq:DZnO} in it and using $E_i=-\partial_i\varphi$ expands the statement
+into the electrostatic operator of the model,
+\begin{equation}
+\label{eq:gauss_expanded}
+\begin{aligned}
+&-\kappa_{11}\bigl(\varphi_{,xx}+\varphi_{,yy}\bigr)
+-\kappa_{33}\varphi_{,zz}
++2e_{15}\bigl(\varepsilon_{xz,x}+\varepsilon_{yz,y}\bigr)\\
+&\qquad
++e_{31}\bigl(\varepsilon_{xx,z}+\varepsilon_{yy,z}\bigr)
++e_{33}\,\varepsilon_{zz,z}
++f\,\eta_{zzz,z}
+=-q\,\Delta n ,
+\end{aligned}
+\end{equation}
+in which the first line holds the dielectric operator and the piezoelectric shear terms, and the second line the remaining piezoelectric and the flexoelectric
+contribution to the charge density.  The
+carrier equation \eqref{eq:continuity} is already in component form once the flux
+is inserted, and the carrier continuity equation in electrochemical form is not a variational
+equation of the enthalpy: the derivative with respect to $\Delta n$ only defines the
+electrochemical potential \eqref{eq:mu}, while the continuity statement
+follows from conservation of carrier number with the flux law,
+\begin{equation}
+\label{eq:continuity}
+\partial_t(\Delta n)+\partial_iJ_i=0,
+\qquad
+J_i=-\frac{D\,n_0}{k_BT}\,\partial_i\widetilde\mu ,
+\end{equation}
+where $J_i$ is the electron \emph{number} flux and $D$ the diffusivity; the
+charge balance follows from \eqref{eq:continuity} by multiplying by $-q$, which
+turns $J_i$ into the current \eqref{eq:current}.  Inserting the flux and the
+harmonic dependence gives the carrier equation in the form used by the solver,
+\begin{equation}
+\label{eq:carrier_strong}
+-\ii\omega\,\Delta n-\frac{D\,n_0}{k_BT}\,\nabla^{2}\widetilde\mu=0 ,
+\qquad\text{i.e.}\qquad
+\Delta n=\frac{\ii D\,n_0}{\omega k_BT}\,\nabla^{2}\widetilde\mu ,
+\end{equation}
+so the carrier density is proportional to the Laplacian of its own
+electrochemical potential, with the factor $\ii$ that later appears as
+$+\ii\alpha_{\mathrm d}/\omega$ in the weak form \eqref{eq:weak_carrier}.  The
+sign of that factor is fixed here once and carried unchanged: it comes from
+$\partial_t\to-\ii\omega$ and from the minus sign of the diffusive flux, and
+reversing either one would turn the carrier sector from a sink of energy into a
+source.  The
+transport coefficient of \eqref{eq:continuity} follows from the Einstein
+relation: with $\mu_e$ the mobility, $D=\mu_ek_BT/q$, so that
+$Dn_0/k_BT=\mu_en_0/q$ and \eqref{eq:continuity} holds the drift--diffusion content in full.  The associated charge-current density is
+\begin{equation}
+\label{eq:current}
+j_i=-qJ_i=\frac{qDn_0}{k_BT}\,\partial_i\widetilde\mu
+=qD\,\partial_i\Delta n-q\mu_e n_0\,\partial_i\varphi
++\frac{qDn_0}{k_BT}H_{jkl}\,\partial_i\eta_{jkl},
+\end{equation}
+in which the three terms are the diffusion current, the drift current and the
+carrier--strain-gradient contribution, with the familiar electron signs: the
+diffusion current flows up the density gradient and the drift current along
+the field, the electrons themselves moving against it.  The last term is a prediction of the added coupling: a
+strain-gradient field drives a current even at zero applied field, which is the
+transport signature of the term \eqref{eq:added_coupling}.
+
+
+\subsection{The electric model, the boundary conditions and the energy flux}
+\label{sec:governing_electric}
+\label{sec:governing_bc}
+\label{sec:governing_energy}
+
+Equations \eqref{eq:gauss}--\eqref{eq:continuity} are electrostatic: no
+magnetic induction, no displacement-current term in Amp\`ere's law and no
+electromagnetic radiation mode are retained.  The approximation is justified at the operating point by evaluating the two
+ratios that control it.
+
+\emph{Retardation.}  At $f=\SI{16.68}{\giga\hertz}$ ($\omega=\SI{1.048e11}{%
+\per\second}$) and with the relative permittivity $\kappa_{33}/\varepsilon_0=10$
+of ZnO, the electromagnetic wavenumber in the medium is
+$k_{\mathrm{EM}}=\omega\sqrt{\kappa_r}/c=\SI{1.106e3}{\per\metre}$, so that
+$\lambda_{\mathrm{EM}}=2\pi/k_{\mathrm{EM}}=v_{\mathrm{EM}}/f=\SI{5.68}{%
+\milli\metre}$ while $1/k_{\mathrm{EM}}=\SI{0.905}{\milli\metre}$.  The plate is
+$d=\SI{200}{\nano\metre}$ thick, hence $d/\lambda_{\mathrm{EM}}=3.52\times10^{-5}$
+and $k_{\mathrm{EM}}d=2.2\times10^{-4}$; the retardation correction is
+controlled by $k_{\mathrm{EM}}d$ and not by $d/\lambda_{\mathrm{EM}}$, and it is
+of order $(k_{\mathrm{EM}}d)^2=4.9\times10^{-8}$.  The phase speed leads to the same conclusion:
+$v_p=(\omega/|\vect{k}|)=\SI{28.0}{\kilo\metre\per\second}$, i.e.\
+$v_p/c=9.4\times10^{-5}$, so the magnetic energy is smaller than the electric
+energy by $(v_p/c)^2\approx8.8\times10^{-9}$.  Hence the quasistatic reduction is accurate, to the order quoted, at the
+reported operating points.
+
+\emph{Carrier relaxation.}  The opposite conclusion holds for the carriers, and
+this is the central point.  With $\sigma_e=q\mu_en_0=\SI{5.6e-3}{\siemens
+\per\metre}$ the dielectric relaxation time is
+$\tau_d=\kappa_{33}/\sigma_e=\SI{1.58e-8}{\second}$, whereas the wave period is
+$T=2\pi/\omega=\SI{6.0e-11}{\second}$; hence $\omega\tau_d=1.65\times10^{3}$.
+The carriers cannot follow the field quasistatically at this frequency.  The model does not replace charge relaxation by an instantaneous
+equilibrium: the full continuity equation \eqref{eq:continuity} is retained and
+the carrier response is part of the eigenvalue problem.  What is neglected is
+electromagnetic retardation, not charge dynamics.
+
+\emph{Screening.}  The screening length is $L_D=\sqrt{\kappa_{33}k_BT/(q^2n_0)}
+=\SI{2.68}{\micro\metre}$, so $d/L_D=0.075$: the plate is much thinner than the
+Debye length and the carrier perturbation is not confined to a surface layer.
+All three ratios are computed from the material file and stored as part of the
+verification record.
+
+
+The boundary conditions follow from the surface terms of the variational
+principle.  They are stated separately for the two faces, the reflecting edge
+and the far field, because the physics of each is different.
+
+\paragraph{Plate faces $z=\pm d/2$.}  The faces are free surfaces, so the
+traction and the double traction vanish,
+\begin{equation}
+\label{eq:bc_faces_mech}
+\bar\sigma_{iz}=0,\qquad \tau_{izz}=0,\qquad z=\pm d/2,
+\end{equation}
+where $\bar\sigma_{iz}$ is the generalized traction of \eqref{eq:generalised_traction}
+with face normal $z$ and $\tau_{izz}$ is the only component of $\tau_{ijz}$ conjugate
+to a normal derivative of the displacement,
+the electrons cannot leave the crystal (blocking contacts, no surface
+recombination),
+\begin{equation}
+\label{eq:bc_faces_carrier}
+J_z=0,\qquad z=\pm d/2,
+\end{equation}
+and the electrical condition is one of
+\begin{equation}
+\label{eq:bc_grounded}
+\varphi=0\quad\text{(grounded)},\qquad
+D_z=0\quad\text{(open circuit)},\qquad z=\pm d/2 .
+\end{equation}
+The grounded condition models perfectly conducting electrodes on both faces
+shorted to each other; it is \emph{essential} and is imposed on the basis
+functions.  The open-circuit condition models a bare surface with no free
+charge; it is \emph{natural} and is imposed weakly.  In the open-circuit case
+no potential mode is removed.  A potential that is constant across the thickness is
+a gauge only for a uniform field; for $(k_x,k_y)\neq(0,0)$ it gives
+$E_x=-\ii k_x\varphi$ and $E_y=-\ii k_y\varphi$, which are physical, and the operator
+$-\partial_z^{2}+k_x^{2}+k_y^{2}$ with the natural condition $D_z=0$ has no constant null vector.
+An additive constant is a null vector only in the sector $k_x=k_y=0$, which is not
+used here.  The open-circuit results are those of the full potential space and are checked
+against the independent $C^{1}$ discretization, but they remain
+part of the same model, so they serve as a consistency check of the discretization and not as a check of the physics.
+
+\paragraph{Reflecting edge $x=0$.}  The edge is a free surface in vacuum, and no
+datum is prescribed on it: no displacement, no potential, no carrier density.
+All four conditions are thus natural, each acting on the test functions of
+the field it is conjugate to,
+\begin{equation}
+\label{eq:bc_edge}
+\bar\sigma_{ix}=0,\qquad \tau_{ixx}=0,\qquad D_x=0,\qquad J_x=0,\qquad x=0 ,
+\end{equation}
+where
+\begin{equation}
+\label{eq:generalised_traction}
+\bar\sigma_{ix}=\underbrace{\sigma_{ix}-\partial_k\tau_{ixk}}_{\Sigma_{ix}}
+-\partial_j^{s}\tau_{ijx},\qquad j=y,z,
+\end{equation}
+is the generalized traction, the divergence of the hyperstress and its surface
+divergence along the face entering with the elastic stress.  Two index points in
+\eqref{eq:generalised_traction} are not free choices, and a wrong index changes the result.
+The free index is the first index of the hyperstress, because the two integrations
+by parts of \eqref{eq:ibp_hyper}, after the $(i,j)$ symmetry is used to move both
+variations onto the same factor, leave $\delta u_i$ multiplying
+$\partial_j^{s}(n_k\tau_{ijk})$: the free index comes first, the
+surface-divergence index second; and the \emph{gradient} index of that surface
+term is the face normal $x$, not the surface-divergence direction, so the term is
+$\partial_j^s\tau_{ijx}$ and not $\partial_j^s\tau_{ixj}$.  With $n=e_x$ and a
+tangential wavenumber $k_y$,
+\eqref{eq:generalised_traction} reads
+$\bar\sigma_{jx}=\Sigma_{jx}-\ii k_y\tau_{jyx}-\partial_z\tau_{jzx}$.
+The traction is a condition on that combination and not on $\sigma_{ix}$ alone,
+and it is imposed through the surface term of the weak form; \cref{sec:disc_limitations} reports how closely the computed
+solution meets it pointwise.  The second entry is the double traction, conjugate to the
+normal derivative of the displacement on the edge; the components $\tau_{iyx}$ and
+$\tau_{izx}$ are not separate conditions, since they enter only through
+$\bar\sigma_{ix}$ and the corner force; the entry is vacuous only when
+$\tau_{ixx}$ vanishes identically.  In this model
+$\tau_{ijx}=\ell^{2}c_{ijkl}\eta_{klx}$: both gradient couplings act on the
+normal-derivative component of the hyperstress, not on the axial one, so the edge
+double traction is present if and only if $\ell\neq0$, and the formulation admits
+$\ell=0$ with $f\neq0$ only together with the statement that the double traction
+is then unavailable.  No result reported here takes that limit.  The potential is
+free on the edge, so $D_x=0$ is its natural condition, unlike the grounded
+face of \eqref{eq:bc_grounded}, where the potential is essential.
+The surviving terms are set out case by case in \cref{app:derivations}.
+
+\paragraph{Far field $x\to-\infty$.}  The solution is an incoming guided mode
+plus outgoing branches; no wave arrives from $x=-\infty$ other than the
+prescribed incident one.
+
+\paragraph{The corner.}  Where the edge meets a face, the surface divergence of
+\eqref{eq:generalised_traction} itself has a boundary, and the same integration by
+parts that produced the traction produces a line force along the corner.  With
+$\nu$ the co-normal of the edge boundary inside the face, its density per unit
+length is
+\begin{equation}
+\label{eq:corner_force}
+f_i=\nu_j\,n_k\,\tau_{jik}
+\end{equation}
+summed over the two free faces that meet along the corner.  For this geometry the
+two contributions are the mixed normal--tangential components $\tau_{i31}$
+(gradient along the edge normal, pair carrying the surface co-normal) and
+$\tau_{i13}$ (the transpose pair), so
+$f_i=\tau_{i31}+\tau_{i13}$; the relative sign follows from the outward
+orientations of the two faces and is not assumed here; it is fixed, together
+with \eqref{eq:generalised_traction} and the double traction $m_i=\tau_{i11}$, by
+the identity
+\begin{equation}
+\label{eq:corner_identity}
+\bigl\langle T_{\!u}-t\bigr\rangle
+=f_+\,b_0(+\tfrac12)-f_-\,b_0(-\tfrac12),
+\qquad
+\bigl\langle R-m\bigr\rangle=0 ,
+\end{equation}
+between the derived fields and the discrete flux rows $T_{\!u}$, $R$ of the
+canonical state, with $\langle\cdot\rangle$ the projection on the displacement
+test basis $b_0$.  Equation \eqref{eq:corner_identity} is satisfied to
+$1.4\times10^{-13}$ relative for the incident guided mode at all degrees from 10 to 28 and for each quadrature rule tested, and is violated at the level of
+$1.7\times10^{1}$ if the corner terms are dropped, at $5.7\times10^{-1}$ if only
+$\tau_{i31}$ is kept, and at $1.1\times10^{0}$ if the two are subtracted instead
+of added.  The corner line force is an essential part of the natural data, not an artifact of the index count, and it is the one natural datum that a
+polynomial Galerkin basis cannot annihilate pointwise.  Its magnitude, its decay
+and its irrelevance to the reported partitions are quantified in the Discussion.
+
+
+The power flowing in the $x$ direction, per unit width and integrated over the
+thickness, is
+\begin{equation}
+\label{eq:Px_int}
+\mathcal{P}_x=\tfrac12\Real\int_{-d/2}^{d/2}
+\Bigl[-\Sigma_{xi}\dot u_i^{*}-\tau_{jkx}\dot\varepsilon_{jk}^{*}
++\varphi\dot D_x^{*}+\widetilde\mu\,\Gamma_x^{*}\Bigr]\dd z
+-\tfrac12\Real\Bigl[\tau_{ixz}\dot u_i^{*}\Bigr]_{z=-d/2}^{z=d/2} ,
+\end{equation}
+where $\Sigma_{xi}=\sigma_{xi}-\partial_k\tau_{xik}$ is the effective stress \eqref{eq:effective} and $\Gamma_x$ is the $x$ component of the carrier flux (not a rate; the
+chemical power is the product of the electrochemical potential and the flux).  The four
+integrands are the elastic, hyperelastic (double-stress), dielectric and chemical
+contributions, each with the dimensions of a power per unit area
+($\mathrm{W\,m^{-2}}$); the last term is the line work of the double stress on the two
+faces, in $\mathrm{W\,m^{-1}}$ like the integral.  It does not vanish for a guided mode and
+it is needed for the flux to balance the loss of that mode: without it the
+single-mode balance $\lvert2\,\Imag k_x\,\mathcal P_x\rvert=P_{\text{diss}}$ is violated at the
+tens-of-percent level, and with it the balance closes to $3\times10^{-9}$ or better.  The flux
+$\mathcal P_x$, and not the magnitude of the wavevector, decides whether a mode
+is backward: a mode is backward when $\mathcal{P}_x<0$ while it is outgoing at
+the edge.
+
+For a scattering solution the identity
+\begin{equation}
+\label{eq:energy_identity}
+\underbrace{P_{\text{inc}}}_{\text{incident}}
++\underbrace{\sum_{j}P_j}_{\text{self-powers}}
++\underbrace{P_{\text{cross}}}_{\text{interference}}
+=\underbrace{P_{\text{edge}}+P_{\text{diss}}}_{\text{edge flux plus loss}}
+\end{equation}
+holds exactly, with $P_j$ the \emph{signed} self-power of outgoing mode $j$,
+$P_{\text{cross}}$ the bilinear interference between them (non-zero whenever the
+modes are not orthogonal in the power metric) and
+\begin{equation}
+\label{eq:dissipation}
+P_{\text{diss}}=\tfrac12\alpha_{\mathrm{d}}\int_{-L}^{0}\!\!\int
+\Bigl[|\partial_x\widetilde\mu|^{2}+k_y^2|\widetilde\mu|^2+|\partial_z\widetilde\mu|^2\Bigr]\dd z\,\dd x ,
+\qquad \alpha_{\mathrm{d}}=\frac{D}{d\,c_s},
+\end{equation}
+written in the scaled variables: the wavenumber
+components, the thickness coordinate and $L$ are the scaled ones and
+$\widetilde\mu$ is the \emph{total} electrochemical-potential field (incident plus
+outgoing modes) divided by $k_BT$.  For one mode with complex $k_x$ the integrand
+is $(|k_x|^{2}+k_y^{2})|\widetilde\mu|^{2}+|\partial_z\widetilde\mu|^{2}$, nonnegative, and for the sum
+of modes the cross terms are retained, which is how
+$P_{\text{diss}}\ge0$ is guaranteed.  The group
+$\alpha_{\mathrm{d}}$ is the dimensionless ratio of the diffusion rate to the
+elastic rate, and $P_{\text{diss}}$ is the conduction loss inside the control volume.  The symbol $\alpha$ is used later for the spatial attenuation
+$2|\Imag k_x|$ of a mode; the group
+$\alpha_{\mathrm{d}}$ is a property of the material and of the thickness, not of
+a mode.  The terms of
+\eqref{eq:energy_identity} are not independent energy channels: only the
+propagating members of $\{P_j\}$ transport energy to infinity, the evanescent
+members are reactive at the plane, and $P_{\text{cross}}$ is an interference
+correction.  The residual of \eqref{eq:energy_identity} is evaluated for each reported solution; the values at the operating point for the five coupling levels are plotted in \cref{fig:fig05}(c).
+
+\subsection{Plane-wave reduction and the characteristic polynomial}
+\label{sec:governing_reduction}
+
+The plate is invariant along $y$ and in time, so a single tangential wavenumber
+and a single frequency are conserved by the linear problem and any field can be written as an amplitude in the thickness times a propagating factor,
+\begin{equation}
+\label{eq:ansatz}
+f(x,y,z,t)=\widehat f(z)\,\ee^{\ii(k_xx+k_yy-\omega t)} ,
+\end{equation}
+for which the four derivative operators act as
+\begin{equation}
+\label{eq:substitution}
+\partial_t\to-\ii\omega,\qquad
+\partial_x\to\ii k_x,\qquad
+\partial_y\to\ii k_y,\qquad
+\partial_z\to\frac{\dd}{\dd z}\equiv{}' .
+\end{equation}
+Substituting \eqref{eq:substitution} in \eqref{eq:strain} gives the six strain
+components in terms of the three displacement amplitudes,
+\begin{equation}
+\label{eq:strain_amplitudes}
+\begin{aligned}
+\widehat\varepsilon_{xx}&=\ii k_x\widehat u_1, &
+\widehat\varepsilon_{yy}&=\ii k_y\widehat u_2, &
+\widehat\varepsilon_{zz}&=\widehat u_3',\\
+\widehat\varepsilon_{yz}&=\tfrac12\bigl(\widehat u_2'+\ii k_y\widehat u_3\bigr),&
+\widehat\varepsilon_{xz}&=\tfrac12\bigl(\widehat u_1'+\ii k_x\widehat u_3\bigr),&
+\widehat\varepsilon_{xy}&=\tfrac12\ii\bigl(k_x\widehat u_2+k_y\widehat u_1\bigr),
+\end{aligned}
+\end{equation}
+and the eighteen strain-gradient components follow from
+$\eta_{ijk}=\varepsilon_{ij,k}$ with the same three replacements, each $x$
+derivative multiplying by $\ii k_x$, each $y$ derivative by $\ii k_y$ and each
+$z$ derivative acting on the amplitude.  Two representative entries are
+\begin{equation}
+\label{eq:eta_amplitudes}
+\widehat\eta_{xxx}=\partial_x\widehat\varepsilon_{xx}=-k_x^{2}\widehat u_1,
+\qquad
+\widehat\eta_{zzz}=\partial_z\widehat\varepsilon_{zz}=\widehat u_3'',
+\end{equation}
+and the electric field is $\widehat E_x=-\ii k_x\widehat\varphi$,
+$\widehat E_z=-\widehat\varphi'$.  The continuity equation
+\eqref{eq:continuity} reduces to the algebraic statement
+$-\ii\omega\widehat N+\partial_i\widehat J_i=0$, so the carrier amplitude is
+carried by the same amplitude vector as the displacements, with no independent time evolution.
+
+The two balance laws then become a system of ordinary differential equations in
+$z$ for the four amplitudes $(\widehat u_1,\widehat u_2,\widehat u_3,
+\widehat\varphi)$ together with $\widehat N$, and the dependence of that system
+on the propagation direction is fixed by power counting.  The stress enters the
+mechanical balance through one derivative, $\partial_i\sigma_{ij}$, and $\sigma$
+is linear in $\varepsilon$ and $E$, both of which contain one power of $k$; so the stress term is at most quadratic in $k_x$.  The hyperstress enters
+through two derivatives, $\partial_i\partial_k\tau_{jik}$, and $\tau$ likewise
+contains one power of $k$; so that term is at most quartic in $k_x$.  No
+higher power can arise, because no field in \eqref{eq:enthalpy} contains more than
+one gradient.  Written as a matrix acting on the vector $\vect q$ of thickness
+degrees of freedom, the reduced problem is strictly quartic,
+\begin{equation}
+\label{eq:quartic}
+\Bigl[\mathsf A_{00}
++\ii k_x\bigl(\mathsf A_{01}-\mathsf A_{10}\bigr)
++k_x^{2}\bigl(\mathsf A_{11}-\mathsf A_{02}-\mathsf A_{20}\bigr)
++\ii k_x^{3}\bigl(\mathsf A_{12}-\mathsf A_{21}\bigr)
++k_x^{4}\,\mathsf A_{22}\Bigr]\vect q=\vect 0 ,
+\end{equation}
+where $\mathsf A_{rs}$ collects the terms that contain $\partial_x^{r}$ inside the
+left test function and $\partial_x^{s}$ inside the right one; their construction
+is described with the discretization.  Read by sectors and not by powers of $k_x$, the same operator has a
+$3\times3$ block structure whose entries can be named: with the unknowns ordered
+as $(\widehat{\vect u},\widehat{\boldsymbol\varphi},\widetilde{\boldsymbol\mu})$
+and suppressing the $k_x$ powers,
+\begin{equation}
+\label{eq:sector_blocks}
+\mathsf A(k_x,\omega)=
+\begin{pmatrix}
+\mathsf A_{uu} & \mathsf A_{u\varphi} & \mathsf A_{u\mu}\\[2pt]
+\mathsf A_{\varphi u} & \mathsf A_{\varphi\varphi} & \mathsf A_{\varphi\mu}\\[2pt]
+\mathsf A_{\mu u} & \mathsf A_{\mu\varphi} & \mathsf A_{\mu\mu}
+\end{pmatrix},
+\qquad
+\begin{aligned}
+\mathsf A_{uu}&=\langle\mathsf B,\mathsf C\mathsf B\rangle
++\lambda^{2}\langle\partial_\zeta\mathsf B,\mathsf C\partial_\zeta\mathsf B\rangle
+-\omega^{2}\langle\mathsf U,\mathsf U\rangle,\\
+\mathsf A_{u\varphi}&=\langle\mathsf B,\mathsf e^{\mathsf T}\mathsf G\rangle
++f\langle\partial_\zeta\mathsf B^{(2)},\mathsf G^{(2)}\rangle,\\
+\mathsf A_{\varphi\varphi}&=-\langle\mathsf G,\boldsymbol\kappa\mathsf G\rangle,\qquad
+\mathsf A_{\varphi\mu}=-Q\langle\mathsf G^{(0)},\mathsf B\rangle,\\
+\mathsf A_{\mu\mu}&=-\langle\mathsf W,\mathsf W\rangle
+-\frac{\ii\alpha_{\mathrm d}}{\omega}\langle\mathsf M\mathsf G,\mathsf M\mathsf G\rangle,
+\end{aligned}
+\end{equation}
+where the carrier form $-\langle\mathsf W,\mathsf W\rangle$ of \eqref{eq:block}, with
+$\mathsf W=(-h\,b_j''\text{ in the }\widehat u_3\text{ slots},\;Q\psi_j,\;b_j)$ and the prime the derivative with respect to $z/d$,
+also contributes $-h^{2}\langle b'',b''\rangle$ to $\mathsf A_{uu}$, $+hQ\langle b'',\psi\rangle$ to $\mathsf A_{u\varphi}$,
+$+h\langle b'',b\rangle$ to $\mathsf A_{u\mu}$ and $-Q^{2}\langle\psi,\psi\rangle$ to $\mathsf A_{\varphi\varphi}$, and in which
+$\mathsf A_{\varphi u}=\mathsf A_{u\varphi}^{\mathsf H}$ and
+$\mathsf A_{\mu u}$, $\mathsf A_{\mu\varphi}$ are the transposes of the two
+couplings written, because they are the same derivatives of the same enthalpy
+taken in the other order.  The symmetric part of \eqref{eq:sector_blocks} is the
+Hessian of the discretized enthalpy; the only antisymmetric contribution is the
+carrier transport form, and that is the entire source of loss in the problem.
+
+Power by power, \eqref{eq:quartic} is
+\begin{equation}
+\label{eq:coeffs}
+\mathsf A(k_x)=\mathsf A_0+k_x\mathsf A_1+k_x^{2}\mathsf A_2
++k_x^{3}\mathsf A_3+k_x^{4}\mathsf A_4,
+\qquad
+\begin{aligned}
+\mathsf A_0&=\mathsf A_{00},&
+\mathsf A_1&=\ii\bigl(\mathsf A_{01}-\mathsf A_{10}\bigr),\\
+\mathsf A_2&=\mathsf A_{11}-\mathsf A_{02}-\mathsf A_{20}=\mathsf A_{11},&
+\mathsf A_3&=\ii\bigl(\mathsf A_{12}-\mathsf A_{21}\bigr),\\
+\mathsf A_4&=\mathsf A_{22},&&
+\end{aligned}
+\end{equation}
+so that $\mathsf A_1$ and $\mathsf A_3$ are Hermitian (they are $\ii$ times the
+antisymmetric part of a Hermitian pair) while $\mathsf A_2=\mathsf A_{11}$ and
+$\mathsf A_0$ inherit the non-Hermitian transport form of
+\eqref{eq:sector_blocks}.  The number of blocks is fixed by counting derivatives,
+and that count is made explicitly here, because it is what limits the
+polynomial to degree four.  A term of the enthalpy can contribute at most one
+power of $k_x$ per derivative that falls on a factor carrying an $x$ dependence:
+$\varepsilon$ gives one, $\eta=\partial\varepsilon$ gives two, $E=-\partial
+\varphi$ gives one, and $\Delta n$ and $\widetilde\mu$ give none.  The
+mechanical weak form of \eqref{eq:weak_mech} reaches $k_x^{2}$ from
+$\sigma:\varepsilon^{*}$ and $k_x^{4}$ from $\tau\vdots\eta^{*}$, and no term
+reaches $k_x^{3}$ on one side alone; the odd powers of \eqref{eq:coeffs} appear
+only as the antisymmetric differences $\mathsf A_{01}-\mathsf A_{10}$ and
+$\mathsf A_{12}-\mathsf A_{21}$, which is why they appear with the explicit factor
+$\ii$.  With $\ell=0$ the $\tau$ term disappears, $\mathsf A_4=\mathsf A_3=0$ and
+\eqref{eq:coeffs} is quadratic in $k_x$; that is the classical
+piezoelectric-semiconductor plate, and it is the reduction against which the
+fourth-order structure is measured numerically.
+
+The two highest blocks are
+generated by the strain-gradient sector alone: with $\ell=0$, and with the
+flexoelectric constant and the added coupling removed with it, $\mathsf A_{22}$
+and $\mathsf A_{12}$ vanish identically and \eqref{eq:quartic} collapses to the
+familiar quadratic piezoelectric-semiconductor problem.  That collapse is the
+statement that the fourth-order structure of the plate problem is the
+strain-gradient energy, not the carrier physics.
+
+\subsection{Non-dimensionalization, limits and admissibility}
+\label{sec:governing_nondim}
+\label{sec:governing_limits}
+\label{sec:governing_stability}
+
+The calculation uses lengths scaled by $d$, stresses by $c_{44}$, time by
+$d/c_s$ with $c_s=\sqrt{c_{44}/\rho}$, carrier densities by $n_0$ and energies
+per carrier by $k_BT$.  The carrier amplitude of \eqref{eq:continuity} is
+measured so that the compressibility term of \eqref{eq:enthalpy} is
+$\tfrac12\int\widehat N^{2}$ in the scaled units used by \eqref{eq:block}, which
+is what fixes the coefficient of $\widehat N^{2}$ there.  Two derived scales appear repeatedly,
+\begin{equation}
+\label{eq:a_scale}
+a=\frac{k_BT}{n_0},\qquad L_D=\sqrt{\frac{\kappa_{33}k_BT}{q^2n_0}},
+\end{equation}
+and the model is governed by the five dimensionless numbers of
+\cref{tab:groups}.  Each is an exact ratio of two physical lengths, times or
+energies, and each is reproduced numerically from the material file.
+
+\begin{table}[t]
+\centering
+\caption{Dimensionless groups and their values at the operating point; $T=\SI{301.7}{\kelvin}$ follows from the Einstein relation.}
+\label{tab:groups}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Group & Definition & Value & Meaning \\
+\midrule
+$Q$ & $d/L_D$ & $7.46\times10^{-2}$ & thickness over Debye length \\
+$\alpha_{\mathrm{d}}$ & $D/(d\,c_s)$ & $8.28\times10^{-1}$ & diffusion rate over elastic rate \\
+$\lambda$ & $\ell/d$ & $2.50\times10^{-1}$ & gradient length over thickness \\
+$f$ & $f_{3zz}/(d\sqrt{c_{44}\kappa_{33}})$ & $2.56\times10^{-3}$ & flexoelectric coupling \\
+$h$ & $H/(d\sqrt{a\,c_{44}})$ & $\eta\times2.12\times10^{-1}$ & carrier--gradient coupling \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The groups are evaluated once by hand, because the arithmetic is what
+connects the scaled problem to the measured units of the figures and each later number is a multiple of one of these five.  The elastic wave speed is
+\begin{equation}
+\label{eq:cs_worked}
+c_s=\sqrt{\frac{c_{44}}{\rho}}
+=\sqrt{\frac{\SI{43.0}{\giga\pascal}}{\SI{5.70e3}{\kilo\gram\per\cubic\metre}}}
+=\SI{2.7466}{\kilo\metre\per\second},
+\end{equation}
+so the unit of frequency at $d=\SI{200}{\nano\metre}$ is
+$c_s/(2\pi d)=\SI{2.1857}{\giga\hertz}$, and the operating point
+$\omega=7.6334\,c_s/d$ is $f=7.6334\times\SI{2.1857}{\giga\hertz}=
+\SI{16.684}{\giga\hertz}$, the value quoted in the abstract.  The
+compressibility is
+\begin{equation}
+\label{eq:a_worked}
+a=\frac{k_BT}{n_0}=\frac{(\SI{1.380649e-23}{\joule\per\kelvin})
+(\SI{301.72}{\kelvin})}{\SI{2.0e18}{\per\cubic\metre}}
+=\SI{2.0828e-39}{\joule\metre^{3}},
+\end{equation}
+with $T=\SI{301.72}{\kelvin}$ the temperature implied by the Einstein relation for
+the diffusivity--mobility pair used; it is not an independent input.  The
+Debye length and the charge group follow from it as
+\begin{equation}
+\label{eq:LD_worked}
+L_D=\sqrt{\frac{\kappa_{33}k_BT}{q^{2}n_0}}
+=\sqrt{\frac{(\SI{8.85e-11}{\farad\per\metre})(\SI{4.1657e-21}{\joule})}
+{(\SI{1.6022e-19}{\coulomb})^{2}(\SI{2.0e18}{\per\cubic\metre})}}
+=\SI{2.6797}{\micro\metre},
+\qquad
+Q=\frac{d}{L_D}=0.074635 .
+\end{equation}
+The Debye length is then $13.40$ times the thickness, $L_D/d=1/Q=13.40$,
+so the plate is thinner than one screening length by more than an order of
+magnitude and the carrier perturbation is not confined to a surface layer.  The screening enters each block of \eqref{eq:block} with the small
+coefficient $Q^{2}=5.57\times10^{-3}$ multiplying the potential--potential
+term.  The
+transport group is
+\begin{equation}
+\label{eq:alphad_worked}
+\alpha_{\mathrm d}=\frac{D}{d\,c_s}
+=\frac{\SI{4.55e-4}{\square\metre\per\second}}
+{(\SI{200}{\nano\metre})(\SI{2.7466}{\kilo\metre\per\second})}
+=0.8283 ,
+\end{equation}
+of order unity: the diffusion time across the thickness,
+$d^{2}/D=\SI{8.8e-11}{\second}$, is comparable to the elastic transit time
+$2d/c_s=\SI{1.5e-10}{\second}$, so the carrier and elastic sectors are not
+separated by a small parameter, and this is the reason the carrier must be
+kept in the eigenvalue problem and cannot be condensed away.  Finally the
+gradient and coupling groups follow from the same numbers,
+\begin{equation}
+\label{eq:lam_worked}
+\lambda=\frac{\ell}{d}=\frac{\SI{50}{\nano\metre}}{\SI{200}{\nano\metre}}=0.25 ,
+\qquad
+h=\frac{H}{d\sqrt{a\,c_{44}}}=\frac{H}{\SI{1.8927e-21}{\joule\metre}} ,
+\end{equation}
+so the tabulated extreme $|H|=\SI{2.0e-23}{\joule\metre}$ is
+$h=\pm1.06\times10^{-2}$, a one percent perturbation of the carrier sector at
+the largest coupling examined.  Each of these five chains is an identity: the material file gives $(c_{44},\rho,k_BT,n_0,\kappa_{33},q,D,d,\ell,H)$ and the
+groups are algebra, which is why the verification is a comparison of numbers and not a fit.
+
+The coupling constant $h$ of \cref{tab:groups} is dimensionless for the
+following reason.  The compressibility $a=k_BT/n_0$ has units of J\,m$^3$ and
+$c_{44}$ of J\,m$^{-3}$, so $\sqrt{a\,c_{44}}$ has units of J and
+$d\sqrt{a\,c_{44}}$ has units of J\,m, which are the units of $H$ required by
+\eqref{eq:enthalpy}.  The same identity fixes the reference value
+$H_{\mathrm{ref}}=d\sqrt{a\,c_{44}}=\SI{1.89e-21}{\joule\metre}$ used to
+non-dimensionalize the coupling in the tables.
+
+
+The model of \eqref{eq:enthalpy} contains four sectors that can be switched off
+independently, and the limits they generate are the ones against which the
+calculation is read.
+
+\emph{Classical piezoelectric plate.}  Setting $\ell=f=H=0$ and removing the
+carrier sector ($\Delta n\equiv0$) leaves the classical piezoelectric
+formulation, with a polynomial in $k_x$ of degree two instead of four.
+
+\emph{Strain-gradient dielectric.}  With $H=0$ and no carriers the enthalpy is
+the flexoelectric dielectric enthalpy of \cite{shen2010theory} completed by the
+gradient energy \eqref{eq:gradient_energy}.  In this limit the fundamental
+shear-horizontal branch has the closed form
+$\Omega^{2}=(c_{66}/c_{44})K^{2}(1+\lambda^{2}K^{2})$ in the scaled units of this subsection, which is used as one of the checks.
+
+\emph{Piezoelectric semiconductor without the gradient sector.}  Setting
+$\ell=f=H=0$ and retaining the carriers leaves a drift--diffusion plate whose
+sagittal spectrum is examined in \cref{sec:results_mechanism}: at the frequencies of the controls it
+contains no outgoing mode with a positive axial wavenumber and a negative axial
+power apart from the specular reflection.  The plate nevertheless has a backward
+interval of its own; the gradient length places the fold of that interval at the
+reported frequency.
+
+\emph{Uncoupled carriers.}  With $H=0$ and the strain-gradient sector retained,
+the carrier dynamics still enter through Gauss's law and through the continuity
+equation \eqref{eq:continuity}, so the plate remains a piezoelectric
+semiconductor; only the direct carrier--gradient enthalpy of
+\eqref{eq:added_coupling} is removed.  This is the limit in which the controls are computed, and it is the limit that shows the
+partition to be a property of the branch and not of the added term.
+
+Two further reductions are used in the text and are not tabulated here: the
+electrostatic reduction, whose two controlling
+ratios are evaluated at the operating point, and the thin-plate limit
+$d/L_D=0.075$, in which the carrier perturbation is not confined to a surface
+layer.
+
+
+The enthalpy \eqref{eq:enthalpy} is a quadratic form in
+$(\varepsilon,\eta,E,\Delta n)$.  It is a saddle in the electric field, because the
+term $-\tfrac12E_i\kappa_{ij}E_j$ is negative, so the full form is not positive definite and
+none of the statements below concerns it.  The block in $(\varepsilon,\eta,\Delta n)$ at
+fixed $E$ is positive definite only if the carrier and strain-gradient parts are not over-coupled.  Eliminating $\Delta n$ blockwise
+gives the Schur condition
+\begin{equation}
+\label{eq:schur}
+s\equiv\frac{H^2\,(c^{-1})_{33}}{\ell^2\,a}<1 ,
+\end{equation}
+where $(c^{-1})_{33}$ is the $33$ entry of the inverse of the full elastic
+matrix, i.e.\ the reduced modulus
+$c^{*}=c_{33}-2c_{13}^2/(c_{11}+c_{12})=\SI{154.4}{\giga\pascal}$ and not $c_{33}$
+itself.  The bound is attained at
+$H_{\text{bound}}=\ell\sqrt{a\,c^{*}}=\SI{8.97e-22}{\joule\metre}$, which is the
+value at which the coupled stiffness of the plate ceases to be positive for
+every strain-gradient field.  Every calculation reported below is confined to \eqref{eq:schur}.  All reported solutions have
+$|H|\le\SI{2.0e-23}{\joule\metre}=0.022\,H_{\text{bound}}$, i.e.\ $s\le
+5\times10^{-4}$: the $(\varepsilon,\eta,\Delta n)$ block is positive definite with a margin of more than two
+thousand, and no reported result lies near a constitutive instability.
+
+The figures normalize the coupling by
+$H^{*}=H_{\text{bound}}/\sqrt5=\SI{4.01e-22}{\joule\metre}$, which is the value
+at which $s=0.2$; the normalization is a plotting convention with no physical
+content beyond fixing the swept interval $|H/H^{*}|\le0.05$, that is
+$|H|\le2.0\times10^{-23}\,\si{\joule\metre}$, the tabulated extreme.  The
+separate symbol $H_{\mathrm{ref}}=d\sqrt{a\,c_{44}}=\SI{1.89e-21}{%
+\joule\metre}$ used in \cref{tab:groups} is the thickness-based
+reference of \eqref{eq:enthalpy}; it is not the plotting normalization, and the two differ.  No strain-gradient elasticity measurement for
+ZnO fixes any of $\ell$, $f$ or $H$, so the reported intervals are modeling
+choices and have no experimental uncertainty attached; the numerical uncertainty of a
+reported $R_B$ is its refinement spread, below $3\times10^{-5}$ in relative terms.

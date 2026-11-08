@@ -1,0 +1,148 @@
+verification run 2026-11-08T08:50:43+00:00
+
+[PASS] dimensional and constitutive audit  (0.5s)
+      3. strain-gradient index contraction (exact SH branch, K = 0.8)
+        A = ell^2 c_(ij)(lm) delta_(kn)   |dw| = 2.120e-13
+        A = ell^2 c_(ij)(kl) delta_(mn)   |dw| = 3.120e+06
+      
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/dimension_audit.json
+      RESULT: PASS
+[PASS] quasistatic justification  (0.5s)
+        (k_EM d)^2  retardation order      4.889e-08
+        omega * tau_dielectric             1654.429   (carrier response is NOT instantaneous)
+        tau_dielectric / period            263.311
+        d / Debye length                   0.0746
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/quasistatic_audit.json
+      RESULT: PASS
+[PASS] flexoelectric control  (2.6s)
+        synthetic_1nC_m  f = 2.563e-03  R_B = 0.551910042  theta = -14.4487  balance = 5.6e-14
+        ten_x            f = 2.563e-02  R_B = 0.545485627  theta = -14.4769  balance = 7.7e-13
+        effect of f = 1 nC/m : -0.012 %
+        effect of f = 10 nC/m: -1.176 %
+      
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/flexo_control.json
+[PASS] admissibility re-derivation  (0.0s)
+      fig02_material_parameter_sweep.csv         rows= 130 admissible= 130 flipped=0
+      fig04_frequency_reflection.csv             rows= 139 admissible= 139 flipped=0
+      fig07_coupling_sensitivity.csv             rows=  95 admissible=  95 flipped=0
+      fig06_attenuation_distance.csv             rows=50 (annotation only)
+[PASS] figure data and figure files
+[PASS] phase-speed and e.m. reconciliation  (0.4s)
+          k_EM d            2.200000e-04 vs  2.211005e-04   rel=4.98e-03  ok
+          d/lambda_EM       3.520000e-05 vs  3.518925e-05   rel=3.06e-04  ok
+        round-4 pre-fix values (evidence only): v_p = 2800 m/s, lambda_EM = 0.905 mm (= 1/k_EM), d/lambda = 0.00022 (= k_EM d)
+      
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/phase_speed_audit.json
+      RESULT: PASS
+[PASS] modal-flux rescaling proof  (5.0s)
+        R_B before rescaling : 0.019291601864
+        R_B after  rescaling : 0.019291601864
+        relative difference  : 7.733e-15
+      
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/modal_flux_audit.json
+      RESULT: PASS
+[PASS] mechanism matched controls  (98.6s)
+        H/H*=+0.025  coarse K=0.5290  refined K=0.5292  R_B=0.756619265  f=16.6546 GHz
+        H/H*=+0.000  coarse K=0.5270  refined K=0.5272  R_B=0.942871829  f=16.6547 GHz
+        H/H*=-0.025  coarse K=0.5280  refined K=0.5279  R_B=0.854127770  f=16.6547 GHz
+        H/H*=-0.050  coarse K=0.5240  refined K=0.5240  R_B=0.683155082  f=16.6546 GHz
+      
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/mechanism_controls.json
+[PASS] corner assessment and regression  (6.7s)
+          22,
+          26,
+          30
+        ]
+      }
+      certification cross-check: PASS
+[PASS] certified peak (four fixed wavenumbers)  (7.8s)
+          "max_relative_change": 2.6887345614852145e-06,
+          "max_angle_change_deg": 2.332592785592169e-09,
+          "R_B_finest": 0.5519094854693973,
+          "angle_finest": -14.448727905937425
+        }
+      }
+[PASS] peak search and classification  (165.6s)
+       },
+       "quadrature_spread": 1.0296198403013296e-09,
+       "tracking_path_relative_spread": 2.3139549229366815e-07,
+       "restart_spread": 3.2401341325538624e-06,
+       "elapsed_s": 165.3
+      }
+[PASS] peak identity and artefact audit  (12.5s)
+       "min_candidate_separation_ratio": 2.0039019126753055,
+       "max_condition": 140.892063053845,
+       "min_delta_K_over_decay": 1.4134554665911023,
+       "relative_error_bound": 3.128432247786361e-14,
+       "artefact": false
+      }
+[PASS] spectral convergence  (4.3s)
+        26   133 16.654677690  0.9256041526    4.55e-08   0.524949   1.9e-15   1.6e-13     77.3
+        30   153 16.654677690  0.9256041105    0.00e+00   0.524949   2.1e-15   1.4e-12    171.7
+        successive relative changes: 8.8e-07 2.9e-07 1.2e-07 4.5e-08
+      
+      largest relative change between degree 18 and degree 30: 8.84e-06
+      verdict: PASS
+[PASS] quadrature sufficiency  (4.7s)
+      branch_maximum       22    128  16.654678  0.925604255  -1.72e-08   0.524949
+      branch_maximum       22    192  16.654678  0.925604260  -1.13e-08   0.524949
+      branch_maximum       22    256  16.654678  0.925604271  +0.00e+00   0.524949
+      
+      worst relative change of R_B against the 256-node rule: 1.72e-08
+      verdict: PASS
+[PASS] unit and scientific tests  (11.8s)
+[PASS] natural boundary data identity  (2.2s)
+         corner top=[-0.01662-0.00821j -0.00012+0.00055j -0.01568-0.00707j] bottom=[ 0.01635+0.00816j  0.00012-0.00055j -0.01508-0.00699j]
+      degree=12,nquad=96     R_B=0.019292418543 traction=4.98e-07 corner_rel=6.586e-02
+      degree=12,nquad=192    R_B=0.019292418542 traction=2.69e-07 corner_rel=6.612e-02
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/round21/gate1_traction_identity.json
+      GATE1 identity, incident mode (<1e-10): PASS
+      GATE1 identity, worst reflected mode (<1e-4): PASS
+[PASS] corner line force gate  (11.9s)
+      nquad=128 id(inc)=1.99e-13 id(plain,worst)=1.73e+01 f=2.92997e-03 t_inner=1.110e-03
+      nquad=192 id(inc)=4.56e-13 id(plain,worst)=1.73e+01 f=2.92997e-03 t_inner=1.112e-03
+      wrote /home/claude/verify/REPRO/01_PROGRAM/paper_a_study/figure_data/round21/gate12_corner.json
+      operating point    |f|/scale = 3.513e-01 n^(-0.618)
+      corrected maximum  |f|/scale = 1.408e-02 n^(-0.632)
+      k_x d = 0.55       |f|/scale = 1.627e-01 n^(-0.630)
+[PASS] insulating edge default audit  (0.3s)
+        {'check': 'producer round21_gate1_traction.py', 'explicit': [], 'ok': True}
+        {'check': 'producer round21_gate_corner.py', 'explicit': [], 'ok': True}
+        {'check': 'producer round21_tests.py', 'explicit': [], 'ok': True}
+        {'check': 'round-19 grounded baseline kept and labelled', 'present': True, 'files': 2}
+        {'check': 'manuscript grounded mentions framed as controls', 'problems': 0}
+      PASS
+[PASS] round-21 regression tests  (1.0s)
+[PASS] claim registry and stale guard  (0.0s)
+      claims registered: 40   tokens checked: 64
+      deprecated values guarded: 10
+      figure first-citation order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      source-agreement rows: 11 (11 passing)
+      PASS
+[PASS] gate mutation tests  (4.1s)
+      M12  CAUGHT  TestCrossScriptEdgeFraction      thickness d replaced by the gradient length l (L and l confused)
+              AssertionError: 1.0 not less than 1e-06 : fig05 CSV vs shared transform: 1.00e+00
+      M10b  CAUGHT  TestPlaneInvariance              flipped exponent, checked by an invariance test that uses no stored values
+              AssertionError: 0.07891206018313601 not less than 1e-09 : reconstructed edge value depends on the plane (L=10.0): 7.89e-
+      
+      verdict: PASS
+[PASS] LaTeX static validation  (0.1s)
+        - label never referenced: sec:results_geometry
+        - label never referenced: sec:results_material
+        - label never referenced: sec:results_validation
+        - approximate prose word count (including math tokens): 23270
+      
+      No TeX engine was invoked by this script.
+[PASS] LaTeX build (pdflatex)  (1.2s)
+      ></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type
+      1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/
+      share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/s
+      hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+      Output written on main.pdf (42 pages, 1047887 bytes).
+      Transcript written on main.log.
+PASS  LaTeX static validation                0.1s exit=0
+PASS  LaTeX build (pdflatex)                 1.2s exit=0
+
+OVERALL: PASS
+
+TeX compilation: executed

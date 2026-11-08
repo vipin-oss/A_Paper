@@ -1,0 +1,415 @@
+\section{Solution of the problem}
+\label{sec:numerics}
+
+The edge problem is solved at fixed frequency.  The outgoing spectrum is the set of eigenvalues of the spatial problem, and the partition among those modes follows from the free-edge conditions.  The thickness direction is discretized first, then the modes are obtained, classified and matched at the edge, and independent checks close the section.
+
+\subsection{Thickness discretization and the assembly of the blocks}
+\label{sec:numerics_basis}
+
+The thickness dependence is represented by a spectral Galerkin expansion.
+Because the enthalpy contains the strain gradient, the weak form contains second
+derivatives through the thickness and the trial space must be at least $C^1$ in
+$z$.  Legendre polynomials are used for all fields, in the scaled variable
+$\zeta=2z/d\in[-1,1]$,
+\begin{equation}
+\label{eq:basis}
+U_i(x,\zeta)=\sum_{j=0}^{n-1}U_{ij}(x)\,P_j(\zeta),\qquad
+N(x,\zeta)=\sum_{j=0}^{n-1}N_{j}(x)\,P_j(\zeta),
+\end{equation}
+with $P_j$ the Legendre polynomial of degree $j$ and $n$ the number of
+thickness modes.  The two electrical cases use different potential spaces,
+which is how the essential and natural conditions are realized:
+\begin{itemize}
+\item grounded, \eqref{eq:bc_grounded}: the potential basis is formed from the
+combination $P_j-\sqrt{(2j+1)/(2j+5)}\,P_{j+2}$, which vanishes at
+$\zeta=\pm1$ for all $j$, so $\varphi=0$ holds on both faces to machine precision and the
+space has $n-2$ members;
+\item open circuit, the second condition of \eqref{eq:bc_grounded}: all $n$
+modes are kept and unconstrained, so $D_z=0$ is imposed weakly through
+the surface term of the weak form.
+\end{itemize}
+The mechanical conditions \eqref{eq:bc_faces_mech} and the blocking condition
+\eqref{eq:bc_faces_carrier} are natural and appear as the corresponding boundary
+rows of the discretized operator.  The basis is integrated with
+$\max(64,2n+10)$ Gauss--Legendre points, which resolves the mass and stiffness
+matrices to machine precision for all degrees used here.
+
+The expansion \eqref{eq:basis} is inserted in the weak equations of the reduced
+problem.  There are three of them, and they are kept apart here because they are
+three different statements: the mechanical balance, Gauss's law and the carrier
+continuity.  Let $(\vect v,\psi,\Phi)$ be test fields of the same spaces as
+$(\vect u,\varphi,\widetilde\mu)$.
+
+\emph{(A) Mechanical balance.}
+\begin{equation}
+\label{eq:weak_mech}
+\int_{-1}^{1}\Bigl[\widehat\sigma_{ij}\,\widehat\varepsilon^{*}_{ij}(\vect v)
++\widehat\tau_{ijk}\,\widehat\eta^{*}_{ijk}(\vect v)\Bigr]\dd\zeta
+=\omega^{2}\int_{-1}^{1}\rho\,\widehat u_i\,v_i^{*}\,\dd\zeta ,
+\end{equation}
+with $\widehat\sigma$ and $\widehat\tau$ the trial fields of
+\eqref{eq:sigma}--\eqref{eq:tau}.  The boundary terms produced by integrating
+$\partial_j\widehat\sigma_{ij}$ once and $\partial_j\partial_k\widehat\tau_{ijk}$
+twice vanish on the free, double-traction-free faces
+\eqref{eq:bc_faces_mech}; they are the traction and the double traction.
+
+\emph{(B) Gauss's law.}
+\begin{equation}
+\label{eq:weak_gauss}
+-\int_{-1}^{1}\widehat D_i\,\widehat E_i^{*}(\psi)\,\dd\zeta
+-Q\int_{-1}^{1}\widehat N\,\psi^{*}\,\dd\zeta=0 ,
+\end{equation}
+with the trial $\widehat D$ from \eqref{eq:D}, $\widehat N$ the dimensionless
+carrier amplitude and $Q=d/L_D$ the dimensionless charge of \cref{tab:groups}
+that the scaling puts in front of $-q\Delta n$.
+The second integral is the mobile charge of \eqref{eq:gauss};
+without it \eqref{eq:weak_gauss} would be the statement for a dielectric rather
+than Gauss's law.  The grounded condition is essential and is built into the
+potential space; the open-circuit condition $D_z=0$ is the natural boundary term
+of \eqref{eq:weak_gauss} and is imposed through it.
+
+\emph{(C) Carrier continuity.}
+\begin{equation}
+\label{eq:weak_carrier}
+\int_{-1}^{1}\Bigl[\widehat N\,\Phi^{*}
++\frac{\ii\alpha_{\mathrm d}}{\omega}\,\partial_i\widetilde\mu\,\partial_i\Phi^{*}\Bigr]\dd\zeta=0 ,
+\end{equation}
+where $\widehat N=\widetilde\mu+Q\widehat\varphi-h\,\widehat u_3''$ is the carrier amplitude that
+\eqref{eq:continuity} delivers (the prime is the derivative with respect to $z/d$); the last term
+comes from $H\eta_{zzz}$ in \eqref{eq:mu} and vanishes when $H=0$.  Both signs are fixed by the time convention
+$\partial_t\to-\ii\omega$: multiplying
+$-\ii\omega\widehat N-\alpha_{\mathrm d}\,\partial_i\partial_i\widetilde\mu=0$
+by $\ii/\omega$ and using $\ii(-\ii)=1$ gives
+$\widehat N-(\ii\alpha_{\mathrm d}/\omega)\partial_i\partial_i\widetilde\mu=0$,
+and one integration by parts moves the gradient term to the plus sign displayed above; the boundary term
+$(\ii\alpha_{\mathrm d}/\omega)\partial_z\widetilde\mu\,\Phi^{*}$ which vanishes with the blocking condition $J_z=0$; this condition is therefore natural for \eqref{eq:weak_carrier}.  It is a transport
+equation, not a statement about the enthalpy: the enthalpy reaches it only through
+$\widetilde\mu$, which is why the coupling also appears in \eqref{eq:weak_mech},
+through $\widehat\tau$.
+
+\emph{(D) The assembled system.}  Because the three equations are coupled they are
+discretized in one matrix.  The unknown vector is
+$\vect q=(\widehat{\vect u},\widehat{\boldsymbol\varphi},
+\widetilde{\boldsymbol\mu})$ of dimension $3n+n_\varphi+n$, and the matrix is
+stored as nine blocks $\mathsf A_{rs}$, $r,s\in\{0,1,2\}$, indexed by the power of
+$k_x$ carried by the test factor ($r$) and by the trial factor ($s$).  With
+$\mathsf B_r$, $\mathsf G_r$ and $\mathsf M\mathsf G_r$ the strain, electric-field
+and electrochemical-gradient operators carrying $\partial_x^{r}$, with
+$\mathsf W$ the row vector that returns the carrier amplitude
+$\widehat N=\widetilde\mu+Q\widehat\varphi-h\,\widehat u_3''$ from the unknowns
+(its entries are $b_j$ in the $\widetilde\mu$ slots, $Q\psi_j$ in the potential slots
+and $-h\,b_j''$ in the $\widehat u_3$ slots), so that $\langle\mathsf W,\mathsf W\rangle$
+carries the compressibility $a(\Delta n)^{2}$, the charge $Q$ and the coupling $H$, and with $\mathsf U$ the displacement basis, each block is the bilinear form
+\begin{equation}
+\label{eq:block}
+\begin{aligned}
+\mathsf A_{rs}={}&\bigl\langle\mathsf B_r,\mathsf C\,\mathsf B_s\bigr\rangle
++\lambda^{2}\bigl\langle\partial_\zeta^{l}\mathsf B_r,
+\mathsf C\,\partial_\zeta^{l}\mathsf B_s\bigr\rangle
++\bigl\langle\mathsf G_r,\mathsf e\,\mathsf B_s\bigr\rangle
++\bigl\langle\mathsf B_r,\mathsf e^{\mathsf T}\mathsf G_s\bigr\rangle
+-\bigl\langle\mathsf G_r,\boldsymbol\kappa\,\mathsf G_s\bigr\rangle\\
+&+f\Bigl[\bigl\langle\mathsf G_r^{(2)},\partial_\zeta\mathsf B_s^{(2)}\bigr\rangle
++\bigl\langle\partial_\zeta\mathsf B_r^{(2)},\mathsf G_s^{(2)}\bigr\rangle\Bigr]
+-\frac{\ii\alpha_{\mathrm d}}{\omega}\bigl\langle\mathsf M\mathsf G_r,
+\mathsf M\mathsf G_s\bigr\rangle
+-\bigl\langle\mathsf W_r,\mathsf W_s\bigr\rangle
+-\omega^{2}\bigl\langle\mathsf U_r,\mathsf U\bigr\rangle\delta_{r0}\delta_{s0},
+\end{aligned}
+\end{equation}
+in the inner product $\langle\vect a,\vect b\rangle=\int_{-1/2}^{1/2}
+\vect a^{*\mathsf T}\vect b\,\dd s$ over the half-interval coordinate
+\eqref{eq:app_measures}, with the complex conjugate of the test factor, and with the eight terms, in order, the elastic, strain-gradient,
+piezoelectric (two cross terms), dielectric, flexoelectric, carrier-transport,
+carrier-compressibility-and-coupling, and inertial contributions.  The first,
+second, third, fifth and sixth lines of \eqref{eq:block} are the discretization of
+\eqref{eq:weak_mech}; the third and fourth supply the piezoelectric cross terms
+that \eqref{eq:weak_gauss} needs; the seventh is \eqref{eq:weak_carrier}, whose
+transport term enters with the opposite sign because each block is minus the residual of the weak equation and not the equation itself;
+the eighth is the compressibility and the added coupling, which appear in the carrier
+rows and, through $\widehat\tau$, in the mechanical rows as well.  Equation
+\eqref{eq:block} is the construction: each block is one quadrature of the listed
+integrands against the Legendre basis, so the entries can be regenerated from the
+stated integrands without reading the program.
+
+Each block takes one power of $k_x$ from the test side and one from the trial
+side, but two of the nine vanish identically: $\mathsf A_{02}=\mathsf A_{20}=0$,
+because in each contracted pair $\eta_{ijk}\eta_{lmk}$ the components with $k=x$ carry at
+least one power of $k_x$ and those with $k=y,z$ at most one, so that a factor with no
+power of $k_x$ never meets one with two.  The semi-discrete system is assembled as a polynomial of degree four in the
+propagation wavenumber $k_x$,
+\begin{equation}
+\label{eq:polynomial}
+\Bigl[\sum_{r=0}^{2}\sum_{s=0}^{2}(-\ii k_x)^{r}(\ii k_x)^{s}\,
+\mathsf{A}_{rs}(\omega,k_y)\Bigr]\vect{q}=0 ,
+\end{equation}
+where $\vect{q}$ collects all thickness degrees of freedom and the matrices
+$\mathsf{A}_{rs}$ contain the six blocks of \eqref{eq:sector_blocks}; expanded
+power by power, \eqref{eq:polynomial} is \eqref{eq:quartic}.  That degree is the order of the hyperelastic
+operator and not of the interpolation: the three blocks that supply the cubic and
+quartic terms, $\mathsf A_{12}$, $\mathsf A_{21}$ and $\mathsf A_{22}$, are
+each proportional to $\ell^{2}$ and vanish identically at $\ell=0$, leaving the
+classical quadratic problem
+$\mathsf A=\mathsf A_{00}+k_x\mathsf A_{01}+k_x^{2}\mathsf A_{11}$; the two
+blocks $\mathsf A_{02}$ and $\mathsf A_{20}$ vanish for every $\ell$.
+
+The blocks also have the Hermitian structure one expects of an elastic problem
+with loss confined to the carriers: $\mathsf A_{12}=\mathsf A_{21}^{\mathsf H}$,
+$\mathsf A_{22}=\mathsf A_{22}^{\mathsf H}$ and
+$\mathsf A_{01}=\mathsf A_{10}^{\mathsf H}$ hold to $10^{-15}$, so the cubic
+coefficient $\ii(\mathsf A_{12}-\mathsf A_{21})$ is Hermitian, while
+$\mathsf A_{00}$ and $\mathsf A_{11}$ fail to be Hermitian by exactly the
+carrier-transport form of \eqref{eq:block}, which is the only non-Hermitian
+contribution in the construction.
+
+The sizes and the scaling are recorded here, because they decide how the
+algebraic problem is solved.  With $n$ the polynomial degree, each field is
+expanded in $N=n+1$ basis functions \eqref{eq:app_basis}, so the three
+displacement components contribute $n_{\mathrm u}=3N$, the potential
+$n_\varphi=N-2$ on grounded faces ($N$ on open-circuit faces)
+and the carrier $n_\mu=N$; the number of unknowns per thickness element is
+\begin{equation}
+\label{eq:nw}
+n_{\mathrm{w}}=3N+n_\varphi+n_\mu=5n+3\ (\text{grounded}),\qquad
+5n+5\ (\text{open circuit}),
+\end{equation}
+so $n_{\mathrm{w}}=113$ at the degree $n=22$ used for the reported results,
+$93$ at $n=18$ and $168$ at the reference degree $n=33$ of \cref{fig:fig09}.  The polynomial
+\eqref{eq:polynomial} is formally of degree $4n_{\mathrm{w}}$ in $k_x$, which
+would be $452$ roots at $n_{\mathrm{w}}=113$, but its leading coefficient
+$\mathsf A_{22}$ has rank $n_{\mathrm u}$ and not $n_{\mathrm{w}}$ (see \eqref{eq:app_A22}), so $2(n_{\mathrm{w}}-n_{\mathrm u})=2(n_\varphi+n_\mu)$
+eigenvalues of the matrix polynomial are infinite and the finite spectrum
+contains
+\begin{equation}
+\label{eq:finite_roots}
+4n_{\mathrm{w}}-2(n_{\mathrm{w}}-n_{\mathrm u})=2(n_{\mathrm{w}}+n_{\mathrm u})
+\end{equation}
+roots: $364$ at $n=22$, $300$ at $n=18$, $76$ at degree four.  That number is the
+state dimension, not twice it, and it is the reason the axial unknown $u_3$ enters
+the state \eqref{eq:app_block} together with its derivative: the hyperelastic term
+is the only one containing $k_x^{2}$, and it is supported on the displacement
+slots alone.  Half of the finite roots are outgoing and half incoming, but the
+split is not made by the sign of $\Imag k_x$; the criterion is stated below
+\eqref{eq:classification}.  The Frobenius norms of the blocks at degree
+four and zero coupling are
+\begin{equation}
+\label{eq:block_norms}
+\begin{aligned}
+&\|\mathsf A_{00}\|=1.89\times10^{4},\quad
+\|\mathsf A_{01}\|=5.67\times10^{2},\quad
+\|\mathsf A_{11}\|=2.35\times10^{2},\\
+&\|\mathsf A_{12}\|=4.04,\quad
+\|\mathsf A_{22}\|=7.12\times10^{-1},
+\end{aligned}
+\end{equation}
+spanning four and a half decades.  The spread is intrinsic to the problem: it is the
+$\lambda^2c_{33}/c_{44}=0.32$ of the gradient term against the $O(10^{2})$ of
+the elastic term, multiplied by the $2j(j+1)(2j+1)$ growth of the stiffness
+matrix \eqref{eq:app_S} with the mode number.  Hence each block is equilibrated row by row before the eigenvalue problem is formed, and the
+conditioning quoted below is that of the equilibrated problem.
+
+\subsection{Modes, the free-edge system and the conditions on a reported share}
+\label{sec:numerics_routes}
+\label{sec:numerics_edge}
+\label{sec:numerics_admissibility}
+
+Two independent solution routes follow from \eqref{eq:polynomial}.
+
+The \emph{temporal} route fixes a real $k_x$ and solves the generalized
+eigenvalue problem in $\omega^2$ obtained from \eqref{eq:polynomial} with the
+potential and the electrochemical potential eliminated.  It produces the
+dispersion branches $\omega(k_x)$, the group velocity
+$v_g=c_s\,\partial\omega/\partial k_x$ by central differences along a
+branch-tracked sequence, and the temporal attenuation
+$\gamma=-2\Imag\omega$.  Branch tracking is done by a modal-assurance
+criterion on the mass-orthogonal displacements, so a curve can be followed
+through a crossing without jumping to a neighboring branch.
+
+The \emph{spatial} route fixes a real frequency and solves the quartic problem
+\eqref{eq:polynomial} directly for $k_x$.  It is the route that is physically
+relevant at an edge, because reflection is a process at fixed frequency, and it
+is the only route that gives the spatial attenuation
+$\alpha=2|\Imag k_x|$ used in \cref{fig:fig01,fig:fig06}.  The attenuation is
+taken from the complex root; it is not inferred from the imaginary part of
+$\sqrt{K^2+k_y^2}$ at real $K$, which vanishes by construction.
+
+The two routes are compared with each other in \cref{fig:fig09}(d) and with
+strong-form integrations of the reduced system.  Both comparisons establish the consistency of
+the implementation, which is what they are used for; the independent checks on
+the physics are the exact limits and the finite-element plate.
+
+
+At fixed $\omega$ the spatial problem returns $2(n_{\mathrm{w}}+n_{\mathrm u})$
+finite eigenvalues $k_x^{(j)}$ and their states $\vect{y}^{(j)}$
+(see \eqref{eq:finite_roots}); the infinite ones are not states of the problem and
+hold no boundary data.  Each is classified as outgoing or incoming by the sign
+of its decay and of its axial power,
+\begin{equation}
+\label{eq:classification}
+\text{outgoing}\iff
+\Imag k_x^{(j)}<-\tau
+\quad\text{or}\quad
+\bigl|\Imag k_x^{(j)}\bigr|\le\tau\ \text{and}\ \mathcal{P}_x^{(j)}<0 ,
+\end{equation}
+where $\tau=2\times10^{-8}\max(1,|k_x|)$ and $\mathcal{P}_x$ is the
+thickness-integrated power flux \eqref{eq:Px_int}.  A purely real root is outgoing when it carries energy away from the edge, and an
+evanescent root is outgoing when it decays away from the edge.  The number of
+outgoing roots must equal $M$, which is a structural property of the
+eigenvalue problem and not a tolerance.
+
+The solution is written as the incident mode plus a combination of the outgoing
+modes,
+\begin{equation}
+\label{eq:edge_ansatz}
+\vect{y}(0)=\vect{y}_{\text{inc}}+\sum_{j}a_j\,\vect{y}^{(j)},
+\end{equation}
+and the coefficients $a_j$ follow from the homogeneous edge conditions
+\eqref{eq:bc_edge} written as
+$\mathsf{B}\vect{a}=-\vect{b}_{\text{inc}}$, with
+$\mathsf{B}\in\mathbb{C}^{m\times M}$.  The system is square by construction,
+$m=M=n_{\mathrm{w}}+n_{\mathrm{u}}$ (see \eqref{eq:app_edge_square}), which at
+$n=22$ is $182$ rows against $182$ columns; it is row- and column-scaled and
+solved through a singular-value decomposition, with the rank of $\mathsf{B}$
+required to equal its column count at a cut-off of $10^{-12}$ of the largest
+singular value.  A deficient system is reported as such and is not regularized.
+Because the system is square, a small residual is a statement about the
+conditioning of the edge operator and not about the physical admissibility of the
+edge conditions; the latter is argued from \eqref{eq:bc_edge} independently.  The condition number at the
+operating point is $1.4\times10^{2}$, and the scaled residual of
+\eqref{eq:edge_ansatz} is below $10^{-12}$ for all rows used in this article.
+
+The backward channel is the outgoing mode whose real wavenumber is closest to
+the target $k_{Bx}$, and its share of the incident power is
+\begin{equation}
+\label{eq:RB}
+R_B=\frac{-\,P_{B}\,e^{2\Imag k_{Bx}L}}{P_{\text{inc}}\,e^{2\Imag k_{ix}L}}
+=\frac{-\,P_{B}}{P_{\text{inc}}}\,e^{2(\Imag k_{Bx}-\Imag k_{ix})L},
+\end{equation}
+evaluated at the reference plane $x=-L$, $L=10\,d=\SI{2}{\micro\metre}$.  The
+two exponentials are retained explicitly so that the ratio is measured at the
+same plane for both modes.  Equation \eqref{eq:RB} defines a \emph{modal share}
+of the outgoing power, one member of the partition of the incident power; the
+total propagating share, which is the quantity closest to a reflectance, is
+reported separately.
+
+
+Evaluating \eqref{eq:RB} at the operating point takes four stored numbers and
+three steps, and the steps are the ones a reader can repeat by hand.  The first is
+the power of the unit-amplitude backward mode at the edge, which the
+normalization makes independent of the degree:
+\begin{equation}
+\label{eq:RB_worked}
+\mathcal{P}_x=-0.0154248,\qquad |a_B|=1.1184598,\qquad
+P_{B}^{\text{edge}}=|a_B|^{2}\mathcal{P}_x=-0.0192957 ,
+\end{equation}
+the three numbers being read from the same $n=22$ row.  They are separately
+degree-dependent ($|\mathcal{P}_x|$ falls by $14$ percent and $|a_B|^{2}$ rises
+by $16$ percent between $n=18$ and $n=22$) and their product is not:
+$0.019296$ at $n=18$, $22$, $26$ and $30$ alike, to six digits
+(see \eqref{eq:app_power_numbers}).  Quoting $\mathcal{P}_x$ or $|a_B|$ alone measures the normalization of the eigenvector, not the port.
+The second is the propagation to the reference plane, with the attenuation taken
+from the complex root,
+\begin{equation}
+\label{eq:RB_prop}
+\Imag k_{Bx}=-5.2306\times10^{-6},\quad
+\Imag k_{ix}=+5.4027\times10^{-6}\ \text{(per unit $d$)},\quad L=10\,d ,
+\end{equation}
+\begin{equation}
+\label{eq:RB_planes}
+\begin{aligned}
+P_{B}(-L)&=-0.0192957\,e^{2(-5.2306\times10^{-6})(10)}=-0.0192937,\\
+P_{\text{inc}}(-L)&=e^{2(5.4027\times10^{-6})(10)}=1.0001081 ,
+\end{aligned}
+\end{equation}
+where the incident mode is normalized to unit power at the edge.  The third is
+the ratio,
+\begin{equation}
+\label{eq:RB_value}
+R_B=\frac{-P_{B}(-L)}{P_{\text{inc}}(-L)}
+=\frac{0.0192937}{1.0001081}=0.0192916 ,
+\end{equation}
+that is \SI{1.93}{\percent}.  The two exponentials move the fourth digit in
+opposite directions: the backward mode decays and the incident mode grows as
+$x\to-L$, so the ratio changes by $2.1\times10^{-4}$ relative to the
+unnormalized value $|a_B|^{2}|\mathcal{P}_x|=0.0192957$, and it is that
+difference which \eqref{eq:RB} exists to account for.  The same evaluation at the
+branch maximum gives $0.9429$ (\SI{94.29}{\percent}), and the two values differ
+by the factor of forty-nine that \cref{sec:results_peak} attributes to the proximity
+of the branch to the coincidence condition.
+
+A computed share is reported when it satisfies three conditions, none of which
+is a plotting threshold.
+
+\emph{Conservation.}  The backward mode is one of the outgoing modes, so its
+self-power cannot exceed the power available at the plane,
+\begin{equation}
+\label{eq:admissible}
+0\le R_B\le1+\frac{|P_{\text{cross}}|}{P_{\text{inc}}} .
+\end{equation}
+Across the reported solutions the interference term is between $10^{-6}$ and
+$10^{-2}$ of the incident power, so \eqref{eq:admissible} is applied with a
+bound of $1.01$.  A row that violates it would assert that a single outgoing
+mode carries more power than the incident wave plus the interference, which no
+solution of the boundary-value problem can do; such a row indicates that the
+identified mode is not the continuation of the backward branch.
+
+\emph{Convergence.}  The reported quantity must be stable under refinement of
+the Galerkin degree.  The peak study shows that both the
+operating-point value and the branch maximum change by less than $10^{-5}$
+between degree 18 and degree 30.
+
+\emph{Resolution of the computed projection.}  $R_B$ is a ratio of $x$ fluxes.
+When the energy angle of a mode approaches $\pm90^{\circ}$ its $x$ flux
+vanishes and the ratio loses meaning even though the mode itself is perfectly
+well resolved.  The flux fraction
+$|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is stored with each row, and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
+
+\subsection{Consistency and independent checks}
+\label{sec:numerics_verification}
+
+The implementation is checked in six independent ways, each of which compares
+a computed quantity with a closed-form or independently discretized one.
+
+\begin{enumerate}
+\item \emph{Exact classical limit.}  With $\ell=f=H=0$ the plate supports
+exact shear-horizontal modes $\Omega^{2}=(c_{66}/c_{44})K^{2}+(j\pi)^{2}$ in scaled
+units; the spectral
+solution reproduces the first three of them to $10^{-9}$.
+\item \emph{Exact strain-gradient limit.}  With $\ell\neq0$ the fundamental
+shear-horizontal branch has the closed form
+$\Omega^{2}=(c_{66}/c_{44})K^{2}(1+\lambda^{2}K^{2})$, reproduced to $10^{-10}$.
+\item \emph{Independent strong-form propagator.}  An eight-state classical
+sagittal system and a twelve-state gradient system are integrated directly as
+ODEs, with no spectral matrices.  They reproduce the spectral frequencies to
+$10^{-10}$ for both the grounded and the open-circuit problem, and with
+nonzero $f$ and $H$.
+\item \emph{Independent discretization.}  A $C^1$ finite-element plate
+formulation in the thickness direction (it keeps the modal $x$-dependence, so it tests the thickness discretization and not the two-dimensional corner) converges monotonically to the spectral
+edge result at an observed order between $3.9$ and $4.4$, with an error below
+$3\times10^{-5}$ on the finest mesh.  This is the only check in the list that tests the edge problem; the dispersion checks do not.
+\item \emph{Residuals of the strong form.}  For each mode used, the momentum,
+Gauss, carrier-continuity, traction, double-traction and blocking residuals are
+below $10^{-8}$ in the normalized measure reported in
+\cref{fig:fig09}(c), and the scaled edge residual is below $10^{-12}$.
+\item \emph{Natural boundary data: derived versus discrete.}  The traction,
+double traction and corner line force of
+\eqref{eq:generalised_traction}--\eqref{eq:corner_force} are evaluated from the
+physical fields and compared, mode by mode, with the canonical flux rows that
+the solver actually imposes.  The comparison is stated in
+\eqref{eq:corner_identity}; it closes to $1.4\times10^{-13}$ for the incident
+guided mode at all degrees from 10 to 28 and for each quadrature rule tested, and it is the check that fixes the index placement and the sign of the corner term, so neither rests on the derivation alone.  What the same comparison shows
+about the pointwise natural conditions (which a Galerkin statement imposes
+only weakly) is reported in \cref{sec:disc_limitations}: the double traction
+is annihilated pointwise to $10^{-12}$, whereas the traction leaves an interior
+residual of $9.4\times10^{-4}$ of the incident scale at the corrected maximum
+(larger, $3.6\times10^{-2}$, at the operating point) that does not decrease
+further with degree, and the corner line force stands at $1.7\times10^{-3}$ there
+and decays only algebraically.  Those residuals are properties of the
+weak solution and not of the implementation, and they are reported with the other checks.
+\end{enumerate}
+
+The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which verifies the symmetry of the discretized bilinear form, including the added coupling.  The six comparisons above are the independent evidence for the
+implementation; the practical resolution at which they are carried out, the
+convergence of the reported quantities with degree and quadrature, and the
+conservation residual are stated in \cref{app:repro}, and the full computational
+record is deposited with the code and data (see the data availability statement).

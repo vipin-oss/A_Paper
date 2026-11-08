@@ -1,0 +1,268 @@
+{
+  "band": 0.4,
+  "note": "x=0 plane, coherent modal sum, lam^2|grad eps|_C^2",
+  "incident_configurations": {
+    "operating_point": 0.7361990195318475,
+    "refined_peak": 0.5275,
+    "k055_sample": 0.55
+  },
+  "backward_target_guess": 0.2451746921716515,
+  "relation": "operating_point uses K0 (incident); KB0 is only the backward target guess and must never be used as an incident case",
+  "cases": {
+    "operating_point": {
+      "incident_K": 0.7361990195318475,
+      "rows": [
+        {
+          "degree": 18,
+          "incident_K": 0.7361990195749004,
+          "incident_K_offset": 4.3052894582729095e-11,
+          "incident_K_imag": 5.402718571097943e-06,
+          "backward_K_real": 0.24517469208426557,
+          "backward_K_imag": -5.2305948014621865e-06,
+          "R_B": 0.019291708055923378,
+          "frequency_Hz": 16684123136.378426,
+          "edge_scaled_residual": 2.9091368457258463e-15,
+          "total": 2.6736007883985007,
+          "corner_band": 0.025921283287781614,
+          "corner_share": 0.009695270662793522,
+          "corner_peak_over_mean": 0.09965292960506816,
+          "inner_share": 0.9903047293372065,
+          "R_B_certified": 0.019291708055923378,
+          "R_B_abs_diff": 0.0
+        },
+        {
+          "degree": 22,
+          "incident_K": 0.7361990195739546,
+          "incident_K_offset": 4.2107095588050925e-11,
+          "incident_K_imag": 5.4027186525789846e-06,
+          "backward_K_real": 0.24517469208597725,
+          "backward_K_imag": -5.230595054132129e-06,
+          "R_B": 0.019291601863518266,
+          "frequency_Hz": 16684123136.378155,
+          "edge_scaled_residual": 2.7405790797601072e-15,
+          "total": 2.6736046341578295,
+          "corner_band": 0.02591998244813248,
+          "corner_share": 0.00969477016795235,
+          "corner_peak_over_mean": 0.09987933795141245,
+          "inner_share": 0.9903052298320476,
+          "R_B_certified": 0.019291601863518266,
+          "R_B_abs_diff": 0.0
+        },
+        {
+          "degree": 26,
+          "incident_K": 0.7361990195807133,
+          "incident_K_offset": 4.886580029506149e-11,
+          "incident_K_imag": 5.4027184677563785e-06,
+          "backward_K_real": 0.24517469207225143,
+          "backward_K_imag": -5.2305948849734315e-06,
+          "R_B": 0.019291558099066013,
+          "frequency_Hz": 16684123136.38018,
+          "edge_scaled_residual": 2.9151624089404657e-15,
+          "total": 2.673606275418754,
+          "corner_band": 0.025930577591986196,
+          "corner_share": 0.009698727082739517,
+          "corner_peak_over_mean": 0.09986028311125739,
+          "inner_share": 0.9903012729172604,
+          "R_B_certified": 0.019291558099066013,
+          "R_B_abs_diff": 0.0
+        },
+        {
+          "degree": 30,
+          "incident_K": 0.736199019573816,
+          "incident_K_offset": 4.196842873227524e-11,
+          "incident_K_imag": 5.402719019078351e-06,
+          "backward_K_real": 0.2451746920861525,
+          "backward_K_imag": -5.230595624900148e-06,
+          "R_B": 0.01929153746041151,
+          "frequency_Hz": 16684123136.378143,
+          "edge_scaled_residual": 3.2180066324864488e-15,
+          "total": 2.673607068996583,
+          "corner_band": 0.024143269411304485,
+          "corner_share": 0.009030223510130666,
+          "corner_peak_over_mean": 0.09609463716725093,
+          "inner_share": 0.9909697764898693,
+          "R_B_certified": 0.01929153746041151,
+          "R_B_abs_diff": 0.0
+        }
+      ],
+      "R_B_spread_rel": 8.842993829293413e-06,
+      "corner_share_range": [
+        0.009030223510130666,
+        0.009698727082739517
+      ],
+      "corner_share_drift_rel": -0.06859500634830497,
+      "corner_peak_over_mean_range": [
+        0.09609463716725093,
+        0.09987933795141245
+      ],
+      "corner_peak_drift_rel": -0.035706852291437934
+    },
+    "refined_peak": {
+      "incident_K": 0.5275,
+      "rows": [
+        {
+          "degree": 18,
+          "incident_K": 0.5282359921553335,
+          "incident_K_offset": 0.0007359921553334869,
+          "incident_K_imag": 0.001004047563428234,
+          "backward_K_real": 0.5261318008186207,
+          "backward_K_imag": -0.0010029300709933373,
+          "R_B": 0.942852297079901,
+          "frequency_Hz": 16654675058.294046,
+          "edge_scaled_residual": 2.1552843938375766e-15,
+          "total": 0.39346084135758963,
+          "corner_band": 0.004978754974591101,
+          "corner_share": 0.012653749627059459,
+          "corner_peak_over_mean": 0.12647601641616227,
+          "inner_share": 0.9873462503729405
+        },
+        {
+          "degree": 22,
+          "incident_K": 0.528235992448085,
+          "incident_K_offset": 0.0007359924480849767,
+          "incident_K_imag": 0.001004047248748875,
+          "backward_K_real": 0.5261318005246318,
+          "backward_K_imag": -0.0010029297563742727,
+          "R_B": 0.9428520783782568,
+          "frequency_Hz": 16654675058.2947,
+          "edge_scaled_residual": 2.1438809593567307e-15,
+          "total": 0.3934625550231416,
+          "corner_band": 0.004978786008599998,
+          "corner_share": 0.012653773389712191,
+          "corner_peak_over_mean": 0.12677083428064417,
+          "inner_share": 0.9873462266102878
+        },
+        {
+          "degree": 26,
+          "incident_K": 0.5282359928312061,
+          "incident_K_offset": 0.0007359928312061781,
+          "incident_K_imag": 0.0010040467882921572,
+          "backward_K_real": 0.5261318001395332,
+          "backward_K_imag": -0.001002929295855378,
+          "R_B": 0.9428519917499035,
+          "frequency_Hz": 16654675058.29565,
+          "edge_scaled_residual": 1.938186763137374e-15,
+          "total": 0.3934631453880458,
+          "corner_band": 0.0049805909914875275,
+          "corner_share": 0.012658341829132462,
+          "corner_peak_over_mean": 0.1267335014333835,
+          "inner_share": 0.9873416581708675
+        },
+        {
+          "degree": 30,
+          "incident_K": 0.5282359940768467,
+          "incident_K_offset": 0.0007359940768467688,
+          "incident_K_imag": 0.0010040456678171395,
+          "backward_K_real": 0.5261317988888109,
+          "backward_K_imag": -0.0010029281754705007,
+          "R_B": 0.942851946920677,
+          "frequency_Hz": 16654675058.298628,
+          "edge_scaled_residual": 2.03022957397934e-15,
+          "total": 0.3934630929839122,
+          "corner_band": 0.004649065394337714,
+          "corner_share": 0.011815759793581971,
+          "corner_peak_over_mean": 0.12235659840151517,
+          "inner_share": 0.988184240206418
+        }
+      ],
+      "R_B_spread_rel": 3.713829900081433e-07,
+      "corner_share_range": [
+        0.011815759793581971,
+        0.012658341829132462
+      ],
+      "corner_share_drift_rel": -0.0662246257572131,
+      "corner_peak_over_mean_range": [
+        0.12235659840151517,
+        0.12677083428064417
+      ],
+      "corner_peak_drift_rel": -0.032570744488760524
+    },
+    "k055_sample": {
+      "incident_K": 0.55,
+      "rows": [
+        {
+          "degree": 18,
+          "incident_K": 0.550000045258393,
+          "incident_K_offset": 4.525839292224276e-08,
+          "incident_K_imag": 4.632655804647676e-05,
+          "backward_K_real": 0.5038041870518647,
+          "backward_K_imag": -4.521401484677978e-05,
+          "R_B": 0.5519109694075057,
+          "frequency_Hz": 16654976049.28561,
+          "edge_scaled_residual": 1.892221607324316e-15,
+          "total": 2.6267365245872183,
+          "corner_band": 0.03226294296433359,
+          "corner_share": 0.012282519644562976,
+          "corner_peak_over_mean": 0.12310627188869683,
+          "inner_share": 0.987717480355437
+        },
+        {
+          "degree": 22,
+          "incident_K": 0.5500000452452916,
+          "incident_K_offset": 4.524529151339607e-08,
+          "incident_K_imag": 4.632655696575109e-05,
+          "backward_K_real": 0.5038041870658624,
+          "backward_K_imag": -4.521401386005763e-05,
+          "R_B": 0.5519100424915215,
+          "frequency_Hz": 16654976049.285128,
+          "edge_scaled_residual": 2.1714563495056306e-15,
+          "total": 2.6267449636576092,
+          "corner_band": 0.03226293978369234,
+          "corner_share": 0.012282478973051052,
+          "corner_peak_over_mean": 0.12339269903982976,
+          "inner_share": 0.987717521026949
+        },
+        {
+          "degree": 26,
+          "incident_K": 0.5500000452431949,
+          "incident_K_offset": 4.5243194857214064e-08,
+          "incident_K_imag": 4.632655707959546e-05,
+          "backward_K_real": 0.5038041870680056,
+          "backward_K_imag": -4.521401398213359e-05,
+          "R_B": 0.5519096629354208,
+          "frequency_Hz": 16654976049.285122,
+          "edge_scaled_residual": 2.016612619721522e-15,
+          "total": 2.6267485026685096,
+          "corner_band": 0.03227478575196439,
+          "corner_share": 0.01228697217079461,
+          "corner_peak_over_mean": 0.12335760353745567,
+          "inner_share": 0.9877130278292053
+        },
+        {
+          "degree": 30,
+          "incident_K": 0.550000045175327,
+          "incident_K_offset": 4.517532692371873e-08,
+          "incident_K_imag": 4.6326560542158375e-05,
+          "backward_K_real": 0.5038041871394301,
+          "backward_K_imag": -4.52140177625043e-05,
+          "R_B": 0.5519094854693973,
+          "frequency_Hz": 16654976049.28323,
+          "edge_scaled_residual": 1.9248119285521088e-15,
+          "total": 2.6267501893169816,
+          "corner_band": 0.030118976150001312,
+          "corner_share": 0.01146625068211491,
+          "corner_peak_over_mean": 0.11905707905806007,
+          "inner_share": 0.9885337493178851
+        }
+      ],
+      "R_B_spread_rel": 2.6887318596140246e-06,
+      "corner_share_range": [
+        0.01146625068211491,
+        0.01228697217079461
+      ],
+      "corner_share_drift_rel": -0.06645777788838289,
+      "corner_peak_over_mean_range": [
+        0.11905707905806007,
+        0.12339269903982976
+      ],
+      "corner_peak_drift_rel": -0.032891848388502315
+    }
+  },
+  "certification_cross_check": "PASS",
+  "certification_reference_degrees": [
+    18,
+    22,
+    26,
+    30
+  ]
+}

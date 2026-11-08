@@ -1,0 +1,79 @@
+Paper A static validation
+========================================
+
+files checked: 9
+labels: 174   references: 111
+citation keys used: 61   bib entries: 61
+
+FAIL
+
+Problems:
+  - macros outside the whitelist: lvert, rvert
+
+Notes:
+  - label never referenced: app:checks
+  - label never referenced: eq:Hterm
+  - label never referenced: eq:LD_worked
+  - label never referenced: eq:RB_planes
+  - label never referenced: eq:RB_prop
+  - label never referenced: eq:RB_value
+  - label never referenced: eq:RB_worked
+  - label never referenced: eq:a_scale
+  - label never referenced: eq:a_worked
+  - label never referenced: eq:alphad_worked
+  - label never referenced: eq:ansatz
+  - label never referenced: eq:app_RB_inputs
+  - label never referenced: eq:app_S_off
+  - label never referenced: eq:app_S_weighted
+  - label never referenced: eq:app_ar_s
+  - label never referenced: eq:app_diel
+  - label never referenced: eq:app_edge
+  - label never referenced: eq:app_edge_R
+  - label never referenced: eq:app_edge_rows
+  - label never referenced: eq:app_mass
+  - label never referenced: eq:app_pot
+  - label never referenced: eq:app_strain_split
+  - label never referenced: eq:app_w1
+  - label never referenced: eq:app_w2_values
+  - label never referenced: eq:app_w4
+  - label never referenced: eq:app_w5
+  - label never referenced: eq:block_norms
+  - label never referenced: eq:carrier_strong
+  - label never referenced: eq:cs_worked
+  - label never referenced: eq:diff_carr
+  - label never referenced: eq:diff_coup
+  - label never referenced: eq:diff_elec
+  - label never referenced: eq:diff_es
+  - label never referenced: eq:dissipation
+  - label never referenced: eq:effective
+  - label never referenced: eq:eta_amplitudes
+  - label never referenced: eq:gauss_expanded
+  - label never referenced: eq:lam_worked
+  - label never referenced: eq:strain_amplitudes
+  - label never referenced: eq:vE
+  - label never referenced: eq:vg
+  - label never referenced: eq:virtual_work
+  - label never referenced: sec:disc_material
+  - label never referenced: sec:disc_meaning
+  - label never referenced: sec:disc_mechanism
+  - label never referenced: sec:discussion
+  - label never referenced: sec:governing_balance
+  - label never referenced: sec:governing_energy
+  - label never referenced: sec:governing_kinematics
+  - label never referenced: sec:governing_limits
+  - label never referenced: sec:governing_stability
+  - label never referenced: sec:intro
+  - label never referenced: sec:intro_scope
+  - label never referenced: sec:numerics_admissibility
+  - label never referenced: sec:results_artefact
+  - label never referenced: sec:results_attenuation
+  - label never referenced: sec:results_boundary
+  - label never referenced: sec:results_dispersion
+  - label never referenced: sec:results_field
+  - label never referenced: sec:results_frequency
+  - label never referenced: sec:results_geometry
+  - label never referenced: sec:results_material
+  - label never referenced: sec:results_validation
+  - approximate prose word count (including math tokens): 23761
+
+No TeX engine was invoked by this script.

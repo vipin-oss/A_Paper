@@ -1,0 +1,13 @@
+# Paper A -- program dependencies.
+# Tested with Python 3.11.2 on Linux; the exact recorded versions are in
+# 09_ARCHIVE_METADATA/environment_pip_freeze.txt.
+#
+# The scientific code needs only these three packages.  sympy is used by the
+# optional a0/ feasibility audit (a0/run_checks.py) and by nothing on the path
+# to the paper's figures, so it is listed but not required.
+numpy>=1.26,<3
+scipy>=1.11,<2
+matplotlib>=3.7,<4
+
+# optional, only for 01_PROGRAM/a0/run_checks.py
+sympy>=1.12,<2

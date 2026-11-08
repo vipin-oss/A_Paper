@@ -1,0 +1,100 @@
+{
+ "rows": [
+  {
+   "check": "constructor default",
+   "value": "insulating"
+  },
+  {
+   "check": "pipeline default",
+   "value": "insulating"
+  },
+  {
+   "check": "producer build_figure_data.py",
+   "explicit": [
+    "ground"
+   ],
+   "ok": true
+  },
+  {
+   "check": "producer generate_final_figures.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer peak_search.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer certify_peak.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer peak_identity_audit.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer mechanism_controls.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer convergence_audit.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer quadrature_audit.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer corner_assessment.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer modal_flux_audit.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer claim_audit.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer mutation_tests.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer round21_gate1_traction.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer round21_gate_corner.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "producer round21_tests.py",
+   "explicit": [],
+   "ok": true
+  },
+  {
+   "check": "round-19 grounded baseline kept and labelled",
+   "present": true,
+   "files": 2
+  },
+  {
+   "check": "manuscript grounded mentions framed as controls",
+   "problems": 0
+  }
+ ],
+ "problems": [],
+ "pass_": true
+}

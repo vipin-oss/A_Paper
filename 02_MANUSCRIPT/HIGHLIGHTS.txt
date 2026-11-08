@@ -1,0 +1,5 @@
+Free-edge scattering of guided waves in a flexoelectric ZnO plate is solved.
+The backward mode carries 1.93% of the incident power at the operating point.
+The share reaches 94.29% at the zero-group-velocity fold, not as a reflectance.
+Added carrier-strain-gradient coupling changes the share by 1.2% to 36%.
+Energy budget closes to 1e-12; edge corner force is computed and bounded.

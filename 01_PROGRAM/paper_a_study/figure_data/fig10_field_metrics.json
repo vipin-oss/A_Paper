@@ -1,0 +1,68 @@
+{
+ "solver": "paper_a_study/model.py Plate.edge (spectral Galerkin + edge matching)",
+ "coordinate_convention": "plate x<0, edge at x=0, incident Re kx>0 and Px>0, backward channel Px<0 and Py<0",
+ "normalisation": "both intensity maps divided by the incident peak intensity",
+ "ky_quadrature": {
+  "nodes": [
+   0.07981175031447484,
+   0.09231175031447483,
+   0.10481175031447483,
+   0.11731175031447483,
+   0.12981175031447484,
+   0.14231175031447482,
+   0.15481175031447483,
+   0.16731175031447482,
+   0.17981175031447483
+  ],
+  "width": 0.022,
+  "weights": [
+   0.017295714247273993,
+   0.05353661242486902,
+   0.11999405627530071,
+   0.19474442897041513,
+   0.22885837616428212,
+   0.1947444289704153,
+   0.11999405627530081,
+   0.05353661242486911,
+   0.017295714247274014
+  ]
+ },
+ "percentages": [
+  {
+   "plane_um": -2.0,
+   "incident_centroid_y_um": -0.3530575777238147,
+   "backward_centroid_y_um": -1.0674453713480585,
+   "incident_peak": 0.9992301858284539,
+   "backward_peak": 0.03935523292443689
+  },
+  {
+   "plane_um": -40.0,
+   "incident_centroid_y_um": -7.060020896229347,
+   "backward_centroid_y_um": -21.334653464967808,
+   "incident_peak": 0.9952973148334244,
+   "backward_peak": 0.035837394955338636
+  }
+ ],
+ "primary_flux": {
+  "incident_Px": 0.9999999999999977,
+  "incident_Py": 0.17632698072108405,
+  "backward_Px": -0.015424813079369343,
+  "backward_Py": -0.008166919538720743,
+  "incident_angle_deg": 10.00000000070124,
+  "reflected_angle_deg": -27.89971398105782,
+  "incident_vEx": 378.91212354918025,
+  "backward_vEx": -186.02007632802471,
+  "backward_vEy": -98.49137154145555
+ },
+ "primary_wavenumbers": {
+  "ky_d": 0.12981175031447484,
+  "incident_kx_d": 0.7361990195319493,
+  "incident_im_kx_d": 5.402718792523917e-06,
+  "backward_kx_d": 0.2451746921714963,
+  "backward_im_kx_d": -5.2305951976365535e-06,
+  "incident_phase_angle_deg": 9.999999999990488,
+  "backward_phase_angle_deg": 27.899713983558208,
+  "magnitude_ratio_backward_over_incident": 0.37110226697849763,
+  "configuration": "H=0 (no carrier-strain-gradient coupling), the operating point of section 4"
+ }
+}

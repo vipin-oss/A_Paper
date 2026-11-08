@@ -1,0 +1,75 @@
+{
+  "checkpoint": "A0-R only; stop after decision",
+  "date_local": "2026-11-05",
+  "branch": "arena/5eac65f0-a-paper",
+  "retained_objective": "Negative Reflection of Guided Waves in a Flexoelectric Piezoelectric-Semiconductor Plate with Carrier–Strain-Gradient Coupling",
+  "scope": "No edge solver, geometry change, manuscript, new material family, or additional coupling",
+  "physical_evidence_boundary": "Computed finite-carrier classical limit f=A=H=0; nonzero A/H tests synthetic at f=0. Full calibrated flexoelectric model still unavailable.",
+  "source_material_file": "a0/materials.json",
+  "source": {
+    "doi": "10.1007/s10483-025-3272-7",
+    "url": "https://www.amm.shu.edu.cn/article/2025/0253-4827/0253-4827-2025-07-1331.shtml",
+    "equations": "2–4; Table 1; Appendix A; reference 11 attributes constants to Yang (2020)",
+    "source_geometry_not_replicated": "Simply supported rectangular plate. Its D3=0 condition is not substituted for this checkpoint's exact vacuum exterior."
+  },
+  "scenarios_NOT_measured_samples": {
+    "total_thickness_m": [0.0000005, 0.000001, 0.000003],
+    "carrier_concentration_m_minus3": [1e17, 1e18, 1e19],
+    "reason_thickness": "Retain original 1 micrometre; add 0.5 micrometre and the source's 3 micrometre example as a bounded micron-scale bracket.",
+    "reason_concentration": "Retain source-used 1e19; two lower decades test weaker mobile-carrier loss without changing the material or fitting a successful result.",
+    "comparison": "Same dimensionless longitudinal-thickness family and original target Omega for each d, NOT the same physical frequency.",
+    "electrical_exterior": "Quasistatic vacuum, potential and normal D continuous; exterior q=K analytic sheet requires Re K>0.",
+    "carrier_faces": "Blocking particle flux only; no simultaneous N=0 prescription.",
+    "unspecified_losses": "Only drift–diffusion dissipation is included. Mechanical, surface, defect and contact losses are not calibrated; predicted survival is conditional/optimistic."
+  },
+  "numerical_protocol": {
+    "time_space_convention": "exp(i*k*x-i*omega*t)",
+    "K": "k*d",
+    "Omega": "omega*d/sqrt(c44_ref/rho_ref)",
+    "family": "Original branch 5 (one-based), L1 thickness family, U1 even and U3/Phi/N odd",
+    "complex_K_method": "Analytic Fourier bilinear form B(-K)^T, not the old real-K Hermitian form; decaying exterior sheet checked separately.",
+    "independent_method": "Strong-equation eight-state thickness propagator, no Galerkin matrices reused",
+    "classical_method": "Original six-state propagator plus separate K=0 analytic open-circuit thickness cutoff",
+    "temporal_K_grid": "41 points, 0<=K<=0.08, each of nine design scenarios",
+    "spatial_real_frequency_grid": "41 points spanning the full frozen classical K→0-to-ZGV frequency interval, two continued roots, each of nine scenarios",
+    "temporal_degree": 22,
+    "spatial_degree": 22,
+    "synthetic_H_degree": 30,
+    "convergence_degrees": [16, 20, 24, 28, 30],
+    "no_negative_reflection_inference": true
+  },
+  "synthetic_H_NOT_physical_calibration": {
+    "gradient_law": "A_jklmnp=ell^2 C_jkmn delta_lp",
+    "fixed_physical_ell_m": 5e-8,
+    "f_C_per_m": 0,
+    "independent_tensor_directions": ["H333=ha", "H113=H223=hb", "H131=H311=H232=H322=hc"],
+    "eta_values": [-0.8, -0.5, -0.1, 0, 0.1, 0.5, 0.8],
+    "normalization": "Each direction separately scaled so H:A^-1:H/a=eta^2; strict stability is NOT evidence of physical plausibility.",
+    "operating_K": [0.009890015583941397, 2.0],
+    "material_probes": {
+      "c33_Pa": [-500000000, 500000000],
+      "c44_Pa": [-50000000, 50000000],
+      "e33_C_per_m2": [-0.005, 0.005],
+      "interpretation": "Half the last printed increment, as rounding-scale sensitivity probes; NOT measured uncertainties or a probability model.",
+      "transport_joint_factor": [0.95, 1.05],
+      "transport_note": "Illustrative ±5% common variation of M and D, preserving the tabulated Einstein ratio; not measured uncertainty."
+    },
+    "physical_H_range_J_m": null,
+    "measured_gradient_tensor": null,
+    "measured_flexoelectric_tensor": null
+  },
+  "Qu_access": {
+    "doi": "10.1016/j.ijengsci.2024.104165",
+    "title": "A thermodynamically consistent theory for flexoelectronics: Interaction between strain gradient and electric current in flexoelectric semiconductors",
+    "target": "Actual Appendix C chemo-mechanical constitutive equations",
+    "attempts": [
+      {"route": "ScienceDirect full /science/article/pii/S0020722524001496 and abstract/PDF routes", "result": "Publisher preview/organizational-access content only; Appendix C named, equations absent"},
+      {"route": "https://api.elsevier.com/content/article/pii/S0020722524001496?httpAccept=text%2Fxml", "result": "Metadata response, not full text; no Appendix C equations"},
+      {"route": "Bounded exact-title/identifier/Appendix C PDF searches for Qu only", "result": "No accessible primary equations found; citing-paper snippets not used as a substitute"},
+      {"route": "Connected Drive: nontrashed fullText contains 104165 or name contains flexoelectronics/Flexoelectronics/Qu 2025", "result": "0 files; incomplete_search=false"}
+    ],
+    "actual_equations_inspected": false,
+    "novelty_status": "NOVELTY UNRESOLVED",
+    "no_claim_of_absence_equivalence_or_special_case": true
+  }
+}

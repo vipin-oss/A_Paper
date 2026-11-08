@@ -1,0 +1,750 @@
+{
+ "note": "Machine-readable registry of the quantitative claims in the manuscript; built and checked by claim_audit.py.",
+ "manuscript_root": "Paper_A_Final_Submission",
+ "deprecated": [
+  {
+   "text": "0.99985",
+   "why": "mislabelled total outgoing power"
+  },
+  {
+   "text": "28.06",
+   "why": "reciprocal survival factor"
+  },
+  {
+   "text": "93.19",
+   "why": "superseded headline: the 0.525 sample is not the maximum"
+  },
+  {
+   "text": "33.1",
+   "why": "superseded coupling figure at the 0.525 sample"
+  },
+  {
+   "text": "110 rows",
+   "why": "row count belongs with the data, not the text"
+  },
+  {
+   "text": "9.85",
+   "why": "mistranscribed H effect at k_x d=0.55; the stored value is -10.171 % (branch_consistent_H_sweep/k055_sample, eta=+0.05)"
+  },
+  {
+   "text": "0.99918",
+   "why": "stale outgoing total"
+  },
+  {
+   "text": "99.92",
+   "why": "stale outgoing total"
+  },
+  {
+   "text": "0.0231505",
+   "why": "legacy-model worked example"
+  },
+  {
+   "text": "0.579245",
+   "why": "value not present in any stored record"
+  }
+ ],
+ "claims": [
+  {
+   "id": "R_B_operating_point",
+   "value": 0.0192916,
+   "tolerance_rel": 0.005,
+   "in_abstract": true,
+   "source": "figure_data/peak_certification.json rows[case=operating_point, degree=30].R_B",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "1.93",
+     "value": 0.0192916
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "1.9292\\times10^{-2}",
+     "value": 0.0192916
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.019\\,292",
+     "value": 0.0192916
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "1.93",
+     "value": 0.0192916
+    }
+   ]
+  },
+  {
+   "id": "R_B_certified_maximum",
+   "value": 0.9428718,
+   "tolerance_rel": 0.002,
+   "in_abstract": true,
+   "source": "figure_data/peak_search.json classification.R_B_reported (k_x d = 0.5275, degree 22)",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "94.29",
+     "value": 0.9429
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.942\\,872",
+     "value": 0.942872
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.9428718",
+     "value": 0.9428718
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "94.29",
+     "value": 0.9429
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "94.29",
+     "value": 0.9429
+    }
+   ]
+  },
+  {
+   "id": "R_B_at_located_argmax",
+   "value": 0.9428718,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json classification.R_B_at_max (k_x d = 0.52752)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9428718",
+     "value": 0.9428718
+    }
+   ]
+  },
+  {
+   "id": "R_B_earlier_sample",
+   "value": 0.9256041,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=round7_sample, degree=30].R_B",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.925\\,604",
+     "value": 0.9256041
+    }
+   ]
+  },
+  {
+   "id": "R_B_k055_sample",
+   "value": 0.5519095,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=k055_sample, degree=30].R_B",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.551\\,910",
+     "value": 0.5519095
+    }
+   ]
+  },
+  {
+   "id": "total_outgoing_peak",
+   "value": 1.0005,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "Phase-5 budget recompute (04_CODE/phase5/budget.py): refined_peak total outgoing propagating",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "1.00050",
+     "value": 1.0005
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "100.05",
+     "value": 1.0005
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "1.00050",
+     "value": 1.0005
+    }
+   ]
+  },
+  {
+   "id": "total_outgoing_operating",
+   "value": 0.9998,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=operating_point].total_outgoing_propagating",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.99980",
+     "value": 0.9998
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_operating",
+   "value": 1.21,
+   "tolerance_rel": 0.05,
+   "in_abstract": true,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05] vs operating_point",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "1.21",
+     "value": 1.21
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "1.21",
+     "value": 1.21
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_peak",
+   "value": 36.1,
+   "tolerance_rel": 0.02,
+   "in_abstract": true,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05]/H=0",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "36.1",
+     "value": 36.1
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "36.1",
+     "value": 36.1
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "36.1",
+     "value": 36.1
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "36.1",
+     "value": 36.1
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_peak_edge_plane",
+   "value": 13.8,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak R_B_edge ratio",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "13.8",
+     "value": 13.8
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "13.8",
+     "value": 13.8
+    }
+   ]
+  },
+  {
+   "id": "attenuation_peak_backward",
+   "value": 87.0,
+   "tolerance_rel": 0.03,
+   "in_abstract": false,
+   "source": "figure_data/peak_certification.json rows[case=refined_peak].backward attenuation 8.686*2|ImK|/d",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "87",
+     "value": 87.0
+    }
+   ]
+  },
+  {
+   "id": "wavenumber_ratio_peak",
+   "value": 0.996,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275].K_ratio",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9960",
+     "value": 0.996
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "0.996",
+     "value": 0.996
+    }
+   ]
+  },
+  {
+   "id": "incident_wavenumber_peak",
+   "value": 0.5282,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275].K_incident[0] (NOT the branch parameter 0.5275 and NOT KB0)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.5282",
+     "value": 0.5282
+    }
+   ]
+  },
+  {
+   "id": "degree_stability_peak",
+   "value": 1e-05,
+   "tolerance_rel": 1e-12,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json verdict.degree_spread[*]",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "10^{-5}",
+     "value": 1e-05
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "10^{-5}",
+     "value": 1e-05
+    }
+   ],
+   "kind": "bound",
+   "note": "upper bound: the quantity is a difference of nearly equal numbers on the round-off floor, so the manuscript quotes a bound and the gate checks data <= bound (round-11 defect D9)"
+  },
+  {
+   "id": "quadrature_stability_peak",
+   "value": 1e-08,
+   "tolerance_rel": 1e-12,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json verdict.quadrature_spread",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "10^{-8}",
+     "value": 1e-08
+    }
+   ],
+   "kind": "bound",
+   "note": "upper bound: the quantity is a difference of nearly equal numbers on the round-off floor, so the manuscript quotes a bound and the gate checks data <= bound (round-11 defect D9)"
+  },
+  {
+   "id": "incident_power_ratio_fold",
+   "value": 131.0,
+   "tolerance_rel": 0.02,
+   "in_abstract": true,
+   "source": "figure_data/peak_identity_audit.json cases.peak.modal_power_incident_raw vs cases.operating_point",
+   "tokens": [
+    {
+     "file": "main.tex",
+     "text": "131",
+     "value": 131
+    },
+    {
+     "file": "sections/results.tex",
+     "text": "131",
+     "value": 131
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "131",
+     "value": 131
+    },
+    {
+     "file": "sections/conclusions.tex",
+     "text": "131",
+     "value": 131
+    }
+   ]
+  },
+  {
+   "id": "reference_plane_closure",
+   "value": 2e-16,
+   "tolerance_rel": 0.5,
+   "in_abstract": false,
+   "source": "figure_data/peak_identity_audit.json reference_plane.spread_relative",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "2\\times10^{-16}",
+     "value": 2e-16
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_k055_edge_plane",
+   "value": 1.649,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B_edge vs [no_coupling].R_B_edge (2.007 %)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "\\SI{1.65}{\\percent}",
+     "value": 1.65
+    }
+   ]
+  },
+  {
+   "id": "coupling_change_k055_reference_plane",
+   "value": -10.171,
+   "tolerance_rel": 0.02,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B vs [no_coupling].R_B (-9.854 %)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "\\SI{-10.17}{\\percent}",
+     "value": -10.17
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "\\SI{-10.17}{\\percent}",
+     "value": -10.17
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_certified_maximum",
+   "value": 0.9824311,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/peak_search.json degree[K=0.5275, degree=22].R_B_edge and figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[eta=0].R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.9824",
+     "value": 0.9824311
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_operating_point",
+   "value": 0.0192957,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json operating_point.no_coupling.R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.0193",
+     "value": 0.0192957
+    }
+   ]
+  },
+  {
+   "id": "R_B_edge_k055",
+   "value": 0.5529214,
+   "tolerance_rel": 0.005,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json k055_sample.no_coupling.R_B_edge",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "0.5529",
+     "value": 0.5529214
+    }
+   ]
+  },
+  {
+   "id": "coupling_frequency_shift_max",
+   "value": 183.7115,
+   "tolerance_rel": 0.002,
+   "in_abstract": false,
+   "source": "figure_data/fig01_dispersion_velocity_attenuation.csv: max |f(H)-f(0)| over the plotted grid",
+   "note": "maximum |df| = 183.7 kHz at k_xd = 1.05, H/H* = +0.05 (units: kHz)",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "184}{\\kilo\\hertz",
+     "value": 183.7
+    }
+   ]
+  },
+  {
+   "id": "H_effect_operating",
+   "value": 1.21,
+   "tolerance_rel": 0.02,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep/operating_point eta=+0.05 vs eta=0, R_B",
+   "note": "magnitude of the relative change (the paper says the coupling reduces the share); signed value -1.210 % from branch_consistent_H_sweep/operating_point",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "1.21}{\\percent} at the\noperating point",
+     "value": 1.21
+    }
+   ]
+  },
+  {
+   "id": "H_effect_k055",
+   "value": 10.171,
+   "tolerance_rel": 0.02,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep/k055_sample eta=+0.05 vs eta=0, R_B",
+   "note": "magnitude of the relative change (reduction); signed value -10.171 % from branch_consistent_H_sweep/k055_sample",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "10.17}{\\percent} at $k_xd=0.55$",
+     "value": 10.17
+    },
+    {
+     "file": "sections/discussion.tex",
+     "text": "10.17}{\\percent} at\n$k_xd=0.55$",
+     "value": 10.17
+    }
+   ]
+  },
+  {
+   "id": "H_effect_peak",
+   "value": 36.122,
+   "tolerance_rel": 0.02,
+   "in_abstract": false,
+   "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep/refined_peak eta=+0.05 vs eta=0, R_B",
+   "note": "magnitude of the relative change (reduction); signed value -36.122 % from branch_consistent_H_sweep/refined_peak",
+   "tokens": [
+    {
+     "file": "sections/results.tex",
+     "text": "36.1}{\\percent} at the maximum",
+     "value": 36.1
+    }
+   ]
+  },
+  {
+   "id": "traction_only_fails",
+   "value": 17.0,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate1_traction_identity.json: mode_identity.traction_plain, worst reflected mode, degree 12",
+   "note": "the same identity without the corner term",
+   "tokens": [
+    {
+     "file": "sections/governing_equations.tex",
+     "text": "$1.7\\times10^{1}$ if the corner terms are dropped",
+     "value": 17.0
+    }
+   ]
+  },
+  {
+   "id": "corner_identity_residual",
+   "value": 1.4e-13,
+   "tolerance_rel": 0.25,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate1_traction_identity.json: mode_identity.traction_incl_corner (incident, degree 12)",
+   "note": "projected traction row equals traction + corner line force, relative residual",
+   "tokens": [
+    {
+     "file": "sections/governing_equations.tex",
+     "text": "$1.4\\times10^{-13}$ relative for the incident guided mode",
+     "value": 1.4e-13
+    },
+    {
+     "file": "sections/numerical_methods.tex",
+     "text": "$1.4\\times10^{-13}$ for the incident",
+     "value": 1.4e-13
+    }
+   ]
+  },
+  {
+   "id": "traction_only_fails",
+   "value": 17.0,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate1_traction_identity.json: mode_identity.traction_plain (worst reflected mode, degree 12)",
+   "note": "the same identity with the corner term omitted",
+   "tokens": [
+    {
+     "file": "sections/governing_equations.tex",
+     "text": "$1.7\\times10^{1}$ if the corner terms are dropped",
+     "value": 17.0
+    }
+   ]
+  },
+  {
+   "id": "corner_only_tau31_fails",
+   "value": 0.57,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate1_traction_identity.json: corner variants, degree 12",
+   "note": "identity residual when only tau_i31 is retained",
+   "tokens": [
+    {
+     "file": "sections/governing_equations.tex",
+     "text": "$5.7\\times10^{-1}$ if only",
+     "value": 0.57
+    }
+   ]
+  },
+  {
+   "id": "corner_subtracted_fails",
+   "value": 1.1,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate1_traction_identity.json: corner variants, degree 12",
+   "note": "identity residual when the two hyperstress components are subtracted",
+   "tokens": [
+    {
+     "file": "sections/governing_equations.tex",
+     "text": "$1.1\\times10^{0}$ if the two are subtracted",
+     "value": 1.1
+    }
+   ]
+  },
+  {
+   "id": "corner_force_operating_n10",
+   "value": 0.084,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 10",
+   "note": "corner line force over the incident corner scale",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$8.4\\times10^{-2}$ at the operating point",
+     "value": 0.084
+    }
+   ]
+  },
+  {
+   "id": "corner_force_operating_n28",
+   "value": 0.045,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 28",
+   "note": "corner line force at degree 28; fitted law 3.51e-1 n^-0.618",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$4.5\\times10^{-2}$",
+     "value": 0.045
+    }
+   ]
+  },
+  {
+   "id": "corner_force_peak_n10",
+   "value": 0.0033,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 10",
+   "note": "corner line force at the corrected maximum",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$3.3\\times10^{-3}$ at the corrected",
+     "value": 0.0033
+    }
+   ]
+  },
+  {
+   "id": "corner_force_peak_n28",
+   "value": 0.0017,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 28",
+   "note": "corner line force at the corrected maximum, degree 28",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$1.7\\times10^{-3}$ and",
+     "value": 0.0017
+    }
+   ]
+  },
+  {
+   "id": "corner_force_k055_n10",
+   "value": 0.038,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, k_x d = 0.55, degree 10",
+   "note": "corner line force at k_x d = 0.55",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$3.8\\times10^{-2}$ at $k_xd=0.55$",
+     "value": 0.038
+    }
+   ]
+  },
+  {
+   "id": "corner_force_k055_n28",
+   "value": 0.02,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, k_x d = 0.55, degree 28",
+   "note": "corner line force at k_x d = 0.55, degree 28",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$2.0\\times10^{-2}$ at degree 28",
+     "value": 0.02
+    }
+   ]
+  },
+  {
+   "id": "partition_insensitive_to_corner",
+   "value": 3.9e-06,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: R_B at K=0.52719, degree 10 vs 28 (0.9428755916 vs 0.9428717260)",
+   "note": "change of the reported partition while the corner force halves",
+   "tokens": [
+    {
+     "file": "sections/discussion.tex",
+     "text": "$3.9\\times10^{-6}$ between degrees 10 and 28",
+     "value": 3.9e-06
+    }
+   ]
+  },
+  {
+   "id": "traction_pointwise_residual_peak",
+   "value": 0.00094,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: traction_inner_rel, corrected maximum, degree 28",
+   "note": "interior pointwise traction residual of the complete field",
+   "tokens": [
+    {
+     "file": "sections/numerical_methods.tex",
+     "text": "$9.4\\times10^{-4}$",
+     "value": 0.00094
+    }
+   ]
+  },
+  {
+   "id": "traction_pointwise_residual_operating",
+   "value": 0.036,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: traction_inner_rel, operating point, degree 28",
+   "note": "interior pointwise traction residual at the operating point",
+   "tokens": [
+    {
+     "file": "sections/numerical_methods.tex",
+     "text": "$3.6\\times10^{-2}$",
+     "value": 0.036
+    }
+   ]
+  }
+ ]
+}

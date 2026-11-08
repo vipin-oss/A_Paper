@@ -1,0 +1,334 @@
+{
+ "cases": {
+  "operating_point": {
+   "K_branch": 0.7361990195318475,
+   "omega": 7.6333724044290605,
+   "R_B": 0.019291601863518266,
+   "R_B_rebuilt": 0.019291601863518266,
+   "R_B_rebuild_difference": 0.0,
+   "K_backward": [
+    0.24517469208597725,
+    -5.230595054132129e-06
+   ],
+   "K_incident": [
+    0.7361990195739546,
+    5.4027186525789846e-06
+   ],
+   "incident_offset": 4.2107095588050925e-11,
+   "delta_K_complex": [
+    -0.49102432748797736,
+    -1.0633313706711114e-05
+   ],
+   "delta_K_abs": 0.49102432760311154,
+   "delta_K_over_decay": 45442.33738404288,
+   "second_candidate_K": [
+    -0.7361990195739907,
+    -5.4027186663568166e-06
+   ],
+   "second_candidate_distance": 0.981373711659983,
+   "candidate_separation_ratio": 4.00275290686407,
+   "overlap_incident_backward": 0.7941942235103214,
+   "overlap_max_other": 0.9418347992692038,
+   "singular_max": 3.0330695167635597,
+   "singular_min": 0.021527610931528524,
+   "condition": 140.892063053845,
+   "rank": 182,
+   "size": 182,
+   "amplitude_backward": 1.1184597767010986,
+   "amplitude_max_other": 13.169553050439285,
+   "solution_share_backward": 0.0023801143726848856,
+   "modal_power_backward": -0.015424813083015741,
+   "modal_power_incident_raw": 0.005075080621083051,
+   "x_flux_fraction": 0.88376796590271,
+   "negative_direction": true,
+   "residual": 2.7405790797601072e-15,
+   "balance": 2.4780958678936733e-13
+  },
+  "peak": {
+   "K_branch": 0.52719,
+   "omega": 7.619899201463953,
+   "R_B": 0.9428718390424711,
+   "R_B_rebuilt": 0.9428718390424711,
+   "R_B_rebuild_difference": 0.0,
+   "K_backward": [
+    0.5261564368329981,
+    -0.0010269383072626355
+   ],
+   "K_incident": [
+    0.5282114615508954,
+    0.0010280558005727842
+   ],
+   "incident_offset": 0.0010214615508953306,
+   "delta_K_complex": [
+    -0.0020550247178973136,
+    -0.0020549941078354195
+   ],
+   "delta_K_abs": 0.0029062221825605877,
+   "delta_K_over_decay": 1.4134554665911023,
+   "second_candidate_K": [
+    -0.5282114615621698,
+    -0.001028055807874222
+   ],
+   "second_candidate_distance": 1.05436789839576,
+   "candidate_separation_ratio": 2.0039019126753055,
+   "overlap_incident_backward": 0.9999949994951116,
+   "overlap_max_other": 0.8891639149294518,
+   "singular_max": 3.0330306785863126,
+   "singular_min": 0.021527464496219565,
+   "condition": 140.8912173153946,
+   "rank": 182,
+   "size": 182,
+   "amplitude_backward": 158.81289710163242,
+   "amplitude_max_other": 4.317730226324121,
+   "solution_share_backward": 0.9972283331919666,
+   "modal_power_backward": -3.895207342141579e-05,
+   "modal_power_incident_raw": 3.874547309538097e-05,
+   "x_flux_fraction": 0.9709285335946849,
+   "negative_direction": true,
+   "residual": 2.700540361257118e-15,
+   "balance": 6.22477992988358e-14
+  },
+  "flank": {
+   "K_branch": 0.55,
+   "omega": 7.62003693762228,
+   "R_B": 0.5519100424915215,
+   "R_B_rebuilt": 0.5519100424915215,
+   "R_B_rebuild_difference": 0.0,
+   "K_backward": [
+    0.5038041870658624,
+    -4.521401386005763e-05
+   ],
+   "K_incident": [
+    0.5500000452452916,
+    4.632655696575109e-05
+   ],
+   "incident_offset": 4.524529151339607e-08,
+   "delta_K_complex": [
+    -0.04619585817942917,
+    -9.154057082580872e-05
+   ],
+   "delta_K_abs": 0.04619594887660649,
+   "delta_K_over_decay": 498.5903540247858,
+   "second_candidate_K": [
+    -0.5500000452453404,
+    -4.632655569966634e-05
+   ],
+   "second_candidate_distance": 1.05380423231179,
+   "candidate_separation_ratio": 2.0916940651194893,
+   "overlap_incident_backward": 0.998732109753795,
+   "overlap_max_other": 0.8980317396384786,
+   "singular_max": 3.0330322596799273,
+   "singular_min": 0.021527472024347256,
+   "condition": 140.8912414913192,
+   "rank": 182,
+   "size": 182,
+   "amplitude_backward": 24.391129672697115,
+   "amplitude_max_other": 11.21946600616134,
+   "solution_share_backward": 0.5628503179017099,
+   "modal_power_backward": -0.0009293933862695963,
+   "modal_power_incident_raw": 0.0008210588890938313,
+   "x_flux_fraction": 0.9683713094667626,
+   "negative_direction": true,
+   "residual": 2.1714563495056306e-15,
+   "balance": 5.6158486249075275e-14
+  },
+  "window_start": {
+   "K_branch": 0.465,
+   "omega": 7.620830526277572,
+   "R_B": 0.2634571087056545,
+   "R_B_rebuilt": 0.2634571087056545,
+   "R_B_rebuild_difference": 0.0,
+   "K_backward": [
+    0.4649999974509591,
+    -1.714528609125783e-05
+   ],
+   "K_incident": [
+    0.5855068105401585,
+    1.822835445846598e-05
+   ],
+   "incident_offset": 0.1205068105401585,
+   "delta_K_complex": [
+    -0.12050681308919942,
+    -3.5373640549723806e-05
+   ],
+   "delta_K_abs": 0.12050681828099889,
+   "delta_K_over_decay": 3305.4771497772444,
+   "second_candidate_K": [
+    -0.5855068105402164,
+    -1.822835446589745e-05
+   ],
+   "second_candidate_distance": 1.0505068079917337,
+   "candidate_separation_ratio": 2.2591544366372505,
+   "overlap_incident_backward": 0.9911960293221376,
+   "overlap_max_other": 0.9102639464211113,
+   "singular_max": 3.0330353139913915,
+   "singular_min": 0.0215274854309703,
+   "condition": 140.89129562842234,
+   "rank": 182,
+   "size": 182,
+   "amplitude_backward": 9.917456428618705,
+   "amplitude_max_other": 13.383058368937405,
+   "solution_share_backward": 0.1346721194023253,
+   "modal_power_backward": -0.0026805046853055348,
+   "modal_power_incident_raw": 0.0019429479026850129,
+   "x_flux_fraction": 0.9631725356008599,
+   "negative_direction": true,
+   "residual": 2.4040453568355844e-15,
+   "balance": 2.9731648781239935e-13
+  }
+ },
+ "reference_plane": {
+  "rows": [
+   {
+    "L": 0.0,
+    "reference_distance_m": 0.0,
+    "R_B": 0.9824311332059171,
+    "net_exponent": 0.004109988215670839,
+    "R_B_scaled": 0.9428718390424712
+   },
+   {
+    "L": 5.0,
+    "reference_distance_m": 1e-06,
+    "R_B": 0.962448257985042,
+    "net_exponent": 0.004109988215670839,
+    "R_B_scaled": 0.9428718390424711
+   },
+   {
+    "L": 10.0,
+    "reference_distance_m": 2e-06,
+    "R_B": 0.9428718390424711,
+    "net_exponent": 0.004109988215670839,
+    "R_B_scaled": 0.9428718390424711
+   },
+   {
+    "L": 15.0,
+    "reference_distance_m": 3e-06,
+    "R_B": 0.923693608964014,
+    "net_exponent": 0.004109988215670839,
+    "R_B_scaled": 0.9428718390424714
+   },
+   {
+    "L": 20.0,
+    "reference_distance_m": 4e-06,
+    "R_B": 0.9049054684965854,
+    "net_exponent": 0.004109988215670839,
+    "R_B_scaled": 0.9428718390424712
+   }
+  ],
+  "net_exponent": 0.004109988215670839,
+  "spread_relative": 3.5324727454559617e-16,
+  "consistent": true,
+  "note": "R_B(L) exp(2(|Im k_ix|+|Im k_Bx|)(L-10)) is constant to the spread above: the partition is a property of the edge, not of the plane at which it is read, and both modal attenuations are resolved."
+ },
+ "flux_scale": {
+  "rows": [
+   {
+    "K": 0.3,
+    "R_B": 0.034083575525491475,
+    "K_ratio": 0.4245959552525373,
+    "incident_power": 0.0046239706707419176,
+    "attenuation": 0.48789947823441016
+   },
+   {
+    "K": 0.4,
+    "R_B": 0.105163146584097,
+    "K_ratio": 0.6261284246449441,
+    "incident_power": 0.003316098607690732,
+    "attenuation": 0.7559414053648643
+   },
+   {
+    "K": 0.465,
+    "R_B": 0.2634571087056545,
+    "K_ratio": 0.7941837551333929,
+    "incident_power": 0.0019429479026850129,
+    "attenuation": 1.489239549886655
+   },
+   {
+    "K": 0.5,
+    "R_B": 0.5077629867343961,
+    "K_ratio": 0.9031651852301196,
+    "incident_power": 0.0009434898762125173,
+    "attenuation": 3.3792535398883516
+   },
+   {
+    "K": 0.52,
+    "R_B": 0.8160329832211188,
+    "K_ratio": 0.9732051946039828,
+    "incident_power": 0.0002655088746077995,
+    "attenuation": 12.763744290948619
+   },
+   {
+    "K": 0.525,
+    "R_B": 0.9256042605375405,
+    "K_ratio": 0.9915675501121324,
+    "incident_power": 8.38931372156512e-05,
+    "attenuation": 41.035580168459866
+   },
+   {
+    "K": 0.5275,
+    "R_B": 0.9428520783782568,
+    "K_ratio": 0.9960165684399858,
+    "incident_power": 3.966976718401e-05,
+    "attenuation": 87.11447863866934
+   },
+   {
+    "K": 0.53,
+    "R_B": 0.9124388216301726,
+    "K_ratio": 0.9892662827864285,
+    "incident_power": 0.00010673476504810767,
+    "attenuation": 32.1903755616802
+   },
+   {
+    "K": 0.55,
+    "R_B": 0.5519100424915215,
+    "K_ratio": 0.9160075374924259,
+    "incident_power": 0.0008210588890938313,
+    "attenuation": 3.927289243884606
+   },
+   {
+    "K": 0.6,
+    "R_B": 0.20232188676381585,
+    "K_ratio": 0.7470237358681628,
+    "incident_power": 0.0023507519850463434,
+    "attenuation": 1.1804554266312484
+   },
+   {
+    "K": 0.65,
+    "R_B": 0.08774121080696438,
+    "K_ratio": 0.5925291949662381,
+    "incident_power": 0.00356187006274751,
+    "attenuation": 0.6861869057896457
+   },
+   {
+    "K": 0.75,
+    "R_B": 0.01421026038668088,
+    "K_ratio": 0.287180688101909,
+    "incident_power": 0.005264047241758803,
+    "attenuation": 0.45766437602648424
+   }
+  ],
+  "hump_window": [
+   0.465,
+   0.625
+  ],
+  "correlation_with_ratio": 0.8947632385912888,
+  "correlation_with_log_power": -0.9779977437297107,
+  "hump_correlation_with_ratio": 0.975391541792684,
+  "hump_correlation_with_log_power": -0.9631087610693418,
+  "power_range": [
+   3.966976718401e-05,
+   0.005264047241758803
+  ],
+  "note": "Inside the hump window R_B tracks the wavenumber ratio and is anti-correlated with the incident flux, which is the expected zero-group-velocity signature, not evidence of a 0/0 artefact: an artefact would show as instability, and the same value is reproduced to 1e-9 across degrees, quadratures, planes and tracking paths.  The relative error bound of the projection is cond*eps = 3e-14, eight orders below the quoted precision."
+ },
+ "verdict": {
+  "reference_plane_consistent": true,
+  "reference_plane_spread": 3.5324727454559617e-16,
+  "reconstruction_max_difference": 0.0,
+  "min_candidate_separation_ratio": 2.0039019126753055,
+  "max_condition": 140.892063053845,
+  "min_delta_K_over_decay": 1.4134554665911023,
+  "relative_error_bound": 3.128432247786361e-14,
+  "artefact": false
+ }
+}

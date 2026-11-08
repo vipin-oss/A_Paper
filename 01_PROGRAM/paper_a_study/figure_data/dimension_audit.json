@@ -1,0 +1,32 @@
+{
+  "dimensional_homogeneity": true,
+  "groups": {
+    "d_m": 2e-07,
+    "n0_per_m3": 2e+18,
+    "T_implied_K": 301.71747116030207,
+    "a_analytic_J_m3": 2.0828296241999997e-39,
+    "a_code": 2.0828296241999997e-39,
+    "debye_length_m": 2.6797119602985517e-06,
+    "Q_code": 0.07463488724277575,
+    "Q_analytic": 0.07463488724277575,
+    "alpha_code": 0.8282941632839342,
+    "alpha_analytic": 0.8282941632839342,
+    "lambda": 0.25,
+    "f_code": 0.0025630916819169717,
+    "f_analytic": 0.0025630916819169717,
+    "c_reduced_Pa": 154383685800.60425,
+    "H_bound_J_m": 8.965976163791136e-22,
+    "schur_code_at_Htest": 0.0005000000006544235,
+    "schur_analytic_at_Htest": 0.0005000000006544235,
+    "h_per_eta": 0.2118465918752245,
+    "sigma_e_S_per_m": 0.005607618219,
+    "epsilon33_F_per_m": 8.85e-11,
+    "cs_m_per_s": 2746.608754286421
+  },
+  "tensor_contraction": {
+    "candidate1_residual": 2.1200564796802846e-13,
+    "candidate2_residual": 3120089.016718819,
+    "implemented": "A_(ijk)(lmn) = ell^2 c_(ij)(lm) delta_(kn)",
+    "verdict": "candidate 1"
+  }
+}
