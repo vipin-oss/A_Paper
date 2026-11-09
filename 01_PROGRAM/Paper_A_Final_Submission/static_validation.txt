@@ -3,7 +3,7 @@ Paper A static validation
 
 files checked: 8
 labels: 112   references: 77
-citation keys used: 48   bib entries: 60
+citation keys used: 49   bib entries: 61
 
 PASS
 
@@ -55,6 +55,6 @@ Notes:
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_scope
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 18433
+  - approximate prose word count (including math tokens): 17896
 
 No TeX engine was invoked by this script.

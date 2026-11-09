@@ -199,7 +199,7 @@ changes by at most $7\times10^{-2}$ degree, at the maximum, and the group
 velocity by less than $0.2\,\si{\metre\per\second}$.  Every plotted row satisfies
 the conservation bound \eqref{eq:admissible}.
 
-\subsection{The branch maximum and its convergence}
+\subsection{The branch maximum}
 \label{sec:results_peak}
 \label{sec:results_certification}
 
@@ -209,14 +209,14 @@ The quantity maximized is the one defined by \eqref{eq:RB}: the modal self-power
 
 The maximum has a simple reading.  At the fold the group velocity vanishes ($+0.01\,\si{\metre\per\second}$ against $-187$ and $+409\,\si{\metre\per\second}$ at the ends of the solved window) and the backward and incident wavenumbers differ by \SI{0.4}{\percent}, so the two modes are nearly parallel and the edge conditions can be met with only a small admixture of the other outgoing modes; the projection onto the backward mode then takes almost all of the partition.  Panel (c) of \cref{fig:fig04} shows this: all coupling levels collapse onto one curve in $k_{Bx}/k_{ix}$, with the conversion maximal as the ratio approaches unity, and the conversion falls steeply on both flanks.  A grid of $\Delta k_xd=0.05$ would miss the maximum because the whole top of the response is $10^{-3}$ wide.  The same fold makes the incident flux fall by a factor of $131$ with respect to the operating point, so the partition is maximal where the transported power is minimal: that ninety-four percent of the energy is turned around would be true as a ratio and false as an energy budget, and only the ratio is claimed.  The outgoing propagating modes carry all of the incident power to within \SI{0.1}{\percent} (\cref{sec:results_channel}), so the plate is an almost perfect scatterer and the question is into which branch the power goes.  A measurement of the total reflectance would see essentially unity everywhere on the branch; the negative reflection requires modal resolution, by a wavenumber filter or a time-of-flight separation of the branches.
 
-\subsection{The maximum read as a modal share and the energy budget of the edge}
+\subsection{Modal share and energy budget at the maximum}
 \label{sec:results_artefact}
 \label{sec:results_channel}
 
 Three properties of the solution decide whether such a number can be read at
 face value.
 
-\emph{A small denominator.}  The incident flux at the maximum is small, a
+The incident flux at the maximum is small, a
 factor $131$ below its value at the operating point, so the fraction could in
 principle be a ratio of two nearly vanishing quantities.  It is not: the value
 is reproduced to better than $10^{-5}$ across six Galerkin degrees, to
@@ -225,7 +225,7 @@ different tracking paths that reach the same wavenumber from below, from above
 and in a single step.  A ratio of two independently vanishing numbers would
 scatter under all three.
 
-\emph{Reference plane and port.}  The reference plane is moved from $0$ to $20$
+The reference plane is moved from $0$ to $20$
 thicknesses and the partition is rescaled by
 $\exp[2(|\Imag k_{ix}|+|\Imag k_{Bx}|)(L-L_{\text{ref}})/d]$, which is the net
 attenuation of the two partner modes travelling in opposite directions.  The
@@ -240,7 +240,7 @@ is also unique: the second outgoing candidate lies $2.0|k_x|$ away, the
 condition number of the normalized edge matrix is $1.4\times10^{2}$, and the
 relative error bound of the projection is $\text{cond}\times\epsilon=4\times10^{-14}$.
 
-\emph{Nearly parallel modes.}  The incident and backward eigenvectors
+The incident and backward eigenvectors
 are nearly parallel, with overlap $0.999995$, and their wavenumbers are
 separated by $1.45$ times the modal decay rate: close, but resolved.  The share also varies smoothly through the fold, taking the values $0.942\,777$, $0.942\,869$, $0.942\,872$, $0.942\,866$ and $0.942\,818$ at $k_xd=0.5267$, $0.5270$, $0.52719$, $0.5274$ and $0.5276$ at degree $22$, while the relative separation of the two wavenumbers stays within $0.2$ percent of its value at the maximum.  The
 partition rebuilt from the amplitudes and modal powers alone reproduces the computed value to machine precision, which is the direct statement that no
@@ -350,7 +350,7 @@ shift of $H$, which reaches $6.3\times10^{-5}$ in $\omega$.
 \label{fig:fig05}
 \end{figure}
 
-\subsection{What creates the backward channel, and how far it persists}
+\subsection{The backward channel}
 \label{sec:results_mechanism}
 \label{sec:results_attenuation}
 
@@ -487,7 +487,7 @@ the opposite of what one might expect from the magnitude of the term
 \label{fig:fig06}
 \end{figure}
 
-\subsection{Coupling sensitivity and the through-thickness flux}
+\subsection{Coupling and the through-thickness flux}
 \label{sec:results_coupling}
 \label{sec:results_boundary}
 
@@ -589,7 +589,7 @@ the collapse reflects that product and not either parameter separately.
 
 The ordering of these sensitivities is a property of the coupling and the operating point together: $k_y$ changes the backward channel by a factor of $1.41$ across the solved box while $H$ moves it by \SI{1.21}{\percent} at the operating point, but at the maximum the coupling moves the partition by \SI{36.1}{\percent}, and the $k_y$ sweep was not repeated there.  Any statement about the added coupling must therefore be made at fixed $k_y$, and an experimental attempt to see it must control the transverse wavenumber much better than the doping or the mobility.
 
-\subsection{Independent cross-checks and the near field}
+\subsection{Validation and the near field}
 \label{sec:results_validation}
 \label{sec:results_field}
 
@@ -665,7 +665,7 @@ tend to a common small value as $k_yd\to0.2$.
 \label{fig:fig10}
 \end{figure}
 
-\subsection{Sensitivity of the fold conversion to carrier density and to structural loss}
+\subsection{Carrier density and structural loss at the fold}
 \label{sec:results_sens}
 
 The two sweeps above vary the carrier density over a factor of three and contain no
@@ -673,7 +673,7 @@ loss other than carrier conduction and diffusion.  Because the conversion is lar
 flux nearly vanishes, both limits were tested with the same branch-following definition of $R_B$
 ($L=10\,d$, $k_yd=0.1298$, $H=0$).
 
-\emph{Carrier density.}  The search for the fold was repeated at six densities from
+The search for the fold was repeated at six densities from
 $2\times10^{18}$ to $2\times10^{23}\,\si{\per\cubic\metre}$, which takes $Q=d/L_D$ from $0.075$ to $24$.  This range covers the densities of nominally undoped ZnO compiled in Table~VII of \cite{ozgur2005zno}, $8\times10^{19}$--$5\times10^{23}\,\si{\per\cubic\metre}$, up to its upper end.  The
 maximum falls from $0.943$ through $0.828$ to $0.545$ over the first three densities ($2\times10^{18}$, $2\times10^{19}$, $2\times10^{20}\,\si{\per\cubic\metre}$), with the argmax inside the raster.  From
 $2\times10^{21}\,\si{\per\cubic\metre}$ upward the largest sampled value in a window of $\pm0.03$ about the
@@ -687,7 +687,7 @@ partition therefore holds for the range of \cref{fig:fig02}; at the fold the par
 For orientation, Zhang et al.\ \cite{zhang2025pscplate} find for a simply supported plate under static load and in free vibration that the semiconductor coupling is active only within a window of initial electron concentration, which moves to larger concentrations as the plate becomes thinner; the concentration at which their damping is largest is $10^{18.6}$, $10^{19.6}$ and $10^{20.6}\,\si{\per\cubic\metre}$ for $h=30$, $3$ and $0.3\,\si{\micro\metre}$.  The present plate ($d=\SI{200}{\nano\metre}$, $n_0\le3\times10^{18}\,\si{\per\cubic\metre}$ in the main sweeps) lies below these values, so the carrier results describe the weakly conducting side of that window.  For shear-horizontal waves in ZnO plates, Li et al.\ \cite{li2023sh} report that an initial density below $2\times10^{18}\,\si{\per\cubic\metre}$ barely changes the cut-off frequencies and that above $10^{23}\,\si{\per\cubic\metre}$ the plate responds as an elastic one, which is consistent with the density range scanned here.  Dispersion and damping of Rayleigh-type waves in a piezo-thermo-electric semiconductor with fractional and nonlocal effects have also been computed \cite{aldandani2026kg}.
 
 
-\emph{Structural loss.}  The model contains no intrinsic elastic loss.  To measure the effect of one, the elastic
+The model contains no intrinsic elastic loss.  To measure the effect of one, the elastic
 and gradient-elastic tensors were multiplied by $1-\mathrm i\eta$ (time dependence $e^{-\mathrm i\omega t}$), a loss tangent $\eta$, i.e.\ a
 quality factor $1/\eta$, with the carrier terms unchanged.  The form and the values of $\eta$ are assumed; none is taken from a measurement.  Viscoelastic loss of the Kelvin--Voigt type has been treated for nonlocal piezo-semiconductors elsewhere \cite{gupta2026heatmap}.
 The frequency was scanned over 41 values within $\pm3\times10^{-3}$ of the lossless fold frequency and the largest $R_B$ is

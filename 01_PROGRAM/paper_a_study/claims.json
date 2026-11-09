@@ -99,11 +99,6 @@
      "file": "sections/conclusions.tex",
      "text": "94.29",
      "value": 0.9429
-    },
-    {
-     "file": "sections/conclusions.tex",
-     "text": "94.29",
-     "value": 0.9429
     }
    ]
   },
@@ -146,16 +141,6 @@
      "file": "sections/results.tex",
      "text": "1.00050",
      "value": 1.0005
-    },
-    {
-     "file": "sections/conclusions.tex",
-     "text": "100.05",
-     "value": 1.0005
-    },
-    {
-     "file": "sections/results.tex",
-     "text": "1.00050",
-     "value": 1.0005
     }
    ]
   },
@@ -194,11 +179,6 @@
      "file": "sections/conclusions.tex",
      "text": "1.21",
      "value": 1.21
-    },
-    {
-     "file": "sections/conclusions.tex",
-     "text": "1.21",
-     "value": 1.21
     }
    ]
   },
@@ -223,11 +203,6 @@
      "file": "sections/conclusions.tex",
      "text": "36.1",
      "value": 36.1
-    },
-    {
-     "file": "sections/conclusions.tex",
-     "text": "36.1",
-     "value": 36.1
     }
    ]
   },
@@ -238,11 +213,6 @@
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak R_B_edge ratio",
    "tokens": [
-    {
-     "file": "sections/results.tex",
-     "text": "13.8",
-     "value": 13.8
-    },
     {
      "file": "sections/results.tex",
      "text": "13.8",
@@ -355,11 +325,6 @@
      "file": "sections/conclusions.tex",
      "text": "131",
      "value": 131
-    },
-    {
-     "file": "sections/conclusions.tex",
-     "text": "131",
-     "value": 131
     }
    ]
   },
@@ -398,11 +363,6 @@
    "in_abstract": false,
    "source": "figure_data/mechanism_controls.json cases[k055_sample][full].R_B vs [no_coupling].R_B (-9.854 %)",
    "tokens": [
-    {
-     "file": "sections/results.tex",
-     "text": "\\SI{-10.17}{\\percent}",
-     "value": -10.17
-    },
     {
      "file": "sections/results.tex",
      "text": "\\SI{-10.17}{\\percent}",
@@ -619,51 +579,6 @@
      "file": "sections/numerical_methods.tex",
      "text": "$3.6\\times10^{-2}$",
      "value": 0.036
-    }
-   ]
-  },
-  {
-   "id": "corner_force_operating_n10",
-   "value": 0.084,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 10",
-   "note": "corner line force over the incident corner scale",
-   "tokens": [
-    {
-     "file": "sections/conclusions.tex",
-     "text": "$8.4\\times10^{-2}$",
-     "value": 0.084
-    }
-   ]
-  },
-  {
-   "id": "corner_force_peak_n10",
-   "value": 0.0033,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 10",
-   "note": "corner line force at the corrected maximum",
-   "tokens": [
-    {
-     "file": "sections/conclusions.tex",
-     "text": "$3.3\\times10^{-3}$",
-     "value": 0.0033
-    }
-   ]
-  },
-  {
-   "id": "partition_insensitive_to_corner",
-   "value": 3.9e-06,
-   "tolerance_rel": 0.1,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: R_B at K=0.52719, degree 10 vs 28 (0.9428755916 vs 0.9428717260)",
-   "note": "change of the reported partition while the corner force halves",
-   "tokens": [
-    {
-     "file": "sections/conclusions.tex",
-     "text": "$3.9\\times10^{-6}$",
-     "value": 3.9e-06
     }
    ]
   }

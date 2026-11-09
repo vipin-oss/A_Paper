@@ -11,7 +11,7 @@ in this zip.  No network, no GPU and no random numbers are used.
 
 | Folder | Content |
 |---|---|
-| `02_MANUSCRIPT/` | LaTeX source (`main.tex`, `sections/*.tex`, `references.bib`, `figures/`) and `PAPER_A.pdf` (49 pages, 12 pt) |
+| `02_MANUSCRIPT/` | LaTeX source (`main.tex`, `sections/*.tex`, `references.bib`, `figures/`) and `PAPER_A.pdf` (48 pages, 12 pt) |
 | `01_PROGRAM/` | the Python solver and every check (`paper_a_study/model.py` is the solver) |
 | `01_PROGRAM/paper_a_study/figure_data/` | stored datasets behind every figure and table |
 | `03_EXPECTED_OUTPUTS/` | the output the author's run produced, to compare with yours |

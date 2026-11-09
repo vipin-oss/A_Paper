@@ -207,7 +207,7 @@ the elastic term, multiplied by the $2j(j+1)(2j+1)$ growth of the stiffness
 matrix \eqref{eq:app_S} with the mode number.  Hence each block is equilibrated row by row before the eigenvalue problem is formed, and the
 conditioning quoted below is that of the equilibrated problem.
 
-\subsection{Modes, the free-edge system and the conditions on a reported share}
+\subsection{Modes, the free-edge system and the modal share}
 \label{sec:numerics_routes}
 \label{sec:numerics_edge}
 \label{sec:numerics_admissibility}
@@ -335,7 +335,7 @@ of the branch to the coincidence condition.
 A computed share is reported when it satisfies three conditions, none of which
 is a plotting threshold.
 
-\emph{Conservation.}  The backward mode is one of the outgoing modes, so its
+The backward mode is one of the outgoing modes, so its
 self-power cannot exceed the power available at the plane,
 \begin{equation}
 \label{eq:admissible}
@@ -348,18 +348,18 @@ mode carries more power than the incident wave plus the interference, which no
 solution of the boundary-value problem can do; such a row indicates that the
 identified mode is not the continuation of the backward branch.
 
-\emph{Convergence.}  The reported quantity must be stable under refinement of
+The reported quantity must be stable under refinement of
 the Galerkin degree.  The peak study shows that both the
 operating-point value and the branch maximum change by less than $10^{-5}$
 between degree 18 and degree 30.
 
-\emph{Resolution of the computed projection.}  $R_B$ is a ratio of $x$ fluxes.
+$R_B$ is a ratio of $x$ fluxes.
 When the energy angle of a mode approaches $\pm90^{\circ}$ its $x$ flux
 vanishes and the ratio loses meaning even though the mode itself is perfectly
 well resolved.  The flux fraction
 $|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is evaluated at each point, and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
 
-\subsection{Consistency and independent checks}
+\subsection{Validation}
 \label{sec:numerics_verification}
 
 The implementation is checked in six independent ways, each of which compares
@@ -373,13 +373,13 @@ solution reproduces the first three of them to $10^{-9}$.
 \item \emph{Exact strain-gradient limit.}  With $\ell\neq0$ the fundamental
 shear-horizontal branch has the closed form
 $\Omega^{2}=(c_{66}/c_{44})K^{2}(1+\lambda^{2}K^{2})$, reproduced to $10^{-10}$.
-\item \emph{Independent strong-form propagator.}  An eight-state classical
+\item \emph{Strong-form propagator.}  An eight-state classical
 sagittal system and a twelve-state gradient system are integrated directly as
 ODEs, with no spectral matrices.  They reproduce the spectral frequencies to
 $10^{-10}$ for both the grounded and the open-circuit problem, and with
 nonzero $f$ and $H$.
-\item \emph{Independent discretization.}  A $C^1$ finite-element plate
-formulation in the thickness direction (it keeps the modal $x$-dependence, so it tests the thickness discretization and not the two-dimensional corner) converges monotonically to the spectral
+\item \emph{Finite-element plate.}  A $C^1$ finite-element plate
+formulation in the thickness direction (it keeps the modal $x$-dependence, so it tests the thickness discretization and not the two-dimensional corner; for finite-element analysis of second-order strain-gradient elasticity see \cite{gupta2027ellipsoidal}) converges monotonically to the spectral
 edge result at an observed order between $3.9$ and $4.4$, with an error below
 $3\times10^{-5}$ on the finest mesh.  This is the only check in the list that tests the edge problem; the dispersion checks do not.
 \item \emph{Two-dimensional finite-element solution.}  The same variational problem is solved directly on the $(x,z)$ cross-section, without modal $x$-dependence, at the operating point.  The thickness basis is the spectral plate or the $C^{1}$ finite-element plate; in $x$ a degree-4 B-spline basis is graded geometrically towards the edge, with a first cell of $0.02\,d$ in the reference case, and a mass-proportional absorbing layer of length $170\,d$ terminates the strip, because a conventional perfectly matched layer fails for backward waves.  The incident mode enters as a scattered-field load, and the field on $-20d\le x\le-4d$ is fitted on the outgoing modes of \cref{sec:numerics_edge}.  The fitted backward share $R_B$ agrees with the modal value $0.019292$ to between $-0.14$ and $+0.42$~\% over the variations in \cref{tab:fe2d}.  The test applies at the operating point only: at the fold the incident and backward modes coincide, so the modal fit that this comparison relies on is not defined there.

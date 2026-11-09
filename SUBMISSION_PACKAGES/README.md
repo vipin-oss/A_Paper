@@ -1,3 +1,3 @@
 # Submission packages (download from this folder)
-* `PAPER_A_OVERLEAF_SUBMISSION.zip` -- the only package meant for the journal: manuscript (`main.tex`, `sections/`, `references.bib`), standalone `abstract.tex`, `highlights.tex`, `cover_letter.tex`, and `figures/` (10 vector PDFs).  49 pages at 12 pt.  Upload to Overleaf; see `README_OVERLEAF.md` inside.  The manuscript refers to no code or data files.
+* `PAPER_A_OVERLEAF_SUBMISSION.zip` -- the only package meant for the journal: manuscript (`main.tex`, `sections/`, `references.bib`), standalone `abstract.tex`, `highlights.tex`, `cover_letter.tex`, and `figures/` (10 vector PDFs).  48 pages at 12 pt.  Upload to Overleaf; see `README_OVERLEAF.md` inside.  The manuscript refers to no code or data files.
 * `PAPER_A_PROGRAM_PACKAGE.zip` -- the author's private archive (not submitted): solver, all checks, stored figure data, expected outputs, manuscript, `README_START_HERE.md` and `HANDOFF_NOTES.md`.

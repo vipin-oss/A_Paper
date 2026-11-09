@@ -89,17 +89,6 @@
       "pass_": true
     },
     {
-      "claim": "R_B_certified_maximum",
-      "file": "sections/conclusions.tex",
-      "text": "94.29",
-      "registered": 0.9428718,
-      "denoted": 0.9429,
-      "relative_difference": 2.990862596582349e-05,
-      "tolerance": 0.002,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
       "claim": "R_B_at_located_argmax",
       "file": "sections/results.tex",
       "text": "0.9428718",
@@ -116,28 +105,6 @@
       "text": "0.551\\,910",
       "registered": 0.5519095,
       "denoted": 0.5519095,
-      "relative_difference": 0.0,
-      "tolerance": 0.002,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "total_outgoing_peak",
-      "file": "sections/results.tex",
-      "text": "1.00050",
-      "registered": 1.0005,
-      "denoted": 1.0005,
-      "relative_difference": 0.0,
-      "tolerance": 0.002,
-      "occurrences": 3,
-      "pass_": true
-    },
-    {
-      "claim": "total_outgoing_peak",
-      "file": "sections/conclusions.tex",
-      "text": "100.05",
-      "registered": 1.0005,
-      "denoted": 1.0005,
       "relative_difference": 0.0,
       "tolerance": 0.002,
       "occurrences": 1,
@@ -199,17 +166,6 @@
       "pass_": true
     },
     {
-      "claim": "coupling_change_operating",
-      "file": "sections/conclusions.tex",
-      "text": "1.21",
-      "registered": 1.21,
-      "denoted": 1.21,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
       "claim": "coupling_change_peak",
       "file": "main.tex",
       "text": "36.1",
@@ -240,28 +196,6 @@
       "relative_difference": 0.0,
       "tolerance": 0.02,
       "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "coupling_change_peak",
-      "file": "sections/conclusions.tex",
-      "text": "36.1",
-      "registered": 36.1,
-      "denoted": 36.1,
-      "relative_difference": 0.0,
-      "tolerance": 0.02,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "coupling_change_peak_edge_plane",
-      "file": "sections/results.tex",
-      "text": "13.8",
-      "registered": 13.8,
-      "denoted": 13.8,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 2,
       "pass_": true
     },
     {
@@ -338,7 +272,7 @@
       "denoted": 1e-05,
       "relative_difference": 0.0,
       "tolerance": 1e-12,
-      "occurrences": 3,
+      "occurrences": 2,
       "pass_": true
     },
     {
@@ -386,17 +320,6 @@
       "pass_": true
     },
     {
-      "claim": "incident_power_ratio_fold",
-      "file": "sections/conclusions.tex",
-      "text": "131",
-      "registered": 131.0,
-      "denoted": 131,
-      "relative_difference": 0.0,
-      "tolerance": 0.02,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
       "claim": "reference_plane_closure",
       "file": "sections/results.tex",
       "text": "2\\times10^{-16}",
@@ -415,17 +338,6 @@
       "denoted": 1.65,
       "relative_difference": 0.0006064281382655488,
       "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "coupling_change_k055_reference_plane",
-      "file": "sections/results.tex",
-      "text": "\\SI{-10.17}{\\percent}",
-      "registered": -10.171,
-      "denoted": -10.17,
-      "relative_difference": 9.831874938545333e-05,
-      "tolerance": 0.02,
       "occurrences": 1,
       "pass_": true
     },
@@ -600,39 +512,6 @@
       "text": "$3.6\\times10^{-2}$",
       "registered": 0.036,
       "denoted": 0.036,
-      "relative_difference": 0.0,
-      "tolerance": 0.1,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_operating_n10",
-      "file": "sections/conclusions.tex",
-      "text": "$8.4\\times10^{-2}$",
-      "registered": 0.084,
-      "denoted": 0.084,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_peak_n10",
-      "file": "sections/conclusions.tex",
-      "text": "$3.3\\times10^{-3}$",
-      "registered": 0.0033,
-      "denoted": 0.0033,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "partition_insensitive_to_corner",
-      "file": "sections/conclusions.tex",
-      "text": "$3.9\\times10^{-6}$",
-      "registered": 3.9e-06,
-      "denoted": 3.9e-06,
       "relative_difference": 0.0,
       "tolerance": 0.1,
       "occurrences": 1,

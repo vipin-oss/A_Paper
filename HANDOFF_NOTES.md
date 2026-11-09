@@ -6,7 +6,7 @@ flexoelectric piezoelectric semiconductor plate.*  Author: Dr Vipin Gupta
 https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the user-owned fields below.**
 
 ## 1. Layout
-- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (49 pages, 12 pt).
+- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (48 pages, 12 pt).
   Build: `pdflatex main && bibtex main && pdflatex main && pdflatex main`.  Must give Overfull 0, undefined 0.
 - `01_PROGRAM/paper_a_study/` solver (`model.py`), figure data builder, all audits, tests, `fe2d*.py`.
 - `01_PROGRAM/Paper_A_Final_Submission/` synced copy of `main.tex` + `sections/` (read by static checks).
@@ -40,8 +40,8 @@ https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the use
 
 ## 4. Standing rules from the author
 - Diplomatic tone.  Do not follow GPT/other-LLM review blindly.  No proactive reviewer-anticipating text.
-- Never invent numbers, references or DOIs.  Every bib entry must have a DOI (currently 60/60 do).
-- At most 4 self-citations of Vipin Gupta, each in a different place (currently 3: gupta2025psvoid,
+- Never invent numbers, references or DOIs.  Every bib entry must have a DOI (currently 61/61 do).
+- At most 4 self-citations of Vipin Gupta, each in a different place (currently 4: gupta2027ellipsoidal, gupta2025psvoid,
   gupta2026heatmap, aldandani2026kg).
 - Wang 2025 (Rayleigh) removed, approved.  Do only mandatory changes; skip optional ones.
 - Declined: adding a "big name" author to avoid desk rejection (guest authorship is misconduct).
@@ -70,7 +70,7 @@ its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS
 5. Copy `main.tex` + `sections/` to `Paper_A_Final_Submission/`; copy `main.pdf` to `PAPER_A.pdf`.
 
 ## 8. Final state (this session)
-- Manuscript is 12 pt, 49 pages, no Discussion section, no appendix on data/code.  Introduction and Sections 2-5 were
+- Manuscript is 12 pt, 48 pages, no Discussion section, no appendix on data/code.  Introduction and Sections 2-5 were
   revised section by section by the author with outside language review; only genuine issues were adopted:
   generalized traction for arbitrary normal n, J_x notation, reduced single-component (f_3zz, H_zzz) statement,
   assembled-operator degree count, orthonormal basis b_j = sqrt(2j+1) P_j with degree n and N = n+1, gradient index l,
@@ -83,3 +83,7 @@ its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS
   density-only and mobility-only fold sweeps; fold validation by 2D FE (only the operating point is validated).
 - Workflow rule: edit in `paper_12_overleaf_submission` (GitHub, Overleaf-synced), `git pull --rebase` before pushing,
   then copy `main.tex`, `sections/`, `references.bib`, `main.pdf` into `02_MANUSCRIPT/` and `Paper_A_Final_Submission/`.
+- Conclusions were shortened at the author's request: six one-to-two-line findings plus a short usefulness paragraph; no
+  limitations list (the corner-force and FE-at-operating-point details stay in the results/appendix).  The three corner
+  claims were removed from `claims.json` because their only tokens were in the old Conclusions.
+- Added the author's own paper gupta2027ellipsoidal (Finite Elem. Anal. Des. 263, 104681, DOI 10.1016/j.finel.2026.104681) in Section 3 (FE plate check); self-citations are now 4 = the maximum, do not add more.
