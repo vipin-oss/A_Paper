@@ -110,16 +110,17 @@ relative spread between the five curves is below \SI{0.2}{\percent} over the ful
 The mobility behaves in the same way (panel d): over the factor-of-three range
 $0.00875$ to $0.02625\,\si{\square\metre\per\volt\per\second}$ the linewidth
 changes by the same factor of three, while the backward share is unchanged to
-the same $0.2$ percent.  The two sweeps are in fact identical row by row,
-because the density and the mobility enter the conduction term only through
-their product.  Both results are consistent with $Q=d/L_D=0.075<1$: the
+the same $0.2$ percent.  The two sweeps agree row by row because both quantities enter the conduction
+term through their product, while the density also enters the screening through
+$Q^{2}=5.6\times10^{-3}$, which is small here; the two are therefore equivalent at this $Q$ and not interchangeable in
+general (see \cref{sec:results_sens} for larger densities).  Both results are consistent with $Q=d/L_D=0.075<1$: the
 plate is thinner than the Debye length, the carrier perturbation is not confined
 to a surface layer, and the density enters the problem mainly through the
 conduction loss.
 
 Every row of this sweep satisfies the conservation bound \eqref{eq:admissible}; the curve in panel (c) extends to $k_xd=0.9$, falling below
 $10^{-7}$ beyond $k_xd=0.8$ and reaching between $3\times10^{-12}$ and $1\times10^{-11}$ at the last sample.  This is the backward port ceasing to carry energy, not a numerical failure.  Rows at that end have $|\cos\theta_E|\to0$, and the flux
-fraction is stored with each row so that the loss of resolution is visible.
+fraction is evaluated at each point so that the loss of resolution is visible.
 
 \begin{figure}[htbp]
 \centering
@@ -163,7 +164,7 @@ rasters are used: a coarse one over the full window and, at $H=0$ only, a fine
 one of spacing $\Delta k_xd=5\times10^{-4}$ across $0.520\le k_xd\le0.535$,
 because the top of the response is three orders of magnitude narrower than any
 raster that can be drawn on a single axis.  The number of rows is a property of
-the grid and is recorded with the data.
+the grid.
 
 The share along the branch is largest on its slow part.  It is $0.0341$
 at $k_xd=0.30$ ($f=\SI{16.676}{\giga\hertz}$), rises to $0.9429$ at
@@ -230,9 +231,9 @@ $\exp[2(|\Imag k_{ix}|+|\Imag k_{Bx}|)(L-L_{\text{ref}})/d]$, which is the net
 attenuation of the two partner modes travelling in opposite directions.  The
 rescaled values agree to $2\times10^{-16}$, so the number is a property of the
 edge and both attenuations are resolved and not assumed.  The transform is
-implemented once and imported everywhere it is used, and the stored edge-plane
-fractions of the search, of the matched controls and of the coupling dataset
-are reproduced by a fresh evaluation to $10^{-10}$ relative or better; the plane at
+applied identically to every result, and the edge-plane
+fractions of the search, of the matched controls and of the coupling study
+are reproduced by an independent re-evaluation to $10^{-10}$ relative or better; the plane at
 which a share is quoted is hence a reporting choice and not a second
 definition.  The backward port
 is also unique: the second outgoing candidate lies $2.0|k_x|$ away, the
@@ -241,8 +242,8 @@ relative error bound of the projection is $\text{cond}\times\epsilon=4\times10^{
 
 \emph{Nearly parallel modes.}  The incident and backward eigenvectors
 are nearly parallel, with overlap $0.999995$, and their wavenumbers are
-separated by $1.45$ times the modal decay rate: close, but resolved.  The
-partition rebuilt from the stored amplitudes and modal powers alone reproduces the computed value to machine precision, which is the direct statement that no
+separated by $1.45$ times the modal decay rate: close, but resolved.  The share also varies smoothly through the fold, taking the values $0.942\,777$, $0.942\,869$, $0.942\,872$, $0.942\,866$ and $0.942\,818$ at $k_xd=0.5267$, $0.5270$, $0.52719$, $0.5274$ and $0.5276$ at degree $22$, while the relative separation of the two wavenumbers stays within $0.2$ percent of its value at the maximum.  The
+partition rebuilt from the amplitudes and modal powers alone reproduces the computed value to machine precision, which is the direct statement that no
 eigenvector phase or scale enters the result.  What the near-coincidence does
 change is interpretation, not accuracy: because the incident flux falls towards
 the fold, the fraction is anti-correlated with it across the window, so a maximal share goes together with a minimal transported power.
@@ -622,8 +623,7 @@ perfect conversion of \cite{gerardin2016negative}, and then falls to $0.797$, $0
 $0.288$ at $2.90$, $3.00$ and \SI{3.10}{\mega\hertz\milli\metre}, that is $|r|=0.893$, $0.707$ and $0.537$.
 Read from their Fig.~2(b) by eye, the corresponding values are about $0.9$, $0.7$ and $0.55$, so the agreement is
 within the reading accuracy of the figure; no tabulated values are available for a closer comparison.  Degrees 18 and 26 differ by
-less than $10^{-9}$ in $R_B$, the power balance closes to $4\times10^{-11}$ and the edge residual is below $10^{-14}$
-(\texttt{benchmark\_duralumin.py}).  This benchmark covers the classical elastic edge problem only; it does not test the
+less than $10^{-9}$ in $R_B$, the power balance closes to $4\times10^{-11}$ and the edge residual is below $10^{-14}$.  This benchmark covers the classical elastic edge problem only; it does not test the
 piezoelectric, strain-gradient or carrier terms.  The independent checks are the strong-form
 integrations and the $C^1$ finite-element plate, neither of which shares the spectral matrices
 with the production path.
@@ -644,7 +644,7 @@ plate lies to its left, and the intensities are normalized to a common maximum
 so that the backward field is visibly weaker by one to three decades.  The
 incident field approaches the edge at $+10.0^{\circ}$ and the backward field
 leaves it at $-27.9^{\circ}$, both measured from the thickness-integrated
-Poynting flux.
+Poynting flux and from the $x$ axis along the propagation direction (the $+x$ direction for the incident field, the $-x$ direction for the backward field), positive towards $+y$.
 
 Panel (c) is a schematic, but its arrows are not drawn by hand: they are the
 solved directions.  The two wavenumbers point into the plate,
@@ -671,24 +671,27 @@ tend to a common small value as $k_yd\to0.2$.
 The two sweeps above vary the carrier density over a factor of three and contain no
 loss other than carrier conduction and diffusion.  Because the conversion is largest where the incident
 flux nearly vanishes, both limits were tested with the same branch-following definition of $R_B$
-($L=10\,d$, $k_yd=0.1298$, $H=0$); the code is \texttt{robustness\_sweeps.py}.
+($L=10\,d$, $k_yd=0.1298$, $H=0$).
 
 \emph{Carrier density.}  The search for the fold was repeated at six densities from
 $2\times10^{18}$ to $2\times10^{23}\,\si{\per\cubic\metre}$, which takes $Q=d/L_D$ from $0.075$ to $24$.  This range covers the densities of nominally undoped ZnO compiled in Table~VII of \cite{ozgur2005zno}, $8\times10^{19}$--$5\times10^{23}\,\si{\per\cubic\metre}$, up to its upper end.  The
 maximum falls from $0.943$ through $0.828$ to $0.545$ over the first three densities ($2\times10^{18}$, $2\times10^{19}$, $2\times10^{20}\,\si{\per\cubic\metre}$), with the argmax inside the raster.  From
 $2\times10^{21}\,\si{\per\cubic\metre}$ upward the largest sampled value in a window of $\pm0.03$ about the
 fold lies on the edge of the window, so the entries ($\ge0.168$, $\ge0.043$ and $\ge0.174$) are lower bounds and the maximum itself was not located.  At the operating
-point the share stays between $0.0158$ and $0.0410$ over the whole range $2\times10^{18}$ to
+point, which was swept over a wider range than the fold search, the share stays between $0.0158$ and $0.0410$ over the whole range $2\times10^{18}$ to
 $6\times10^{23}\,\si{\per\cubic\metre}$, and its linewidth peaks near $2\times10^{22}\,\si{\per\cubic\metre}$ at
 \SI{8.7}{\mega\hertz}.  The statement of \cref{sec:results_material} that the density sets the loss but not the
 partition therefore holds for the range of \cref{fig:fig02}; at the fold the partition depends on the density through the loss.
+
+
+For orientation, Zhang et al.\ \cite{zhang2025pscplate} find for a simply supported plate under static load and in free vibration that the semiconductor coupling is active only within a window of initial electron concentration, which moves to larger concentrations as the plate becomes thinner; the concentration at which their damping is largest is $10^{18.6}$, $10^{19.6}$ and $10^{20.6}\,\si{\per\cubic\metre}$ for $h=30$, $3$ and $0.3\,\si{\micro\metre}$.  The present plate ($d=\SI{200}{\nano\metre}$, $n_0\le3\times10^{18}\,\si{\per\cubic\metre}$ in the main sweeps) lies below these values, so the carrier results describe the weakly conducting side of that window.  For shear-horizontal waves in ZnO plates, Li et al.\ \cite{li2023sh} report that an initial density below $2\times10^{18}\,\si{\per\cubic\metre}$ barely changes the cut-off frequencies and that above $10^{23}\,\si{\per\cubic\metre}$ the plate responds as an elastic one, which is consistent with the density range scanned here.  Dispersion and damping of Rayleigh-type waves in a piezo-thermo-electric semiconductor with fractional and nonlocal effects have also been computed \cite{aldandani2026kg}.
 
 
 \emph{Structural loss.}  The model contains no intrinsic elastic loss.  To measure the effect of one, the elastic
 and gradient-elastic tensors were multiplied by $1-\mathrm i\eta$ (time dependence $e^{-\mathrm i\omega t}$), a loss tangent $\eta$, i.e.\ a
 quality factor $1/\eta$, with the carrier terms unchanged.  The form and the values of $\eta$ are assumed; none is taken from a measurement.  Viscoelastic loss of the Kelvin--Voigt type has been treated for nonlocal piezo-semiconductors elsewhere \cite{gupta2026heatmap}.
 The frequency was scanned over 41 values within $\pm3\times10^{-3}$ of the lossless fold frequency and the largest $R_B$ is
-reported, so that each entry is a lower bound on the maximum over frequency.  The scan shows that $\eta=10^{-5}$
+reported, so that each entry is a lower bound on the maximum over frequency.  Refining the scan around its largest value in four successive steps, down to a window of $7.5\times10^{-7}$ in relative frequency, changes the entries to $0.6003$ and $0.1967$, so the figures quoted below are converged in frequency.  The scan shows that $\eta=10^{-5}$
 lowers the maximum from $0.943$ to $0.600$ and $\eta=10^{-4}$ to $0.197$, while
 $|\Imag k_{ix}|d$ rises from $1.0\times10^{-3}$ to $8.1\times10^{-3}$ and $2.0\times10^{-2}$.  This is the square-root response of the
 spatial roots to a small loss near a zero-group-velocity point.  For $\eta\ge10^{-3}$ the port selection finds no

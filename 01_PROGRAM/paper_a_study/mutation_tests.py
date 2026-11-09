@@ -95,8 +95,8 @@ def main() -> int:
                             evidence=[l for l in out.splitlines() if "0.99985" in l][:1]))
 
         copy = make_copy(tmpdir / "m4")
-        mutate(copy / "sections" / "introduction.tex", "shen2010theory,deng2020impact}",
-               "shen2010theory,deng2020impact,nosuchkey2024}")
+        mutate(copy / "sections" / "introduction.tex", "zubko2013flexoelectric,shen2010theory}",
+               "zubko2013flexoelectric,shen2010theory,nosuchkey2024}")
         rc, out = run([sys.executable, str(copy / "scripts" / "static_check.py")], copy)
         results.append(dict(id="M4", defect="undefined citation key \\cite{nosuchkey2024}",
                             gate="static_check", expected="FAIL", caught=rc != 0,

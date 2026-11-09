@@ -2,8 +2,67 @@
 \label{app:derivations}
 
 This appendix contains the calculations that are used in the article but whose
-length would interrupt it: the element matrices of the Legendre basis, the construction of the blocks \eqref{eq:block} from the
+length would interrupt it: the derivatives of the enthalpy and the expanded field equations, the element matrices of the Legendre basis, the construction of the blocks \eqref{eq:block} from the
 weak equations, the edge-matching system and the normalization of the modal power.
+
+\subsection{Derivatives of the enthalpy and the expanded field equations}
+
+Writing the enthalpy as the sum of its eight contributions, $w=\sum_\alpha w_\alpha$, the derivatives that give the constitutive relations are
+\begin{align*}
+\frac{\partial w_{\text{el}}}{\partial\varepsilon_{ij}}
+&=\tfrac12 c_{klij}\varepsilon_{kl}+\tfrac12 c_{ijkl}\varepsilon_{kl}
+=c_{ijkl}\varepsilon_{kl},\\[2pt]
+\frac{\partial w_{\text{grad}}}{\partial\eta_{ijk}}
+&=\tfrac12 A_{lmnijk}\eta_{lmn}+\tfrac12 A_{ijklmn}\eta_{lmn}
+=A_{ijklmn}\eta_{lmn},\\[2pt]
+\frac{\partial w_{\text{piezo}}}{\partial\varepsilon_{ij}}&=-e_{kij}E_k,
+\qquad
+\frac{\partial w_{\text{flexo}}}{\partial\eta_{ijk}}=-f_{lijk}E_l,\\[2pt]
+\frac{\partial w_{\text{diel}}}{\partial E_i}&=-\kappa_{ij}E_j,
+\qquad
+\frac{\partial w_{\text{piezo}}}{\partial E_i}=-e_{ijk}\varepsilon_{jk},\\[2pt]
+\frac{\partial w_{\text{flexo}}}{\partial E_i}&=-f_{ijkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{carr}}}{\partial\Delta n}=a\,\Delta n,\\[2pt]
+\frac{\partial w_{H}}{\partial\Delta n}&=H_{jkl}\eta_{jkl},
+\qquad
+\frac{\partial w_{\text{es}}}{\partial\Delta n}=-q\varphi .
+\end{align*}
+The symmetries $c_{ijkl}=c_{jikl}=c_{klij}$ and $A_{ijklmn}=A_{lmnijk}$ merge the two halves of each quadratic derivative; a tensor violating them would give a different stress from the same energy.  Apart from the electrostatic term $-q\Delta n\varphi$, which is linear in $\Delta n$, $w$ is homogeneous of degree two, and Euler's theorem gives
+\begin{equation*}
+\varepsilon_{ij}\frac{\partial w}{\partial\varepsilon_{ij}}
++\eta_{ijk}\frac{\partial w}{\partial\eta_{ijk}}
++E_i\frac{\partial w}{\partial E_i}
++\Delta n\frac{\partial w}{\partial\Delta n}
+=2w+q\,\Delta n\,\varphi ,
+\end{equation*}
+which gives the mode energy $w=\tfrac12[\varepsilon:\sigma+\eta\vdots\tau-E\cdot D+\widetilde\mu\,\Delta n]-\tfrac12 q\Delta n\varphi$ and is used in the energy budget.
+
+The out-of-plane component of the momentum balance, in which all four sectors appear, is
+\begin{equation*}
+\begin{aligned}
+&\rho\omega^{2}\widehat u_3
++\partial_x\bigl(2c_{44}\varepsilon_{xz}-e_{15}E_x\bigr)
++\partial_y\bigl(2c_{44}\varepsilon_{yz}-e_{15}E_y\bigr)\\
+&\qquad
++\partial_z\bigl(c_{13}(\varepsilon_{xx}+\varepsilon_{yy})
++c_{33}\varepsilon_{zz}-e_{33}E_z\bigr)
+-\partial_i\partial_k\tau_{3ik}=0 .
+\end{aligned}
+\end{equation*}
+The flexoelectric and carrier couplings enter only through $\partial_z^{2}\tau_{3zz}\supset\partial_z^{2}(-fE_z+H\Delta n)=f\,\partial_z^{3}\varphi+H\,\partial_z^{2}\Delta n$, and the remaining terms of $\partial_i\partial_k\tau_{3ik}$ supply the fourth-order elastic piece in the combinations $\ell^{2}c_{44}$ and $\ell^{2}c_{33}$.  Gauss's law \eqref{eq:gauss} expands to
+\begin{equation*}
+\begin{aligned}
+&-\kappa_{11}\bigl(\varphi_{,xx}+\varphi_{,yy}\bigr)
+-\kappa_{33}\varphi_{,zz}
++2e_{15}\bigl(\varepsilon_{xz,x}+\varepsilon_{yz,y}\bigr)\\
+&\qquad
++e_{31}\bigl(\varepsilon_{xx,z}+\varepsilon_{yy,z}\bigr)
++e_{33}\,\varepsilon_{zz,z}
++f\,\eta_{zzz,z}
+=-q\,\Delta n .
+\end{aligned}
+\end{equation*}
 
 \subsection{Element matrices of the Legendre basis}
 

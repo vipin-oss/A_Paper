@@ -63,7 +63,7 @@
       "denoted": 0.942872,
       "relative_difference": 2.1211791465791122e-07,
       "tolerance": 0.002,
-      "occurrences": 2,
+      "occurrences": 3,
       "pass_": true
     },
     {
@@ -90,13 +90,13 @@
     },
     {
       "claim": "R_B_certified_maximum",
-      "file": "sections/discussion.tex",
+      "file": "sections/conclusions.tex",
       "text": "94.29",
       "registered": 0.9428718,
       "denoted": 0.9429,
       "relative_difference": 2.990862596582349e-05,
       "tolerance": 0.002,
-      "occurrences": 2,
+      "occurrences": 1,
       "pass_": true
     },
     {
@@ -108,17 +108,6 @@
       "relative_difference": 0.0,
       "tolerance": 0.002,
       "occurrences": 2,
-      "pass_": true
-    },
-    {
-      "claim": "R_B_earlier_sample",
-      "file": "sections/results.tex",
-      "text": "0.925\\,604",
-      "registered": 0.9256041,
-      "denoted": 0.9256041,
-      "relative_difference": 0.0,
-      "tolerance": 0.002,
-      "occurrences": 1,
       "pass_": true
     },
     {
@@ -156,13 +145,13 @@
     },
     {
       "claim": "total_outgoing_peak",
-      "file": "sections/discussion.tex",
+      "file": "sections/results.tex",
       "text": "1.00050",
       "registered": 1.0005,
       "denoted": 1.0005,
       "relative_difference": 0.0,
       "tolerance": 0.002,
-      "occurrences": 1,
+      "occurrences": 3,
       "pass_": true
     },
     {
@@ -195,18 +184,18 @@
       "denoted": 1.21,
       "relative_difference": 0.0,
       "tolerance": 0.05,
-      "occurrences": 4,
+      "occurrences": 5,
       "pass_": true
     },
     {
       "claim": "coupling_change_operating",
-      "file": "sections/discussion.tex",
+      "file": "sections/conclusions.tex",
       "text": "1.21",
       "registered": 1.21,
       "denoted": 1.21,
       "relative_difference": 0.0,
       "tolerance": 0.05,
-      "occurrences": 3,
+      "occurrences": 1,
       "pass_": true
     },
     {
@@ -239,18 +228,18 @@
       "denoted": 36.1,
       "relative_difference": 0.0,
       "tolerance": 0.02,
-      "occurrences": 3,
+      "occurrences": 4,
       "pass_": true
     },
     {
       "claim": "coupling_change_peak",
-      "file": "sections/discussion.tex",
+      "file": "sections/conclusions.tex",
       "text": "36.1",
       "registered": 36.1,
       "denoted": 36.1,
       "relative_difference": 0.0,
       "tolerance": 0.02,
-      "occurrences": 4,
+      "occurrences": 1,
       "pass_": true
     },
     {
@@ -272,18 +261,18 @@
       "denoted": 13.8,
       "relative_difference": 0.0,
       "tolerance": 0.05,
-      "occurrences": 4,
+      "occurrences": 2,
       "pass_": true
     },
     {
       "claim": "coupling_change_peak_edge_plane",
-      "file": "sections/discussion.tex",
+      "file": "sections/results.tex",
       "text": "13.8",
       "registered": 13.8,
       "denoted": 13.8,
       "relative_difference": 0.0,
       "tolerance": 0.05,
-      "occurrences": 1,
+      "occurrences": 2,
       "pass_": true
     },
     {
@@ -294,7 +283,7 @@
       "denoted": 87.0,
       "relative_difference": 0.0,
       "tolerance": 0.03,
-      "occurrences": 17,
+      "occurrences": 18,
       "pass_": true
     },
     {
@@ -338,7 +327,7 @@
       "denoted": 1e-05,
       "relative_difference": 0.0,
       "tolerance": 1e-12,
-      "occurrences": 18,
+      "occurrences": 15,
       "pass_": true
     },
     {
@@ -349,7 +338,7 @@
       "denoted": 1e-05,
       "relative_difference": 0.0,
       "tolerance": 1e-12,
-      "occurrences": 2,
+      "occurrences": 3,
       "pass_": true
     },
     {
@@ -382,12 +371,12 @@
       "denoted": 131,
       "relative_difference": 0.0,
       "tolerance": 0.02,
-      "occurrences": 2,
+      "occurrences": 3,
       "pass_": true
     },
     {
       "claim": "incident_power_ratio_fold",
-      "file": "sections/discussion.tex",
+      "file": "sections/conclusions.tex",
       "text": "131",
       "registered": 131.0,
       "denoted": 131,
@@ -442,7 +431,7 @@
     },
     {
       "claim": "coupling_change_k055_reference_plane",
-      "file": "sections/discussion.tex",
+      "file": "sections/results.tex",
       "text": "\\SI{-10.17}{\\percent}",
       "registered": -10.171,
       "denoted": -10.17,
@@ -510,17 +499,6 @@
       "claim": "H_effect_k055",
       "file": "sections/results.tex",
       "text": "10.17}{\\percent} at $k_xd=0.55$",
-      "registered": 10.171,
-      "denoted": 10.17,
-      "relative_difference": 9.831874938545333e-05,
-      "tolerance": 0.02,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "H_effect_k055",
-      "file": "sections/discussion.tex",
-      "text": "10.17}{\\percent} at\n$k_xd=0.55$",
       "registered": 10.171,
       "denoted": 10.17,
       "relative_difference": 9.831874938545333e-05,
@@ -606,83 +584,6 @@
       "pass_": true
     },
     {
-      "claim": "corner_force_operating_n10",
-      "file": "sections/discussion.tex",
-      "text": "$8.4\\times10^{-2}$ at the operating point",
-      "registered": 0.084,
-      "denoted": 0.084,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_operating_n28",
-      "file": "sections/discussion.tex",
-      "text": "$4.5\\times10^{-2}$",
-      "registered": 0.045,
-      "denoted": 0.045,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_peak_n10",
-      "file": "sections/discussion.tex",
-      "text": "$3.3\\times10^{-3}$ at the corrected",
-      "registered": 0.0033,
-      "denoted": 0.0033,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_peak_n28",
-      "file": "sections/discussion.tex",
-      "text": "$1.7\\times10^{-3}$ and",
-      "registered": 0.0017,
-      "denoted": 0.0017,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_k055_n10",
-      "file": "sections/discussion.tex",
-      "text": "$3.8\\times10^{-2}$ at $k_xd=0.55$",
-      "registered": 0.038,
-      "denoted": 0.038,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "corner_force_k055_n28",
-      "file": "sections/discussion.tex",
-      "text": "$2.0\\times10^{-2}$ at degree 28",
-      "registered": 0.02,
-      "denoted": 0.02,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "partition_insensitive_to_corner",
-      "file": "sections/discussion.tex",
-      "text": "$3.9\\times10^{-6}$ between degrees 10 and 28",
-      "registered": 3.9e-06,
-      "denoted": 3.9e-06,
-      "relative_difference": 0.0,
-      "tolerance": 0.1,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
       "claim": "traction_pointwise_residual_peak",
       "file": "sections/numerical_methods.tex",
       "text": "$9.4\\times10^{-4}$",
@@ -699,6 +600,39 @@
       "text": "$3.6\\times10^{-2}$",
       "registered": 0.036,
       "denoted": 0.036,
+      "relative_difference": 0.0,
+      "tolerance": 0.1,
+      "occurrences": 1,
+      "pass_": true
+    },
+    {
+      "claim": "corner_force_operating_n10",
+      "file": "sections/conclusions.tex",
+      "text": "$8.4\\times10^{-2}$",
+      "registered": 0.084,
+      "denoted": 0.084,
+      "relative_difference": 0.0,
+      "tolerance": 0.05,
+      "occurrences": 1,
+      "pass_": true
+    },
+    {
+      "claim": "corner_force_peak_n10",
+      "file": "sections/conclusions.tex",
+      "text": "$3.3\\times10^{-3}$",
+      "registered": 0.0033,
+      "denoted": 0.0033,
+      "relative_difference": 0.0,
+      "tolerance": 0.05,
+      "occurrences": 1,
+      "pass_": true
+    },
+    {
+      "claim": "partition_insensitive_to_corner",
+      "file": "sections/conclusions.tex",
+      "text": "$3.9\\times10^{-6}$",
+      "registered": 3.9e-06,
+      "denoted": 3.9e-06,
       "relative_difference": 0.0,
       "tolerance": 0.1,
       "occurrences": 1,

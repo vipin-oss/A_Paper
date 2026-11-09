@@ -12,7 +12,7 @@ findings are as follows.
 \SI{1.93}{\percent} of the incident power.  Along the same branch the share rises
 to \SI{94.29}{\percent} at $k_xd=0.52719$ ($f=\SI{16.6547}{\giga\hertz}$), where the
 group velocity vanishes and the backward wavenumber approaches the incident one to
-within \SI{0.4}{\percent}.  The response has a single peak, and its maximum is a local maximum within the window examined, and the value changes by less than $10^{-5}$
+within \SI{0.4}{\percent}.  Within the examined interval of this branch the response has a single resolved peak, a local maximum and not a global one over the parameter space, and the value changes by less than $10^{-5}$
 between Galerkin degrees 14 and 34.
 \item These numbers are modal shares and not reflectances.  The propagating
 outgoing modes carry \SI{99.98}{\percent} of the incident power at the operating
@@ -21,30 +21,28 @@ point and \SI{100.05}{\percent} at the maximum, that is, all of it to within
 $131$ because the branch lies at a zero-group-velocity fold, so a maximal share occurs together with a minimal transported power.
 \item The conversion is a property of the backward branch and not of the added
 coupling.  With $H=0$ the shares at both points are those of the plate without the
-coupling.  The classical plate ($\ell=0$) has a backward interval of its own, with
-its fold at $k_xd=0.824$ ($f=\SI{13.69}{\giga\hertz}$); the gradient length
-$\ell/d=0.25$ moves the fold to $k_xd=0.527$ and $\SI{16.65}{\giga\hertz}$.  At the
+coupling.  The flexoelectric coefficient has only a minor influence on the partition in the range examined ($0.0192916$ against $0.0192938$ at the operating point without it, and $0.942872$ against $0.942878$ at the maximum).  The classical plate ($\ell=0$) has a backward interval of its own, with
+its fold at $k_xd=0.824$ ($f=\SI{13.69}{\giga\hertz}$); the corresponding fold of the plate with $\ell/d=0.25$ occurs at $k_xd=0.527$ and $\SI{16.65}{\giga\hertz}$.  At the
 control frequencies of \cref{tab:controls}, which lie on a different classical branch, the classical plate has no backward member, the specular
 reflection being its only negative-power outgoing mode.
 \item The carrier coupling acts through conduction loss.  At
-$|H|=0.05H^{*}$ it reduces the partition by \SI{1.21}{\percent} at the operating
-point and by \SI{36.1}{\percent} at the maximum, of which 22.3 percentage points are
+$|H|=0.05H^{*}$ it reduces the reference-plane partition, relative to the uncoupled case, by \SI{1.21}{\percent} at the operating
+point and by \SI{36.1}{\percent} at the maximum.  Of the latter, \SI{13.8}{\percent} is the reduction at the edge plane and the remaining 22.3 percentage points are
 propagation loss between the edge and the reference plane.  When the maximum is
 searched again at each coupling level it shifts and its upper bound falls, so the
 coupling lowers the achievable conversion as well as displacing it.
-\item The energy balance closes: the flux at the reference plane equals the edge
-flux plus the conduction loss to better than $10^{-11}$ of the incident power, with
-the interference term reported separately and no evanescent mode counted as
-transported power.
-\item At the fold the share is sensitive to loss.  It falls from $0.943$ to $0.545$ when the carrier density rises from $2\times10^{18}$ to $2\times10^{20}\,\si{\per\cubic\metre}$, and to $0.600$ and $0.197$ when a loss tangent of $10^{-5}$ and $10^{-4}$ is added to the elastic constants (\cref{sec:results_sens}); the model contains no other elastic loss, so $0.943$ is an upper bound for a plate with intrinsic damping.
+\item The flux balance closes: the flux at the reference plane, evaluated independently of the modal decomposition, equals the edge
+flux plus the conduction loss to better than $10^{-11}$ of the incident power, and no evanescent mode is counted as
+transported power.  The modal interference term is the remainder of the modal identity, is reported separately and is not an independent check.
+\item At the fold the share is sensitive to loss.  It falls from $0.943$ to $0.545$ when the carrier density rises from $2\times10^{18}$ to $2\times10^{20}\,\si{\per\cubic\metre}$, and to $0.600$ and $0.197$ when a loss tangent of $10^{-5}$ and $10^{-4}$ is added to the elastic constants (\cref{sec:results_sens}); the model contains no other elastic loss, so $0.943$ is the lossless-elastic baseline of the present model and an optimistic estimate for a plate with intrinsic damping.
 \end{enumerate}
 
 Five limitations bound these conclusions.
 
 \begin{enumerate}
 \item \emph{Geometry.}  The plate has one edge, is infinite in $y$ and does not resolve the three-dimensional corner where the edge meets the free surfaces; a finite plate and a second edge are outside the model.
-\item \emph{The corner.}  The corner line force is small but finite: $8.4\times10^{-2}$ of the incident corner scale at the operating point and $3.3\times10^{-3}$ at the maximum at degree 10, decaying algebraically with the degree (exponent about $0.62$ in three configurations), while the partition moves by only $3.9\times10^{-6}$ over the same range.  Its vanishing is not proved, so the closure is a bound, and the free edge is satisfied in the weak sense.  A direct two-dimensional $x$--$z$ finite-element solution with edge cells refined to $0.00125\,d$ reproduces the modal share at the operating point to within $0.5$~\% (\cref{tab:fe2d}); that check is made at the operating point only.
-\item \emph{Carrier model and loss.}  The carriers are linearized about a uniform doping and zero bias, and the only loss is carrier conduction; an added elastic loss tangent of $10^{-5}$ already lowers the maximum from $0.943$ to $0.600$, so $0.943$ is an upper bound.
-\item \emph{Parameters.}  The gradient length, the flexoelectric coefficient and the coupling are assumed values and no published $H_{jkl}$ exists, so the percentages describe the response of this model and not a particular film.
+\item \emph{The corner.}  The corner line force is small but finite: $8.4\times10^{-2}$ of the incident corner scale at the operating point and $3.3\times10^{-3}$ at the maximum at degree 10, decaying algebraically with the degree (exponent about $0.62$ in three configurations), while the partition moves by only $3.9\times10^{-6}$ over the same range.  Its vanishing is not proved, so the closure is a bound, and the free edge is satisfied in the weak sense.  The small flux-balance residual does not prove that the corner line force vanishes; the two are separate matters.  A direct two-dimensional $x$--$z$ finite-element solution with edge cells refined to $0.00125\,d$ reproduces the modal share at the operating point to within $0.5$~\% (\cref{tab:fe2d}); that check is made at the operating point only.
+\item \emph{Carrier model and loss.}  The carriers are linearized about a uniform doping and zero bias, and in the baseline calculations carrier conduction is the only dissipative mechanism; elastic damping is added separately in the sensitivity analysis, where a loss tangent of $10^{-5}$ already lowers the maximum from $0.943$ to $0.600$, so $0.943$ is the lossless-elastic baseline and an optimistic estimate.
+\item \emph{Parameters.}  The gradient length, the flexoelectric coefficient and the coupling are assumed values and to our knowledge no experimentally established $H_{jkl}$ is available, so the percentages describe the response of this model and not a particular film.
 \item \emph{Attribution.}  The added coupling has the structure of the chemo-mechanical term in \cite{qu2025thermodynamic} and is not claimed as new; what the analysis supplies is the modal partition of a slow guided branch near its zero-group-velocity point, resolved mode by mode rather than in total power.
 \end{enumerate}

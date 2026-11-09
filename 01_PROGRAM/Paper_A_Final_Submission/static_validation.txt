@@ -1,60 +1,31 @@
 Paper A static validation
 ========================================
 
-files checked: 9
-labels: 178   references: 101
-citation keys used: 60   bib entries: 60
+files checked: 8
+labels: 112   references: 77
+citation keys used: 48   bib entries: 60
 
 PASS
 
 Notes:
-  - label never referenced: app:checks
-  - label never referenced: eq:Hterm
-  - label never referenced: eq:LD_worked
-  - label never referenced: eq:RB_planes
-  - label never referenced: eq:RB_prop
-  - label never referenced: eq:RB_value
-  - label never referenced: eq:RB_worked
-  - label never referenced: eq:a_scale
-  - label never referenced: eq:a_worked
-  - label never referenced: eq:alphad_worked
-  - label never referenced: eq:ansatz
-  - label never referenced: eq:app_RB_inputs
-  - label never referenced: eq:app_S_off
-  - label never referenced: eq:app_S_weighted
-  - label never referenced: eq:app_ar_s
-  - label never referenced: eq:app_diel
-  - label never referenced: eq:app_edge
-  - label never referenced: eq:app_edge_R
-  - label never referenced: eq:app_edge_rows
-  - label never referenced: eq:app_mass
-  - label never referenced: eq:app_pot
-  - label never referenced: eq:app_strain_split
-  - label never referenced: eq:app_w1
-  - label never referenced: eq:app_w2_values
-  - label never referenced: eq:app_w4
-  - label never referenced: eq:app_w5
-  - label never referenced: eq:block_norms
-  - label never referenced: eq:carrier_strong
-  - label never referenced: eq:cs_worked
-  - label never referenced: eq:diff_carr
-  - label never referenced: eq:diff_coup
-  - label never referenced: eq:diff_elec
-  - label never referenced: eq:diff_es
-  - label never referenced: eq:dissipation
-  - label never referenced: eq:eta_amplitudes
-  - label never referenced: eq:gauss_expanded
-  - label never referenced: eq:lam_worked
-  - label never referenced: eq:strain_amplitudes
-  - label never referenced: eq:vE
-  - label never referenced: eq:vg
-  - label never referenced: eq:virtual_work
-  - label never referenced: sec:conclusions
-  - label never referenced: sec:disc_material
-  - label never referenced: sec:disc_meaning
-  - label never referenced: sec:disc_mechanism
-  - label never referenced: sec:discussion
-  - label never referenced: sec:governing
+  - bibliography entry never cited: ces2011edge
+  - bibliography entry never cited: clorennec2007local
+  - bibliography entry never cited: deng2020impact
+  - bibliography entry never cited: gerardin2019chaotic
+  - bibliography entry never cited: legrand2021cloaking
+  - bibliography entry never cited: mindlin1968first
+  - bibliography entry never cited: narvaez2016enhanced
+  - bibliography entry never cited: philippe2015focusing
+  - bibliography entry never cited: prada2008power
+  - bibliography entry never cited: quintanilla2015modeling
+  - bibliography entry never cited: wang2012progress
+  - bibliography entry never cited: wang2020flexoelectronics
+  - label never referenced: eq:CZnO
+  - label never referenced: eq:DZnO
+  - label never referenced: eq:ZnOe
+  - label never referenced: eq:current
+  - label never referenced: eq:ibp_hyper
+  - label never referenced: eq:sigmaZnO
   - label never referenced: sec:governing_balance
   - label never referenced: sec:governing_bc
   - label never referenced: sec:governing_constitutive
@@ -67,24 +38,23 @@ Notes:
   - label never referenced: sec:governing_stability
   - label never referenced: sec:governing_variational
   - label never referenced: sec:intro
-  - label never referenced: sec:intro_scope
   - label never referenced: sec:numerics
   - label never referenced: sec:numerics_admissibility
   - label never referenced: sec:numerics_basis
   - label never referenced: sec:numerics_routes
   - label never referenced: sec:numerics_verification
+  - label never referenced: sec:params
   - label never referenced: sec:results
   - label never referenced: sec:results_artefact
   - label never referenced: sec:results_attenuation
   - label never referenced: sec:results_boundary
   - label never referenced: sec:results_certification
-  - label never referenced: sec:results_channel
   - label never referenced: sec:results_dispersion
   - label never referenced: sec:results_field
   - label never referenced: sec:results_frequency
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_scope
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 24650
+  - approximate prose word count (including math tokens): 18433
 
 No TeX engine was invoked by this script.

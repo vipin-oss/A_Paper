@@ -6,7 +6,7 @@ flexoelectric piezoelectric semiconductor plate.*  Author: Dr Vipin Gupta
 https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the user-owned fields below.**
 
 ## 1. Layout
-- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (54 pages, 12 pt).
+- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (49 pages, 12 pt).
   Build: `pdflatex main && bibtex main && pdflatex main && pdflatex main`.  Must give Overfull 0, undefined 0.
 - `01_PROGRAM/paper_a_study/` solver (`model.py`), figure data builder, all audits, tests, `fe2d*.py`.
 - `01_PROGRAM/Paper_A_Final_Submission/` synced copy of `main.tex` + `sections/` (read by static checks).
@@ -49,7 +49,7 @@ https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the use
 
 ## 5. The author fills in himself (left as template in `main.tex`)
 Author name / affiliation / corresponding author, acknowledgement, funding, CRediT statement, competing
-interests, licence/DOI.  Data-availability line already points to the GitHub repo.
+interests, licence/DOI.  The manuscript does NOT refer to the program or data: the author submits the paper only, so the data-availability line says data are included in the article and further detail is available on reasonable request (the author may edit it to the journal's wording). Nothing in the text may cite a script, file, repository or dataset.
 Journal: not fixed (AMM was the first target; alternatives suggested: JASA, JSV, IJES, IJSS, JMPS, Wave Motion,
 PRB/JAP).  Q1 / ranking status was **not verified**.  Reformat to the chosen journal's template and check
 its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS.txt` exists.
@@ -58,7 +58,7 @@ its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS
 - Biswas DOI (10.1177/10812865251315937) browser check by the author.
 - n0 >= 2e21 fold maximum is only a lower bound.  Observable flux / beat-length analysis not done.
 - Corner line force decays only algebraically (about n^-0.62) and is bounded, not proven zero; stated in
-  Discussion/limitations.  Free edge is satisfied weakly.
+  the Conclusions limitations.  Free edge is satisfied weakly.
 - Physical parameters (l, flexoelectric constant, coupling H) are assumed values, as the paper says.
 - T = 301.72 K recompute not redone.  Overleaf compile not tested by the author.
 
@@ -68,3 +68,18 @@ its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS
 3. `cd paper_a_study && python3 -m pytest test_model.py -q`; `python3 claim_audit.py` PASS; `python3 test_review_regressions.py` OK.
 4. `python3 paper_a_study/run_all_checks.py` -> OVERALL: PASS (about 10 min).
 5. Copy `main.tex` + `sections/` to `Paper_A_Final_Submission/`; copy `main.pdf` to `PAPER_A.pdf`.
+
+## 8. Final state (this session)
+- Manuscript is 12 pt, 49 pages, no Discussion section, no appendix on data/code.  Introduction and Sections 2-5 were
+  revised section by section by the author with outside language review; only genuine issues were adopted:
+  generalized traction for arbitrary normal n, J_x notation, reduced single-component (f_3zz, H_zzz) statement,
+  assembled-operator degree count, orthonormal basis b_j = sqrt(2j+1) P_j with degree n and N = n+1, gradient index l,
+  density/mobility equivalence qualified, angle convention, Conclusions claim strength (local maximum; 0.943 is the
+  lossless-elastic baseline and an optimistic estimate; flux balance independent, interference term is a remainder).
+- Extra checks added (scripts `extra_checks.py`, `extra_loss_refine.py`, data in `figure_data/extra_*.json`): the
+  mode-classification tolerance tau from 1e-9 to 1e-6 changes nothing; the share is smooth through the fold; the
+  structural-loss scan refined to 0.6003 and 0.1967.  `model.py` reads the tolerance from `Plate.modal_tol` (default 2e-8).
+- Not done (would need new computation, optional): through-thickness flux decomposition by contribution; separate
+  density-only and mobility-only fold sweeps; fold validation by 2D FE (only the operating point is validated).
+- Workflow rule: edit in `paper_12_overleaf_submission` (GitHub, Overleaf-synced), `git pull --rebase` before pushing,
+  then copy `main.tex`, `sections/`, `references.bib`, `main.pdf` into `02_MANUSCRIPT/` and `Paper_A_Final_Submission/`.

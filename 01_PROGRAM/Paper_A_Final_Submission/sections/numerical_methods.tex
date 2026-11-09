@@ -13,19 +13,19 @@ $z$.  Legendre polynomials are used for all fields, in the scaled variable
 $\zeta=2z/d\in[-1,1]$,
 \begin{equation}
 \label{eq:basis}
-U_i(x,\zeta)=\sum_{j=0}^{n-1}U_{ij}(x)\,P_j(\zeta),\qquad
-N(x,\zeta)=\sum_{j=0}^{n-1}N_{j}(x)\,P_j(\zeta),
+U_i(x,\zeta)=\sum_{j=0}^{n}U_{ij}(x)\,b_j(\zeta),\qquad
+N(x,\zeta)=\sum_{j=0}^{n}N_{j}(x)\,b_j(\zeta),\qquad
+b_j=\sqrt{2j+1}\,P_j ,
 \end{equation}
-with $P_j$ the Legendre polynomial of degree $j$ and $n$ the number of
-thickness modes.  The two electrical cases use different potential spaces,
+with $P_j$ the Legendre polynomial of degree $j$, $b_j$ the orthonormal scaled form of \eqref{eq:app_basis}, $n$ the polynomial degree and $N=n+1$ the number of basis functions per field.  The two electrical cases use different potential spaces,
 which is how the essential and natural conditions are realized:
 \begin{itemize}
 \item grounded, \eqref{eq:bc_grounded}: the potential basis is formed from the
-combination $P_j-\sqrt{(2j+1)/(2j+5)}\,P_{j+2}$, which vanishes at
-$\zeta=\pm1$ for all $j$, so $\varphi=0$ holds on both faces to machine precision and the
-space has $n-2$ members;
-\item open circuit, the second condition of \eqref{eq:bc_grounded}: all $n$
-modes are kept and unconstrained, so $D_z=0$ is imposed weakly through
+combination $\psi_j=b_j-\sqrt{(2j+1)/(2j+5)}\,b_{j+2}$, which vanishes at
+$\zeta=\pm1$ for all $j$ because $b_j(\pm1)=(\pm1)^{j}\sqrt{2j+1}$, so $\varphi=0$ holds on both faces to machine precision and the
+space has $N-2$ members;
+\item open circuit, the second condition of \eqref{eq:bc_grounded}: all $N$
+basis functions are kept and unconstrained, so $D_z=0$ is imposed weakly through
 the surface term of the weak form.
 \end{itemize}
 The mechanical conditions \eqref{eq:bc_faces_mech} and the blocking condition
@@ -104,8 +104,8 @@ carries the compressibility $a(\Delta n)^{2}$, the charge $Q$ and the coupling $
 \label{eq:block}
 \begin{aligned}
 \mathsf A_{rs}={}&\bigl\langle\mathsf B_r,\mathsf C\,\mathsf B_s\bigr\rangle
-+\lambda^{2}\bigl\langle\partial_\zeta^{l}\mathsf B_r,
-\mathsf C\,\partial_\zeta^{l}\mathsf B_s\bigr\rangle
++\lambda^{2}\sum_{l}\bigl\langle\mathsf B^{,l}_r,
+\mathsf C\,\mathsf B^{,l}_s\bigr\rangle
 +\bigl\langle\mathsf G_r,\mathsf e\,\mathsf B_s\bigr\rangle
 +\bigl\langle\mathsf B_r,\mathsf e^{\mathsf T}\mathsf G_s\bigr\rangle
 -\bigl\langle\mathsf G_r,\boldsymbol\kappa\,\mathsf G_s\bigr\rangle\\
@@ -119,7 +119,7 @@ carries the compressibility $a(\Delta n)^{2}$, the charge $Q$ and the coupling $
 \end{equation}
 in the inner product $\langle\vect a,\vect b\rangle=\int_{-1/2}^{1/2}
 \vect a^{*\mathsf T}\vect b\,\dd s$ over the half-interval coordinate
-\eqref{eq:app_measures}, with the complex conjugate of the test factor, and with the eight terms, in order, the elastic, strain-gradient,
+\eqref{eq:app_measures}, with the complex conjugate of the test factor, and where $\mathsf B^{,l}$ is the strain operator differentiated once more along $l=x,y,z$ ($\ii k_x$ through the index $r,s$, $\ii k_y$, and $\partial_\zeta$), and with the eight terms, in order, the elastic, strain-gradient,
 piezoelectric (two cross terms), dielectric, flexoelectric, carrier-transport,
 carrier-compressibility-and-coupling, and inertial contributions.  The first,
 second, third, fifth and sixth lines of \eqref{eq:block} are the discretization of
@@ -130,7 +130,7 @@ the eighth is the compressibility and the added coupling, which appear in the ca
 rows and, through $\widehat\tau$, in the mechanical rows as well.  Equation
 \eqref{eq:block} is the construction: each block is one quadrature of the listed
 integrands against the Legendre basis, so the entries can be regenerated from the
-stated integrands without reading the program.
+stated integrands.
 
 Each block takes one power of $k_x$ from the test side and one from the trial
 side, but two of the nine vanish identically: $\mathsf A_{02}=\mathsf A_{20}=0$,
@@ -254,7 +254,7 @@ where $\tau=2\times10^{-8}\max(1,|k_x|)$ and $\mathcal{P}_x$ is the
 thickness-integrated power flux \eqref{eq:Px_int}.  A purely real root is outgoing when it carries energy away from the edge, and an
 evanescent root is outgoing when it decays away from the edge.  The number of
 outgoing roots must equal $M$, which is a structural property of the
-eigenvalue problem and not a tolerance.
+eigenvalue problem and not a tolerance.  Varying $\tau$ from $10^{-9}$ to $10^{-6}$ times $\max(1,|k_x|)$ leaves the outgoing count ($182$ at degree $22$), the identified backward root and $R_B$ unchanged at both the operating point and the maximum.
 
 The solution is written as the incident mode plus a combination of the outgoing
 modes,
@@ -292,7 +292,7 @@ total propagating share, which is the quantity closest to a reflectance, is
 reported separately.
 
 
-Evaluating \eqref{eq:RB} at the operating point takes four stored numbers and
+Evaluating \eqref{eq:RB} at the operating point takes four numbers from the solution and
 three steps, and the steps are the ones a reader can repeat by hand.  The first is
 the power of the unit-amplitude backward mode at the edge, which the
 normalization makes independent of the degree:
@@ -357,7 +357,7 @@ between degree 18 and degree 30.
 When the energy angle of a mode approaches $\pm90^{\circ}$ its $x$ flux
 vanishes and the ratio loses meaning even though the mode itself is perfectly
 well resolved.  The flux fraction
-$|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is stored with each row, and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
+$|\cos\theta_E|=|P_x|/\sqrt{P_x^2+P_y^2}$ is evaluated at each point, and the two values quoted in this article have $|\cos\theta_E|=0.88$ and $0.97$.
 
 \subsection{Consistency and independent checks}
 \label{sec:numerics_verification}
@@ -425,5 +425,4 @@ $C^{1}$ plate (49 pts), first cell $0.00125\,d$ & 0.019320 & $+0.11$ \\
 The reciprocity of the operator at $+k_y$ and $-k_y$ holds to $10^{-13}$, which verifies the symmetry of the discretized bilinear form, including the added coupling.  The seven comparisons above are the independent evidence for the
 implementation; the practical resolution at which they are carried out, the
 convergence of the reported quantities with degree and quadrature, and the
-conservation residual are stated in \cref{app:repro}, and the full computational
-record is deposited with the code and data (see the data availability statement).
+conservation residual are stated in \cref{app:repro}.

@@ -332,7 +332,7 @@ class Plate:
         # Complex roots are selected by half-space decay; real roots by power.
         outgoing=[];incoming=[]
         for wave in waves:
-            K=wave['K'];tol=2e-8*max(1,abs(K))
+            K=wave['K'];tol=getattr(self,"modal_tol",2e-8)*max(1,abs(K))
             out=(K.imag < -tol) or (abs(K.imag)<=tol and wave['power']<0)
             (outgoing if out else incoming).append(wave)
         expected=F.shape[0]//2

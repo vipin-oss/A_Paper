@@ -494,11 +494,6 @@
      "file": "sections/results.tex",
      "text": "10.17}{\\percent} at $k_xd=0.55$",
      "value": 10.17
-    },
-    {
-     "file": "sections/introduction.tex",
-     "text": "\\SI{10.17}{\\percent}",
-     "value": 10.17
     }
    ]
   },

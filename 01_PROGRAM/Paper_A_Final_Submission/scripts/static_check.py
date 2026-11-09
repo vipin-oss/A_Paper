@@ -34,7 +34,7 @@ hfill vfill newline par newpage clearpage tableofcontents listoffigures
 bibliographystyle bibliography input include clearpaper
 toprule midrule bottomrule cmidrule addlinespace
 arraystretch tabcolsep
-Real Imag vect dd ii ee op lvert rvert nonumber sloppy
+Real Imag vect dd ii ee op lvert rvert nonumber sloppy itemsep newton parskip supset topsep
 frac tfrac dfrac sqrt sum int oint prod lim liminf limsup max min sup inf
 partial nabla delta Delta varepsilon epsilon sigma tau mu varphi phi Phi psi
 Psi omega Omega rho kappa lambda Lambda Gamma alpha beta gamma theta Theta

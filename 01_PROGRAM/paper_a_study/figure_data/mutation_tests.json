@@ -7,7 +7,7 @@
       "expected": "FAIL",
       "caught": true,
       "evidence": [
-        "  - sections/results.tex: line 421: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
+        "  - sections/results.tex: line 349: fragile \\path in a moving argument (\\caption) - use \\protect\\path"
       ]
     },
     {
