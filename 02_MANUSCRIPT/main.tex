@@ -6,7 +6,7 @@
 %  Build:  pdflatex main && bibtex main && pdflatex main && pdflatex main
 %
 % ===========================================================================
-\documentclass[10pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 \usepackage[margin=22mm]{geometry}
 \usepackage[T1]{fontenc}
@@ -31,6 +31,7 @@
 
 % Line-breaking slack for the prose.
 \setlength{\emergencystretch}{2em}
+\sloppy
 
 % Short alias for bold vectors.
 \newcommand{\vect}[1]{\boldsymbol{#1}}
@@ -81,7 +82,7 @@ Galerkin method.
 \section*{Nomenclature}
 
 \begin{center}
-\small
+\footnotesize
 \begin{tabular}{@{}ll@{\qquad}ll@{}}
 \toprule
 Symbol & Quantity & Symbol & Quantity \\
@@ -117,7 +118,6 @@ $\alpha_{\mathrm d}=D/(dc_s)$ & transport-over-elastic rate & $\alpha=2|\Imag k_
 \input{sections/governing_equations}
 \input{sections/numerical_methods}
 \input{sections/results}
-\input{sections/discussion}
 \input{sections/conclusions}
 
 

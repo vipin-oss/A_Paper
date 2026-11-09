@@ -39,13 +39,12 @@ transported power.
 \item At the fold the share is sensitive to loss.  It falls from $0.943$ to $0.545$ when the carrier density rises from $2\times10^{18}$ to $2\times10^{20}\,\si{\per\cubic\metre}$, and to $0.600$ and $0.197$ when a loss tangent of $10^{-5}$ and $10^{-4}$ is added to the elastic constants (\cref{sec:results_sens}); the model contains no other elastic loss, so $0.943$ is an upper bound for a plate with intrinsic damping.
 \end{enumerate}
 
-Several limitations should be kept in view.  The gradient length, the
-flexoelectric coefficient and the coupling tensor are assumed values, the
-carriers are linearized about a uniform doping, and the plate has a single edge.
-The corner line force is small but finite in the computed field: it is
-$8.4\times10^{-2}$ of the incident corner scale at the operating point and
-$3.3\times10^{-3}$ at the maximum.  It decays as a power of the Galerkin degree, with the same exponent in three independent configurations, and the partition moves by
-$3.9\times10^{-6}$ over the same range; the closure is therefore shown as a bound, with the decay exponent taken from the computed values.  The added
-term has the structure of the chemo-mechanical coupling given in \cite{qu2025thermodynamic}, which that article neglects in its main text; the
-comparison with its free-energy decomposition was made through \cite{hu2025computational} and checked against the article itself.  What the present analysis supplies is the modal partition of a slow guided branch
-near its zero-group-velocity point, resolved mode by mode rather than in total power.
+Five limitations bound these conclusions.
+
+\begin{enumerate}
+\item \emph{Geometry.}  The plate has one edge, is infinite in $y$ and does not resolve the three-dimensional corner where the edge meets the free surfaces; a finite plate and a second edge are outside the model.
+\item \emph{The corner.}  The corner line force is small but finite: $8.4\times10^{-2}$ of the incident corner scale at the operating point and $3.3\times10^{-3}$ at the maximum at degree 10, decaying algebraically with the degree (exponent about $0.62$ in three configurations), while the partition moves by only $3.9\times10^{-6}$ over the same range.  Its vanishing is not proved, so the closure is a bound, and the free edge is satisfied in the weak sense.  A direct two-dimensional $x$--$z$ finite-element solution with edge cells refined to $0.00125\,d$ reproduces the modal share at the operating point to within $0.5$~\% (\cref{tab:fe2d}); that check is made at the operating point only.
+\item \emph{Carrier model and loss.}  The carriers are linearized about a uniform doping and zero bias, and the only loss is carrier conduction; an added elastic loss tangent of $10^{-5}$ already lowers the maximum from $0.943$ to $0.600$, so $0.943$ is an upper bound.
+\item \emph{Parameters.}  The gradient length, the flexoelectric coefficient and the coupling are assumed values and no published $H_{jkl}$ exists, so the percentages describe the response of this model and not a particular film.
+\item \emph{Attribution.}  The added coupling has the structure of the chemo-mechanical term in \cite{qu2025thermodynamic} and is not claimed as new; what the analysis supplies is the modal partition of a slow guided branch near its zero-group-velocity point, resolved mode by mode rather than in total power.
+\end{enumerate}

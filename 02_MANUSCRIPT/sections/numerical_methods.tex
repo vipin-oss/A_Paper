@@ -192,8 +192,7 @@ slots alone.  Half of the finite roots are outgoing and half incoming, but the
 split is not made by the sign of $\Imag k_x$; the criterion is stated below
 \eqref{eq:classification}.  The Frobenius norms of the blocks at degree
 four and zero coupling are
-\begin{equation}
-\label{eq:block_norms}
+\begin{equation*}
 \begin{aligned}
 &\|\mathsf A_{00}\|=1.89\times10^{4},\quad
 \|\mathsf A_{01}\|=5.67\times10^{2},\quad
@@ -201,7 +200,7 @@ four and zero coupling are
 &\|\mathsf A_{12}\|=4.04,\quad
 \|\mathsf A_{22}\|=7.12\times10^{-1},
 \end{aligned}
-\end{equation}
+\end{equation*}
 spanning four and a half decades.  The spread is intrinsic to the problem: it is the
 $\lambda^2c_{33}/c_{44}=0.32$ of the gradient term against the $O(10^{2})$ of
 the elastic term, multiplied by the $2j(j+1)(2j+1)$ growth of the stiffness
@@ -297,11 +296,10 @@ Evaluating \eqref{eq:RB} at the operating point takes four stored numbers and
 three steps, and the steps are the ones a reader can repeat by hand.  The first is
 the power of the unit-amplitude backward mode at the edge, which the
 normalization makes independent of the degree:
-\begin{equation}
-\label{eq:RB_worked}
+\begin{equation*}
 \mathcal{P}_x=-0.0154248,\qquad |a_B|=1.1184598,\qquad
 P_{B}^{\text{edge}}=|a_B|^{2}\mathcal{P}_x=-0.0192957 ,
-\end{equation}
+\end{equation*}
 the three numbers being read from the same $n=22$ row.  They are separately
 degree-dependent ($|\mathcal{P}_x|$ falls by $14$ percent and $|a_B|^{2}$ rises
 by $16$ percent between $n=18$ and $n=22$) and their product is not:
@@ -309,25 +307,22 @@ $0.019296$ at $n=18$, $22$, $26$ and $30$ alike, to six digits
 (see \eqref{eq:app_power_numbers}).  Quoting $\mathcal{P}_x$ or $|a_B|$ alone measures the normalization of the eigenvector, not the port.
 The second is the propagation to the reference plane, with the attenuation taken
 from the complex root,
-\begin{equation}
-\label{eq:RB_prop}
+\begin{equation*}
 \Imag k_{Bx}=-5.2306\times10^{-6},\quad
 \Imag k_{ix}=+5.4027\times10^{-6}\ \text{(per unit $d$)},\quad L=10\,d ,
-\end{equation}
-\begin{equation}
-\label{eq:RB_planes}
+\end{equation*}
+\begin{equation*}
 \begin{aligned}
 P_{B}(-L)&=-0.0192957\,e^{2(-5.2306\times10^{-6})(10)}=-0.0192937,\\
 P_{\text{inc}}(-L)&=e^{2(5.4027\times10^{-6})(10)}=1.0001081 ,
 \end{aligned}
-\end{equation}
+\end{equation*}
 where the incident mode is normalized to unit power at the edge.  The third is
 the ratio,
-\begin{equation}
-\label{eq:RB_value}
+\begin{equation*}
 R_B=\frac{-P_{B}(-L)}{P_{\text{inc}}(-L)}
 =\frac{0.0192937}{1.0001081}=0.0192916 ,
-\end{equation}
+\end{equation*}
 that is \SI{1.93}{\percent}.  The two exponentials move the fourth digit in
 opposite directions: the backward mode decays and the incident mode grows as
 $x\to-L$, so the ratio changes by $2.1\times10^{-4}$ relative to the
@@ -400,7 +395,7 @@ the solver actually imposes.  The comparison is stated in
 \eqref{eq:corner_identity}; it closes to $1.4\times10^{-13}$ for the incident
 guided mode at all degrees from 10 to 28 and for each quadrature rule tested, and it is the check that fixes the index placement and the sign of the corner term, so neither rests on the derivation alone.  What the same comparison shows
 about the pointwise natural conditions (which a Galerkin statement imposes
-only weakly) is reported in \cref{sec:disc_limitations}: the double traction
+only weakly) is reported in \cref{sec:conclusions}: the double traction
 is annihilated pointwise to $10^{-12}$, whereas the traction leaves an interior
 residual of $9.4\times10^{-4}$ of the incident scale at the corrected maximum
 (larger, $3.6\times10^{-2}$, at the operating point) that does not decrease
@@ -411,21 +406,17 @@ weak solution and not of the implementation, and they are reported with the othe
 
 \begin{table}[t]
 \centering
-\caption{Two-dimensional finite-element check at the operating point.  Modal value $R_B=0.019292$ (spectral plate; $0.019396$ and $0.019298$ for the $C^{1}$ plate with $25$ and $49$ points).  The reference case has strip length $200\,d$, absorbing layer $170\,d$ with strength $0.1$, $500$ uniform cells, first graded cell $0.02\,d$ and B-spline degree $4$.}
+\caption{Two-dimensional finite-element check at the operating point.  Modal value $R_B=0.019292$ (spectral plate; $0.019298$ for the $C^{1}$ plate with $49$ points).  The reference case has strip length $200\,d$, absorbing layer $170\,d$ with strength $0.1$, $500$ uniform cells, first graded cell $0.02\,d$ and B-spline degree $4$.}
 \label{tab:fe2d}
 \begin{tabular}{lcc}
 \toprule
 Variation of the reference case & $R_B^{\mathrm{FE}}$ & Difference (\%) \\
 \midrule
 Reference & 0.019324 & $+0.17$ \\
-Strip $300\,d$, layer $260\,d$ & 0.019346 & $+0.28$ \\
 Layer strength $0.05$ & 0.019373 & $+0.42$ \\
 $800$ uniform cells & 0.019311 & $+0.10$ \\
 B-spline degree $5$ & 0.019265 & $-0.14$ \\
-First cell $0.005\,d$ & 0.019320 & $+0.15$ \\
 First cell $0.00125\,d$ & 0.019313 & $+0.11$ \\
-Thickness degree $14$, $18$ & 0.019324 & $+0.17$ \\
-$C^{1}$ plate (25 pts), first cell $0.00125\,d$ & 0.019418 & $+0.11$ \\
 $C^{1}$ plate (49 pts), first cell $0.00125\,d$ & 0.019320 & $+0.11$ \\
 \bottomrule
 \end{tabular}

@@ -1,26 +1,26 @@
-verification run 2026-11-08T18:33:32+00:00
+verification run 2026-11-09T05:32:09+00:00
 
 [PASS] dimensional and constitutive audit  (0.4s)
       3. strain-gradient index contraction (exact SH branch, K = 0.8)
         A = ell^2 c_(ij)(lm) delta_(kn)   |dw| = 2.120e-13
         A = ell^2 c_(ij)(kl) delta_(mn)   |dw| = 3.120e+06
       
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/dimension_audit.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/dimension_audit.json
       RESULT: PASS
-[PASS] quasistatic justification  (0.4s)
+[PASS] quasistatic justification  (0.3s)
         (k_EM d)^2  retardation order      4.889e-08
         omega * tau_dielectric             1654.429   (carrier response is NOT instantaneous)
         tau_dielectric / period            263.311
         d / Debye length                   0.0746
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/quasistatic_audit.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/quasistatic_audit.json
       RESULT: PASS
-[PASS] flexoelectric control  (2.8s)
+[PASS] flexoelectric control  (2.5s)
         synthetic_1nC_m  f = 2.563e-03  R_B = 0.551910042  theta = -14.4487  balance = 5.6e-14
         ten_x            f = 2.563e-02  R_B = 0.545485627  theta = -14.4769  balance = 7.7e-13
         effect of f = 1 nC/m : -0.012 %
         effect of f = 10 nC/m: -1.176 %
       
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/flexo_control.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/flexo_control.json
 [PASS] admissibility re-derivation  (0.0s)
       fig02_material_parameter_sweep.csv         rows= 130 admissible= 130 flipped=0
       fig04_frequency_reflection.csv             rows= 139 admissible= 139 flipped=0
@@ -32,51 +32,51 @@ verification run 2026-11-08T18:33:32+00:00
           d/lambda_EM       3.520000e-05 vs  3.518925e-05   rel=3.06e-04  ok
         round-4 pre-fix values (evidence only): v_p = 2800 m/s, lambda_EM = 0.905 mm (= 1/k_EM), d/lambda = 0.00022 (= k_EM d)
       
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/phase_speed_audit.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/phase_speed_audit.json
       RESULT: PASS
-[PASS] modal-flux rescaling proof  (5.2s)
+[PASS] modal-flux rescaling proof  (5.3s)
         R_B before rescaling : 0.019291601864
         R_B after  rescaling : 0.019291601864
         relative difference  : 7.733e-15
       
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/modal_flux_audit.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/modal_flux_audit.json
       RESULT: PASS
-[PASS] mechanism matched controls  (96.1s)
+[PASS] mechanism matched controls  (101.1s)
         H/H*=+0.025  coarse K=0.5290  refined K=0.5292  R_B=0.756619265  f=16.6546 GHz
         H/H*=+0.000  coarse K=0.5270  refined K=0.5272  R_B=0.942871829  f=16.6547 GHz
         H/H*=-0.025  coarse K=0.5280  refined K=0.5279  R_B=0.854127770  f=16.6547 GHz
         H/H*=-0.050  coarse K=0.5240  refined K=0.5240  R_B=0.683155082  f=16.6546 GHz
       
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/mechanism_controls.json
-[PASS] corner assessment and regression  (7.0s)
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/mechanism_controls.json
+[PASS] corner assessment and regression  (6.8s)
           22,
           26,
           30
         ]
       }
       certification cross-check: PASS
-[PASS] certified peak (four fixed wavenumbers)  (7.8s)
+[PASS] certified peak (four fixed wavenumbers)  (7.7s)
           "max_relative_change": 2.6887345614852145e-06,
           "max_angle_change_deg": 2.332592785592169e-09,
           "R_B_finest": 0.5519094854693973,
           "angle_finest": -14.448727905937425
         }
       }
-[PASS] peak search and classification  (167.5s)
+[PASS] peak search and classification  (169.5s)
        },
        "quadrature_spread": 1.0296198403013296e-09,
        "tracking_path_relative_spread": 2.3139549229366815e-07,
        "restart_spread": 3.2401341325538624e-06,
-       "elapsed_s": 167.1
+       "elapsed_s": 169.0
       }
-[PASS] peak identity and artefact audit  (11.8s)
+[PASS] peak identity and artefact audit  (12.3s)
        "min_candidate_separation_ratio": 2.0039019126753055,
        "max_condition": 140.892063053845,
        "min_delta_K_over_decay": 1.4134554665911023,
        "relative_error_bound": 3.128432247786361e-14,
        "artefact": false
       }
-[PASS] spectral convergence  (6.3s)
+[PASS] spectral convergence  (6.5s)
         26   133 16.654675002  0.9428717527    4.75e-08   0.526156   2.1e-15   1.0e-12     77.3
         30   153 16.654675002  0.9428717079    0.00e+00   0.526156   2.1e-15   1.3e-13    171.7
         successive relative changes: 7.1e-07 2.3e-07 9.2e-08 4.8e-08
@@ -90,18 +90,18 @@ verification run 2026-11-08T18:33:32+00:00
       
       worst relative change of R_B against the 256-node rule: 1.72e-08
       verdict: PASS
-[PASS] unit and scientific tests  (11.6s)
-[PASS] natural boundary data identity  (2.4s)
+[PASS] unit and scientific tests  (11.8s)
+[PASS] natural boundary data identity  (2.1s)
          corner top=[-0.01662-0.00821j -0.00012+0.00055j -0.01568-0.00707j] bottom=[ 0.01635+0.00816j  0.00012-0.00055j -0.01508-0.00699j]
       degree=12,nquad=96     R_B=0.019292418543 traction=4.98e-07 corner_rel=6.586e-02
       degree=12,nquad=192    R_B=0.019292418542 traction=2.69e-07 corner_rel=6.612e-02
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/round21/gate1_traction_identity.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/round21/gate1_traction_identity.json
       GATE1 identity, incident mode (<1e-10): PASS
       GATE1 identity, worst reflected mode (<1e-4): PASS
-[PASS] corner line force gate  (12.2s)
+[PASS] corner line force gate  (11.5s)
       nquad=128 id(inc)=1.99e-13 id(plain,worst)=1.73e+01 f=2.92997e-03 t_inner=1.110e-03
       nquad=192 id(inc)=4.56e-13 id(plain,worst)=1.73e+01 f=2.92997e-03 t_inner=1.112e-03
-      wrote /home/claude/gptaudit/FIXED/PAPER_A_COMPLETE/01_PROGRAM/paper_a_study/figure_data/round21/gate12_corner.json
+      wrote /tmp/t1/01_PROGRAM/paper_a_study/figure_data/round21/gate12_corner.json
       operating point    |f|/scale = 3.513e-01 n^(-0.618)
       corrected maximum  |f|/scale = 1.408e-02 n^(-0.632)
       k_x d = 0.55       |f|/scale = 1.627e-01 n^(-0.630)
@@ -112,15 +112,15 @@ verification run 2026-11-08T18:33:32+00:00
         {'check': 'round-19 grounded baseline kept and labelled', 'present': True, 'files': 2}
         {'check': 'manuscript grounded mentions framed as controls', 'problems': 0}
       PASS
-[PASS] round-21 regression tests  (1.2s)
+[PASS] round-21 regression tests  (1.0s)
 [PASS] review regression tests (A01, A02, B01, B02)  (1.4s)
 [PASS] claim registry and stale guard  (0.0s)
-      claims registered: 40   tokens checked: 64
+      claims registered: 35   tokens checked: 59
       deprecated values guarded: 10
       figure first-citation order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       source-agreement rows: 11 (11 passing)
       PASS
-[PASS] gate mutation tests  (4.5s)
+[PASS] gate mutation tests  (4.3s)
       M12  CAUGHT  TestCrossScriptEdgeFraction      thickness d replaced by the gradient length l (L and l confused)
               AssertionError: 1.0 not less than 1e-06 : fig05 CSV vs shared transform: 1.00e+00
       M10b  CAUGHT  TestPlaneInvariance              flipped exponent, checked by an invariance test that uses no stored values
@@ -131,7 +131,7 @@ verification run 2026-11-08T18:33:32+00:00
         - label never referenced: sec:results_geometry
         - label never referenced: sec:results_scope
         - label never referenced: sec:results_validation
-        - approximate prose word count (including math tokens): 24650
+        - approximate prose word count (including math tokens): 21296
       
       No TeX engine was invoked by this script.
 [PASS] LaTeX clean build: 60 bibliography entries, no undefined references

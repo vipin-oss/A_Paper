@@ -2,10 +2,8 @@
 \label{app:derivations}
 
 This appendix contains the calculations that are used in the article but whose
-length would interrupt it: the element matrices of the Legendre basis, five
-worked matrix elements, the construction of the blocks \eqref{eq:block} from the
-weak equations, the edge-matching system, the normalization of the modal power,
-and one end-to-end numerical evaluation of the reported share.
+length would interrupt it: the element matrices of the Legendre basis, the construction of the blocks \eqref{eq:block} from the
+weak equations, the edge-matching system and the normalization of the modal power.
 
 \subsection{Element matrices of the Legendre basis}
 
@@ -30,11 +28,10 @@ b_j(s)=\sqrt{2j+1}\,P_j(2s),\qquad j=0,\dots,N-1,
 with $N$ the number of basis functions per field.  Since
 $\int_{-1}^{1}P_iP_j\dd\zeta=2\delta_{ij}/(2j+1)$, the Gram matrix in the $s$
 measure is
-\begin{equation}
-\label{eq:app_mass}
+\begin{equation*}
 \int_{-1/2}^{1/2}b_ib_j\,\dd s
 =\frac{2j+1}{2}\int_{-1}^{1}P_iP_j\,\dd\zeta=\delta_{ij},
-\end{equation}
+\end{equation*}
 the first factor being the Jacobian of $s=\zeta/2$ and the second the Legendre
 normalization.  The same integral in the $\zeta$ measure is
 $\int_{-1}^{1}b_ib_j\dd\zeta=2\delta_{ij}$: the two differ by just the Jacobian, and the mass matrix that multiplies $\dot{\vect q}$ in the weak form is
@@ -53,11 +50,10 @@ Legendre equation and the factor $2$ collects $4\times\tfrac12$.  The weighted
 form of that identity is the one that follows directly from the equation, and it is derived here because this step is usually skipped.  Multiplying
 $\bigl[(1-\zeta^{2})P_j'\bigr]'=-j(j+1)P_j$ by $P_k$ and integrating by parts, the
 boundary term carrying the factor $(1-\zeta^{2})$ vanishes at both ends and
-\begin{equation}
-\label{eq:app_S_weighted}
+\begin{equation*}
 \int_{-1}^{1}(1-\zeta^{2})P_j'P_k'\,\dd\zeta
 =\frac{2j(j+1)}{2j+1}\,\delta_{jk},
-\end{equation}
+\end{equation*}
 which is the orthogonality of the derivatives under the weight
 $(1-\zeta^{2})$; \eqref{eq:app_S} is its unweighted companion and is used here
 only through the closed form it implies.  The discrete matrix checks both, and so
@@ -68,10 +64,9 @@ in absolute value.
 
 For $i\neq j$ the parity of $P_i'P_j'$ leaves $S_{ij}\neq0$ only when $i$ and $j$
 have the same parity, and
-\begin{equation}
-\label{eq:app_S_off}
+\begin{equation*}
 S_{ij}=2\sqrt{(2i+1)(2j+1)}\int_{-1}^{1}P_i'P_j'\,\dd\zeta ,
-\end{equation}
+\end{equation*}
 which explains the structure of \eqref{eq:app_S_matrix}: the matrix is
 real and symmetric and it vanishes between basis functions of opposite parity,
 but the same-parity entries are not confined to a band.  At $N=6$ the entry
@@ -99,30 +94,27 @@ multiplied by an elastic modulus and by $\lambda^{2}$.
 
 Two further element matrices are needed.  The potential space of the grounded
 problem is spanned by
-\begin{equation}
-\label{eq:app_pot}
+\begin{equation*}
 \psi_j(s)=b_j(s)-r_j\,b_{j+2}(s),\qquad
 r_j=\sqrt{\frac{2j+1}{2j+5}},\qquad j=0,\dots,N_\varphi-1 ,
-\end{equation}
+\end{equation*}
 which vanishes at $s=\pm\tfrac12$ for every $j$ because $P_j(\pm1)=(\pm1)^j$ and
 $r_j$ is exactly the ratio that makes the two terms cancel; $N_\varphi=N-2$,
 since $\psi_j$ needs $b_{j+2}$ up to $j=N_\varphi-1$, i.e.\ $b_{N-1}$.  The two
 matrices that couple the charge are then distinguished by which index is the test
 index.  Testing Gauss's law with $\psi_i$ against the carrier basis $b_j$ gives
-\begin{equation}
-\label{eq:app_charge}
+\begin{equation*}
 \bigl(\mathsf C\bigr)_{ij}\equiv\int_{-1/2}^{1/2}\psi_i\,b_j\,\dd s
 =\delta_{ij}-r_i\,\delta_{j,i+2},
 \qquad i=0,\dots,N_\varphi-1,\quad j=0,\dots,N-1 ,
-\end{equation}
+\end{equation*}
 that is a unit matrix minus one band above the diagonal, with the coefficient
 $r_i$ carrying the \emph{row} index.  The reciprocal matrix that appears in the
 carrier equation is its transpose,
-\begin{equation}
-\label{eq:app_charge_T}
+\begin{equation*}
 \bigl(\mathsf C^{\mathsf T}\bigr)_{ij}\equiv\int_{-1/2}^{1/2}b_i\,\psi_j\,\dd s
 =\delta_{ij}-r_j\,\delta_{i,j+2},
-\end{equation}
+\end{equation*}
 which has the band below the diagonal and the coefficient $r_j$ on the column
 index.  Both appear in \eqref{eq:block}: $-\mathsf C$ in the potential row and
 $-\mathsf C^{\mathsf T}$ in the carrier row, entering through the single term
@@ -132,102 +124,13 @@ from the assembled one by $0.2981$ in the largest entry at degree four, so the o
 the dielectric matrix is
 $\kappa_{33}\int\psi_i'\psi_j'\dd s+\kappa_{11}k_y^{2}\int\psi_i\psi_j\dd s$,
 with
-\begin{equation}
-\label{eq:app_diel}
+\begin{equation*}
 \int_{-1/2}^{1/2}\psi_i'\psi_j'\,\dd s
 =S_{ij}-r_jS_{i,j+2}-r_iS_{i+2,j}+r_ir_jS_{i+2,j+2},
-\end{equation}
+\end{equation*}
 in which the second and third terms are equal because $\mathsf S$ is symmetric,
 and the first term is not $S_{ij}$ alone: the grounded basis removes a band of
 the stiffness exactly as it removes a band of the mass.
-
-\subsection{Five worked matrix elements}
-
-The entries below are evaluated at the operating point $k_xd=0.7362$,
-$k_yd=0.1298$, $\omega=7.6334\,c_s/d$ and at polynomial degree $p=4$, i.e.\
-$N=p+1=5$ basis functions per field, $n_{\mathrm{u}}=3N=15$, $n_\varphi=N-2=3$,
-$n_\mu=N=5$ and $n_{\mathrm{w}}=5p+3=23$ unknowns.  That is the smallest degree at
-which the parity structure and the grounded bands are both visible; the reported
-results use $p=22$, with $p=18$ to $34$ examined, where the same formulas hold with larger matrices.
-All entries are in the scaled units of the solver: stresses divided by
-$c_{44}$, electric displacement by $\sqrt{c_{44}\kappa_{33}}$ and electric field by $\sqrt{c_{44}/\kappa_{33}}$, permittivities by
-$\kappa_{33}$, so the numbers are dimensionless.
-
-\begin{enumerate}
-\item \emph{Compressibility (mass) entry}, carrier row and column:
-\begin{equation}
-\label{eq:app_w1}
--\int_{-1/2}^{1/2}b_ib_j\,\dd s=-\delta_{ij}
-\qquad\text{so that}\qquad
-\bigl(\mathsf A_{00}\bigr)_{\mu_0\mu_0}=-1 ,
-\end{equation}
-reproduced as $-1$ to $7\times10^{-15}$.
-\item \emph{Transport entry.}  The carrier gradient enters the weak form without a
-power of $k_x$ through its transverse part and with one power through its axial
-part, so the $k_x^{0}$ block holds the transverse wavenumber and the $k_x^{2}$
-block the axial one:
-\begin{equation}
-\label{eq:app_w2}
-\bigl(\mathsf A_{00}\bigr)_{\mu_i\mu_j}\Big|_{\text{transport}}
-=-\frac{\ii\alpha_{\mathrm d}}{\omega}\Bigl[k_y^{2}\,\delta_{ij}+S_{ij}\Bigr],
-\qquad
-\bigl(\mathsf A_{11}\bigr)_{\mu_i\mu_j}\Big|_{\text{transport}}
-=-\frac{\ii\alpha_{\mathrm d}}{\omega}\,\delta_{ij} ,
-\end{equation}
-so that the polynomial operator reproduces
-$-\ii\alpha_{\mathrm d}\bigl(k_x^{2}+k_y^{2}+S_{ij}\bigr)/\omega$.  With
-$\alpha_{\mathrm d}/\omega=0.108509$ and $k_y^{2}=0.016848$ the
-diagonal of \eqref{eq:app_w2} is
-\begin{equation}
-\label{eq:app_w2_values}
--\ii\,1.828\times10^{-3},\quad -\ii\,1.3039,\quad -\ii\,6.5124,\quad
--\ii\,18.2314 \qquad (j=0,\dots,3),
-\end{equation}
-for $S_{jj}=0,12,60,168$, and the $k_x^{2}$ block is
-$-\ii\,0.108509$.  The two pieces together reproduce the assembled coefficient of
-the polynomial to $3.6\times10^{-15}$.  The growth with $j$ is the discrete
-statement that a higher Legendre mode stores more gradient energy, and hence that diffusion penalizes thickness structure.
-\item \emph{Carrier--potential entry.}  With the orientations fixed by
-\eqref{eq:app_charge}--\eqref{eq:app_charge_T}, the potential row of
-$\mathsf A_{00}$ carries $-\mathsf C$ and the carrier row
-$-\mathsf C^{\mathsf T}$:
-\begin{equation}
-\label{eq:app_w3}
-\bigl(\mathsf A_{00}\bigr)_{\varphi_i\mu_j}
-=-Q\bigl(\delta_{ij}-r_i\,\delta_{j,i+2}\bigr),
-\qquad
-\bigl(\mathsf A_{00}\bigr)_{\mu_i\varphi_j}
-=\bigl(\mathsf A_{00}\bigr)_{\varphi_j\mu_i},
-\end{equation}
-so the diagonal is $-Q=-0.074635$ and the band is $+Qr_i$, that is $+0.033378$,
-$+0.048860$, $+0.055630$ and $+0.059538$ for $i=0,\dots,3$; the first of these is
-$Q/\sqrt{5}$ because $r_0=1/\sqrt{5}$, and the sign is positive because the
-band of \eqref{eq:app_charge} is negative and the block has the overall minus
-of $-\int W_i^{*}W_j$.  In the carrier row the same numbers appear at
-$(i,i-2)$, below the diagonal, with the coefficient $r_{i-2}$ carrying the
-\emph{trial} (potential) index; the two matrices are transposes of one another, and
-the assembled blocks reproduce \eqref{eq:app_w3} to $9\times10^{-16}$.
-\item \emph{Gradient-stiffness entry}, out-of-plane row and column:
-\begin{equation}
-\label{eq:app_w4}
-\lambda^{2}\frac{c_{33}}{c_{44}}\,S_{ij}
-=0.0625\times5.1395\times S_{ij}
-\;=\;3.85,\ 19.27,\ 53.97,\ 115.64 \quad (j=1,2,3,4),
-\end{equation}
-growing as $j^{3}$ because $S_{jj}\propto j^{3}$: this is the growth that makes
-the discrete operator badly scaled before row equilibration, and $115.64$ at $j=4$ is the largest of these entries at
-this degree.
-\item \emph{Inertia entry}:
-\begin{equation}
-\label{eq:app_w5}
--\omega^{2}\delta_{ij}=-58.27\,\delta_{ij}\qquad(\omega=7.6334).
-\end{equation}
-The ratio of the inertia entry to the $j=1$ gradient entry is
-$58.27/3.85=15.1$.  It compares two matrix entries at one fixed frequency and
-nothing more: the frequency of a thickness mode is an eigenvalue of the coupled
-problem \eqref{eq:quartic}, not the ratio of two entries, and no mode frequency is
-inferred from it here.
-\end{enumerate}
 
 \subsection{Construction of the blocks from the weak equations}
 
@@ -262,10 +165,9 @@ with $\langle\vect a,\vect b\rangle=\int_{-1/2}^{1/2}\vect a^{\mathsf H}\vect b\
 The powers of $k_x$ are counted by the block indices $(r,s)$ and by nothing else,
 and it is written out here because double counting is the usual error.
 The strain of a single mode is split once and for all as
-\begin{equation}
-\label{eq:app_strain_split}
+\begin{equation*}
 \varepsilon_{ij}=\varepsilon^{(0)}_{ij}+\ii k_x\,\varepsilon^{(1)}_{ij},
-\end{equation}
+\end{equation*}
 with both coefficient vectors independent of $k_x$:
 \begin{center}
 \renewcommand{\arraystretch}{1.1}
@@ -286,12 +188,11 @@ no component contains more than one power of $\ii k_x$, so the split terminates 
 first order.  The strain gradient is split the same way, with $\partial_x$ acting
 on the test factor and on the trial factor separately, and the block is defined as
 the coefficient of $(-\ii k_x)^{r}(\ii k_x)^{s}$ in \eqref{eq:app_block}:
-\begin{equation}
-\label{eq:app_ar_s}
+\begin{equation*}
 \mathsf A_{rs}=\bigl\langle\varepsilon^{(r)},\mathsf C\varepsilon^{(s)}\bigr\rangle
 +\lambda^{2}\bigl\langle\partial_z\varepsilon^{(r)},\mathsf C\partial_z\varepsilon^{(s)}\bigr\rangle
 +\cdots ,
-\end{equation}
+\end{equation*}
 the remaining terms of \eqref{eq:app_block} being split in the same way.  Two consequences follow in this language.  First, the leading coefficient
 is the gradient energy of the axial part of the strain alone,
 \begin{equation}
@@ -328,10 +229,9 @@ functions.  The face quantities $\bar\sigma_{iz}$, $\tau_{izz}$ and $D_z$ of
 \eqref{eq:bc_faces_mech}--\eqref{eq:bc_grounded} belong to $z=\pm d/2$; they are
 the natural conditions of the expansion in $z$ and are not the edge conditions.
 The number of rows is thus
-\begin{equation}
-\label{eq:app_edge_rows}
+\begin{equation*}
 m=2n_{\mathrm u}+n_\varphi+n_\mu ,
-\end{equation}
+\end{equation*}
 with the double-traction block present whenever the hyperstress is non-zero.  At the edge only the axial strain gradient remains:
 \begin{equation}
 \label{eq:app_edge_tau}
@@ -348,7 +248,7 @@ why it is not a case of this model.  Between those cases the edge problem change
 order, and with it the state:
 
 \begin{center}
-\renewcommand{\arraystretch}{1.15}
+\renewcommand{\arraystretch}{1.15}\scriptsize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lllccl@{}}
 \toprule
 case & parameters & $\tau_{ijx}$ & $N_s$ & $m$ & double traction \\
@@ -371,16 +271,14 @@ With the edge ansatz \eqref{eq:edge_ansatz} and the modal state
 $\vect y^{(j)}\in\mathbb{C}^{N_s}$ (the $n_{\mathrm w}$ displacement and
 potential coefficients, the $n_{\mathrm u}$ axial traces, and the $n_{\mathrm w}$
 and $n_{\mathrm u}$ conjugate rows), the system is
-\begin{equation}
-\label{eq:app_edge}
+\begin{equation*}
 \vect y(0)=\vect y_{\text{inc}}+\sum_{j=1}^{M}a_j\,\vect y^{(j)},
 \qquad
 \mathsf B\vect a=-\vect b_{\text{inc}},
-\end{equation}
+\end{equation*}
 where the boundary operator acts on a \emph{state} and the boundary matrix on the
 modal index,
-\begin{equation}
-\label{eq:app_edge_R}
+\begin{equation*}
 \mathsf R=\begin{pmatrix}
 \mathsf R_{\Sigma}\\
 \mathsf R_{\tau}\\
@@ -392,7 +290,7 @@ modal index,
 \in\mathbb{C}^{m\times M},
 \qquad
 \vect b_{\text{inc}}=\mathsf R\,\vect y_{\text{inc}}\in\mathbb{C}^{m},
-\end{equation}
+\end{equation*}
 so the three objects have three different second dimensions and only the last two
 agree.  They do agree, identically, not by accident: the number of
 decaying states is half the state dimension, $M=N_s/2=n_{\mathrm w}+n_{\mathrm u}$
@@ -442,49 +340,5 @@ in which the raw power falls by \SI{36}{\percent} and the squared amplitude rise
 \SI{57}{\percent} across the four degrees while the physical power is constant to
 the six digits shown.  That constancy is the
 numerical statement of \eqref{eq:app_power} and it is why the reported
-share is degree-independent at the $10^{-6}$ level of
-\cref{tab:refinement}.
-
-\subsection{One end-to-end evaluation of the reported share}
-
-The reported number at the operating point is assembled from five quantities,
-each of which is stored with each row of the data: the raw backward power
-$\mathcal{P}_x$, the scattering amplitude $|a_B|$, the incident power at the
-reference plane, the two attenuation exponents and the reference distance
-$L=10\,d$.  The five are quoted below from \emph{one} row, the reported degree
-$n=22$, and not mixed with the neighboring degrees of
-\eqref{eq:app_power_numbers}, because the raw power and the amplitude both change
-with degree even though their product does not:
-\begin{equation}
-\label{eq:app_RB}
-R_B=\frac{|a_B|^{2}\bigl|\mathcal{P}_x\bigr|\,e^{2\Imag k_{Bx}L}}
-{P_{\text{inc}}\,e^{2\Imag k_{ix}L}}
-=\frac{0.0192957\times0.9998954}{1.0001081}
-=\frac{0.0192937}{1.0001081}=0.0192916 ,
-\end{equation}
-with, at $n=22$,
-\begin{equation}
-\label{eq:app_RB_inputs}
-|a_B|=1.1184598,\quad
-|a_B|^{2}=1.250952,\quad
-\mathcal{P}_x=-0.015424813,\quad
-|a_B|^{2}\bigl|\mathcal{P}_x\bigr|=0.0192957 ,
-\end{equation}
-the last product being the power the backward port actually carries at the edge.
-The factor $e^{2\Imag k_{Bx}L}=0.9998954$ brings it to $x=-L$ with
-$\Imag k_{Bx}=-5.2306\times10^{-6}$ per unit $d$, and the incident mode carries
-$e^{2\Imag k_{ix}L}=1.0001081$ with $\Imag k_{ix}=+5.4027\times10^{-6}$; both
-exponents are degree-independent to the seven digits quoted, so the degree of the
-row enters \eqref{eq:app_RB} only through $|a_B|^{2}|\mathcal{P}_x|$.  What the
-number measures is the ratio of two physical powers,
-$-P_B/P_{\text{inc}}=0.0192916$, and the two exponential factors state at which
-plane each power was taken.
-
-The value and its meaning are two different statements and are kept apart.
-Equation \eqref{eq:app_RB} evaluates the share at the \emph{operating point},
-$1.93$ percent of the incident power at $x=-10\,d$.  The local maximum of the
-same quantity over the frequency window, $R_B=0.9428718$, is a property of the
-peak row, not of this one, and \eqref{eq:app_RB} neither computes nor implies it.  Reading the operating-point row along the plate, the backward mode carries
-$1.93$ percent at $x=-10\,d$ and $1.93\,\%\times e^{-2.13\times10^{-4}}$ at
-$x=-20\,d$: the decay of the share is governed by the \emph{difference} of the two
-attenuation constants, not by either one of them.
+share is degree-independent at the $10^{-6}$ level reported in
+\cref{sec:results_peak}.

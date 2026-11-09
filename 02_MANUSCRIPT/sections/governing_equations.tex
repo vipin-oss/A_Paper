@@ -175,19 +175,19 @@ contributions, $w=\sum_\alpha w_\alpha$, the derivatives are
 \frac{\partial w_{\text{piezo}}}{\partial\varepsilon_{ij}}&=-e_{kij}E_k,
 \qquad
 \frac{\partial w_{\text{flexo}}}{\partial\eta_{ijk}}=-f_{lijk}E_l,
-\label{eq:diff_coup}\\[2pt]
+\nonumber\\[2pt]
 \frac{\partial w_{\text{diel}}}{\partial E_i}&=-\kappa_{ij}E_j,
 \qquad
 \frac{\partial w_{\text{piezo}}}{\partial E_i}=-e_{ijk}\varepsilon_{jk},
-\label{eq:diff_elec}\\[2pt]
+\nonumber\\[2pt]
 \frac{\partial w_{\text{flexo}}}{\partial E_i}&=-f_{ijkl}\eta_{jkl},
 \qquad
 \frac{\partial w_{\text{carr}}}{\partial\Delta n}=a\,\Delta n,
-\label{eq:diff_carr}\\[2pt]
+\nonumber\\[2pt]
 \frac{\partial w_{H}}{\partial\Delta n}&=H_{jkl}\eta_{jkl},
 \qquad
 \frac{\partial w_{\text{es}}}{\partial\Delta n}=-q\varphi,
-\label{eq:diff_es}
+\nonumber
 \end{align}
 and \eqref{eq:sigma}--\eqref{eq:mu} are these lines collected, with the electric
 relation taken as $D_i=-\partial w/\partial E_i$ because $E_i$ is the field and
@@ -269,7 +269,7 @@ c_{44}&=\SI{43}{\giga\pascal},& c_{66}&=\tfrac12(c_{11}-c_{12}),
 \end{aligned}
 \end{equation}
 the piezoelectric matrix $e_{k\,ij}$ (rows $k=x,y,z$) is
-\begin{equation}
+{\small\begin{equation}
 \label{eq:ZnOe}
 \mathsf e=
 \begin{pmatrix}
@@ -281,7 +281,7 @@ e_{31}&e_{31}&e_{33}&0&0&0
 e_{33}=\SI{1.32}{\coulomb\per\square\metre},\;
 e_{31}=\SI{-0.57}{\coulomb\per\square\metre},\;
 e_{15}=\SI{-0.48}{\coulomb\per\square\metre},
-\end{equation}
+\end{equation}}
 and the permittivity is diagonal, $\kappa_{11}=\kappa_{22}$,
 $\kappa_{33}=\SI{8.85e-11}{\farad\per\metre}$, with
 $\kappa_{33}/\varepsilon_0=10$.  Assembling \eqref{eq:CZnO}--\eqref{eq:ZnOe} in
@@ -351,12 +351,11 @@ $\tfrac12\tau_{ijk}(\delta u_{i,jk}-\delta u_{j,ik})=0$ by relabelling
 $i\leftrightarrow j$ in the second term.  Only \eqref{eq:contraction} enters the
 integrations by parts below.  With these, the virtual work of the
 internal fields at fixed time is
-\begin{equation}
-\label{eq:virtual_work}
+\begin{equation*}
 \delta W=\int_V\Bigl[\sigma_{ij}\,\delta\varepsilon_{ij}
 +\tau_{ijk}\,\delta\eta_{ijk}-D_i\,\delta E_i
 +\widetilde\mu\,\delta(\Delta n)\Bigr]\dd V .
-\end{equation}
+\end{equation*}
 One integration by parts on the derivative carried by the stress and two on
 those carried by the hyperstress move all derivatives onto the fields and
 leave only surface terms,
@@ -417,11 +416,10 @@ dispersion, $\rho\omega^{2}=ck^{2}+Ak^{4}$ in one dimension.  Of the derivatives
 $(j,k)=(z,z)$ one meets the two non-classical constants, because $f$ and $H$ sit
 in the single component $\tau_{3zz}$; the quantity $\partial_z^{2}\tau_{3zz}$, which enters
 \eqref{eq:momentum_expanded} with a minus sign, contains the terms
-\begin{equation}
-\label{eq:Hterm}
+\begin{equation*}
 \partial_z^{2}\bigl(-f\,E_z+H\,\Delta n\bigr)
 = f\,\partial_z^{2}\partial_z\varphi+H\,\partial_z^{2}\Delta n ,
-\end{equation}
+\end{equation*}
 which is the mechanical signature of both the flexoelectric and the
 carrier--strain-gradient couplings: a strain gradient is driven by the second
 thickness derivative of the potential and by that of the carrier density.  The
@@ -442,8 +440,7 @@ Variation with respect to $\varphi$ gives Gauss's law
 the minus sign being the charge of the electron.  Substituting
 \eqref{eq:DZnO} in it and using $E_i=-\partial_i\varphi$ expands the statement
 into the electrostatic operator of the model,
-\begin{equation}
-\label{eq:gauss_expanded}
+\begin{equation*}
 \begin{aligned}
 &-\kappa_{11}\bigl(\varphi_{,xx}+\varphi_{,yy}\bigr)
 -\kappa_{33}\varphi_{,zz}
@@ -454,7 +451,7 @@ into the electrostatic operator of the model,
 +f\,\eta_{zzz,z}
 =-q\,\Delta n ,
 \end{aligned}
-\end{equation}
+\end{equation*}
 in which the first line holds the dielectric operator and the piezoelectric shear terms, and the second line the remaining piezoelectric and the flexoelectric
 contribution to the charge density.  The
 carrier equation \eqref{eq:continuity} is already in component form once the flux
@@ -472,12 +469,11 @@ where $J_i$ is the electron \emph{number} flux and $D$ the diffusivity; the
 charge balance follows from \eqref{eq:continuity} by multiplying by $-q$, which
 turns $J_i$ into the current \eqref{eq:current}.  Inserting the flux and the
 harmonic dependence gives the carrier equation in the form used by the solver,
-\begin{equation}
-\label{eq:carrier_strong}
+\begin{equation*}
 -\ii\omega\,\Delta n-\frac{D\,n_0}{k_BT}\,\nabla^{2}\widetilde\mu=0 ,
 \qquad\text{i.e.}\qquad
 \Delta n=\frac{\ii D\,n_0}{\omega k_BT}\,\nabla^{2}\widetilde\mu ,
-\end{equation}
+\end{equation*}
 so the carrier density is proportional to the Laplacian of its own
 electrochemical potential, with the factor $\ii$ that later appears as
 $+\ii\alpha_{\mathrm d}/\omega$ in the weak form \eqref{eq:weak_carrier}.  The
@@ -610,7 +606,7 @@ tangential wavenumber $k_y$,
 \eqref{eq:generalised_traction} reads
 $\bar\sigma_{jx}=\Sigma_{jx}-\ii k_y\tau_{jyx}-\partial_z\tau_{jzx}$.
 The traction is a condition on that combination and not on $\sigma_{ix}$ alone,
-and it is imposed through the surface term of the weak form; \cref{sec:disc_limitations} reports how closely the computed
+and it is imposed through the surface term of the weak form; \cref{sec:conclusions} reports how closely the computed
 solution meets it pointwise.  The second entry is the double traction, conjugate to the
 normal derivative of the displacement on the edge; the components $\tau_{iyx}$ and
 $\tau_{izx}$ are not separate conditions, since they enter only through
@@ -697,12 +693,11 @@ For a scattering solution the identity
 holds exactly, with $P_j$ the \emph{signed} self-power of outgoing mode $j$,
 $P_{\text{cross}}$ the bilinear interference between them (non-zero whenever the
 modes are not orthogonal in the power metric) and
-\begin{equation}
-\label{eq:dissipation}
+\begin{equation*}
 P_{\text{diss}}=\tfrac12\alpha_{\mathrm{d}}\int_{-L}^{0}\!\!\int
 \Bigl[|\partial_x\widetilde\mu|^{2}+k_y^2|\widetilde\mu|^2+|\partial_z\widetilde\mu|^2\Bigr]\dd z\,\dd x ,
 \qquad \alpha_{\mathrm{d}}=\frac{D}{d\,c_s},
-\end{equation}
+\end{equation*}
 written in the scaled variables: the wavenumber
 components, the thickness coordinate and $L$ are the scaled ones and
 $\widetilde\mu$ is the \emph{total} electrochemical-potential field (incident plus
@@ -725,10 +720,9 @@ correction.  The residual of \eqref{eq:energy_identity} is evaluated for each re
 
 The plate is invariant along $y$ and in time, so a single tangential wavenumber
 and a single frequency are conserved by the linear problem and any field can be written as an amplitude in the thickness times a propagating factor,
-\begin{equation}
-\label{eq:ansatz}
+\begin{equation*}
 f(x,y,z,t)=\widehat f(z)\,\ee^{\ii(k_xx+k_yy-\omega t)} ,
-\end{equation}
+\end{equation*}
 for which the four derivative operators act as
 \begin{equation}
 \label{eq:substitution}
@@ -739,8 +733,7 @@ for which the four derivative operators act as
 \end{equation}
 Substituting \eqref{eq:substitution} in \eqref{eq:strain} gives the six strain
 components in terms of the three displacement amplitudes,
-\begin{equation}
-\label{eq:strain_amplitudes}
+\begin{equation*}
 \begin{aligned}
 \widehat\varepsilon_{xx}&=\ii k_x\widehat u_1, &
 \widehat\varepsilon_{yy}&=\ii k_y\widehat u_2, &
@@ -749,17 +742,16 @@ components in terms of the three displacement amplitudes,
 \widehat\varepsilon_{xz}&=\tfrac12\bigl(\widehat u_1'+\ii k_x\widehat u_3\bigr),&
 \widehat\varepsilon_{xy}&=\tfrac12\ii\bigl(k_x\widehat u_2+k_y\widehat u_1\bigr),
 \end{aligned}
-\end{equation}
+\end{equation*}
 and the eighteen strain-gradient components follow from
 $\eta_{ijk}=\varepsilon_{ij,k}$ with the same three replacements, each $x$
 derivative multiplying by $\ii k_x$, each $y$ derivative by $\ii k_y$ and each
 $z$ derivative acting on the amplitude.  Two representative entries are
-\begin{equation}
-\label{eq:eta_amplitudes}
+\begin{equation*}
 \widehat\eta_{xxx}=\partial_x\widehat\varepsilon_{xx}=-k_x^{2}\widehat u_1,
 \qquad
 \widehat\eta_{zzz}=\partial_z\widehat\varepsilon_{zz}=\widehat u_3'',
-\end{equation}
+\end{equation*}
 and the electric field is $\widehat E_x=-\ii k_x\widehat\varphi$,
 $\widehat E_z=-\widehat\varphi'$.  The continuity equation
 \eqref{eq:continuity} reduces to the algebraic statement
@@ -875,10 +867,9 @@ per carrier by $k_BT$.  The carrier amplitude of \eqref{eq:continuity} is
 measured so that the compressibility term of \eqref{eq:enthalpy} is
 $\tfrac12\int\widehat N^{2}$ in the scaled units used by \eqref{eq:block}, which
 is what fixes the coefficient of $\widehat N^{2}$ there.  Two derived scales appear repeatedly,
-\begin{equation}
-\label{eq:a_scale}
+\begin{equation*}
 a=\frac{k_BT}{n_0},\qquad L_D=\sqrt{\frac{\kappa_{33}k_BT}{q^2n_0}},
-\end{equation}
+\end{equation*}
 and the model is governed by the five dimensionless numbers of
 \cref{tab:groups}.  Each is an exact ratio of two physical lengths, times or
 energies, and each is reproduced numerically from the material file.
@@ -900,62 +891,60 @@ $h$ & $H/(d\sqrt{a\,c_{44}})$ & $\eta\times2.12\times10^{-1}$ & carrier--gradien
 \end{tabular}
 \end{table}
 
+\paragraph{Parameters and their provenance.}\label{sec:params}
+The classical constants are literature values ($c_{11}=210$, $c_{33}=221$, $c_{44}=43\,\si{\giga\pascal}$; $e_{33}=1.32$, $e_{31}=-0.57$, $e_{15}=-0.48\,\si{\coulomb\per\square\metre}$; $\kappa_{33}=8.85\times10^{-11}\,\si{\farad\per\metre}$, from Table~1 of \cite{zhang2025pscplate}).  The transport parameters are representative values for n-type ZnO: $\mu_e=0.0175\,\si{\square\metre\per\volt\per\second}$ and $D=4.55\times10^{-4}\,\si{\square\metre\per\second}$, equal to $\mu_ek_BT/q$ at $T=\SI{301.7}{\kelvin}$ and within the $120$--$\SI{205}{\square\centi\metre\per\volt\per\second}$ compiled for nominally undoped bulk and film ZnO in Table~VII of \cite{ozgur2005zno}; the density $n_0=1$--$3\times10^{18}\,\si{\per\cubic\metre}$ is a modeling scenario below the $8\times10^{19}$--$5\times10^{23}\,\si{\per\cubic\metre}$ of that table, and $d=\SI{200}{\nano\metre}$ is a reference thickness (sweep $120$--$\SI{320}{\nano\metre}$).  The strain-gradient length $\ell=\SI{50}{\nano\metre}$, the flexoelectric coefficient $f_{3zz}=\SI{1}{\nano\coulomb\per\metre}$ (in the nC/m range reported for ZnO \cite{hu2025computational,zhao2021effects}; it contributes \SI{-0.01}{\percent} to $R_B$) and the coupling $H_{333}$ are \emph{assumed}; the same form $g=\ell^2c$ is used in \cite{qu2023drag} with \SI{20}{\nano\metre} for silicon.  For $H_{jkl}$ no published value is available: the numbers used, $|H|\le\SI{2.0e-23}{\joule\metre}=0.022\,H_{\text{bound}}$, are fixed by the positivity bound \eqref{eq:schur}, which leaves a margin of a factor of forty-five in $H$.
+
 The groups are evaluated once by hand, because the arithmetic is what
 connects the scaled problem to the measured units of the figures and each later number is a multiple of one of these five.  The elastic wave speed is
-\begin{equation}
-\label{eq:cs_worked}
+\begin{equation*}
 c_s=\sqrt{\frac{c_{44}}{\rho}}
 =\sqrt{\frac{\SI{43.0}{\giga\pascal}}{\SI{5.70e3}{\kilo\gram\per\cubic\metre}}}
 =\SI{2.7466}{\kilo\metre\per\second},
-\end{equation}
+\end{equation*}
 so the unit of frequency at $d=\SI{200}{\nano\metre}$ is
 $c_s/(2\pi d)=\SI{2.1857}{\giga\hertz}$, and the operating point
 $\omega=7.6334\,c_s/d$ is $f=7.6334\times\SI{2.1857}{\giga\hertz}=
 \SI{16.684}{\giga\hertz}$, the value quoted in the abstract.  The
 compressibility is
-\begin{equation}
-\label{eq:a_worked}
+\begin{equation*}
 a=\frac{k_BT}{n_0}=\frac{(\SI{1.380649e-23}{\joule\per\kelvin})
 (\SI{301.72}{\kelvin})}{\SI{2.0e18}{\per\cubic\metre}}
 =\SI{2.0828e-39}{\joule\metre^{3}},
-\end{equation}
+\end{equation*}
 with $T=\SI{301.72}{\kelvin}$ the temperature implied by the Einstein relation for
 the diffusivity--mobility pair used; it is not an independent input.  The
 Debye length and the charge group follow from it as
-\begin{equation}
-\label{eq:LD_worked}
+{\small\begin{equation*}
 L_D=\sqrt{\frac{\kappa_{33}k_BT}{q^{2}n_0}}
 =\sqrt{\frac{(\SI{8.85e-11}{\farad\per\metre})(\SI{4.1657e-21}{\joule})}
 {(\SI{1.6022e-19}{\coulomb})^{2}(\SI{2.0e18}{\per\cubic\metre})}}
 =\SI{2.6797}{\micro\metre},
 \qquad
 Q=\frac{d}{L_D}=0.074635 .
-\end{equation}
+\end{equation*}}
 The Debye length is then $13.40$ times the thickness, $L_D/d=1/Q=13.40$,
 so the plate is thinner than one screening length by more than an order of
 magnitude and the carrier perturbation is not confined to a surface layer.  The screening enters each block of \eqref{eq:block} with the small
 coefficient $Q^{2}=5.57\times10^{-3}$ multiplying the potential--potential
 term.  The
 transport group is
-\begin{equation}
-\label{eq:alphad_worked}
+\begin{equation*}
 \alpha_{\mathrm d}=\frac{D}{d\,c_s}
 =\frac{\SI{4.55e-4}{\square\metre\per\second}}
 {(\SI{200}{\nano\metre})(\SI{2.7466}{\kilo\metre\per\second})}
 =0.8283 ,
-\end{equation}
+\end{equation*}
 of order unity: the diffusion time across the thickness,
 $d^{2}/D=\SI{8.8e-11}{\second}$, is comparable to the elastic transit time
 $2d/c_s=\SI{1.5e-10}{\second}$, so the carrier and elastic sectors are not
 separated by a small parameter, and this is the reason the carrier must be
 kept in the eigenvalue problem and cannot be condensed away.  Finally the
 gradient and coupling groups follow from the same numbers,
-\begin{equation}
-\label{eq:lam_worked}
+\begin{equation*}
 \lambda=\frac{\ell}{d}=\frac{\SI{50}{\nano\metre}}{\SI{200}{\nano\metre}}=0.25 ,
 \qquad
 h=\frac{H}{d\sqrt{a\,c_{44}}}=\frac{H}{\SI{1.8927e-21}{\joule\metre}} ,
-\end{equation}
+\end{equation*}
 so the tabulated extreme $|H|=\SI{2.0e-23}{\joule\metre}$ is
 $h=\pm1.06\times10^{-2}$, a one percent perturbation of the carrier sector at
 the largest coupling examined.  Each of these five chains is an identity: the material file gives $(c_{44},\rho,k_BT,n_0,\kappa_{33},q,D,d,\ell,H)$ and the

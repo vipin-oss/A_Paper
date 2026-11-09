@@ -40,7 +40,7 @@ thermally induced carrier redistribution \cite{qu2022thermal}.  The
 most complete statement of the framework is the Coleman--Noll derivation of Qu,
 Pan, Zhu and Deng \cite{qu2025thermodynamic}, whose additive free-energy
 decomposition is the reference against which the added term of
-\cref{sec:intro_coupling} is placed in \cref{sec:disc_literature}.  A computational
+\cref{sec:intro_coupling} is placed at the end of this section.  A computational
 treatment of flexoelectric semiconductor junctions has also appeared
 \cite{hu2025computational}.  All of these works make a point that constrains any extension of the model: the additional constitutive couplings are not free
 parameters, they are constrained by a thermodynamic potential, and the
@@ -168,3 +168,22 @@ from the edge or, if it is propagating, carries energy away from the edge.  Both
 definitions are operational, being the ones implemented in the solution.
 
 The formulation and the solution method are given first, followed by the numerical results with their discussion, and the findings are collected at the end.
+
+The formulation belongs to the flexoelectric-semiconductor continuum developed
+by Qu and co-workers \cite{qu2020mobile,qu2022thermal}, in which the strain
+gradient polarizes the medium, the polarization is screened by the mobile
+carriers, and the redistributed carriers act back on the field.  The wave theory used here is that of Yang et al.\ \cite{yang2018lamb,yang2020rayleigh}
+for flexoelectric plates and half-spaces with strain-gradient elasticity, and Zhang et al.\ \cite{zhang2025pscplate} find, for a simply supported plate under static load and in free vibration, that the semiconductor coupling is active only within a window of initial electron concentration, and that this window moves to larger concentrations as the plate becomes thinner.  The concentration at which their damping is largest is $10^{18.6}$, $10^{19.6}$ and $10^{20.6}\,\si{\per\cubic\metre}$ for $h=30$, $3$ and $0.3\,\si{\micro\metre}$.  The present plate ($d=\SI{200}{\nano\metre}$, $n_0\le3\times10^{18}\,\si{\per\cubic\metre}$) lies below these values, so the carrier results here describe the weakly conducting side of that window.  Qu et al.\ \cite{qu2023drag} derive plate equations for flexoelectric semiconductors by the Mindlin method with the same simplified gradient modulus $g=\ell^2c$, and check them against three-dimensional dispersion relations for a silicon plate of thickness \SI{0.2}{\micro\metre}.  For piezoelectric-semiconductor ZnO plates, Li et al.\ \cite{li2023sh} report for shear-horizontal waves that an initial density below $2\times10^{18}\,\si{\per\cubic\metre}$ barely changes the cut-off frequencies and that above $10^{23}\,\si{\per\cubic\metre}$ the plate responds as an elastic one; the density sweep of \cref{sec:results_sens} lies within this range.  Dispersion and damping of Rayleigh-type waves in a piezo-thermo-electric semiconductor with fractional and nonlocal effects have also been computed \cite{aldandani2026kg}.
+
+What is different here is the object of study.  The references above compute
+dispersion relations and attenuation of modes in an unbounded or layered
+medium, and the scattering calculations available for flexoelectric media are
+plane-wave reflection coefficients at a free surface of a half-space
+\cite{mondal2022scattering}.  This paper computes the \emph{scattering} of a
+guided mode at a free edge of a plate, resolves the outgoing spectrum into its
+branches, and reports the partition.  That is a different calculation with a different output: a
+dispersion curve is an eigenvalue problem, whereas an edge partition requires
+the matching of a continuum of outgoing modes and a classification of each of
+them.
+
+The closest primary work is the thermodynamically consistent theory of Qu, Pan, Zhu and Deng \cite{qu2025thermodynamic}, which derives the constitutive equations of a flexoelectric semiconductor from the free-energy imbalance and contains the drift--diffusion current, the flexoelectric and piezoelectric couplings and the higher-order stress in one framework.  Its explicit free energy, reproduced in \cite{hu2025computational}, is additive and its carrier energy contains no strain gradient, so in that form the strain gradient reaches the carriers only through the flexoelectric polarization that enters Gauss's law.  The direct bilinear term $\Delta n\,H_{jkl}\varepsilon_{jk,l}$ used here is absent from that form but not from the article: its Appendix~C.1 adds a chemo-mechanical energy that is linear in the carrier concentration and in the strain gradient, and the part $M^{n}_{IJK}$ corresponds to $H_{jkl}$ here; the article neglects it in its main text and does not pose an edge-scattering problem.  The term is therefore not claimed as new.  The symbol $H$ is overloaded in the literature: in \cite{hu2025computational} it denotes the sixth-order strain-gradient elasticity tensor, written $A_{ijklmn}$ here, whereas $H_{jkl}$ is a third-order carrier--strain-gradient coefficient (J\,m) and the two are unrelated.  What this paper contributes is the scattering problem and a quantified account of the incremental effect of the added term: at $|H|=0.05H^{*}$ it moves the partition by \SI{1.21}{\percent} at the operating point, \SI{10.17}{\percent} at $k_xd=0.55$ and \SI{36.1}{\percent} at the maximum, and it is not the origin of the backward branch, which the classical plate already has near $k_xd=0.82$.

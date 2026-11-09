@@ -24,9 +24,9 @@ Panel (b) shows three different velocities:
 v_p&=\frac{\omega}{|\vect{k}|}=\frac{\omega}{\sqrt{k_x^2+k_y^2}},
 \qquad \text{(phase speed, a magnitude)}\label{eq:vp}\\
 v_g&=c_s\frac{\partial\omega}{\partial k_x},
-\qquad \text{(group velocity, signed)}\label{eq:vg}\\
+\qquad \text{(group velocity, signed)}\nonumber\\
 v_E&=\frac{\mathcal{P}_x}{E},
-\qquad \text{(energy velocity, signed)}\label{eq:vE}
+\qquad \text{(energy velocity, signed)}\nonumber
 \end{align}
 with $\mathcal{P}_x$ from \eqref{eq:Px_int} and $E$ the stored energy per unit
 length.  The phase speed \eqref{eq:vp} is a positive magnitude and cannot
@@ -202,84 +202,11 @@ the conservation bound \eqref{eq:admissible}.
 \label{sec:results_peak}
 \label{sec:results_certification}
 
-The maximum of \cref{fig:fig04} falls between two samples of the coarse raster,
-so it is solved again at six Galerkin degrees with the same physics, and each
-value is checked against the quadrature rule.  \Cref{tab:refinement} reports the
-outcome.
+The maximum of \cref{fig:fig04} falls between two samples of the coarse raster, so it was solved again at six Galerkin degrees, each value being checked against the quadrature rule.  At degree $30$ the share is $0.019\,292$ at the operating point and $0.942\,872$ at the maximum.  Between degrees $14$ and $34$ the relative change of the maximum stays below $10^{-5}$ and that of the operating point is $2.5\times10^{-5}$, the successive changes decreasing monotonically; with the degree fixed at 22 and the rule taken from 64 to 256 nodes the maximum changes by less than $10^{-8}$.  The edge system is well conditioned (condition number at most $1.9\times10^{2}$, scaled edge residual below $3\times10^{-15}$), and the values are resolved projections: the energy angles are $-13.9^{\circ}$ and $-27.9^{\circ}$, so the measured $x$ flux is \SI{97.1}{\percent} and \SI{88.4}{\percent} of the total modal flux and neither value is an artifact of a near-grazing mode.
 
-\begin{table}[t]
-\centering
-\caption{Refinement with the Galerkin degree $n$ at $H=0$; the last column is the largest relative change of $R_B$ with respect to $n=30$.}
-\label{tab:refinement}
-\begin{tabular}{@{}lcccc@{}}
-\toprule
-Case & $k_xd$ & $R_B$ at $n=30$ & $\theta_E$ at $n=30$ (deg) & $\max|\Delta R_B|/R_B$ \\
-\midrule
-Operating point   & 0.7362 & 0.019\,292 & $-27.8997$ & $2.5\times10^{-5}$ \\
-Maximum & 0.52719 & 0.942\,872 & $-13.8493$ & $1.1\times10^{-6}$ \\
-Earlier sample    & 0.5250 & 0.925\,604 & $-13.8888$ & $1.3\times10^{-6}$ \\
-$k_xd=0.55$       & 0.5500 & 0.551\,909 & $-14.4487$ & $7.7\times10^{-6}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+The quantity maximized is the one defined by \eqref{eq:RB}: the modal self-power of the identified backward outgoing mode at the reference plane, divided by the incident power at the same plane.  The other outgoing modes, the interference term and the dissipation are quoted separately and never folded into it.  A coarse raster of $\Delta k_xd=0.002$ over $0.465\le k_xd\le0.625$ (the whole window in which a backward port exists at this $k_y$) contains a single peak with its largest sample at $k_xd=0.527$, and a plateau raster of $10^{-4}$ and a refined raster of $10^{-5}$ place the maximum at $k_xd=0.52719$ with $R_B=0.9428718$.  The top is flat: every sampled wavenumber in $0.5267\le k_xd\le0.5276$ lies within \SI{0.01}{} percentage point of the maximum, so the reported location is the center of that top, determined to within $\pm0.0005$.  The incident wavenumber returned by the spatial problem is $k_{ix}d=0.52821$, \SI{0.19}{\percent} from the branch parameter, and no conclusion depends on the difference.  The result is a \emph{local maximum within the declared window}, not a global maximum over all $k_y$, thicknesses or material sets, none of which is searched here.
 
-Three properties of the sequence should be noted.  First, the values are
-converged in the Galerkin degree: between degrees 14 and 34 the relative
-change of the maximum remains below $10^{-5}$ at both the located argmax and the
-reported wavenumber, the operating point changes by $2.5\times10^{-5}$, and the
-successive changes decrease monotonically and are still decreasing at the
-highest degree.  The two spreads are differences of nearly equal numbers, so they are
-reported as bounds and not as values.  Quadrature is not a limitation either: with the degree fixed at 22 and
-the rule taken from 64 to 256 nodes the maximum changes by less than $10^{-8}$.  Second, the values
-are well conditioned: the singular-value condition number of the edge system is
-at most $1.9\times10^{2}$ and the scaled edge residual is below $3\times10^{-15}$ in all cases.  Third, the values are resolved projections:
-the energy angles are $-13.9^{\circ}$ and $-27.9^{\circ}$, so the measured $x$
-flux is \SI{97.1}{\percent} and \SI{88.4}{\percent} of the total modal flux
-respectively.  Neither value is an artifact of a near-grazing mode.
-
-The precision of the printed digits is set by the refinement spreads, not by the location of the top.  At a fixed
-configuration the share is reproducible to about $10^{-6}$ relative: it changes
-by $1.1\times10^{-6}$ across degrees 14 to 34 and by $1.6\times10^{-7}$ between
-degrees 22 and 34, the quadrature rule (64 to 256 nodes) changes it by
-$1.0\times10^{-9}$, and the three tracking paths that reach the maximum from below,
-from above and in a single step agree to $2.3\times10^{-7}$.  The located argmax and the reported sample are the same point,
-$k_xd=0.52719$, so no offset between them enters the printed digits.
-In addition, the incident wavenumber returned by the spatial problem is
-$k_{ix}d=0.52821$, not the branch parameter $k_xd=0.52719$: on a flat branch the
-two differ by \SI{0.19}{\percent} at the maximum.  Both are tabulated and no
-conclusion depends on the difference.
-
-
-The quantity maximized is the one defined by \eqref{eq:RB}: the modal self-power
-of the identified backward outgoing mode at the reference plane, divided by the
-incident power at the same plane with the incident mode normalized to unity.
-The other outgoing modes, the interference term and the dissipation are quoted
-separately and are never folded into it; the edge-plane value is reported beside
-the reference-plane value and never substituted for it.
-
-The location is found in three stages.  A coarse raster of
-$\Delta k_xd=0.002$ over $0.465\le k_xd\le0.625$ (the whole window in which a
-backward port exists at this $k_y$) contains a single peak and no second local
-extremum, with its largest sample at $k_xd=0.527$.  A plateau raster of
-$\Delta k_xd=10^{-4}$ over $0.5265\le k_xd\le0.5285$, and a refined raster of
-$\Delta k_xd=10^{-5}$ around it, place the maximum at
-$k_xd=0.52719$ with $R_B=0.9428718$; the reported value is that of the
-resolved maximum of the sampled raster, and the value at the center of the flat top, $k_xd=0.52752$,
-is $R_B=0.9428521$, $2.0\times10^{-5}$ lower, a difference between two
-abscissae and not between two runs.  Every sampled wavenumber in
-$0.5267\le k_xd\le0.5276$ lies within \SI{0.01}{} percentage point of the
-maximum and all sampled wavenumbers in $0.5265\le k_xd\le0.5280$ within
-\SI{0.1}{} percentage point, so the response has a flat top and not a sharp peak: the reported location is the center of that top, determined to within its
-half-width of $\pm0.0005$, not a five-digit abscissa.
-
-Two independent restarts, from the brackets $[0.520,0.532]$ and
-$[0.524,0.536]$ on a raster of $10^{-3}$, return the same interval and the same
-sample value, $3.2\times10^{-6}$ below the refined maximum: the restarts test the
-bracketing, while the refinement is the task of the two finer rasters above.  The result is a \emph{local maximum within the declared window}.  It is not a
-global maximum over all $k_y$, all thicknesses or all material sets, none of
-which is searched here.  The search record also stores whether the refined
-raster is flat and interior; a raster that is not flat, or that meets the
-boundary of the interval, is reported as the largest sample and is not called a maximum.
+The maximum has a simple reading.  At the fold the group velocity vanishes ($+0.01\,\si{\metre\per\second}$ against $-187$ and $+409\,\si{\metre\per\second}$ at the ends of the solved window) and the backward and incident wavenumbers differ by \SI{0.4}{\percent}, so the two modes are nearly parallel and the edge conditions can be met with only a small admixture of the other outgoing modes; the projection onto the backward mode then takes almost all of the partition.  Panel (c) of \cref{fig:fig04} shows this: all coupling levels collapse onto one curve in $k_{Bx}/k_{ix}$, with the conversion maximal as the ratio approaches unity, and the conversion falls steeply on both flanks.  A grid of $\Delta k_xd=0.05$ would miss the maximum because the whole top of the response is $10^{-3}$ wide.  The same fold makes the incident flux fall by a factor of $131$ with respect to the operating point, so the partition is maximal where the transported power is minimal: that ninety-four percent of the energy is turned around would be true as a ratio and false as an energy budget, and only the ratio is claimed.  The outgoing propagating modes carry all of the incident power to within \SI{0.1}{\percent} (\cref{sec:results_channel}), so the plate is an almost perfect scatterer and the question is into which branch the power goes.  A measurement of the total reflectance would see essentially unity everywhere on the branch; the negative reflection requires modal resolution, by a wavenumber filter or a time-of-flight separation of the branches.
 
 \subsection{The maximum read as a modal share and the energy budget of the edge}
 \label{sec:results_artefact}
@@ -349,7 +276,7 @@ attenuations, which are $2|\Imag k_x|/d$ formed from the same spatial roots and 
 \centering
 \caption{The three reported configurations ($d=\SI{200}{\nano\metre}$, $\ell=\SI{50}{\nano\metre}$, $H=0$, $k_yd=0.1298$, $L=10d$). $R_B$ is a modal share, not a reflectance.}
 \label{tab:configurations}
-\small
+\scriptsize
 \begin{tabular}{@{}lccc@{}}
 \toprule
 Quantity & Operating point & Maximum & $k_xd=0.55$ \\
@@ -439,7 +366,7 @@ different frequencies of a different branch would not be comparable.
 \centering
 \caption{Matched controls. The frequency follows the branch. Entries marked ``sp'' are specular self-powers, not backward conversion.}
 \label{tab:controls}
-\small
+\footnotesize
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xcccccc@{}}
 \toprule
  & \multicolumn{2}{c}{Operating point ($k_xd=0.736$)}
@@ -498,29 +425,8 @@ row of \cref{tab:controls}, which lie on a different classical branch from the c
 positive axial wavenumber and negative axial power: the only negative-power
 outgoing mode is the specular reflection, whose wavenumber equals $-k_{x,\text{inc}}$; those entries therefore carry the superscript ``sp''.
 Following the operating-point mode to $\ell=0$ at fixed $k_y$, however, shows that
-the classical plate has a backward interval of its own.  \Cref{tab:lambda_path}
-lists the frequency at $k_x=K_0$ and the zero-group-velocity point along that
-path: the fold moves from $k_xd=0.527$ at $\lambda=0.25$ to $k_xd=0.824$ at
-$\lambda=0$, and the group velocity is negative below the fold for all values of $\lambda$ in the table.
+the classical plate has a backward interval of its own.  Along that path the frequency at $k_x=K_0$ falls from \SI{16.684}{\giga\hertz} to \SI{13.687}{\giga\hertz}, the fold moves from $k_xd=0.527$ at $\lambda=0.25$ to $k_xd=0.824$ at $\lambda=0$ (through $1.084$ at $\lambda=0.10$), and the group velocity is negative below the fold for every value of $\lambda$ sampled.
 
-\begin{table}[t]
-\centering
-\caption{Operating-point branch followed from $\lambda=\ell/d=0.25$ to $0$ at fixed $k_y$, with the flexoelectric coefficient and $H$ set to zero; $v_g$ in units of $c_s$.}
-\label{tab:lambda_path}
-\small
-\begin{tabular}{@{}ccccc@{}}
-\toprule
-$\lambda$ & freq.\ at $K_0$ (GHz) & fold $k_xd$ & fold freq.\ (GHz) & $\min v_g/c_s$ \\
-\midrule
-0.25 & 16.684 & 0.527 & 16.655 & $-0.069$ \\
-0.20 & 16.274 & 0.805 & 16.270 & $-0.241$ \\
-0.15 & 15.707 & 0.988 & 15.659 & $-0.450$ \\
-0.10 & 14.951 & 1.084 & 14.884 & $-0.281$ \\
-0.05 & 14.130 & 1.020 & 14.104 & $-0.106$ \\
-0.00 & 13.687 & 0.824 & 13.685 & $-0.038$ \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 The branch is tracked by modal overlap (at least $0.998$ between neighboring steps), the group velocity is $\dd\Omega/\dd K$ by finite differences with $\Delta K=0.01$, and the results agree to four digits between Galerkin degrees 18 and 24.
 
@@ -680,6 +586,8 @@ $\alpha_{\mathrm d}=\mu_ek_BT/(q\,d\,c_s)$; in the response the two appear as th
 conductivity $n_0\mu_e$, so at fixed $n_0\mu_e$ the partition is unchanged and
 the collapse reflects that product and not either parameter separately.
 
+The ordering of these sensitivities is a property of the coupling and the operating point together: $k_y$ changes the backward channel by a factor of $1.41$ across the solved box while $H$ moves it by \SI{1.21}{\percent} at the operating point, but at the maximum the coupling moves the partition by \SI{36.1}{\percent}, and the $k_y$ sweep was not repeated there.  Any statement about the added coupling must therefore be made at fixed $k_y$, and an experimental attempt to see it must control the transverse wavenumber much better than the doping or the mobility.
+
 \subsection{Independent cross-checks and the near field}
 \label{sec:results_validation}
 \label{sec:results_field}
@@ -765,40 +673,22 @@ loss other than carrier conduction and diffusion.  Because the conversion is lar
 flux nearly vanishes, both limits were tested with the same branch-following definition of $R_B$
 ($L=10\,d$, $k_yd=0.1298$, $H=0$); the code is \texttt{robustness\_sweeps.py}.
 
-\emph{Carrier density.}  \Cref{tab:n0wide} repeats the search for the fold at six densities from
+\emph{Carrier density.}  The search for the fold was repeated at six densities from
 $2\times10^{18}$ to $2\times10^{23}\,\si{\per\cubic\metre}$, which takes $Q=d/L_D$ from $0.075$ to $24$.  This range covers the densities of nominally undoped ZnO compiled in Table~VII of \cite{ozgur2005zno}, $8\times10^{19}$--$5\times10^{23}\,\si{\per\cubic\metre}$, up to its upper end.  The
-maximum falls from $0.943$ to $0.545$ over the first two decades, with the argmax inside the raster.  From
+maximum falls from $0.943$ through $0.828$ to $0.545$ over the first three densities ($2\times10^{18}$, $2\times10^{19}$, $2\times10^{20}\,\si{\per\cubic\metre}$), with the argmax inside the raster.  From
 $2\times10^{21}\,\si{\per\cubic\metre}$ upward the largest sampled value in a window of $\pm0.03$ about the
-fold lies on the edge of the window, so the entries are lower bounds and the maximum itself was not located.  At the operating
+fold lies on the edge of the window, so the entries ($\ge0.168$, $\ge0.043$ and $\ge0.174$) are lower bounds and the maximum itself was not located.  At the operating
 point the share stays between $0.0158$ and $0.0410$ over the whole range $2\times10^{18}$ to
 $6\times10^{23}\,\si{\per\cubic\metre}$, and its linewidth peaks near $2\times10^{22}\,\si{\per\cubic\metre}$ at
 \SI{8.7}{\mega\hertz}.  The statement of \cref{sec:results_material} that the density sets the loss but not the
 partition therefore holds for the range of \cref{fig:fig02}; at the fold the partition depends on the density through the loss.
 
-\begin{table}[t]
-\centering
-\caption{Fold search at six carrier densities ($d=\SI{200}{\nano\metre}$, $\ell=\SI{50}{\nano\metre}$, $H=0$, $k_yd=0.1298$, $L=10d$). Entries marked $\ge$ are the largest sampled value in a window of $\pm0.03$ in $k_xd$ about the fold, with the argmax on the edge of the window.}
-\label{tab:n0wide}
-\small
-\begin{tabular}{@{}cccc@{}}
-\toprule
-$n_0$ (\si{\per\cubic\metre}) & $Q=d/L_D$ & linewidth at the maximum (\si{\mega\hertz}) & $R_B$ maximum \\
-\midrule
-$2\times10^{18}$ & 0.075 & 0.0024 & 0.9428 \\
-$2\times10^{19}$ & 0.24 & 0.024 & 0.828 \\
-$2\times10^{20}$ & 0.75 & 0.23 & 0.545 \\
-$2\times10^{21}$ & 2.4 & 2.1 & $\ge0.168$ \\
-$2\times10^{22}$ & 7.5 & 6.9 & $\ge0.043$ \\
-$2\times10^{23}$ & 24 & 2.2 & $\ge0.174$ \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \emph{Structural loss.}  The model contains no intrinsic elastic loss.  To measure the effect of one, the elastic
 and gradient-elastic tensors were multiplied by $1-\mathrm i\eta$ (time dependence $e^{-\mathrm i\omega t}$), a loss tangent $\eta$, i.e.\ a
 quality factor $1/\eta$, with the carrier terms unchanged.  The form and the values of $\eta$ are assumed; none is taken from a measurement.  Viscoelastic loss of the Kelvin--Voigt type has been treated for nonlocal piezo-semiconductors elsewhere \cite{gupta2026heatmap}.
 The frequency was scanned over 41 values within $\pm3\times10^{-3}$ of the lossless fold frequency and the largest $R_B$ is
-reported, so that each entry is a lower bound on the maximum over frequency.  \Cref{tab:eta_loss} shows that $\eta=10^{-5}$
+reported, so that each entry is a lower bound on the maximum over frequency.  The scan shows that $\eta=10^{-5}$
 lowers the maximum from $0.943$ to $0.600$ and $\eta=10^{-4}$ to $0.197$, while
 $|\Imag k_{ix}|d$ rises from $1.0\times10^{-3}$ to $8.1\times10^{-3}$ and $2.0\times10^{-2}$.  This is the square-root response of the
 spatial roots to a small loss near a zero-group-velocity point.  For $\eta\ge10^{-3}$ the port selection finds no
@@ -806,20 +696,3 @@ propagating incident mode in the scan window and the entries are not evaluated. 
 $0.943$ is therefore that of a plate whose only loss is carrier conduction, and it should be read as an upper bound
 for a real plate.
 
-\begin{table}[t]
-\centering
-\caption{Maximum $R_B$ at the fold against an added loss tangent $\eta$ ($n_0=2\times10^{18}\,\si{\per\cubic\metre}$, $H=0$, $k_yd=0.1298$, $L=10d$); lower bounds over 41 frequencies.}
-\label{tab:eta_loss}
-\small
-\begin{tabular}{@{}cccc@{}}
-\toprule
-$\eta$ & $1/\eta$ & $R_B$ maximum & $|\Imag k_{ix}|d$ \\
-\midrule
-0 & --- & 0.943 & $1.0\times10^{-3}$ \\
-$10^{-5}$ & $10^{5}$ & 0.600 & $8.1\times10^{-3}$ \\
-$10^{-4}$ & $10^{4}$ & 0.197 & $2.0\times10^{-2}$ \\
-$10^{-3}$ & $10^{3}$ & \multicolumn{2}{c}{not evaluated} \\
-$10^{-2}$ & $10^{2}$ & \multicolumn{2}{c}{not evaluated} \\
-\bottomrule
-\end{tabular}
-\end{table}

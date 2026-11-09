@@ -6,7 +6,7 @@ flexoelectric piezoelectric semiconductor plate.*  Author: Dr Vipin Gupta
 https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the user-owned fields below.**
 
 ## 1. Layout
-- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (49 pages).
+- `02_MANUSCRIPT/` master LaTeX (`main.tex`, `sections/`, `references.bib`, `figures/`), `PAPER_A.pdf` (54 pages, 12 pt).
   Build: `pdflatex main && bibtex main && pdflatex main && pdflatex main`.  Must give Overfull 0, undefined 0.
 - `01_PROGRAM/paper_a_study/` solver (`model.py`), figure data builder, all audits, tests, `fe2d*.py`.
 - `01_PROGRAM/Paper_A_Final_Submission/` synced copy of `main.tex` + `sections/` (read by static checks).
@@ -17,6 +17,15 @@ https://github.com/vipin-oss/A_Paper.  Status: **submission-ready except the use
   mu = 0.0175 m^2/Vs, insulating edge, Galerkin degree 22).
 - ZGV fold: k_x d = 0.52719, f = 16.6547 GHz, R_B = 0.94287 -- a **modal share, not a reflectance**.
 - Edge convention: plate in x<0, fields ~ e^{iKx}, outgoing modes Im K < 0.
+
+## 2b. v15 restructuring (author request, 12 pt, 62 -> 54 pages)
+- No separate Discussion section: mechanism/observable text moved into the results (end of "branch maximum" subsection),
+  literature + Qu-2025 comparison moved to the end of the Introduction, parameter provenance is now a prose paragraph
+  (`sec:params`, after Table `tab:groups`), limitations are 5 bullets at the end of Conclusions.
+- Tables removed (their numbers are in the text/figures): refinement, lambda_path, n0wide, eta_loss, provenance.
+- Equations not referenced anywhere are unnumbered (starred); appendix "worked matrix elements" and "end-to-end evaluation" removed.
+- `claims.json` was re-pointed to the new locations; claim_audit PASS.  `static_check.py` whitelist gained nonumber, sloppy.
+- Overleaf copy of the manuscript lives in repo `vipin-oss/PAPER_12_OVERLEAF_SUBMISSION` (same files as `SUBMISSION_PACKAGES`).
 
 ## 3. 2D finite-element validation (added in v13)
 - `fe2d.py` / `fe2d_validate.py`.  Operating point: FE R_B agrees with modal value within -0.14 % .. +0.42 %

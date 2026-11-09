@@ -101,7 +101,7 @@
      "value": 0.9429
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/conclusions.tex",
      "text": "94.29",
      "value": 0.9429
     }
@@ -118,20 +118,6 @@
      "file": "sections/results.tex",
      "text": "0.9428718",
      "value": 0.9428718
-    }
-   ]
-  },
-  {
-   "id": "R_B_earlier_sample",
-   "value": 0.9256041,
-   "tolerance_rel": 0.002,
-   "in_abstract": false,
-   "source": "figure_data/peak_certification.json rows[case=round7_sample, degree=30].R_B",
-   "tokens": [
-    {
-     "file": "sections/results.tex",
-     "text": "0.925\\,604",
-     "value": 0.9256041
     }
    ]
   },
@@ -167,7 +153,7 @@
      "value": 1.0005
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/results.tex",
      "text": "1.00050",
      "value": 1.0005
     }
@@ -205,7 +191,7 @@
      "value": 1.21
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/conclusions.tex",
      "text": "1.21",
      "value": 1.21
     },
@@ -234,7 +220,7 @@
      "value": 36.1
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/conclusions.tex",
      "text": "36.1",
      "value": 36.1
     },
@@ -258,7 +244,7 @@
      "value": 13.8
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/results.tex",
      "text": "13.8",
      "value": 13.8
     }
@@ -366,7 +352,7 @@
      "value": 131
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/conclusions.tex",
      "text": "131",
      "value": 131
     },
@@ -418,7 +404,7 @@
      "value": -10.17
     },
     {
-     "file": "sections/discussion.tex",
+     "file": "sections/results.tex",
      "text": "\\SI{-10.17}{\\percent}",
      "value": -10.17
     }
@@ -510,8 +496,8 @@
      "value": 10.17
     },
     {
-     "file": "sections/discussion.tex",
-     "text": "10.17}{\\percent} at\n$k_xd=0.55$",
+     "file": "sections/introduction.tex",
+     "text": "\\SI{10.17}{\\percent}",
      "value": 10.17
     }
    ]
@@ -612,111 +598,6 @@
    ]
   },
   {
-   "id": "corner_force_operating_n10",
-   "value": 0.084,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 10",
-   "note": "corner line force over the incident corner scale",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$8.4\\times10^{-2}$ at the operating point",
-     "value": 0.084
-    }
-   ]
-  },
-  {
-   "id": "corner_force_operating_n28",
-   "value": 0.045,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 28",
-   "note": "corner line force at degree 28; fitted law 3.51e-1 n^-0.618",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$4.5\\times10^{-2}$",
-     "value": 0.045
-    }
-   ]
-  },
-  {
-   "id": "corner_force_peak_n10",
-   "value": 0.0033,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 10",
-   "note": "corner line force at the corrected maximum",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$3.3\\times10^{-3}$ at the corrected",
-     "value": 0.0033
-    }
-   ]
-  },
-  {
-   "id": "corner_force_peak_n28",
-   "value": 0.0017,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 28",
-   "note": "corner line force at the corrected maximum, degree 28",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$1.7\\times10^{-3}$ and",
-     "value": 0.0017
-    }
-   ]
-  },
-  {
-   "id": "corner_force_k055_n10",
-   "value": 0.038,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, k_x d = 0.55, degree 10",
-   "note": "corner line force at k_x d = 0.55",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$3.8\\times10^{-2}$ at $k_xd=0.55$",
-     "value": 0.038
-    }
-   ]
-  },
-  {
-   "id": "corner_force_k055_n28",
-   "value": 0.02,
-   "tolerance_rel": 0.05,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, k_x d = 0.55, degree 28",
-   "note": "corner line force at k_x d = 0.55, degree 28",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$2.0\\times10^{-2}$ at degree 28",
-     "value": 0.02
-    }
-   ]
-  },
-  {
-   "id": "partition_insensitive_to_corner",
-   "value": 3.9e-06,
-   "tolerance_rel": 0.1,
-   "in_abstract": false,
-   "source": "figure_data/round21/gate12_corner.json: R_B at K=0.52719, degree 10 vs 28 (0.9428755916 vs 0.9428717260)",
-   "note": "change of the reported partition while the corner force halves",
-   "tokens": [
-    {
-     "file": "sections/discussion.tex",
-     "text": "$3.9\\times10^{-6}$ between degrees 10 and 28",
-     "value": 3.9e-06
-    }
-   ]
-  },
-  {
    "id": "traction_pointwise_residual_peak",
    "value": 0.00094,
    "tolerance_rel": 0.1,
@@ -743,6 +624,51 @@
      "file": "sections/numerical_methods.tex",
      "text": "$3.6\\times10^{-2}$",
      "value": 0.036
+    }
+   ]
+  },
+  {
+   "id": "corner_force_operating_n10",
+   "value": 0.084,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, operating point, degree 10",
+   "note": "corner line force over the incident corner scale",
+   "tokens": [
+    {
+     "file": "sections/conclusions.tex",
+     "text": "$8.4\\times10^{-2}$",
+     "value": 0.084
+    }
+   ]
+  },
+  {
+   "id": "corner_force_peak_n10",
+   "value": 0.0033,
+   "tolerance_rel": 0.05,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: corner_max_rel, corrected maximum, degree 10",
+   "note": "corner line force at the corrected maximum",
+   "tokens": [
+    {
+     "file": "sections/conclusions.tex",
+     "text": "$3.3\\times10^{-3}$",
+     "value": 0.0033
+    }
+   ]
+  },
+  {
+   "id": "partition_insensitive_to_corner",
+   "value": 3.9e-06,
+   "tolerance_rel": 0.1,
+   "in_abstract": false,
+   "source": "figure_data/round21/gate12_corner.json: R_B at K=0.52719, degree 10 vs 28 (0.9428755916 vs 0.9428717260)",
+   "note": "change of the reported partition while the corner force halves",
+   "tokens": [
+    {
+     "file": "sections/conclusions.tex",
+     "text": "$3.9\\times10^{-6}$",
+     "value": 3.9e-06
     }
    ]
   }
