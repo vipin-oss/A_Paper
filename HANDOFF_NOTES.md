@@ -87,3 +87,4 @@ its guidelines (word/page limits, highlights, graphical abstract) -- `HIGHLIGHTS
   limitations list (the corner-force and FE-at-operating-point details stay in the results/appendix).  The three corner
   claims were removed from `claims.json` because their only tokens were in the old Conclusions.
 - Added the author's own paper gupta2027ellipsoidal (Finite Elem. Anal. Des. 263, 104681, DOI 10.1016/j.finel.2026.104681) in Section 3 (FE plate check); self-citations are now 4 = the maximum, do not add more.
+- Abstract rewritten (starts 'This paper presents'; only 1.93% and 94.29% quoted); claims 1.21/36.1/131 no longer in_abstract.

@@ -55,6 +55,6 @@ Notes:
   - label never referenced: sec:results_geometry
   - label never referenced: sec:results_scope
   - label never referenced: sec:results_validation
-  - approximate prose word count (including math tokens): 17896
+  - approximate prose word count (including math tokens): 17859
 
 No TeX engine was invoked by this script.

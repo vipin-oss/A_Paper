@@ -162,14 +162,9 @@
    "id": "coupling_change_operating",
    "value": 1.21,
    "tolerance_rel": 0.05,
-   "in_abstract": true,
+   "in_abstract": false,
    "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05] vs operating_point",
    "tokens": [
-    {
-     "file": "main.tex",
-     "text": "1.21",
-     "value": 1.21
-    },
     {
      "file": "sections/results.tex",
      "text": "1.21",
@@ -186,14 +181,9 @@
    "id": "coupling_change_peak",
    "value": 36.1,
    "tolerance_rel": 0.02,
-   "in_abstract": true,
+   "in_abstract": false,
    "source": "figure_data/mechanism_controls.json branch_consistent_H_sweep.refined_peak[H=+0.05]/H=0",
    "tokens": [
-    {
-     "file": "main.tex",
-     "text": "36.1",
-     "value": 36.1
-    },
     {
      "file": "sections/results.tex",
      "text": "36.1",
@@ -308,14 +298,9 @@
    "id": "incident_power_ratio_fold",
    "value": 131.0,
    "tolerance_rel": 0.02,
-   "in_abstract": true,
+   "in_abstract": false,
    "source": "figure_data/peak_identity_audit.json cases.peak.modal_power_incident_raw vs cases.operating_point",
    "tokens": [
-    {
-     "file": "main.tex",
-     "text": "131",
-     "value": 131
-    },
     {
      "file": "sections/results.tex",
      "text": "131",

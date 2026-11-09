@@ -134,17 +134,6 @@
     },
     {
       "claim": "coupling_change_operating",
-      "file": "main.tex",
-      "text": "1.21",
-      "registered": 1.21,
-      "denoted": 1.21,
-      "relative_difference": 0.0,
-      "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "coupling_change_operating",
       "file": "sections/results.tex",
       "text": "1.21",
       "registered": 1.21,
@@ -162,17 +151,6 @@
       "denoted": 1.21,
       "relative_difference": 0.0,
       "tolerance": 0.05,
-      "occurrences": 1,
-      "pass_": true
-    },
-    {
-      "claim": "coupling_change_peak",
-      "file": "main.tex",
-      "text": "36.1",
-      "registered": 36.1,
-      "denoted": 36.1,
-      "relative_difference": 0.0,
-      "tolerance": 0.02,
       "occurrences": 1,
       "pass_": true
     },
@@ -284,17 +262,6 @@
       "relative_difference": 0.0,
       "tolerance": 1e-12,
       "occurrences": 5,
-      "pass_": true
-    },
-    {
-      "claim": "incident_power_ratio_fold",
-      "file": "main.tex",
-      "text": "131",
-      "registered": 131.0,
-      "denoted": 131,
-      "relative_difference": 0.0,
-      "tolerance": 0.02,
-      "occurrences": 1,
       "pass_": true
     },
     {

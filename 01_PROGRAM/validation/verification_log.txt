@@ -1,28 +1,28 @@
-Paper A verification run 2026-11-09T08:21:41+00:00
+Paper A verification run 2026-11-09T08:32:01+00:00
 ============================================================
 
 PASS  dimensional and constitutive audit     0.5s exit=0
-PASS  quasistatic justification              0.5s exit=0
+PASS  quasistatic justification              0.4s exit=0
 PASS  flexoelectric control                  2.8s exit=0
 PASS  admissibility re-derivation            0.0s exit=0
 PASS  figure data and figure files           
 PASS  phase-speed and e.m. reconciliation    0.4s exit=0
-PASS  modal-flux rescaling proof             5.8s exit=0
-PASS  mechanism matched controls             109.9s exit=0
-PASS  corner assessment and regression       7.7s exit=0
-PASS  certified peak (four fixed wavenumbers) 8.5s exit=0
-PASS  peak search and classification         186.5s exit=0
-PASS  peak identity and artefact audit       12.8s exit=0
-PASS  spectral convergence                   6.8s exit=0
-PASS  quadrature sufficiency                 7.2s exit=0
-PASS  unit and scientific tests              12.3s exit=0
-PASS  natural boundary data identity         2.2s exit=0
-PASS  corner line force gate                 12.7s exit=0
+PASS  modal-flux rescaling proof             5.6s exit=0
+PASS  mechanism matched controls             104.4s exit=0
+PASS  corner assessment and regression       7.6s exit=0
+PASS  certified peak (four fixed wavenumbers) 9.0s exit=0
+PASS  peak search and classification         206.9s exit=0
+PASS  peak identity and artefact audit       15.6s exit=0
+PASS  spectral convergence                   8.2s exit=0
+PASS  quadrature sufficiency                 8.7s exit=0
+PASS  unit and scientific tests              16.6s exit=0
+PASS  natural boundary data identity         3.4s exit=0
+PASS  corner line force gate                 14.2s exit=0
 PASS  insulating edge default audit          0.5s exit=0
-PASS  round-21 regression tests              1.1s exit=0
-PASS  review regression tests (A01, A02, B01, B02) 1.4s exit=0
+PASS  round-21 regression tests              1.2s exit=0
+PASS  review regression tests (A01, A02, B01, B02) 1.6s exit=0
 PASS  claim registry and stale guard         0.0s exit=0
-PASS  gate mutation tests                    4.7s exit=0
+PASS  gate mutation tests                    5.5s exit=0
 PASS  LaTeX static validation                0.1s exit=0
 PASS  LaTeX clean build (pdflatex/bibtex/pdflatex x2) 49 bibliography entries, no undefined references
 
